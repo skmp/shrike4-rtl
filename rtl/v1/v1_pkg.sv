@@ -4,8 +4,18 @@
 // micro-operations it is sequenced as, which stage produces each of its results, which stage reads each operand,
 // which units / stages it occupies.  It contains no latency: every delay the core shows is the consequence of those
 // facts meeting in the pipeline latches (README.md derives each measured latency from them).
+//
+// SoC additions (rtl/v1/SOC.md 1.3.1, WI-0b): the uop_t fields the exception / kill machinery carries and the ictl_t
+// decoder facts the D / EX checks use.  Multi-bit flag groups are listed MSB first, as a concatenation: ubc_post =
+// {A, B}, fl_prev = {T, S, Q, M}, fpx_oui = {O, U, I}.  v1_ictl(form) fills every decoder fact that follows from the
+// form; v1_ictl_op(form, op) adds the three forms tp_decode lacks (TRAPA, SLEEP with k = 4, H'0000) and the
+// opcode-level facts of an undecoded code.  None of the additions changes a field v1 already had.  Removed (SOC.md
+// 1.3.1, 8.4): v1's oc_use / tag_wr / oc_hold (no reader since WI-CORE-A A1: LDTLB's MA occupancy is the core's lt_frz,
+// the OCBWB collision its oc_coll, OCBI / OCBP pay only the OC's miss path) and fpx_opnd (the F1 operand trap takes V /
+// Z / E from the value functions, SOC.md 4.3.8).
 package v1_pkg;
   import tp_pkg::*;
+  import v1_soc_pkg::*;
 
   // issue class of the pairing logic (pipes): MT fits either integer pipe; EX the ALU pipe; LS the load/store pipe;
   // FE the FPU dispatch port; CO takes every port (issues alone); BR the branch unit (MT-like, one branch per pair)
@@ -81,12 +91,23 @@ package v1_pkg;
     logic        mul;         // MUL / DMUL / MAC (multiplier from stage 5 before FS)
     logic        macdef;      // CLRMAC / LDS / LDS.L MACx (enter the multiplier 4 stages before FS)
     logic [1:0]  mac_rd;      // 1 STS MACx,Rn (reads in MA), 2 STS.L MACx (reads in EX)
-    // operand cache (the MA stage's cache / UTLB port; hits only, v1 has no cache arrays)
-    logic        oc_use;      // uses the port without a data transfer: PREF, OCBI, OCBP, OCBWB (loads / stores are
-                              // seen from their micro-op's mrd / mwr)
-    logic        tag_wr;      // OCBI / OCBP / LDTLB: the tag (UTLB) write holds the whole pipeline for 2 cycles
-    logic        oc_hold;     // OCBWB: keeps the port one cycle longer (an access right behind it waits a cycle)
+    // ---- SoC decoder facts (SOC.md 1.3.1, 4.3, 4.4.2; exceptions-intc 3.6-3.8)
+    logic        priv;        // privileged: SR.MD = 0 raises 0x180 (0x1A0 in a slot)
+    logic        slot_ill;    // illegal in a delay slot (0x1A0); the "privileged in user mode" case is the core's
+    logic        fpu_insn;    // checked against SR.FD: every H'Fxxx except H'FFFD, LDS / STS (.L) FPUL / FPSCR
+    dkind_e      dkind;       // access kind of micro-op 0 (the sequencer maps later steps); DK_NONE for none
+    logic        rmw;         // the first access checks write permission (TAS.B, AND.B, OR.B, XOR.B)
+    logic        memop;       // memory-access instruction, for the P claim of the entry sequence (SOC.md 4.3.4)
+    logic [2:0]  fpx_oui;     // {O, U, I} trap possibility: an enabled one traps at D, unconditionally
+    logic        fpx_vd;      // V trap decided at D (FTRV)
+    logic [1:0]  form_x;      // XF_*: the v1-side forms tp_decode lacks (v1_ictl_op)
+    logic        illegal;     // no decode: every code outside the table and the three forms, including H'FFFD
   } ictl_t;
+
+  /* verilator lint_off UNUSEDPARAM */        // named codes for the core work items (SOC.md 8.1); unused until they land
+  localparam logic [1:0] XF_NONE = 2'd0, XF_TRAPA = 2'd1, XF_SLEEP = 2'd2, XF_ZERO = 2'd3;   // ictl_t.form_x
+  localparam logic [1:0] UK_NORM = 2'd0, UK_EXC0 = 2'd1, UK_EXC_SAVE = 2'd2;                  // uop_t.uk
+  /* verilator lint_on UNUSEDPARAM */
 
   function automatic ictl_t v1_ictl(input form_e f);
     ictl_t c;
@@ -120,9 +141,7 @@ package v1_pkg;
       F_MOV_B_RM_AT_RN, F_MOV_W_RM_AT_RN, F_MOV_L_RM_AT_RN, F_MOV_B_RM_AT_PRE_RN, F_MOV_W_RM_AT_PRE_RN,
       F_MOV_L_RM_AT_PRE_RN, F_MOV_B_R0_AT_D_RN, F_MOV_W_R0_AT_D_RN, F_MOV_L_RM_AT_D_RN, F_MOV_B_RM_AT_R0_RN,
       F_MOV_W_RM_AT_R0_RN, F_MOV_L_RM_AT_R0_RN, F_MOVCA_L_R0_AT_RN: c.cls = K_LS;
-      F_PREF_AT_RN: begin c.cls = K_LS; c.oc_use = 1; end
-      F_OCBWB_AT_RN: begin c.cls = K_LS; c.oc_use = 1; c.oc_hold = 1; end
-      F_OCBI_AT_RN, F_OCBP_AT_RN: begin c.cls = K_LS; c.oc_use = 1; c.tag_wr = 1; end
+      F_PREF_AT_RN, F_OCBWB_AT_RN, F_OCBI_AT_RN, F_OCBP_AT_RN: c.cls = K_LS;
       F_TST_B_IMM_AT_R0_GBR: begin c.cls = K_CO; c.k = 3'd3; c.seq = SQ_TSTB; c.sx_r = 1; c.wr_t = 1; c.wr_flags = 1; end
       F_AND_B_IMM_AT_R0_GBR, F_OR_B_IMM_AT_R0_GBR, F_XOR_B_IMM_AT_R0_GBR: begin
         c.cls = K_CO; c.k = 3'd4; c.seq = SQ_BOPB; c.sx_r = 1;
@@ -159,7 +178,7 @@ package v1_pkg;
         c.cls = K_CO; c.k = 3'd2; c.seq = SQ_SX2; c.sx_r = 1;
       end
       F_STC_SGR_RN, F_STC_L_SGR_AT_PRE_RN: begin c.cls = K_CO; c.k = 3'd3; c.seq = SQ_SX3; c.sx_r = 1; end
-      F_LDTLB: begin c.cls = K_CO; c.oc_use = 1; c.tag_wr = 1; end        // the UTLB write freezes like a tag write
+      F_LDTLB: c.cls = K_CO;
       // multiplier and MACH / MACL
       F_MUL_L_RM_RN, F_MULS_W_RM_RN, F_MULU_W_RM_RN, F_DMULS_L_RM_RN, F_DMULU_L_RM_RN: begin
         c.cls = K_CO; c.k = 3'd2; c.seq = SQ_MUL; c.arr = 1; c.mul = 1;
@@ -231,12 +250,99 @@ package v1_pkg;
         c.cls = K_CO; c.k = 3'd2; c.seq = SQ_FCMPD; c.fpu_dec = 1; c.fe = 1; c.fe_arith = 1; c.dbl = 1; c.frs = FR_RF;
         c.wr_t = 1; c.t_fpu = 1; c.wr_flags = 1;
       end
-      default: begin c.cls = K_CO; c.trap = 1; end
+      default: begin c.cls = K_CO; c.trap = 1; c.illegal = 1; end         // no decode (v1_ictl_op: the 3 forms)
     endcase
     // the result stage of the "other destination" GPR role
     if (f == F_STC_SR_RN || f == F_STC_GBR_RN || f == F_STC_VBR_RN || f == F_STC_SSR_RN || f == F_STC_SPC_RN ||
         f == F_STC_DBR_RN || f == F_STC_RM_BANK_RN || f == F_STS_PR_RN || f == F_STC_SGR_RN)
       c.gres = GR_EX;
+
+    // ---- SoC decoder facts (SOC.md 1.3.1).  tb/v1_ictl_tb checks them for every opcode against tb/sh4_iss.h's decoder.
+    // privileged (SOC.md 4.4.2, exceptions-intc 3.7 [HW]): LDC / LDC.L / STC / STC.L of SR VBR SSR SPC SGR DBR Rn_BANK,
+    // RTE, LDTLB (SLEEP: v1_ictl_op).  LDC / STC GBR are not.
+    c.priv = f inside {F_LDC_RM_SR, F_LDC_RM_VBR, F_LDC_RM_SSR, F_LDC_RM_SPC, F_LDC_RM_DBR, F_LDC_RM_RN_BANK,
+                       F_LDC_L_AT_RM_INC_SR, F_LDC_L_AT_RM_INC_VBR, F_LDC_L_AT_RM_INC_SSR, F_LDC_L_AT_RM_INC_SPC,
+                       F_LDC_L_AT_RM_INC_DBR, F_LDC_L_AT_RM_INC_RN_BANK, F_STC_SR_RN, F_STC_VBR_RN, F_STC_SSR_RN,
+                       F_STC_SPC_RN, F_STC_SGR_RN, F_STC_DBR_RN, F_STC_RM_BANK_RN, F_STC_L_SR_AT_PRE_RN,
+                       F_STC_L_VBR_AT_PRE_RN, F_STC_L_SSR_AT_PRE_RN, F_STC_L_SPC_AT_PRE_RN, F_STC_L_SGR_AT_PRE_RN,
+                       F_STC_L_DBR_AT_PRE_RN, F_STC_L_RM_BANK_AT_PRE_RN, F_RTE, F_LDTLB};
+    // slot-illegal (exceptions-intc 3.6 [HW]): every branch, RTE, LDC(.L) SR, the PC-relative loads and MOVA, and every
+    // code with no decode (H'FFFD included; TRAPA: v1_ictl_op)
+    c.slot_ill = c.illegal ||
+                 f inside {F_BF, F_BF_S, F_BT, F_BT_S, F_BRA_LABEL, F_BRAF_RN, F_BSR_LABEL, F_BSRF_RN, F_JMP_AT_RN,
+                           F_JSR_AT_RN, F_RTS, F_RTE, F_LDC_RM_SR, F_LDC_L_AT_RM_INC_SR, F_MOVA_AT_D_PC_R0,
+                           F_MOV_W_AT_D_PC_RN, F_MOV_L_AT_D_PC_RN};
+    // FPU instruction for SR.FD (pm 5.x (11)): fpu_dec marks every decoded H'Fxxx form and LDS / STS (.L) FPSCR; the
+    // four FPUL transfers are the rest.  An undecoded H'Fxxx code is v1_ictl_op's.
+    c.fpu_insn = c.fpu_dec || f inside {F_LDS_RM_FPUL, F_LDS_L_AT_RM_INC_FPUL, F_STS_FPUL_RN, F_STS_L_FPUL_AT_PRE_RN};
+    // access kind of micro-op 0.  STC.L / STS.L PR form the address in micro-op 0 and store in their last one (v1's
+    // stcl_form): DK_NONE here, DK_ST from the sequencer.  MAC.x: both micro-ops are loads (@Rn first, SOC.md 4.2).
+    // LDTLB has no data access (lt_frz, SOC.md 4.2).
+    unique case (f)
+      F_MOV_W_AT_D_PC_RN, F_MOV_L_AT_D_PC_RN, F_MOV_B_AT_RM_RN, F_MOV_W_AT_RM_RN, F_MOV_L_AT_RM_RN,
+      F_MOV_B_AT_RM_INC_RN, F_MOV_W_AT_RM_INC_RN, F_MOV_L_AT_RM_INC_RN, F_MOV_B_AT_D_RM_R0, F_MOV_W_AT_D_RM_R0,
+      F_MOV_L_AT_D_RM_RN, F_MOV_B_AT_R0_RM_RN, F_MOV_W_AT_R0_RM_RN, F_MOV_L_AT_R0_RM_RN, F_MOV_B_AT_D_GBR_R0,
+      F_MOV_W_AT_D_GBR_R0, F_MOV_L_AT_D_GBR_R0, F_MAC_L_AT_RM_INC_AT_RN_INC, F_MAC_W_AT_RM_INC_AT_RN_INC,
+      F_LDC_L_AT_RM_INC_SR, F_LDC_L_AT_RM_INC_GBR, F_LDC_L_AT_RM_INC_VBR, F_LDC_L_AT_RM_INC_SSR,
+      F_LDC_L_AT_RM_INC_SPC, F_LDC_L_AT_RM_INC_DBR, F_LDC_L_AT_RM_INC_RN_BANK, F_LDS_L_AT_RM_INC_MACH,
+      F_LDS_L_AT_RM_INC_MACL, F_LDS_L_AT_RM_INC_PR, F_LDS_L_AT_RM_INC_FPSCR, F_LDS_L_AT_RM_INC_FPUL,
+      F_FMOV_S_AT_RM_FRN, F_FMOV_S_AT_R0_RM_FRN, F_FMOV_S_AT_RM_INC_FRN, F_FMOV_AT_RM_DRN, F_FMOV_AT_R0_RM_DRN,
+      F_FMOV_AT_RM_INC_DRN, F_FMOV_AT_RM_XDN, F_FMOV_AT_RM_INC_XDN, F_FMOV_AT_R0_RM_XDN:
+        c.dkind = DK_LD;
+      F_MOV_B_RM_AT_RN, F_MOV_W_RM_AT_RN, F_MOV_L_RM_AT_RN, F_MOV_B_RM_AT_PRE_RN, F_MOV_W_RM_AT_PRE_RN,
+      F_MOV_L_RM_AT_PRE_RN, F_MOV_B_R0_AT_D_RN, F_MOV_W_R0_AT_D_RN, F_MOV_L_RM_AT_D_RN, F_MOV_B_RM_AT_R0_RN,
+      F_MOV_W_RM_AT_R0_RN, F_MOV_L_RM_AT_R0_RN, F_MOV_B_R0_AT_D_GBR, F_MOV_W_R0_AT_D_GBR, F_MOV_L_R0_AT_D_GBR,
+      F_STS_L_MACH_AT_PRE_RN, F_STS_L_MACL_AT_PRE_RN, F_STS_L_FPUL_AT_PRE_RN, F_STS_L_FPSCR_AT_PRE_RN,
+      F_FMOV_S_FRM_AT_RN, F_FMOV_S_FRM_AT_PRE_RN, F_FMOV_S_FRM_AT_R0_RN, F_FMOV_DRM_AT_RN, F_FMOV_DRM_AT_PRE_RN,
+      F_FMOV_DRM_AT_R0_RN, F_FMOV_XDM_AT_RN, F_FMOV_XDM_AT_PRE_RN, F_FMOV_XDM_AT_R0_RN:
+        c.dkind = DK_ST;
+      F_MOVCA_L_R0_AT_RN: c.dkind = DK_MOVCA;
+      F_PREF_AT_RN:       c.dkind = DK_PREF;
+      F_OCBI_AT_RN:       c.dkind = DK_OCBI;
+      F_OCBP_AT_RN:       c.dkind = DK_OCBP;
+      F_OCBWB_AT_RN:      c.dkind = DK_OCBWB;
+      F_TST_B_IMM_AT_R0_GBR, F_AND_B_IMM_AT_R0_GBR, F_OR_B_IMM_AT_R0_GBR, F_XOR_B_IMM_AT_R0_GBR: c.dkind = DK_RMW_RD;
+      F_TAS_B_AT_RN:      c.dkind = DK_TAS_PURGE;
+      default:            c.dkind = DK_NONE;
+    endcase
+    c.rmw = f inside {F_AND_B_IMM_AT_R0_GBR, F_OR_B_IMM_AT_R0_GBR, F_XOR_B_IMM_AT_R0_GBR, F_TAS_B_AT_RN};
+    c.memop = c.dkind != DK_NONE || stcl_form(f);
+    // FPU trap classes decided at D (exceptions-intc 3.8, pm 10 possible-exception lists).  O / U / I: FADD FSUB FMUL
+    // FMAC FDIV (both precisions) [HW], FIPR FTRV [HW], FCNVDS [M]; I only: FSQRT [HW], FSRRA FSCA [HW], FLOAT with
+    // PR = 0 [M].  FTRV's V is decided at D [HW].  The operand traps at F1 (V / Z / E) are v1_fpu's, from the value
+    // functions themselves (SOC.md 4.3.8); no decoder fact.
+    unique case (f)
+      F_FADD_FRM_FRN, F_FSUB_FRM_FRN, F_FMUL_FRM_FRN, F_FMAC_FR0_FRM_FRN, F_FADD_DRM_DRN, F_FSUB_DRM_DRN,
+      F_FMUL_DRM_DRN, F_FCNVDS_DRM_FPUL, F_FDIV_FRM_FRN, F_FDIV_DRM_DRN, F_FIPR_FVM_FVN: c.fpx_oui = 3'b111;
+      F_FTRV_XMTRX_FVN:                  begin c.fpx_oui = 3'b111; c.fpx_vd = 1'b1; end
+      F_FSQRT_FRN, F_FSQRT_DRN, F_FSRRA_FRN, F_FSCA_FPUL_DRN, F_FLOAT_FPUL_FRN: c.fpx_oui = 3'b001;
+      default: ;
+    endcase
+    return c;
+  endfunction
+
+  // The control word of an opcode as the D stage decodes it: v1_ictl of tp_decode's form (F_NONE when tp_decode has no
+  // match), plus the forms tp_decode lacks (SOC.md 4.4.2): TRAPA #imm (0xC3ii, CO; `trap` keeps its v1 meaning),
+  // SLEEP (0x001B, privileged; `sleep`; CO with k = 4: D issues it for 4 cycles like every multi-cycle CO form, through
+  // the core's sequencer step counter [SOC.md 4.4.3; hm Table 8.3, exceptions-intc 3.15, core-integration 3.8]) and
+  // H'0000 (NOP, class MT [P], exceptions-intc 3.7 [HW]); and for any other undecoded code the FD check of an H'Fxxx
+  // code other than H'FFFD (pm 5.x (11)).
+  function automatic ictl_t v1_ictl_op(input form_e f, input logic [15:0] op);
+    ictl_t c;
+    if (f != F_NONE) return v1_ictl(f);
+    if (op == 16'h0000) begin
+      c = v1_ictl(F_NOP);
+      c.form_x = XF_ZERO;
+      return c;
+    end
+    c = v1_ictl(F_NONE);                         // K_CO, trap, illegal, slot_ill
+    if (op[15:8] == 8'hC3) begin                 // TRAPA #imm: stays slot-illegal
+      c.form_x = XF_TRAPA; c.illegal = 1'b0;
+    end else if (op == 16'h001B) begin           // SLEEP
+      c.form_x = XF_SLEEP; c.illegal = 1'b0; c.slot_ill = 1'b0; c.trap = 1'b0; c.sleep = 1'b1; c.priv = 1'b1;
+      c.k = 3'd4;
+    end else
+      c.fpu_insn = op[15:12] == 4'hF && op != 16'hFFFD;
     return c;
   endfunction
 
@@ -302,6 +408,23 @@ package v1_pkg;
     logic [31:0] uv;
     logic        fscw;        // FPSCR written (LDS / LDS.L FPSCR)
     logic [31:0] fscv;
+    // ---- SoC additions (SOC.md 1.3.1, 4.2, 4.3): identity, faults, break tags, access kind, flag restore
+    logic [7:0]  isn;         // issue sequence number (a pair takes n, n + 1)
+    logic        slot;        // this micro-op belongs to a delay slot
+    logic [1:0]  uk;          // UK_NORM, UK_EXC0, UK_EXC_SAVE
+    fx_e         fx;          // fault decided in EX (or carried from a poisoned fetch entry)
+    logic        fwr;         // the fault is write type
+    logic        fvec400;     // the fault's vector is VBR + 0x400 (TLB miss)
+    logic [31:0] ftea;        // the faulting virtual address
+    logic        trap;        // TRAPA micro-op 0: raise at MA
+    logic [1:0]  ubc_post;    // {A, B} post-execution break tag (a delayed branch's rides its slot's micro-op)
+    logic [1:0]  ubc_op;      // {A, B} operand-address break tag (set in EX)
+    logic        blb;         // SR.BL before the instruction: SR as its D issue saw it (the sequencer's for its later
+                              // micro-ops), the UBC post-execution mask (hm 20.3.9 (3); M1b-verify F1)
+    dkind_e      dk;          // access kind of this micro-op (DK_NONE for none)
+    logic        arch;        // an architectural UTLB access (C5: TAS.B's purge / read / write, not its other steps)
+    logic [3:0]  fl_prev;     // {T, S, Q, M} before this micro-op's end-of-EX flag write (the S-stage-take restore)
+    logic        ma_done;     // the MA access has been acked (valid while the micro-op is in MA)
   } uop_t;
 
   localparam logic [3:0] CR_NONE = 4'd0, CR_SR = 4'd1, CR_GBR = 4'd2, CR_VBR = 4'd3, CR_SSR = 4'd4, CR_SPC = 4'd5,

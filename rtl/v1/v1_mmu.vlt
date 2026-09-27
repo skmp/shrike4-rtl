@@ -1,0 +1,8 @@
+`verilator_config
+// Lint waivers for WI-MMU's files (rtl/v1/v1_mmu*.sv, v1_utlb.sv, v1_itlb.sv).
+// v1_soc_pkg's address-map functions (amap_region, amap_xlat, amap_region_xl, ...) take a whole 32-bit VA or 29-bit
+// PA and read a slice of it: every call leaves argument bits unused by design (the package is WI-0's and imports
+// nothing, so the waiver lives here, per file).
+lint_off -rule UNUSEDSIGNAL -file "*v1_soc_pkg.sv"
+// Its constants (EXP_*, VEC_*, PMC_*, P4B_N, ...) serve every unit; a unit uses a few.
+lint_off -rule UNUSEDPARAM -file "*v1_soc_pkg.sv"
