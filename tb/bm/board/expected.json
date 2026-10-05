@@ -1,0 +1,2189 @@
+{
+ "_source": "console logs tools/hw/board/{boardio,boardregs}.out (board.md 6.1 / 6.2; dcload-ip 2.0.3, VGA, controller on A0, CD-R in the drive)",
+ "boardio": {
+  "done": {},
+  "gd req_error": {
+   "alt": "58",
+   "bc": "10",
+   "bsy": "902",
+   "data": [
+    "00f0",
+    "0000",
+    "0000",
+    "0000",
+    "0000"
+   ],
+   "drq": "363",
+   "err": "04",
+   "int": "2121",
+   "int2": "3339",
+   "ir": "02",
+   "ir2": "03",
+   "istext": "00000001",
+   "istnrm": "40000010",
+   "ok": "1",
+   "pkt": "534",
+   "secnum": "21",
+   "st": "58",
+   "st2": "50"
+  },
+  "gd req_stat": {
+   "alt": "58",
+   "bc": "10",
+   "bsy": "910",
+   "data": [
+    "2f01",
+    "0241",
+    "0001",
+    "732e",
+    "0000"
+   ],
+   "drq": "364",
+   "err": "04",
+   "int": "2489",
+   "int2": "3747",
+   "ir": "02",
+   "ir2": "03",
+   "istext": "00000001",
+   "istnrm": "40000010",
+   "ok": "1",
+   "pkt": "583",
+   "secnum": "21",
+   "st": "58",
+   "st2": "50"
+  },
+  "gd req_stat2": {
+   "alt": "58",
+   "bc": "10",
+   "bsy": "902",
+   "data": [
+    "2f01",
+    "0241",
+    "0001",
+    "732e",
+    "0000"
+   ],
+   "drq": "363",
+   "err": "04",
+   "int": "2645",
+   "int2": "3871",
+   "ir": "02",
+   "ir2": "03",
+   "istext": "00000001",
+   "istnrm": "40000010",
+   "ok": "1",
+   "pkt": "516",
+   "secnum": "21",
+   "st": "58",
+   "st2": "50"
+  },
+  "gd start": {
+   "alt": "50",
+   "gdst": "00000000",
+   "istext": "00000000",
+   "secnum": "21"
+  },
+  "gd test_unit": {
+   "alt": "50",
+   "bc": "0",
+   "bsy": "902",
+   "data": [],
+   "drq": "363",
+   "err": "04",
+   "int": "1885",
+   "int2": "0",
+   "ir": "03",
+   "ir2": "00",
+   "istext": "00000001",
+   "istnrm": "40000010",
+   "ok": "1",
+   "pkt": "516",
+   "secnum": "21",
+   "st": "50",
+   "st2": "00"
+  },
+  "hbl 0": {
+   "st": "00001000",
+   "t": "1670730"
+  },
+  "hbl 1": {
+   "st": "00001000",
+   "t": "4998998"
+  },
+  "hbl events": {
+   "n": "2"
+  },
+  "init_ms": {
+   "ms": "396"
+  },
+  "maple devinfo+getcond_A": {
+   "CHCR0": "000853c3",
+   "DAR0": "0c02f320",
+   "DMATCR0": "00000000",
+   "MRXDAD": "0c02f320",
+   "MTXDAD": "0c02e700",
+   "SAR0": "0c02e720",
+   "int": "241773",
+   "isterr": "00000000",
+   "istnrm": "00001010",
+   "mdst0": "241773"
+  },
+  "maple devinfo+getcond_A rx0": {
+   "w": [
+    "1c200005",
+    "01000000",
+    "fe060f00",
+    "00000000",
+    "00000000",
+    "724400ff",
+    "636d6165",
+    "20747361"
+   ]
+  },
+  "maple devinfo+getcond_A rx1": {
+   "w": [
+    "03200008",
+    "01000000",
+    "0000ffff",
+    "80808080",
+    "4c2c5345",
+    "4c2c5345",
+    "4c2c5345",
+    "4c2c5345"
+   ]
+  },
+  "maple devinfo_A": {
+   "CHCR0": "000853c3",
+   "DAR0": "0c02ef80",
+   "DMATCR0": "00000000",
+   "MRXDAD": "0c02ef80",
+   "MTXDAD": "0c02e700",
+   "SAR0": "0c02e720",
+   "int": "201805",
+   "isterr": "00000000",
+   "istnrm": "00003038",
+   "mdst0": "201805"
+  },
+  "maple devinfo_A rx0": {
+   "w": [
+    "1c200005",
+    "01000000",
+    "fe060f00",
+    "00000000",
+    "00000000",
+    "724400ff",
+    "636d6165",
+    "20747361"
+   ]
+  },
+  "maple devinfo_ABCD": {
+   "CHCR0": "000853c3",
+   "DAR0": "0c02fb20",
+   "DMATCR0": "00000000",
+   "MRXDAD": "0c02fb00",
+   "MTXDAD": "0c02e700",
+   "SAR0": "0c02e740",
+   "int": "816283",
+   "isterr": "00000000",
+   "istnrm": "00001030",
+   "mdst0": "816283"
+  },
+  "maple devinfo_ABCD rx0": {
+   "w": [
+    "1c200005",
+    "01000000",
+    "fe060f00",
+    "00000000",
+    "00000000",
+    "724400ff",
+    "636d6165",
+    "20747361"
+   ]
+  },
+  "maple devinfo_ABCD rx1": {
+   "w": [
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff"
+   ]
+  },
+  "maple devinfo_ABCD rx2": {
+   "w": [
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff"
+   ]
+  },
+  "maple devinfo_ABCD rx3": {
+   "w": [
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff"
+   ]
+  },
+  "maple devinfo_D": {
+   "CHCR0": "000853c3",
+   "DAR0": "0c02ef20",
+   "DMATCR0": "00000000",
+   "MRXDAD": "0c02ef00",
+   "MTXDAD": "0c02e700",
+   "SAR0": "0c02e720",
+   "int": "205273",
+   "isterr": "00000000",
+   "istnrm": "00001030",
+   "mdst0": "205273"
+  },
+  "maple devinfo_D rx0": {
+   "w": [
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff",
+    "ffffffff"
+   ]
+  },
+  "maple getcond_A": {
+   "CHCR0": "000853c3",
+   "DAR0": "0c02ef20",
+   "DMATCR0": "00000000",
+   "MRXDAD": "0c02ef20",
+   "MTXDAD": "0c02e700",
+   "SAR0": "0c02e720",
+   "int": "40543",
+   "isterr": "00000000",
+   "istnrm": "00001010",
+   "mdst0": "40543"
+  },
+  "maple getcond_A rx0": {
+   "w": [
+    "03200008",
+    "01000000",
+    "0000ffff",
+    "80808080",
+    "4c2c5345",
+    "4c2c5345",
+    "4c2c5345",
+    "4c2c5345"
+   ]
+  },
+  "maple start": {
+   "MDEN": "1",
+   "MDSTAR": "0c0b5020",
+   "MDTSEL": "0",
+   "MST": "00ff0000",
+   "MSYS": "c3500000"
+  },
+  "vblank": {
+   "cycles": "29066",
+   "irqs": "7",
+   "now_ms": "505"
+  }
+ },
+ "boardregs": {
+  "aica ram readback": {
+   "w": [
+    "11110000",
+    "11110007"
+   ]
+  },
+  "cdrom_get_status": {
+   "disc_type": "32",
+   "rv": "0",
+   "status": "2"
+  },
+  "done": {},
+  "ffst": {
+   "issue": "207",
+   "samples": [
+    "342:1f",
+    "552:f",
+    "894:e"
+   ]
+  },
+  "hbl events": {
+   "n": "0"
+  },
+  "lat AICA RAM read32": {
+   "cycles": "65258",
+   "per": "254.91"
+  },
+  "lat AICA RTC read32": {
+   "cycles": "64962",
+   "per": "253.75"
+  },
+  "lat AICA reg read32 (2C00)": {
+   "cycles": "65047",
+   "per": "254.08"
+  },
+  "lat BIOS ROM read16": {
+   "cycles": "34343",
+   "per": "134.15"
+  },
+  "lat BIOS ROM read32": {
+   "cycles": "52601",
+   "per": "205.47"
+  },
+  "lat GD altstat read8": {
+   "cycles": "27173",
+   "per": "106.14"
+  },
+  "lat OCBWB dirty line": {
+   "cycles": "3112"
+  },
+  "lat P1 line miss": {
+   "cycles": "5679",
+   "hits": "775"
+  },
+  "lat P2 RAM read": {
+   "cycles": "4258",
+   "per": "16.63"
+  },
+  "lat P2 RAM write": {
+   "cycles": "2656",
+   "per": "10.37"
+  },
+  "lat P2 VRAM32 read": {
+   "cycles": "23922",
+   "per": "93.44"
+  },
+  "lat P2 VRAM32 write": {
+   "cycles": "6167",
+   "per": "24.08"
+  },
+  "lat P2 VRAM64 read": {
+   "cycles": "25578",
+   "per": "99.91"
+  },
+  "lat PVR reg read (ID)": {
+   "cycles": "19694",
+   "per": "76.92"
+  },
+  "lat SB reg read (FFST)": {
+   "cycles": "4729",
+   "per": "18.47"
+  },
+  "lat SB reg read (ISTNRM)": {
+   "cycles": "4745",
+   "per": "18.53"
+  },
+  "lat SQ->AICA RAM": {
+   "drain": "857",
+   "fifo": "2542",
+   "issue": "51334"
+  },
+  "lat SQ->RAM": {
+   "drain": "37",
+   "fifo": "26",
+   "issue": "1870"
+  },
+  "lat SQ->VRAM32": {
+   "drain": "97",
+   "fifo": "53",
+   "issue": "4774"
+  },
+  "lat cached RAM read (hit)": {
+   "cycles": "394",
+   "per": "1.53"
+  },
+  "lat flash read32": {
+   "cycles": "44391",
+   "per": "173.40"
+  },
+  "lat flash read8": {
+   "cycles": "23042",
+   "per": "90.00"
+  },
+  "line 0": {
+   "st": "000020d7",
+   "t": "5351"
+  },
+  "line 1": {
+   "st": "000020d8",
+   "t": "11642"
+  },
+  "line 10": {
+   "st": "000020e1",
+   "t": "68762"
+  },
+  "line 11": {
+   "st": "000020e2",
+   "t": "75042"
+  },
+  "line 12": {
+   "st": "000020e3",
+   "t": "81410"
+  },
+  "line 13": {
+   "st": "000020e4",
+   "t": "87778"
+  },
+  "line 14": {
+   "st": "000020e5",
+   "t": "94074"
+  },
+  "line 15": {
+   "st": "000020e6",
+   "t": "100454"
+  },
+  "line 16": {
+   "st": "000020e7",
+   "t": "106810"
+  },
+  "line 17": {
+   "st": "000020e8",
+   "t": "113090"
+  },
+  "line 18": {
+   "st": "000020e9",
+   "t": "119458"
+  },
+  "line 19": {
+   "st": "000020ea",
+   "t": "125826"
+  },
+  "line 2": {
+   "st": "000020d9",
+   "t": "17990"
+  },
+  "line 20": {
+   "st": "000020eb",
+   "t": "132106"
+  },
+  "line 21": {
+   "st": "000020ec",
+   "t": "138474"
+  },
+  "line 22": {
+   "st": "000020ed",
+   "t": "144842"
+  },
+  "line 23": {
+   "st": "000020ee",
+   "t": "151138"
+  },
+  "line 24": {
+   "st": "000020ef",
+   "t": "157506"
+  },
+  "line 25": {
+   "st": "000020f0",
+   "t": "163786"
+  },
+  "line 26": {
+   "st": "000020f1",
+   "t": "170154"
+  },
+  "line 27": {
+   "st": "000020f2",
+   "t": "176522"
+  },
+  "line 28": {
+   "st": "000020f3",
+   "t": "182890"
+  },
+  "line 29": {
+   "st": "000020f4",
+   "t": "189170"
+  },
+  "line 3": {
+   "st": "000020da",
+   "t": "24346"
+  },
+  "line 30": {
+   "st": "000020f5",
+   "t": "195538"
+  },
+  "line 31": {
+   "st": "000020f6",
+   "t": "201838"
+  },
+  "line 32": {
+   "st": "000020f7",
+   "t": "208202"
+  },
+  "line 33": {
+   "st": "000020f8",
+   "t": "214570"
+  },
+  "line 34": {
+   "st": "000020f9",
+   "t": "220850"
+  },
+  "line 35": {
+   "st": "000020fa",
+   "t": "227218"
+  },
+  "line 36": {
+   "st": "000020fb",
+   "t": "233586"
+  },
+  "line 37": {
+   "st": "000020fc",
+   "t": "239866"
+  },
+  "line 38": {
+   "st": "000020fd",
+   "t": "246238"
+  },
+  "line 39": {
+   "st": "000020fe",
+   "t": "252602"
+  },
+  "line 4": {
+   "st": "000020db",
+   "t": "30730"
+  },
+  "line 40": {
+   "st": "00002204",
+   "t": "1660954"
+  },
+  "line 41": {
+   "st": "00002205",
+   "t": "1667338"
+  },
+  "line 42": {
+   "st": "00002206",
+   "t": "1673598"
+  },
+  "line 43": {
+   "st": "00002207",
+   "t": "1679962"
+  },
+  "line 44": {
+   "st": "00002208",
+   "t": "1686330"
+  },
+  "line 45": {
+   "st": "00002209",
+   "t": "1692698"
+  },
+  "line 46": {
+   "st": "0000220a",
+   "t": "1698978"
+  },
+  "line 47": {
+   "st": "0000220b",
+   "t": "1705346"
+  },
+  "line 48": {
+   "st": "0000220c",
+   "t": "1711714"
+  },
+  "line 49": {
+   "st": "00000000",
+   "t": "1717994"
+  },
+  "line 5": {
+   "st": "000020dc",
+   "t": "37010"
+  },
+  "line 50": {
+   "st": "00000001",
+   "t": "1724378"
+  },
+  "line 51": {
+   "st": "00000002",
+   "t": "1730658"
+  },
+  "line 52": {
+   "st": "00002003",
+   "t": "1737026"
+  },
+  "line 53": {
+   "st": "00002004",
+   "t": "1743394"
+  },
+  "line 54": {
+   "st": "00002005",
+   "t": "1749674"
+  },
+  "line 55": {
+   "st": "00002006",
+   "t": "1756042"
+  },
+  "line 56": {
+   "st": "00002007",
+   "t": "1762410"
+  },
+  "line 57": {
+   "st": "00002008",
+   "t": "1768690"
+  },
+  "line 58": {
+   "st": "00002009",
+   "t": "1775058"
+  },
+  "line 59": {
+   "st": "0000200a",
+   "t": "1781442"
+  },
+  "line 6": {
+   "st": "000020dd",
+   "t": "43378"
+  },
+  "line 60": {
+   "st": "0000200b",
+   "t": "1787722"
+  },
+  "line 61": {
+   "st": "0000200c",
+   "t": "1794090"
+  },
+  "line 62": {
+   "st": "0000200d",
+   "t": "1800458"
+  },
+  "line 63": {
+   "st": "0000200e",
+   "t": "1806738"
+  },
+  "line 64": {
+   "st": "0000200f",
+   "t": "1813106"
+  },
+  "line 65": {
+   "st": "00002010",
+   "t": "1819474"
+  },
+  "line 66": {
+   "st": "00002011",
+   "t": "1825754"
+  },
+  "line 67": {
+   "st": "00002012",
+   "t": "1832122"
+  },
+  "line 68": {
+   "st": "00002013",
+   "t": "1838490"
+  },
+  "line 69": {
+   "st": "00002014",
+   "t": "1844786"
+  },
+  "line 7": {
+   "st": "000020de",
+   "t": "49746"
+  },
+  "line 70": {
+   "st": "00002015",
+   "t": "1851154"
+  },
+  "line 71": {
+   "st": "00002016",
+   "t": "1857522"
+  },
+  "line 72": {
+   "st": "00002017",
+   "t": "1863802"
+  },
+  "line 73": {
+   "st": "00002018",
+   "t": "1870170"
+  },
+  "line 74": {
+   "st": "00002019",
+   "t": "1876538"
+  },
+  "line 75": {
+   "st": "0000201a",
+   "t": "1882818"
+  },
+  "line 76": {
+   "st": "0000201b",
+   "t": "1889186"
+  },
+  "line 77": {
+   "st": "0000201c",
+   "t": "1895554"
+  },
+  "line 78": {
+   "st": "0000201d",
+   "t": "1901850"
+  },
+  "line 79": {
+   "st": "0000201e",
+   "t": "1908218"
+  },
+  "line 8": {
+   "st": "000020df",
+   "t": "56026"
+  },
+  "line 9": {
+   "st": "000020e0",
+   "t": "62394"
+  },
+  "mirror RAM": {
+   "AC": "b0a7d0c5",
+   "AD": "b0a7d0c5",
+   "AE": "b0a7d0c5",
+   "AF": "b0a7d0c5"
+  },
+  "mirror VRAM32": {
+   "A5700010": "7ea7beef",
+   "A5F00010": "ffffffff",
+   "A7700010": "7ea7beef"
+  },
+  "mirror VRAM64": {
+   "A4700010": "00000000",
+   "A6700010": "00000000"
+  },
+  "reg AICA_2800": {
+   "addr": "a0702800",
+   "post": "00000010",
+   "pre": "00000010"
+  },
+  "reg AICA_2804": {
+   "addr": "a0702804",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg AICA_2808": {
+   "addr": "a0702808",
+   "post": "09000900",
+   "pre": "00000900"
+  },
+  "reg AICA_2880": {
+   "addr": "a0702880",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg AICA_2884": {
+   "addr": "a0702884",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg AICA_2890": {
+   "addr": "a0702890",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg AICA_28B4": {
+   "addr": "a07028b4",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg AICA_28B8": {
+   "addr": "a07028b8",
+   "post": "05c005c0",
+   "pre": "000005c0"
+  },
+  "reg AICA_2C00": {
+   "addr": "a0702c00",
+   "post": "00000000",
+   "pre": "00000001"
+  },
+  "reg AICA_2D00": {
+   "addr": "a0702d00",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg AICA_2D04": {
+   "addr": "a0702d04",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg AICA_RTC_CTL": {
+   "addr": "a0710008",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg AICA_RTC_HI": {
+   "addr": "a0710000",
+   "post": "00005bfd",
+   "pre": "00005bfd"
+  },
+  "reg AICA_RTC_LO": {
+   "addr": "a0710004",
+   "post": "0c2e0c2e",
+   "pre": "00000c2d"
+  },
+  "reg BAMRA": {
+   "addr": "ff200004",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg BAMRB": {
+   "addr": "ff200010",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg BARA": {
+   "addr": "ff200000",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg BARB": {
+   "addr": "ff20000c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg BASRA": {
+   "addr": "ff000014",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg BASRB": {
+   "addr": "ff000018",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg BBRA": {
+   "addr": "ff200008",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg BBRB": {
+   "addr": "ff200014",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg BCR1": {
+   "addr": "ff800000",
+   "post": "a3020008",
+   "pre": "a3020008"
+  },
+  "reg BCR2": {
+   "addr": "ff800004",
+   "post": "00000001",
+   "pre": "00000001"
+  },
+  "reg BDMRB": {
+   "addr": "ff20001c",
+   "post": "dfffdbdf",
+   "pre": "dfffdbdf"
+  },
+  "reg BDRB": {
+   "addr": "ff200018",
+   "post": "dbfd4777",
+   "pre": "dbfd4777"
+  },
+  "reg BRCR": {
+   "addr": "ff200020",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg CCR": {
+   "addr": "ff00001c",
+   "post": "00000105",
+   "pre": "00000105"
+  },
+  "reg CHCR0": {
+   "addr": "ffa0000c",
+   "post": "000853c3",
+   "pre": "000853c3"
+  },
+  "reg CHCR1": {
+   "addr": "ffa0001c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg CHCR2": {
+   "addr": "ffa0002c",
+   "post": "000012c0",
+   "pre": "000012c0"
+  },
+  "reg CHCR3": {
+   "addr": "ffa0003c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg DAR0": {
+   "addr": "ffa00004",
+   "post": "0c071d00",
+   "pre": "0c0704c0"
+  },
+  "reg DAR1": {
+   "addr": "ffa00014",
+   "post": "0c0628a5",
+   "pre": "0c0628a5"
+  },
+  "reg DAR2": {
+   "addr": "ffa00024",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg DAR3": {
+   "addr": "ffa00034",
+   "post": "0c06a5c0",
+   "pre": "0c06a5c0"
+  },
+  "reg DMAOR": {
+   "addr": "ffa00040",
+   "post": "00008201",
+   "pre": "00008201"
+  },
+  "reg DMATCR0": {
+   "addr": "ffa00008",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg DMATCR1": {
+   "addr": "ffa00018",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg DMATCR2": {
+   "addr": "ffa00028",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg DMATCR3": {
+   "addr": "ffa00038",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg EXPEVT": {
+   "addr": "ff000024",
+   "post": "000000e0",
+   "pre": "000000e0"
+  },
+  "reg FB_BURSTCTRL": {
+   "addr": "a05f8110",
+   "post": "00093f39",
+   "pre": "00093f39"
+  },
+  "reg FB_C_SOF": {
+   "addr": "a05f8114",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg FB_R_CTRL": {
+   "addr": "a05f8044",
+   "post": "00800005",
+   "pre": "00800001"
+  },
+  "reg FB_R_SIZE": {
+   "addr": "a05f805c",
+   "post": "00177d3f",
+   "pre": "00177d3f"
+  },
+  "reg FB_R_SOF1": {
+   "addr": "a05f8050",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg FB_R_SOF2": {
+   "addr": "a05f8054",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg FB_W_CTRL": {
+   "addr": "a05f8048",
+   "post": "00000009",
+   "pre": "00000009"
+  },
+  "reg FB_W_LINESTRIDE": {
+   "addr": "a05f804c",
+   "post": "000000a0",
+   "pre": "000000a0"
+  },
+  "reg FB_W_SOF1": {
+   "addr": "a05f8060",
+   "post": "00600000",
+   "pre": "00600000"
+  },
+  "reg FB_W_SOF2": {
+   "addr": "a05f8064",
+   "post": "00600000",
+   "pre": "00600000"
+  },
+  "reg FB_X_CLIP": {
+   "addr": "a05f8068",
+   "post": "027f0000",
+   "pre": "027f0000"
+  },
+  "reg FB_Y_CLIP": {
+   "addr": "a05f806c",
+   "post": "01df0000",
+   "pre": "01df0000"
+  },
+  "reg FOG_CLAMP_MAX": {
+   "addr": "a05f80bc",
+   "post": "ffffffff",
+   "pre": "ffffffff"
+  },
+  "reg FOG_CLAMP_MIN": {
+   "addr": "a05f80c0",
+   "post": "ff000000",
+   "pre": "ff000000"
+  },
+  "reg FOG_COL_RAM": {
+   "addr": "a05f80b0",
+   "post": "007f7f7f",
+   "pre": "007f7f7f"
+  },
+  "reg FOG_COL_VERT": {
+   "addr": "a05f80b4",
+   "post": "007f7f7f",
+   "pre": "007f7f7f"
+  },
+  "reg FOG_DENSITY": {
+   "addr": "a05f80b8",
+   "post": "0000ff07",
+   "pre": "0000ff07"
+  },
+  "reg FPU_CULL_VAL": {
+   "addr": "a05f8078",
+   "post": "3f800000",
+   "pre": "3f800000"
+  },
+  "reg FPU_PARAM_CFG": {
+   "addr": "a05f807c",
+   "post": "0027df77",
+   "pre": "0027df77"
+  },
+  "reg FPU_PERP_VAL": {
+   "addr": "a05f8084",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg FPU_SHAD_SCALE": {
+   "addr": "a05f8074",
+   "post": "00000001",
+   "pre": "00000001"
+  },
+  "reg FRQCR": {
+   "addr": "ffc00000",
+   "post": "00000e0a",
+   "pre": "00000e0a"
+  },
+  "reg GD_ALTSTAT": {
+   "addr": "a05f7018",
+   "post": "00000050",
+   "pre": "00000050"
+  },
+  "reg GD_BYCTLHI": {
+   "addr": "a05f7094",
+   "post": "00000001",
+   "pre": "00000001"
+  },
+  "reg GD_BYCTLLO": {
+   "addr": "a05f7090",
+   "post": "00000098",
+   "pre": "00000098"
+  },
+  "reg GD_DRVSEL": {
+   "addr": "a05f7098",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg GD_ERROR": {
+   "addr": "a05f7084",
+   "post": "00000004",
+   "pre": "00000004"
+  },
+  "reg GD_IREASON": {
+   "addr": "a05f7088",
+   "post": "00000003",
+   "pre": "00000003"
+  },
+  "reg GD_SECTNUM": {
+   "addr": "a05f708c",
+   "post": "00000022",
+   "pre": "00000022"
+  },
+  "reg GPIOIC": {
+   "addr": "ff800048",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg HALF_OFFSET": {
+   "addr": "a05f8080",
+   "post": "00000007",
+   "pre": "00000007"
+  },
+  "reg ICR": {
+   "addr": "ffd00000",
+   "post": "00008000",
+   "pre": "00008000"
+  },
+  "reg ID": {
+   "addr": "a05f8000",
+   "post": "17fd11db",
+   "pre": "17fd11db"
+  },
+  "reg INTEVT": {
+   "addr": "ff000028",
+   "post": "000003a0",
+   "pre": "00000400"
+  },
+  "reg IPRA": {
+   "addr": "ffd00004",
+   "post": "0000f0f0",
+   "pre": "00000000"
+  },
+  "reg IPRB": {
+   "addr": "ffd00008",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg IPRC": {
+   "addr": "ffd0000c",
+   "post": "00000300",
+   "pre": "00000000"
+  },
+  "reg ISP_BACKGND_D": {
+   "addr": "a05f8088",
+   "post": "38d1b710",
+   "pre": "38d1b710"
+  },
+  "reg ISP_BACKGND_T": {
+   "addr": "a05f808c",
+   "post": "01000000",
+   "pre": "01000000"
+  },
+  "reg ISP_FEED_CFG": {
+   "addr": "a05f8098",
+   "post": "00800408",
+   "pre": "00800408"
+  },
+  "reg MCR": {
+   "addr": "ff800014",
+   "post": "c00a0e24",
+   "pre": "c00a0e24"
+  },
+  "reg MMUCR": {
+   "addr": "ff000010",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg PAL_RAM_CTRL": {
+   "addr": "a05f8108",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg PARAM_BASE": {
+   "addr": "a05f8020",
+   "post": "00400000",
+   "pre": "00400000"
+  },
+  "reg PCR": {
+   "addr": "ff800018",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg PCTRA": {
+   "addr": "ff80002c",
+   "post": "000a03f0",
+   "pre": "000a03f0"
+  },
+  "reg PCTRB": {
+   "addr": "ff800040",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg PDTRA": {
+   "addr": "ff800030",
+   "post": "00001ce7",
+   "pre": "000000e7"
+  },
+  "reg PDTRB": {
+   "addr": "ff800044",
+   "post": "0000000e",
+   "pre": "00000000"
+  },
+  "reg PMCR1": {
+   "addr": "ff000084",
+   "post": "0000c023",
+   "pre": "0000c023"
+  },
+  "reg PMCR2": {
+   "addr": "ff000088",
+   "post": "00000023",
+   "pre": "00000023"
+  },
+  "reg PTEA": {
+   "addr": "ff000034",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg PTEH": {
+   "addr": "ff000000",
+   "post": "8c062000",
+   "pre": "8c062000"
+  },
+  "reg PTEL": {
+   "addr": "ff000004",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg PT_ALPHA_REF": {
+   "addr": "a05f811c",
+   "post": "000000ff",
+   "pre": "000000ff"
+  },
+  "reg QACR0": {
+   "addr": "ff000038",
+   "post": "00000004",
+   "pre": "00000004"
+  },
+  "reg QACR1": {
+   "addr": "ff00003c",
+   "post": "00000004",
+   "pre": "00000004"
+  },
+  "reg R64CNT": {
+   "addr": "ffc80000",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg RCR1": {
+   "addr": "ffc80038",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg RCR2": {
+   "addr": "ffc8003c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg RDAYCNT": {
+   "addr": "ffc80014",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg REGION_BASE": {
+   "addr": "a05f802c",
+   "post": "005667c0",
+   "pre": "005667c0"
+  },
+  "reg REVISION": {
+   "addr": "a05f8004",
+   "post": "00000011",
+   "pre": "00000011"
+  },
+  "reg RFCR": {
+   "addr": "ff800028",
+   "post": "000003ca",
+   "pre": "0000011c"
+  },
+  "reg RHRCNT": {
+   "addr": "ffc8000c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg RMINCNT": {
+   "addr": "ffc80008",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg RMONCNT": {
+   "addr": "ffc80018",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg RSECCNT": {
+   "addr": "ffc80004",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg RTCNT": {
+   "addr": "ff800020",
+   "post": "00000031",
+   "pre": "00000033"
+  },
+  "reg RTCOR": {
+   "addr": "ff800024",
+   "post": "0000005e",
+   "pre": "0000005e"
+  },
+  "reg RTCSR": {
+   "addr": "ff80001c",
+   "post": "00000094",
+   "pre": "00000094"
+  },
+  "reg RWKCNT": {
+   "addr": "ffc80010",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg RYRCNT": {
+   "addr": "ffc8001c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SAR0": {
+   "addr": "ffa00000",
+   "post": "0c0723c0",
+   "pre": "0c070b80"
+  },
+  "reg SAR1": {
+   "addr": "ffa00010",
+   "post": "ffe80014",
+   "pre": "ffe80014"
+  },
+  "reg SAR2": {
+   "addr": "ffa00020",
+   "post": "acd9e540",
+   "pre": "acd9e540"
+  },
+  "reg SAR3": {
+   "addr": "ffa00030",
+   "post": "0c07a5c0",
+   "pre": "0c07a5c0"
+  },
+  "reg SB_ADDIR": {
+   "addr": "a05f780c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_ADEN": {
+   "addr": "a05f7814",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_ADLEN": {
+   "addr": "a05f7808",
+   "post": "00000020",
+   "pre": "00000020"
+  },
+  "reg SB_ADLEND": {
+   "addr": "a05f78c8",
+   "post": "00000020",
+   "pre": "00000020"
+  },
+  "reg SB_ADST": {
+   "addr": "a05f7818",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_ADSTAG": {
+   "addr": "a05f7800",
+   "post": "009f0000",
+   "pre": "009f0000"
+  },
+  "reg SB_ADSTAGD": {
+   "addr": "a05f78c0",
+   "post": "009f0000",
+   "pre": "009f0000"
+  },
+  "reg SB_ADSTAR": {
+   "addr": "a05f7804",
+   "post": "0cff0000",
+   "pre": "0cff0000"
+  },
+  "reg SB_ADSTARD": {
+   "addr": "a05f78c4",
+   "post": "0cff0000",
+   "pre": "0cff0000"
+  },
+  "reg SB_ADSUSP": {
+   "addr": "a05f781c",
+   "post": "00000020",
+   "pre": "00000020"
+  },
+  "reg SB_ADTSEL": {
+   "addr": "a05f7810",
+   "post": "00000005",
+   "pre": "00000005"
+  },
+  "reg SB_BAVLWC": {
+   "addr": "a05f6844",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_C2DLEN": {
+   "addr": "a05f6804",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_C2DMAXL": {
+   "addr": "a05f684c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_C2DPRYC": {
+   "addr": "a05f6848",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_C2DST": {
+   "addr": "a05f6808",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_C2DSTAT": {
+   "addr": "a05f6800",
+   "post": "11480400",
+   "pre": "11480400"
+  },
+  "reg SB_DBREQM": {
+   "addr": "a05f6840",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_DDSUSP": {
+   "addr": "a05f787c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_E1EN": {
+   "addr": "a05f7834",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_E1ST": {
+   "addr": "a05f7838",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_E1SUSP": {
+   "addr": "a05f783c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_E1TSEL": {
+   "addr": "a05f7830",
+   "post": "00000005",
+   "pre": "00000005"
+  },
+  "reg SB_E2SUSP": {
+   "addr": "a05f785c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_FFST": {
+   "addr": "a05f688c",
+   "post": "0000000e",
+   "pre": "0000000e"
+  },
+  "reg SB_G1PROTST": {
+   "addr": "a05f74ec",
+   "post": "00000003",
+   "pre": "00000003"
+  },
+  "reg SB_G1SYSM": {
+   "addr": "a05f74b0",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_G2DSTO": {
+   "addr": "a05f7890",
+   "post": "0000001b",
+   "pre": "0000001b"
+  },
+  "reg SB_G2DTEXT": {
+   "addr": "a05f6954",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_G2DTNRM": {
+   "addr": "a05f6950",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_G2ID": {
+   "addr": "a05f7880",
+   "post": "00000012",
+   "pre": "00000012"
+  },
+  "reg SB_G2MDMTO": {
+   "addr": "a05f7898",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_G2MDMW": {
+   "addr": "a05f789c",
+   "post": "00000001",
+   "pre": "00000001"
+  },
+  "reg SB_G2TRTO": {
+   "addr": "a05f7894",
+   "post": "00000271",
+   "pre": "00000271"
+  },
+  "reg SB_GDDIR": {
+   "addr": "a05f740c",
+   "post": "00000001",
+   "pre": "00000001"
+  },
+  "reg SB_GDEN": {
+   "addr": "a05f7414",
+   "post": "00000001",
+   "pre": "00000001"
+  },
+  "reg SB_GDLEN": {
+   "addr": "a05f7408",
+   "post": "00000020",
+   "pre": "00000020"
+  },
+  "reg SB_GDLEND": {
+   "addr": "a05f74f8",
+   "post": "00000020",
+   "pre": "00000020"
+  },
+  "reg SB_GDST": {
+   "addr": "a05f7418",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_GDSTAR": {
+   "addr": "a05f7404",
+   "post": "0c015d40",
+   "pre": "0c015d40"
+  },
+  "reg SB_GDSTARD": {
+   "addr": "a05f74f4",
+   "post": "0c015d60",
+   "pre": "0c015d60"
+  },
+  "reg SB_IML2ERR": {
+   "addr": "a05f6918",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_IML2EXT": {
+   "addr": "a05f6914",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_IML2NRM": {
+   "addr": "a05f6910",
+   "post": "00001008",
+   "pre": "00000000"
+  },
+  "reg SB_IML4ERR": {
+   "addr": "a05f6928",
+   "post": "00003000",
+   "pre": "00000000"
+  },
+  "reg SB_IML4EXT": {
+   "addr": "a05f6924",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_IML4NRM": {
+   "addr": "a05f6920",
+   "post": "0007c000",
+   "pre": "00000000"
+  },
+  "reg SB_IML6ERR": {
+   "addr": "a05f6938",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_IML6EXT": {
+   "addr": "a05f6934",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_IML6NRM": {
+   "addr": "a05f6930",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_ISTERR": {
+   "addr": "a05f6908",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_ISTEXT": {
+   "addr": "a05f6904",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_ISTNRM": {
+   "addr": "a05f6900",
+   "post": "00000000",
+   "pre": "00000038"
+  },
+  "reg SB_LMMODE0": {
+   "addr": "a05f6884",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_LMMODE1": {
+   "addr": "a05f6888",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_MDEN": {
+   "addr": "a05f6c14",
+   "post": "00000001",
+   "pre": "00000001"
+  },
+  "reg SB_MDST": {
+   "addr": "a05f6c18",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_MDSTAR": {
+   "addr": "a05f6c04",
+   "post": "0c0723a0",
+   "pre": "0c070b60"
+  },
+  "reg SB_MDTSEL": {
+   "addr": "a05f6c10",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_MMSEL": {
+   "addr": "a05f6ce8",
+   "post": "00000001",
+   "pre": "00000001"
+  },
+  "reg SB_MRXDAD": {
+   "addr": "a05f6cf8",
+   "post": "0c071d60",
+   "pre": "0c0704c0"
+  },
+  "reg SB_MRXDBD": {
+   "addr": "a05f6cfc",
+   "post": "0c071ce0",
+   "pre": "0c0704a0"
+  },
+  "reg SB_MST": {
+   "addr": "a05f6c84",
+   "post": "00ff0000",
+   "pre": "00ff0000"
+  },
+  "reg SB_MSYS": {
+   "addr": "a05f6c80",
+   "post": "c3500000",
+   "pre": "c3500000"
+  },
+  "reg SB_MTXDAD": {
+   "addr": "a05f6cf4",
+   "post": "0c0723a0",
+   "pre": "0c070b60"
+  },
+  "reg SB_PDDIR": {
+   "addr": "a05f7c0c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_PDEN": {
+   "addr": "a05f7c14",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_PDLEN": {
+   "addr": "a05f7c08",
+   "post": "00000020",
+   "pre": "00000020"
+  },
+  "reg SB_PDLEND": {
+   "addr": "a05f7cf8",
+   "post": "00004800",
+   "pre": "00004800"
+  },
+  "reg SB_PDST": {
+   "addr": "a05f7c18",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_PDSTAP": {
+   "addr": "a05f7c00",
+   "post": "04ff0000",
+   "pre": "04ff0000"
+  },
+  "reg SB_PDSTAPD": {
+   "addr": "a05f7cf0",
+   "post": "04000800",
+   "pre": "04000800"
+  },
+  "reg SB_PDSTAR": {
+   "addr": "a05f7c04",
+   "post": "0cff0000",
+   "pre": "0cff0000"
+  },
+  "reg SB_PDSTARD": {
+   "addr": "a05f7cf4",
+   "post": "08042a00",
+   "pre": "08042a00"
+  },
+  "reg SB_PDTEXT": {
+   "addr": "a05f6944",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_PDTNRM": {
+   "addr": "a05f6940",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_PDTSEL": {
+   "addr": "a05f7c10",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_RBSPLT": {
+   "addr": "a05f68a0",
+   "post": "80000000",
+   "pre": "80000000"
+  },
+  "reg SB_SBREV": {
+   "addr": "a05f689c",
+   "post": "00000010",
+   "pre": "00000010"
+  },
+  "reg SB_SDBAAW": {
+   "addr": "a05f6814",
+   "post": "0cff0000",
+   "pre": "0cff0000"
+  },
+  "reg SB_SDLAS": {
+   "addr": "a05f681c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_SDST": {
+   "addr": "a05f6820",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_SDSTAW": {
+   "addr": "a05f6810",
+   "post": "0cff0000",
+   "pre": "0cff0000"
+  },
+  "reg SB_SDWLT": {
+   "addr": "a05f6818",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SB_TFREM": {
+   "addr": "a05f6880",
+   "post": "00000008",
+   "pre": "00000008"
+  },
+  "reg SCALER_CTL": {
+   "addr": "a05f80f4",
+   "post": "00000400",
+   "pre": "00000400"
+  },
+  "reg SCBRR1": {
+   "addr": "ffe00004",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SCBRR2": {
+   "addr": "ffe80004",
+   "post": "0000000c",
+   "pre": "0000000c"
+  },
+  "reg SCFCR2": {
+   "addr": "ffe80018",
+   "post": "00000040",
+   "pre": "00000040"
+  },
+  "reg SCFDR2": {
+   "addr": "ffe8001c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SCFSR2": {
+   "addr": "ffe80010",
+   "post": "00000060",
+   "pre": "00000060"
+  },
+  "reg SCLSR2": {
+   "addr": "ffe80024",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SCSCR1": {
+   "addr": "ffe00008",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SCSCR2": {
+   "addr": "ffe80008",
+   "post": "00000030",
+   "pre": "00000030"
+  },
+  "reg SCSMR1": {
+   "addr": "ffe00000",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SCSMR2": {
+   "addr": "ffe80000",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SCSPTR1": {
+   "addr": "ffe0001c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SCSPTR2": {
+   "addr": "ffe80020",
+   "post": "00000011",
+   "pre": "00000011"
+  },
+  "reg SCSSR1": {
+   "addr": "ffe00010",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SCTDR1": {
+   "addr": "ffe0000c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SDRAM_ARB_CFG": {
+   "addr": "a05f80a4",
+   "post": "0000001f",
+   "pre": "0000001f"
+  },
+  "reg SDRAM_CFG": {
+   "addr": "a05f80a8",
+   "post": "15d1c951",
+   "pre": "15d1c951"
+  },
+  "reg SDRAM_REFRESH": {
+   "addr": "a05f80a0",
+   "post": "00000020",
+   "pre": "00000020"
+  },
+  "reg SOFTRESET": {
+   "addr": "a05f8008",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg SPAN_SORT_CFG": {
+   "addr": "a05f8030",
+   "post": "00000101",
+   "pre": "00000101"
+  },
+  "reg SPG_CONTROL": {
+   "addr": "a05f80d0",
+   "post": "00000100",
+   "pre": "00000100"
+  },
+  "reg SPG_HBLANK": {
+   "addr": "a05f80d4",
+   "post": "007e0345",
+   "pre": "007e0345"
+  },
+  "reg SPG_HBLANK_INT": {
+   "addr": "a05f80c8",
+   "post": "03450000",
+   "pre": "03450000"
+  },
+  "reg SPG_LOAD": {
+   "addr": "a05f80d8",
+   "post": "020c0359",
+   "pre": "020c0359"
+  },
+  "reg SPG_STATUS": {
+   "addr": "a05f810c",
+   "post": "000039cd",
+   "pre": "000038ae"
+  },
+  "reg SPG_TRIGGER_POS": {
+   "addr": "a05f80c4",
+   "post": "00400220",
+   "pre": "00400220"
+  },
+  "reg SPG_VBLANK": {
+   "addr": "a05f80dc",
+   "post": "00240204",
+   "pre": "00280208"
+  },
+  "reg SPG_VBLANK_INT": {
+   "addr": "a05f80cc",
+   "post": "00150208",
+   "pre": "00150208"
+  },
+  "reg SPG_WIDTH": {
+   "addr": "a05f80e0",
+   "post": "03f1933f",
+   "pre": "03f1933f"
+  },
+  "reg STARTRENDER": {
+   "addr": "a05f8014",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg STBCR": {
+   "addr": "ffc00004",
+   "post": "00000003",
+   "pre": "00000003"
+  },
+  "reg STBCR2": {
+   "addr": "ffc00010",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TA_ALLOC_CTRL": {
+   "addr": "a05f8140",
+   "post": "00100203",
+   "pre": "00100203"
+  },
+  "reg TA_GLOB_TILE_CLIP": {
+   "addr": "a05f813c",
+   "post": "000e0013",
+   "pre": "000e0013"
+  },
+  "reg TA_ISP_BASE": {
+   "addr": "a05f8128",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TA_ISP_CURRENT": {
+   "addr": "a05f8138",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TA_ISP_LIMIT": {
+   "addr": "a05f8130",
+   "post": "0009e740",
+   "pre": "0009e740"
+  },
+  "reg TA_LIST_CONT": {
+   "addr": "a05f8160",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TA_LIST_INIT": {
+   "addr": "a05f8144",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TA_NEXT_OPB": {
+   "addr": "a05f8134",
+   "post": "00030980",
+   "pre": "00030980"
+  },
+  "reg TA_NEXT_OPB_INIT": {
+   "addr": "a05f8164",
+   "post": "000c2680",
+   "pre": "000c2680"
+  },
+  "reg TA_OL_BASE": {
+   "addr": "a05f8124",
+   "post": "000c2680",
+   "pre": "000c2680"
+  },
+  "reg TA_OL_LIMIT": {
+   "addr": "a05f812c",
+   "post": "0009e800",
+   "pre": "0009e800"
+  },
+  "reg TA_YUV_TEX_BASE": {
+   "addr": "a05f8148",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TA_YUV_TEX_CNT": {
+   "addr": "a05f8150",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TA_YUV_TEX_CTRL": {
+   "addr": "a05f814c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TCNT0": {
+   "addr": "ffd8000c",
+   "post": "00006a75",
+   "pre": "0001ba82"
+  },
+  "reg TCNT1": {
+   "addr": "ffd80018",
+   "post": "000030aa",
+   "pre": "000030a9"
+  },
+  "reg TCNT2": {
+   "addr": "ffd80024",
+   "post": "004873ed",
+   "pre": "00044291"
+  },
+  "reg TCOR0": {
+   "addr": "ffd80008",
+   "post": "0001e70f",
+   "pre": "0001e70f"
+  },
+  "reg TCOR1": {
+   "addr": "ffd80014",
+   "post": "000030b4",
+   "pre": "000030b4"
+  },
+  "reg TCOR2": {
+   "addr": "ffd80020",
+   "post": "00be41f0",
+   "pre": "00be41f0"
+  },
+  "reg TCPR2": {
+   "addr": "ffd8002c",
+   "post": "ff9b8012",
+   "pre": "ff9b8012"
+  },
+  "reg TCR0": {
+   "addr": "ffd80010",
+   "post": "00000020",
+   "pre": "00000020"
+  },
+  "reg TCR1": {
+   "addr": "ffd8001c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TCR2": {
+   "addr": "ffd80028",
+   "post": "00000020",
+   "pre": "00000020"
+  },
+  "reg TEA": {
+   "addr": "ff00000c",
+   "post": "8c062002",
+   "pre": "8c062002"
+  },
+  "reg TEST_SELECT": {
+   "addr": "a05f8018",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TEXT_CONTROL": {
+   "addr": "a05f80e4",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TOCR": {
+   "addr": "ffd80000",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TRA": {
+   "addr": "ff000020",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg TSTR": {
+   "addr": "ffd80004",
+   "post": "00000005",
+   "pre": "00000000"
+  },
+  "reg TTB": {
+   "addr": "ff000008",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg VO_BORDER_COL": {
+   "addr": "a05f8040",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg VO_CONTROL": {
+   "addr": "a05f80e8",
+   "post": "00160000",
+   "pre": "00160000"
+  },
+  "reg VO_STARTX": {
+   "addr": "a05f80ec",
+   "post": "000000ac",
+   "pre": "000000a8"
+  },
+  "reg VO_STARTY": {
+   "addr": "a05f80f0",
+   "post": "00280028",
+   "pre": "00280028"
+  },
+  "reg WCR1": {
+   "addr": "ff800008",
+   "post": "01110111",
+   "pre": "01110111"
+  },
+  "reg WCR2": {
+   "addr": "ff80000c",
+   "post": "618066d8",
+   "pre": "618066d8"
+  },
+  "reg WCR3": {
+   "addr": "ff800010",
+   "post": "07777777",
+   "pre": "07777777"
+  },
+  "reg WTCNT": {
+   "addr": "ffc00008",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg WTCSR": {
+   "addr": "ffc0000c",
+   "post": "00000000",
+   "pre": "00000000"
+  },
+  "reg Y_COEFF": {
+   "addr": "a05f8118",
+   "post": "00008040",
+   "pre": "00008040"
+  },
+  "sq readback": {
+   "AICA": "5a5a0007",
+   "RAM": "5a5a0007",
+   "VRAM": "5a5a0007"
+  },
+  "start": {
+   "old_fpscr": "00040000",
+   "old_sr": "500000f0",
+   "old_stack": "8c00f3fc",
+   "old_vbr": "8c00f400"
+  },
+  "vbl 0": {
+   "bit": "08",
+   "st": "00002208",
+   "t": "768505"
+  },
+  "vbl 1": {
+   "bit": "10",
+   "st": "00002015",
+   "t": "933309"
+  },
+  "vbl 2": {
+   "bit": "08",
+   "st": "00002208",
+   "t": "4096789"
+  },
+  "vbl 3": {
+   "bit": "10",
+   "st": "00002015",
+   "t": "4261641"
+  },
+  "vbl 4": {
+   "bit": "08",
+   "st": "00002208",
+   "t": "7425133"
+  },
+  "vbl 5": {
+   "bit": "10",
+   "st": "00002015",
+   "t": "7589957"
+  },
+  "vbl 6": {
+   "bit": "08",
+   "st": "00002208",
+   "t": "10753437"
+  },
+  "vbl 7": {
+   "bit": "10",
+   "st": "00002015",
+   "t": "10918289"
+  },
+  "vbl events": {
+   "n": "8"
+  }
+ }
+}

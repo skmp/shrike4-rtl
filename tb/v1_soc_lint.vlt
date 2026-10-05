@@ -1,0 +1,20 @@
+// v1_soc_lint.vlt -- verilator -Wall waivers for the whole-chip lint (make v1-soc-lint; owner WI-SOC).  Every waiver is
+// per file and names its reason; the units' own lint targets keep their own waiver files (tb/v1_*_lint.vlt,
+// rtl/v1/v1_mmu.vlt), which waive the same package items.
+`verilator_config
+// the shared packages declare items for every unit and for the testbench (the C++ side mirrors them): a chip that does
+// not read one of them is not wrong (as tb/v1_bsc_lint.vlt, tb/v1_clk_lint.vlt, ... waive them for each unit)
+lint_off -rule UNUSEDSIGNAL -file "*/v1_soc_pkg.sv"
+lint_off -rule UNUSEDPARAM  -file "*/v1_soc_pkg.sv"
+lint_off -rule UNUSEDSIGNAL -file "*/v1_bsc_pkg.sv"
+lint_off -rule UNUSEDPARAM  -file "*/v1_bsc_pkg.sv"
+// the v1 core's function packages: v1_alu.sv / v1_mul.sv hold packages v1_alu_pkg / v1_mul_pkg (the v1 core's naming
+// since before the SoC, make v1's file set), whose functions take wider arguments than a caller uses (v1_alu 'fun')
+lint_off -rule DECLFILENAME -file "*/v1_alu.sv" -match "*v1_alu_pkg*"
+lint_off -rule DECLFILENAME -file "*/v1_mul.sv" -match "*v1_mul_pkg*"
+lint_off -rule UNUSEDSIGNAL -file "*/v1_alu.sv" -match "*'fun'*"
+// the timing proxy's shared helper (tp_timing.svh): its register-number arguments are 32 bits wide, 5 bits are read
+lint_off -rule UNUSEDSIGNAL -file "*/tp_timing.svh"
+// the md argument of v1_core function mk_uop (the micro-op SR.MD) is reported as hiding the md port of the top module
+// (the MD8-0 strap pins of the chip, SOC.md 3.6): two unrelated objects in different modules
+lint_off -rule VARHIDDEN -file "*/v1_core.sv" -match "*'md'*"

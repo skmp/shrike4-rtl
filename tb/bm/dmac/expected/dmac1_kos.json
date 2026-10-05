@@ -1,0 +1,1319 @@
+{
+ "program": "dmac1",
+ "source": "tools/hw/dmac/dmac1.elf.hwlog",
+ "first": "dmac1: bufA",
+ "last": "dmac1: done",
+ "lines": [
+  {
+   "cls": "functional",
+   "console": "dmac1: bufA 0c0725c0 bufB 0c0625c0",
+   "regex": "dmac1:\\ bufA\\ (?P<x_bufA>[0-9a-f]{8})\\ bufB\\ (?P<x_bufB>[0-9a-f]{8})",
+   "func": [
+    "x_bufA == 0x0c0725c0",
+    "x_bufB == 0x0c0625c0"
+   ],
+   "defines": [
+    "x_bufA",
+    "x_bufB"
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S0 ch0 SAR 0c08f600 DAR 0c08ef40 DMATCR 00000000 CHCR 000853c3",
+   "regex": "S0\\ ch0\\ SAR\\ 0c08f600\\ DAR\\ 0c08ef40\\ DMATCR\\ 00000000\\ CHCR\\ 000853c3"
+  },
+  {
+   "cls": "functional",
+   "console": "S0 ch1 SAR 00000000 DAR 00000000 DMATCR 00000000 CHCR 00005440",
+   "regex": "S0\\ ch1\\ SAR\\ 00000000\\ DAR\\ 00000000\\ DMATCR\\ 00000000\\ CHCR (?P<x_chcr>[0-9a-f]{8})",
+   "board": [
+    [
+     "x_chcr",
+     [
+      21568,
+      0
+     ],
+     "CHCR1 / CHCR3 0x5440 are the BIOS / dcload leftovers of the console (dmac.md 4.4: reset values are fine); the direct boot starts them at their reset value 0"
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S0 ch2 SAR acd9e540 DAR 00000000 DMATCR 00000000 CHCR 000012c0",
+   "regex": "S0\\ ch2\\ SAR (?P<x_sar>[0-9a-f]{8})\\ DAR\\ 00000000\\ DMATCR\\ 00000000\\ CHCR\\ 000012c0",
+   "board": [
+    [
+     "x_sar",
+     [
+      2899961152,
+      0
+     ],
+     "SAR2 0xACD9E540 is a leftover of the console (dmac.md 4.4); the boot stub writes only CHCR2 (SOC.md 7.3), so the direct boot reads SAR2 at its reset value 0 (S13 restores what it read)"
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S0 ch3 SAR 00000000 DAR 00000000 DMATCR 00000000 CHCR 00005440",
+   "regex": "S0\\ ch3\\ SAR\\ 00000000\\ DAR\\ 00000000\\ DMATCR\\ 00000000\\ CHCR (?P<x_chcr>[0-9a-f]{8})",
+   "board": [
+    [
+     "x_chcr",
+     [
+      21568,
+      0
+     ],
+     "CHCR1 / CHCR3 0x5440 are the BIOS / dcload leftovers of the console (dmac.md 4.4: reset values are fine); the direct boot starts them at their reset value 0"
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S0 DMAOR 00008201",
+   "regex": "S0\\ DMAOR\\ 00008201"
+  },
+  {
+   "cls": "functional",
+   "console": "S0 SB C2DSTAT 10000000 C2DLEN 00000000 C2DST 00000000 DBREQM 00000000 BAVLWC 00000000 C2DPRYC 00000000 C2DMAXL 00000000 LMMODE0 00000000 LMMODE1 00000000 ISTNRM 00000000 IML2/4/6NRM 00001008 0007c000 00000000",
+   "regex": "S0\\ SB\\ C2DSTAT (?P<x_c2dstat>[0-9a-f]{8})\\ C2DLEN\\ 00000000\\ C2DST\\ 00000000\\ DBREQM\\ 00000000\\ BAVLWC\\ 00000000\\ C2DPRYC\\ 00000000\\ C2DMAXL\\ 00000000\\ LMMODE0\\ 00000000\\ LMMODE1\\ 00000000\\ ISTNRM\\ 00000000\\ IML2/4/6NRM\\ 00001008\\ 0007c000\\ 00000000",
+   "board": [
+    [
+     "x_c2dstat",
+     [
+      268435456,
+      289932288
+     ],
+     "SB_C2DSTAT is what the last CH2-DMA before the program left: the console run followed a program that used the TA path (0x10000000), the direct boot has board.md 5.3's preset 0x11480400"
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S0 IPRC 0300 WCR1 01110111 MDSTAR 0c08f5e0",
+   "regex": "S0\\ IPRC\\ 0300\\ WCR1\\ 01110111\\ MDSTAR (?P<x_mdstar>[0-9a-f]{8})",
+   "func": [
+    "x_mdstar == 0x0c08f5e0"
+   ],
+   "defines": [
+    "x_mdstar"
+   ]
+  },
+  {
+   "cls": "functional",
+   "multi": "S1 t=",
+   "nmin": 24,
+   "nmax": 48,
+   "console": [
+    "S1 t=      297 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t=  1923042 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000852c3 MDST 1",
+    "S1 t=  1980950 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t=  2033866 SAR0 0c08f600 DAR0 0c08ef60 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t=  2086994 SAR0 0c08f600 DAR0 0c08ef80 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t=  2123562 SAR0 0c08f600 DAR0 0c08efa0 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t=  5252942 SAR0 0c08f600 DAR0 0c08efa0 DMATCR0 00000000 CHCR0 000852c3 MDST 1",
+    "S1 t=  5455738 SAR0 0c08f600 DAR0 0c083180 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t=  5497866 SAR0 0c08f600 DAR0 0c083180 DMATCR0 00000001 CHCR0 000853c3 MDST 0",
+    "S1 t=  5498070 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t=  8581006 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000852c3 MDST 1",
+    "S1 t=  8783854 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000001 CHCR0 000853c3 MDST 1",
+    "S1 t=  8784030 SAR0 0c08f600 DAR0 0c083180 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t=  8825806 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t= 11909382 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000852c3 MDST 1",
+    "S1 t= 12112310 SAR0 0c08f600 DAR0 0c083180 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t= 12154202 SAR0 0c08f600 DAR0 0c083180 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t= 12154414 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t= 15234678 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000852c3 MDST 1",
+    "S1 t= 15293142 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t= 15346066 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000001 CHCR0 000853c3 MDST 1",
+    "S1 t= 15346278 SAR0 0c08f600 DAR0 0c08ef60 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t= 15399330 SAR0 0c08f600 DAR0 0c08ef80 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t= 15435481 SAR0 0c08f600 DAR0 0c08efa0 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t= 18566106 SAR0 0c08f600 DAR0 0c08efa0 DMATCR0 00000000 CHCR0 000852c3 MDST 1",
+    "S1 t= 18768882 SAR0 0c08f600 DAR0 0c083180 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t= 18810798 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t= 21894386 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000852c3 MDST 1",
+    "S1 t= 22097266 SAR0 0c08f600 DAR0 0c083180 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t= 22139204 SAR0 0c08f600 DAR0 0c08ef20 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t= 22139414 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t= 25222606 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000852c3 MDST 1",
+    "S1 t= 25425518 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000001 CHCR0 000853c3 MDST 1",
+    "S1 t= 25425730 SAR0 0c08f600 DAR0 0c083180 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t= 25467522 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t= 28547946 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000852c3 MDST 1",
+    "S1 t= 28606494 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t= 28659546 SAR0 0c08f600 DAR0 0c08ef60 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t= 28712594 SAR0 0c08f600 DAR0 0c08ef80 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t= 28748816 SAR0 0c08f600 DAR0 0c08ef80 DMATCR0 00000001 CHCR0 000853c3 MDST 0",
+    "S1 t= 28749046 SAR0 0c08f600 DAR0 0c08efa0 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t= 31879374 SAR0 0c08f600 DAR0 0c08efa0 DMATCR0 00000000 CHCR0 000852c3 MDST 1",
+    "S1 t= 32082158 SAR0 0c08f600 DAR0 0c083180 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t= 32124505 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000853c3 MDST 0",
+    "S1 t= 35207654 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000852c3 MDST 1",
+    "S1 t= 35410478 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000001 CHCR0 000853c3 MDST 1",
+    "S1 t= 35410686 SAR0 0c08f600 DAR0 0c083180 DMATCR0 00000000 CHCR0 000853c3 MDST 1",
+    "S1 t= 35452442 SAR0 0c08f600 DAR0 0c08ef40 DMATCR0 00000000 CHCR0 000853c3 MDST 0"
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S1 MDSTAR 0c08f5e0 DMAOR 00008201",
+   "regex": "S1\\ MDSTAR\\ 0c08f5e0\\ DMAOR\\ 00008201"
+  },
+  {
+   "cls": "functional",
+   "console": "S2 SAR1=0C123458 r16 0000 0000 r8 00 00 | CHCR1=00005430 r16 0000 0000 r8 00 | DMAOR r16 0000 0000 r8 00 00",
+   "regex": "S2\\ SAR1=0C123458\\ r16\\ 0000\\ 0000\\ r8\\ 00\\ 00\\ \\|\\ CHCR1=00005430\\ r16\\ 0000\\ 0000\\ r8\\ 00\\ \\|\\ DMAOR\\ r16\\ 0000\\ 0000\\ r8\\ 00\\ 00"
+  },
+  {
+   "cls": "functional",
+   "console": "S2 after w16 SAR1<-BEEF: 0c123458; w8 SAR1+1<-55: 0c123458; w16 CHCR1<-0080: 00005430; w16 SAR1+2<-0D00: 0c123458; DMAOR 00008201",
+   "regex": "S2\\ after\\ w16\\ SAR1<\\-BEEF:\\ 0c123458;\\ w8\\ SAR1\\+1<\\-55:\\ 0c123458;\\ w16\\ CHCR1<\\-0080:\\ 00005430;\\ w16\\ SAR1\\+2<\\-0D00:\\ 0c123458;\\ DMAOR\\ 00008201"
+  },
+  {
+   "cls": "functional",
+   "console": "S3 w FFFFFFFF: SAR1 ffffffff DAR1 ffffffff DMATCR1 00ffffff | CHCR1 w FFFFFFFE -> ff0ffff4 (w0 -> 00000000) | CHCR3 w FFFFFFFE -> ff0afff4 | DMATCR1 w 01000005 -> 00000005",
+   "regex": "S3\\ w\\ FFFFFFFF:\\ SAR1\\ ffffffff\\ DAR1\\ ffffffff\\ DMATCR1\\ 00ffffff\\ \\|\\ CHCR1\\ w\\ FFFFFFFE\\ \\->\\ ff0ffff4\\ \\(w0\\ \\->\\ 00000000\\)\\ \\|\\ CHCR3\\ w\\ FFFFFFFE\\ \\->\\ ff0afff4\\ \\|\\ DMATCR1\\ w\\ 01000005\\ \\->\\ 00000005"
+  },
+  {
+   "cls": "functional",
+   "console": "S3 CHCR2 was 000012c0, w FFFFFFFE -> ff0afff4, restored -> 000012c0",
+   "regex": "S3\\ CHCR2\\ was\\ 000012c0,\\ w\\ FFFFFFFE\\ \\->\\ ff0afff4,\\ restored\\ \\->\\ 000012c0"
+  },
+  {
+   "cls": "functional",
+   "console": "S3 ch0 SAR 0c08f600->00000000 DMATCR 00000000->00000000 DAR 0c08ef40->00000000 CHCR 000853c3->000853c3 (value read after a write of old^bit)",
+   "regex": "S3\\ ch0\\ SAR\\ (?P<x_s0>[0-9a-f]{8})\\->(?P<x_s1>[0-9a-f]{8})\\ DMATCR\\ (?P<x_t0>[0-9a-f]{8})\\->(?P<x_t1>[0-9a-f]{8})\\ DAR\\ (?P<x_d0>[0-9a-f]{8})\\->(?P<x_d1>[0-9a-f]{8})\\ CHCR\\ (?P<x_c0>[0-9a-f]{8})\\->(?P<x_c1>[0-9a-f]{8})\\ \\(value\\ read\\ after\\ a\\ write\\ of\\ old\\^bit\\)",
+   "func": [
+    "x_s1 == 0",
+    "x_t1 == 0",
+    "x_d1 == 0",
+    "x_c1 == x_c0",
+    "(x_c0 | 2) == 0x853c3"
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S3 DMAOR 00008201 | w |FFFF7CF8 -> 00008201 | w |6 -> 00008201 (restored 00008201) | w |300 -> 00008301 (restored 00008201)",
+   "regex": "S3\\ DMAOR\\ 00008201\\ \\|\\ w\\ \\|FFFF7CF8\\ \\->\\ 00008201\\ \\|\\ w\\ \\|6\\ \\->\\ 00008201\\ \\(restored\\ 00008201\\)\\ \\|\\ w\\ \\|300\\ \\->\\ 00008301\\ \\(restored\\ 00008201\\)"
+  },
+  {
+   "cls": "functional",
+   "console": "S4 TS=1 unit= 1 n=64 cyc=3086 CHCR 00005493 SAR 0c072600 (start 0c0725c0) DAR 0c062600 (start 0c0625c0) DMATCR 0 data_ok=1 overrun=0",
+   "regex": "S4\\ TS=1\\ unit=\\ 1\\ n=64\\ cyc=(?P<cyc>-?\\d+)\\ CHCR\\ 00005493\\ SAR\\ (?P<x_sar>[0-9a-f]{8})\\ \\(start\\ (?P<x_sa0>[0-9a-f]{8})\\)\\ DAR\\ (?P<x_dar>[0-9a-f]{8})\\ \\(start\\ (?P<x_da0>[0-9a-f]{8})\\)\\ DMATCR\\ 0\\ data_ok=1\\ overrun=0",
+   "func": [
+    "x_sar == x_sa0 + 64",
+    "x_dar == x_da0 + 64",
+    "x_sa0 == x_bufA",
+    "x_da0 == x_bufB"
+   ],
+   "timing": [
+    [
+     "cyc",
+     3086,
+     64
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S4 TS=2 unit= 2 n=64 cyc=3055 CHCR 000054a3 SAR 0c072640 (start 0c0725c0) DAR 0c062640 (start 0c0625c0) DMATCR 0 data_ok=1 overrun=0",
+   "regex": "S4\\ TS=2\\ unit=\\ 2\\ n=64\\ cyc=(?P<cyc>-?\\d+)\\ CHCR\\ 000054a3\\ SAR\\ (?P<x_sar>[0-9a-f]{8})\\ \\(start\\ (?P<x_sa0>[0-9a-f]{8})\\)\\ DAR\\ (?P<x_dar>[0-9a-f]{8})\\ \\(start\\ (?P<x_da0>[0-9a-f]{8})\\)\\ DMATCR\\ 0\\ data_ok=1\\ overrun=0",
+   "func": [
+    "x_sar == x_sa0 + 128",
+    "x_dar == x_da0 + 128",
+    "x_sa0 == x_bufA",
+    "x_da0 == x_bufB"
+   ],
+   "timing": [
+    [
+     "cyc",
+     3055,
+     64
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S4 TS=3 unit= 4 n=64 cyc=3055 CHCR 000054b3 SAR 0c0726c0 (start 0c0725c0) DAR 0c0626c0 (start 0c0625c0) DMATCR 0 data_ok=1 overrun=0",
+   "regex": "S4\\ TS=3\\ unit=\\ 4\\ n=64\\ cyc=(?P<cyc>-?\\d+)\\ CHCR\\ 000054b3\\ SAR\\ (?P<x_sar>[0-9a-f]{8})\\ \\(start\\ (?P<x_sa0>[0-9a-f]{8})\\)\\ DAR\\ (?P<x_dar>[0-9a-f]{8})\\ \\(start\\ (?P<x_da0>[0-9a-f]{8})\\)\\ DMATCR\\ 0\\ data_ok=1\\ overrun=0",
+   "func": [
+    "x_sar == x_sa0 + 256",
+    "x_dar == x_da0 + 256",
+    "x_sa0 == x_bufA",
+    "x_da0 == x_bufB"
+   ],
+   "timing": [
+    [
+     "cyc",
+     3055,
+     64
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S4 TS=0 unit= 8 n=64 cyc=3055 CHCR 00005483 SAR 0c0727c0 (start 0c0725c0) DAR 0c0627c0 (start 0c0625c0) DMATCR 0 data_ok=1 overrun=0",
+   "regex": "S4\\ TS=0\\ unit=\\ 8\\ n=64\\ cyc=(?P<cyc>-?\\d+)\\ CHCR\\ 00005483\\ SAR\\ (?P<x_sar>[0-9a-f]{8})\\ \\(start\\ (?P<x_sa0>[0-9a-f]{8})\\)\\ DAR\\ (?P<x_dar>[0-9a-f]{8})\\ \\(start\\ (?P<x_da0>[0-9a-f]{8})\\)\\ DMATCR\\ 0\\ data_ok=1\\ overrun=0",
+   "func": [
+    "x_sar == x_sa0 + 512",
+    "x_dar == x_da0 + 512",
+    "x_sa0 == x_bufA",
+    "x_da0 == x_bufB"
+   ],
+   "timing": [
+    [
+     "cyc",
+     3055,
+     64
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S4 TS=4 unit=32 n=64 cyc=3078 CHCR 000054c3 SAR 0c072dc0 (start 0c0725c0) DAR 0c062dc0 (start 0c0625c0) DMATCR 0 data_ok=1 overrun=0",
+   "regex": "S4\\ TS=4\\ unit=32\\ n=64\\ cyc=(?P<cyc>-?\\d+)\\ CHCR\\ 000054c3\\ SAR\\ (?P<x_sar>[0-9a-f]{8})\\ \\(start\\ (?P<x_sa0>[0-9a-f]{8})\\)\\ DAR\\ (?P<x_dar>[0-9a-f]{8})\\ \\(start\\ (?P<x_da0>[0-9a-f]{8})\\)\\ DMATCR\\ 0\\ data_ok=1\\ overrun=0",
+   "func": [
+    "x_sar == x_sa0 + 2048",
+    "x_dar == x_da0 + 2048",
+    "x_sa0 == x_bufA",
+    "x_da0 == x_bufB"
+   ],
+   "timing": [
+    [
+     "cyc",
+     3078,
+     64
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S4 addr SAR 8c0725c0 DAR ac0625c0: cyc=279 CHCR 000054c3 SAR 8c072640 DAR ac062640 DMATCR 0 DMAOR 00008201 data_ok=1 mirror_ok=0",
+   "regex": "S4\\ addr\\ SAR\\ (?P<x_sa>[0-9a-f]{8})\\ DAR\\ (?P<x_da>[0-9a-f]{8}):\\ cyc=(?P<cyc>-?\\d+)\\ CHCR\\ 000054c3\\ SAR\\ (?P<x_sa1>[0-9a-f]{8})\\ DAR\\ (?P<x_da1>[0-9a-f]{8})\\ DMATCR\\ 0\\ DMAOR\\ 00008201\\ data_ok=1\\ mirror_ok=0",
+   "func": [
+    "(x_sa ^ x_bufA) == 0x80000000",
+    "(x_da ^ x_bufB) == 0xa0000000",
+    "x_sa1 == (x_sa + 128) & 0xFFFFFFFF",
+    "x_da1 == (x_da + 128) & 0xFFFFFFFF"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     209,
+     349,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 279
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S4 addr SAR ec0725c0 DAR 0c0625c0: cyc=279 CHCR 000054c3 SAR ec072640 DAR 0c062640 DMATCR 0 DMAOR 00008201 data_ok=1 mirror_ok=0",
+   "regex": "S4\\ addr\\ SAR\\ (?P<x_sa>[0-9a-f]{8})\\ DAR\\ (?P<x_da>[0-9a-f]{8}):\\ cyc=(?P<cyc>-?\\d+)\\ CHCR\\ 000054c3\\ SAR\\ (?P<x_sa1>[0-9a-f]{8})\\ DAR\\ (?P<x_da1>[0-9a-f]{8})\\ DMATCR\\ 0\\ DMAOR\\ 00008201\\ data_ok=1\\ mirror_ok=0",
+   "func": [
+    "(x_sa ^ x_bufA) == 0xe0000000",
+    "(x_da ^ x_bufB) == 0x0",
+    "x_sa1 == (x_sa + 128) & 0xFFFFFFFF",
+    "x_da1 == (x_da + 128) & 0xFFFFFFFF"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     209,
+     349,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 279
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S4 addr SAR 6c0725c0 DAR 4c0625c0: cyc=279 CHCR 000054c3 SAR 6c072640 DAR 4c062640 DMATCR 0 DMAOR 00008201 data_ok=1 mirror_ok=0",
+   "regex": "S4\\ addr\\ SAR\\ (?P<x_sa>[0-9a-f]{8})\\ DAR\\ (?P<x_da>[0-9a-f]{8}):\\ cyc=(?P<cyc>-?\\d+)\\ CHCR\\ 000054c3\\ SAR\\ (?P<x_sa1>[0-9a-f]{8})\\ DAR\\ (?P<x_da1>[0-9a-f]{8})\\ DMATCR\\ 0\\ DMAOR\\ 00008201\\ data_ok=1\\ mirror_ok=0",
+   "func": [
+    "(x_sa ^ x_bufA) == 0x60000000",
+    "(x_da ^ x_bufB) == 0x40000000",
+    "x_sa1 == (x_sa + 128) & 0xFFFFFFFF",
+    "x_da1 == (x_da + 128) & 0xFFFFFFFF"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     209,
+     349,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 279
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S4 addr SAR 0c0725c0 DAR 0e0625c0: cyc=279 CHCR 000054c3 SAR 0c072640 DAR 0e062640 DMATCR 0 DMAOR 00008201 data_ok=1 mirror_ok=1",
+   "regex": "S4\\ addr\\ SAR\\ (?P<x_sa>[0-9a-f]{8})\\ DAR\\ (?P<x_da>[0-9a-f]{8}):\\ cyc=(?P<cyc>-?\\d+)\\ CHCR\\ 000054c3\\ SAR\\ (?P<x_sa1>[0-9a-f]{8})\\ DAR\\ (?P<x_da1>[0-9a-f]{8})\\ DMATCR\\ 0\\ DMAOR\\ 00008201\\ data_ok=1\\ mirror_ok=1",
+   "func": [
+    "(x_sa ^ x_bufA) == 0x0",
+    "(x_da ^ x_bufB) == 0x2000000",
+    "x_sa1 == (x_sa + 128) & 0xFFFFFFFF",
+    "x_da1 == (x_da + 128) & 0xFFFFFFFF"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     209,
+     349,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 279
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S5 SM=0 DM=0 cyc=394 SAR-start +0 DAR-start +0 DMATCR 0 CHCR 000004b3 dst words[-8..+7] (src word offset): .. .. .. .. .. .. .. .. +0 .. .. .. .. .. .. ..",
+   "regex": "S5\\ SM=0\\ DM=0\\ cyc=(?P<cyc>-?\\d+)\\ SAR\\-start\\ \\+0\\ DAR\\-start\\ \\+0\\ DMATCR\\ 0\\ CHCR\\ 000004b3\\ dst\\ words\\[\\-8\\.\\.\\+7\\]\\ \\(src\\ word\\ offset\\):\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\+0\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.",
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     295,
+     493,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 394
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S5 SM=0 DM=1 cyc=371 SAR-start +0 DAR-start +24 DMATCR 0 CHCR 000044b3 dst words[-8..+7] (src word offset): .. .. .. .. .. .. .. .. +0 +0 +0 +0 +0 +0 .. ..",
+   "regex": "S5\\ SM=0\\ DM=1\\ cyc=(?P<cyc>-?\\d+)\\ SAR\\-start\\ \\+0\\ DAR\\-start\\ \\+24\\ DMATCR\\ 0\\ CHCR\\ 000044b3\\ dst\\ words\\[\\-8\\.\\.\\+7\\]\\ \\(src\\ word\\ offset\\):\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\+0\\ \\+0\\ \\+0\\ \\+0\\ \\+0\\ \\+0\\ \\.\\.\\ \\.\\.",
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     278,
+     464,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 371
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S5 SM=0 DM=2 cyc=371 SAR-start +0 DAR-start -24 DMATCR 0 CHCR 000084b3 dst words[-8..+7] (src word offset): .. .. .. +0 +0 +0 +0 +0 +0 .. .. .. .. .. .. ..",
+   "regex": "S5\\ SM=0\\ DM=2\\ cyc=(?P<cyc>-?\\d+)\\ SAR\\-start\\ \\+0\\ DAR\\-start\\ \\-24\\ DMATCR\\ 0\\ CHCR\\ 000084b3\\ dst\\ words\\[\\-8\\.\\.\\+7\\]\\ \\(src\\ word\\ offset\\):\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\+0\\ \\+0\\ \\+0\\ \\+0\\ \\+0\\ \\+0\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.",
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     278,
+     464,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 371
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S5 SM=1 DM=0 cyc=371 SAR-start +24 DAR-start +0 DMATCR 0 CHCR 000014b3 dst words[-8..+7] (src word offset): .. .. .. .. .. .. .. .. +5 .. .. .. .. .. .. ..",
+   "regex": "S5\\ SM=1\\ DM=0\\ cyc=(?P<cyc>-?\\d+)\\ SAR\\-start\\ \\+24\\ DAR\\-start\\ \\+0\\ DMATCR\\ 0\\ CHCR\\ 000014b3\\ dst\\ words\\[\\-8\\.\\.\\+7\\]\\ \\(src\\ word\\ offset\\):\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\+5\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.",
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     278,
+     464,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 371
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S5 SM=1 DM=1 cyc=371 SAR-start +24 DAR-start +24 DMATCR 0 CHCR 000054b3 dst words[-8..+7] (src word offset): .. .. .. .. .. .. .. .. +0 +1 +2 +3 +4 +5 .. ..",
+   "regex": "S5\\ SM=1\\ DM=1\\ cyc=(?P<cyc>-?\\d+)\\ SAR\\-start\\ \\+24\\ DAR\\-start\\ \\+24\\ DMATCR\\ 0\\ CHCR\\ 000054b3\\ dst\\ words\\[\\-8\\.\\.\\+7\\]\\ \\(src\\ word\\ offset\\):\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\+0\\ \\+1\\ \\+2\\ \\+3\\ \\+4\\ \\+5\\ \\.\\.\\ \\.\\.",
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     278,
+     464,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 371
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S5 SM=1 DM=2 cyc=387 SAR-start +24 DAR-start -24 DMATCR 0 CHCR 000094b3 dst words[-8..+7] (src word offset): .. .. .. +5 +4 +3 +2 +1 +0 .. .. .. .. .. .. ..",
+   "regex": "S5\\ SM=1\\ DM=2\\ cyc=(?P<cyc>-?\\d+)\\ SAR\\-start\\ \\+24\\ DAR\\-start\\ \\-24\\ DMATCR\\ 0\\ CHCR\\ 000094b3\\ dst\\ words\\[\\-8\\.\\.\\+7\\]\\ \\(src\\ word\\ offset\\):\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\+5\\ \\+4\\ \\+3\\ \\+2\\ \\+1\\ \\+0\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.",
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     290,
+     484,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 387
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S5 SM=2 DM=0 cyc=371 SAR-start -24 DAR-start +0 DMATCR 0 CHCR 000024b3 dst words[-8..+7] (src word offset): .. .. .. .. .. .. .. .. -5 .. .. .. .. .. .. ..",
+   "regex": "S5\\ SM=2\\ DM=0\\ cyc=(?P<cyc>-?\\d+)\\ SAR\\-start\\ \\-24\\ DAR\\-start\\ \\+0\\ DMATCR\\ 0\\ CHCR\\ 000024b3\\ dst\\ words\\[\\-8\\.\\.\\+7\\]\\ \\(src\\ word\\ offset\\):\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\-5\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.",
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     278,
+     464,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 371
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S5 SM=2 DM=1 cyc=371 SAR-start -24 DAR-start +24 DMATCR 0 CHCR 000064b3 dst words[-8..+7] (src word offset): .. .. .. .. .. .. .. .. +0 -1 -2 -3 -4 -5 .. ..",
+   "regex": "S5\\ SM=2\\ DM=1\\ cyc=(?P<cyc>-?\\d+)\\ SAR\\-start\\ \\-24\\ DAR\\-start\\ \\+24\\ DMATCR\\ 0\\ CHCR\\ 000064b3\\ dst\\ words\\[\\-8\\.\\.\\+7\\]\\ \\(src\\ word\\ offset\\):\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\+0\\ \\-1\\ \\-2\\ \\-3\\ \\-4\\ \\-5\\ \\.\\.\\ \\.\\.",
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     278,
+     464,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 371
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S5 SM=2 DM=2 cyc=371 SAR-start -24 DAR-start -24 DMATCR 0 CHCR 0000a4b3 dst words[-8..+7] (src word offset): .. .. .. -5 -4 -3 -2 -1 +0 .. .. .. .. .. .. ..",
+   "regex": "S5\\ SM=2\\ DM=2\\ cyc=(?P<cyc>-?\\d+)\\ SAR\\-start\\ \\-24\\ DAR\\-start\\ \\-24\\ DMATCR\\ 0\\ CHCR\\ 0000a4b3\\ dst\\ words\\[\\-8\\.\\.\\+7\\]\\ \\(src\\ word\\ offset\\):\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\-5\\ \\-4\\ \\-3\\ \\-2\\ \\-1\\ \\+0\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.\\ \\.\\.",
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     278,
+     464,
+     "SOC.md 9.25, the DMAC outside the steady unit: a short transfer timed from the CPU's CHCR write to its DMATCR poll carries the start latency and the P4 write / read phases (the console 12-58 Icyc apart from the model) and, under KOS, the timed code's I-cache state (9.23): the chip gives 245-293 for S4's forms under KOS against 271-283 in the bare-metal layout; bounded 0.75-1.25 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 371
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S6 DMATCR=0 byte cycle-steal fixed/fixed, stopped after 20000 cyc: DMATCR 00fffe6b (405 done) CHCR 00000411 -> 00000410 SAR 0c0725c0 DAR 0c0625c0",
+   "regex": "S6\\ DMATCR=0\\ byte\\ cycle\\-steal\\ fixed/fixed,\\ stopped\\ after\\ 20000\\ cyc:\\ DMATCR\\ (?P<x_t>[0-9a-f]{8})\\ \\((?P<done>-?\\d+)\\ done\\)\\ CHCR\\ 00000411\\ \\->\\ 00000410\\ SAR\\ (?P<x_sa>[0-9a-f]{8})\\ DAR\\ (?P<x_da>[0-9a-f]{8})",
+   "func": [
+    "x_t == 0x1000000 - done",
+    "done > 0",
+    "x_sa == x_bufA",
+    "x_da == x_bufB"
+   ],
+   "timing": [
+    [
+     "done",
+     405,
+     8
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S7 suspend: DMATCR at DE=0 8030, 2000 cyc later 8030; done 162; SAR-start 648 DAR-start 648 CHCR 00005430; copied words 162 bad 0",
+   "regex": "S7\\ suspend:\\ DMATCR\\ at\\ DE=0 (?P<t1>-?\\d+),\\ 2000\\ cyc\\ later (?P<t2>-?\\d+);\\ done (?P<done>-?\\d+);\\ SAR-start (?P<sa>-?\\d+)\\ DAR-start (?P<da>-?\\d+)\\ CHCR\\ 00005430;\\ copied\\ words (?P<cp>-?\\d+)\\ bad (?P<bad>-?\\d+)",
+   "func": [
+    "t1 - t2 in (0, 1)",
+    "done == 8192 - t2",
+    "sa == 4 * done",
+    "da == 4 * done",
+    "cp == done",
+    "bad == 0",
+    "0 < done < 8192"
+   ],
+   "timing": [
+    [
+     "done",
+     162,
+     4
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S7 resume: cyc=418952 CHCR 00005433 SAR-start 32768 DAR-start 32768 all_ok=1",
+   "regex": "S7\\ resume:\\ cyc=(?P<cyc>-?\\d+)\\ CHCR\\ 00005433\\ SAR\\-start\\ 32768\\ DAR\\-start\\ 32768\\ all_ok=1",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     398004,
+     427332,
+     "SOC.md 9.25: S7 resume, 8,030 cycle-steal units while the CPU polls (the steal row's mechanism): bounded 0.95-1.02 x the console"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 418952
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S8 (a) done cyc=209; write cfg|DE without reading TE: DMATCR 4 CHCR 000054c3",
+   "regex": "S8\\ \\(a\\)\\ done\\ cyc=(?P<cyc>-?\\d+);\\ write\\ cfg\\|DE\\ without\\ reading\\ TE:\\ DMATCR\\ 4\\ CHCR\\ 000054c3",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     40,
+     262,
+     "SOC.md 9.25 / 9.23: S8 (a)'s \"cyc\" is wait_tcr0's own time for a 4-unit 32-byte burst, from its first poll to DMATCR == 0: the call reaches its first poll after the CHCR write and, when its lines were evicted, an I-cache fill that the burst holds off [HW dmac2 T4] -- 51-181 on the chip under KOS (the lines evicted or not by KOS activity before S8), 257 in the bare-metal layout, 209 on the console; bounded 40-262"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 209
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S8 (b) after read, write cfg|DE: DMATCR 0 CHCR 000054c3",
+   "regex": "S8\\ \\(b\\)\\ after\\ read,\\ write\\ cfg\\|DE:\\ DMATCR\\ 0\\ CHCR\\ 000054c3"
+  },
+  {
+   "cls": "functional",
+   "console": "S8 (c) write cfg|TE|DE with new count 4: DMATCR 4 CHCR 000054c3; (d) read+write 0 -> 00000000",
+   "regex": "S8\\ \\(c\\)\\ write\\ cfg\\|TE\\|DE\\ with\\ new\\ count\\ 4:\\ DMATCR\\ 4\\ CHCR\\ 000054c3;\\ \\(d\\)\\ read\\+write\\ 0\\ \\->\\ 00000000"
+  },
+  {
+   "cls": "functional",
+   "console": "S8 (e) end CHCR 000054c3; write cfg|TE (DE=0) -> 000054c2; write 0 -> 00000000",
+   "regex": "S8\\ \\(e\\)\\ end\\ CHCR\\ 000054c3;\\ write\\ cfg\\|TE\\ \\(DE=0\\)\\ \\->\\ 000054c2;\\ write\\ 0\\ \\->\\ 00000000"
+  },
+  {
+   "cls": "functional",
+   "console": "S9 (i) DMTE1: done 189 CHCR before irq-enable 000054b7 fired=1 code 660 CHCR in handler 000054b7 IPRC 0300",
+   "regex": "S9\\ \\(i\\)\\ DMTE1:\\ done (?P<done>-?\\d+)\\ CHCR\\ before\\ irq\\-enable\\ 000054b7\\ fired=1\\ code\\ 660\\ CHCR\\ in\\ handler\\ 000054b7\\ IPRC\\ 0300",
+   "func": [
+    "done > 0"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "done",
+     20,
+     260,
+     "SOC.md 9.25 / 9.23: S9 (i)'s \"done\" is wait_tcr0's own time, from its first poll (after the CHCR write and the call) to DMATCR == 0 for a 4-unit longword burst: on the chip under KOS the call reaches its first poll late (57; 218 in the bare-metal layout; the console 189); bounded 20-260"
+    ]
+   ],
+   "doc_console": {
+    "done": 189
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S9 (ii) IE set after TE: CHCR 000054b3 -> 000054b7 fired=1 code 660",
+   "regex": "S9\\ \\(ii\\)\\ IE\\ set\\ after\\ TE:\\ CHCR\\ 000054b3\\ \\->\\ 000054b7\\ fired=1\\ code\\ 660"
+  },
+  {
+   "cls": "functional",
+   "console": "S9 (iii) SAR+2 longword: DMAOR 00008205 DMATCR 4 CHCR 000054b1 SAR 0c0725c2 | fired=1 code 6c0 DMAOR in handler 00008205 CHCR in handler 000054b1 | DMAOR after 00008201",
+   "regex": "S9\\ \\(iii\\)\\ SAR\\+2\\ longword:\\ DMAOR\\ 00008205\\ DMATCR\\ 4\\ CHCR\\ 000054b1\\ SAR\\ (?P<x_sar>[0-9a-f]{8})\\ \\|\\ fired=1\\ code\\ 6c0\\ DMAOR\\ in\\ handler\\ 00008205\\ CHCR\\ in\\ handler\\ 000054b1\\ \\|\\ DMAOR\\ after\\ 00008201",
+   "func": [
+    "x_sar == x_bufA + 2"
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S9 (iv) SAR 1FD80000 longword ext->ext: DMAOR 00008205 DMATCR 3 CHCR 000054b1 fired=1 code 6c0 | (v) misaligned DE=0 DMAOR 00008201",
+   "regex": "S9\\ \\(iv\\)\\ SAR\\ 1FD80000\\ longword\\ ext\\->ext:\\ DMAOR\\ 00008205\\ DMATCR\\ 3\\ CHCR\\ 000054b1\\ fired=1\\ code\\ 6c0\\ \\|\\ \\(v\\)\\ misaligned\\ DE=0\\ DMAOR\\ 00008201"
+  },
+  {
+   "cls": "functional",
+   "console": "S10 PR=10 (CH2>CH0>CH1>CH3) (ch3 steal, ch1 steal started at 3031; waits 382872 37): t:TCR1/TCR3",
+   "regex": "S10\\ PR=10\\ \\(CH2>CH0>CH1>CH3\\)\\ \\(ch3\\ steal,\\ ch1\\ steal\\ started\\ at (?P<started>-?\\d+);\\ waits (?P<w3>-?\\d+)\\ (?P<w1>-?\\d+)\\):\\ t:TCR1/TCR3",
+   "func": [
+    "w3 >= 0",
+    "w1 >= 0"
+   ],
+   "group": {
+    "kind": "s10",
+    "mode": "fixed_ch1_first",
+    "lines": 8
+   }
+  },
+  {
+   "cls": "group",
+   "console": "S10   47:1024/8186 1512:1024/8159 3031:1023/8125 4500:995/8125 6007:965/8125 7523:935/8125 9000:906/8125 10509:876/8125",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   12013:846/8125 13516:817/8125 15001:787/8125 16506:758/8125 18001:728/8125 19517:698/8125 21027:669/8125 22517:639/8125",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   24021:608/8125 25526:580/8125 27023:550/8125 28510:521/8125 30009:492/8125 31508:462/8125 33018:432/8125 34527:402/8125",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   36000:371/8125 37503:344/8125 39012:314/8125 40503:285/8125 42002:255/8125 43518:225/8125 45026:195/8125 46523:165/8125",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   48027:135/8125 49530:106/8125 51015:77/8125 52516:47/8125 54003:17/8125 55519:0/8109 57029:0/8082 58519:0/8052",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   60023:0/8022 61526:0/7993 63011:0/7963 64529:0/7934 66028:0/7904 67513:0/7873 69021:0/7845 70530:0/7815",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   72003:0/7785 73506:0/7756 75022:0/7726 76509:0/7697 78008:0/7667 79524:0/7636 81001:0/7608 82510:0/7578",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   84014:0/7547 85503:0/7518 87019:0/7488 88506:0/7459 90005:0/7429 91521:0/7397 93000:0/7371 94502:0/7341",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "functional",
+   "console": "S10 PR=11 (round robin) (ch3 steal, ch1 steal started at 3012; waits 382797 36): t:TCR1/TCR3",
+   "regex": "S10\\ PR=11\\ \\(round\\ robin\\)\\ \\(ch3\\ steal,\\ ch1\\ steal\\ started\\ at (?P<started>-?\\d+);\\ waits (?P<w3>-?\\d+)\\ (?P<w1>-?\\d+)\\):\\ t:TCR1/TCR3",
+   "func": [
+    "w3 >= 0",
+    "w1 >= 0"
+   ],
+   "group": {
+    "kind": "s10",
+    "mode": "round_robin",
+    "lines": 8
+   }
+  },
+  {
+   "cls": "group",
+   "console": "S10   46:1024/8187 1523:1024/8162 3012:1024/8133 4507:1009/8118 6004:994/8103 7508:979/8088 9024:964/8073 10528:949/8058",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   12013:935/8044 13529:920/8029 15014:905/8014 16518:890/7999 18003:875/7984 19519:860/7969 21002:845/7954 22506:830/7939",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   24020:815/7924 25524:800/7909 27007:786/7895 28523:771/7880 30006:756/7865 31510:741/7849 33028:726/7835 34513:711/7820",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   36029:695/7804 37518:682/7791 39027:667/7776 40510:652/7761 42014:637/7746 43528:622/7730 45017:607/7716 46526:592/7701",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   48030:577/7686 49517:563/7672 51014:548/7657 52517:533/7642 54012:518/7627 55526:503/7612 57030:488/7597 58513:474/7583",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   60029:458/7567 61518:444/7553 63003:429/7538 64529:414/7523 66002:399/7508 67518:384/7493 69022:369/7478 70507:355/7464",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   72023:339/7448 73512:325/7434 75028:310/7419 76513:295/7404 78029:280/7389 79514:265/7374 81018:250/7359 82503:236/7345",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   84019:221/7330 85504:206/7315 87008:191/7300 88524:176/7285 90028:161/7270 91513:146/7255 93029:131/7240 94514:116/7225",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "timing",
+   "console": "S10 PR=10 ch3 burst (ch3 burst, ch1 steal started at 379027; waits 36 46455): t:TCR1/TCR3",
+   "regex": "S10\\ PR=10\\ ch3\\ burst\\ \\(ch3\\ burst,\\ ch1\\ steal\\ started\\ at (?P<started>-?\\d+);\\ waits (?P<w3>-?\\d+)\\ (?P<w1>-?\\d+)\\):\\ t:TCR1/TCR3",
+   "func": [
+    "w3 >= 0",
+    "w1 >= 0"
+   ],
+   "group": {
+    "kind": "s10",
+    "mode": "burst",
+    "lines": 8
+   }
+  },
+  {
+   "cls": "group",
+   "console": "S10   46:1024/0 379027:1023/0 379184:1021/0 379288:1019/0 379392:1017/0 379496:1015/0 379600:1013/0 379704:1011/0",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   379808:1009/0 379912:1007/0 380016:1005/0 380120:1003/0 380224:1001/0 380328:999/0 380432:997/0 380536:995/0",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   380640:993/0 380744:991/0 380848:989/0 380952:987/0 381066:985/0 381170:983/0 381274:981/0 381378:979/0",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   381482:976/0 381652:974/0 381756:972/0 381860:970/0 381964:968/0 382068:966/0 382172:964/0 382276:962/0",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   382380:960/0 382484:958/0 382588:956/0 382692:954/0 382796:952/0 382900:950/0 383004:948/0 383108:946/0",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   383212:943/0 383382:941/0 383486:939/0 383590:937/0 383694:935/0 383798:933/0 383902:931/0 384016:929/0",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   384120:926/0 384290:924/0 384394:922/0 384498:920/0 384602:918/0 384706:916/0 384810:914/0 384914:912/0",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   385018:910/0 385122:908/0 385226:906/0 385330:904/0 385434:902/0 385538:900/0 385642:898/0 385746:896/0",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "functional",
+   "console": "S10 PR=01 (CH0>CH2>CH3>CH1) (ch3 steal, ch1 steal started at 3020; waits 329359 53362): t:TCR1/TCR3",
+   "regex": "S10\\ PR=01\\ \\(CH0>CH2>CH3>CH1\\)\\ \\(ch3\\ steal,\\ ch1\\ steal\\ started\\ at (?P<started>-?\\d+);\\ waits (?P<w3>-?\\d+)\\ (?P<w1>-?\\d+)\\):\\ t:TCR1/TCR3",
+   "func": [
+    "w3 >= 0",
+    "w1 >= 0"
+   ],
+   "group": {
+    "kind": "s10",
+    "mode": "fixed_ch3_first",
+    "lines": 8
+   }
+  },
+  {
+   "cls": "group",
+   "console": "S10   46:1024/8187 1501:1024/8163 3020:1024/8131 4520:1024/8103 6029:1024/8073 7502:1024/8043 9018:1024/8013 10522:1024/7984",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   12021:1024/7954 13525:1024/7924 15010:1024/7894 16514:1024/7864 18030:1024/7834 19503:1024/7805 21000:1024/7775 22504:1024/7746",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   24003:1024/7716 25507:1024/7686 27023:1024/7656 28527:1024/7626 30012:1024/7596 31516:1024/7565 33005:1024/7537 34502:1024/7507",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   36018:1024/7475 37528:1024/7448 39018:1024/7418 40524:1024/7389 42004:1024/7359 43508:1024/7330 45009:1024/7300 46513:1024/7270",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   48029:1024/7240 49502:1024/7210 51018:1024/7180 52522:1024/7150 54007:1024/7121 55523:1024/7091 57010:1024/7061 58514:1024/7031",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   60030:1024/7000 61507:1024/6972 63016:1024/6942 64520:1024/6912 66005:1024/6883 67521:1024/6853 69006:1024/6823 70510:1024/6793",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   72026:1024/6762 73503:1024/6734 75012:1024/6704 76516:1024/6674 78001:1024/6645 79517:1024/6615 81002:1024/6585 82506:1024/6555",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "group",
+   "console": "S10   84022:1024/6525 85526:1024/6495 87011:1024/6466 88527:1024/6436 90012:1024/6406 91516:1024/6376 93001:1024/6347 94517:1024/6317",
+   "regex": "S10  ( \\d+:\\d+/\\d+)+"
+  },
+  {
+   "cls": "functional",
+   "console": "S11 16KB RAM->RAM TS=1 unit= 1 steal: 855022 cyc (52.19 cyc/unit, 52.186 cyc/byte) end DMATCR 0",
+   "regex": "S11\\ 16KB\\ RAM\\->RAM\\ TS=1\\ unit=\\ 1\\ steal: (?P<cyc>-?\\d+) cyc\\ \\((?P<f_pu>[\\d.]+)\\ cyc/unit,\\ (?P<f_pb>[\\d.]+)\\ cyc/byte\\)\\ end\\ DMATCR\\ 0",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     811008,
+     861799,
+     "SOC.md 9.25, cycle steal while the CPU polls DMATCR: 52.19-52.39 Icyc per unit on the console, the chip 50.1 (its rate with the CPU idle, which the console meets too: S10 50.0-50.6); bounded 49.5-52.6 per unit"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 855022
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S11 16KB RAM->RAM TS=1 unit= 1 burst: 757842 cyc (46.26 cyc/unit, 46.255 cyc/byte) end DMATCR 0",
+   "regex": "S11\\ 16KB\\ RAM\\->RAM\\ TS=1\\ unit=\\ 1\\ burst: (?P<cyc>-?\\d+) cyc\\ \\((?P<f_pu>[\\d.]+)\\ cyc/unit,\\ (?P<f_pb>[\\d.]+)\\ cyc/byte\\)\\ end\\ DMATCR\\ 0",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [
+    [
+     "cyc",
+     757842,
+     16384
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S11 16KB RAM->RAM TS=2 unit= 2 steal: 427581 cyc (52.19 cyc/unit, 26.097 cyc/byte) end DMATCR 0",
+   "regex": "S11\\ 16KB\\ RAM\\->RAM\\ TS=2\\ unit=\\ 2\\ steal: (?P<cyc>-?\\d+) cyc\\ \\((?P<f_pu>[\\d.]+)\\ cyc/unit,\\ (?P<f_pb>[\\d.]+)\\ cyc/byte\\)\\ end\\ DMATCR\\ 0",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     405504,
+     430900,
+     "SOC.md 9.25, cycle steal while the CPU polls DMATCR: 52.19-52.39 Icyc per unit on the console, the chip 50.1 (its rate with the CPU idle, which the console meets too: S10 50.0-50.6); bounded 49.5-52.6 per unit"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 427581
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S11 16KB RAM->RAM TS=2 unit= 2 burst: 378958 cyc (46.26 cyc/unit, 23.130 cyc/byte) end DMATCR 0",
+   "regex": "S11\\ 16KB\\ RAM\\->RAM\\ TS=2\\ unit=\\ 2\\ burst: (?P<cyc>-?\\d+) cyc\\ \\((?P<f_pu>[\\d.]+)\\ cyc/unit,\\ (?P<f_pb>[\\d.]+)\\ cyc/byte\\)\\ end\\ DMATCR\\ 0",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [
+    [
+     "cyc",
+     378958,
+     8192
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S11 16KB RAM->RAM TS=3 unit= 4 steal: 213824 cyc (52.20 cyc/unit, 13.051 cyc/byte) end DMATCR 0",
+   "regex": "S11\\ 16KB\\ RAM\\->RAM\\ TS=3\\ unit=\\ 4\\ steal: (?P<cyc>-?\\d+) cyc\\ \\((?P<f_pu>[\\d.]+)\\ cyc/unit,\\ (?P<f_pb>[\\d.]+)\\ cyc/byte\\)\\ end\\ DMATCR\\ 0",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     202752,
+     215450,
+     "SOC.md 9.25, cycle steal while the CPU polls DMATCR: 52.19-52.39 Icyc per unit on the console, the chip 50.1 (its rate with the CPU idle, which the console meets too: S10 50.0-50.6); bounded 49.5-52.6 per unit"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 213824
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S11 16KB RAM->RAM TS=3 unit= 4 burst: 189534 cyc (46.27 cyc/unit, 11.568 cyc/byte) end DMATCR 0",
+   "regex": "S11\\ 16KB\\ RAM\\->RAM\\ TS=3\\ unit=\\ 4\\ burst: (?P<cyc>-?\\d+) cyc\\ \\((?P<f_pu>[\\d.]+)\\ cyc/unit,\\ (?P<f_pb>[\\d.]+)\\ cyc/byte\\)\\ end\\ DMATCR\\ 0",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [
+    [
+     "cyc",
+     189534,
+     4096
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S11 16KB RAM->RAM TS=0 unit= 8 steal: 106962 cyc (52.23 cyc/unit, 6.528 cyc/byte) end DMATCR 0",
+   "regex": "S11\\ 16KB\\ RAM\\->RAM\\ TS=0\\ unit=\\ 8\\ steal: (?P<cyc>-?\\d+) cyc\\ \\((?P<f_pu>[\\d.]+)\\ cyc/unit,\\ (?P<f_pb>[\\d.]+)\\ cyc/byte\\)\\ end\\ DMATCR\\ 0",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     101376,
+     107725,
+     "SOC.md 9.25, cycle steal while the CPU polls DMATCR: 52.19-52.39 Icyc per unit on the console, the chip 50.1 (its rate with the CPU idle, which the console meets too: S10 50.0-50.6); bounded 49.5-52.6 per unit"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 106962
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S11 16KB RAM->RAM TS=0 unit= 8 burst: 94814 cyc (46.30 cyc/unit, 5.787 cyc/byte) end DMATCR 0",
+   "regex": "S11\\ 16KB\\ RAM\\->RAM\\ TS=0\\ unit=\\ 8\\ burst: (?P<cyc>-?\\d+) cyc\\ \\((?P<f_pu>[\\d.]+)\\ cyc/unit,\\ (?P<f_pb>[\\d.]+)\\ cyc/byte\\)\\ end\\ DMATCR\\ 0",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [
+    [
+     "cyc",
+     94814,
+     2048
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S11 16KB RAM->RAM TS=4 unit=32 steal: 26825 cyc (52.39 cyc/unit, 1.637 cyc/byte) end DMATCR 0",
+   "regex": "S11\\ 16KB\\ RAM\\->RAM\\ TS=4\\ unit=32\\ steal: (?P<cyc>-?\\d+) cyc\\ \\((?P<f_pu>[\\d.]+)\\ cyc/unit,\\ (?P<f_pb>[\\d.]+)\\ cyc/byte\\)\\ end\\ DMATCR\\ 0",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "cyc",
+     25344,
+     26932,
+     "SOC.md 9.25, cycle steal while the CPU polls DMATCR: 52.19-52.39 Icyc per unit on the console, the chip 50.1 (its rate with the CPU idle, which the console meets too: S10 50.0-50.6); bounded 49.5-52.6 per unit"
+    ]
+   ],
+   "doc_console": {
+    "cyc": 26825
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S11 16KB RAM->RAM TS=4 unit=32 burst: 23790 cyc (46.46 cyc/unit, 1.452 cyc/byte) end DMATCR 0",
+   "regex": "S11\\ 16KB\\ RAM\\->RAM\\ TS=4\\ unit=32\\ burst: (?P<cyc>-?\\d+) cyc\\ \\((?P<f_pu>[\\d.]+)\\ cyc/unit,\\ (?P<f_pb>[\\d.]+)\\ cyc/byte\\)\\ end\\ DMATCR\\ 0",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [
+    [
+     "cyc",
+     23790,
+     512
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S11 one unit TS=1: min 89 max 156 cyc (CHCR write to DMATCR==0 seen)",
+   "regex": "S11\\ one\\ unit\\ TS=1:\\ min (?P<mn>-?\\d+)\\ max (?P<mx>-?\\d+)\\ cyc\\ \\(CHCR\\ write\\ to\\ DMATCR==0\\ seen\\)",
+   "func": [
+    "0 < mn <= mx"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "mn",
+     80,
+     125,
+     "SOC.md 9.25, one unit from the CHCR write to DMATCR == 0: min 89 on the console, 101 on the chip; bounded 80-125"
+    ]
+   ],
+   "doc_console": {
+    "mn": 89
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S11 one unit TS=2: min 89 max 141 cyc (CHCR write to DMATCR==0 seen)",
+   "regex": "S11\\ one\\ unit\\ TS=2:\\ min (?P<mn>-?\\d+)\\ max (?P<mx>-?\\d+)\\ cyc\\ \\(CHCR\\ write\\ to\\ DMATCR==0\\ seen\\)",
+   "func": [
+    "0 < mn <= mx"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "mn",
+     80,
+     125,
+     "SOC.md 9.25, one unit from the CHCR write to DMATCR == 0: min 89 on the console, 101 on the chip; bounded 80-125"
+    ]
+   ],
+   "doc_console": {
+    "mn": 89
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S11 one unit TS=3: min 89 max 141 cyc (CHCR write to DMATCR==0 seen)",
+   "regex": "S11\\ one\\ unit\\ TS=3:\\ min (?P<mn>-?\\d+)\\ max (?P<mx>-?\\d+)\\ cyc\\ \\(CHCR\\ write\\ to\\ DMATCR==0\\ seen\\)",
+   "func": [
+    "0 < mn <= mx"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "mn",
+     80,
+     125,
+     "SOC.md 9.25, one unit from the CHCR write to DMATCR == 0: min 89 on the console, 101 on the chip; bounded 80-125"
+    ]
+   ],
+   "doc_console": {
+    "mn": 89
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S11 one unit TS=0: min 89 max 141 cyc (CHCR write to DMATCR==0 seen)",
+   "regex": "S11\\ one\\ unit\\ TS=0:\\ min (?P<mn>-?\\d+)\\ max (?P<mx>-?\\d+)\\ cyc\\ \\(CHCR\\ write\\ to\\ DMATCR==0\\ seen\\)",
+   "func": [
+    "0 < mn <= mx"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "mn",
+     80,
+     125,
+     "SOC.md 9.25, one unit from the CHCR write to DMATCR == 0: min 89 on the console, 101 on the chip; bounded 80-125"
+    ]
+   ],
+   "doc_console": {
+    "mn": 89
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S11 one unit TS=4: min 89 max 141 cyc (CHCR write to DMATCR==0 seen)",
+   "regex": "S11\\ one\\ unit\\ TS=4:\\ min (?P<mn>-?\\d+)\\ max (?P<mx>-?\\d+)\\ cyc\\ \\(CHCR\\ write\\ to\\ DMATCR==0\\ seen\\)",
+   "func": [
+    "0 < mn <= mx"
+   ],
+   "timing": [],
+   "doc": [
+    [
+     "mn",
+     80,
+     125,
+     "SOC.md 9.25, one unit from the CHCR write to DMATCR == 0: min 89 on the console, 101 on the chip; bounded 80-125"
+    ]
+   ],
+   "doc_console": {
+    "mn": 89
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S11 512 x 32B burst SM=fixed: 23759 cyc (46.40 cyc/unit)",
+   "regex": "S11\\ 512\\ x\\ 32B\\ burst\\ SM=fixed: (?P<cyc>-?\\d+)\\ cyc\\ \\((?P<f_pu>[\\d.]+)\\ cyc/unit\\)",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [
+    [
+     "cyc",
+     23759,
+     512
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S11 512 x 32B burst DM=fixed: 23774 cyc (46.43 cyc/unit)",
+   "regex": "S11\\ 512\\ x\\ 32B\\ burst\\ DM=fixed: (?P<cyc>-?\\d+)\\ cyc\\ \\((?P<f_pu>[\\d.]+)\\ cyc/unit\\)",
+   "func": [
+    "cyc > 0"
+   ],
+   "timing": [
+    [
+     "cyc",
+     23774,
+     512
+    ]
+   ]
+  },
+  {
+   "cls": "cache",
+   "console": "S12 src dirty in cache (RAM 11.., cache 22..): dst 11111111 11111111; after purge: 22222222 | dst cached: P1 read 22222222 P2 read 33333333, after inval P1 33333333",
+   "regex": "S12\\ src\\ dirty\\ in\\ cache\\ \\(RAM\\ 11\\.\\.,\\ cache\\ 22\\.\\.\\):\\ dst\\ 11111111\\ 11111111;\\ after\\ purge:\\ 22222222\\ \\|\\ dst\\ cached:\\ P1\\ read\\ 22222222\\ P2\\ read\\ 33333333,\\ after\\ inval\\ P1\\ 33333333"
+  },
+  {
+   "cls": "functional",
+   "console": "S13 tex 64-bit path N=64: DMATCR2 0 at 0 cyc, ISTNRM19 at 683 cyc | SAR2-start 2048 DAR2 0c0ffee0 DMATCR2 0 CHCR2 000012c3 DMAOR 00008201 | C2DSTAT 11400800 C2DLEN 00000000 C2DST 0 ISTNRM 00080000 | vram words good 512 untouched 16 other 0",
+   "regex": "S13\\ tex\\ 64\\-bit\\ path\\ N=64:\\ DMATCR2\\ 0\\ at (?P<t_tcr>-?\\d+) cyc,\\ ISTNRM19\\ at (?P<t_ist>-?\\d+) cyc \\|\\ SAR2\\-start\\ 2048\\ DAR2\\ 0c0ffee0\\ DMATCR2\\ 0\\ CHCR2\\ 000012c3\\ DMAOR\\ 00008201\\ \\|\\ C2DSTAT\\ 11400800\\ C2DLEN\\ 00000000\\ C2DST\\ 0\\ ISTNRM\\ 00080000\\ \\|\\ vram\\ words\\ good\\ 512\\ untouched\\ 16\\ other\\ 0",
+   "doc": [
+    [
+     "t_ist",
+     0,
+     733,
+     "SOC.md 9.30 (b): a short CH2-DMA ends while Holly's input FIFO still fills (requests back to back): on the chip the CPU's first ISTNRM poll returns after the end (83), on the console during it; Holly's request pattern at a transfer's start is not pinned by S13 [P]: bounded above (1.05 x)"
+    ],
+    [
+     "t_tcr",
+     0,
+     16,
+     "SOC.md 9.30 (b): a short CH2-DMA ends while Holly's input FIFO still fills (requests back to back): on the chip the CPU's first ISTNRM poll returns after the end (83), on the console during it; Holly's request pattern at a transfer's start is not pinned by S13 [P]: bounded above (1.05 x); 0 = DMATCR2 == 0 first seen in the ISTNRM 19 poll's pass"
+    ]
+   ],
+   "doc_console": {
+    "t_ist": 683,
+    "t_tcr": 0
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S13 tex N=2048 (64KB): DMATCR2 0 at 23613 cyc, ISTNRM19 at 23613 cyc | SAR2-start 65536 DAR2 0c0ffee0 DMATCR2 0 CHCR2 000012c3 DMAOR 00008201 | C2DSTAT 11410000 C2DLEN 00000000 C2DST 0 ISTNRM 00080000 | vram words good 16384 untouched 16 other 0",
+   "regex": "S13\\ tex\\ N=2048\\ \\(64KB\\):\\ DMATCR2\\ 0\\ at (?P<t_tcr>-?\\d+) cyc,\\ ISTNRM19\\ at (?P<t_ist>-?\\d+) cyc \\|\\ SAR2\\-start\\ 65536\\ DAR2\\ 0c0ffee0\\ DMATCR2\\ 0\\ CHCR2\\ 000012c3\\ DMAOR\\ 00008201\\ \\|\\ C2DSTAT\\ 11410000\\ C2DLEN\\ 00000000\\ C2DST\\ 0\\ ISTNRM\\ 00080000\\ \\|\\ vram\\ words\\ good\\ 16384\\ untouched\\ 16\\ other\\ 0",
+   "doc": [
+    [
+     "t_ist",
+     22432,
+     24794,
+     "SOC.md 9.30 (b): CH2-DMA at Holly's paced rate (its input FIFO, 32 units drained at 11.70 Icyc, board.md 4.3) with the CPU polling through it (the BSC's CPU turn, SOC.md 3.3.2): within 5 %"
+    ],
+    [
+     "t_tcr",
+     0,
+     24794,
+     "SOC.md 9.30 (b): CH2-DMA at Holly's paced rate (its input FIFO, 32 units drained at 11.70 Icyc, board.md 4.3) with the CPU polling through it (the BSC's CPU turn, SOC.md 3.3.2): within 5 %; 0 = DMATCR2 == 0 first seen in the ISTNRM 19 poll's pass"
+    ]
+   ],
+   "doc_console": {
+    "t_ist": 23613,
+    "t_tcr": 23613
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S13 DMATCR2=64 C2DLEN=32 units: DMATCR2 0 at 0 cyc, ISTNRM19 at 271 cyc | SAR2-start 1024 DAR2 0c0ffee0 DMATCR2 32 CHCR2 000012c1 DMAOR 00008201 | C2DSTAT 11480400 C2DLEN 00000000 C2DST 0 ISTNRM 00080000 | vram words good 256 untouched 272 other 0",
+   "regex": "S13\\ DMATCR2=64\\ C2DLEN=32\\ units:\\ DMATCR2\\ 0\\ at (?P<t_tcr>-?\\d+) cyc,\\ ISTNRM19\\ at (?P<t_ist>-?\\d+) cyc \\|\\ SAR2\\-start\\ 1024\\ DAR2\\ 0c0ffee0\\ DMATCR2\\ 32\\ CHCR2\\ 000012c1\\ DMAOR\\ 00008201\\ \\|\\ C2DSTAT\\ 11480400\\ C2DLEN\\ 00000000\\ C2DST\\ 0\\ ISTNRM\\ 00080000\\ \\|\\ vram\\ words\\ good\\ 256\\ untouched\\ 272\\ other\\ 0",
+   "doc": [
+    [
+     "t_ist",
+     0,
+     300,
+     "SOC.md 9.30 (b): a short CH2-DMA ends while Holly's input FIFO still fills (requests back to back): on the chip the CPU's first ISTNRM poll returns after the end (83), on the console during it; Holly's request pattern at a transfer's start is not pinned by S13 [P]: bounded above (1.05 x)"
+    ],
+    [
+     "t_tcr",
+     0,
+     16,
+     "SOC.md 9.30 (b): a short CH2-DMA ends while Holly's input FIFO still fills (requests back to back): on the chip the CPU's first ISTNRM poll returns after the end (83), on the console during it; Holly's request pattern at a transfer's start is not pinned by S13 [P]: bounded above (1.05 x); 0 = DMATCR2 == 0 first seen in the ISTNRM 19 poll's pass"
+    ]
+   ],
+   "doc_console": {
+    "t_ist": 271,
+    "t_tcr": 0
+   }
+  },
+  {
+   "cls": "functional",
+   "console": "S0 ch0 SAR 0c08f600 DAR 0c08ef40 DMATCR 00000000 CHCR 000853c3",
+   "regex": "S0\\ ch0\\ SAR\\ 0c08f600\\ DAR\\ 0c08ef40\\ DMATCR\\ 00000000\\ CHCR\\ 000853c3"
+  },
+  {
+   "cls": "functional",
+   "console": "S0 ch1 SAR 0c072600 DAR 0c062600 DMATCR 00000000 CHCR 00000000",
+   "regex": "S0\\ ch1\\ SAR\\ 0c072600\\ DAR\\ 0c062600\\ DMATCR\\ 00000000\\ CHCR\\ 00000000"
+  },
+  {
+   "cls": "functional",
+   "console": "S0 ch2 SAR acd9e540 DAR 00000000 DMATCR 00000000 CHCR 000012c0",
+   "regex": "S0\\ ch2\\ SAR (?P<x_sar>[0-9a-f]{8})\\ DAR\\ 00000000\\ DMATCR\\ 00000000\\ CHCR\\ 000012c0",
+   "board": [
+    [
+     "x_sar",
+     [
+      2899961152,
+      0
+     ],
+     "SAR2 0xACD9E540 is a leftover of the console (dmac.md 4.4); the boot stub writes only CHCR2 (SOC.md 7.3), so the direct boot reads SAR2 at its reset value 0 (S13 restores what it read)"
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "S0 ch3 SAR 0c07a5c0 DAR 0c06a5c0 DMATCR 00000000 CHCR 00000000",
+   "regex": "S0\\ ch3\\ SAR\\ 0c07a5c0\\ DAR\\ 0c06a5c0\\ DMATCR\\ 00000000\\ CHCR\\ 00000000"
+  },
+  {
+   "cls": "functional",
+   "console": "S0 DMAOR 00008201",
+   "regex": "S0\\ DMAOR\\ 00008201"
+  },
+  {
+   "cls": "functional",
+   "console": "S0 SB C2DSTAT 11480400 C2DLEN 00000000 C2DST 00000000 DBREQM 00000000 BAVLWC 00000000 C2DPRYC 00000000 C2DMAXL 00000000 LMMODE0 00000000 LMMODE1 00000000 ISTNRM 00000000 IML2/4/6NRM 00001008 0007c000 00000000",
+   "regex": "S0\\ SB\\ C2DSTAT\\ 11480400\\ C2DLEN\\ 00000000\\ C2DST\\ 00000000\\ DBREQM\\ 00000000\\ BAVLWC\\ 00000000\\ C2DPRYC\\ 00000000\\ C2DMAXL\\ 00000000\\ LMMODE0\\ 00000000\\ LMMODE1\\ 00000000\\ ISTNRM\\ 00000000\\ IML2/4/6NRM\\ 00001008\\ 0007c000\\ 00000000"
+  },
+  {
+   "cls": "functional",
+   "console": "S0 IPRC 0300 WCR1 01110111 MDSTAR 0c08f5e0",
+   "regex": "S0\\ IPRC\\ 0300\\ WCR1\\ 01110111\\ MDSTAR (?P<x_mdstar>[0-9a-f]{8})",
+   "func": [
+    "x_mdstar == 0x0c08f5e0"
+   ],
+   "defines": [
+    "x_mdstar"
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "dmac1: done",
+   "regex": "dmac1:\\ done"
+  }
+ ],
+ "kos": true
+}

@@ -1,0 +1,7 @@
+`verilator_config
+// Lint waivers for `make v1-dmac-lint` (verilator --lint-only -Wall on the v1_dmac files).
+// v1_soc_pkg.sv is the architect's shared package (SOC.md 3): its address-map helpers take whole addresses and use
+// some bits, and it declares codes for every work item.  Those warnings are not the DMAC's; every v1_dmac*.sv file is
+// linted without a file-level waiver (its few per-signal waivers are in the source with their reasons).
+lint_off -rule UNUSEDSIGNAL -file "*v1_soc_pkg.sv"
+lint_off -rule UNUSEDPARAM  -file "*v1_soc_pkg.sv"

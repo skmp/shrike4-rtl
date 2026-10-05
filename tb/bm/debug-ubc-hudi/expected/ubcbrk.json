@@ -1,0 +1,2245 @@
+{
+ "program": "ubcbrk",
+ "source": "tools/hw/debug-ubc-hudi/ubcbrk.out (console run, KOS 2.1.0 under dcload-ip, 2026-09-23)",
+ "build": "tb/bm/debug-ubc-hudi (make v1-dbg-bm): ubcbrk.bin at 0x8C010000",
+ "compare": "tb/bm/debug-ubc-hudi/check.py <output log> expected/ubcbrk.json --classes functional,timing",
+ "counts": {
+  "functional": 57,
+  "env": 7,
+  "slow": 2,
+  "timing": 68,
+  "mmu": 3
+ },
+ "lines": [
+  {
+   "text": "ubcbrk: start",
+   "class": "functional",
+   "why": "program marker",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "ubcbrk:",
+    "start"
+   ]
+  },
+  {
+   "text": "A UBC regs 11111111 02 0000 44444444 05 0000 77777777 88888888 0008 (BASRA 33 BASRB 66)",
+   "class": "functional",
+   "why": "register / mirror / size rules",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "A",
+    "UBC"
+   ]
+  },
+  {
+   "text": "A ff200100 r32: 8cffff38 8cffff94 8cffff94 8cffff30 8cffff30 636d6165 636d6165 746e6f43 746e6f43 00000000",
+   "class": "env",
+   "why": "undriven UBC window = the KOS build's last load (last_rdata)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "A",
+    "ff200100",
+    "r32:"
+   ]
+  },
+  {
+   "text": "A ff200200 r32: 00000000 00000000 00000000 00000001 00000001 8cffff60 8cffff60 8cffff58 8cffff58 8c01e7b0",
+   "class": "env",
+   "why": "undriven UBC window = the KOS build's last load (last_rdata)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "A",
+    "ff200200"
+   ]
+  },
+  {
+   "text": "A ff200100 r16: 078c 078c c1d8 c1d8 0000 0000 7678 7678 9708 9708",
+   "class": "env",
+   "why": "undriven UBC window = the KOS build's last load (last_rdata)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "A",
+    "ff200100",
+    "r16:"
+   ]
+  },
+  {
+   "text": "A ff200100 r8: 28 28 01 01 30 30 c8 c8 3c 3c",
+   "class": "env",
+   "why": "undriven UBC window = the KOS build's last load (last_rdata)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "A",
+    "ff200100",
+    "r8:"
+   ]
+  },
+  {
+   "text": "A BARA=9abcdef0 -> @ff200100 ff200000; BARA=0 -> @ff200100 d000b510 @ff200000 00000000",
+   "class": "env",
+   "why": "undriven UBC window = the KOS build's last load (last_rdata)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "A",
+    "BARA=9abcdef0"
+   ]
+  },
+  {
+   "text": "A PMCTR stopped, ff100000..3c: 00000000 00000001 39f52784 00000000 01bcdf51 01bcdf51 01bcdf51 01bcdf51 00000000 00000001 39f52784 00000000 01bcdf51 01bcdf51 01bcdf51 01bcdf51",
+   "class": "slow",
+   "why": "PMCTR1H = 1 needs 2.2 s of ratio mode",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "A",
+    "PMCTR"
+   ]
+  },
+  {
+   "text": "A PMCTR1H r16 0001 r16+2 0001 r8 01 r8+3 00 | ff100100 00000000 ff101004 00000001 ff120004 00000001",
+   "class": "slow",
+   "why": "PMCTR1H = 1 needs 2.2 s of ratio mode",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "A",
+    "PMCTR1H"
+   ]
+  },
+  {
+   "text": "A PMCR2 w16@+100 0015 -> 0015, w32 00000016 -> 0015, w8 17 -> 0015, w16@+2 0018 -> 0015",
+   "class": "functional",
+   "why": "register / mirror / size rules",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "A",
+    "PMCR2"
+   ]
+  },
+  {
+   "text": "X: branch snippets, exact d(event) over 64 iterations (n=80 minus n=16)",
+   "class": "functional",
+   "why": "header",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X:",
+    "branch"
+   ]
+  },
+  {
+   "text": "X: snippets base btnt btt bts bfnt bfsnt bra braf bsrf jmp bsr+rts jsr+rts lds+rts ex8",
+   "class": "functional",
+   "why": "header",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X:",
+    "snippets"
+   ]
+  },
+  {
+   "text": "X 10 ev 64 128 64 128 128 128 128 128 64 128 64 64 64 64 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704",
+   "class": "timing",
+   "why": "exact event counts, branch snippets",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X",
+    "10"
+   ]
+  },
+  {
+   "text": "X 11 ev 64 64 64 128 64 64 128 128 64 128 64 64 64 64 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704",
+   "class": "timing",
+   "why": "exact event counts, branch snippets",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X",
+    "11"
+   ]
+  },
+  {
+   "text": "X 12 ev 0 0 0 0 0 0 0 0 64 0 64 64 0 0 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704",
+   "class": "timing",
+   "why": "exact event counts, branch snippets",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X",
+    "12"
+   ]
+  },
+  {
+   "text": "X 13 ev 128 192 256 256 192 256 192 256 256 256 384 384 320 640 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704",
+   "class": "timing",
+   "why": "exact event counts, branch snippets",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X",
+    "13"
+   ]
+  },
+  {
+   "text": "X 14 ev 128 128 64 128 128 128 128 64 64 64 64 64 64 64 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704",
+   "class": "timing",
+   "why": "exact event counts, branch snippets",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X",
+    "14"
+   ]
+  },
+  {
+   "text": "X 27 ev 64 64 64 128 64 64 128 64 64 64 64 64 64 64 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704",
+   "class": "timing",
+   "why": "exact event counts, branch snippets",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X",
+    "27"
+   ]
+  },
+  {
+   "text": "X 28 ev 0 0 0 0 0 0 0 0 0 0 64 0 64 0 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704",
+   "class": "timing",
+   "why": "exact event counts, branch snippets",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X",
+    "28"
+   ]
+  },
+  {
+   "text": "X 06 ev 192 256 320 384 256 320 320 384 384 384 576 576 448 512 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704",
+   "class": "timing",
+   "why": "exact event counts, branch snippets",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X",
+    "06"
+   ]
+  },
+  {
+   "text": "X 0a ev 192 256 320 384 256 320 320 384 384 384 576 576 448 512 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704",
+   "class": "timing",
+   "why": "exact event counts, branch snippets",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X",
+    "0a"
+   ]
+  },
+  {
+   "text": "X 09 ev 0 0 0 0 0 0 0 0 0 0 0 0 0 0 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704",
+   "class": "timing",
+   "why": "exact event counts, branch snippets",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X",
+    "09"
+   ]
+  },
+  {
+   "text": "X 15 ev 0 0 0 0 0 0 0 0 0 0 0 0 0 0 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704",
+   "class": "timing",
+   "why": "exact event counts, branch snippets",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X",
+    "15"
+   ]
+  },
+  {
+   "text": "X 23 ev 192 256 320 384 256 320 320 384 384 384 576 576 576 704 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704",
+   "class": "timing",
+   "why": "exact event counts, branch snippets",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "X",
+    "23"
+   ]
+  },
+  {
+   "text": "Y: run-1 snippets nop ld st ldP2 ldCCN ldTMU br fp ocm icm, exact d(event) over 32 iterations",
+   "class": "functional",
+   "why": "header",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "Y:"
+   ]
+  },
+  {
+   "text": "Y 00 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2238",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "00"
+   ]
+  },
+  {
+   "text": "Y 01 ev 0 128 0 0 0 0 0 0 64 0 | cyc 224 192 192 602 160 640 416 160 1742 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "01"
+   ]
+  },
+  {
+   "text": "Y 02 ev 0 0 128 0 0 0 0 0 0 0 | cyc 224 192 192 598 160 640 416 160 1716 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "02"
+   ]
+  },
+  {
+   "text": "Y 03 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1714 2248",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "03"
+   ]
+  },
+  {
+   "text": "Y 04 ev 0 0 0 0 0 0 0 0 64 0 | cyc 224 192 192 576 160 640 416 160 1714 2244",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "04"
+   ]
+  },
+  {
+   "text": "Y 05 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2252",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "05"
+   ]
+  },
+  {
+   "text": "Y 06 ev 224 160 160 128 128 128 416 160 128 288 | cyc 224 192 192 576 160 640 416 160 1724 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "06"
+   ]
+  },
+  {
+   "text": "Y 07 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1742 2240",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "07"
+   ]
+  },
+  {
+   "text": "Y 08 ev 0 0 0 0 0 0 0 0 0 64 | cyc 224 192 192 598 160 640 416 160 1744 2244",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "08"
+   ]
+  },
+  {
+   "text": "Y 09 ev 0 128 128 32 32 32 0 0 64 0 | cyc 224 192 192 576 160 640 416 160 1742 2240",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "09"
+   ]
+  },
+  {
+   "text": "Y 0a ev 224 160 160 128 128 128 416 160 128 160 | cyc 224 192 192 554 160 640 416 160 1742 2250",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "0a"
+   ]
+  },
+  {
+   "text": "Y 0b ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1742 2240",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "0b"
+   ]
+  },
+  {
+   "text": "Y 0c ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 598 160 640 416 160 1724 2248",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "0c"
+   ]
+  },
+  {
+   "text": "Y 0d ev 0 0 0 0 32 32 0 0 0 0 | cyc 224 192 192 554 160 640 416 160 1742 2250",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "0d"
+   ]
+  },
+  {
+   "text": "Y 0e ev 0 128 128 0 0 0 0 0 64 0 | cyc 224 192 192 552 160 640 416 160 1740 2248",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "0e"
+   ]
+  },
+  {
+   "text": "Y 0f ev 0 0 0 0 0 0 0 0 64 0 | cyc 224 192 192 598 160 640 416 160 1730 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "0f"
+   ]
+  },
+  {
+   "text": "Y 10 ev 32 32 32 32 32 32 96 32 32 96 | cyc 224 192 192 576 160 640 416 160 1742 2242",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "10"
+   ]
+  },
+  {
+   "text": "Y 11 ev 32 32 32 32 32 32 64 32 32 96 | cyc 224 192 192 598 160 640 416 160 1742 2244",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "11"
+   ]
+  },
+  {
+   "text": "Y 12 ev 0 0 0 0 0 0 32 0 0 0 | cyc 224 192 192 576 160 640 416 160 1714 2244",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "12"
+   ]
+  },
+  {
+   "text": "Y 13 ev 192 160 160 64 64 64 256 128 96 192 | cyc 224 192 192 576 160 640 416 160 1742 2240",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "13"
+   ]
+  },
+  {
+   "text": "Y 14 ev 160 64 64 64 64 64 96 96 64 32 | cyc 224 192 192 598 160 640 416 160 1714 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "14"
+   ]
+  },
+  {
+   "text": "Y 15 ev 0 0 0 0 0 0 0 96 0 0 | cyc 224 192 192 576 160 640 416 160 1724 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "15"
+   ]
+  },
+  {
+   "text": "Y 16 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2238",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "16"
+   ]
+  },
+  {
+   "text": "Y 17 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2242",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "17"
+   ]
+  },
+  {
+   "text": "Y 18 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1744 2240",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "18"
+   ]
+  },
+  {
+   "text": "Y 19 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2250",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "19"
+   ]
+  },
+  {
+   "text": "Y 1a ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1742 2230",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "1a"
+   ]
+  },
+  {
+   "text": "Y 1b ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 598 160 640 416 160 1724 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "1b"
+   ]
+  },
+  {
+   "text": "Y 1c ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 602 160 640 416 160 1742 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "1c"
+   ]
+  },
+  {
+   "text": "Y 1d ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1714 2244",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "1d"
+   ]
+  },
+  {
+   "text": "Y 1e ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 550 160 640 416 160 1742 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "1e"
+   ]
+  },
+  {
+   "text": "Y 1f ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "1f"
+   ]
+  },
+  {
+   "text": "Y 20 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2240",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "20"
+   ]
+  },
+  {
+   "text": "Y 21 ev 0 0 0 0 0 0 0 0 0 1532 | cyc 224 192 192 576 160 640 416 160 1714 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    6,
+    18,
+    11,
+    23,
+    12,
+    24
+   ],
+   "cache": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "21"
+   ]
+  },
+  {
+   "text": "Y 22 ev 0 0 0 0 0 0 0 0 1532 0 | cyc 224 192 192 576 160 640 416 160 1740 2240",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    6,
+    18,
+    11,
+    23,
+    12,
+    24
+   ],
+   "cache": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "22"
+   ]
+  },
+  {
+   "text": "Y 23 ev 224 192 192 598 160 640 416 160 1726 2246 | cyc 224 192 192 598 160 640 416 160 1726 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    6,
+    18,
+    11,
+    23,
+    12,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "23"
+   ]
+  },
+  {
+   "text": "Y 24 ev 0 0 0 0 0 0 0 0 0 1962 | cyc 224 192 192 576 160 640 416 160 1742 2250",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    6,
+    18,
+    11,
+    23,
+    12,
+    24
+   ],
+   "cache": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "24"
+   ]
+  },
+  {
+   "text": "Y 25 ev 0 0 0 480 64 544 0 0 1612 0 | cyc 224 192 192 576 160 640 416 160 1740 2258",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    6,
+    18,
+    11,
+    23,
+    12,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "25"
+   ]
+  },
+  {
+   "text": "Y 26 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 598 160 640 416 160 1728 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "26"
+   ]
+  },
+  {
+   "text": "Y 27 ev 32 32 32 32 32 32 96 32 32 32 | cyc 224 192 192 576 160 640 416 160 1714 2244",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "27"
+   ]
+  },
+  {
+   "text": "Y 28 ev 0 0 0 0 0 0 32 0 0 0 | cyc 224 192 192 576 160 640 416 160 1742 2240",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "28"
+   ]
+  },
+  {
+   "text": "Y 29 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 598 160 640 416 160 1714 2248",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "29"
+   ]
+  },
+  {
+   "text": "Y 2a ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1714 2246",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "2a"
+   ]
+  },
+  {
+   "text": "Y 2b ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2250",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "2b"
+   ]
+  },
+  {
+   "text": "Y 2c ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2248",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "2c"
+   ]
+  },
+  {
+   "text": "Y 2d ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 554 160 640 416 160 1744 2244",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "2d"
+   ]
+  },
+  {
+   "text": "Y 2e ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2230",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "2e"
+   ]
+  },
+  {
+   "text": "Y 2f ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 598 160 640 416 160 1744 2244",
+   "class": "timing",
+   "why": "exact event counts, run-1 snippets",
+   "ignore": [],
+   "var": [
+    18,
+    23,
+    24
+   ],
+   "cache": [
+    6,
+    11,
+    12
+   ],
+   "key": [
+    "Y",
+    "2f"
+   ]
+  },
+  {
+   "text": "Z interrupts (0x16) in 1 s: 221",
+   "class": "env",
+   "why": "KOS interrupt sources",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "Z"
+   ]
+  },
+  {
+   "text": "ubcbrk: DBR 8c000010 -> 8c012000, SR 40000001, PTEH 8c063400, sp~8cfffe28",
+   "class": "env",
+   "why": "KOS SR / PTEH / stack",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "ubcbrk:",
+    "DBR"
+   ]
+  },
+  {
+   "text": "B pcA_pre        n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2 ret=7 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcA_pre"
+   ]
+  },
+  {
+   "text": "B pcA_post       n=1 spc=t_lin+10 ssr=400000f1 exp=1e0 brcr@h=8401 after=0401 r9@brk=3 ret=7 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcA_post"
+   ]
+  },
+  {
+   "text": "B pcA_pre_szW    n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2 ret=7 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcA_pre_szW"
+   ]
+  },
+  {
+   "text": "B pcA_pre_szL    n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcA_pre_szL"
+   ]
+  },
+  {
+   "text": "B pcA_pre_szQ    n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcA_pre_szQ"
+   ]
+  },
+  {
+   "text": "B pcA_pre_W      n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcA_pre_W"
+   ]
+  },
+  {
+   "text": "B pcA_pre_RW     n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2 ret=7 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcA_pre_RW"
+   ]
+  },
+  {
+   "text": "B pcA_pre_IDboth n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2 ret=7 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcA_pre_IDboth"
+   ]
+  },
+  {
+   "text": "B pcA_asop       n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcA_asop"
+   ]
+  },
+  {
+   "text": "B pcA_odd        n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcA_odd"
+   ]
+  },
+  {
+   "text": "B pcA_P1vsA1     n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcA_P1vsA1"
+   ]
+  },
+  {
+   "text": "B pcB_pre        n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=4001 after=0001 r9@brk=2 ret=7 evA=0 evB=1",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcB_pre"
+   ]
+  },
+  {
+   "text": "B pcB_post       n=1 spc=t_lin+10 ssr=400000f1 exp=1e0 brcr@h=4041 after=0041 r9@brk=3 ret=7 evA=0 evB=1",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcB_post"
+   ]
+  },
+  {
+   "text": "B pcB_post_dbeb  n=1 spc=t_lin+10 ssr=400000f1 exp=1e0 brcr@h=40c1 after=00c1 r9@brk=3 ret=7 evA=0 evB=1",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "pcB_post_dbeb"
+   ]
+  },
+  {
+   "text": "B AB_sameSPC     n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=8401 after=0401 r9@brk=2 ret=7 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "AB_sameSPC"
+   ]
+  },
+  {
+   "text": "B slot_ds_pre    n=1 spc=t_slot+4 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=2 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "slot_ds_pre"
+   ]
+  },
+  {
+   "text": "B slot_ds_post   n=1 spc=t_slot+12 ssr=400000f1 exp=1e0 brcr@h=8401 after=0401 r9@brk=1 ret=2 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "slot_ds_post"
+   ]
+  },
+  {
+   "text": "B slot_br_post   n=1 spc=t_slot+12 ssr=400000f1 exp=1e0 brcr@h=8401 after=0401 r9@brk=1 ret=2 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "slot_br_post"
+   ]
+  },
+  {
+   "text": "B slot_br_pre    n=1 spc=t_slot+4 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=2 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "slot_br_pre"
+   ]
+  },
+  {
+   "text": "B slot_overrun   n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=2 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "slot_overrun"
+   ]
+  },
+  {
+   "text": "B slot_target    n=1 spc=t_slot+12 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=1 ret=2 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "slot_target"
+   ]
+  },
+  {
+   "text": "B bfsnt_br_post  n=1 spc=t_bfs+10 ssr=400000f1 exp=1e0 brcr@h=8401 after=0401 r9@brk=1 ret=3 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "bfsnt_br_post"
+   ]
+  },
+  {
+   "text": "B bfsnt_ds_pre   n=1 spc=t_bfs+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=3 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "bfsnt_ds_pre"
+   ]
+  },
+  {
+   "text": "B bfsnt_ds_post  n=1 spc=t_bfs+10 ssr=400000f1 exp=1e0 brcr@h=8401 after=0401 r9@brk=1 ret=3 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "bfsnt_ds_post"
+   ]
+  },
+  {
+   "text": "B seq_Bonly_thenAB n=1(first call 0) spc=t_seq+16 ssr=400000f0 exp=1e0 brcr@h=4009 after=0009 r9@brk=1 ret=2,3 evA=1 evB=1",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    6
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "seq_Bonly_thenAB"
+   ]
+  },
+  {
+   "text": "B seq_AB         n=1 spc=t_seq+16 ssr=400000f0 exp=1e0 brcr@h=4009 after=0009 r9@brk=1 ret=3 evA=1 evB=1",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "seq_AB"
+   ]
+  },
+  {
+   "text": "B indep_AB       n=1 spc=t_seq+8 ssr=400000f0 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=3 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "indep_AB"
+   ]
+  },
+  {
+   "text": "B mask10_pre     n=1 spc=t_mask+0 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2348886016 ret=3 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4,
+    8
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "mask10_pre"
+   ]
+  },
+  {
+   "text": "B mask0_mid      n=1 spc=t_mask+266 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2 ret=3 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "mask0_mid"
+   ]
+  },
+  {
+   "text": "B asid_match     n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2 ret=7 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "asid_match"
+   ]
+  },
+  {
+   "text": "B asid_mismatch  n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "asid_mismatch"
+   ]
+  },
+  {
+   "text": "B asid_mism80    n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "asid_mism80"
+   ]
+  },
+  {
+   "text": "B opA_rd         n=1 spc=t_ld+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opA_rd"
+   ]
+  },
+  {
+   "text": "B opA_rd_L       n=1 spc=t_ld+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opA_rd_L"
+   ]
+  },
+  {
+   "text": "B opA_rd_W_onL   n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=8 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opA_rd_W_onL"
+   ]
+  },
+  {
+   "text": "B opA_rd_W_onW   n=1 spc=t_ldw+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opA_rd_W_onW"
+   ]
+  },
+  {
+   "text": "B opA_rd_anysz+2 n=1 spc=t_ld+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opA_rd_anysz+2"
+   ]
+  },
+  {
+   "text": "B opA_rd_L+2     n=1 spc=t_ld+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opA_rd_L+2"
+   ]
+  },
+  {
+   "text": "B opA_wr         n=1 spc=t_st+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opA_wr"
+   ]
+  },
+  {
+   "text": "B opA_rd_onwr    n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=8 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opA_rd_onwr"
+   ]
+  },
+  {
+   "text": "B opA_ifetch_onld n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=8 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opA_ifetch_onld"
+   ]
+  },
+  {
+   "text": "B opA_mask10     n=1 spc=t_ld+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opA_mask10"
+   ]
+  },
+  {
+   "text": "B opA_P1vsA1     n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=8 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opA_P1vsA1"
+   ]
+  },
+  {
+   "text": "B opA_rd_use     n=1 spc=t_ldu+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=2779096492 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opA_rd_use"
+   ]
+  },
+  {
+   "text": "B opB_wr_data    n=1 spc=t_st+8 ssr=400000f1 exp=1e0 brcr@h=4081 after=0081 r9@brk=1 ret=8 evA=0 evB=1",
+   "class": "timing",
+   "why": "data-break SPC = the first instruction after the access's issue group",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opB_wr_data"
+   ]
+  },
+  {
+   "text": "B opB_wr_nodata  n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0081 r9@brk=0 ret=8 evA=0 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opB_wr_nodata"
+   ]
+  },
+  {
+   "text": "B opB_wr_masked  n=1 spc=t_st+8 ssr=400000f1 exp=1e0 brcr@h=4081 after=0081 r9@brk=1 ret=8 evA=0 evB=1",
+   "class": "timing",
+   "why": "data-break SPC = the first instruction after the access's issue group",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opB_wr_masked"
+   ]
+  },
+  {
+   "text": "B opB_rd_data    n=1 spc=t_ld+8 ssr=400000f1 exp=1e0 brcr@h=4081 after=0081 r9@brk=1 ret=8 evA=0 evB=1",
+   "class": "timing",
+   "why": "data-break SPC = the first instruction after the access's issue group",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opB_rd_data"
+   ]
+  },
+  {
+   "text": "B opB_rd_data_use n=1 spc=t_ldu+6 ssr=400000f1 exp=1e0 brcr@h=4081 after=0081 r9@brk=0 ret=2779096492 evA=0 evB=1",
+   "class": "timing",
+   "why": "data-break SPC = the first instruction after the access's issue group",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opB_rd_data_use"
+   ]
+  },
+  {
+   "text": "B opB_rd_nodbeb  n=1 spc=t_ld+6 ssr=400000f1 exp=1e0 brcr@h=4001 after=0001 r9@brk=0 ret=8 evA=0 evB=1",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "opB_rd_nodbeb"
+   ]
+  },
+  {
+   "text": "L latency: n=1 pm@handler-pm@before = 10 (ret 2)",
+   "class": "timing",
+   "why": "break-to-handler latency (App. A.2)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "L",
+    "latency:"
+   ]
+  },
+  {
+   "text": "L latency (no break): n=0 ret 2",
+   "class": "timing",
+   "why": "break-to-handler latency (App. A.2)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "L",
+    "latency"
+   ]
+  },
+  {
+   "text": "T settle (NOP fillers, k = 0..14): breaks/spc-offset 0:0/-1 1:0/-1 2:0/-1 3:0/-1 4:0/-1 5:0/-1 6:0/-1 7:0/-1 8:0/-1 9:0/-1 10:0/-1 11:0/-1 12:0/-1 13:1/28 14:1/30",
+   "class": "timing",
+   "why": "settle (open question 9.5)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "T",
+    "settle",
+    "(NOP"
+   ]
+  },
+  {
+   "text": "T settle (ADD fillers, k = 0..8): breaks/spc-offset 0:0/-1 1:0/-1 2:0/-1 3:0/-1 4:0/-1 5:0/-1 6:0/-1 7:0/-1 8:0/-1",
+   "class": "timing",
+   "why": "settle (open question 9.5)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "T",
+    "settle",
+    "(ADD"
+   ]
+  },
+  {
+   "text": "V vbr_pre n=1 evt=1e0 pc=t_lin+8 sr=400000f1 brcr@h=8000 after=0000 r9=2 ret=7",
+   "class": "functional",
+   "why": "VBR path",
+   "ignore": [
+    5
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "V",
+    "vbr_pre"
+   ]
+  },
+  {
+   "text": "V vbr_post n=1 evt=1e0 pc=t_lin+10 sr=400000f1 brcr@h=8400 after=0400 r9=3 ret=7",
+   "class": "functional",
+   "why": "VBR path",
+   "ignore": [
+    5
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "V",
+    "vbr_post"
+   ]
+  },
+  {
+   "text": "B bl1_pre        n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=8001 r9@brk=0 ret=2 evA=1 evB=0",
+   "class": "functional",
+   "why": "break, SPC, BRCR, events",
+   "ignore": [
+    4
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "B",
+    "bl1_pre"
+   ]
+  },
+  {
+   "text": "ubcbrk: area-7 UTLB test starting",
+   "class": "functional",
+   "why": "marker",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "ubcbrk:",
+    "area-7"
+   ]
+  },
+  {
+   "text": "7 saved MMUCR 00000000 PTEH 8c063400 PTEL 00000000 PTEA 00000000 | exc 000 at 00000000 | ok 600df00d",
+   "class": "mmu",
+   "why": "area 7 through the UTLB",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "7",
+    "saved"
+   ]
+  },
+  {
+   "text": "7 @1f000030 040205c1 @1f00001c 00000105 @1fd80024 003117ec @ffd80024 003117ea | BARA after w@1f200000 13579bdf | r16 @1fd0000c 0300",
+   "class": "mmu",
+   "why": "area 7 through the UTLB",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "7",
+    "@1f000030"
+   ]
+  },
+  {
+   "text": "7 now MMUCR 00000000 PTEH 8c063400 PTEL 00000000 PTEA 00000000",
+   "class": "mmu",
+   "why": "area 7 through the UTLB",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "7",
+    "now"
+   ]
+  },
+  {
+   "text": "ubcbrk: done",
+   "class": "functional",
+   "why": "program marker",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "ubcbrk:",
+    "done"
+   ]
+  }
+ ]
+}

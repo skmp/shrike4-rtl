@@ -1,0 +1,473 @@
+{
+ "program": "bscmm2",
+ "source": "../../../tools/hw/bsc-memmap/bscmm2.elf.hwlog",
+ "lines": [
+  {
+   "text": "B ubuf ac083a80 cbuf 8c093ac0 big 8c0a3b00",
+   "class": "env",
+   "why": "the allocator's buffers",
+   "key": [
+    "B",
+    "ubuf"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "P idle PDTRA and 00e7 or dce7 PDTRB and 0001 or 000d",
+   "class": "board",
+   "why": "port pins at rest and after an MPX / SDRAM beat",
+   "key": [
+    "P",
+    "idle"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "P ram hi 000ac3c3 -> PDTRA 00e7 PDTRB 0000 | lo 12345678 -> PDTRA d4e7 PDTRB 0006",
+   "class": "board",
+   "why": "port pins at rest and after an MPX / SDRAM beat",
+   "key": [
+    "P",
+    "ram",
+    "hi",
+    "000ac3c3"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "P ram hi 00053c3c -> PDTRA 00e7 PDTRB 0000 | lo 12345678 -> PDTRA 00e7 PDTRB 0000",
+   "class": "board",
+   "why": "port pins at rest and after an MPX / SDRAM beat",
+   "key": [
+    "P",
+    "ram",
+    "hi",
+    "00053c3c"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "P ram hi 000f0000 -> PDTRA 00e7 PDTRB 0000 | lo 12345678 -> PDTRA 00e7 PDTRB 0000",
+   "class": "board",
+   "why": "port pins at rest and after an MPX / SDRAM beat",
+   "key": [
+    "P",
+    "ram",
+    "hi",
+    "000f0000"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "P ram hi 0000ffff -> PDTRA 00e7 PDTRB 0000 | lo 12345678 -> PDTRA 00e7 PDTRB 0000",
+   "class": "board",
+   "why": "port pins at rest and after an MPX / SDRAM beat",
+   "key": [
+    "P",
+    "ram",
+    "hi",
+    "0000ffff"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "P vram hi 000ac3c3 -> PDTRA c0e7 PDTRB 000a",
+   "class": "board",
+   "why": "port pins at rest and after an MPX / SDRAM beat",
+   "key": [
+    "P",
+    "vram",
+    "hi",
+    "000ac3c3"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "P vram hi 00053c3c -> PDTRA 3ce7 PDTRB 0001",
+   "class": "board",
+   "why": "port pins at rest and after an MPX / SDRAM beat",
+   "key": [
+    "P",
+    "vram",
+    "hi",
+    "00053c3c"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "S WCR3 07777777 b0 07777777 b3 07777777 w0 07777777 w2 07777777 l 07777700 - 00000000 restored 07777777",
+   "class": "functional",
+   "why": "WCR3 / PCR write sizes [HW 6.2]",
+   "key": [
+    "S",
+    "WCR3"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "S PCR 0000 l 0000 b0 0000 b1 0000 w 1111 restored 0000",
+   "class": "functional",
+   "why": "WCR3 / PCR write sizes [HW 6.2]",
+   "key": [
+    "S",
+    "PCR"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "F RTCNT wraps 6: 5d->00(38) 5d->00(38) 5d->00(38) 5e->00(22) 5d->00(22) 5e->00(22)",
+   "class": "env",
+   "why": "refresh-timer polling (jitter), counter windows, refresh-cost histograms",
+   "key": [
+    "F",
+    "RTCNT",
+    "wraps"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "F x384 reads: 6194*41 6202*1 6204*1 6205*1 6218*3 6974*1",
+   "class": "env",
+   "why": "refresh-timer polling (jitter), counter windows, refresh-cost histograms",
+   "key": [
+    "F",
+    "x384",
+    "reads:"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "F x128 reads: 2050*14 2056*1 2074*32 2340*1",
+   "class": "env",
+   "why": "refresh-timer polling (jitter), counter windows, refresh-cost histograms",
+   "key": [
+    "F",
+    "x128",
+    "reads:"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            rd_wr         19    45   227   643 lat   26 per   26.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "rd_wr"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sb_iml2nrm     rd_wr         20    48   245   693 lat   28 per   28.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "sb_iml2nrm",
+    "rd_wr"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M vram64top      rd_wr         95   215  1055  2987 lat  120 per  120.75",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "vram64top",
+    "rd_wr"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram>sb         wr_rdalt       3    30   226   674 lat   27 per   28.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "ram>sb",
+    "wr_rdalt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sb>ram         wr_rdalt       3    30   226   674 lat   27 per   28.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "sb>ram",
+    "wr_rdalt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M vram>ram       wr_rdalt       3    32   242   722 lat   29 per   30.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "vram>ram",
+    "wr_rdalt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram>vram       wr_rdalt       3   104   834  2562 lat  101 per  108.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "ram>vram",
+    "wr_rdalt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sb/vram        rd_alt         3   113   917  2869 lat  110 per  122.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "sb/vram",
+    "rd_alt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram_p2         tas            3    27   237   749 lat   24 per   32.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram_p2",
+    "tas"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram_p1         tas            3    27   237   755 lat   24 per   32.37",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram_p1",
+    "tas"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram_p1         rd_l           3     4    11    27 lat    1 per    1.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram_p1",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss        c_rd           3    20   132   388 lat   17 per   16.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_rd"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss        c_p0_8         3    24   164   484 lat   21 per   20.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_p0_8"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss        c_p0_16        3    26   180   532 lat   23 per   22.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_p0_16"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss        c_p0_24        3    26   194   578 lat   23 per   24.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_p0_24"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss        c_rd_last      3    26   194   578 lat   23 per   24.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_rd_last"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss        c_p16_0        3    26   180   532 lat   23 per   22.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_p16_0"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss        c_p16_8        3    26   194   578 lat   23 per   24.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_p16_8"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss        c_p16_24       3    24   164   484 lat   21 per   20.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_p16_24"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss        c_p8_0         3    26   194   578 lat   23 per   24.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_p8_0"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss        c_p24_16       3    26   194   578 lat   23 per   24.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_p24_16"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss_big    c_rd           3    20   132   388 lat   17 per   16.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss_big",
+    "c_rd"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss_dbank  c_rd           3    20   188   572 lat   17 per   24.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss_dbank",
+    "c_rd"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_wmiss_dbank c_wr          19    53   221   595 lat   34 per   23.37",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_wmiss_dbank",
+    "c_wr"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "R WCR3 07777777 PCR 0000 RTCOR 005e BCR1 a3020008 MCR c00a0e24",
+   "class": "functional",
+   "why": "registers restored by the program",
+   "key": [
+    "R",
+    "WCR3"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "DONE",
+   "class": "functional",
+   "why": "program end",
+   "key": [
+    "DONE"
+   ],
+   "ignore": [],
+   "var": []
+  }
+ ]
+}

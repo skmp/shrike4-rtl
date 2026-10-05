@@ -1,0 +1,7 @@
+`verilator_config
+// WI-BSC lint waivers (make v1-bsc-lint): the shared package v1_soc_pkg.sv declares functions / constants / enum values
+// this unit does not use; v1_bsc_pkg.sv's helpers are used by some of the BSC modules only.
+lint_off -rule UNUSEDSIGNAL -file "*/v1_soc_pkg.sv"
+lint_off -rule UNUSEDPARAM  -file "*/v1_soc_pkg.sv"
+lint_off -rule UNUSEDPARAM  -file "*/v1_bsc_pkg.sv"
+lint_off -rule UNUSEDSIGNAL -file "*/v1_bsc_pkg.sv"

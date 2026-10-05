@@ -1,0 +1,336 @@
+{
+ "program": "dmac2",
+ "source": "tools/hw/dmac/dmac2.elf.hwlog",
+ "first": "dmac2: bufA",
+ "last": "dmac2: end",
+ "lines": [
+  {
+   "cls": "functional",
+   "console": "dmac2: bufA 0c070360 bufB 0c060360 DMAOR 00008201",
+   "regex": "dmac2:\\ bufA\\ (?P<x_bufA>[0-9a-f]{8})\\ bufB\\ (?P<x_bufB>[0-9a-f]{8})\\ DMAOR\\ 00008201",
+   "defines": [
+    "x_bufA",
+    "x_bufB"
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "T2 TE=1 IE=1 DE=0: CHCR 000054b3 -> 000054b6 fired=1 code 660 CHCR in handler 000054b6",
+   "regex": "T2\\ TE=1\\ IE=1\\ DE=0:\\ CHCR\\ 000054b3\\ \\->\\ 000054b6\\ fired=1\\ code\\ 660\\ CHCR\\ in\\ handler\\ 000054b6"
+  },
+  {
+   "cls": "functional",
+   "console": "T3 RS=6 SAR=TSTR(1FD80004) byte SM=0 -> RAM       DMAOR 00008201 DMATCR 0 CHCR 00004613 SAR 1fd80004 DAR-start +4 | dst 05050505 eeeeeeee eeeeeeee | DMAOR after 00008201",
+   "regex": "T3\\ RS=6\\ SAR=TSTR\\(1FD80004\\)\\ byte\\ SM=0\\ \\->\\ RAM\\ \\ \\ \\ \\ \\ \\ DMAOR\\ 00008201\\ DMATCR\\ 0\\ CHCR\\ 00004613\\ SAR\\ 1fd80004\\ DAR\\-start\\ \\+4\\ \\|\\ dst\\ 05050505\\ eeeeeeee\\ eeeeeeee\\ \\|\\ DMAOR\\ after\\ 00008201"
+  },
+  {
+   "cls": "functional",
+   "console": "T3 RS=4 SAR=TSTR(1FD80004) byte ext->ext          DMAOR 00008205 DMATCR 3 CHCR 00004411 SAR 1fd80004 DAR-start +1 | dst eeeeee11 eeeeeeee eeeeeeee | DMAOR after 00008201",
+   "regex": "T3\\ RS=4\\ SAR=TSTR\\(1FD80004\\)\\ byte\\ ext\\->ext\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ DMAOR\\ 00008205\\ DMATCR\\ 3\\ CHCR\\ 00004411\\ SAR\\ 1fd80004\\ DAR\\-start\\ \\+1\\ \\|\\ dst\\ eeeeee11\\ eeeeeeee\\ eeeeeeee\\ \\|\\ DMAOR\\ after\\ 00008201"
+  },
+  {
+   "cls": "functional",
+   "console": "T3 RS=4 SAR=TOCR(1FD80000) long ext->ext          DMAOR 00008205 DMATCR 3 CHCR 00005431 SAR 1fd80004 DAR-start +4 | dst 00005431 eeeeeeee eeeeeeee | DMAOR after 00008201",
+   "regex": "T3\\ RS=4\\ SAR=TOCR\\(1FD80000\\)\\ long\\ ext\\->ext\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ DMAOR\\ 00008205\\ DMATCR\\ 3\\ CHCR\\ 00005431\\ SAR\\ 1fd80004\\ DAR\\-start\\ \\+4\\ \\|\\ dst\\ 00005431\\ eeeeeeee\\ eeeeeeee\\ \\|\\ DMAOR\\ after\\ 00008201"
+  },
+  {
+   "cls": "functional",
+   "console": "T3 RS=6 SAR=RAM (not on-chip) long                DMAOR 00008205 DMATCR 3 CHCR 00005631 SAR 0c070364 DAR-start +4 | dst 04040404 eeeeeeee eeeeeeee | DMAOR after 00008201",
+   "regex": "T3\\ RS=6\\ SAR=RAM\\ \\(not\\ on\\-chip\\)\\ long\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ DMAOR\\ 00008205\\ DMATCR\\ 3\\ CHCR\\ 00005631\\ SAR\\ (?P<x_sar>[0-9a-f]{8})\\ DAR\\-start\\ \\+4\\ \\|\\ dst (?P<x_junk>[0-9a-f]{8})\\ eeeeeeee\\ eeeeeeee\\ \\|\\ DMAOR\\ after\\ 00008201",
+   "func": [
+    "x_sar == x_bufA + 4"
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "T3 RS=6 SAR=1F300000 (no module) long             DMAOR 00008205 DMATCR 3 CHCR 00004631 SAR 1f300000 DAR-start +4 | dst 04040404 eeeeeeee eeeeeeee | DMAOR after 00008201",
+   "regex": "T3\\ RS=6\\ SAR=1F300000\\ \\(no\\ module\\)\\ long\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ DMAOR\\ 00008205\\ DMATCR\\ 3\\ CHCR\\ 00004631\\ SAR\\ 1f300000\\ DAR\\-start\\ \\+4\\ \\|\\ dst (?P<x_junk>[0-9a-f]{8})\\ eeeeeeee\\ eeeeeeee\\ \\|\\ DMAOR\\ after\\ 00008201"
+  },
+  {
+   "cls": "functional",
+   "console": "T3 RS=6 SAR=FFD80004 (P4 form) byte               DMAOR 00008201 DMATCR 0 CHCR 00004613 SAR ffd80004 DAR-start +4 | dst 05050505 eeeeeeee eeeeeeee | DMAOR after 00008201",
+   "regex": "T3\\ RS=6\\ SAR=FFD80004\\ \\(P4\\ form\\)\\ byte\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ DMAOR\\ 00008201\\ DMATCR\\ 0\\ CHCR\\ 00004613\\ SAR\\ ffd80004\\ DAR\\-start\\ \\+4\\ \\|\\ dst\\ 05050505\\ eeeeeeee\\ eeeeeeee\\ \\|\\ DMAOR\\ after\\ 00008201"
+  },
+  {
+   "cls": "functional",
+   "console": "T3 RS=2 (ext req single) SAR=1FD80004 byte        DMAOR 00008201 DMATCR 4 CHCR 00001211 SAR 1fd80004 DAR-start +0 | dst eeeeeeee eeeeeeee eeeeeeee | DMAOR after 00008201",
+   "regex": "T3\\ RS=2\\ \\(ext\\ req\\ single\\)\\ SAR=1FD80004\\ byte\\ \\ \\ \\ \\ \\ \\ \\ DMAOR\\ 00008201\\ DMATCR\\ 4\\ CHCR\\ 00001211\\ SAR\\ 1fd80004\\ DAR\\-start\\ \\+0\\ \\|\\ dst\\ eeeeeeee\\ eeeeeeee\\ eeeeeeee\\ \\|\\ DMAOR\\ after\\ 00008201"
+  },
+  {
+   "cls": "functional",
+   "console": "T3 RS=2 (ext req single) SAR=RAM+1 long           DMAOR 00008205 DMATCR 4 CHCR 00001231 SAR 0c070361 DAR-start +0 | dst eeeeeeee eeeeeeee eeeeeeee | DMAOR after 00008201",
+   "regex": "T3\\ RS=2\\ \\(ext\\ req\\ single\\)\\ SAR=RAM\\+1\\ long\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ DMAOR\\ 00008205\\ DMATCR\\ 4\\ CHCR\\ 00001231\\ SAR\\ (?P<x_sar>[0-9a-f]{8})\\ DAR\\-start\\ \\+0\\ \\|\\ dst\\ eeeeeeee\\ eeeeeeee\\ eeeeeeee\\ \\|\\ DMAOR\\ after\\ 00008201",
+   "func": [
+    "x_sar == x_bufA + 1"
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "T3 RS=4 DAR misaligned (+4) 32B                   DMAOR 00008205 DMATCR 2 CHCR 00005441 SAR 0c070360 DAR-start +0 | dst eeeeeeee eeeeeeee eeeeeeee | DMAOR after 00008201",
+   "regex": "T3\\ RS=4\\ DAR\\ misaligned\\ \\(\\+4\\)\\ 32B\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ DMAOR\\ 00008205\\ DMATCR\\ 2\\ CHCR\\ 00005441\\ SAR\\ (?P<x_sar>[0-9a-f]{8})\\ DAR\\-start\\ \\+0\\ \\|\\ dst\\ eeeeeeee\\ eeeeeeee\\ eeeeeeee\\ \\|\\ DMAOR\\ after\\ 00008201",
+   "func": [
+    "x_sar == x_bufA"
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "T3 TSTR now 05 TOCR 00",
+   "regex": "T3\\ TSTR\\ now\\ 05\\ TOCR\\ 00"
+  },
+  {
+   "cls": "timing",
+   "console": "T4 reference: alu_loop(50000) 300140 cyc; burst of 2048 x 32B 94896 cyc",
+   "regex": "T4\\ reference:\\ alu_loop\\(50000\\) (?P<alu>-?\\d+)\\ cyc;\\ burst\\ of\\ 2048\\ x\\ 32B (?P<burst>-?\\d+)\\ cyc",
+   "timing": [
+    [
+     "alu",
+     300140,
+     0
+    ],
+    [
+     "burst",
+     94896,
+     2048
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T4 probe none (cyc() right after)        : t1   94845  end   94964 (wait 50)",
+   "regex": "T4\\ probe\\ none\\ \\(cyc\\(\\)\\ right\\ after\\)\\ \\ \\ \\ \\ \\ \\ \\ :\\ t1\\s+(?P<t1>-?\\d+)\\s+end\\s+(?P<end>-?\\d+)\\ \\(wait (?P<w>-?\\d+)\\)",
+   "timing": [
+    [
+     "t1",
+     94845,
+     1896
+    ],
+    [
+     "end",
+     94964,
+     1899
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T4 probe alu_loop(50000) then cyc()      : t1  394846  end  394972 (wait 50)",
+   "regex": "T4\\ probe\\ alu_loop\\(50000\\)\\ then\\ cyc\\(\\)\\ \\ \\ \\ \\ \\ :\\ t1\\s+(?P<t1>-?\\d+)\\s+end\\s+(?P<end>-?\\d+)\\ \\(wait (?P<w>-?\\d+)\\)",
+   "timing": [
+    [
+     "t1",
+     394846,
+     7896
+    ],
+    [
+     "end",
+     394972,
+     7899
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T4 probe read TMU TCNT0 then alu         : t1  394973  end  395092 (wait 50)",
+   "regex": "T4\\ probe\\ read\\ TMU\\ TCNT0\\ then\\ alu\\ \\ \\ \\ \\ \\ \\ \\ \\ :\\ t1\\s+(?P<t1>-?\\d+)\\s+end\\s+(?P<end>-?\\d+)\\ \\(wait (?P<w>-?\\d+)\\)",
+   "timing": [
+    [
+     "t1",
+     394973,
+     7899
+    ],
+    [
+     "end",
+     395092,
+     7901
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T4 probe read CCN PTEH then alu          : t1  394967  end  395086 (wait 50)",
+   "regex": "T4\\ probe\\ read\\ CCN\\ PTEH\\ then\\ alu\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ :\\ t1\\s+(?P<t1>-?\\d+)\\s+end\\s+(?P<end>-?\\d+)\\ \\(wait (?P<w>-?\\d+)\\)",
+   "timing": [
+    [
+     "t1",
+     394967,
+     7899
+    ],
+    [
+     "end",
+     395086,
+     7901
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T4 probe read DMAC DMATCR1 then alu      : t1  394859  end  394978 (wait 50)",
+   "regex": "T4\\ probe\\ read\\ DMAC\\ DMATCR1\\ then\\ alu\\ \\ \\ \\ \\ \\ :\\ t1\\s+(?P<t1>-?\\d+)\\s+end\\s+(?P<end>-?\\d+)\\ \\(wait (?P<w>-?\\d+)\\)",
+   "timing": [
+    [
+     "t1",
+     394859,
+     7897
+    ],
+    [
+     "end",
+     394978,
+     7899
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T4 probe read P2 RAM then alu            : t1  394911  end  395030 (wait 50)",
+   "regex": "T4\\ probe\\ read\\ P2\\ RAM\\ then\\ alu\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ :\\ t1\\s+(?P<t1>-?\\d+)\\s+end\\s+(?P<end>-?\\d+)\\ \\(wait (?P<w>-?\\d+)\\)",
+   "timing": [
+    [
+     "t1",
+     394911,
+     7898
+    ],
+    [
+     "end",
+     395030,
+     7900
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T4 probe read cached RAM (hit) then alu  : t1  394842  end  394968 (wait 50)",
+   "regex": "T4\\ probe\\ read\\ cached\\ RAM\\ \\(hit\\)\\ then\\ alu\\ \\ :\\ t1\\s+(?P<t1>-?\\d+)\\s+end\\s+(?P<end>-?\\d+)\\ \\(wait (?P<w>-?\\d+)\\)",
+   "timing": [
+    [
+     "t1",
+     394842,
+     7896
+    ],
+    [
+     "end",
+     394968,
+     7899
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T4 probe write DMAC SAR3 then alu        : t1  394891  end  395010 (wait 50)",
+   "regex": "T4\\ probe\\ write\\ DMAC\\ SAR3\\ then\\ alu\\ \\ \\ \\ \\ \\ \\ \\ :\\ t1\\s+(?P<t1>-?\\d+)\\s+end\\s+(?P<end>-?\\d+)\\ \\(wait (?P<w>-?\\d+)\\)",
+   "timing": [
+    [
+     "t1",
+     394891,
+     7897
+    ],
+    [
+     "end",
+     395010,
+     7900
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T4 probe read Holly ISTNRM then alu      : t1  394909  end  395028 (wait 50)",
+   "regex": "T4\\ probe\\ read\\ Holly\\ ISTNRM\\ then\\ alu\\ \\ \\ \\ \\ \\ :\\ t1\\s+(?P<t1>-?\\d+)\\s+end\\s+(?P<end>-?\\d+)\\ \\(wait (?P<w>-?\\d+)\\)",
+   "timing": [
+    [
+     "t1",
+     394909,
+     7898
+    ],
+    [
+     "end",
+     395028,
+     7900
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T4 probe write P2 RAM then alu           : t1  394953  end  395090 (wait 50)",
+   "regex": "T4\\ probe\\ write\\ P2\\ RAM\\ then\\ alu\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ :\\ t1\\s+(?P<t1>-?\\d+)\\s+end\\s+(?P<end>-?\\d+)\\ \\(wait (?P<w>-?\\d+)\\)",
+   "timing": [
+    [
+     "t1",
+     394953,
+     7899
+    ],
+    [
+     "end",
+     395090,
+     7901
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T5 no DMA            : 2000 uncached RAM reads 44686 cyc (22.3 each); DMA units in that time 0",
+   "regex": "T5\\ no\\ DMA\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ :\\ 2000\\ uncached\\ RAM\\ reads (?P<cyc>-?\\d+)\\ cyc\\ \\((?P<f_each>[\\d.]+)\\ each\\);\\ DMA\\ units\\ in\\ that\\ time (?P<units>-?\\d+)",
+   "func": [
+    "units == 0"
+   ],
+   "timing": [
+    [
+     "cyc",
+     44686,
+     893
+    ],
+    [
+     "units",
+     0,
+     0
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T5 cycle steal 4B DMA: 2000 uncached RAM reads 132791 cyc (66.4 each); DMA units in that time 2005",
+   "regex": "T5\\ cycle\\ steal\\ 4B\\ DMA:\\ 2000\\ uncached\\ RAM\\ reads (?P<cyc>-?\\d+)\\ cyc\\ \\((?P<f_each>[\\d.]+)\\ each\\);\\ DMA\\ units\\ in\\ that\\ time (?P<units>-?\\d+)",
+   "func": [
+    "units > 0"
+   ],
+   "timing": [
+    [
+     "cyc",
+     132791,
+     2655
+    ],
+    [
+     "units",
+     2005,
+     40
+    ]
+   ]
+  },
+  {
+   "cls": "timing",
+   "console": "T5 cycle steal 32B   : 2000 uncached RAM reads 129249 cyc (64.6 each); DMA units in that time 2006",
+   "regex": "T5\\ cycle\\ steal\\ 32B\\ \\ \\ :\\ 2000\\ uncached\\ RAM\\ reads (?P<cyc>-?\\d+)\\ cyc\\ \\((?P<f_each>[\\d.]+)\\ each\\);\\ DMA\\ units\\ in\\ that\\ time (?P<units>-?\\d+)",
+   "func": [
+    "units > 0"
+   ],
+   "timing": [
+    [
+     "cyc",
+     129249,
+     2584
+    ],
+    [
+     "units",
+     2006,
+     40
+    ]
+   ]
+  },
+  {
+   "cls": "functional",
+   "console": "dmac2: end DMAOR 00008201 CHCR0-3 000853c3 00000000 000012c0 00000000",
+   "regex": "dmac2:\\ end\\ DMAOR\\ 00008201\\ CHCR0\\-3\\ (?P<x_c0>[0-9a-f]{8})\\ 00000000\\ 000012c0\\ 00000000",
+   "func": [
+    "(x_c0 | 2) == 0x853c3"
+   ]
+  }
+ ]
+}

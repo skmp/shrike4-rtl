@@ -1,0 +1,7 @@
+`verilator_config
+// v1_dbg_lint.vlt -- Verilator lint waivers for WI-DBG's units (rtl/v1/v1_ubc.sv, v1_perfctr.sv, v1_hudi.sv,
+// v1_ccn_id.sv); used by `make v1-dbg-lint` (tb/mk/v1_dbg.mk).  Only the shared package is waived: v1_soc_pkg (WI-0)
+// carries every shared function and constant, a unit uses a few of them, so the package's own unused-bit /
+// unused-parameter reports are not about these units.  The units' own waivers are inline, each with its reason.
+lint_off -rule UNUSEDSIGNAL -file "*v1_soc_pkg.sv"
+lint_off -rule UNUSEDPARAM -file "*v1_soc_pkg.sv"

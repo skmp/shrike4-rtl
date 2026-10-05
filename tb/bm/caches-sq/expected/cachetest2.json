@@ -1,0 +1,1502 @@
+{
+ "prog": "cachetest2",
+ "source": "run2.log",
+ "lines": [
+  {
+   "class": "env",
+   "shape": "cachetest2: CCR #",
+   "occ": 0,
+   "text": "cachetest2: CCR 00000105",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F dirty: OC addr array # want # ok",
+   "occ": 0,
+   "text": "F dirty: OC addr array                           0c078003  want 0c078003  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F dirty: OC data array w0 # want # ok",
+   "occ": 0,
+   "text": "F dirty: OC data array w0                        bbbb0002  want bbbb0002  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F dirty: OC data array w1 # want # ok",
+   "occ": 0,
+   "text": "F dirty: OC data array w1                        10000001  want 10000001  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F OCBWB dirty: addr array # want # ok",
+   "occ": 0,
+   "text": "F OCBWB dirty: addr array                        0c078001  want 0c078001  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F OCBWB dirty: memory # want # ok",
+   "occ": 0,
+   "text": "F OCBWB dirty: memory                            bbbb0002  want bbbb0002  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F assoc U=# V=#: before # want # ok",
+   "occ": 0,
+   "text": "F assoc U=0 V=1: before                          0c078003  want 0c078003  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F assoc U=# V=# on dirty: entry # want # ok",
+   "occ": 0,
+   "text": "F assoc U=0 V=1 on dirty: entry                  0c078001  want 0c078001  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F assoc U=# V=# on dirty: memory # want # ok",
+   "occ": 0,
+   "text": "F assoc U=0 V=1 on dirty: memory                 4444000a  want 4444000a  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F assoc data=P2 alias V=#: entry #",
+   "occ": 0,
+   "text": "F assoc data=P2 alias V=0: entry                 0c078000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F assoc data=P0 alias V=#: entry #",
+   "occ": 0,
+   "text": "F assoc data=P0 alias V=0: entry                 0c078000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F assoc data=mirror (bit25) V=#: entry #",
+   "occ": 0,
+   "text": "F assoc data=mirror (bit25) V=0: entry           0c078001",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F PREF @P2 X, Y in entry: entry # want # ok",
+   "occ": 0,
+   "text": "F PREF @P2 X, Y in entry: entry                  0c07c001  want 0c07c001  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA @P2 X, Y in entry: entry # want # ok",
+   "occ": 0,
+   "text": "F MOVCA @P2 X, Y in entry: entry                 0c07c001  want 0c07c001  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA @P2: memory # want # ok",
+   "occ": 0,
+   "text": "F MOVCA @P2: memory                              3333cccc  want 3333cccc  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0, clean victim X: entry #",
+   "occ": 0,
+   "text": "F MOVCA w0, clean victim X: entry                0c07c003",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 clean victim: w0 #",
+   "occ": 0,
+   "text": "F MOVCA w0 clean victim: w0                      1111aaaa",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 clean victim: w1 #",
+   "occ": 0,
+   "text": "F MOVCA w0 clean victim: w1                      00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 clean victim: w2 #",
+   "occ": 0,
+   "text": "F MOVCA w0 clean victim: w2                      c0de0002",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 clean victim: w3 #",
+   "occ": 0,
+   "text": "F MOVCA w0 clean victim: w3                      c0de0003",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 clean victim: w4 #",
+   "occ": 0,
+   "text": "F MOVCA w0 clean victim: w4                      c0de0004",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 clean victim: w5 #",
+   "occ": 0,
+   "text": "F MOVCA w0 clean victim: w5                      c0de0005",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 clean victim: w6 #",
+   "occ": 0,
+   "text": "F MOVCA w0 clean victim: w6                      c0de0006",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 clean victim: w7 #",
+   "occ": 0,
+   "text": "F MOVCA w0 clean victim: w7                      c0de0007",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w4 clean victim: w0 #",
+   "occ": 0,
+   "text": "F MOVCA w4 clean victim: w0                      c0de0000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w4 clean victim: w1 #",
+   "occ": 0,
+   "text": "F MOVCA w4 clean victim: w1                      c0de0001",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w4 clean victim: w2 #",
+   "occ": 0,
+   "text": "F MOVCA w4 clean victim: w2                      c0de0002",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w4 clean victim: w3 #",
+   "occ": 0,
+   "text": "F MOVCA w4 clean victim: w3                      c0de0003",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w4 clean victim: w4 #",
+   "occ": 0,
+   "text": "F MOVCA w4 clean victim: w4                      2222bbbb",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w4 clean victim: w5 #",
+   "occ": 0,
+   "text": "F MOVCA w4 clean victim: w5                      00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w4 clean victim: w6 #",
+   "occ": 0,
+   "text": "F MOVCA w4 clean victim: w6                      c0de0006",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w4 clean victim: w7 #",
+   "occ": 0,
+   "text": "F MOVCA w4 clean victim: w7                      c0de0007",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w1 clean victim: w0 #",
+   "occ": 0,
+   "text": "F MOVCA w1 clean victim: w0                      00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w1 clean victim: w1 #",
+   "occ": 0,
+   "text": "F MOVCA w1 clean victim: w1                      5555eeee",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w1 clean victim: w2 #",
+   "occ": 0,
+   "text": "F MOVCA w1 clean victim: w2                      c0de0002",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w1 clean victim: w3 #",
+   "occ": 0,
+   "text": "F MOVCA w1 clean victim: w3                      c0de0003",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w1 clean victim: w4 #",
+   "occ": 0,
+   "text": "F MOVCA w1 clean victim: w4                      c0de0004",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w1 clean victim: w5 #",
+   "occ": 0,
+   "text": "F MOVCA w1 clean victim: w5                      c0de0005",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w1 clean victim: w6 #",
+   "occ": 0,
+   "text": "F MOVCA w1 clean victim: w6                      c0de0006",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w1 clean victim: w7 #",
+   "occ": 0,
+   "text": "F MOVCA w1 clean victim: w7                      c0de0007",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA dirty victim: X written back # want # ok",
+   "occ": 0,
+   "text": "F MOVCA dirty victim: X written back             7777000c  want 7777000c  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 dirty victim: w0 #",
+   "occ": 0,
+   "text": "F MOVCA w0 dirty victim: w0                      3333cccc",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 dirty victim: w1 #",
+   "occ": 0,
+   "text": "F MOVCA w0 dirty victim: w1                      00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 dirty victim: w2 #",
+   "occ": 0,
+   "text": "F MOVCA w0 dirty victim: w2                      00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 dirty victim: w3 #",
+   "occ": 0,
+   "text": "F MOVCA w0 dirty victim: w3                      00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 dirty victim: w4 #",
+   "occ": 0,
+   "text": "F MOVCA w0 dirty victim: w4                      00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 dirty victim: w5 #",
+   "occ": 0,
+   "text": "F MOVCA w0 dirty victim: w5                      00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 dirty victim: w6 #",
+   "occ": 0,
+   "text": "F MOVCA w0 dirty victim: w6                      00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 dirty victim: w7 #",
+   "occ": 0,
+   "text": "F MOVCA w0 dirty victim: w7                      00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 invalid entry (stale X): w0 #",
+   "occ": 0,
+   "text": "F MOVCA w0 invalid entry (stale X): w0           4444dddd",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 invalid entry (stale X): w1 #",
+   "occ": 0,
+   "text": "F MOVCA w0 invalid entry (stale X): w1           00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 invalid entry (stale X): w2 #",
+   "occ": 0,
+   "text": "F MOVCA w0 invalid entry (stale X): w2           7777000c",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 invalid entry (stale X): w3 #",
+   "occ": 0,
+   "text": "F MOVCA w0 invalid entry (stale X): w3           c0de0003",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 invalid entry (stale X): w4 #",
+   "occ": 0,
+   "text": "F MOVCA w0 invalid entry (stale X): w4           c0de0004",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 invalid entry (stale X): w5 #",
+   "occ": 0,
+   "text": "F MOVCA w0 invalid entry (stale X): w5           c0de0005",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 invalid entry (stale X): w6 #",
+   "occ": 0,
+   "text": "F MOVCA w0 invalid entry (stale X): w6           c0de0006",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F MOVCA w0 invalid entry (stale X): w7 #",
+   "occ": 0,
+   "text": "F MOVCA w0 invalid entry (stale X): w7           c0de0007",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F store miss w0 + store w1 during fill: w0 #",
+   "occ": 0,
+   "text": "F store miss w0 + store w1 during fill: w0       000000a1",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F store miss w0 + store w1 during fill: w1 #",
+   "occ": 0,
+   "text": "F store miss w0 + store w1 during fill: w1       000000a2",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F store miss w0 + store w1 during fill: w2 #",
+   "occ": 0,
+   "text": "F store miss w0 + store w1 during fill: w2       60000002",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F store miss w0 + store w1 during fill: w3 #",
+   "occ": 0,
+   "text": "F store miss w0 + store w1 during fill: w3       60000003",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F store miss w0 + store w1 during fill: w4 #",
+   "occ": 0,
+   "text": "F store miss w0 + store w1 during fill: w4       60000004",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F store miss w0 + store w1 during fill: w5 #",
+   "occ": 0,
+   "text": "F store miss w0 + store w1 during fill: w5       60000005",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F store miss w0 + store w1 during fill: w6 #",
+   "occ": 0,
+   "text": "F store miss w0 + store w1 during fill: w6       60000006",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F store miss w0 + store w1 during fill: w7 #",
+   "occ": 0,
+   "text": "F store miss w0 + store w1 during fill: w7       60000007",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F load miss w0 + store w1 during fill: w0 #",
+   "occ": 0,
+   "text": "F load miss w0 + store w1 during fill: w0        70000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F load miss w0 + store w1 during fill: w1 #",
+   "occ": 0,
+   "text": "F load miss w0 + store w1 during fill: w1        000000b2",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F load miss w0 + store w1 during fill: w2 #",
+   "occ": 0,
+   "text": "F load miss w0 + store w1 during fill: w2        70000002",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F load miss w0 + store w1 during fill: w3 #",
+   "occ": 0,
+   "text": "F load miss w0 + store w1 during fill: w3        70000003",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F load miss w0 + store w1 during fill: w4 #",
+   "occ": 0,
+   "text": "F load miss w0 + store w1 during fill: w4        70000004",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F load miss w0 + store w1 during fill: w5 #",
+   "occ": 0,
+   "text": "F load miss w0 + store w1 during fill: w5        70000005",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F load miss w0 + store w1 during fill: w6 #",
+   "occ": 0,
+   "text": "F load miss w0 + store w1 during fill: w6        70000006",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F load miss w0 + store w1 during fill: w7 #",
+   "occ": 0,
+   "text": "F load miss w0 + store w1 during fill: w7        70000007",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F store miss w0 + load w1 during fill: value # want # ok",
+   "occ": 0,
+   "text": "F store miss w0 + load w1 during fill: value     80000001  want 80000001  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F IC entry after running blkA # want # ok",
+   "occ": 0,
+   "text": "F IC entry after running blkA                    0c012801  want 0c012801  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F IC assoc write mismatch: entry # want # ok",
+   "occ": 0,
+   "text": "F IC assoc write mismatch: entry                 0c012801  want 0c012801  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F IC assoc write match V=#: entry # want # ok",
+   "occ": 0,
+   "text": "F IC assoc write match V=0: entry                0c012800  want 0c012800  ok",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 0,
+   "text": "F read E0000000                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 1,
+   "text": "F read E0000004                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 2,
+   "text": "F read E0000008                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 3,
+   "text": "F read E000000c                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 4,
+   "text": "F read E0000010                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 5,
+   "text": "F read E0000014                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 6,
+   "text": "F read E0000018                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 7,
+   "text": "F read E000001c                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 8,
+   "text": "F read E0000020                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 9,
+   "text": "F read E0000024                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 10,
+   "text": "F read E0000028                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 11,
+   "text": "F read E000002c                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 12,
+   "text": "F read E0000030                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 13,
+   "text": "F read E0000034                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 14,
+   "text": "F read E0000038                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 15,
+   "text": "F read E000003c                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F exceptions during SQ-area reads #",
+   "occ": 0,
+   "text": "F exceptions during SQ-area reads                00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "F read # #",
+   "occ": 16,
+   "text": "F read FF001000                                  8c063400",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 17,
+   "text": "F read FF001004                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 18,
+   "text": "F read FF001008                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "F read # #",
+   "occ": 19,
+   "text": "F read FF00100c                                  8c063781",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 20,
+   "text": "F read FF001010                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 21,
+   "text": "F read FF001014                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 22,
+   "text": "F read FF001018                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 23,
+   "text": "F read FF00101c                                  00000105",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "F read # #",
+   "occ": 24,
+   "text": "F read FF001020                                  00000004",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "F read # #",
+   "occ": 25,
+   "text": "F read FF001024                                  000001e0",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "F read # #",
+   "occ": 26,
+   "text": "F read FF001028                                  000003a0",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 27,
+   "text": "F read FF00102c                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 28,
+   "text": "F read FF001030                                  040205c1",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 29,
+   "text": "F read FF001034                                  00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 30,
+   "text": "F read FF001038                                  00000004",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F read # #",
+   "occ": 31,
+   "text": "F read FF00103c                                  00000004",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F exceptions during # reads #",
+   "occ": 0,
+   "text": "F exceptions during FF001000 reads               00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "F last exception code #",
+   "occ": 0,
+   "text": "F last exception code                            00000000",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "F BSC RTCSR #",
+   "occ": 0,
+   "text": "F BSC RTCSR                                      00000094",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "F BSC RTCOR #",
+   "occ": 0,
+   "text": "F BSC RTCOR                                      0000005e",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "F BSC RFCR #",
+   "occ": 0,
+   "text": "F BSC RFCR                                       0000032f",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "F BSC BCR1 #",
+   "occ": 0,
+   "text": "F BSC BCR1                                       a3020008",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "F BSC BCR2 #",
+   "occ": 0,
+   "text": "F BSC BCR2                                       00000001",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "F BSC MCR #",
+   "occ": 0,
+   "text": "F BSC MCR                                        c00a0e24",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "F CPG FRQCR #",
+   "occ": 0,
+   "text": "F CPG FRQCR                                      00000e0a",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "env",
+   "shape": "R0 # idx #",
+   "occ": 0,
+   "text": "R0 8c068000 idx 0",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T chain hit n8 n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T chain hit n8               n=  8 cyc=    35 c/u=   4.37 frzoc=0.50",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T chain miss n8 n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T chain miss n8              n=  8 cyc=   161 c/u=  20.12 rdmiss=1.00 ocfill=14.75 frzoc=16.25",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldgap4 miss n8 n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ldgap4 miss n8             n=  8 cyc=   241 c/u=  30.12 rdmiss=1.00 ocfill=14.75 frzoc=15.25",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldgap4 hit n8 n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ldgap4 hit n8              n=  8 cyc=   123 c/u=  15.37 frzoc=0.50",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T chain hit n16 n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T chain hit n16              n= 16 cyc=    59 c/u=   3.68 frzoc=0.25",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T chain miss n16 n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T chain miss n16             n= 16 cyc=   305 c/u=  19.06 rdmiss=1.00 ocfill=14.37 frzoc=15.62",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldgap4 miss n16 n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ldgap4 miss n16            n= 16 cyc=   465 c/u=  29.06 rdmiss=1.00 ocfill=14.37 frzoc=14.62",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldgap4 hit n16 n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ldgap4 hit n16             n= 16 cyc=   235 c/u=  14.68 frzoc=0.25",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T chain hit n32 n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T chain hit n32              n= 32 cyc=   107 c/u=   3.34 frzoc=0.12",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T chain miss n32 n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T chain miss n32             n= 32 cyc=   593 c/u=  18.53 rdmiss=1.00 ocfill=14.18 frzoc=15.31",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldgap4 miss n32 n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ldgap4 miss n32            n= 32 cyc=   913 c/u=  28.53 rdmiss=1.00 ocfill=14.18 frzoc=14.31",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldgap4 hit n32 n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ldgap4 hit n32             n= 32 cyc=   459 c/u=  14.34 frzoc=0.12",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T chain hit n64 n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T chain hit n64              n= 64 cyc=   203 c/u=   3.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T chain miss n64 n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T chain miss n64             n= 64 cyc=  1169 c/u=  18.26 rdmiss=1.00 ocfill=14.09 frzoc=15.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldgap4 miss n64 n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ldgap4 miss n64            n= 64 cyc=  1809 c/u=  28.26 rdmiss=1.00 ocfill=14.09 frzoc=14.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldgap4 hit n64 n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ldgap4 hit n64             n= 64 cyc=   907 c/u=  14.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T chain hit n128 n=# cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T chain hit n128             n=128 cyc=   395 c/u=   3.08 frzoc=0.03",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T chain miss n128 n=# cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T chain miss n128            n=128 cyc=  2353 c/u=  18.38 rdmiss=1.00 ocfill=14.17 frzoc=15.32",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldgap4 miss n128 n=# cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ldgap4 miss n128           n=128 cyc=  3623 c/u=  28.30 rdmiss=1.00 ocfill=14.17 frzoc=14.25",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldgap4 hit n128 n=# cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ldgap4 hit n128            n=128 cyc=  1803 c/u=  14.08 frzoc=0.03",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stld hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T stld hit                   n= 64 cyc=   267 c/u=   4.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stld miss n= # cyc= # c/u= # wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T stld miss                  n= 64 cyc=  1423 c/u=  22.23 wrmiss=1.00 ocfill=14.09 frzoc=18.12",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stst hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T stst hit                   n= 64 cyc=   267 c/u=   4.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stst miss n= # cyc= # c/u= # wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T stst miss                  n= 64 cyc=  1680 c/u=  26.25 wrmiss=1.00 ocfill=14.09 frzoc=22.14",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldst hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ldst hit                   n= 64 cyc=   267 c/u=   4.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldst miss n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ldst miss                  n= 64 cyc=  1680 c/u=  26.25 rdmiss=1.00 ocfill=14.09 frzoc=22.14",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap1 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap1 hit                n= 64 cyc=   395 c/u=   6.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap1 miss n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap1 miss               n= 64 cyc=  1681 c/u=  26.26 rdmiss=1.00 ocfill=14.09 frzoc=20.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap1 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T stldgap1 hit               n= 64 cyc=   395 c/u=   6.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap1 miss n= # cyc= # c/u= # wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T stldgap1 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=20.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap2 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap2 hit                n= 64 cyc=   587 c/u=   9.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap2 miss n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap2 miss               n= 64 cyc=  1681 c/u=  26.26 rdmiss=1.00 ocfill=14.09 frzoc=17.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap2 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T stldgap2 hit               n= 64 cyc=   587 c/u=   9.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap2 miss n= # cyc= # c/u= # wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T stldgap2 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=17.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap3 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap3 hit                n= 64 cyc=   779 c/u=  12.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap3 miss n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap3 miss               n= 64 cyc=  1681 c/u=  26.26 rdmiss=1.00 ocfill=14.09 frzoc=14.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap3 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T stldgap3 hit               n= 64 cyc=   779 c/u=  12.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap3 miss n= # cyc= # c/u= # wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T stldgap3 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=14.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap4 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap4 hit                n= 64 cyc=   971 c/u=  15.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap4 miss n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap4 miss               n= 64 cyc=  1937 c/u=  30.26 rdmiss=1.00 ocfill=14.09 frzoc=15.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap4 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T stldgap4 hit               n= 64 cyc=   971 c/u=  15.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap4 miss n= # cyc= # c/u= # wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T stldgap4 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=11.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap5 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap5 hit                n= 64 cyc=  1163 c/u=  18.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap5 miss n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap5 miss               n= 64 cyc=  2065 c/u=  32.26 rdmiss=1.00 ocfill=14.09 frzoc=14.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap5 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T stldgap5 hit               n= 64 cyc=  1163 c/u=  18.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap5 miss n= # cyc= # c/u= # wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T stldgap5 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=8.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap6 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap6 hit                n= 64 cyc=  1355 c/u=  21.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap6 miss n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap6 miss               n= 64 cyc=  2320 c/u=  36.25 rdmiss=1.00 ocfill=14.09 frzoc=15.14",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap6 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T stldgap6 hit               n= 64 cyc=  1355 c/u=  21.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap6 miss n= # cyc= # c/u= # wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T stldgap6 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=5.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap7 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap7 hit                n= 64 cyc=  1547 c/u=  24.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap7 miss n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap7 miss               n= 64 cyc=  2449 c/u=  38.26 rdmiss=1.00 ocfill=14.09 frzoc=14.37",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap7 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T stldgap7 hit               n= 64 cyc=  1547 c/u=  24.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap7 miss n= # cyc= # c/u= # wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T stldgap7 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=2.15",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap8 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap8 hit                n= 64 cyc=  1739 c/u=  27.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ld2gap8 miss n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ld2gap8 miss               n= 64 cyc=  2704 c/u=  42.25 rdmiss=1.00 ocfill=14.09 frzoc=15.14",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap8 hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T stldgap8 hit               n= 64 cyc=  1739 c/u=  27.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldgap8 miss n= # cyc= # c/u= # wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T stldgap8 miss              n= 64 cyc=  1870 c/u=  29.21 wrmiss=1.00 ocfill=14.09 frzoc=2.20",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldo hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T stldo hit                  n= 64 cyc=   331 c/u=   5.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T stldo miss n= # cyc= # c/u= # rdmiss=# wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T stldo miss                 n= 64 cyc=  3596 c/u=  56.18 rdmiss=1.00 wrmiss=1.00 ocfill=47.87 frzoc=51.07",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldldo hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ldldo hit                  n= 64 cyc=   331 c/u=   5.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldldo miss n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ldldo miss                 n= 64 cyc=  3475 c/u=  54.29 rdmiss=2.00 ocfill=47.87 frzoc=49.18",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldsto hit n= # cyc= # c/u= # frzoc=#",
+   "occ": 0,
+   "text": "T ldsto hit                  n= 64 cyc=   331 c/u=   5.17 frzoc=0.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldsto miss n= # cyc= # c/u= # rdmiss=# wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ldsto miss                 n= 64 cyc=  3580 c/u=  55.93 rdmiss=1.00 wrmiss=1.00 ocfill=47.54 frzoc=50.95",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ldstream miss s64 n= # cyc= # c/u= # rdmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ldstream miss s64          n= 64 cyc=  1180 c/u=  18.43 rdmiss=1.00 ocfill=14.25 frzoc=15.32",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "timing",
+   "shape": "T ststream miss s64 n= # cyc= # c/u= # wrmiss=# ocfill=# frzoc=#",
+   "occ": 0,
+   "text": "T ststream miss s64          n= 64 cyc=  1419 c/u=  22.17 wrmiss=1.00 ocfill=14.03 frzoc=19.06",
+   "ignore": [],
+   "var": []
+  },
+  {
+   "class": "functional",
+   "shape": "cachetest2 DONE",
+   "occ": 0,
+   "text": "cachetest2 DONE",
+   "ignore": [],
+   "var": []
+  }
+ ]
+}

@@ -1,0 +1,3732 @@
+{
+ "program": "p4probe",
+ "source": "tools/hw/debug-ubc-hudi/p4probe.out (console run, KOS 2.1.0 under dcload-ip, 2026-09-23)",
+ "build": "tb/bm/debug-ubc-hudi (make v1-dbg-bm): p4probe.bin at 0x8C010000",
+ "compare": "tb/bm/debug-ubc-hudi/check.py <output log> expected/p4probe.json --classes functional,timing",
+ "counts": {
+  "functional": 117,
+  "env": 182,
+  "param": 4,
+  "slow": 1
+ },
+ "lines": [
+  {
+   "text": "p4probe: start",
+   "class": "functional",
+   "why": "program marker",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "p4probe:",
+    "start"
+   ]
+  },
+  {
+   "text": "D PTEH     ff000000 r32 8c062000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PTEH"
+   ]
+  },
+  {
+   "text": "D PTEL     ff000004 r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PTEL"
+   ]
+  },
+  {
+   "text": "D TTB      ff000008 r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TTB"
+   ]
+  },
+  {
+   "text": "D TEA      ff00000c r32 8c062002",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TEA"
+   ]
+  },
+  {
+   "text": "D MMUCR    ff000010 r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "MMUCR"
+   ]
+  },
+  {
+   "text": "D BASRA    ff000014 r8  00000000",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BASRA"
+   ]
+  },
+  {
+   "text": "D BASRB    ff000018 r8  00000000",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BASRB"
+   ]
+  },
+  {
+   "text": "D CCR      ff00001c r32 00000105",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "CCR"
+   ]
+  },
+  {
+   "text": "D TRA      ff000020 r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TRA"
+   ]
+  },
+  {
+   "text": "D EXPEVT   ff000024 r32 000000e0",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "EXPEVT"
+   ]
+  },
+  {
+   "text": "D INTEVT   ff000028 r32 00000400",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "INTEVT"
+   ]
+  },
+  {
+   "text": "D PVR?     ff000030 r32 040205c1",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PVR?"
+   ]
+  },
+  {
+   "text": "D PTEA     ff000034 r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PTEA"
+   ]
+  },
+  {
+   "text": "D QACR0    ff000038 r32 00000004",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "QACR0"
+   ]
+  },
+  {
+   "text": "D QACR1    ff00003c r32 00000004",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "QACR1"
+   ]
+  },
+  {
+   "text": "D CVR?     ff000040 r32 00000000",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "CVR?"
+   ]
+  },
+  {
+   "text": "D PRR?     ff000044 r32 00000000",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PRR?"
+   ]
+  },
+  {
+   "text": "D PMCR1    ff000084 r16 0000c023",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PMCR1"
+   ]
+  },
+  {
+   "text": "D PMCR2    ff000088 r16 00000023",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PMCR2"
+   ]
+  },
+  {
+   "text": "D PMCTR1H  ff100004 r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PMCTR1H"
+   ]
+  },
+  {
+   "text": "D PMCTR1L  ff100008 r32 05628e18",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PMCTR1L"
+   ]
+  },
+  {
+   "text": "D PMCTR2H  ff10000c r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PMCTR2H"
+   ]
+  },
+  {
+   "text": "D PMCTR2L  ff100010 r32 040888be",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PMCTR2L"
+   ]
+  },
+  {
+   "text": "D BARA     ff200000 r32 00000000",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BARA"
+   ]
+  },
+  {
+   "text": "D BAMRA    ff200004 r8  00000000",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BAMRA"
+   ]
+  },
+  {
+   "text": "D BBRA     ff200008 r16 00000000",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BBRA"
+   ]
+  },
+  {
+   "text": "D BARB     ff20000c r32 00000000",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BARB"
+   ]
+  },
+  {
+   "text": "D BAMRB    ff200010 r8  00000000",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BAMRB"
+   ]
+  },
+  {
+   "text": "D BBRB     ff200014 r16 00000000",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BBRB"
+   ]
+  },
+  {
+   "text": "D BDRB     ff200018 r32 dbfd4777",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BDRB"
+   ]
+  },
+  {
+   "text": "D BDMRB    ff20001c r32 dfffdbdf",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BDMRB"
+   ]
+  },
+  {
+   "text": "D BRCR     ff200020 r16 00000000",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BRCR"
+   ]
+  },
+  {
+   "text": "D BCR1     ff800000 r32 a3020008",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BCR1"
+   ]
+  },
+  {
+   "text": "D BCR2     ff800004 r16 00000001",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "BCR2"
+   ]
+  },
+  {
+   "text": "D WCR1     ff800008 r32 01110111",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "WCR1"
+   ]
+  },
+  {
+   "text": "D WCR2     ff80000c r32 618066d8",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "WCR2"
+   ]
+  },
+  {
+   "text": "D WCR3     ff800010 r32 07777777",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "WCR3"
+   ]
+  },
+  {
+   "text": "D MCR      ff800014 r32 c00a0e24",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "MCR"
+   ]
+  },
+  {
+   "text": "D PCR      ff800018 r16 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PCR"
+   ]
+  },
+  {
+   "text": "D RTCSR    ff80001c r16 00000094",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RTCSR"
+   ]
+  },
+  {
+   "text": "D RTCNT    ff800020 r16 0000005c",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RTCNT"
+   ]
+  },
+  {
+   "text": "D RTCOR    ff800024 r16 0000005e",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RTCOR"
+   ]
+  },
+  {
+   "text": "D RFCR     ff800028 r16 00000203",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RFCR"
+   ]
+  },
+  {
+   "text": "D PCTRA    ff80002c r32 000a03f0",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PCTRA"
+   ]
+  },
+  {
+   "text": "D PDTRA    ff800030 r16 000088e7",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PDTRA"
+   ]
+  },
+  {
+   "text": "D PCTRB    ff800040 r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PCTRB"
+   ]
+  },
+  {
+   "text": "D PDTRB    ff800044 r16 00000003",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "PDTRB"
+   ]
+  },
+  {
+   "text": "D GPIOIC   ff800048 r16 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "GPIOIC"
+   ]
+  },
+  {
+   "text": "D SAR0     ffa00000 r32 0c0787c0",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SAR0"
+   ]
+  },
+  {
+   "text": "D DAR0     ffa00004 r32 0c078160",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "DAR0"
+   ]
+  },
+  {
+   "text": "D DMATCR0  ffa00008 r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "DMATCR0"
+   ]
+  },
+  {
+   "text": "D CHCR0    ffa0000c r32 000853c3",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "CHCR0"
+   ]
+  },
+  {
+   "text": "D SAR1     ffa00010 r32 ffe80014",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SAR1"
+   ]
+  },
+  {
+   "text": "D DAR1     ffa00014 r32 0c0628a5",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "DAR1"
+   ]
+  },
+  {
+   "text": "D DMATCR1  ffa00018 r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "DMATCR1"
+   ]
+  },
+  {
+   "text": "D CHCR1    ffa0001c r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "CHCR1"
+   ]
+  },
+  {
+   "text": "D SAR2     ffa00020 r32 acd9e540",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SAR2"
+   ]
+  },
+  {
+   "text": "D DAR2     ffa00024 r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "DAR2"
+   ]
+  },
+  {
+   "text": "D DMATCR2  ffa00028 r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "DMATCR2"
+   ]
+  },
+  {
+   "text": "D CHCR2    ffa0002c r32 000012c0",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "CHCR2"
+   ]
+  },
+  {
+   "text": "D SAR3     ffa00030 r32 0c07a5c0",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SAR3"
+   ]
+  },
+  {
+   "text": "D DAR3     ffa00034 r32 0c06a5c0",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "DAR3"
+   ]
+  },
+  {
+   "text": "D DMATCR3  ffa00038 r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "DMATCR3"
+   ]
+  },
+  {
+   "text": "D CHCR3    ffa0003c r32 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "CHCR3"
+   ]
+  },
+  {
+   "text": "D DMAOR    ffa00040 r32 00008201",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "DMAOR"
+   ]
+  },
+  {
+   "text": "D FRQCR    ffc00000 r16 00000e0a",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "FRQCR"
+   ]
+  },
+  {
+   "text": "D STBCR    ffc00004 r8  00000003",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "STBCR"
+   ]
+  },
+  {
+   "text": "D WTCNT    ffc00008 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "WTCNT"
+   ]
+  },
+  {
+   "text": "D WTCSR    ffc0000c r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "WTCSR"
+   ]
+  },
+  {
+   "text": "D STBCR2   ffc00010 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "STBCR2"
+   ]
+  },
+  {
+   "text": "D R64CNT   ffc80000 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "R64CNT"
+   ]
+  },
+  {
+   "text": "D RSECCNT  ffc80004 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RSECCNT"
+   ]
+  },
+  {
+   "text": "D RMINCNT  ffc80008 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RMINCNT"
+   ]
+  },
+  {
+   "text": "D RHRCNT   ffc8000c r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RHRCNT"
+   ]
+  },
+  {
+   "text": "D RWKCNT   ffc80010 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RWKCNT"
+   ]
+  },
+  {
+   "text": "D RDAYCNT  ffc80014 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RDAYCNT"
+   ]
+  },
+  {
+   "text": "D RMONCNT  ffc80018 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RMONCNT"
+   ]
+  },
+  {
+   "text": "D RYRCNT   ffc8001c r16 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RYRCNT"
+   ]
+  },
+  {
+   "text": "D RSECAR   ffc80020 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RSECAR"
+   ]
+  },
+  {
+   "text": "D RMINAR   ffc80024 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RMINAR"
+   ]
+  },
+  {
+   "text": "D RHRAR    ffc80028 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RHRAR"
+   ]
+  },
+  {
+   "text": "D RWKAR    ffc8002c r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RWKAR"
+   ]
+  },
+  {
+   "text": "D RDAYAR   ffc80030 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RDAYAR"
+   ]
+  },
+  {
+   "text": "D RMONAR   ffc80034 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RMONAR"
+   ]
+  },
+  {
+   "text": "D RCR1     ffc80038 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RCR1"
+   ]
+  },
+  {
+   "text": "D RCR2     ffc8003c r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "RCR2"
+   ]
+  },
+  {
+   "text": "D ICR      ffd00000 r16 00008000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "ICR"
+   ]
+  },
+  {
+   "text": "D IPRA     ffd00004 r16 0000f0f0",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "IPRA"
+   ]
+  },
+  {
+   "text": "D IPRB     ffd00008 r16 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "IPRB"
+   ]
+  },
+  {
+   "text": "D IPRC     ffd0000c r16 00000300",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "IPRC"
+   ]
+  },
+  {
+   "text": "D TOCR     ffd80000 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TOCR"
+   ]
+  },
+  {
+   "text": "D TSTR     ffd80004 r8  00000005",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TSTR"
+   ]
+  },
+  {
+   "text": "D TCOR0    ffd80008 r32 0001e70f",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TCOR0"
+   ]
+  },
+  {
+   "text": "D TCNT0    ffd8000c r32 00007e35",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TCNT0"
+   ]
+  },
+  {
+   "text": "D TCR0     ffd80010 r16 00000020",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TCR0"
+   ]
+  },
+  {
+   "text": "D TCOR1    ffd80014 r32 000030b4",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TCOR1"
+   ]
+  },
+  {
+   "text": "D TCNT1    ffd80018 r32 000030a9",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TCNT1"
+   ]
+  },
+  {
+   "text": "D TCR1     ffd8001c r16 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TCR1"
+   ]
+  },
+  {
+   "text": "D TCOR2    ffd80020 r32 00be41f0",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TCOR2"
+   ]
+  },
+  {
+   "text": "D TCNT2    ffd80024 r32 006053fe",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TCNT2"
+   ]
+  },
+  {
+   "text": "D TCR2     ffd80028 r16 00000020",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TCR2"
+   ]
+  },
+  {
+   "text": "D TCPR2    ffd8002c r32 ff9b8012",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "TCPR2"
+   ]
+  },
+  {
+   "text": "D SCSMR1   ffe00000 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCSMR1"
+   ]
+  },
+  {
+   "text": "D SCBRR1   ffe00004 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCBRR1"
+   ]
+  },
+  {
+   "text": "D SCSCR1   ffe00008 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCSCR1"
+   ]
+  },
+  {
+   "text": "D SCTDR1   ffe0000c r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCTDR1"
+   ]
+  },
+  {
+   "text": "D SCSSR1   ffe00010 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCSSR1"
+   ]
+  },
+  {
+   "text": "D SCRDR1   ffe00014 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCRDR1"
+   ]
+  },
+  {
+   "text": "D SCSCMR1  ffe00018 r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCSCMR1"
+   ]
+  },
+  {
+   "text": "D SCSPTR1  ffe0001c r8  00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCSPTR1"
+   ]
+  },
+  {
+   "text": "D SCSMR2   ffe80000 r16 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCSMR2"
+   ]
+  },
+  {
+   "text": "D SCBRR2   ffe80004 r8  0000000c",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCBRR2"
+   ]
+  },
+  {
+   "text": "D SCSCR2   ffe80008 r16 00000030",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCSCR2"
+   ]
+  },
+  {
+   "text": "D SCFSR2   ffe80010 r16 00000060",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCFSR2"
+   ]
+  },
+  {
+   "text": "D SCFCR2   ffe80018 r16 00000040",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCFCR2"
+   ]
+  },
+  {
+   "text": "D SCFDR2   ffe8001c r16 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCFDR2"
+   ]
+  },
+  {
+   "text": "D SCSPTR2  ffe80020 r16 00000011",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCSPTR2"
+   ]
+  },
+  {
+   "text": "D SCLSR2   ffe80024 r16 00000000",
+   "class": "env",
+   "why": "KOS / dcload state of this or another block (counters, garbage, the board state)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SCLSR2"
+   ]
+  },
+  {
+   "text": "D SDIR     fff00000 r16 0000ffff",
+   "class": "functional",
+   "why": "this spec's register after reset / KOS ubc_init (all 0), PVR, PMCR1 = C023 (boot stub)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SDIR"
+   ]
+  },
+  {
+   "text": "D SDDR     fff00008 r32 5573a3ab",
+   "class": "param",
+   "why": "SDDR power-on content",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "D",
+    "SDDR"
+   ]
+  },
+  {
+   "text": "W ff000000: 8c062000 00000000 00000000 8c062002 00000000 00000000 00000000 00000105 00000000 000000e0 00000400 00000000 040205c1 00000000 00000004 00000004 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000",
+   "class": "env",
+   "why": "sweep includes state-dependent registers",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "W",
+    "ff000000:"
+   ]
+  },
+  {
+   "text": "W ff100000: 00000000 00000000 0602c40f 00000000 040888be 040888be 040888be 040888be 00000000 00000000 06030185 00000000 040888be 040888be 040888be 040888be",
+   "class": "env",
+   "why": "sweep includes state-dependent registers",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "W",
+    "ff100000:"
+   ]
+  },
+  {
+   "text": "W ff200000: 00000000 00000000 00000000 00000000 00000000 00000000 dbfd4777 dfffdbdf 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000",
+   "class": "env",
+   "why": "sweep includes state-dependent registers",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "W",
+    "ff200000:"
+   ]
+  },
+  {
+   "text": "W fff00000: 00000000 00000000 5573a3ab 00000000 00000000 00000000 00000000 00000000",
+   "class": "param",
+   "why": "sweep includes state-dependent registers",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "W",
+    "fff00000:"
+   ]
+  },
+  {
+   "text": "H ff00002c r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff00002c"
+   ]
+  },
+  {
+   "text": "H ff000048 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff000048"
+   ]
+  },
+  {
+   "text": "H ff00004c r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff00004c"
+   ]
+  },
+  {
+   "text": "H ff000050 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff000050"
+   ]
+  },
+  {
+   "text": "H ff000060 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff000060"
+   ]
+  },
+  {
+   "text": "H ff000070 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff000070"
+   ]
+  },
+  {
+   "text": "H ff00007c r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff00007c"
+   ]
+  },
+  {
+   "text": "H ff000080 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff000080"
+   ]
+  },
+  {
+   "text": "H ff00008c r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff00008c"
+   ]
+  },
+  {
+   "text": "H ff000090 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff000090"
+   ]
+  },
+  {
+   "text": "H ff0000a0 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff0000a0"
+   ]
+  },
+  {
+   "text": "H ff0000c0 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff0000c0"
+   ]
+  },
+  {
+   "text": "H ff0000fc r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff0000fc"
+   ]
+  },
+  {
+   "text": "H ff100000 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff100000"
+   ]
+  },
+  {
+   "text": "H ff100014 r32 040888be r16 88be r8 be",
+   "class": "env",
+   "why": "PMCTR2L frozen by an earlier program",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff100014"
+   ]
+  },
+  {
+   "text": "H ff100018 r32 040888be r16 88be r8 be",
+   "class": "env",
+   "why": "PMCTR2L frozen by an earlier program",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff100018"
+   ]
+  },
+  {
+   "text": "H ff100020 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff100020"
+   ]
+  },
+  {
+   "text": "H ff100040 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff100040"
+   ]
+  },
+  {
+   "text": "H ff200024 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff200024"
+   ]
+  },
+  {
+   "text": "H ff200028 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff200028"
+   ]
+  },
+  {
+   "text": "H ff20002c r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff20002c"
+   ]
+  },
+  {
+   "text": "H ff200030 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff200030"
+   ]
+  },
+  {
+   "text": "H ff20003c r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff20003c"
+   ]
+  },
+  {
+   "text": "H ff200040 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff200040"
+   ]
+  },
+  {
+   "text": "H ff300000 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff300000"
+   ]
+  },
+  {
+   "text": "H ff400000 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff400000"
+   ]
+  },
+  {
+   "text": "H ff500000 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff500000"
+   ]
+  },
+  {
+   "text": "H ff600000 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff600000"
+   ]
+  },
+  {
+   "text": "H ff700000 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff700000"
+   ]
+  },
+  {
+   "text": "H ff800034 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff800034"
+   ]
+  },
+  {
+   "text": "H ff800038 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff800038"
+   ]
+  },
+  {
+   "text": "H ff80003c r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff80003c"
+   ]
+  },
+  {
+   "text": "H ff80004c r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff80004c"
+   ]
+  },
+  {
+   "text": "H ff800050 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff800050"
+   ]
+  },
+  {
+   "text": "H ff800054 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ff800054"
+   ]
+  },
+  {
+   "text": "H ffa00044 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffa00044"
+   ]
+  },
+  {
+   "text": "H ffa00048 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffa00048"
+   ]
+  },
+  {
+   "text": "H ffa00050 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffa00050"
+   ]
+  },
+  {
+   "text": "H ffa00080 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffa00080"
+   ]
+  },
+  {
+   "text": "H ffb00000 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffb00000"
+   ]
+  },
+  {
+   "text": "H ffc00014 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffc00014"
+   ]
+  },
+  {
+   "text": "H ffc00018 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffc00018"
+   ]
+  },
+  {
+   "text": "H ffc80040 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffc80040"
+   ]
+  },
+  {
+   "text": "H ffc80044 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffc80044"
+   ]
+  },
+  {
+   "text": "H ffc80050 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffc80050"
+   ]
+  },
+  {
+   "text": "H ffc80054 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffc80054"
+   ]
+  },
+  {
+   "text": "H ffd00010 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffd00010"
+   ]
+  },
+  {
+   "text": "H ffd00014 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffd00014"
+   ]
+  },
+  {
+   "text": "H ffd00020 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffd00020"
+   ]
+  },
+  {
+   "text": "H ffd80030 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffd80030"
+   ]
+  },
+  {
+   "text": "H ffd80034 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffd80034"
+   ]
+  },
+  {
+   "text": "H ffd80040 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffd80040"
+   ]
+  },
+  {
+   "text": "H ffe00020 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffe00020"
+   ]
+  },
+  {
+   "text": "H ffe00024 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffe00024"
+   ]
+  },
+  {
+   "text": "H ffe80028 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffe80028"
+   ]
+  },
+  {
+   "text": "H ffe8002c r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffe8002c"
+   ]
+  },
+  {
+   "text": "H ffe80030 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "ffe80030"
+   ]
+  },
+  {
+   "text": "H fff00004 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "fff00004"
+   ]
+  },
+  {
+   "text": "H fff0000c r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "fff0000c"
+   ]
+  },
+  {
+   "text": "H fff00010 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "fff00010"
+   ]
+  },
+  {
+   "text": "H fff00014 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "fff00014"
+   ]
+  },
+  {
+   "text": "H fff00020 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "fff00020"
+   ]
+  },
+  {
+   "text": "H fff80000 r32 00000000 r16 0000 r8 00",
+   "class": "functional",
+   "why": "hole reads 0 at every size",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "H",
+    "fff80000"
+   ]
+  },
+  {
+   "text": "M PVR@ff000030: +40=00000000 +80=00000000 +100=040205c1 +200=040205c1 +400=040205c1 +800=040205c1 +1000=040205c1 +2000=040205c1 +4000=040205c1 +8000=040205c1 +10000=040205c1 +20000=040205c1 +40000=00000000",
+   "class": "functional",
+   "why": "mirror rule of the block",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "PVR@ff000030:"
+   ]
+  },
+  {
+   "text": "M BARA=5a5aa5a5@ff200000: +40=00000000 +80=00000000 +100=ff000000 +200=ff000000 +400=ff000000 +800=ff000000 +1000=ff000000 +2000=ff000000 +4000=ff000000 +8000=ff000000 +10000=ff000000 +20000=ff000000 +40000=00000000",
+   "class": "env",
+   "why": "undriven UBC window = the KOS build's last load / a running counter",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "BARA=5a5aa5a5@ff200000:"
+   ]
+  },
+  {
+   "text": "M PMCR2=0023@ff000088: +40=0000 +80=0000 +100=0023 +200=0023 +400=0023 +800=0023 +1000=0023 +2000=0023 +4000=0023 +8000=0023 +10000=0023 +20000=0023 +40000=0000",
+   "class": "functional",
+   "why": "mirror rule of the block",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "PMCR2=0023@ff000088:"
+   ]
+  },
+  {
+   "text": "M IPRC@ffd0000c: +40=0000 +80=0000 +100=0000 +200=0000 +400=0000 +800=0000 +1000=0000 +2000=0000 +4000=0000 +8000=0000 +10000=0000 +20000=0000 +40000=0000",
+   "class": "functional",
+   "why": "mirror rule of the block",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "IPRC@ffd0000c:"
+   ]
+  },
+  {
+   "text": "M TCOR0@ffd80008: +40=00000000 +80=00000000 +100=00000000 +200=00000000 +400=00000000 +800=00000000 +1000=00000000 +2000=00000000 +4000=00000000 +8000=00000000 +10000=00000000 +20000=00000000 +40000=00000000",
+   "class": "functional",
+   "why": "mirror rule of the block",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "TCOR0@ffd80008:"
+   ]
+  },
+  {
+   "text": "M BCR1@ff800000: +40=00000000 +80=00000000 +100=00000000 +200=00000000 +400=00000000 +800=00000000 +1000=00000000 +2000=00000000 +4000=00000000 +8000=00000000 +10000=00000000 +20000=00000000 +40000=00000000",
+   "class": "functional",
+   "why": "mirror rule of the block",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "BCR1@ff800000:"
+   ]
+  },
+  {
+   "text": "M FRQCR@ffc00000: +40=0000 +80=0000 +100=0000 +200=0000 +400=0000 +800=0000 +1000=0000 +2000=0000 +4000=0000 +8000=0000 +10000=0000 +20000=0000 +40000=0000",
+   "class": "functional",
+   "why": "mirror rule of the block",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "FRQCR@ffc00000:"
+   ]
+  },
+  {
+   "text": "M SDIR@fff00000: +40=0000 +80=0000 +100=0000 +200=0000 +400=0000 +800=0000 +1000=0000 +2000=0000 +4000=0000 +8000=0000 +10000=0000 +20000=0000 +40000=0000",
+   "class": "functional",
+   "why": "mirror rule of the block",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "SDIR@fff00000:"
+   ]
+  },
+  {
+   "text": "M PMCTR1L@ff100008 (running): +40=067ba181 +80=067bade2 +100=067bb93c +200=067bc49e +400=067bcffc +800=067bdb6e +1000=067be6d6 +2000=067bf254 +4000=067bfdcc +8000=067c0940 +10000=067c14aa +20000=067c2052 +40000=00000000",
+   "class": "env",
+   "why": "undriven UBC window = the KOS build's last load / a running counter",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "PMCTR1L@ff100008"
+   ]
+  },
+  {
+   "text": "S ff00001c r32 00000105 r16 0000 r16+2 0000 r8 00 00 00 00",
+   "class": "functional",
+   "why": "wrong-size views read 0 (register values: boot stub / CCR 0x105)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ff00001c"
+   ]
+  },
+  {
+   "text": "S ff000030 r32 040205c1 r16 0000 r16+2 0000 r8 00 00 00 00",
+   "class": "functional",
+   "why": "wrong-size views read 0 (register values: boot stub / CCR 0x105)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ff000030"
+   ]
+  },
+  {
+   "text": "S ff000010 r32 00000000 r16 0000 r16+2 0000 r8 00 00 00 00",
+   "class": "functional",
+   "why": "wrong-size views read 0 (register values: boot stub / CCR 0x105)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ff000010"
+   ]
+  },
+  {
+   "text": "S ffd00004 r32 00000000 r16 f0f0 r16+2 0000 r8 00 00 00 00",
+   "class": "env",
+   "why": "IPRA / IPRC / TCOR0 values KOS set",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ffd00004"
+   ]
+  },
+  {
+   "text": "S ffd0000c r32 00000000 r16 0300 r16+2 0000 r8 00 00 00 00",
+   "class": "env",
+   "why": "IPRA / IPRC / TCOR0 values KOS set",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ffd0000c"
+   ]
+  },
+  {
+   "text": "S ffd80008 r32 0001e70f r16 0000 r16+2 0000 r8 00 00 00 00",
+   "class": "env",
+   "why": "IPRA / IPRC / TCOR0 values KOS set",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ffd80008"
+   ]
+  },
+  {
+   "text": "S ffd80000 r32 00000000 r16 0000 r16+2 0000 r8 00 00 00 00",
+   "class": "functional",
+   "why": "wrong-size views read 0 (register values: boot stub / CCR 0x105)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ffd80000"
+   ]
+  },
+  {
+   "text": "S ff800004 r32 00000000 r16 0001 r16+2 0000 r8 00 00 00 00",
+   "class": "functional",
+   "why": "wrong-size views read 0 (register values: boot stub / CCR 0x105)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ff800004"
+   ]
+  },
+  {
+   "text": "S ff800008 r32 01110111 r16 0000 r16+2 0000 r8 00 00 00 00",
+   "class": "functional",
+   "why": "wrong-size views read 0 (register values: boot stub / CCR 0x105)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ff800008"
+   ]
+  },
+  {
+   "text": "S ffc00000 r32 00000000 r16 0e0a r16+2 0000 r8 00 00 00 00",
+   "class": "functional",
+   "why": "wrong-size views read 0 (register values: boot stub / CCR 0x105)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ffc00000"
+   ]
+  },
+  {
+   "text": "S ffc00004 r32 00000000 r16 0000 r16+2 0000 r8 03 00 00 00",
+   "class": "functional",
+   "why": "wrong-size views read 0 (register values: boot stub / CCR 0x105)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ffc00004"
+   ]
+  },
+  {
+   "text": "S ffc80004 r32 00000000 r16 0000 r16+2 0000 r8 00 00 00 00",
+   "class": "functional",
+   "why": "wrong-size views read 0 (register values: boot stub / CCR 0x105)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ffc80004"
+   ]
+  },
+  {
+   "text": "S ffe80000 r32 00000000 r16 0000 r16+2 0000 r8 00 00 00 00",
+   "class": "functional",
+   "why": "wrong-size views read 0 (register values: boot stub / CCR 0x105)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ffe80000"
+   ]
+  },
+  {
+   "text": "S ffe80004 r32 00000000 r16 0000 r16+2 0000 r8 0c 00 00 00",
+   "class": "functional",
+   "why": "wrong-size views read 0 (register values: boot stub / CCR 0x105)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "S",
+    "ffe80004"
+   ]
+  },
+  {
+   "text": "U BARA: ffffffff->ffffffff 00000000->00000000 5a5aa5a5->5a5aa5a5",
+   "class": "functional",
+   "why": "UBC read-back masks and the size rule",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "U",
+    "BARA:"
+   ]
+  },
+  {
+   "text": "U BARB: ffffffff->ffffffff 00000000->00000000 5a5aa5a5->5a5aa5a5",
+   "class": "functional",
+   "why": "UBC read-back masks and the size rule",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "U",
+    "BARB:"
+   ]
+  },
+  {
+   "text": "U BDRB: ffffffff->ffffffff 00000000->00000000 5a5aa5a5->5a5aa5a5",
+   "class": "functional",
+   "why": "UBC read-back masks and the size rule",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "U",
+    "BDRB:"
+   ]
+  },
+  {
+   "text": "U BDMRB: ffffffff->ffffffff 00000000->00000000 5a5aa5a5->5a5aa5a5",
+   "class": "functional",
+   "why": "UBC read-back masks and the size rule",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "U",
+    "BDMRB:"
+   ]
+  },
+  {
+   "text": "U BAMRA ff->0f 00->00 BAMRB ff->0f 00->00 BASRA ff->ff 00->00 BASRB ff->ff 00->00",
+   "class": "functional",
+   "why": "UBC read-back masks and the size rule",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "U",
+    "BAMRA"
+   ]
+  },
+  {
+   "text": "U BBRA: 0043->0043 003c->003c ff80->0000 0000->0000 BBRB: 0043->0043 003c->003c ff80->0000 0000->0000",
+   "class": "functional",
+   "why": "UBC read-back masks and the size rule",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "U",
+    "BBRA:"
+   ]
+  },
+  {
+   "text": "U BRCR: ffff->c4c9 0000->0000 8000->8000 4000->4000 c000->c000 0000->0000",
+   "class": "functional",
+   "why": "UBC read-back masks and the size rule",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "U",
+    "BRCR:"
+   ]
+  },
+  {
+   "text": "U wsize: BARA=11111111 w16 2222 -> 11111111, w16@+2 3333 -> 11111111, w8 44 -> 11111111, w8@+3 55 -> 11111111",
+   "class": "functional",
+   "why": "UBC read-back masks and the size rule",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "U",
+    "wsize:",
+    "BARA=11111111"
+   ]
+  },
+  {
+   "text": "U wsize: BAMRA w16 0005 -> 00, w32 00000006 -> 00 | BBRA w32 00000014 -> 0000, w8 24 -> 0000",
+   "class": "functional",
+   "why": "UBC read-back masks and the size rule",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "U",
+    "wsize:",
+    "BAMRA"
+   ]
+  },
+  {
+   "text": "U wsize: BRCR w32 00000400 -> 0000, w8 08 -> 0000, w8@+1 04 -> 0000 | BASRA w32 000000aa -> 00, w16 00bb -> 00",
+   "class": "functional",
+   "why": "UBC read-back masks and the size rule",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "U",
+    "wsize:",
+    "BRCR"
+   ]
+  },
+  {
+   "text": "U rsize: BARA=5a5aa5a5 r16 0000 r16+2 0000 r8 00 00 00 00",
+   "class": "functional",
+   "why": "UBC read-back masks and the size rule",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "U",
+    "rsize:",
+    "BARA=5a5aa5a5"
+   ]
+  },
+  {
+   "text": "U rsize: BBRA=0043 r32 00000000 r8 00 r8+1 00 r16+2 0000 | BAMRA=0d r16 0000 r32 00000000 | BASRA=a5 r16 0000 r32 00000000 | BRCR=0408 r32 00000000 r8 00 r8+1 00",
+   "class": "functional",
+   "why": "UBC read-back masks and the size rule",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "U",
+    "rsize:",
+    "BBRA=0043"
+   ]
+  },
+  {
+   "text": "I SDIR r16 ffff ffff r32 00000000 | SDDR initial 5573a3ab, w32 89abcdef -> 5573a3ab r16 5573 r16+2 a3ab r8 00 r8+3 00",
+   "class": "param",
+   "why": "SDDR power-on content (SDIR / write rules also on this line)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "I",
+    "SDIR"
+   ]
+  },
+  {
+   "text": "I SDDR w16@+2 5555 -> 5573a3ab, w16@+0 6666 -> 5573a3ab, w8@+1 77 -> 5573a3ab",
+   "class": "param",
+   "why": "SDDR power-on content (SDIR / write rules also on this line)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "I",
+    "SDDR"
+   ]
+  },
+  {
+   "text": "P readback PMCR2: 0000->0000 0001->0001 003f->003f 0040->0000 0080->0000 0100->0100 0200->0000 0400->0000 0800->0000 1000->0000 2000->0000 4000->4000 8000->8000 c000->c000 ffff->c13f 0000->0000",
+   "class": "functional",
+   "why": "PMCR mask 0xC13F",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "P",
+    "readback"
+   ]
+  },
+  {
+   "text": "P run 0023: rb 0023 afterclr 0 start 0 after-spin 0 disabled 0 re-enabled 0",
+   "class": "functional",
+   "why": "PMEN & PMST: 0023 / 4023 / 8023 never count (the read after the C023 restart is ignored)",
+   "ignore": [
+    14
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "P",
+    "run",
+    "0023:"
+   ]
+  },
+  {
+   "text": "P run 4023: rb 4023 afterclr 0 start 0 after-spin 0 disabled 0 re-enabled 0",
+   "class": "functional",
+   "why": "PMEN & PMST: 0023 / 4023 / 8023 never count (the read after the C023 restart is ignored)",
+   "ignore": [
+    14
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "P",
+    "run",
+    "4023:"
+   ]
+  },
+  {
+   "text": "P run 8023: rb 8023 afterclr 0 start 0 after-spin 0 disabled 0 re-enabled 0",
+   "class": "functional",
+   "why": "PMEN & PMST: 0023 / 4023 / 8023 never count (the read after the C023 restart is ignored)",
+   "ignore": [
+    14
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "P",
+    "run",
+    "8023:"
+   ]
+  },
+  {
+   "text": "P run c023: rb c023 afterclr 0 start 0 after-spin 3040 disabled 3089 re-enabled 3089",
+   "class": "functional",
+   "why": "PMCR read-back, PMCLR clears a stopped counter (counts ignored)",
+   "ignore": [
+    8,
+    10,
+    12,
+    14
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "P",
+    "run",
+    "c023:"
+   ]
+  },
+  {
+   "text": "P cont: running 3037 | disabled 3043 (H 00000000) after-spin 3043 | re-enabled 3043 | PMST-only 3049 | PMEN-only 3049 | both 3049",
+   "class": "functional",
+   "why": "PMCTRH while stopped (counts ignored)",
+   "ignore": [
+    3,
+    6,
+    10,
+    13,
+    16,
+    19,
+    22
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "P",
+    "cont:"
+   ]
+  },
+  {
+   "text": "P clr-running: before 3038 | E023 rb c023 now 3047 after-spin 6073 | C023 6079 after-spin 9113 | 2023 9120 | C023 9120",
+   "class": "functional",
+   "why": "PMCLR does not read back (counts ignored)",
+   "ignore": [
+    3,
+    9,
+    11,
+    14,
+    16,
+    19,
+    22
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "P",
+    "clr-running:"
+   ]
+  },
+  {
+   "text": "P ctr-write: disabled read L 00000000 H 00000000 | enabled L 00000000 H 00000000 | write-while-running L 0000000d",
+   "class": "functional",
+   "why": "PMCTR is read only (the read after the start write and the running count ignored)",
+   "ignore": [
+    11,
+    17
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "P",
+    "ctr-write:"
+   ]
+  },
+  {
+   "text": "P ratio: PMCR1 rb c123 | ratio d 3600864 cpu d 300072 | consecutive ratio reads: 288 396 468 540 708 1056 1128 1200 1272 1344 1416 1488 1584 1824 1896 1968",
+   "class": "functional",
+   "why": "PMCR1 read-back with PMCLK (the counts ignored)",
+   "ignore": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "P",
+    "ratio:"
+   ]
+  },
+  {
+   "text": "P clkf: ev13 ratio 24120 cpu 2007 | ev24 ratio 6660 cpu 550",
+   "class": "env",
+   "why": "values depend on the KOS build's C code between the accesses (rules: v1-perfctr)",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "P",
+    "clkf:"
+   ]
+  },
+  {
+   "text": "P carry: after 2200 ms ratio mode H 00000001 L 39e72ef4 H 00000001",
+   "class": "slow",
+   "why": "2.2 s of ratio mode",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "P",
+    "carry:"
+   ]
+  },
+  {
+   "text": "P sizes: PMCR2 r32 00000000 r8+0 00 r8+1 00 | PMCTR2L r16+0 8287 r16+2 828a | PMCTR2H r16+0 0000 r16+2 0000",
+   "class": "functional",
+   "why": "size rule of PMCR (r32 / r8 read 0) and PMCTR2H (the running PMCTR2L ignored)",
+   "ignore": [
+    12,
+    14
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "P",
+    "sizes:"
+   ]
+  },
+  {
+   "text": "E: event survey, per snippet d(event) and d(cycles) for 48 - 16 iterations",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E:",
+    "event"
+   ]
+  },
+  {
+   "text": "E: snippets nop ld st ldP2 ldCCN ldTMU br fp ocm icm",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E:",
+    "snippets"
+   ]
+  },
+  {
+   "text": "E 00 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 602 165 644 421 165 1745 2244",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "00"
+   ]
+  },
+  {
+   "text": "E 01 ev 3 131 3 3 3 3 3 3 67 3 | cyc 243 197 197 580 165 644 421 165 1745 2260",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "01"
+   ]
+  },
+  {
+   "text": "E 02 ev 4 4 132 4 4 4 4 4 4 4 | cyc 237 197 197 580 165 644 421 165 1747 2246",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "02"
+   ]
+  },
+  {
+   "text": "E 03 ev 0 0 0 0 0 0 0 0 0 0 | cyc 243 197 197 580 165 644 421 165 1719 2250",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "03"
+   ]
+  },
+  {
+   "text": "E 04 ev 0 0 0 0 0 0 0 0 64 0 | cyc 237 197 197 580 165 644 421 165 1745 2252",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "04"
+   ]
+  },
+  {
+   "text": "E 05 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1749 2262",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "05"
+   ]
+  },
+  {
+   "text": "E 06 ev 228 161 161 128 128 128 417 161 130 289 | cyc 237 197 197 580 165 644 421 165 1745 2244",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "06"
+   ]
+  },
+  {
+   "text": "E 07 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1733 2266",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "07"
+   ]
+  },
+  {
+   "text": "E 08 ev 0 0 0 0 0 0 0 0 0 64 | cyc 237 197 197 602 165 644 421 165 1747 2246",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "08"
+   ]
+  },
+  {
+   "text": "E 09 ev 7 135 135 39 39 39 7 7 72 7 | cyc 237 197 197 602 165 644 421 165 1747 2244",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "09"
+   ]
+  },
+  {
+   "text": "E 0a ev 219 161 161 128 128 128 417 161 129 161 | cyc 237 197 197 580 165 644 421 165 1733 2268",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "0a"
+   ]
+  },
+  {
+   "text": "E 0b ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 602 165 644 421 165 1747 2252",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "0b"
+   ]
+  },
+  {
+   "text": "E 0c ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1733 2268",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "0c"
+   ]
+  },
+  {
+   "text": "E 0d ev 0 0 0 0 32 32 0 0 0 0 | cyc 237 197 197 602 165 644 421 165 1745 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "0d"
+   ]
+  },
+  {
+   "text": "E 0e ev 7 135 135 7 7 7 7 7 71 7 | cyc 237 197 197 570 165 644 421 165 1745 2252",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "0e"
+   ]
+  },
+  {
+   "text": "E 0f ev 0 0 0 0 0 0 0 0 64 0 | cyc 237 197 197 580 165 644 421 165 1745 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "0f"
+   ]
+  },
+  {
+   "text": "E 10 ev 32 32 32 32 32 32 96 32 32 96 | cyc 237 197 197 558 165 644 421 165 1745 2252",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "10"
+   ]
+  },
+  {
+   "text": "E 11 ev 32 32 32 32 32 32 64 32 32 96 | cyc 237 197 197 580 165 644 421 165 1745 2244",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "11"
+   ]
+  },
+  {
+   "text": "E 12 ev 0 0 0 0 0 0 32 0 0 0 | cyc 237 197 197 602 165 644 421 165 1747 2246",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "12"
+   ]
+  },
+  {
+   "text": "E 13 ev 197 165 165 69 69 69 261 133 102 197 | cyc 237 197 197 602 165 644 421 165 1745 2252",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "13"
+   ]
+  },
+  {
+   "text": "E 14 ev 161 66 66 66 66 66 98 98 66 34 | cyc 237 197 197 580 165 644 421 165 1733 2258",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "14"
+   ]
+  },
+  {
+   "text": "E 15 ev 0 0 0 0 0 0 0 96 0 0 | cyc 237 197 197 580 165 644 421 165 1733 2258",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "15"
+   ]
+  },
+  {
+   "text": "E 16 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 558 165 644 421 165 1745 2250",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "16"
+   ]
+  },
+  {
+   "text": "E 17 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 558 165 644 421 165 1747 2250",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "17"
+   ]
+  },
+  {
+   "text": "E 18 ev 0 0 0 0 0 0 0 0 0 0 | cyc 243 197 197 580 165 644 421 165 1719 2250",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "18"
+   ]
+  },
+  {
+   "text": "E 19 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1733 2266",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "19"
+   ]
+  },
+  {
+   "text": "E 1a ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1733 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "1a"
+   ]
+  },
+  {
+   "text": "E 1b ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1745 2246",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "1b"
+   ]
+  },
+  {
+   "text": "E 1c ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 602 165 644 421 165 1747 2244",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "1c"
+   ]
+  },
+  {
+   "text": "E 1d ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1737 2244",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "1d"
+   ]
+  },
+  {
+   "text": "E 1e ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 602 165 644 421 165 1745 2254",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "1e"
+   ]
+  },
+  {
+   "text": "E 1f ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1745 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "1f"
+   ]
+  },
+  {
+   "text": "E 20 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1733 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "20"
+   ]
+  },
+  {
+   "text": "E 21 ev 24 0 0 0 0 0 0 0 0 1536 | cyc 237 197 197 602 165 644 421 165 1745 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "21"
+   ]
+  },
+  {
+   "text": "E 22 ev 0 0 0 0 0 0 0 0 1531 0 | cyc 237 197 197 580 165 644 421 165 1745 2246",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "22"
+   ]
+  },
+  {
+   "text": "E 23 ev 251 199 199 604 167 646 423 167 1747 2264 | cyc 237 197 197 602 165 644 421 165 1745 2262",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "23"
+   ]
+  },
+  {
+   "text": "E 24 ev 31 0 0 0 0 0 0 0 0 1957 | cyc 243 197 197 580 165 644 421 165 1737 2250",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "24"
+   ]
+  },
+  {
+   "text": "E 25 ev 0 0 0 479 64 543 0 0 1587 0 | cyc 237 197 197 580 165 644 421 165 1721 2262",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "25"
+   ]
+  },
+  {
+   "text": "E 26 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1745 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "26"
+   ]
+  },
+  {
+   "text": "E 27 ev 32 32 32 32 32 32 96 32 32 32 | cyc 237 197 197 602 165 644 421 165 1747 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "27"
+   ]
+  },
+  {
+   "text": "E 28 ev 0 0 0 0 0 0 32 0 0 0 | cyc 237 197 197 580 165 644 421 165 1735 2258",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "28"
+   ]
+  },
+  {
+   "text": "E 29 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1747 2250",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "29"
+   ]
+  },
+  {
+   "text": "E 2a ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1749 2262",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "2a"
+   ]
+  },
+  {
+   "text": "E 2b ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1733 2258",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "2b"
+   ]
+  },
+  {
+   "text": "E 2c ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1733 2258",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "2c"
+   ]
+  },
+  {
+   "text": "E 2d ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1747 2244",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "2d"
+   ]
+  },
+  {
+   "text": "E 2e ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1747 2250",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "2e"
+   ]
+  },
+  {
+   "text": "E 2f ev 0 0 0 0 0 0 0 0 0 0 | cyc 243 197 197 580 165 644 421 165 1747 2252",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "2f"
+   ]
+  },
+  {
+   "text": "E 30 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 602 165 644 421 165 1745 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "30"
+   ]
+  },
+  {
+   "text": "E 31 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 602 165 644 421 165 1747 2244",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "31"
+   ]
+  },
+  {
+   "text": "E 32 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1721 2262",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "32"
+   ]
+  },
+  {
+   "text": "E 33 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 602 165 644 421 165 1747 2246",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "33"
+   ]
+  },
+  {
+   "text": "E 34 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1747 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "34"
+   ]
+  },
+  {
+   "text": "E 35 ev 0 0 0 0 0 0 0 0 0 0 | cyc 243 197 197 580 165 644 421 165 1719 2252",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "35"
+   ]
+  },
+  {
+   "text": "E 36 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 586 165 644 421 165 1747 2252",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "36"
+   ]
+  },
+  {
+   "text": "E 37 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 602 165 644 421 165 1745 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "37"
+   ]
+  },
+  {
+   "text": "E 38 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1745 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "38"
+   ]
+  },
+  {
+   "text": "E 39 ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 556 165 644 421 165 1747 2258",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "39"
+   ]
+  },
+  {
+   "text": "E 3a ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1745 2252",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "3a"
+   ]
+  },
+  {
+   "text": "E 3b ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 602 165 644 421 165 1745 2250",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "3b"
+   ]
+  },
+  {
+   "text": "E 3c ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1745 2250",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "3c"
+   ]
+  },
+  {
+   "text": "E 3d ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1745 2252",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "3d"
+   ]
+  },
+  {
+   "text": "E 3e ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1745 2252",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "3e"
+   ]
+  },
+  {
+   "text": "E 3f ev 0 0 0 0 0 0 0 0 0 0 | cyc 237 197 197 580 165 644 421 165 1733 2248",
+   "class": "env",
+   "why": "C-bracketed survey (bracket residue), superseded by ubcbrk Y",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "E",
+    "3f"
+   ]
+  },
+  {
+   "text": "p4probe: done",
+   "class": "functional",
+   "why": "program marker",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "p4probe:",
+    "done"
+   ]
+  }
+ ]
+}

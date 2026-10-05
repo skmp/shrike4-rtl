@@ -1,0 +1,6 @@
+// v1_clk_lint.vlt -- Verilator lint waivers for the WI-CLK units (make v1-clk-lint).
+`verilator_config
+// v1_soc_pkg (WI-0) carries every shared function and constant; a unit uses a few of them, so the package's own
+// unused-bit / unused-parameter reports are not about the unit.
+lint_off -rule UNUSEDSIGNAL -file "*v1_soc_pkg.sv"
+lint_off -rule UNUSEDPARAM -file "*v1_soc_pkg.sv"

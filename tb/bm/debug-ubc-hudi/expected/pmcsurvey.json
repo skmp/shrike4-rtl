@@ -1,0 +1,791 @@
+{
+ "program": "pmcsurvey",
+ "source": "tools/hw/debug-ubc-hudi/pmcsurvey.out (console run, KOS 2.1.0 under dcload-ip, 2026-09-23)",
+ "build": "tb/bm/debug-ubc-hudi (make v1-dbg-bm): pmcsurvey.bin at 0x8C010000",
+ "compare": "tb/bm/debug-ubc-hudi/check.py <output log> expected/pmcsurvey.json --classes functional,timing",
+ "counts": {
+  "functional": 5,
+  "timing": 19,
+  "mmu": 20,
+  "env": 1
+ },
+ "lines": [
+  {
+   "text": "pmcsurvey: start",
+   "class": "functional",
+   "why": "program marker",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "pmcsurvey:",
+    "start"
+   ]
+  },
+  {
+   "text": "Q: exact d(event) over 64 iterations (n=80 minus n=16); snippets base fpfollow fplead fpalone fmovfollow fmovlead ftrv rte rtejmp stcl macw sqw sqpref stmiss trapa",
+   "class": "functional",
+   "why": "header",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "Q:"
+   ]
+  },
+  {
+   "text": "Q 03 ev 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1415 4148 38742",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "03"
+   ]
+  },
+  {
+   "text": "Q 07 ev 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1419 4148 38876",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "07"
+   ]
+  },
+  {
+   "text": "Q 02 ev 0 0 0 0 0 0 0 0 0 64 0 0 0 128 3584 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1401 4102 38808",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "02"
+   ]
+  },
+  {
+   "text": "Q 05 ev 0 0 0 0 0 0 0 0 0 0 0 0 0 128 0 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1401 4096 38714",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "05"
+   ]
+  },
+  {
+   "text": "Q 09 ev 0 0 0 0 0 0 0 0 0 128 128 256 576 128 8128 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1401 4096 38740",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "09"
+   ]
+  },
+  {
+   "text": "Q 0d ev 0 0 0 0 0 0 0 0 0 0 0 0 0 0 128 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1389 4148 38830",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "0d"
+   ]
+  },
+  {
+   "text": "Q 0e ev 0 0 0 0 0 0 0 0 0 128 128 0 0 128 8000 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1421 4148 38906",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "0e"
+   ]
+  },
+  {
+   "text": "Q 0f ev 0 0 0 0 0 0 0 0 0 0 0 0 0 128 256 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1415 4096 38906",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "0f"
+   ]
+  },
+  {
+   "text": "Q 10 ev 64 64 64 64 64 64 64 64 128 64 64 64 64 64 1216 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1401 4148 38918",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "10"
+   ]
+  },
+  {
+   "text": "Q 11 ev 64 64 64 64 64 64 64 64 128 64 64 64 64 64 896 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1421 4148 38906",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "11"
+   ]
+  },
+  {
+   "text": "Q 13 ev 128 256 256 192 256 256 128 384 384 256 256 320 640 192 13120 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1413 4148 38780",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "13"
+   ]
+  },
+  {
+   "text": "Q 14 ev 128 192 192 128 192 192 128 64 64 64 128 128 128 128 2112 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1413 4148 38724",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "14"
+   ]
+  },
+  {
+   "text": "Q 15 ev 0 128 128 128 128 128 64 0 0 0 0 0 0 0 2432 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1385 4148 38808",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "15"
+   ]
+  },
+  {
+   "text": "Q 16 ev 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1421 4096 38876",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "16"
+   ]
+  },
+  {
+   "text": "Q 18 ev 0 0 0 0 0 0 0 0 0 0 0 0 0 0 64 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1419 4148 38758",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "18"
+   ]
+  },
+  {
+   "text": "Q 22 ev 0 0 0 0 0 0 0 0 0 0 0 0 0 1798 6140 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1401 4138 38726",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    15,
+    32,
+    16,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "22"
+   ]
+  },
+  {
+   "text": "Q 25 ev 0 0 0 0 0 0 0 0 0 0 0 0 717 3840 7632 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1421 4096 38876",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    15,
+    32,
+    16,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "25"
+   ]
+  },
+  {
+   "text": "Q 27 ev 64 64 64 64 64 64 64 64 64 64 64 64 64 64 768 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1401 4102 38808",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    32,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "27"
+   ]
+  },
+  {
+   "text": "Q 23 ev 192 320 320 256 320 320 448 832 512 512 384 384 1421 4112 38716 | cyc 192 320 320 256 320 320 448 832 512 512 384 384 1421 4112 38716",
+   "class": "timing",
+   "why": "exact event counts (SOC.md 9.6 survey)",
+   "ignore": [
+    17,
+    34
+   ],
+   "var": [
+    15,
+    32,
+    16,
+    33
+   ],
+   "cache": [],
+   "key": [
+    "Q",
+    "23"
+   ]
+  },
+  {
+   "text": "Q trapa handler calls 3344 (expected 3344)",
+   "class": "functional",
+   "why": "TRAPA handler calls",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "Q",
+    "trapa"
+   ]
+  },
+  {
+   "text": "M: exact d(event) over 64 iterations, MMUCR.AT = 1; snippets dmiss_rd dmiss_wr dhit_rd imiss ihit",
+   "class": "functional",
+   "why": "header",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M:"
+   ]
+  },
+  {
+   "text": "M 03 ev 64 64 0 0 0 | cyc 26572 26510 192 31042 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "03"
+   ]
+  },
+  {
+   "text": "M 07 ev 0 0 0 64 0 | cyc 26586 26502 192 31024 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "07"
+   ]
+  },
+  {
+   "text": "M 02 ev 3648 3712 0 3648 0 | cyc 26588 26510 192 31036 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "02"
+   ]
+  },
+  {
+   "text": "M 05 ev 0 0 0 0 0 | cyc 26586 26502 192 31080 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "05"
+   ]
+  },
+  {
+   "text": "M 09 ev 8192 8192 64 8320 0 | cyc 26572 26510 192 31036 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "09"
+   ]
+  },
+  {
+   "text": "M 0d ev 64 64 0 64 0 | cyc 26516 26504 192 31036 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "0d"
+   ]
+  },
+  {
+   "text": "M 0e ev 8128 8128 64 8256 0 | cyc 26542 26526 192 31086 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "0e"
+   ]
+  },
+  {
+   "text": "M 0f ev 0 0 0 0 0 | cyc 26588 26510 192 31036 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "0f"
+   ]
+  },
+  {
+   "text": "M 10 ev 1216 1216 64 1216 64 | cyc 26536 26514 192 31068 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "10"
+   ]
+  },
+  {
+   "text": "M 11 ev 832 832 64 832 64 | cyc 26572 26562 192 31056 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "11"
+   ]
+  },
+  {
+   "text": "M 13 ev 12800 12800 128 13120 384 | cyc 26572 26564 192 31020 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "13"
+   ]
+  },
+  {
+   "text": "M 14 ev 2304 2304 128 2176 64 | cyc 26572 26562 192 31050 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "14"
+   ]
+  },
+  {
+   "text": "M 15 ev 2432 2432 0 2432 0 | cyc 26572 26564 192 31020 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "15"
+   ]
+  },
+  {
+   "text": "M 16 ev 0 0 0 0 0 | cyc 26588 26510 192 31036 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "16"
+   ]
+  },
+  {
+   "text": "M 18 ev 0 0 0 0 0 | cyc 26586 26510 192 31012 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "18"
+   ]
+  },
+  {
+   "text": "M 22 ev 0 0 0 0 0 | cyc 26526 26504 192 31036 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "22"
+   ]
+  },
+  {
+   "text": "M 25 ev 256 256 0 640 0 | cyc 26572 26514 192 31000 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "25"
+   ]
+  },
+  {
+   "text": "M 27 ev 832 832 64 832 64 | cyc 26572 26530 192 31062 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "27"
+   ]
+  },
+  {
+   "text": "M 23 ev 26586 26502 192 31080 576 | cyc 26586 26502 192 31080 576",
+   "class": "mmu",
+   "why": "UTLB / ITLB miss events with MMUCR.AT = 1 (SOC.md 9.6 survey)",
+   "ignore": [
+    3,
+    4,
+    6,
+    10,
+    11,
+    13
+   ],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "23"
+   ]
+  },
+  {
+   "text": "M handler exceptions per snippet: 3344 3344 0 3344 0 (a miss snippet: 3344 = 176 per event) | gave up 0",
+   "class": "mmu",
+   "why": "TLB-miss exceptions taken",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "handler"
+   ]
+  },
+  {
+   "text": "M now MMUCR 00000000 PTEH 00000000 PTEL 00000000 PTEA 00000000",
+   "class": "env",
+   "why": "MMU registers KOS left",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "M",
+    "now"
+   ]
+  },
+  {
+   "text": "pmcsurvey: done",
+   "class": "functional",
+   "why": "program marker",
+   "ignore": [],
+   "var": [],
+   "cache": [],
+   "key": [
+    "pmcsurvey:",
+    "done"
+   ]
+  }
+ ]
+}

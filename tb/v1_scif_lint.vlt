@@ -1,0 +1,5 @@
+`verilator_config
+// WI-SER lint config (make v1-scif-lint): the shared package v1_soc_pkg (WI-0) declares address-map functions and
+// constants every importer does not use; those warnings are the package's, not the serial units'.
+lint_off -rule UNUSEDSIGNAL -file "*/v1_soc_pkg.sv"
+lint_off -rule UNUSEDPARAM -file "*/v1_soc_pkg.sv"

@@ -1,0 +1,1415 @@
+{
+ "program": "bscmm",
+ "source": "../../../tools/hw/bsc-memmap/bscmm.elf.hwlog",
+ "lines": [
+  {
+   "text": "R BCR1 a3020008 BCR2 0001 WCR1 01110111 WCR2 618066d8 WCR3 07777777 MCR c00a0e24 PCR 0000",
+   "class": "functional",
+   "why": "the BSC state the boot stub writes (board.md 5.3)",
+   "key": [
+    "R",
+    "BCR1"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "R RTCSR 0094 RTCNT 0006 RTCOR 005e RFCR 00bf",
+   "class": "functional",
+   "why": "RTCOR; RTCSR flags, RTCNT, RFCR are counters",
+   "key": [
+    "R",
+    "RTCSR"
+   ],
+   "ignore": [
+    4,
+    8
+   ],
+   "var": [
+    2
+   ]
+  },
+  {
+   "text": "R PCTRA 000a03f0 PDTRA d0e7 PCTRB 00000000 PDTRB 000a GPIOIC 0000",
+   "class": "functional",
+   "why": "PCTRA / PCTRB / GPIOIC; PDTRA / PDTRB are the board's pins",
+   "key": [
+    "R",
+    "PCTRA"
+   ],
+   "ignore": [
+    4,
+    8
+   ],
+   "var": []
+  },
+  {
+   "text": "R PVR 040205c1 PRR 00000000 CCR 00000105 QACR0 00000004 QACR1 00000004 MMUCR 00000000",
+   "class": "functional",
+   "why": "PVR, PRR, CCR 0x105 (crt0 as KOS), QACR = 4 (the boot stub), MMUCR",
+   "key": [
+    "R",
+    "PVR"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "R SB_SBREV 00000010 SB_LMMODE0 00000000 SB_LMMODE1 00000000 SB_G2FIFO 0000000e DMAOR 00008201 CHCR2 000012c0",
+   "class": "board",
+   "why": "Holly registers; DMAOR / CHCR2 as the boot stub sets them",
+   "key": [
+    "R",
+    "SB_SBREV"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "W BCR1 l a3020008 w0 0000 w2 0000 b0 00 b1 00 b2 00 b3 00",
+   "class": "functional",
+   "why": "wrong-size reads 0, holes 0 [HW 6.2]",
+   "key": [
+    "W",
+    "BCR1"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "W BCR2 w 0001 l 00000000 w2 0000 b0 00 b1 00",
+   "class": "functional",
+   "why": "wrong-size reads 0, holes 0 [HW 6.2]",
+   "key": [
+    "W",
+    "BCR2"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "W WCR2 w0 0000 w2 0000 b3 00",
+   "class": "functional",
+   "why": "wrong-size reads 0, holes 0 [HW 6.2]",
+   "key": [
+    "W",
+    "WCR2"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "W RTCSR w 0094 l 00000000 b0 00 b1 00",
+   "class": "functional",
+   "why": "wrong-size reads 0 [HW 6.2]; the word read is the flags",
+   "key": [
+    "W",
+    "RTCSR"
+   ],
+   "ignore": [],
+   "var": [
+    3
+   ]
+  },
+  {
+   "text": "W RTCOR w 005e l 00000000 b0 00",
+   "class": "functional",
+   "why": "wrong-size reads 0, holes 0 [HW 6.2]",
+   "key": [
+    "W",
+    "RTCOR"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "W RFCR w 01f0 l 00000000",
+   "class": "functional",
+   "why": "wrong-size reads 0; the word read is the counter",
+   "key": [
+    "W",
+    "RFCR"
+   ],
+   "ignore": [
+    3
+   ],
+   "var": []
+  },
+  {
+   "text": "W PCTRA l 000a03f0 w0 0000 w2 0000",
+   "class": "functional",
+   "why": "wrong-size reads 0, holes 0 [HW 6.2]",
+   "key": [
+    "W",
+    "PCTRA"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "W PDTRA w 00e7 l 00000000 b0 00 b1 00 w2 0000",
+   "class": "functional",
+   "why": "wrong-size reads 0; the word read is the pins",
+   "key": [
+    "W",
+    "PDTRA"
+   ],
+   "ignore": [
+    3
+   ],
+   "var": []
+  },
+  {
+   "text": "W PCTRB l 00000000 PDTRB w 0001 l 00000000 GPIOIC w 0000 l 00000000",
+   "class": "functional",
+   "why": "wrong-size reads 0; PDTRB w is the pins",
+   "key": [
+    "W",
+    "PCTRB"
+   ],
+   "ignore": [
+    6
+   ],
+   "var": []
+  },
+  {
+   "text": "W holes 34 00000000 38 00000000 3c 00000000 4c 00000000 50w 0000",
+   "class": "functional",
+   "why": "wrong-size reads 0, holes 0 [HW 6.2]",
+   "key": [
+    "W",
+    "holes"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "B ubuf ac083bc0 cbuf 8c093c00",
+   "class": "env",
+   "why": "the allocator's buffers",
+   "key": [
+    "B",
+    "ubuf"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "X RAM ac083cc0=f6adfffc +1M f6adfffc +2M f6adfffc +3M f6adfffc (x16MB)",
+   "class": "env",
+   "why": "RAM mirrors: the marker is the buffer's address",
+   "key": [
+    "X",
+    "RAM"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "X VRAM64 1234abcd +8M ffffffff +32M 1234abcd +40M 00000000 | VRAM32 8765fedc +8M ffffffff +32M 8765fedc",
+   "class": "board",
+   "why": "texture-memory mirrors and holes",
+   "key": [
+    "X",
+    "VRAM64"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "X VRAM restored 00000000 00000000",
+   "class": "board",
+   "why": "texture-memory mirrors and holes",
+   "key": [
+    "X",
+    "VRAM"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "F RTCNT changes 49 in 1637 cycles, max 0054, first 0022, cycles/change avg*100 3337",
+   "class": "env",
+   "why": "refresh-timer polling (jitter), counter windows, refresh-cost histograms",
+   "key": [
+    "F",
+    "RTCNT",
+    "changes"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "F RTCNT seq 25:96 26:28 27:28 28:28 29:48 2a:28 2b:28 2c:28 2d:28 2e:36 2f:28 30:28 31:48 32:28 33:28 34:28 35:28 36:46 37:28 38:28 39:48 3a:28 3b:28",
+   "class": "env",
+   "why": "refresh-timer polling (jitter), counter windows, refresh-cost histograms",
+   "key": [
+    "F",
+    "RTCNT",
+    "seq"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "F RFCR 0019/0094@0 005b/0094@200038 009e/0094@400076 00e0/0094@600114 0123/0094@800152 0165/0094@1000190 01a8/0094@1200228 01ea/0094@1400266 022d/0094@1600304 026f/0094@1800342 02b2/0094@2000380 02f4/0094@2200418",
+   "class": "env",
+   "why": "refresh-timer polling (jitter), counter windows, refresh-cost histograms",
+   "key": [
+    "F",
+    "RFCR",
+    "0019/0094@0"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "K RFCR before 038a nokey0 038a byte0 038a key+000 0000 key+100 0100 key+105 0105",
+   "class": "functional",
+   "why": "RFCR keys [HW 6.2] (the counter value before is the run's)",
+   "key": [
+    "K",
+    "RFCR"
+   ],
+   "ignore": [
+    3,
+    5,
+    7
+   ],
+   "var": []
+  },
+  {
+   "text": "K RTCOR 005e nokey 005e byte 005e key5A 005e keyA5 005d restored 005e",
+   "class": "functional",
+   "why": "RTCOR keys [HW 6.2]",
+   "key": [
+    "K",
+    "RTCOR"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            rd_l           3    19   131   387 lat   16 per   16.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            rd_w           3    19   131   387 lat   16 per   16.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "rd_w"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            rd_b           3    19   131   387 lat   16 per   16.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "rd_b"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            rd_q           3    35   245   725 lat   32 per   30.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "rd_q"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            rd_chain       3    18   130   386 lat   15 per   16.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "rd_chain"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            rd_use         3    19   131   387 lat   16 per   16.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "rd_use"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram+8          rd_alt         3    35   259   771 lat   32 per   32.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram+8",
+    "rd_alt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram+32         rd_alt         3    35   259   771 lat   32 per   32.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram+32",
+    "rd_alt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram+row        rd_alt         3    55   415  1251 lat   52 per   52.25",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram+row",
+    "rd_alt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram+bank       rd_alt         3    35   259   771 lat   32 per   32.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram+bank",
+    "rd_alt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram/4          rd_stride      3    18   130   386 lat   15 per   16.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram/4",
+    "rd_stride"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram/32         rd_stride      3    18   130   386 lat   15 per   16.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram/32",
+    "rd_stride"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram/row        rd_stride      3    18   206   622 lat   15 per   26.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram/row",
+    "rd_stride"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            wr_l          18    28    98   258 lat   10 per   10.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "wr_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            wr_w          18    28    98   258 lat   10 per   10.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "wr_w"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            wr_b          18    28    98   258 lat   10 per   10.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "wr_b"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            wr_q          18    38   178   498 lat   20 per   20.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "wr_q"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            wr_nd          3     6    74   234 lat    3 per   10.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "wr_nd"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram            wr_rd          3    28   210   626 lat   25 per   26.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram",
+    "wr_rd"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram+row        wr_rdalt       3    38   346  1050 lat   35 per   44.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram+row",
+    "wr_rdalt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram+bank       wr_rdalt       3    28   210   626 lat   25 per   26.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram+bank",
+    "wr_rdalt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram/4          wr_stride     18    28    98   258 lat   10 per   10.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram/4",
+    "wr_stride"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram/32         wr_stride     18    28    98   258 lat   10 per   10.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "ram/32",
+    "wr_stride"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sb_sbrev       rd_l           3    20   147   435 lat   17 per   18.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "sb_sbrev",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sb_g2fifo      rd_l           3    21   147   435 lat   18 per   18.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "sb_g2fifo",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sb_iml2nrm     rd_l           3    20   147   435 lat   17 per   18.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "sb_iml2nrm",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sb_iml2nrm     wr_l          20    32   116   308 lat   12 per   12.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "sb_iml2nrm",
+    "wr_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sb_iml2nrm     wr_nd          3     6    86   278 lat    3 per   12.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "sb_iml2nrm",
+    "wr_nd"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M pvr_id         rd_l           3    78   613  1829 lat   75 per   76.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "pvr_id",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M pvr_pal        rd_l           3    80   613  1829 lat   77 per   76.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "pvr_pal",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M pvr_pal        wr_l          80   108   288   704 lat   28 per   26.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "pvr_pal",
+    "wr_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M pvr_pal        wr_nd          3     6   146   562 lat    3 per   26.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "pvr_pal",
+    "wr_nd"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M bootrom        rd_l           3   209  1637  4911 lat  206 per  204.62",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "bootrom",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M bootrom        rd_w           3   134  1061  3185 lat  131 per  132.75",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "bootrom",
+    "rd_w"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M bootrom        rd_b           3   100   773  2309 lat   97 per   96.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "bootrom",
+    "rd_b"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M flash          rd_l           3   175  1381  4145 lat  172 per  172.75",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "flash",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M flash          rd_w           3   118   932  2805 lat  115 per  117.06",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "flash",
+    "rd_w"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M flash          rd_b           3    90   709  2117 lat   87 per   88.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "flash",
+    "rd_b"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M aica_rtc       rd_l           3   257  1993  6017 lat  254 per  251.50",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "aica_rtc",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M aica_ram       rd_l           3   257  1993  6017 lat  254 per  251.50",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "aica_ram",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram/sbrev      rd_alt         3    37   275   819 lat   34 per   34.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "ram/sbrev",
+    "rd_alt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M vram64         rd_l           3    97   753  2317 lat   94 per   97.75",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "vram64",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M vram64         rd_w           3    97   741  2241 lat   94 per   93.75",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "vram64",
+    "rd_w"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M vram64         rd_q           3   191  1491  4743 lat  188 per  203.25",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "vram64",
+    "rd_q"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M vram64/32      rd_stride      3    96   752  2320 lat   93 per   98.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "vram64/32",
+    "rd_stride"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M vram32         rd_l           3    97   739  2241 lat   94 per   93.87",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "vram32",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M vram64top      wr_l          96   124   304   684 lat   28 per   23.75",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "vram64top",
+    "wr_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M vram64top      wr_w          96   124   304   704 lat   28 per   25.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "vram64top",
+    "wr_w"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M vram64top      wr_q          96   148   504  1252 lat   52 per   46.75",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "vram64top",
+    "wr_q"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M vram64top      wr_nd          3     6   146   524 lat    3 per   23.62",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "vram64top",
+    "wr_nd"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M vram32top      wr_l          96   124   304   704 lat   28 per   25.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "vram32top",
+    "wr_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M ram/vram       rd_alt         3   111   867  2699 lat  108 per  114.50",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "ram/vram",
+    "rd_alt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M BCR1           rd_l           3    11    67   195 lat    8 per    8.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "BCR1",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M PDTRA          rd_w           3    11    67   195 lat    8 per    8.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "PDTRA",
+    "rd_w"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M RTCNT          rd_w           3    11    67   195 lat    8 per    8.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "RTCNT",
+    "rd_w"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M CCR            rd_l           3     6    27    75 lat    3 per    3.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "CCR",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M PMCTR          rd_l           3     6    27    75 lat    3 per    3.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "PMCTR",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M BARA           rd_l           3     6    27    75 lat    3 per    3.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "BARA",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M DMAOR          rd_l           3    11    67   195 lat    8 per    8.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "DMAOR",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M FRQCR          rd_w           3    17   128   385 lat   14 per   16.06",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "FRQCR",
+    "rd_w"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M IPRA           rd_w           3    16   128   385 lat   13 per   16.06",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "IPRA",
+    "rd_w"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M TSTR           rd_b           3    17   129   385 lat   14 per   16.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "TSTR",
+    "rd_b"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M TCNT0          rd_l           3    21   161   481 lat   18 per   20.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "TCNT0",
+    "rd_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M SCFSR2         rd_w           3    17   129   385 lat   14 per   16.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "SCFSR2",
+    "rd_w"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M BARA           wr_l           6     9    30    78 lat    3 per    3.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "BARA",
+    "wr_l"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M IPRB           wr_w          16    24    80   208 lat    8 per    8.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "IPRB",
+    "wr_w"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M RTCOR          wr_w_r5       11    17    59   155 lat    6 per    6.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "RTCOR",
+    "wr_w_r5"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_hit         c_rd           3     4    11    92 lat    1 per    5.06",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_hit",
+    "c_rd"
+   ],
+   "ignore": [],
+   "var": [
+    6,
+    10
+   ]
+  },
+  {
+   "text": "M oc_miss        c_rd           3    20   132   469 lat   17 per   21.06",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_rd"
+   ],
+   "ignore": [],
+   "var": [
+    6,
+    10
+   ]
+  },
+  {
+   "text": "M oc_miss        c_rd_last      3    26   194   579 lat   23 per   24.06",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_rd_last"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss        c_rd_use       3    22   148   442 lat   19 per   18.37",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss",
+    "c_rd_use"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_miss_dirty  c_rd           3    29   324  1035 lat   26 per   44.43",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_miss_dirty",
+    "c_rd"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_wmiss       c_wr          18    43   196   603 lat   25 per   25.43",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_wmiss",
+    "c_wr"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_wmiss_dirty c_wr          28    70   365  1077 lat   42 per   44.50",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_wmiss_dirty",
+    "c_wr"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_dirty       c_ocbwb       28    48   125   341 lat   20 per   13.50",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_dirty",
+    "c_ocbwb"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_dirty       c_ocbp        28    41   125   305 lat   13 per   11.25",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_dirty",
+    "c_ocbp"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_clean       c_ocbp        28    30    45    77 lat    2 per    2.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_clean",
+    "c_ocbp"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_inv         c_movca        3     6    27    84 lat    3 per    3.56",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "oc_inv",
+    "c_movca"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M oc_vram_miss   c_rd           3   132  1046  3175 lat  129 per  133.06",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "oc_vram_miss",
+    "c_rd"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sq_ram         sq_alt        19    37   121   313 lat   18 per   12.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "sq_ram",
+    "sq_alt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sq_ram         sq_same       18    36   190   542 lat   18 per   22.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "sq_ram",
+    "sq_same"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sq_ram         sq_pref       18    28   112   304 lat   10 per   12.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "sq_ram",
+    "sq_pref"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sq_ram         sq_pref_nd     3     6    90   282 lat    3 per   12.00",
+   "class": "timing",
+   "why": "console timing of the chip and its SDRAM (bsc-memmap 4.7, 6.4)",
+   "key": [
+    "M",
+    "sq_ram",
+    "sq_pref_nd"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sq_vram        sq_alt        95   163   695  1911 lat   68 per   76.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "sq_vram",
+    "sq_alt"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sq_vram        sq_same       96   164   696  1932 lat   68 per   77.25",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "sq_vram",
+    "sq_same"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "M sq_vram        sq_pref       96   156   688  1904 lat   60 per   76.00",
+   "class": "timing-board",
+   "why": "console timing with Holly on the other side",
+   "key": [
+    "M",
+    "sq_vram",
+    "sq_pref"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "Q QACR restored 00000004 00000004",
+   "class": "functional",
+   "why": "QACR restored",
+   "key": [
+    "Q",
+    "QACR"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "R BCR1 a3020008 BCR2 0001 WCR1 01110111 WCR2 618066d8 WCR3 07777777 MCR c00a0e24 PCR 0000",
+   "class": "functional",
+   "why": "the BSC state the boot stub writes (board.md 5.3)",
+   "key": [
+    "R",
+    "BCR1"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "R RTCSR 0094 RTCNT 0008 RTCOR 005e RFCR 00fa",
+   "class": "functional",
+   "why": "RTCOR; RTCSR flags, RTCNT, RFCR are counters",
+   "key": [
+    "R",
+    "RTCSR"
+   ],
+   "ignore": [
+    4,
+    8
+   ],
+   "var": [
+    2
+   ]
+  },
+  {
+   "text": "R PCTRA 000a03f0 PDTRA d0e7 PCTRB 00000000 PDTRB 000a GPIOIC 0000",
+   "class": "functional",
+   "why": "PCTRA / PCTRB / GPIOIC; PDTRA / PDTRB are the board's pins",
+   "key": [
+    "R",
+    "PCTRA"
+   ],
+   "ignore": [
+    4,
+    8
+   ],
+   "var": []
+  },
+  {
+   "text": "R PVR 040205c1 PRR 00000000 CCR 00000105 QACR0 00000004 QACR1 00000004 MMUCR 00000000",
+   "class": "functional",
+   "why": "PVR, PRR, CCR 0x105 (crt0 as KOS), QACR = 4 (the boot stub), MMUCR",
+   "key": [
+    "R",
+    "PVR"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "R SB_SBREV 00000010 SB_LMMODE0 00000000 SB_LMMODE1 00000000 SB_G2FIFO 0000000e DMAOR 00008201 CHCR2 000012c0",
+   "class": "board",
+   "why": "Holly registers; DMAOR / CHCR2 as the boot stub sets them",
+   "key": [
+    "R",
+    "SB_SBREV"
+   ],
+   "ignore": [],
+   "var": []
+  },
+  {
+   "text": "DONE",
+   "class": "functional",
+   "why": "program end",
+   "key": [
+    "DONE"
+   ],
+   "ignore": [],
+   "var": []
+  }
+ ]
+}
