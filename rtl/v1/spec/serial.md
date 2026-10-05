@@ -49,7 +49,7 @@ Other sources:
 - minicast `libswirl/hw/sh4/modules/scif.cpp`, `sci.cpp`, `sh4_mmr.cpp`, `sh4_mmr.h`, `sh4_interrupts.cpp` (§5).
 - KOS `kernel/arch/dreamcast/hardware/scif.c` and `sci.c`, `kernel/arch/dreamcast/kernel/init.c`,
   `kernel/debug/dbgio.c`, `fs/fs_dcload.c`.
-- Bare-metal `/home/skmp/projects/dreamcast/sh7091/serial*.{cpp,hpp}`, `sh7091_bits.hpp`, `serial_load.cpp`,
+- Bare-metal `~/projects/dreamcast/sh7091/serial*.{cpp,hpp}`, `sh7091_bits.hpp`, `serial_load.cpp`,
   `notes/serial.txt`.
 - dcload-ip `target-src/dcload/scif.c`.
 - Hardware programs `tools/hw/serial/scif_probe{,2,3}.c`, logs `run{1,2,3}.log` (§6).

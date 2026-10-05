@@ -75,7 +75,7 @@ From `pm.txt`, the SH-4 Programming Manual:
 - `model/timings2/runner/t2run.c`, the sweep's use of PRFC0 / PRFC1. Also the session study
   `scratchpad/spec/counters.md`, rules R1-R8 for 0x14 / 0x28 / 0x29.
 - `dreamcast-data/syscalls.bin`, disassembled at 0x8C000000 (§5.1).
-- `/home/skmp/projects/dreamcast/sh7091/sh7091.hpp`: bare-metal register layout. It matches Appendix A and has no
+- `~/projects/dreamcast/sh7091/sh7091.hpp`: bare-metal register layout. It matches Appendix A and has no
   PMCR entries.
 - The other phase-1 specs: `bsc-memmap.md` (P4 access costs), `timers-clock.md` (PMCTR stops in sleep) and
   `board.md` (the direct-boot state).

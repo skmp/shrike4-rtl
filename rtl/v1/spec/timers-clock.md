@@ -34,7 +34,7 @@ Sources, in the order they are trusted:
 4. minicast: `libswirl/hw/sh4/modules/{tmu,rtc,cpg}.cpp`, `sh4_mmr.cpp`, `sh4_interrupts.cpp`,
    `interpr/sh4_opcodes.cpp` (SLEEP) and `reios/reios.cpp` (direct boot).
 5. KallistiOS: `kernel/arch/dreamcast/kernel/{timer,wdt,perfctr,init}.c` and `kernel/thread/thread.c` (the idle
-   task's SLEEP). Bare-metal code in `/home/skmp/projects/dreamcast/sh7091/`.
+   task's SLEEP). Bare-metal code in `~/projects/dreamcast/sh7091/`.
 
 ## 2. Clocks on the Dreamcast (the numbers everything else uses)
 

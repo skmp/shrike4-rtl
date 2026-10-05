@@ -40,7 +40,7 @@ Other sources:
 - minicast `libswirl/hw/sh4/modules/mmu.cpp`, `ccn.cpp`, `sh4_mmr.cpp` (P4 arrays) and `interpr/` (§5).
 - KallistiOS `kernel/arch/dreamcast/kernel/{mmu.c,itlb.s,startup.S,entry.s}` and `hardware/sq.c` (§4).
 - BIOS `dreamcast-data/syscalls.bin` (§4).
-- `/home/skmp/projects/dreamcast/sh7091/sh7091_bits.hpp`, which gives the same field layout as the manual.
+- `~/projects/dreamcast/sh7091/sh7091_bits.hpp`, which gives the same field layout as the manual.
 
 ## 2. Registers
 

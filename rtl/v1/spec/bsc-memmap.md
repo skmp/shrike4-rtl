@@ -56,7 +56,7 @@ lock (SOC.md §2.3; I112); §10 item 10 decided (SOC.md §2.3).
 **Other sources.**
 - minicast: `libswirl/hw/sh4/modules/bsc.cpp`, `sh4_mmr.cpp`, `sh4_mem.cpp`, `hw/holly/sh4_mem_area0.cpp`,
   `hw/pvr/pvr_mem.cpp`, `reios/reios.cpp`.
-- Bare-metal definitions: `/home/skmp/projects/dreamcast/sh7091/sh7091.hpp`, `addresses.lds`, `holly/video_output.cpp`.
+- Bare-metal definitions: `~/projects/dreamcast/sh7091/sh7091.hpp`, `addresses.lds`, `holly/video_output.cpp`.
 - KOS: `hardware/video.c` (`vid_check_cable`), `hardware/sci.c`, `kernel/perfctr.c`.
 - dcload-ip: `target-src/dcload/startup_support.c`.
 - `dreamcast-data/syscalls.bin`, disassembled. It does not touch the BSC registers.

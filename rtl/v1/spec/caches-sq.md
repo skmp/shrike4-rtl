@@ -110,7 +110,7 @@ the OC RAM, the index modes, the memory-mapped IC / OC arrays, the store queues 
   - `kernel/arch/dreamcast/kernel/cache.s`, `startup.S` (CCR 0x090D);
   - `hardware/sq.c`, `hardware/pvr/pvr_send_to_ta.s` (MOVCA.L + OCBP to the TA);
   - `kernel/entry.s`, `thdswitch.s` (MOVCA.L), `include/arch/cache.h`, `kernel/perfctr.c`.
-- Bare metal: `/home/skmp/projects/dreamcast/sh7091/sh7091{,_bits}.hpp`.
+- Bare metal: `~/projects/dreamcast/sh7091/sh7091{,_bits}.hpp`.
 - v1: `rtl/v1/{README,ARCH}.md`, `v1_core.sv` (MA stage, `pfz` freeze, `tag_wr`), `v1_fetch.sv`, `v1_pkg.sv`,
   `rtl/timing-proxy/README.md` (the sweep's OCBI / OCBP / OCBWB findings).
 - Sibling specs: `bsc-memmap.md` (§4.1, §4.7, §8.1 `v1_biu`, §8.2 request port), `dmac.md` §3.10 (no coherency),

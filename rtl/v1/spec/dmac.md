@@ -50,7 +50,7 @@ Sources, in the order of trust used here:
 4. **KallistiOS** `kernel/arch/dreamcast/hardware/dmac.c`, `include/arch/dmac.h`, `include/dc/dmac.h`,
    `hardware/pvr/pvr_dma.c`, `hardware/sci.c`, `kernel/irq.c` (IPRC DMAC = 3), `kernel/init.c` (DMAOR only on
    NAOMI), `kernel/thread/thread.c` (the idle thread executes SLEEP).
-5. **Bare-metal** `/home/skmp/projects/dreamcast`: `sh7091/sh7091*.hpp` (register and bit names),
+5. **Bare-metal** `~/projects/dreamcast`: `sh7091/sh7091*.hpp` (register and bit names),
    `holly/ta_fifo_polygon_converter.cpp` and `dreamcast2/example/deferred_shading.cpp` (CH2-DMA, ch1 / ch3
    memory-to-memory, and the note that a dummy CHCR read "appears to be required on real hardware"; section 3.7
    explains it).

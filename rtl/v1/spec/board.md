@@ -89,7 +89,7 @@ Also in scope: the direct-boot recipe and the first boot targets (`tools/boot/he
    - `pvr/{spg.cpp,pvr_sb_regs.cpp,pvr_regs.h,pvr_mem.cpp}`, `maple/{maple_if.cpp,maple_devs.cpp}`;
    - `gdrom/gdromv3.cpp`, `aica/aica_mmio.cpp`, `flashrom/flashrom.h`, `reios/reios.cpp`, `types.h` (HollyInterruptID).
 6. dcload-ip target code (`tools/dcload-ip/target-src/dcload/go.s`): its start state.
-7. Bare-metal code in `/home/skmp/projects/dreamcast` (`dve.hpp`, `holly/video_output.cpp`): port A bit meanings.
+7. Bare-metal code in `~/projects/dreamcast` (`dve.hpp`, `holly/video_output.cpp`): port A bit meanings.
 
 ---------------------------------------------------------------------------------------------------------------------
 
@@ -436,7 +436,7 @@ a sequence of descriptors in RAM:
 
 #### 3.7.1 Boot ROM (0x00000000-0x001FFFFF)
 
-- **Contents.** Read only. Load `/home/skmp/projects/nullDC/data/dc_boot.bin` (2 MB, md5 e10c53c2…, starts 0xE3FF)
+- **Contents.** Read only. Load `~/projects/nullDC/data/dc_boot.bin` (2 MB, md5 e10c53c2…, starts 0xE3FF)
   when available.
 - **Use in a direct boot.** Nothing needs it except:
   - the ROM font (`syscall_font_address` returns 0xA0100020, into the ROM);
@@ -952,7 +952,7 @@ These were measured with a CD-R in the drive. The no-disc drive's delays are ass
 ### 5.1 What syscalls.bin is
 
 - **What it is.** A 32 KB image of main RAM 0x8C000000-0x8C007FFF, taken after a real BIOS boot. It is byte-identical
-  to `/home/skmp/projects/nullDC/data/syscalls.bin`, md5 a22bcc99….
+  to `~/projects/nullDC/data/syscalls.bin`, md5 a22bcc99….
 - **Contents.**
   - Non-zero data only up to 0x8C003FDF.
   - 0x8C004000-0x8C007FFF is zero. In particular 0x8C004004 ≠ 0xDEADBEEF, so KOS finds no dcload.
