@@ -1,0 +1,906 @@
+fpu_specials: boot fpscr=00040000
+# FSRRA  x  cfg(DN,RM,enable)  ->  result  fpscr_after
+FSRRA x=00000000 DN=1 RM=0 EN=000 -> res=7f800000 fpscr=00048020 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000000 DN=1 RM=0 EN=000 -> res=ff800000 fpscr=00048020 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00000001 DN=1 RM=0 EN=000 -> res=7f800000 fpscr=00048020 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00400000 DN=1 RM=0 EN=000 -> res=7f800000 fpscr=00048020 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=007fffff DN=1 RM=0 EN=000 -> res=7f800000 fpscr=00048020 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000001 DN=1 RM=0 EN=000 -> res=ff800000 fpscr=00048020 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=807fffff DN=1 RM=0 EN=000 -> res=ff800000 fpscr=00048020 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00800000 DN=1 RM=0 EN=000 -> res=5f000000 fpscr=00041004 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=1 RM=0 EN=000 -> res=5effffff fpscr=00041004 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=1 RM=0 EN=000 -> res=1f800000 fpscr=00041004 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=1 RM=0 EN=000 -> res=1fb504f3 fpscr=00041004 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=1 RM=0 EN=000 -> res=3f800000 fpscr=00041004 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=1 RM=0 EN=000 -> res=3f3504f3 fpscr=00041004 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=1 RM=0 EN=000 -> res=3f13cd3a fpscr=00041004 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=1 RM=0 EN=000 -> res=3f000000 fpscr=00041004 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=1 RM=0 EN=000 -> res=40000000 fpscr=00041004 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00050040 cause=-V---- flag=V---- no-trap
+FSRRA x=80800000 DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00050040 cause=-V---- flag=V---- no-trap
+FSRRA x=ff7fffff DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00050040 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800000 DN=1 RM=0 EN=000 -> res=00000000 fpscr=00040000 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00050040 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800001 DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00040000 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00040000 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00040000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00050040 cause=-V---- flag=V---- no-trap
+FSRRA x=7fc00001 DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00050040 cause=-V---- flag=V---- no-trap
+FSRRA x=7fffffff DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00050040 cause=-V---- flag=V---- no-trap
+FSRRA x=ff800001 DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00040000 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00040000 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00050040 cause=-V---- flag=V---- no-trap
+FSRRA x=ffffffff DN=1 RM=0 EN=000 -> res=7fbfffff fpscr=00050040 cause=-V---- flag=V---- no-trap
+FSRRA x=00000000 DN=1 RM=0 EN=800 -> res=7f800000 fpscr=00048820 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000000 DN=1 RM=0 EN=800 -> res=ff800000 fpscr=00048820 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00000001 DN=1 RM=0 EN=800 -> res=7f800000 fpscr=00048820 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00400000 DN=1 RM=0 EN=800 -> res=7f800000 fpscr=00048820 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=007fffff DN=1 RM=0 EN=800 -> res=7f800000 fpscr=00048820 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000001 DN=1 RM=0 EN=800 -> res=ff800000 fpscr=00048820 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=807fffff DN=1 RM=0 EN=800 -> res=ff800000 fpscr=00048820 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00800000 DN=1 RM=0 EN=800 -> res=5f000000 fpscr=00041804 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=1 RM=0 EN=800 -> res=5effffff fpscr=00041804 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=1 RM=0 EN=800 -> res=1f800000 fpscr=00041804 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=1 RM=0 EN=800 -> res=1fb504f3 fpscr=00041804 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=1 RM=0 EN=800 -> res=3f800000 fpscr=00041804 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=1 RM=0 EN=800 -> res=3f3504f3 fpscr=00041804 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=1 RM=0 EN=800 -> res=3f13cd3a fpscr=00041804 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=1 RM=0 EN=800 -> res=3f000000 fpscr=00041804 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=1 RM=0 EN=800 -> res=40000000 fpscr=00041804 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=1 RM=0 EN=800 -> res=bf800000 fpscr=00050840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=80800000 DN=1 RM=0 EN=800 -> res=80800000 fpscr=00050840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff7fffff DN=1 RM=0 EN=800 -> res=ff7fffff fpscr=00050840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800000 DN=1 RM=0 EN=800 -> res=00000000 fpscr=00040800 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=1 RM=0 EN=800 -> res=ff800000 fpscr=00050840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800001 DN=1 RM=0 EN=800 -> res=7fbfffff fpscr=00040800 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=1 RM=0 EN=800 -> res=7fbfffff fpscr=00040800 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=1 RM=0 EN=800 -> res=7fbfffff fpscr=00040800 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=1 RM=0 EN=800 -> res=7fc00000 fpscr=00050840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00001 DN=1 RM=0 EN=800 -> res=7fc00001 fpscr=00050840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fffffff DN=1 RM=0 EN=800 -> res=7fffffff fpscr=00050840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800001 DN=1 RM=0 EN=800 -> res=7fbfffff fpscr=00040800 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=1 RM=0 EN=800 -> res=7fbfffff fpscr=00040800 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=1 RM=0 EN=800 -> res=ffc00000 fpscr=00050840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffffffff DN=1 RM=0 EN=800 -> res=ffffffff fpscr=00050840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000000 DN=1 RM=0 EN=400 -> res=00000000 fpscr=00048420 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000000 DN=1 RM=0 EN=400 -> res=80000000 fpscr=00048420 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000001 DN=1 RM=0 EN=400 -> res=00000001 fpscr=00048420 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=1 RM=0 EN=400 -> res=00400000 fpscr=00048420 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=1 RM=0 EN=400 -> res=007fffff fpscr=00048420 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=1 RM=0 EN=400 -> res=80000001 fpscr=00048420 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=807fffff DN=1 RM=0 EN=400 -> res=807fffff fpscr=00048420 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00800000 DN=1 RM=0 EN=400 -> res=5f000000 fpscr=00041404 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=1 RM=0 EN=400 -> res=5effffff fpscr=00041404 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=1 RM=0 EN=400 -> res=1f800000 fpscr=00041404 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=1 RM=0 EN=400 -> res=1fb504f3 fpscr=00041404 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=1 RM=0 EN=400 -> res=3f800000 fpscr=00041404 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=1 RM=0 EN=400 -> res=3f3504f3 fpscr=00041404 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=1 RM=0 EN=400 -> res=3f13cd3a fpscr=00041404 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=1 RM=0 EN=400 -> res=3f000000 fpscr=00041404 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=1 RM=0 EN=400 -> res=40000000 fpscr=00041404 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00050440 cause=-V---- flag=V---- no-trap
+FSRRA x=80800000 DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00050440 cause=-V---- flag=V---- no-trap
+FSRRA x=ff7fffff DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00050440 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800000 DN=1 RM=0 EN=400 -> res=00000000 fpscr=00040400 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00050440 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800001 DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00040400 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00040400 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00040400 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00050440 cause=-V---- flag=V---- no-trap
+FSRRA x=7fc00001 DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00050440 cause=-V---- flag=V---- no-trap
+FSRRA x=7fffffff DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00050440 cause=-V---- flag=V---- no-trap
+FSRRA x=ff800001 DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00040400 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00040400 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00050440 cause=-V---- flag=V---- no-trap
+FSRRA x=ffffffff DN=1 RM=0 EN=400 -> res=7fbfffff fpscr=00050440 cause=-V---- flag=V---- no-trap
+FSRRA x=00000000 DN=1 RM=0 EN=080 -> res=00000000 fpscr=000480a0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000000 DN=1 RM=0 EN=080 -> res=80000000 fpscr=000480a0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000001 DN=1 RM=0 EN=080 -> res=00000001 fpscr=000480a0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=1 RM=0 EN=080 -> res=00400000 fpscr=000480a0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=1 RM=0 EN=080 -> res=007fffff fpscr=000480a0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=1 RM=0 EN=080 -> res=80000001 fpscr=000480a0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=807fffff DN=1 RM=0 EN=080 -> res=807fffff fpscr=000480a0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00800000 DN=1 RM=0 EN=080 -> res=00800000 fpscr=00041084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=00800001 DN=1 RM=0 EN=080 -> res=00800001 fpscr=00041084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f7fffff DN=1 RM=0 EN=080 -> res=7f7fffff fpscr=00041084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f000000 DN=1 RM=0 EN=080 -> res=7f000000 fpscr=00041084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3f800000 DN=1 RM=0 EN=080 -> res=3f800000 fpscr=00041084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40000000 DN=1 RM=0 EN=080 -> res=40000000 fpscr=00041084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40400000 DN=1 RM=0 EN=080 -> res=40400000 fpscr=00041084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40800000 DN=1 RM=0 EN=080 -> res=40800000 fpscr=00041084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3e800000 DN=1 RM=0 EN=080 -> res=3e800000 fpscr=00041084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=bf800000 DN=1 RM=0 EN=080 -> res=bf800000 fpscr=000500c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=80800000 DN=1 RM=0 EN=080 -> res=80800000 fpscr=000500c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff7fffff DN=1 RM=0 EN=080 -> res=ff7fffff fpscr=000500c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800000 DN=1 RM=0 EN=080 -> res=7f800000 fpscr=00040080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800000 DN=1 RM=0 EN=080 -> res=ff800000 fpscr=000500c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800001 DN=1 RM=0 EN=080 -> res=7f800001 fpscr=00040080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fa00000 DN=1 RM=0 EN=080 -> res=7fa00000 fpscr=00040080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fbfffff DN=1 RM=0 EN=080 -> res=7fbfffff fpscr=00040080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00000 DN=1 RM=0 EN=080 -> res=7fc00000 fpscr=000500c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00001 DN=1 RM=0 EN=080 -> res=7fc00001 fpscr=000500c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fffffff DN=1 RM=0 EN=080 -> res=7fffffff fpscr=000500c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800001 DN=1 RM=0 EN=080 -> res=ff800001 fpscr=00040080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffbfffff DN=1 RM=0 EN=080 -> res=ffbfffff fpscr=00040080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffc00000 DN=1 RM=0 EN=080 -> res=ffc00000 fpscr=000500c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffffffff DN=1 RM=0 EN=080 -> res=ffffffff fpscr=000500c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000000 DN=1 RM=0 EN=300 -> res=7f800000 fpscr=00048320 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000000 DN=1 RM=0 EN=300 -> res=ff800000 fpscr=00048320 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00000001 DN=1 RM=0 EN=300 -> res=7f800000 fpscr=00048320 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00400000 DN=1 RM=0 EN=300 -> res=7f800000 fpscr=00048320 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=007fffff DN=1 RM=0 EN=300 -> res=7f800000 fpscr=00048320 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000001 DN=1 RM=0 EN=300 -> res=ff800000 fpscr=00048320 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=807fffff DN=1 RM=0 EN=300 -> res=ff800000 fpscr=00048320 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00800000 DN=1 RM=0 EN=300 -> res=5f000000 fpscr=00041304 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=1 RM=0 EN=300 -> res=5effffff fpscr=00041304 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=1 RM=0 EN=300 -> res=1f800000 fpscr=00041304 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=1 RM=0 EN=300 -> res=1fb504f3 fpscr=00041304 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=1 RM=0 EN=300 -> res=3f800000 fpscr=00041304 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=1 RM=0 EN=300 -> res=3f3504f3 fpscr=00041304 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=1 RM=0 EN=300 -> res=3f13cd3a fpscr=00041304 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=1 RM=0 EN=300 -> res=3f000000 fpscr=00041304 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=1 RM=0 EN=300 -> res=40000000 fpscr=00041304 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00050340 cause=-V---- flag=V---- no-trap
+FSRRA x=80800000 DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00050340 cause=-V---- flag=V---- no-trap
+FSRRA x=ff7fffff DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00050340 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800000 DN=1 RM=0 EN=300 -> res=00000000 fpscr=00040300 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00050340 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800001 DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00040300 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00040300 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00040300 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00050340 cause=-V---- flag=V---- no-trap
+FSRRA x=7fc00001 DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00050340 cause=-V---- flag=V---- no-trap
+FSRRA x=7fffffff DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00050340 cause=-V---- flag=V---- no-trap
+FSRRA x=ff800001 DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00040300 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00040300 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00050340 cause=-V---- flag=V---- no-trap
+FSRRA x=ffffffff DN=1 RM=0 EN=300 -> res=7fbfffff fpscr=00050340 cause=-V---- flag=V---- no-trap
+FSRRA x=00000000 DN=1 RM=0 EN=f80 -> res=00000000 fpscr=00048fa0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000000 DN=1 RM=0 EN=f80 -> res=80000000 fpscr=00048fa0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000001 DN=1 RM=0 EN=f80 -> res=00000001 fpscr=00048fa0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=1 RM=0 EN=f80 -> res=00400000 fpscr=00048fa0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=1 RM=0 EN=f80 -> res=007fffff fpscr=00048fa0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=1 RM=0 EN=f80 -> res=80000001 fpscr=00048fa0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=807fffff DN=1 RM=0 EN=f80 -> res=807fffff fpscr=00048fa0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00800000 DN=1 RM=0 EN=f80 -> res=00800000 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=00800001 DN=1 RM=0 EN=f80 -> res=00800001 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f7fffff DN=1 RM=0 EN=f80 -> res=7f7fffff fpscr=00041f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f000000 DN=1 RM=0 EN=f80 -> res=7f000000 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3f800000 DN=1 RM=0 EN=f80 -> res=3f800000 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40000000 DN=1 RM=0 EN=f80 -> res=40000000 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40400000 DN=1 RM=0 EN=f80 -> res=40400000 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40800000 DN=1 RM=0 EN=f80 -> res=40800000 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3e800000 DN=1 RM=0 EN=f80 -> res=3e800000 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=bf800000 DN=1 RM=0 EN=f80 -> res=bf800000 fpscr=00050fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=80800000 DN=1 RM=0 EN=f80 -> res=80800000 fpscr=00050fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff7fffff DN=1 RM=0 EN=f80 -> res=ff7fffff fpscr=00050fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800000 DN=1 RM=0 EN=f80 -> res=7f800000 fpscr=00040f80 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800000 DN=1 RM=0 EN=f80 -> res=ff800000 fpscr=00050fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800001 DN=1 RM=0 EN=f80 -> res=7f800001 fpscr=00040f80 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fa00000 DN=1 RM=0 EN=f80 -> res=7fa00000 fpscr=00040f80 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fbfffff DN=1 RM=0 EN=f80 -> res=7fbfffff fpscr=00040f80 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00000 DN=1 RM=0 EN=f80 -> res=7fc00000 fpscr=00050fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00001 DN=1 RM=0 EN=f80 -> res=7fc00001 fpscr=00050fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fffffff DN=1 RM=0 EN=f80 -> res=7fffffff fpscr=00050fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800001 DN=1 RM=0 EN=f80 -> res=ff800001 fpscr=00040f80 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffbfffff DN=1 RM=0 EN=f80 -> res=ffbfffff fpscr=00040f80 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffc00000 DN=1 RM=0 EN=f80 -> res=ffc00000 fpscr=00050fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffffffff DN=1 RM=0 EN=f80 -> res=ffffffff fpscr=00050fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000000 DN=1 RM=1 EN=000 -> res=7f800000 fpscr=00048021 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000000 DN=1 RM=1 EN=000 -> res=ff800000 fpscr=00048021 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00000001 DN=1 RM=1 EN=000 -> res=7f800000 fpscr=00048021 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00400000 DN=1 RM=1 EN=000 -> res=7f800000 fpscr=00048021 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=007fffff DN=1 RM=1 EN=000 -> res=7f800000 fpscr=00048021 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000001 DN=1 RM=1 EN=000 -> res=ff800000 fpscr=00048021 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=807fffff DN=1 RM=1 EN=000 -> res=ff800000 fpscr=00048021 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00800000 DN=1 RM=1 EN=000 -> res=5f000000 fpscr=00041005 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=1 RM=1 EN=000 -> res=5effffff fpscr=00041005 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=1 RM=1 EN=000 -> res=1f800000 fpscr=00041005 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=1 RM=1 EN=000 -> res=1fb504f3 fpscr=00041005 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=1 RM=1 EN=000 -> res=3f800000 fpscr=00041005 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=1 RM=1 EN=000 -> res=3f3504f3 fpscr=00041005 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=1 RM=1 EN=000 -> res=3f13cd3a fpscr=00041005 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=1 RM=1 EN=000 -> res=3f000000 fpscr=00041005 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=1 RM=1 EN=000 -> res=40000000 fpscr=00041005 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00050041 cause=-V---- flag=V---- no-trap
+FSRRA x=80800000 DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00050041 cause=-V---- flag=V---- no-trap
+FSRRA x=ff7fffff DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00050041 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800000 DN=1 RM=1 EN=000 -> res=00000000 fpscr=00040001 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00050041 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800001 DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00040001 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00040001 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00040001 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00050041 cause=-V---- flag=V---- no-trap
+FSRRA x=7fc00001 DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00050041 cause=-V---- flag=V---- no-trap
+FSRRA x=7fffffff DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00050041 cause=-V---- flag=V---- no-trap
+FSRRA x=ff800001 DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00040001 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00040001 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00050041 cause=-V---- flag=V---- no-trap
+FSRRA x=ffffffff DN=1 RM=1 EN=000 -> res=7fbfffff fpscr=00050041 cause=-V---- flag=V---- no-trap
+FSRRA x=00000000 DN=1 RM=1 EN=800 -> res=7f800000 fpscr=00048821 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000000 DN=1 RM=1 EN=800 -> res=ff800000 fpscr=00048821 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00000001 DN=1 RM=1 EN=800 -> res=7f800000 fpscr=00048821 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00400000 DN=1 RM=1 EN=800 -> res=7f800000 fpscr=00048821 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=007fffff DN=1 RM=1 EN=800 -> res=7f800000 fpscr=00048821 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000001 DN=1 RM=1 EN=800 -> res=ff800000 fpscr=00048821 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=807fffff DN=1 RM=1 EN=800 -> res=ff800000 fpscr=00048821 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00800000 DN=1 RM=1 EN=800 -> res=5f000000 fpscr=00041805 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=1 RM=1 EN=800 -> res=5effffff fpscr=00041805 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=1 RM=1 EN=800 -> res=1f800000 fpscr=00041805 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=1 RM=1 EN=800 -> res=1fb504f3 fpscr=00041805 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=1 RM=1 EN=800 -> res=3f800000 fpscr=00041805 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=1 RM=1 EN=800 -> res=3f3504f3 fpscr=00041805 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=1 RM=1 EN=800 -> res=3f13cd3a fpscr=00041805 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=1 RM=1 EN=800 -> res=3f000000 fpscr=00041805 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=1 RM=1 EN=800 -> res=40000000 fpscr=00041805 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=1 RM=1 EN=800 -> res=bf800000 fpscr=00050841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=80800000 DN=1 RM=1 EN=800 -> res=80800000 fpscr=00050841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff7fffff DN=1 RM=1 EN=800 -> res=ff7fffff fpscr=00050841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800000 DN=1 RM=1 EN=800 -> res=00000000 fpscr=00040801 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=1 RM=1 EN=800 -> res=ff800000 fpscr=00050841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800001 DN=1 RM=1 EN=800 -> res=7fbfffff fpscr=00040801 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=1 RM=1 EN=800 -> res=7fbfffff fpscr=00040801 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=1 RM=1 EN=800 -> res=7fbfffff fpscr=00040801 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=1 RM=1 EN=800 -> res=7fc00000 fpscr=00050841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00001 DN=1 RM=1 EN=800 -> res=7fc00001 fpscr=00050841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fffffff DN=1 RM=1 EN=800 -> res=7fffffff fpscr=00050841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800001 DN=1 RM=1 EN=800 -> res=7fbfffff fpscr=00040801 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=1 RM=1 EN=800 -> res=7fbfffff fpscr=00040801 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=1 RM=1 EN=800 -> res=ffc00000 fpscr=00050841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffffffff DN=1 RM=1 EN=800 -> res=ffffffff fpscr=00050841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000000 DN=1 RM=1 EN=400 -> res=00000000 fpscr=00048421 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000000 DN=1 RM=1 EN=400 -> res=80000000 fpscr=00048421 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000001 DN=1 RM=1 EN=400 -> res=00000001 fpscr=00048421 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=1 RM=1 EN=400 -> res=00400000 fpscr=00048421 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=1 RM=1 EN=400 -> res=007fffff fpscr=00048421 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=1 RM=1 EN=400 -> res=80000001 fpscr=00048421 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=807fffff DN=1 RM=1 EN=400 -> res=807fffff fpscr=00048421 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00800000 DN=1 RM=1 EN=400 -> res=5f000000 fpscr=00041405 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=1 RM=1 EN=400 -> res=5effffff fpscr=00041405 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=1 RM=1 EN=400 -> res=1f800000 fpscr=00041405 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=1 RM=1 EN=400 -> res=1fb504f3 fpscr=00041405 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=1 RM=1 EN=400 -> res=3f800000 fpscr=00041405 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=1 RM=1 EN=400 -> res=3f3504f3 fpscr=00041405 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=1 RM=1 EN=400 -> res=3f13cd3a fpscr=00041405 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=1 RM=1 EN=400 -> res=3f000000 fpscr=00041405 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=1 RM=1 EN=400 -> res=40000000 fpscr=00041405 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00050441 cause=-V---- flag=V---- no-trap
+FSRRA x=80800000 DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00050441 cause=-V---- flag=V---- no-trap
+FSRRA x=ff7fffff DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00050441 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800000 DN=1 RM=1 EN=400 -> res=00000000 fpscr=00040401 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00050441 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800001 DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00040401 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00040401 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00040401 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00050441 cause=-V---- flag=V---- no-trap
+FSRRA x=7fc00001 DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00050441 cause=-V---- flag=V---- no-trap
+FSRRA x=7fffffff DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00050441 cause=-V---- flag=V---- no-trap
+FSRRA x=ff800001 DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00040401 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00040401 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00050441 cause=-V---- flag=V---- no-trap
+FSRRA x=ffffffff DN=1 RM=1 EN=400 -> res=7fbfffff fpscr=00050441 cause=-V---- flag=V---- no-trap
+FSRRA x=00000000 DN=1 RM=1 EN=080 -> res=00000000 fpscr=000480a1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000000 DN=1 RM=1 EN=080 -> res=80000000 fpscr=000480a1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000001 DN=1 RM=1 EN=080 -> res=00000001 fpscr=000480a1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=1 RM=1 EN=080 -> res=00400000 fpscr=000480a1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=1 RM=1 EN=080 -> res=007fffff fpscr=000480a1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=1 RM=1 EN=080 -> res=80000001 fpscr=000480a1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=807fffff DN=1 RM=1 EN=080 -> res=807fffff fpscr=000480a1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00800000 DN=1 RM=1 EN=080 -> res=00800000 fpscr=00041085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=00800001 DN=1 RM=1 EN=080 -> res=00800001 fpscr=00041085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f7fffff DN=1 RM=1 EN=080 -> res=7f7fffff fpscr=00041085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f000000 DN=1 RM=1 EN=080 -> res=7f000000 fpscr=00041085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3f800000 DN=1 RM=1 EN=080 -> res=3f800000 fpscr=00041085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40000000 DN=1 RM=1 EN=080 -> res=40000000 fpscr=00041085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40400000 DN=1 RM=1 EN=080 -> res=40400000 fpscr=00041085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40800000 DN=1 RM=1 EN=080 -> res=40800000 fpscr=00041085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3e800000 DN=1 RM=1 EN=080 -> res=3e800000 fpscr=00041085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=bf800000 DN=1 RM=1 EN=080 -> res=bf800000 fpscr=000500c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=80800000 DN=1 RM=1 EN=080 -> res=80800000 fpscr=000500c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff7fffff DN=1 RM=1 EN=080 -> res=ff7fffff fpscr=000500c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800000 DN=1 RM=1 EN=080 -> res=7f800000 fpscr=00040081 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800000 DN=1 RM=1 EN=080 -> res=ff800000 fpscr=000500c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800001 DN=1 RM=1 EN=080 -> res=7f800001 fpscr=00040081 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fa00000 DN=1 RM=1 EN=080 -> res=7fa00000 fpscr=00040081 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fbfffff DN=1 RM=1 EN=080 -> res=7fbfffff fpscr=00040081 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00000 DN=1 RM=1 EN=080 -> res=7fc00000 fpscr=000500c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00001 DN=1 RM=1 EN=080 -> res=7fc00001 fpscr=000500c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fffffff DN=1 RM=1 EN=080 -> res=7fffffff fpscr=000500c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800001 DN=1 RM=1 EN=080 -> res=ff800001 fpscr=00040081 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffbfffff DN=1 RM=1 EN=080 -> res=ffbfffff fpscr=00040081 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffc00000 DN=1 RM=1 EN=080 -> res=ffc00000 fpscr=000500c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffffffff DN=1 RM=1 EN=080 -> res=ffffffff fpscr=000500c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000000 DN=1 RM=1 EN=300 -> res=7f800000 fpscr=00048321 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000000 DN=1 RM=1 EN=300 -> res=ff800000 fpscr=00048321 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00000001 DN=1 RM=1 EN=300 -> res=7f800000 fpscr=00048321 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00400000 DN=1 RM=1 EN=300 -> res=7f800000 fpscr=00048321 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=007fffff DN=1 RM=1 EN=300 -> res=7f800000 fpscr=00048321 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000001 DN=1 RM=1 EN=300 -> res=ff800000 fpscr=00048321 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=807fffff DN=1 RM=1 EN=300 -> res=ff800000 fpscr=00048321 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00800000 DN=1 RM=1 EN=300 -> res=5f000000 fpscr=00041305 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=1 RM=1 EN=300 -> res=5effffff fpscr=00041305 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=1 RM=1 EN=300 -> res=1f800000 fpscr=00041305 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=1 RM=1 EN=300 -> res=1fb504f3 fpscr=00041305 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=1 RM=1 EN=300 -> res=3f800000 fpscr=00041305 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=1 RM=1 EN=300 -> res=3f3504f3 fpscr=00041305 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=1 RM=1 EN=300 -> res=3f13cd3a fpscr=00041305 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=1 RM=1 EN=300 -> res=3f000000 fpscr=00041305 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=1 RM=1 EN=300 -> res=40000000 fpscr=00041305 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00050341 cause=-V---- flag=V---- no-trap
+FSRRA x=80800000 DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00050341 cause=-V---- flag=V---- no-trap
+FSRRA x=ff7fffff DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00050341 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800000 DN=1 RM=1 EN=300 -> res=00000000 fpscr=00040301 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00050341 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800001 DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00040301 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00040301 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00040301 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00050341 cause=-V---- flag=V---- no-trap
+FSRRA x=7fc00001 DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00050341 cause=-V---- flag=V---- no-trap
+FSRRA x=7fffffff DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00050341 cause=-V---- flag=V---- no-trap
+FSRRA x=ff800001 DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00040301 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00040301 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00050341 cause=-V---- flag=V---- no-trap
+FSRRA x=ffffffff DN=1 RM=1 EN=300 -> res=7fbfffff fpscr=00050341 cause=-V---- flag=V---- no-trap
+FSRRA x=00000000 DN=1 RM=1 EN=f80 -> res=00000000 fpscr=00048fa1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000000 DN=1 RM=1 EN=f80 -> res=80000000 fpscr=00048fa1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000001 DN=1 RM=1 EN=f80 -> res=00000001 fpscr=00048fa1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=1 RM=1 EN=f80 -> res=00400000 fpscr=00048fa1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=1 RM=1 EN=f80 -> res=007fffff fpscr=00048fa1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=1 RM=1 EN=f80 -> res=80000001 fpscr=00048fa1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=807fffff DN=1 RM=1 EN=f80 -> res=807fffff fpscr=00048fa1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00800000 DN=1 RM=1 EN=f80 -> res=00800000 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=00800001 DN=1 RM=1 EN=f80 -> res=00800001 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f7fffff DN=1 RM=1 EN=f80 -> res=7f7fffff fpscr=00041f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f000000 DN=1 RM=1 EN=f80 -> res=7f000000 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3f800000 DN=1 RM=1 EN=f80 -> res=3f800000 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40000000 DN=1 RM=1 EN=f80 -> res=40000000 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40400000 DN=1 RM=1 EN=f80 -> res=40400000 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40800000 DN=1 RM=1 EN=f80 -> res=40800000 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3e800000 DN=1 RM=1 EN=f80 -> res=3e800000 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=bf800000 DN=1 RM=1 EN=f80 -> res=bf800000 fpscr=00050fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=80800000 DN=1 RM=1 EN=f80 -> res=80800000 fpscr=00050fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff7fffff DN=1 RM=1 EN=f80 -> res=ff7fffff fpscr=00050fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800000 DN=1 RM=1 EN=f80 -> res=7f800000 fpscr=00040f81 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800000 DN=1 RM=1 EN=f80 -> res=ff800000 fpscr=00050fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800001 DN=1 RM=1 EN=f80 -> res=7f800001 fpscr=00040f81 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fa00000 DN=1 RM=1 EN=f80 -> res=7fa00000 fpscr=00040f81 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fbfffff DN=1 RM=1 EN=f80 -> res=7fbfffff fpscr=00040f81 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00000 DN=1 RM=1 EN=f80 -> res=7fc00000 fpscr=00050fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00001 DN=1 RM=1 EN=f80 -> res=7fc00001 fpscr=00050fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fffffff DN=1 RM=1 EN=f80 -> res=7fffffff fpscr=00050fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800001 DN=1 RM=1 EN=f80 -> res=ff800001 fpscr=00040f81 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffbfffff DN=1 RM=1 EN=f80 -> res=ffbfffff fpscr=00040f81 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffc00000 DN=1 RM=1 EN=f80 -> res=ffc00000 fpscr=00050fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffffffff DN=1 RM=1 EN=f80 -> res=ffffffff fpscr=00050fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000000 DN=0 RM=0 EN=000 -> res=7f800000 fpscr=00008020 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000000 DN=0 RM=0 EN=000 -> res=ff800000 fpscr=00008020 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00000001 DN=0 RM=0 EN=000 -> res=00000001 fpscr=00020000 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=0 RM=0 EN=000 -> res=00400000 fpscr=00020000 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=0 RM=0 EN=000 -> res=007fffff fpscr=00020000 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA x=807fffff DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA x=00800000 DN=0 RM=0 EN=000 -> res=5f000000 fpscr=00001004 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=0 RM=0 EN=000 -> res=5effffff fpscr=00001004 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=0 RM=0 EN=000 -> res=1f800000 fpscr=00001004 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=0 RM=0 EN=000 -> res=1fb504f3 fpscr=00001004 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=0 RM=0 EN=000 -> res=3f800000 fpscr=00001004 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=0 RM=0 EN=000 -> res=3f3504f3 fpscr=00001004 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=0 RM=0 EN=000 -> res=3f13cd3a fpscr=00001004 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=0 RM=0 EN=000 -> res=3f000000 fpscr=00001004 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=0 RM=0 EN=000 -> res=40000000 fpscr=00001004 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA x=80800000 DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA x=ff7fffff DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800000 DN=0 RM=0 EN=000 -> res=00000000 fpscr=00000000 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800001 DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00000000 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00000000 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00000000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA x=7fc00001 DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA x=7fffffff DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA x=ff800001 DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00000000 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00000000 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA x=ffffffff DN=0 RM=0 EN=000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA x=00000000 DN=0 RM=0 EN=800 -> res=7f800000 fpscr=00008820 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000000 DN=0 RM=0 EN=800 -> res=ff800000 fpscr=00008820 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00000001 DN=0 RM=0 EN=800 -> res=00000001 fpscr=00020800 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=0 RM=0 EN=800 -> res=00400000 fpscr=00020800 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=0 RM=0 EN=800 -> res=007fffff fpscr=00020800 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=0 RM=0 EN=800 -> res=80000001 fpscr=00010840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=807fffff DN=0 RM=0 EN=800 -> res=807fffff fpscr=00010840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00800000 DN=0 RM=0 EN=800 -> res=5f000000 fpscr=00001804 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=0 RM=0 EN=800 -> res=5effffff fpscr=00001804 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=0 RM=0 EN=800 -> res=1f800000 fpscr=00001804 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=0 RM=0 EN=800 -> res=1fb504f3 fpscr=00001804 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=0 RM=0 EN=800 -> res=3f800000 fpscr=00001804 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=0 RM=0 EN=800 -> res=3f3504f3 fpscr=00001804 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=0 RM=0 EN=800 -> res=3f13cd3a fpscr=00001804 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=0 RM=0 EN=800 -> res=3f000000 fpscr=00001804 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=0 RM=0 EN=800 -> res=40000000 fpscr=00001804 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=0 RM=0 EN=800 -> res=bf800000 fpscr=00010840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=80800000 DN=0 RM=0 EN=800 -> res=80800000 fpscr=00010840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff7fffff DN=0 RM=0 EN=800 -> res=ff7fffff fpscr=00010840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800000 DN=0 RM=0 EN=800 -> res=00000000 fpscr=00000800 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=0 RM=0 EN=800 -> res=ff800000 fpscr=00010840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800001 DN=0 RM=0 EN=800 -> res=7fbfffff fpscr=00000800 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=0 RM=0 EN=800 -> res=7fbfffff fpscr=00000800 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=0 RM=0 EN=800 -> res=7fbfffff fpscr=00000800 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=0 RM=0 EN=800 -> res=7fc00000 fpscr=00010840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00001 DN=0 RM=0 EN=800 -> res=7fc00001 fpscr=00010840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fffffff DN=0 RM=0 EN=800 -> res=7fffffff fpscr=00010840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800001 DN=0 RM=0 EN=800 -> res=7fbfffff fpscr=00000800 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=0 RM=0 EN=800 -> res=7fbfffff fpscr=00000800 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=0 RM=0 EN=800 -> res=ffc00000 fpscr=00010840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffffffff DN=0 RM=0 EN=800 -> res=ffffffff fpscr=00010840 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000000 DN=0 RM=0 EN=400 -> res=00000000 fpscr=00008420 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000000 DN=0 RM=0 EN=400 -> res=80000000 fpscr=00008420 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000001 DN=0 RM=0 EN=400 -> res=00000001 fpscr=00020400 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=0 RM=0 EN=400 -> res=00400000 fpscr=00020400 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=0 RM=0 EN=400 -> res=007fffff fpscr=00020400 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00010440 cause=-V---- flag=V---- no-trap
+FSRRA x=807fffff DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00010440 cause=-V---- flag=V---- no-trap
+FSRRA x=00800000 DN=0 RM=0 EN=400 -> res=5f000000 fpscr=00001404 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=0 RM=0 EN=400 -> res=5effffff fpscr=00001404 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=0 RM=0 EN=400 -> res=1f800000 fpscr=00001404 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=0 RM=0 EN=400 -> res=1fb504f3 fpscr=00001404 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=0 RM=0 EN=400 -> res=3f800000 fpscr=00001404 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=0 RM=0 EN=400 -> res=3f3504f3 fpscr=00001404 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=0 RM=0 EN=400 -> res=3f13cd3a fpscr=00001404 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=0 RM=0 EN=400 -> res=3f000000 fpscr=00001404 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=0 RM=0 EN=400 -> res=40000000 fpscr=00001404 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00010440 cause=-V---- flag=V---- no-trap
+FSRRA x=80800000 DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00010440 cause=-V---- flag=V---- no-trap
+FSRRA x=ff7fffff DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00010440 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800000 DN=0 RM=0 EN=400 -> res=00000000 fpscr=00000400 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00010440 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800001 DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00000400 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00000400 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00000400 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00010440 cause=-V---- flag=V---- no-trap
+FSRRA x=7fc00001 DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00010440 cause=-V---- flag=V---- no-trap
+FSRRA x=7fffffff DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00010440 cause=-V---- flag=V---- no-trap
+FSRRA x=ff800001 DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00000400 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00000400 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00010440 cause=-V---- flag=V---- no-trap
+FSRRA x=ffffffff DN=0 RM=0 EN=400 -> res=7fbfffff fpscr=00010440 cause=-V---- flag=V---- no-trap
+FSRRA x=00000000 DN=0 RM=0 EN=080 -> res=00000000 fpscr=000080a0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000000 DN=0 RM=0 EN=080 -> res=80000000 fpscr=000080a0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000001 DN=0 RM=0 EN=080 -> res=00000001 fpscr=00020080 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=0 RM=0 EN=080 -> res=00400000 fpscr=00020080 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=0 RM=0 EN=080 -> res=007fffff fpscr=00020080 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=0 RM=0 EN=080 -> res=80000001 fpscr=000100c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=807fffff DN=0 RM=0 EN=080 -> res=807fffff fpscr=000100c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00800000 DN=0 RM=0 EN=080 -> res=00800000 fpscr=00001084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=00800001 DN=0 RM=0 EN=080 -> res=00800001 fpscr=00001084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f7fffff DN=0 RM=0 EN=080 -> res=7f7fffff fpscr=00001084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f000000 DN=0 RM=0 EN=080 -> res=7f000000 fpscr=00001084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3f800000 DN=0 RM=0 EN=080 -> res=3f800000 fpscr=00001084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40000000 DN=0 RM=0 EN=080 -> res=40000000 fpscr=00001084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40400000 DN=0 RM=0 EN=080 -> res=40400000 fpscr=00001084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40800000 DN=0 RM=0 EN=080 -> res=40800000 fpscr=00001084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3e800000 DN=0 RM=0 EN=080 -> res=3e800000 fpscr=00001084 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=bf800000 DN=0 RM=0 EN=080 -> res=bf800000 fpscr=000100c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=80800000 DN=0 RM=0 EN=080 -> res=80800000 fpscr=000100c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff7fffff DN=0 RM=0 EN=080 -> res=ff7fffff fpscr=000100c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800000 DN=0 RM=0 EN=080 -> res=7f800000 fpscr=00000080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800000 DN=0 RM=0 EN=080 -> res=ff800000 fpscr=000100c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800001 DN=0 RM=0 EN=080 -> res=7f800001 fpscr=00000080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fa00000 DN=0 RM=0 EN=080 -> res=7fa00000 fpscr=00000080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fbfffff DN=0 RM=0 EN=080 -> res=7fbfffff fpscr=00000080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00000 DN=0 RM=0 EN=080 -> res=7fc00000 fpscr=000100c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00001 DN=0 RM=0 EN=080 -> res=7fc00001 fpscr=000100c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fffffff DN=0 RM=0 EN=080 -> res=7fffffff fpscr=000100c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800001 DN=0 RM=0 EN=080 -> res=ff800001 fpscr=00000080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffbfffff DN=0 RM=0 EN=080 -> res=ffbfffff fpscr=00000080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffc00000 DN=0 RM=0 EN=080 -> res=ffc00000 fpscr=000100c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffffffff DN=0 RM=0 EN=080 -> res=ffffffff fpscr=000100c0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000000 DN=0 RM=0 EN=300 -> res=7f800000 fpscr=00008320 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000000 DN=0 RM=0 EN=300 -> res=ff800000 fpscr=00008320 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00000001 DN=0 RM=0 EN=300 -> res=00000001 fpscr=00020300 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=0 RM=0 EN=300 -> res=00400000 fpscr=00020300 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=0 RM=0 EN=300 -> res=007fffff fpscr=00020300 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00010340 cause=-V---- flag=V---- no-trap
+FSRRA x=807fffff DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00010340 cause=-V---- flag=V---- no-trap
+FSRRA x=00800000 DN=0 RM=0 EN=300 -> res=5f000000 fpscr=00001304 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=0 RM=0 EN=300 -> res=5effffff fpscr=00001304 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=0 RM=0 EN=300 -> res=1f800000 fpscr=00001304 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=0 RM=0 EN=300 -> res=1fb504f3 fpscr=00001304 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=0 RM=0 EN=300 -> res=3f800000 fpscr=00001304 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=0 RM=0 EN=300 -> res=3f3504f3 fpscr=00001304 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=0 RM=0 EN=300 -> res=3f13cd3a fpscr=00001304 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=0 RM=0 EN=300 -> res=3f000000 fpscr=00001304 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=0 RM=0 EN=300 -> res=40000000 fpscr=00001304 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00010340 cause=-V---- flag=V---- no-trap
+FSRRA x=80800000 DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00010340 cause=-V---- flag=V---- no-trap
+FSRRA x=ff7fffff DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00010340 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800000 DN=0 RM=0 EN=300 -> res=00000000 fpscr=00000300 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00010340 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800001 DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00000300 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00000300 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00000300 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00010340 cause=-V---- flag=V---- no-trap
+FSRRA x=7fc00001 DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00010340 cause=-V---- flag=V---- no-trap
+FSRRA x=7fffffff DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00010340 cause=-V---- flag=V---- no-trap
+FSRRA x=ff800001 DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00000300 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00000300 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00010340 cause=-V---- flag=V---- no-trap
+FSRRA x=ffffffff DN=0 RM=0 EN=300 -> res=7fbfffff fpscr=00010340 cause=-V---- flag=V---- no-trap
+FSRRA x=00000000 DN=0 RM=0 EN=f80 -> res=00000000 fpscr=00008fa0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000000 DN=0 RM=0 EN=f80 -> res=80000000 fpscr=00008fa0 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000001 DN=0 RM=0 EN=f80 -> res=00000001 fpscr=00020f80 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=0 RM=0 EN=f80 -> res=00400000 fpscr=00020f80 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=0 RM=0 EN=f80 -> res=007fffff fpscr=00020f80 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=0 RM=0 EN=f80 -> res=80000001 fpscr=00010fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=807fffff DN=0 RM=0 EN=f80 -> res=807fffff fpscr=00010fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00800000 DN=0 RM=0 EN=f80 -> res=00800000 fpscr=00001f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=00800001 DN=0 RM=0 EN=f80 -> res=00800001 fpscr=00001f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f7fffff DN=0 RM=0 EN=f80 -> res=7f7fffff fpscr=00001f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f000000 DN=0 RM=0 EN=f80 -> res=7f000000 fpscr=00001f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3f800000 DN=0 RM=0 EN=f80 -> res=3f800000 fpscr=00001f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40000000 DN=0 RM=0 EN=f80 -> res=40000000 fpscr=00001f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40400000 DN=0 RM=0 EN=f80 -> res=40400000 fpscr=00001f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40800000 DN=0 RM=0 EN=f80 -> res=40800000 fpscr=00001f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3e800000 DN=0 RM=0 EN=f80 -> res=3e800000 fpscr=00001f84 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=bf800000 DN=0 RM=0 EN=f80 -> res=bf800000 fpscr=00010fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=80800000 DN=0 RM=0 EN=f80 -> res=80800000 fpscr=00010fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff7fffff DN=0 RM=0 EN=f80 -> res=ff7fffff fpscr=00010fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800000 DN=0 RM=0 EN=f80 -> res=7f800000 fpscr=00000f80 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800000 DN=0 RM=0 EN=f80 -> res=ff800000 fpscr=00010fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800001 DN=0 RM=0 EN=f80 -> res=7f800001 fpscr=00000f80 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fa00000 DN=0 RM=0 EN=f80 -> res=7fa00000 fpscr=00000f80 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fbfffff DN=0 RM=0 EN=f80 -> res=7fbfffff fpscr=00000f80 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00000 DN=0 RM=0 EN=f80 -> res=7fc00000 fpscr=00010fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00001 DN=0 RM=0 EN=f80 -> res=7fc00001 fpscr=00010fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fffffff DN=0 RM=0 EN=f80 -> res=7fffffff fpscr=00010fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800001 DN=0 RM=0 EN=f80 -> res=ff800001 fpscr=00000f80 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffbfffff DN=0 RM=0 EN=f80 -> res=ffbfffff fpscr=00000f80 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffc00000 DN=0 RM=0 EN=f80 -> res=ffc00000 fpscr=00010fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffffffff DN=0 RM=0 EN=f80 -> res=ffffffff fpscr=00010fc0 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000000 DN=0 RM=1 EN=000 -> res=7f800000 fpscr=00008021 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000000 DN=0 RM=1 EN=000 -> res=ff800000 fpscr=00008021 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00000001 DN=0 RM=1 EN=000 -> res=00000001 fpscr=00020001 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=0 RM=1 EN=000 -> res=00400000 fpscr=00020001 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=0 RM=1 EN=000 -> res=007fffff fpscr=00020001 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00010041 cause=-V---- flag=V---- no-trap
+FSRRA x=807fffff DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00010041 cause=-V---- flag=V---- no-trap
+FSRRA x=00800000 DN=0 RM=1 EN=000 -> res=5f000000 fpscr=00001005 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=0 RM=1 EN=000 -> res=5effffff fpscr=00001005 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=0 RM=1 EN=000 -> res=1f800000 fpscr=00001005 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=0 RM=1 EN=000 -> res=1fb504f3 fpscr=00001005 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=0 RM=1 EN=000 -> res=3f800000 fpscr=00001005 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=0 RM=1 EN=000 -> res=3f3504f3 fpscr=00001005 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=0 RM=1 EN=000 -> res=3f13cd3a fpscr=00001005 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=0 RM=1 EN=000 -> res=3f000000 fpscr=00001005 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=0 RM=1 EN=000 -> res=40000000 fpscr=00001005 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00010041 cause=-V---- flag=V---- no-trap
+FSRRA x=80800000 DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00010041 cause=-V---- flag=V---- no-trap
+FSRRA x=ff7fffff DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00010041 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800000 DN=0 RM=1 EN=000 -> res=00000000 fpscr=00000001 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00010041 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800001 DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00000001 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00000001 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00000001 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00010041 cause=-V---- flag=V---- no-trap
+FSRRA x=7fc00001 DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00010041 cause=-V---- flag=V---- no-trap
+FSRRA x=7fffffff DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00010041 cause=-V---- flag=V---- no-trap
+FSRRA x=ff800001 DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00000001 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00000001 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00010041 cause=-V---- flag=V---- no-trap
+FSRRA x=ffffffff DN=0 RM=1 EN=000 -> res=7fbfffff fpscr=00010041 cause=-V---- flag=V---- no-trap
+FSRRA x=00000000 DN=0 RM=1 EN=800 -> res=7f800000 fpscr=00008821 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000000 DN=0 RM=1 EN=800 -> res=ff800000 fpscr=00008821 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00000001 DN=0 RM=1 EN=800 -> res=00000001 fpscr=00020801 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=0 RM=1 EN=800 -> res=00400000 fpscr=00020801 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=0 RM=1 EN=800 -> res=007fffff fpscr=00020801 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=0 RM=1 EN=800 -> res=80000001 fpscr=00010841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=807fffff DN=0 RM=1 EN=800 -> res=807fffff fpscr=00010841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00800000 DN=0 RM=1 EN=800 -> res=5f000000 fpscr=00001805 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=0 RM=1 EN=800 -> res=5effffff fpscr=00001805 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=0 RM=1 EN=800 -> res=1f800000 fpscr=00001805 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=0 RM=1 EN=800 -> res=1fb504f3 fpscr=00001805 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=0 RM=1 EN=800 -> res=3f800000 fpscr=00001805 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=0 RM=1 EN=800 -> res=3f3504f3 fpscr=00001805 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=0 RM=1 EN=800 -> res=3f13cd3a fpscr=00001805 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=0 RM=1 EN=800 -> res=3f000000 fpscr=00001805 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=0 RM=1 EN=800 -> res=40000000 fpscr=00001805 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=0 RM=1 EN=800 -> res=bf800000 fpscr=00010841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=80800000 DN=0 RM=1 EN=800 -> res=80800000 fpscr=00010841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff7fffff DN=0 RM=1 EN=800 -> res=ff7fffff fpscr=00010841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800000 DN=0 RM=1 EN=800 -> res=00000000 fpscr=00000801 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=0 RM=1 EN=800 -> res=ff800000 fpscr=00010841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800001 DN=0 RM=1 EN=800 -> res=7fbfffff fpscr=00000801 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=0 RM=1 EN=800 -> res=7fbfffff fpscr=00000801 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=0 RM=1 EN=800 -> res=7fbfffff fpscr=00000801 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=0 RM=1 EN=800 -> res=7fc00000 fpscr=00010841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00001 DN=0 RM=1 EN=800 -> res=7fc00001 fpscr=00010841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fffffff DN=0 RM=1 EN=800 -> res=7fffffff fpscr=00010841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800001 DN=0 RM=1 EN=800 -> res=7fbfffff fpscr=00000801 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=0 RM=1 EN=800 -> res=7fbfffff fpscr=00000801 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=0 RM=1 EN=800 -> res=ffc00000 fpscr=00010841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffffffff DN=0 RM=1 EN=800 -> res=ffffffff fpscr=00010841 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000000 DN=0 RM=1 EN=400 -> res=00000000 fpscr=00008421 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000000 DN=0 RM=1 EN=400 -> res=80000000 fpscr=00008421 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000001 DN=0 RM=1 EN=400 -> res=00000001 fpscr=00020401 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=0 RM=1 EN=400 -> res=00400000 fpscr=00020401 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=0 RM=1 EN=400 -> res=007fffff fpscr=00020401 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00010441 cause=-V---- flag=V---- no-trap
+FSRRA x=807fffff DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00010441 cause=-V---- flag=V---- no-trap
+FSRRA x=00800000 DN=0 RM=1 EN=400 -> res=5f000000 fpscr=00001405 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=0 RM=1 EN=400 -> res=5effffff fpscr=00001405 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=0 RM=1 EN=400 -> res=1f800000 fpscr=00001405 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=0 RM=1 EN=400 -> res=1fb504f3 fpscr=00001405 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=0 RM=1 EN=400 -> res=3f800000 fpscr=00001405 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=0 RM=1 EN=400 -> res=3f3504f3 fpscr=00001405 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=0 RM=1 EN=400 -> res=3f13cd3a fpscr=00001405 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=0 RM=1 EN=400 -> res=3f000000 fpscr=00001405 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=0 RM=1 EN=400 -> res=40000000 fpscr=00001405 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00010441 cause=-V---- flag=V---- no-trap
+FSRRA x=80800000 DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00010441 cause=-V---- flag=V---- no-trap
+FSRRA x=ff7fffff DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00010441 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800000 DN=0 RM=1 EN=400 -> res=00000000 fpscr=00000401 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00010441 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800001 DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00000401 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00000401 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00000401 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00010441 cause=-V---- flag=V---- no-trap
+FSRRA x=7fc00001 DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00010441 cause=-V---- flag=V---- no-trap
+FSRRA x=7fffffff DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00010441 cause=-V---- flag=V---- no-trap
+FSRRA x=ff800001 DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00000401 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00000401 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00010441 cause=-V---- flag=V---- no-trap
+FSRRA x=ffffffff DN=0 RM=1 EN=400 -> res=7fbfffff fpscr=00010441 cause=-V---- flag=V---- no-trap
+FSRRA x=00000000 DN=0 RM=1 EN=080 -> res=00000000 fpscr=000080a1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000000 DN=0 RM=1 EN=080 -> res=80000000 fpscr=000080a1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000001 DN=0 RM=1 EN=080 -> res=00000001 fpscr=00020081 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=0 RM=1 EN=080 -> res=00400000 fpscr=00020081 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=0 RM=1 EN=080 -> res=007fffff fpscr=00020081 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=0 RM=1 EN=080 -> res=80000001 fpscr=000100c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=807fffff DN=0 RM=1 EN=080 -> res=807fffff fpscr=000100c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00800000 DN=0 RM=1 EN=080 -> res=00800000 fpscr=00001085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=00800001 DN=0 RM=1 EN=080 -> res=00800001 fpscr=00001085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f7fffff DN=0 RM=1 EN=080 -> res=7f7fffff fpscr=00001085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f000000 DN=0 RM=1 EN=080 -> res=7f000000 fpscr=00001085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3f800000 DN=0 RM=1 EN=080 -> res=3f800000 fpscr=00001085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40000000 DN=0 RM=1 EN=080 -> res=40000000 fpscr=00001085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40400000 DN=0 RM=1 EN=080 -> res=40400000 fpscr=00001085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40800000 DN=0 RM=1 EN=080 -> res=40800000 fpscr=00001085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3e800000 DN=0 RM=1 EN=080 -> res=3e800000 fpscr=00001085 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=bf800000 DN=0 RM=1 EN=080 -> res=bf800000 fpscr=000100c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=80800000 DN=0 RM=1 EN=080 -> res=80800000 fpscr=000100c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff7fffff DN=0 RM=1 EN=080 -> res=ff7fffff fpscr=000100c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800000 DN=0 RM=1 EN=080 -> res=7f800000 fpscr=00000081 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800000 DN=0 RM=1 EN=080 -> res=ff800000 fpscr=000100c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800001 DN=0 RM=1 EN=080 -> res=7f800001 fpscr=00000081 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fa00000 DN=0 RM=1 EN=080 -> res=7fa00000 fpscr=00000081 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fbfffff DN=0 RM=1 EN=080 -> res=7fbfffff fpscr=00000081 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00000 DN=0 RM=1 EN=080 -> res=7fc00000 fpscr=000100c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00001 DN=0 RM=1 EN=080 -> res=7fc00001 fpscr=000100c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fffffff DN=0 RM=1 EN=080 -> res=7fffffff fpscr=000100c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800001 DN=0 RM=1 EN=080 -> res=ff800001 fpscr=00000081 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffbfffff DN=0 RM=1 EN=080 -> res=ffbfffff fpscr=00000081 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffc00000 DN=0 RM=1 EN=080 -> res=ffc00000 fpscr=000100c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffffffff DN=0 RM=1 EN=080 -> res=ffffffff fpscr=000100c1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000000 DN=0 RM=1 EN=300 -> res=7f800000 fpscr=00008321 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=80000000 DN=0 RM=1 EN=300 -> res=ff800000 fpscr=00008321 cause=--Z--- flag=-Z--- no-trap
+FSRRA x=00000001 DN=0 RM=1 EN=300 -> res=00000001 fpscr=00020301 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=0 RM=1 EN=300 -> res=00400000 fpscr=00020301 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=0 RM=1 EN=300 -> res=007fffff fpscr=00020301 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00010341 cause=-V---- flag=V---- no-trap
+FSRRA x=807fffff DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00010341 cause=-V---- flag=V---- no-trap
+FSRRA x=00800000 DN=0 RM=1 EN=300 -> res=5f000000 fpscr=00001305 cause=-----I flag=----I no-trap
+FSRRA x=00800001 DN=0 RM=1 EN=300 -> res=5effffff fpscr=00001305 cause=-----I flag=----I no-trap
+FSRRA x=7f7fffff DN=0 RM=1 EN=300 -> res=1f800000 fpscr=00001305 cause=-----I flag=----I no-trap
+FSRRA x=7f000000 DN=0 RM=1 EN=300 -> res=1fb504f3 fpscr=00001305 cause=-----I flag=----I no-trap
+FSRRA x=3f800000 DN=0 RM=1 EN=300 -> res=3f800000 fpscr=00001305 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA x=40000000 DN=0 RM=1 EN=300 -> res=3f3504f3 fpscr=00001305 cause=-----I flag=----I no-trap
+FSRRA x=40400000 DN=0 RM=1 EN=300 -> res=3f13cd3a fpscr=00001305 cause=-----I flag=----I no-trap
+FSRRA x=40800000 DN=0 RM=1 EN=300 -> res=3f000000 fpscr=00001305 cause=-----I flag=----I no-trap
+FSRRA x=3e800000 DN=0 RM=1 EN=300 -> res=40000000 fpscr=00001305 cause=-----I flag=----I no-trap
+FSRRA x=bf800000 DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00010341 cause=-V---- flag=V---- no-trap
+FSRRA x=80800000 DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00010341 cause=-V---- flag=V---- no-trap
+FSRRA x=ff7fffff DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00010341 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800000 DN=0 RM=1 EN=300 -> res=00000000 fpscr=00000301 cause=------ flag=----- no-trap
+FSRRA x=ff800000 DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00010341 cause=-V---- flag=V---- no-trap
+FSRRA x=7f800001 DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00000301 cause=------ flag=----- no-trap
+FSRRA x=7fa00000 DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00000301 cause=------ flag=----- no-trap
+FSRRA x=7fbfffff DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00000301 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA x=7fc00000 DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00010341 cause=-V---- flag=V---- no-trap
+FSRRA x=7fc00001 DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00010341 cause=-V---- flag=V---- no-trap
+FSRRA x=7fffffff DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00010341 cause=-V---- flag=V---- no-trap
+FSRRA x=ff800001 DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00000301 cause=------ flag=----- no-trap
+FSRRA x=ffbfffff DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00000301 cause=------ flag=----- no-trap
+FSRRA x=ffc00000 DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00010341 cause=-V---- flag=V---- no-trap
+FSRRA x=ffffffff DN=0 RM=1 EN=300 -> res=7fbfffff fpscr=00010341 cause=-V---- flag=V---- no-trap
+FSRRA x=00000000 DN=0 RM=1 EN=f80 -> res=00000000 fpscr=00008fa1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000000 DN=0 RM=1 EN=f80 -> res=80000000 fpscr=00008fa1 cause=--Z--- flag=-Z--- TRAP-FPU (FR0 unchanged)
+FSRRA x=00000001 DN=0 RM=1 EN=f80 -> res=00000001 fpscr=00020f81 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=00400000 DN=0 RM=1 EN=f80 -> res=00400000 fpscr=00020f81 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=007fffff DN=0 RM=1 EN=f80 -> res=007fffff fpscr=00020f81 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=80000001 DN=0 RM=1 EN=f80 -> res=80000001 fpscr=00010fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=807fffff DN=0 RM=1 EN=f80 -> res=807fffff fpscr=00010fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=00800000 DN=0 RM=1 EN=f80 -> res=00800000 fpscr=00001f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=00800001 DN=0 RM=1 EN=f80 -> res=00800001 fpscr=00001f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f7fffff DN=0 RM=1 EN=f80 -> res=7f7fffff fpscr=00001f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=7f000000 DN=0 RM=1 EN=f80 -> res=7f000000 fpscr=00001f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3f800000 DN=0 RM=1 EN=f80 -> res=3f800000 fpscr=00001f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40000000 DN=0 RM=1 EN=f80 -> res=40000000 fpscr=00001f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40400000 DN=0 RM=1 EN=f80 -> res=40400000 fpscr=00001f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=40800000 DN=0 RM=1 EN=f80 -> res=40800000 fpscr=00001f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=3e800000 DN=0 RM=1 EN=f80 -> res=3e800000 fpscr=00001f85 cause=-----I flag=----I TRAP-FPU (FR0 unchanged)
+FSRRA x=bf800000 DN=0 RM=1 EN=f80 -> res=bf800000 fpscr=00010fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=80800000 DN=0 RM=1 EN=f80 -> res=80800000 fpscr=00010fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff7fffff DN=0 RM=1 EN=f80 -> res=ff7fffff fpscr=00010fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800000 DN=0 RM=1 EN=f80 -> res=7f800000 fpscr=00000f81 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800000 DN=0 RM=1 EN=f80 -> res=ff800000 fpscr=00010fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7f800001 DN=0 RM=1 EN=f80 -> res=7f800001 fpscr=00000f81 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fa00000 DN=0 RM=1 EN=f80 -> res=7fa00000 fpscr=00000f81 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fbfffff DN=0 RM=1 EN=f80 -> res=7fbfffff fpscr=00000f81 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00000 DN=0 RM=1 EN=f80 -> res=7fc00000 fpscr=00010fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fc00001 DN=0 RM=1 EN=f80 -> res=7fc00001 fpscr=00010fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=7fffffff DN=0 RM=1 EN=f80 -> res=7fffffff fpscr=00010fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ff800001 DN=0 RM=1 EN=f80 -> res=ff800001 fpscr=00000f81 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffbfffff DN=0 RM=1 EN=f80 -> res=ffbfffff fpscr=00000f81 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffc00000 DN=0 RM=1 EN=f80 -> res=ffc00000 fpscr=00010fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA x=ffffffff DN=0 RM=1 EN=f80 -> res=ffffffff fpscr=00010fc1 cause=-V---- flag=V---- TRAP-FPU (FR0 unchanged)
+FSRRA-PRESET(all flags+causes set before) x=00000000 -> res=7f800000 fpscr=0004807c cause=--Z--- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=80000000 -> res=ff800000 fpscr=0004807c cause=--Z--- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=00000001 -> res=7f800000 fpscr=0004807c cause=--Z--- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=00400000 -> res=7f800000 fpscr=0004807c cause=--Z--- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=007fffff -> res=7f800000 fpscr=0004807c cause=--Z--- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=80000001 -> res=ff800000 fpscr=0004807c cause=--Z--- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=807fffff -> res=ff800000 fpscr=0004807c cause=--Z--- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=00800000 -> res=5f000000 fpscr=0004107c cause=-----I flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=00800001 -> res=5effffff fpscr=0004107c cause=-----I flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=7f7fffff -> res=1f800000 fpscr=0004107c cause=-----I flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=7f000000 -> res=1fb504f3 fpscr=0004107c cause=-----I flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=3f800000 -> res=3f800000 fpscr=0004107c cause=-----I flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=40000000 -> res=3f3504f3 fpscr=0004107c cause=-----I flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=40400000 -> res=3f13cd3a fpscr=0004107c cause=-----I flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=40800000 -> res=3f000000 fpscr=0004107c cause=-----I flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=3e800000 -> res=40000000 fpscr=0004107c cause=-----I flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=bf800000 -> res=7fbfffff fpscr=0005007c cause=-V---- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=80800000 -> res=7fbfffff fpscr=0005007c cause=-V---- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=ff7fffff -> res=7fbfffff fpscr=0005007c cause=-V---- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=7f800000 -> res=00000000 fpscr=0004007c cause=------ flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=ff800000 -> res=7fbfffff fpscr=0005007c cause=-V---- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=7f800001 -> res=7fbfffff fpscr=0004007c cause=------ flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=7fa00000 -> res=7fbfffff fpscr=0004007c cause=------ flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=7fbfffff -> res=7fbfffff fpscr=0004007c cause=------ flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=7fc00000 -> res=7fbfffff fpscr=0005007c cause=-V---- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=7fc00001 -> res=7fbfffff fpscr=0005007c cause=-V---- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=7fffffff -> res=7fbfffff fpscr=0005007c cause=-V---- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=ff800001 -> res=7fbfffff fpscr=0004007c cause=------ flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=ffbfffff -> res=7fbfffff fpscr=0004007c cause=------ flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=ffc00000 -> res=7fbfffff fpscr=0005007c cause=-V---- flag=VZOUI no-trap
+FSRRA-PRESET(all flags+causes set before) x=ffffffff -> res=7fbfffff fpscr=0005007c cause=-V---- flag=VZOUI no-trap
+FSCA a=0000 RM=0 EN=000 -> sin=00000000 cos=3f800000 fpscr=00041004 cause=-----I flag=----I no-trap
+FSCA a=0001 RM=0 EN=000 -> sin=38c91000 cos=3f800000 fpscr=00041004 cause=-----I flag=----I no-trap
+FSCA a=1234 RM=0 EN=000 -> sin=3edd3684 cos=3f66df6a fpscr=00041004 cause=-----I flag=----I no-trap
+FSCA a=4000 RM=0 EN=000 -> sin=3f800000 cos=00000000 fpscr=00041004 cause=-----I flag=----I no-trap
+FSCA a=8000 RM=0 EN=000 -> sin=00000000 cos=bf800000 fpscr=00041004 cause=-----I flag=----I no-trap
+FSCA a=c000 RM=0 EN=000 -> sin=bf800000 cos=00000000 fpscr=00041004 cause=-----I flag=----I no-trap
+FSCA a=ffff RM=0 EN=000 -> sin=b8c90800 cos=3f800000 fpscr=00041004 cause=-----I flag=----I no-trap
+FSCA a=0000 RM=0 EN=800 -> sin=00000000 cos=3f800000 fpscr=00041804 cause=-----I flag=----I no-trap
+FSCA a=0001 RM=0 EN=800 -> sin=38c91000 cos=3f800000 fpscr=00041804 cause=-----I flag=----I no-trap
+FSCA a=1234 RM=0 EN=800 -> sin=3edd3684 cos=3f66df6a fpscr=00041804 cause=-----I flag=----I no-trap
+FSCA a=4000 RM=0 EN=800 -> sin=3f800000 cos=00000000 fpscr=00041804 cause=-----I flag=----I no-trap
+FSCA a=8000 RM=0 EN=800 -> sin=00000000 cos=bf800000 fpscr=00041804 cause=-----I flag=----I no-trap
+FSCA a=c000 RM=0 EN=800 -> sin=bf800000 cos=00000000 fpscr=00041804 cause=-----I flag=----I no-trap
+FSCA a=ffff RM=0 EN=800 -> sin=b8c90800 cos=3f800000 fpscr=00041804 cause=-----I flag=----I no-trap
+FSCA a=0000 RM=0 EN=400 -> sin=00000000 cos=3f800000 fpscr=00041404 cause=-----I flag=----I no-trap
+FSCA a=0001 RM=0 EN=400 -> sin=38c91000 cos=3f800000 fpscr=00041404 cause=-----I flag=----I no-trap
+FSCA a=1234 RM=0 EN=400 -> sin=3edd3684 cos=3f66df6a fpscr=00041404 cause=-----I flag=----I no-trap
+FSCA a=4000 RM=0 EN=400 -> sin=3f800000 cos=00000000 fpscr=00041404 cause=-----I flag=----I no-trap
+FSCA a=8000 RM=0 EN=400 -> sin=00000000 cos=bf800000 fpscr=00041404 cause=-----I flag=----I no-trap
+FSCA a=c000 RM=0 EN=400 -> sin=bf800000 cos=00000000 fpscr=00041404 cause=-----I flag=----I no-trap
+FSCA a=ffff RM=0 EN=400 -> sin=b8c90800 cos=3f800000 fpscr=00041404 cause=-----I flag=----I no-trap
+FSCA a=0000 RM=0 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041084 cause=-----I flag=----I TRAP-FPU
+FSCA a=0001 RM=0 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041084 cause=-----I flag=----I TRAP-FPU
+FSCA a=1234 RM=0 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041084 cause=-----I flag=----I TRAP-FPU
+FSCA a=4000 RM=0 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041084 cause=-----I flag=----I TRAP-FPU
+FSCA a=8000 RM=0 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041084 cause=-----I flag=----I TRAP-FPU
+FSCA a=c000 RM=0 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041084 cause=-----I flag=----I TRAP-FPU
+FSCA a=ffff RM=0 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041084 cause=-----I flag=----I TRAP-FPU
+FSCA a=0000 RM=0 EN=300 -> sin=00000000 cos=3f800000 fpscr=00041304 cause=-----I flag=----I no-trap
+FSCA a=0001 RM=0 EN=300 -> sin=38c91000 cos=3f800000 fpscr=00041304 cause=-----I flag=----I no-trap
+FSCA a=1234 RM=0 EN=300 -> sin=3edd3684 cos=3f66df6a fpscr=00041304 cause=-----I flag=----I no-trap
+FSCA a=4000 RM=0 EN=300 -> sin=3f800000 cos=00000000 fpscr=00041304 cause=-----I flag=----I no-trap
+FSCA a=8000 RM=0 EN=300 -> sin=00000000 cos=bf800000 fpscr=00041304 cause=-----I flag=----I no-trap
+FSCA a=c000 RM=0 EN=300 -> sin=bf800000 cos=00000000 fpscr=00041304 cause=-----I flag=----I no-trap
+FSCA a=ffff RM=0 EN=300 -> sin=b8c90800 cos=3f800000 fpscr=00041304 cause=-----I flag=----I no-trap
+FSCA a=0000 RM=0 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU
+FSCA a=0001 RM=0 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU
+FSCA a=1234 RM=0 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU
+FSCA a=4000 RM=0 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU
+FSCA a=8000 RM=0 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU
+FSCA a=c000 RM=0 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU
+FSCA a=ffff RM=0 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f84 cause=-----I flag=----I TRAP-FPU
+FSCA a=0000 RM=1 EN=000 -> sin=00000000 cos=3f7fffff fpscr=00041005 cause=-----I flag=----I no-trap
+FSCA a=0001 RM=1 EN=000 -> sin=38c91000 cos=3f7fffff fpscr=00041005 cause=-----I flag=----I no-trap
+FSCA a=1234 RM=1 EN=000 -> sin=3edd3683 cos=3f66df6a fpscr=00041005 cause=-----I flag=----I no-trap
+FSCA a=4000 RM=1 EN=000 -> sin=3f7fffff cos=00000000 fpscr=00041005 cause=-----I flag=----I no-trap
+FSCA a=8000 RM=1 EN=000 -> sin=00000000 cos=bf7fffff fpscr=00041005 cause=-----I flag=----I no-trap
+FSCA a=c000 RM=1 EN=000 -> sin=bf7fffff cos=00000000 fpscr=00041005 cause=-----I flag=----I no-trap
+FSCA a=ffff RM=1 EN=000 -> sin=b8c90800 cos=3f7fffff fpscr=00041005 cause=-----I flag=----I no-trap
+FSCA a=0000 RM=1 EN=800 -> sin=00000000 cos=3f7fffff fpscr=00041805 cause=-----I flag=----I no-trap
+FSCA a=0001 RM=1 EN=800 -> sin=38c91000 cos=3f7fffff fpscr=00041805 cause=-----I flag=----I no-trap
+FSCA a=1234 RM=1 EN=800 -> sin=3edd3683 cos=3f66df6a fpscr=00041805 cause=-----I flag=----I no-trap
+FSCA a=4000 RM=1 EN=800 -> sin=3f7fffff cos=00000000 fpscr=00041805 cause=-----I flag=----I no-trap
+FSCA a=8000 RM=1 EN=800 -> sin=00000000 cos=bf7fffff fpscr=00041805 cause=-----I flag=----I no-trap
+FSCA a=c000 RM=1 EN=800 -> sin=bf7fffff cos=00000000 fpscr=00041805 cause=-----I flag=----I no-trap
+FSCA a=ffff RM=1 EN=800 -> sin=b8c90800 cos=3f7fffff fpscr=00041805 cause=-----I flag=----I no-trap
+FSCA a=0000 RM=1 EN=400 -> sin=00000000 cos=3f7fffff fpscr=00041405 cause=-----I flag=----I no-trap
+FSCA a=0001 RM=1 EN=400 -> sin=38c91000 cos=3f7fffff fpscr=00041405 cause=-----I flag=----I no-trap
+FSCA a=1234 RM=1 EN=400 -> sin=3edd3683 cos=3f66df6a fpscr=00041405 cause=-----I flag=----I no-trap
+FSCA a=4000 RM=1 EN=400 -> sin=3f7fffff cos=00000000 fpscr=00041405 cause=-----I flag=----I no-trap
+FSCA a=8000 RM=1 EN=400 -> sin=00000000 cos=bf7fffff fpscr=00041405 cause=-----I flag=----I no-trap
+FSCA a=c000 RM=1 EN=400 -> sin=bf7fffff cos=00000000 fpscr=00041405 cause=-----I flag=----I no-trap
+FSCA a=ffff RM=1 EN=400 -> sin=b8c90800 cos=3f7fffff fpscr=00041405 cause=-----I flag=----I no-trap
+FSCA a=0000 RM=1 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041085 cause=-----I flag=----I TRAP-FPU
+FSCA a=0001 RM=1 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041085 cause=-----I flag=----I TRAP-FPU
+FSCA a=1234 RM=1 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041085 cause=-----I flag=----I TRAP-FPU
+FSCA a=4000 RM=1 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041085 cause=-----I flag=----I TRAP-FPU
+FSCA a=8000 RM=1 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041085 cause=-----I flag=----I TRAP-FPU
+FSCA a=c000 RM=1 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041085 cause=-----I flag=----I TRAP-FPU
+FSCA a=ffff RM=1 EN=080 -> sin=12345678 cos=9abcdef0 fpscr=00041085 cause=-----I flag=----I TRAP-FPU
+FSCA a=0000 RM=1 EN=300 -> sin=00000000 cos=3f7fffff fpscr=00041305 cause=-----I flag=----I no-trap
+FSCA a=0001 RM=1 EN=300 -> sin=38c91000 cos=3f7fffff fpscr=00041305 cause=-----I flag=----I no-trap
+FSCA a=1234 RM=1 EN=300 -> sin=3edd3683 cos=3f66df6a fpscr=00041305 cause=-----I flag=----I no-trap
+FSCA a=4000 RM=1 EN=300 -> sin=3f7fffff cos=00000000 fpscr=00041305 cause=-----I flag=----I no-trap
+FSCA a=8000 RM=1 EN=300 -> sin=00000000 cos=bf7fffff fpscr=00041305 cause=-----I flag=----I no-trap
+FSCA a=c000 RM=1 EN=300 -> sin=bf7fffff cos=00000000 fpscr=00041305 cause=-----I flag=----I no-trap
+FSCA a=ffff RM=1 EN=300 -> sin=b8c90800 cos=3f7fffff fpscr=00041305 cause=-----I flag=----I no-trap
+FSCA a=0000 RM=1 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU
+FSCA a=0001 RM=1 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU
+FSCA a=1234 RM=1 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU
+FSCA a=4000 RM=1 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU
+FSCA a=8000 RM=1 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU
+FSCA a=c000 RM=1 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU
+FSCA a=ffff RM=1 EN=f80 -> sin=12345678 cos=9abcdef0 fpscr=00041f85 cause=-----I flag=----I TRAP-FPU
+FSCA upper-bits: FPUL = angle | ffff0000 differs from FPUL = angle at 0 of 65536 angles
+FSCA upper-bits: FPUL = angle | 00010000 differs from FPUL = angle at 0 of 65536 angles
+FSCA upper-bits: FPUL = angle | a5a50000 differs from FPUL = angle at 0 of 65536 angles
+FSCA upper-bits: FPUL = angle | 80000000 differs from FPUL = angle at 0 of 65536 angles
+DN=1/flags clear vs DN=0/flags set: FSRRA differs at 0 of 65536 normals, FSCA at 0 of 65536 angles
+# PR=1
+FSRRA-PR1 x=00000000 -> res=00000000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=80000000 -> res=80000000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=00000001 -> res=00000001 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=00400000 -> res=00400000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=007fffff -> res=007fffff fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=80000001 -> res=80000001 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=807fffff -> res=807fffff fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=00800000 -> res=00800000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=00800001 -> res=00800001 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=7f7fffff -> res=7f7fffff fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=7f000000 -> res=7f000000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=3f800000 -> res=3f800000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=40000000 -> res=40000000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=40400000 -> res=40400000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=40800000 -> res=40800000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=3e800000 -> res=3e800000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=bf800000 -> res=bf800000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=80800000 -> res=80800000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=ff7fffff -> res=ff7fffff fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=7f800000 -> res=7f800000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=ff800000 -> res=ff800000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=7f800001 -> res=7f800001 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=7fa00000 -> res=7fa00000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=7fbfffff -> res=7fbfffff fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=7fc00000 -> res=7fc00000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=7fc00001 -> res=7fc00001 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=7fffffff -> res=7fffffff fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=ff800001 -> res=ff800001 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=ffbfffff -> res=ffbfffff fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=ffc00000 -> res=ffc00000 fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA-PR1 x=ffffffff -> res=ffffffff fpscr=000c0000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSCA-PR1 a=0000 -> fr0=12345678 fr1=9abcdef0 fpscr=000c0000 cause=------ flag=----- no-trap (FR0/FR1 unchanged)
+FSCA-PR1 a=0001 -> fr0=12345678 fr1=9abcdef0 fpscr=000c0000 cause=------ flag=----- no-trap (FR0/FR1 unchanged)
+FSCA-PR1 a=1234 -> fr0=12345678 fr1=9abcdef0 fpscr=000c0000 cause=------ flag=----- no-trap (FR0/FR1 unchanged)
+FSCA-PR1 a=4000 -> fr0=12345678 fr1=9abcdef0 fpscr=000c0000 cause=------ flag=----- no-trap (FR0/FR1 unchanged)
+FSCA-PR1 a=8000 -> fr0=12345678 fr1=9abcdef0 fpscr=000c0000 cause=------ flag=----- no-trap (FR0/FR1 unchanged)
+FSCA-PR1 a=c000 -> fr0=12345678 fr1=9abcdef0 fpscr=000c0000 cause=------ flag=----- no-trap (FR0/FR1 unchanged)
+FSCA-PR1 a=ffff -> fr0=12345678 fr1=9abcdef0 fpscr=000c0000 cause=------ flag=----- no-trap (FR0/FR1 unchanged)
+DONE

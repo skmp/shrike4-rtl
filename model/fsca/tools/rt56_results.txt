@@ -1,0 +1,16 @@
+full 65536: sin RN 0 RZ 0 cos RN 0 RZ 0 windows 0 independent-vs-header 0
+guards nodes 0/1/2/16/32: 0 0 0 0 0
+roles xor 0 window violations first half-turn 0
+roles xor 1 window violations first half-turn 0
+roles xor 2 window violations first half-turn 13
+roles xor 3 window violations first half-turn 13
+roles xor 4 window violations first half-turn 4
+roles xor 5 window violations first half-turn 4
+roles xor 6 window violations first half-turn 17
+roles xor 7 window violations first half-turn 17
+KC delta -1: 55 violations
+admissible KC 6587200 = 0x648340
+KC delta +0: 0 violations
+KC delta +1: 39 violations
+admissible constants in +/-128: 1
+RN((old KC * 4/pi)/64) = 102925; recovered KC = 102925 << 6

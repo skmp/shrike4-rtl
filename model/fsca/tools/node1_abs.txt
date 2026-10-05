@@ -1,0 +1,4 @@
+node 1: 1022 exact samples; true C0=6577818.940 u, C1 mant 13113344.77 (2^-37), C2 = 4.504763e-10 (mant 16230117.7 at 2^-55), C3 mant 10785293.8 (2^-66)
+stage1 best mism 509: dm1 -4 dC0 0 C2 mant 16226304 (0.999765 x true) dm3 -4096 c2 0.000
+stage2 best mism 509: C2 mant 16225536 c1 0.03711 c2 0.0000 c3 0.005; zero-fit points 0: C2 [0,0] c1 [9.00000,-9.00000] c2 [9.0000,-9.0000]
+C0 = 6577819 (true 6577818.940), C1 mant = 13113340 (trunc true -4), C3 mant = 10781198 (-4096)

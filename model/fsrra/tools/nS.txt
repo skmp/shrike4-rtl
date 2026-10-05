@@ -1,0 +1,7 @@
+mode S (exact reference 261434 of 262143):
+  261179  S: operand rne24 rec 0 K 0 c -0.002
+  261179  S: operand rne24 rec 1 K 0 c -0.002
+  261178  S: operand rne24 rec 1 K 524288 c -0.002
+  261178  S: operand rne24 rec 0 K 524288 c -0.002
+  261176  S: operand trunc24 rec 0 K 0 c -0.002
+  261176  S: operand trunc24 rec 1 K 0 c -0.002

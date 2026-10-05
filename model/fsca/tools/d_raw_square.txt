@@ -1,0 +1,17 @@
+raw t17 positive_error-131072 negative_error-131072
+raw t342 positive_error-131072 negative_error0
+raw t385 positive_error-131072 negative_error-131072
+raw squarer asymmetric pairs 128 / 511
+structures 12936 pass all four probes 0
+hits 931 probes 0 a12 b10 r16 KCshift0 order0 K0,1 t17=45628 t-17=45623 t342=18466846 t-342=18466841
+hits 931 probes 0 a12 b10 r17 KCshift2 order0 K0,0 t17=45628 t-17=45623 t342=18466846 t-342=18466841
+hits 931 probes 0 a12 b10 r15 KCshift2 order0 K0,0 t17=45628 t-17=45623 t342=18466846 t-342=18466841
+hits 931 probes 0 a12 b10 r16 KCshift1 order0 K0,0 t17=45628 t-17=45623 t342=18466846 t-342=18466841
+hits 931 probes 0 a12 b10 r14 KCshift2 order1 K0,1 t17=45628 t-17=45623 t342=18466846 t-342=18466841
+hits 931 probes 0 a12 b10 r15 KCshift0 order0 K0,0 t17=45628 t-17=45623 t342=18466846 t-342=18466841
+hits 931 probes 0 a10 b13 r18 KCshift2 order0 K0,0 t17=45628 t-17=45623 t342=18466846 t-342=18466841
+hits 931 probes 0 a12 b10 r17 KCshift1 order1 K0,1 t17=45628 t-17=45623 t342=18466846 t-342=18466841
+hits 931 probes 0 a12 b10 r16 KCshift0 order0 K0,0 t17=45628 t-17=45623 t342=18466846 t-342=18466841
+hits 931 probes 0 a12 b10 r14 KCshift0 order0 K0,0 t17=45628 t-17=45623 t342=18466846 t-342=18466841
+hits 931 probes 0 a12 b10 r17 KCshift1 order0 K0,1 t17=45628 t-17=45624 t342=18466846 t-342=18466841
+hits 931 probes 0 a12 b10 r14 KCshift2 order0 K0,0 t17=45628 t-17=45623 t342=18466846 t-342=18466841

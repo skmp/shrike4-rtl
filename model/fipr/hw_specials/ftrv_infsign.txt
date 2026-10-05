@@ -1,0 +1,26 @@
+ftrv_infsign: boot fpscr=00040000
+INFSIGN inf_sign=0 neg_finite_at=0 zero_at=1 (2 infinities) -> FTRV row0=ff800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=ff800000 fpscr=00040000
+INFSIGN inf_sign=0 neg_finite_at=0 zero_at=2 (2 infinities) -> FTRV row0=ff800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=ff800000 fpscr=00040000
+INFSIGN inf_sign=0 neg_finite_at=0 zero_at=3 (2 infinities) -> FTRV row0=ff800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=ff800000 fpscr=00040000
+INFSIGN inf_sign=0 neg_finite_at=1 zero_at=0 (2 infinities) -> FTRV row0=7f800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=7f800000 fpscr=00040000
+INFSIGN inf_sign=0 neg_finite_at=1 zero_at=2 (2 infinities) -> FTRV row0=7f800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=7f800000 fpscr=00040000
+INFSIGN inf_sign=0 neg_finite_at=1 zero_at=3 (2 infinities) -> FTRV row0=7f800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=7f800000 fpscr=00040000
+INFSIGN inf_sign=0 neg_finite_at=2 zero_at=0 (2 infinities) -> FTRV row0=7f800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=7f800000 fpscr=00040000
+INFSIGN inf_sign=0 neg_finite_at=2 zero_at=1 (2 infinities) -> FTRV row0=7f800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=7f800000 fpscr=00040000
+INFSIGN inf_sign=0 neg_finite_at=2 zero_at=3 (2 infinities) -> FTRV row0=7f800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=7f800000 fpscr=00040000
+INFSIGN inf_sign=0 neg_finite_at=3 zero_at=0 (2 infinities) -> FTRV row0=7f800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=7f800000 fpscr=00040000
+INFSIGN inf_sign=0 neg_finite_at=3 zero_at=1 (2 infinities) -> FTRV row0=7f800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=7f800000 fpscr=00040000
+INFSIGN inf_sign=0 neg_finite_at=3 zero_at=2 (2 infinities) -> FTRV row0=7f800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=7f800000 fpscr=00040000
+INFSIGN inf_sign=1 neg_finite_at=0 zero_at=1 (2 infinities) -> FTRV row0=ff800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=ff800000 fpscr=00040000
+INFSIGN inf_sign=1 neg_finite_at=0 zero_at=2 (2 infinities) -> FTRV row0=ff800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=ff800000 fpscr=00040000
+INFSIGN inf_sign=1 neg_finite_at=0 zero_at=3 (2 infinities) -> FTRV row0=ff800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=ff800000 fpscr=00040000
+INFSIGN inf_sign=1 neg_finite_at=1 zero_at=0 (2 infinities) -> FTRV row0=7f800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=7f800000 fpscr=00040000
+INFSIGN inf_sign=1 neg_finite_at=1 zero_at=2 (2 infinities) -> FTRV row0=ff800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=ff800000 fpscr=00040000
+INFSIGN inf_sign=1 neg_finite_at=1 zero_at=3 (2 infinities) -> FTRV row0=ff800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=ff800000 fpscr=00040000
+INFSIGN inf_sign=1 neg_finite_at=2 zero_at=0 (2 infinities) -> FTRV row0=7f800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=7f800000 fpscr=00040000
+INFSIGN inf_sign=1 neg_finite_at=2 zero_at=1 (2 infinities) -> FTRV row0=ff800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=ff800000 fpscr=00040000
+INFSIGN inf_sign=1 neg_finite_at=2 zero_at=3 (2 infinities) -> FTRV row0=ff800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=ff800000 fpscr=00040000
+INFSIGN inf_sign=1 neg_finite_at=3 zero_at=0 (2 infinities) -> FTRV row0=7f800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=7f800000 fpscr=00040000
+INFSIGN inf_sign=1 neg_finite_at=3 zero_at=1 (2 infinities) -> FTRV row0=ff800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=ff800000 fpscr=00040000
+INFSIGN inf_sign=1 neg_finite_at=3 zero_at=2 (2 infinities) -> FTRV row0=ff800000 fpscr=0004300c | FIPR(same operands, vector=FVm)=ff800000 fpscr=00040000
+DONE

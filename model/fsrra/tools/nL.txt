@@ -1,0 +1,7 @@
+mode L (exact reference 261434 of 262143):
+  261420  L: operand rne24 rec 0 K 524288 c +0.008
+  261420  L: operand trunc24 rec 0 K 524288 c +0.008
+  261414  L: operand trunc24 rec 1 K 524288 c +0.008
+  261414  L: operand rne24 rec 1 K 524288 c +0.008
+  261411  L: operand rne24 rec 1 K 0 c +0.008
+  261411  L: operand trunc24 rec 1 K 0 c +0.008

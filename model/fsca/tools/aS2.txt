@@ -1,0 +1,3 @@
+SQUARE via array (C2 as 24-bit, t^2<<5), abstract linear (c1 per node) and cubic:
+ rec 0: best total 549 at K=327680
+ rec 1: best total 549 at K=0

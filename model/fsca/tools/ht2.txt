@@ -1,0 +1,10 @@
+node 2 (1024 samples):
+     3  separate (ref)         r2 0.9997 r3 0.9990 c1 0.0312 c2 0.0020 c3 0.0039
+     3  separate (ref)         r2 0.9998 r3 0.9990 c1 0.0312 c2 0.0020 c3 0.0039
+     3  separate (ref)         r2 0.9999 r3 0.9990 c1 0.0312 c2 0.0020 c3 0.0039
+     3  separate (ref)         r2 1.0000 r3 0.9990 c1 0.0312 c2 0.0020 c3 0.0039
+     3  separate (ref)         r2 1.0001 r3 0.9990 c1 0.0312 c2 0.0020 c3 0.0039
+     3  separate (ref)         r2 1.0002 r3 0.9990 c1 0.0312 c2 0.0020 c3 0.0039
+     3  separate (ref)         r2 1.0003 r3 0.9990 c1 0.0312 c2 0.0020 c3 0.0039
+     3  separate (ref)         r2 1.0004 r3 0.9990 c1 0.0312 c2 0.0020 c3 0.0039
+  reference separate: 3

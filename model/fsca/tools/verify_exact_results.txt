@@ -1,0 +1,40 @@
+
+=== FSCA exact value model, all angles / both outputs / RN+RZ, guards and constant identifiability -- expect zero
+full 65536: sin RN 0 RZ 0 cos RN 0 RZ 0 windows 0 independent-vs-header 0
+guards nodes 0/1/2/16/32: 0 0 0 0 0
+roles xor 0 window violations first half-turn 0
+roles xor 1 window violations first half-turn 0
+roles xor 2 window violations first half-turn 13
+roles xor 3 window violations first half-turn 13
+roles xor 4 window violations first half-turn 4
+roles xor 5 window violations first half-turn 4
+roles xor 6 window violations first half-turn 17
+roles xor 7 window violations first half-turn 17
+KC delta -1: 55 violations
+admissible KC 6587200 = 0x648340
+KC delta +0: 0 violations
+KC delta +1: 39 violations
+admissible constants in +/-128: 1
+RN((old KC * 4/pi)/64) = 102925; recovered KC = 102925 << 6
+
+=== FSRRA reference fsrra_ref.h vs both [1,4) captures (rr17) -- expect 0 / 0
+fsrra_ref.h vs hardware over [1,4): RZ 0 mismatches, RN mantissa 0 mismatches of 16777216
+
+=== FSRRA single-header C sh4_fsrra.h vs the captures (rr18) -- expect 0 / 0 
+[1,4): RZ full words 0 mismatches, RN mantissas 0 mismatches, of 16777216
+specials: +0 7f800000  -0 ff800000  +inf 00000000  -inf 7fbfffff  nan 7fbfffff  -1 7fbfffff  1.0 3f800000  4.0 3f000000  0.25 40000000
+
+=== FSRRA special operands / FPSCR semantics vs the console measurements (rr19) -- expect 854 cases, 0 mismatches
+854 measured FSRRA cases, 0 mismatches
+
+=== RTL rtl/fpu_vec (Verilator): all three instructions must be 0 vs hardware
+FIPR single-issue: 16374 vectors, 0 value mismatches vs fipr_ref, 0 latency != 4
+FIPR pitch-1 stream: 20000 issued, 20000 results, 0 mismatches
+FIPR vs hardware dump: 26812 samples, 0 mismatches
+FSCA all 65536 angles x RN/RZ: 0 mismatches vs the FSCA exact model, 0 latency != (6,7)
+FSCA vs hardware dump: sin RN 0 RZ 0, cos RN 0 RZ 0  (must be zero)
+FSRRA stride 61 over [1,4): 275037 samples x RN/RZ, 0 mismatches vs the structural model, 0 latency != 6
+FSRRA vs hardware: RZ 0 (0.000%), RN mantissa 0 (0.000%)  (the model is bit-exact: must be 0)
+PASS
+
+verify_all: OK

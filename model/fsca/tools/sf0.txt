@@ -1,0 +1,2 @@
+node 0 side +1 (511): best 0  C1 0xc90fda C2 0xffffffffffffffa0 C3 0xa55ff0 c1 0.03906 c2 -0.01172 c3 -0.00488 | exact 17150: c1 [0.03906,0.04004] c2 [-0.01172,0.01172] c3 [-0.00488,-0.00391] C2 [0xffffffffffffffa0,0x0000060]
+node 0 side -1 (511): best 0  C1 0xc90fda C2 0xffffffffffffffa0 C3 0xa55fc0 c1 0.03906 c2 -0.01172 c3 -0.00391 | exact 127400: c1 [0.03906,0.04004] c2 [-0.01172,0.01172] c3 [-0.00684,-0.00098] C2 [0xffffffffffffffa0,0x0000060]

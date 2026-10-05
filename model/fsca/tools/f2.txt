@@ -1,0 +1,11 @@
+node 2 fine-first (mism of 1024): F mode(0 tz,1 floor) chain ROMbits k2r k3r cA cB
+   563  F=40 mode=0 chain=0 R=26 k2r=0.99981 k3r=1.00000 cA=-0.0039 cB=-0.0156
+   563  F=36 mode=0 chain=0 R=26 k2r=0.99981 k3r=1.00000 cA=-0.0039 cB=-0.0156
+   563  F=40 mode=1 chain=0 R=26 k2r=0.99981 k3r=1.00000 cA=-0.0039 cB=-0.0156
+   564  F=34 mode=0 chain=0 R=26 k2r=0.99981 k3r=1.00000 cA=-0.0039 cB=-0.0156
+   564  F=36 mode=1 chain=0 R=26 k2r=0.99981 k3r=1.00000 cA=-0.0039 cB=-0.0156
+   565  F=32 mode=1 chain=0 R=26 k2r=0.99981 k3r=1.00000 cA=-0.0039 cB=0.0000
+   565  F=32 mode=0 chain=0 R=26 k2r=0.99981 k3r=1.00000 cA=-0.0039 cB=-0.0156
+   565  F=40 mode=1 chain=0 R=26 k2r=0.99980 k3r=1.00000 cA=0.0078 cB=-0.0156
+   565  F=36 mode=0 chain=0 R=26 k2r=0.99980 k3r=1.00000 cA=0.0078 cB=-0.0156
+   565  F=34 mode=1 chain=0 R=26 k2r=0.99981 k3r=1.00000 cA=-0.0039 cB=-0.0117

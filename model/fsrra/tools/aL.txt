@@ -1,0 +1,11 @@
+mode L (exact-product reference: 261435 hits of 262144):
+  261410  linear: t<<6 rec 0 K 524288 c1 +0.008
+  261406  linear: t<<6 rec 1 K 524288 c1 +0.008
+  261398  linear: t<<6 rec 1 K 0 c1 +0.008
+  261356  linear: t<<6 rec 0 K 0 c1 +0.008
+  261346  linear: t<<5 rec 1 K 0 c1 +0.008
+  261341  linear: t<<5 rec 0 K 524288 c1 +0.008
+  261253  linear: t<<3 rec 0 K 524288 c1 +0.000
+  261253  linear: t<<3 rec 0 K 524288 c1 +0.008
+  261253  linear: t<<3 rec 0 K 524288 c1 +0.016
+  261253  linear: t<<3 rec 0 K 524288 c1 +0.030

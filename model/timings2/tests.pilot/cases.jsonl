@@ -1,0 +1,134 @@
+{"a": "ADD Rm,Rn", "b": "ADD Rm,Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 0, "case": 0, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["312c", "334c"]}
+{"a": "ADD Rm,Rn", "b": "ADD Rm,Rn", "mode": "M0", "var": "ov:Rm>Rn", "align": 0, "nerr": {}, "id": 1, "case": 1, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["312c", "323c"]}
+{"a": "ADD Rm,Rn", "b": "ADD Rm,Rn", "mode": "M0", "var": "ov:Rn>Rm", "align": 0, "nerr": {}, "id": 2, "case": 2, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["312c", "331c"]}
+{"a": "ADD Rm,Rn", "b": "ADD Rm,Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 3, "case": 3, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["312c", "313c"]}
+{"a": "NOP", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 4, "case": 4, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["0009", "0009"]}
+{"a": "FADD FRm,FRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 5, "case": 5, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f120", "f340"]}
+{"a": "FADD FRm,FRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FRm>FRn", "align": 0, "nerr": {}, "id": 6, "case": 6, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f120", "f230"]}
+{"a": "FADD FRm,FRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FRn>FRm", "align": 0, "nerr": {}, "id": 7, "case": 7, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f120", "f310"]}
+{"a": "FADD FRm,FRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FRn>FRn", "align": 0, "nerr": {}, "id": 8, "case": 8, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f120", "f130"]}
+{"a": "FMUL FRm,FRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 9, "case": 9, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f122", "f340"]}
+{"a": "FMUL FRm,FRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FRm>FRn", "align": 0, "nerr": {}, "id": 10, "case": 10, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f122", "f230"]}
+{"a": "FMUL FRm,FRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FRn>FRm", "align": 0, "nerr": {}, "id": 11, "case": 11, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f122", "f310"]}
+{"a": "FMUL FRm,FRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FRn>FRn", "align": 0, "nerr": {}, "id": 12, "case": 12, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f122", "f130"]}
+{"a": "FDIV FRm,FRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 13, "case": 13, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f123", "f340"]}
+{"a": "FDIV FRm,FRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FRm>FRn", "align": 0, "nerr": {}, "id": 14, "case": 14, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f123", "f230"]}
+{"a": "FDIV FRm,FRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FRn>FRm", "align": 0, "nerr": {}, "id": 15, "case": 15, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f123", "f310"]}
+{"a": "FDIV FRm,FRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FRn>FRn", "align": 0, "nerr": {}, "id": 16, "case": 16, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f123", "f130"]}
+{"a": "FDIV FRm,FRn", "b": "FDIV FRm,FRn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 17, "case": 17, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f123", "f343"]}
+{"a": "FDIV FRm,FRn", "b": "FDIV FRm,FRn", "mode": "M0", "var": "ov:FRm>FRn", "align": 0, "nerr": {}, "id": 18, "case": 18, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f123", "f233"]}
+{"a": "FDIV FRm,FRn", "b": "FDIV FRm,FRn", "mode": "M0", "var": "ov:FRn>FRm", "align": 0, "nerr": {}, "id": 19, "case": 19, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f123", "f313"]}
+{"a": "FDIV FRm,FRn", "b": "FDIV FRm,FRn", "mode": "M0", "var": "ov:FRn>FRn", "align": 0, "nerr": {}, "id": 20, "case": 20, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f123", "f133"]}
+{"a": "MOV.L @Rm,Rn", "b": "ADD Rm,Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 21, "case": 21, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["6122", "334c"]}
+{"a": "MOV.L @Rm,Rn", "b": "ADD Rm,Rn", "mode": "M0", "var": "ov:Rn>Rm", "align": 0, "nerr": {}, "id": 22, "case": 22, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["6122", "331c"]}
+{"a": "MOV.L @Rm,Rn", "b": "ADD Rm,Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 23, "case": 23, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["6122", "313c"]}
+{"a": "MOV.L @Rm,Rn", "b": "ADD Rm,Rn", "mode": "M0", "var": "ov:Rm>Rn", "align": 0, "nerr": {}, "id": 24, "case": 24, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["6122", "323c", "52c0"]}
+{"a": "ADD #imm,Rn", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 25, "case": 25, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["7101", "0009"]}
+{"a": "BT (taken)", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 26, "case": 26, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 1, "code": ["89ff", "0009"]}
+{"a": "BT (not taken)", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 27, "case": 27, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["89ff", "0009"]}
+{"a": "JMP @Rn", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 28, "case": 28, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["412b", "0009"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 29, "case": 29, "ns": [0], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 30, "case": 29, "ns": [1], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 31, "case": 29, "ns": [2], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 32, "case": 29, "ns": [3], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 33, "case": 29, "ns": [4], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 34, "case": 29, "ns": [5], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 35, "case": 29, "ns": [6], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 36, "case": 29, "ns": [7], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 37, "case": 29, "ns": [8], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 38, "case": 29, "ns": [9], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 39, "case": 29, "ns": [10], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 40, "case": 29, "ns": [11], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 41, "case": 29, "ns": [12], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 42, "case": 29, "ns": [13], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 43, "case": 29, "ns": [14], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 44, "case": 29, "ns": [15], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 45, "case": 29, "ns": [16], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 46, "case": 29, "ns": [40], "T": 0, "code": ["6123", "432b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 47, "case": 30, "ns": [0], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 48, "case": 30, "ns": [1], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 49, "case": 30, "ns": [2], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 50, "case": 30, "ns": [3], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 51, "case": 30, "ns": [4], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 52, "case": 30, "ns": [5], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 53, "case": 30, "ns": [6], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 54, "case": 30, "ns": [7], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 55, "case": 30, "ns": [8], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 56, "case": 30, "ns": [9], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 57, "case": 30, "ns": [10], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 58, "case": 30, "ns": [11], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 59, "case": 30, "ns": [12], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 60, "case": 30, "ns": [13], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 61, "case": 30, "ns": [14], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 62, "case": 30, "ns": [15], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 63, "case": 30, "ns": [16], "T": 0, "code": ["6123", "412b"]}
+{"a": "MOV Rm,Rn", "b": "JMP @Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 64, "case": 30, "ns": [40], "T": 0, "code": ["6123", "412b"]}
+{"a": "FTRV XMTRX,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 65, "case": 31, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f5fd", "f120"]}
+{"a": "FTRV XMTRX,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVn>FRm[0]", "align": 0, "nerr": {}, "id": 66, "case": 32, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f5fd", "f140"]}
+{"a": "FTRV XMTRX,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVn>FRm[1]", "align": 0, "nerr": {}, "id": 67, "case": 33, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f5fd", "f150"]}
+{"a": "FTRV XMTRX,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVn>FRm[2]", "align": 0, "nerr": {}, "id": 68, "case": 34, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f5fd", "f160"]}
+{"a": "FTRV XMTRX,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVn>FRm[3]", "align": 0, "nerr": {}, "id": 69, "case": 35, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f5fd", "f170"]}
+{"a": "FTRV XMTRX,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVn>FRn[0]", "align": 0, "nerr": {}, "id": 70, "case": 36, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f5fd", "f410"]}
+{"a": "FTRV XMTRX,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVn>FRn[1]", "align": 0, "nerr": {}, "id": 71, "case": 37, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f5fd", "f510"]}
+{"a": "FTRV XMTRX,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVn>FRn[2]", "align": 0, "nerr": {}, "id": 72, "case": 38, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f5fd", "f610"]}
+{"a": "FTRV XMTRX,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVn>FRn[3]", "align": 0, "nerr": {}, "id": 73, "case": 39, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f5fd", "f710"]}
+{"a": "LDS Rm,FPSCR", "b": "FADD FRm,FRn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 74, "case": 40, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["416a", "f120"]}
+{"a": "RTE", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 75, "case": 41, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["002b", "0009"]}
+{"a": "RTS", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 76, "case": 42, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["000b", "0009"]}
+{"a": "MAC.L @Rm+,@Rn+", "b": "STS MACL,Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 77, "case": 43, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["012f", "031a", "51c0", "52c1"]}
+{"a": "MAC.L @Rm+,@Rn+", "b": "STS MACL,Rn", "mode": "M0", "var": "ov:Rm>Rn", "align": 0, "nerr": {}, "id": 78, "case": 44, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["012f", "021a", "51c0", "52c1"]}
+{"a": "MAC.L @Rm+,@Rn+", "b": "STS MACL,Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 79, "case": 45, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["012f", "011a", "51c0", "52c1"]}
+{"a": "TAS.B @Rn", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 80, "case": 46, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["411b", "0009"]}
+{"a": "OCBI @Rn", "b": "MOV.L @Rm,Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 81, "case": 47, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["0193", "6232"]}
+{"a": "OCBI @Rn", "b": "MOV.L @Rm,Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 82, "case": 48, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["0193", "6122", "51c0"]}
+{"a": "FRCHG", "b": "FADD FRm,FRn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 83, "case": 49, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["fbfd", "f120", "fbfd"]}
+{"a": "FSCHG", "b": "FMOV DRm,DRn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 84, "case": 50, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f3fd", "f24c", "f3fd"]}
+{"a": "LDC Rm,SR", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 85, "case": 51, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["410e", "0009"]}
+{"a": "FDIV DRm,DRn", "b": "FADD DRm,DRn", "mode": "M2", "var": "ind", "align": 0, "nerr": {}, "id": 86, "case": 52, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f243", "f680"]}
+{"a": "FDIV DRm,DRn", "b": "FADD DRm,DRn", "mode": "M2", "var": "ov:DRm>DRn", "align": 0, "nerr": {}, "id": 87, "case": 53, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f243", "f460"]}
+{"a": "FDIV DRm,DRn", "b": "FADD DRm,DRn", "mode": "M2", "var": "ov:DRn>DRm", "align": 0, "nerr": {}, "id": 88, "case": 54, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f243", "f620"]}
+{"a": "FDIV DRm,DRn", "b": "FADD DRm,DRn", "mode": "M2", "var": "ov:DRn>DRn", "align": 0, "nerr": {}, "id": 89, "case": 55, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f243", "f260"]}
+{"a": "LDTLB", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 90, "case": 56, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["0038", "0009"]}
+{"a": "MOV.L Rm,@Rn", "b": "MOV.L @Rm,Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 91, "case": 57, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["2122", "6342"]}
+{"a": "MOV.L Rm,@Rn", "b": "MOV.L @Rm,Rn", "mode": "M0", "var": "ov:Rm>Rn", "align": 0, "nerr": {}, "id": 92, "case": 58, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["2122", "6232"]}
+{"a": "MOV.L Rm,@Rn", "b": "MOV.L @Rm,Rn", "mode": "M0", "var": "ov:Rn>Rn", "align": 0, "nerr": {}, "id": 93, "case": 59, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["2122", "6132", "51c0"]}
+{"a": "FSCA FPUL,DRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 94, "case": 60, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f2fd", "f140"]}
+{"a": "FSCA FPUL,DRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:DRn>FRm[0]", "align": 0, "nerr": {}, "id": 95, "case": 61, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f2fd", "f120"]}
+{"a": "FSCA FPUL,DRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:DRn>FRm[1]", "align": 0, "nerr": {}, "id": 96, "case": 62, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f2fd", "f130"]}
+{"a": "FSCA FPUL,DRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:DRn>FRn[0]", "align": 0, "nerr": {}, "id": 97, "case": 63, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f2fd", "f210"]}
+{"a": "FSCA FPUL,DRn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:DRn>FRn[1]", "align": 0, "nerr": {}, "id": 98, "case": 64, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f2fd", "f310"]}
+{"a": "LDC.L @Rm+,SR", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 99, "case": 65, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["4107", "0009", "51c0"]}
+{"a": "MOVA @(disp,PC),R0", "b": "MOV.L @Rm,Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 100, "case": 66, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["c761", "6122"]}
+{"a": "MOVA @(disp,PC),R0", "b": "MOV.L @Rm,Rn", "mode": "M0", "var": "ov:R0>Rn", "align": 0, "nerr": {}, "id": 101, "case": 67, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["c761", "6012"]}
+{"a": "MOVA @(disp,PC),R0", "b": "MOV.L @Rm,Rn", "mode": "M0", "var": "ov:R0>Rm", "align": 0, "nerr": {}, "id": 102, "case": 68, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["c761", "6102"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 103, "case": 69, "ns": [0], "T": 0, "code": ["0009", "d160"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 104, "case": 69, "ns": [1], "T": 0, "code": ["0009", "d15f"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 105, "case": 69, "ns": [2], "T": 0, "code": ["0009", "d15f"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 106, "case": 69, "ns": [3], "T": 0, "code": ["0009", "d15e"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 107, "case": 69, "ns": [4], "T": 0, "code": ["0009", "d15e"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 108, "case": 69, "ns": [5], "T": 0, "code": ["0009", "d15d"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 109, "case": 69, "ns": [6], "T": 0, "code": ["0009", "d15d"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 110, "case": 69, "ns": [7], "T": 0, "code": ["0009", "d15c"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 111, "case": 69, "ns": [8], "T": 0, "code": ["0009", "d15c"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 112, "case": 69, "ns": [9], "T": 0, "code": ["0009", "d15b"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 113, "case": 69, "ns": [10], "T": 0, "code": ["0009", "d15b"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 114, "case": 69, "ns": [11], "T": 0, "code": ["0009", "d15a"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 115, "case": 69, "ns": [12], "T": 0, "code": ["0009", "d15a"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 116, "case": 69, "ns": [13], "T": 0, "code": ["0009", "d159"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 117, "case": 69, "ns": [14], "T": 0, "code": ["0009", "d159"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 118, "case": 69, "ns": [15], "T": 0, "code": ["0009", "d158"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 119, "case": 69, "ns": [16], "T": 0, "code": ["0009", "d158"]}
+{"a": "NOP", "b": "MOV.L @(disp,PC),Rn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 120, "case": 69, "ns": [40], "T": 0, "code": ["0009", "d14c"]}
+{"a": "STC SGR,Rn", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 121, "case": 70, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["013a", "0009"]}
+{"a": "PREF @Rn", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 122, "case": 71, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["0183", "0009"]}
+{"a": "MOVCA.L R0,@Rn", "b": "NOP", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 123, "case": 72, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["01c3", "0009"]}
+{"a": "FIPR FVm,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ind", "align": 0, "nerr": {}, "id": 124, "case": 73, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f6ed", "f120"]}
+{"a": "FIPR FVm,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVm>FRn[0]", "align": 0, "nerr": {}, "id": 125, "case": 74, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f6ed", "f810"]}
+{"a": "FIPR FVm,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVm>FRn[1]", "align": 0, "nerr": {}, "id": 126, "case": 75, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f6ed", "f910"]}
+{"a": "FIPR FVm,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVm>FRn[2]", "align": 0, "nerr": {}, "id": 127, "case": 76, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f6ed", "fa10"]}
+{"a": "FIPR FVm,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVm>FRn[3]", "align": 0, "nerr": {}, "id": 128, "case": 77, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f6ed", "fb10"]}
+{"a": "FIPR FVm,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVn>FRn[0]", "align": 0, "nerr": {}, "id": 129, "case": 78, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f6ed", "f410"]}
+{"a": "FIPR FVm,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVn>FRn[1]", "align": 0, "nerr": {}, "id": 130, "case": 79, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f6ed", "f510"]}
+{"a": "FIPR FVm,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVn>FRn[2]", "align": 0, "nerr": {}, "id": 131, "case": 80, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f6ed", "f610"]}
+{"a": "FIPR FVm,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FVn>FRn[3]", "align": 0, "nerr": {}, "id": 132, "case": 81, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f6ed", "f710"]}
+{"a": "FIPR FVm,FVn", "b": "FADD FRm,FRn", "mode": "M0", "var": "ov:FIPRn>FRm", "align": 0, "nerr": {}, "id": 133, "case": 82, "ns": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 40], "T": 0, "code": ["f6ed", "f170"]}

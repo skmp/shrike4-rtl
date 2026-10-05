@@ -1,0 +1,2 @@
+node 2 cosROM floor (0x3ec52f9): best 78 at K2 ratio 0.9998 K3 ratio 1.0000 c1 0.0400 c2 -0.0039 c3 0.0039 | exact 0: K2r [9,-9] K3r [9,-9] c1 [9.0000,-9.0000] c2 [9.0000,-9.0000] c3 [9.0000,-9.0000]
+node 2 cosROM round (0x3ec52fa): best 55 at K2 ratio 0.9998 K3 ratio 1.0000 c1 0.0283 c2 -0.0039 c3 0.0039 | exact 0: K2r [9,-9] K3r [9,-9] c1 [9.0000,-9.0000] c2 [9.0000,-9.0000] c3 [9.0000,-9.0000]

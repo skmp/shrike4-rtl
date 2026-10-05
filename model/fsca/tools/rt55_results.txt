@@ -1,0 +1,30 @@
+field complementary linear KCbase 3293599
+configs 266560; f16=normalised S, others fixed fraction bits; all latches >>23
+v=0 guard=0 f=16 k=2 d=12 tree=4 roles=7 p=0 d2=13 dk=4 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+v=0 guard=0 f=16 k=-2 d=16 tree=4 roles=7 p=0 d2=13 dk=0 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+v=0 guard=0 f=16 k=1 d=13 tree=4 roles=7 p=0 d2=13 dk=2 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+v=0 guard=0 f=16 k=2 d=12 tree=4 roles=6 p=0 d2=13 dk=4 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+v=0 guard=0 f=16 k=1 d=13 tree=4 roles=6 p=0 d2=13 dk=2 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+v=0 guard=0 f=16 k=-1 d=15 tree=4 roles=6 p=0 d2=13 dk=0 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+v=0 guard=0 f=16 k=-1 d=15 tree=4 roles=7 p=0 d2=13 dk=0 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+v=0 guard=0 f=16 k=0 d=14 tree=4 roles=6 p=0 d2=13 dk=1 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+v=0 guard=0 f=16 k=0 d=14 tree=4 roles=7 p=0 d2=13 dk=1 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+v=0 guard=0 f=16 k=3 d=11 tree=4 roles=6 p=0 d2=13 dk=8 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+v=4 guard=0 f=16 k=-1 d=15 tree=4 roles=3 p=0 d2=13 dk=0 | 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0
+v=4 guard=0 f=16 k=2 d=12 tree=4 roles=3 p=0 d2=13 dk=4 | 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0
+v=4 guard=0 f=16 k=-2 d=16 tree=4 roles=3 p=0 d2=13 dk=0 | 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0
+v=4 guard=0 f=16 k=3 d=11 tree=4 roles=2 p=0 d2=13 dk=8 | 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0
+v=4 guard=0 f=16 k=-1 d=15 tree=4 roles=2 p=0 d2=13 dk=0 | 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0
+v=4 guard=0 f=16 k=0 d=14 tree=4 roles=2 p=0 d2=13 dk=1 | 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0
+v=4 guard=0 f=16 k=0 d=14 tree=4 roles=3 p=0 d2=13 dk=1 | 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0
+v=4 guard=0 f=16 k=1 d=13 tree=4 roles=3 p=0 d2=13 dk=2 | 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0
+v=4 guard=0 f=16 k=1 d=13 tree=4 roles=2 p=0 d2=13 dk=2 | 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0
+v=4 guard=0 f=16 k=2 d=12 tree=4 roles=2 p=0 d2=13 dk=4 | 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0
+v=13 guard=2 f=16 k=1 d=13 tree=4 roles=4 p=0 d2=13 dk=2 | 0 0 0 0 3 0 0 1 1 0 0 3 0 0 2 1 2
+v=13 guard=2 f=16 k=1 d=13 tree=4 roles=5 p=0 d2=13 dk=2 | 0 0 0 0 3 0 0 1 1 0 0 3 0 0 2 1 2
+v=13 guard=2 f=16 k=-1 d=15 tree=4 roles=4 p=0 d2=13 dk=0 | 0 0 0 0 3 0 0 1 1 0 0 3 0 0 2 1 2
+v=13 guard=2 f=16 k=2 d=12 tree=4 roles=4 p=0 d2=13 dk=4 | 0 0 0 0 3 0 0 1 1 0 0 3 0 0 2 1 2
+v=13 guard=2 f=16 k=0 d=14 tree=4 roles=4 p=0 d2=13 dk=1 | 0 0 0 0 3 0 0 1 1 0 0 3 0 0 2 1 2
+best per tree and best guard-clean per tree:
+v=0 guard=0 f=16 k=2 d=12 tree=4 roles=7 p=0 d2=13 dk=4 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+v=0 guard=0 f=16 k=2 d=12 tree=4 roles=7 p=0 d2=13 dk=4 | 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

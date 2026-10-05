@@ -1,0 +1,15 @@
+(B) FSRRA node 0 operand-width hypotheses (hits of 262143):
+  261423  sq=a2>>15<<15    cube=sq*a norm24   k2=0.0010 k3=0.000
+  261420  sq=a2>>15<<15    cube=chain trunc   k2=0.0010 k3=0.000
+  261420  sq=a2>>15<<15    cube=exact         k2=0.0010 k3=0.000
+  261420  sq=a2>>15<<15    cube=norm24 rhu    k2=0.0010 k3=0.000
+  261420  sq=a2>>15<<15    cube=norm24 trunc  k2=0.0010 k3=0.000
+  261420  sq=a2>>15<<15    cube=chain rne     k2=0.0010 k3=0.000
+  261420  sq=a2>>15<<15    cube=norm24 rne    k2=0.0010 k3=0.000
+  261290  sq=a2>>15<<15    cube=sq*a norm24   k2=0.0000 k3=0.000
+  261287  sq=a2>>15<<15    cube=exact         k2=0.0000 k3=0.000
+  261287  sq=a2>>15<<15    cube=chain trunc   k2=0.0000 k3=0.000
+  261287  sq=a2>>15<<15    cube=chain rne     k2=0.0000 k3=0.000
+  261287  sq=a2>>15<<15    cube=norm24 rhu    k2=0.0000 k3=0.000
+  261287  sq=a2>>15<<15    cube=norm24 rne    k2=0.0000 k3=0.000
+  261287  sq=a2>>15<<15    cube=norm24 trunc  k2=0.0000 k3=0.000

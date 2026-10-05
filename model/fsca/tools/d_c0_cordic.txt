@@ -1,0 +1,13 @@
+structures 58080; score is interior entries 1..15 (axes excluded)
+hits9 error10 xy28 angle29 N33 angleRN1 gainRN0 truncZero0 outRN0 turns0
+hits9 error10 xy28 angle29 N30 angleRN1 gainRN0 truncZero0 outRN0 turns0
+hits9 error10 xy28 angle31 N27 angleRN0 gainRN0 truncZero1 outRN0 turns1
+hits9 error10 xy28 angle29 N30 angleRN1 gainRN0 truncZero1 outRN0 turns0
+hits9 error10 xy28 angle29 N28 angleRN1 gainRN0 truncZero1 outRN0 turns0
+hits9 error10 xy28 angle31 N27 angleRN0 gainRN0 truncZero0 outRN0 turns1
+hits9 error10 xy28 angle29 N27 angleRN1 gainRN0 truncZero1 outRN0 turns0
+hits9 error10 xy28 angle29 N35 angleRN1 gainRN0 truncZero0 outRN0 turns0
+hits9 error10 xy28 angle29 N34 angleRN1 gainRN0 truncZero1 outRN0 turns0
+hits9 error10 xy28 angle29 N34 angleRN1 gainRN0 truncZero0 outRN0 turns0
+hits9 error10 xy28 angle29 N35 angleRN1 gainRN0 truncZero1 outRN0 turns0
+hits9 error10 xy28 angle29 N31 angleRN1 gainRN0 truncZero0 outRN0 turns0

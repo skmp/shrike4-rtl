@@ -1,0 +1,3226 @@
+{
+ "1": {
+  "no": 1,
+  "mnem": "EXTS.B",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "EXTS.B Rm,Rn"
+  ]
+ },
+ "2": {
+  "no": 2,
+  "mnem": "EXTS.W",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "EXTS.W Rm,Rn"
+  ]
+ },
+ "3": {
+  "no": 3,
+  "mnem": "EXTU.B",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "EXTU.B Rm,Rn"
+  ]
+ },
+ "4": {
+  "no": 4,
+  "mnem": "EXTU.W",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "EXTU.W Rm,Rn"
+  ]
+ },
+ "5": {
+  "no": 5,
+  "mnem": "MOV",
+  "ops": "Rm,Rn",
+  "group": "MT",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV Rm,Rn"
+  ]
+ },
+ "6": {
+  "no": 6,
+  "mnem": "MOV",
+  "ops": "#imm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV #imm,Rn"
+  ]
+ },
+ "7": {
+  "no": 7,
+  "mnem": "MOVA",
+  "ops": "@(disp,PC),R0",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOVA @(disp,PC),R0"
+  ]
+ },
+ "8": {
+  "no": 8,
+  "mnem": "MOV.W",
+  "ops": "@(disp,PC),Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.W @(disp,PC),Rn"
+  ]
+ },
+ "9": {
+  "no": 9,
+  "mnem": "MOV.L",
+  "ops": "@(disp,PC),Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.L @(disp,PC),Rn"
+  ]
+ },
+ "10": {
+  "no": 10,
+  "mnem": "MOV.B",
+  "ops": "@Rm,Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.B @Rm,Rn"
+  ]
+ },
+ "11": {
+  "no": 11,
+  "mnem": "MOV.W",
+  "ops": "@Rm,Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.W @Rm,Rn"
+  ]
+ },
+ "12": {
+  "no": 12,
+  "mnem": "MOV.L",
+  "ops": "@Rm,Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.L @Rm,Rn"
+  ]
+ },
+ "13": {
+  "no": 13,
+  "mnem": "MOV.B",
+  "ops": "@Rm+,Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1/2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.B @Rm+,Rn"
+  ]
+ },
+ "14": {
+  "no": 14,
+  "mnem": "MOV.W",
+  "ops": "@Rm+,Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1/2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.W @Rm+,Rn"
+  ]
+ },
+ "15": {
+  "no": 15,
+  "mnem": "MOV.L",
+  "ops": "@Rm+,Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1/2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.L @Rm+,Rn"
+  ]
+ },
+ "16": {
+  "no": 16,
+  "mnem": "MOV.B",
+  "ops": "@(disp,Rm),R0",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.B @(disp,Rm),R0"
+  ]
+ },
+ "17": {
+  "no": 17,
+  "mnem": "MOV.W",
+  "ops": "@(disp,Rm),R0",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.W @(disp,Rm),R0"
+  ]
+ },
+ "18": {
+  "no": 18,
+  "mnem": "MOV.L",
+  "ops": "@(disp,Rm),Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.L @(disp,Rm),Rn"
+  ]
+ },
+ "19": {
+  "no": 19,
+  "mnem": "MOV.B",
+  "ops": "@(R0,Rm),Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.B @(R0,Rm),Rn"
+  ]
+ },
+ "20": {
+  "no": 20,
+  "mnem": "MOV.W",
+  "ops": "@(R0,Rm),Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.W @(R0,Rm),Rn"
+  ]
+ },
+ "21": {
+  "no": 21,
+  "mnem": "MOV.L",
+  "ops": "@(R0,Rm),Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.L @(R0,Rm),Rn"
+  ]
+ },
+ "22": {
+  "no": 22,
+  "mnem": "MOV.B",
+  "ops": "@(disp,GBR),R0",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#3",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.B @(disp,GBR),R0"
+  ]
+ },
+ "23": {
+  "no": 23,
+  "mnem": "MOV.W",
+  "ops": "@(disp,GBR),R0",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#3",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.W @(disp,GBR),R0"
+  ]
+ },
+ "24": {
+  "no": 24,
+  "mnem": "MOV.L",
+  "ops": "@(disp,GBR),R0",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#3",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.L @(disp,GBR),R0"
+  ]
+ },
+ "25": {
+  "no": 25,
+  "mnem": "MOV.B",
+  "ops": "Rm,@Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.B Rm,@Rn"
+  ]
+ },
+ "26": {
+  "no": 26,
+  "mnem": "MOV.W",
+  "ops": "Rm,@Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.W Rm,@Rn"
+  ]
+ },
+ "27": {
+  "no": 27,
+  "mnem": "MOV.L",
+  "ops": "Rm,@Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.L Rm,@Rn"
+  ]
+ },
+ "28": {
+  "no": 28,
+  "mnem": "MOV.B",
+  "ops": "Rm,@-Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1/1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.B Rm,@-Rn"
+  ]
+ },
+ "29": {
+  "no": 29,
+  "mnem": "MOV.W",
+  "ops": "Rm,@-Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1/1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.W Rm,@-Rn"
+  ]
+ },
+ "30": {
+  "no": 30,
+  "mnem": "MOV.L",
+  "ops": "Rm,@-Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1/1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.L Rm,@-Rn"
+  ]
+ },
+ "31": {
+  "no": 31,
+  "mnem": "MOV.B",
+  "ops": "R0,@(disp,Rn)",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.B R0,@(disp,Rn)"
+  ]
+ },
+ "32": {
+  "no": 32,
+  "mnem": "MOV.W",
+  "ops": "R0,@(disp,Rn)",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.W R0,@(disp,Rn)"
+  ]
+ },
+ "33": {
+  "no": 33,
+  "mnem": "MOV.L",
+  "ops": "Rm,@(disp,Rn)",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.L Rm,@(disp,Rn)"
+  ]
+ },
+ "34": {
+  "no": 34,
+  "mnem": "MOV.B",
+  "ops": "Rm,@(R0,Rn)",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.B Rm,@(R0,Rn)"
+  ]
+ },
+ "35": {
+  "no": 35,
+  "mnem": "MOV.W",
+  "ops": "Rm,@(R0,Rn)",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.W Rm,@(R0,Rn)"
+  ]
+ },
+ "36": {
+  "no": 36,
+  "mnem": "MOV.L",
+  "ops": "Rm,@(R0,Rn)",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.L Rm,@(R0,Rn)"
+  ]
+ },
+ "37": {
+  "no": 37,
+  "mnem": "MOV.B",
+  "ops": "R0,@(disp,GBR)",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#3",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.B R0,@(disp,GBR)"
+  ]
+ },
+ "38": {
+  "no": 38,
+  "mnem": "MOV.W",
+  "ops": "R0,@(disp,GBR)",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#3",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.W R0,@(disp,GBR)"
+  ]
+ },
+ "39": {
+  "no": 39,
+  "mnem": "MOV.L",
+  "ops": "R0,@(disp,GBR)",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#3",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOV.L R0,@(disp,GBR)"
+  ]
+ },
+ "40": {
+  "no": 40,
+  "mnem": "MOVCA.L",
+  "ops": "R0,@Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "3\u20137",
+  "pattern": "#12",
+  "lock_stage": "MA",
+  "lock_start": "4",
+  "lock_cycles": "3\u20137",
+  "forms": [
+   "MOVCA.L R0,@Rn"
+  ]
+ },
+ "41": {
+  "no": 41,
+  "mnem": "MOVT",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "MOVT Rn"
+  ]
+ },
+ "42": {
+  "no": 42,
+  "mnem": "OCBI",
+  "ops": "@Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1\u20132",
+  "pattern": "#10",
+  "lock_stage": "MA",
+  "lock_start": "4",
+  "lock_cycles": "1\u20132",
+  "forms": [
+   "OCBI @Rn"
+  ]
+ },
+ "43": {
+  "no": 43,
+  "mnem": "OCBP",
+  "ops": "@Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1\u20135",
+  "pattern": "#11",
+  "lock_stage": "MA",
+  "lock_start": "4",
+  "lock_cycles": "1\u20135",
+  "forms": [
+   "OCBP @Rn"
+  ]
+ },
+ "44": {
+  "no": 44,
+  "mnem": "OCBWB",
+  "ops": "@Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1\u20135",
+  "pattern": "#11",
+  "lock_stage": "MA",
+  "lock_start": "4",
+  "lock_cycles": "1\u20135",
+  "forms": [
+   "OCBWB @Rn"
+  ]
+ },
+ "45": {
+  "no": 45,
+  "mnem": "PREF",
+  "ops": "@Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "PREF @Rn"
+  ]
+ },
+ "46": {
+  "no": 46,
+  "mnem": "SWAP.B",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SWAP.B Rm,Rn"
+  ]
+ },
+ "47": {
+  "no": 47,
+  "mnem": "SWAP.W",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SWAP.W Rm,Rn"
+  ]
+ },
+ "48": {
+  "no": 48,
+  "mnem": "XTRCT",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "XTRCT Rm,Rn"
+  ]
+ },
+ "49": {
+  "no": 49,
+  "mnem": "ADD",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "ADD Rm,Rn"
+  ]
+ },
+ "50": {
+  "no": 50,
+  "mnem": "ADD",
+  "ops": "#imm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "ADD #imm,Rn"
+  ]
+ },
+ "51": {
+  "no": 51,
+  "mnem": "ADDC",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "ADDC Rm,Rn"
+  ]
+ },
+ "52": {
+  "no": 52,
+  "mnem": "ADDV",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "ADDV Rm,Rn"
+  ]
+ },
+ "53": {
+  "no": 53,
+  "mnem": "CMP/EQ",
+  "ops": "#imm,R0",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "CMP/EQ #imm,R0"
+  ]
+ },
+ "54": {
+  "no": 54,
+  "mnem": "CMP/EQ",
+  "ops": "Rm,Rn",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "CMP/EQ Rm,Rn"
+  ]
+ },
+ "55": {
+  "no": 55,
+  "mnem": "CMP/GE",
+  "ops": "Rm,Rn",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "CMP/GE Rm,Rn"
+  ]
+ },
+ "56": {
+  "no": 56,
+  "mnem": "CMP/GT",
+  "ops": "Rm,Rn",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "CMP/GT Rm,Rn"
+  ]
+ },
+ "57": {
+  "no": 57,
+  "mnem": "CMP/HI",
+  "ops": "Rm,Rn",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "CMP/HI Rm,Rn"
+  ]
+ },
+ "58": {
+  "no": 58,
+  "mnem": "CMP/HS",
+  "ops": "Rm,Rn",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "CMP/HS Rm,Rn"
+  ]
+ },
+ "59": {
+  "no": 59,
+  "mnem": "CMP/PL",
+  "ops": "Rn",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "CMP/PL Rn"
+  ]
+ },
+ "60": {
+  "no": 60,
+  "mnem": "CMP/PZ",
+  "ops": "Rn",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "CMP/PZ Rn"
+  ]
+ },
+ "61": {
+  "no": 61,
+  "mnem": "CMP/STR",
+  "ops": "Rm,Rn",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "CMP/STR Rm,Rn"
+  ]
+ },
+ "62": {
+  "no": 62,
+  "mnem": "DIV0S",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "DIV0S Rm,Rn"
+  ]
+ },
+ "63": {
+  "no": 63,
+  "mnem": "DIV0U",
+  "ops": "",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "DIV0U"
+  ]
+ },
+ "64": {
+  "no": 64,
+  "mnem": "DIV1",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "DIV1 Rm,Rn"
+  ]
+ },
+ "65": {
+  "no": 65,
+  "mnem": "DMULS.L",
+  "ops": "Rm,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "4/4",
+  "pattern": "#34",
+  "lock_stage": "F1",
+  "lock_start": "4",
+  "lock_cycles": "2",
+  "forms": [
+   "DMULS.L Rm,Rn"
+  ]
+ },
+ "66": {
+  "no": 66,
+  "mnem": "DMULU.L",
+  "ops": "Rm,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "4/4",
+  "pattern": "#34",
+  "lock_stage": "F1",
+  "lock_start": "4",
+  "lock_cycles": "2",
+  "forms": [
+   "DMULU.L Rm,Rn"
+  ]
+ },
+ "67": {
+  "no": 67,
+  "mnem": "DT",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "DT Rn"
+  ]
+ },
+ "68": {
+  "no": 68,
+  "mnem": "MAC.L",
+  "ops": "@Rm+,@Rn+",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2/2/4/4",
+  "pattern": "#35",
+  "lock_stage": "F1",
+  "lock_start": "4",
+  "lock_cycles": "2",
+  "forms": [
+   "MAC.L @Rm+,@Rn+"
+  ]
+ },
+ "69": {
+  "no": 69,
+  "mnem": "MAC.W",
+  "ops": "@Rm+,@Rn+",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2/2/4/4",
+  "pattern": "#35",
+  "lock_stage": "F1",
+  "lock_start": "4",
+  "lock_cycles": "2",
+  "forms": [
+   "MAC.W @Rm+,@Rn+"
+  ]
+ },
+ "70": {
+  "no": 70,
+  "mnem": "MUL.L",
+  "ops": "Rm,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "4/4",
+  "pattern": "#34",
+  "lock_stage": "F1",
+  "lock_start": "4",
+  "lock_cycles": "2",
+  "forms": [
+   "MUL.L Rm,Rn"
+  ]
+ },
+ "71": {
+  "no": 71,
+  "mnem": "MULS.W",
+  "ops": "Rm,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "4/4",
+  "pattern": "#34",
+  "lock_stage": "F1",
+  "lock_start": "4",
+  "lock_cycles": "2",
+  "forms": [
+   "MULS.W Rm,Rn"
+  ]
+ },
+ "72": {
+  "no": 72,
+  "mnem": "MULU.W",
+  "ops": "Rm,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "4/4",
+  "pattern": "#34",
+  "lock_stage": "F1",
+  "lock_start": "4",
+  "lock_cycles": "2",
+  "forms": [
+   "MULU.W Rm,Rn"
+  ]
+ },
+ "73": {
+  "no": 73,
+  "mnem": "NEG",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "NEG Rm,Rn"
+  ]
+ },
+ "74": {
+  "no": 74,
+  "mnem": "NEGC",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "NEGC Rm,Rn"
+  ]
+ },
+ "75": {
+  "no": 75,
+  "mnem": "SUB",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SUB Rm,Rn"
+  ]
+ },
+ "76": {
+  "no": 76,
+  "mnem": "SUBC",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SUBC Rm,Rn"
+  ]
+ },
+ "77": {
+  "no": 77,
+  "mnem": "SUBV",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SUBV Rm,Rn"
+  ]
+ },
+ "78": {
+  "no": 78,
+  "mnem": "AND",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "AND Rm,Rn"
+  ]
+ },
+ "79": {
+  "no": 79,
+  "mnem": "AND",
+  "ops": "#imm,R0",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "AND #imm,R0"
+  ]
+ },
+ "81": {
+  "no": 81,
+  "mnem": "NOT",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "NOT Rm,Rn"
+  ]
+ },
+ "82": {
+  "no": 82,
+  "mnem": "OR",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "OR Rm,Rn"
+  ]
+ },
+ "83": {
+  "no": 83,
+  "mnem": "OR",
+  "ops": "#imm,R0",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "OR #imm,R0"
+  ]
+ },
+ "85": {
+  "no": 85,
+  "mnem": "TAS.B",
+  "ops": "@Rn",
+  "group": "CO",
+  "issue": "5",
+  "latency": "5",
+  "pattern": "#7",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "TAS.B @Rn"
+  ]
+ },
+ "86": {
+  "no": 86,
+  "mnem": "TST",
+  "ops": "Rm,Rn",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "TST Rm,Rn"
+  ]
+ },
+ "87": {
+  "no": 87,
+  "mnem": "TST",
+  "ops": "#imm,R0",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "TST #imm,R0"
+  ]
+ },
+ "89": {
+  "no": 89,
+  "mnem": "XOR",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "XOR Rm,Rn"
+  ]
+ },
+ "90": {
+  "no": 90,
+  "mnem": "XOR",
+  "ops": "#imm,R0",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "XOR #imm,R0"
+  ]
+ },
+ "92": {
+  "no": 92,
+  "mnem": "ROTL",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "ROTL Rn"
+  ]
+ },
+ "93": {
+  "no": 93,
+  "mnem": "ROTR",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "ROTR Rn"
+  ]
+ },
+ "94": {
+  "no": 94,
+  "mnem": "ROTCL",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "ROTCL Rn"
+  ]
+ },
+ "95": {
+  "no": 95,
+  "mnem": "ROTCR",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "ROTCR Rn"
+  ]
+ },
+ "96": {
+  "no": 96,
+  "mnem": "SHAD",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SHAD Rm,Rn"
+  ]
+ },
+ "97": {
+  "no": 97,
+  "mnem": "SHAL",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SHAL Rn"
+  ]
+ },
+ "98": {
+  "no": 98,
+  "mnem": "SHAR",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SHAR Rn"
+  ]
+ },
+ "99": {
+  "no": 99,
+  "mnem": "SHLD",
+  "ops": "Rm,Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SHLD Rm,Rn"
+  ]
+ },
+ "100": {
+  "no": 100,
+  "mnem": "SHLL",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SHLL Rn"
+  ]
+ },
+ "101": {
+  "no": 101,
+  "mnem": "SHLL2",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SHLL2 Rn"
+  ]
+ },
+ "102": {
+  "no": 102,
+  "mnem": "SHLL8",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SHLL8 Rn"
+  ]
+ },
+ "103": {
+  "no": 103,
+  "mnem": "SHLL16",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SHLL16 Rn"
+  ]
+ },
+ "104": {
+  "no": 104,
+  "mnem": "SHLR",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SHLR Rn"
+  ]
+ },
+ "105": {
+  "no": 105,
+  "mnem": "SHLR2",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SHLR2 Rn"
+  ]
+ },
+ "106": {
+  "no": 106,
+  "mnem": "SHLR8",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SHLR8 Rn"
+  ]
+ },
+ "107": {
+  "no": 107,
+  "mnem": "SHLR16",
+  "ops": "Rn",
+  "group": "EX",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SHLR16 Rn"
+  ]
+ },
+ "112": {
+  "no": 112,
+  "mnem": "BRA",
+  "ops": "disp",
+  "group": "BR",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": []
+ },
+ "113": {
+  "no": 113,
+  "mnem": "BRAF",
+  "ops": "Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "3",
+  "pattern": "#4",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "BRAF Rn"
+  ]
+ },
+ "114": {
+  "no": 114,
+  "mnem": "BSR",
+  "ops": "disp",
+  "group": "BR",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#14",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": []
+ },
+ "115": {
+  "no": 115,
+  "mnem": "BSRF",
+  "ops": "Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "3",
+  "pattern": "#24",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "BSRF Rn"
+  ]
+ },
+ "116": {
+  "no": 116,
+  "mnem": "JMP",
+  "ops": "@Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "3",
+  "pattern": "#4",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "JMP @Rn"
+  ]
+ },
+ "117": {
+  "no": 117,
+  "mnem": "JSR",
+  "ops": "@Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "3",
+  "pattern": "#24",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "JSR @Rn"
+  ]
+ },
+ "118": {
+  "no": 118,
+  "mnem": "RTS",
+  "ops": "",
+  "group": "CO",
+  "issue": "2",
+  "latency": "3",
+  "pattern": "#4",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "RTS"
+  ]
+ },
+ "119": {
+  "no": 119,
+  "mnem": "NOP",
+  "ops": "",
+  "group": "MT",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "NOP"
+  ]
+ },
+ "120": {
+  "no": 120,
+  "mnem": "CLRMAC",
+  "ops": "",
+  "group": "CO",
+  "issue": "1",
+  "latency": "3",
+  "pattern": "#28",
+  "lock_stage": "F1",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "CLRMAC"
+  ]
+ },
+ "121": {
+  "no": 121,
+  "mnem": "CLRS",
+  "ops": "",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "CLRS"
+  ]
+ },
+ "122": {
+  "no": 122,
+  "mnem": "CLRT",
+  "ops": "",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "CLRT"
+  ]
+ },
+ "123": {
+  "no": 123,
+  "mnem": "SETS",
+  "ops": "",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SETS"
+  ]
+ },
+ "124": {
+  "no": 124,
+  "mnem": "SETT",
+  "ops": "",
+  "group": "MT",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "SETT"
+  ]
+ },
+ "125": {
+  "no": 125,
+  "mnem": "TRAPA",
+  "ops": "#imm",
+  "group": "CO",
+  "issue": "7",
+  "latency": "7",
+  "pattern": "#13",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": []
+ },
+ "126": {
+  "no": 126,
+  "mnem": "RTE",
+  "ops": "",
+  "group": "CO",
+  "issue": "5",
+  "latency": "5",
+  "pattern": "#8",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "RTE"
+  ]
+ },
+ "127": {
+  "no": 127,
+  "mnem": "SLEEP",
+  "ops": "",
+  "group": "CO",
+  "issue": "4",
+  "latency": "4",
+  "pattern": "#9",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": []
+ },
+ "128": {
+  "no": 128,
+  "mnem": "LDTLB",
+  "ops": "",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "LDTLB"
+  ]
+ },
+ "129": {
+  "no": 129,
+  "mnem": "LDC",
+  "ops": "Rm,DBR",
+  "group": "CO",
+  "issue": "1",
+  "latency": "3",
+  "pattern": "#14",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDC Rm,DBR"
+  ]
+ },
+ "130": {
+  "no": 130,
+  "mnem": "LDC",
+  "ops": "Rm,GBR",
+  "group": "CO",
+  "issue": "3",
+  "latency": "3",
+  "pattern": "#15",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDC Rm,GBR"
+  ]
+ },
+ "131": {
+  "no": 131,
+  "mnem": "LDC",
+  "ops": "Rm,Rp_BANK",
+  "group": "CO",
+  "issue": "1",
+  "latency": "3",
+  "pattern": "#14",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": []
+ },
+ "132": {
+  "no": 132,
+  "mnem": "LDC",
+  "ops": "Rm,SR",
+  "group": "CO",
+  "issue": "4",
+  "latency": "4",
+  "pattern": "#16",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDC Rm,SR"
+  ]
+ },
+ "133": {
+  "no": 133,
+  "mnem": "LDC",
+  "ops": "Rm,SSR",
+  "group": "CO",
+  "issue": "1",
+  "latency": "3",
+  "pattern": "#14",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDC Rm,SSR"
+  ]
+ },
+ "134": {
+  "no": 134,
+  "mnem": "LDC",
+  "ops": "Rm,SPC",
+  "group": "CO",
+  "issue": "1",
+  "latency": "3",
+  "pattern": "#14",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDC Rm,SPC"
+  ]
+ },
+ "135": {
+  "no": 135,
+  "mnem": "LDC",
+  "ops": "Rm,VBR",
+  "group": "CO",
+  "issue": "1",
+  "latency": "3",
+  "pattern": "#14",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDC Rm,VBR"
+  ]
+ },
+ "136": {
+  "no": 136,
+  "mnem": "LDC.L",
+  "ops": "@Rm+,DBR",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1/3",
+  "pattern": "#17",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDC.L @Rm+,DBR"
+  ]
+ },
+ "137": {
+  "no": 137,
+  "mnem": "LDC.L",
+  "ops": "@Rm+,GBR",
+  "group": "CO",
+  "issue": "3",
+  "latency": "3/3",
+  "pattern": "#18",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDC.L @Rm+,GBR"
+  ]
+ },
+ "139": {
+  "no": 139,
+  "mnem": "LDC.L",
+  "ops": "@Rm+,SR",
+  "group": "CO",
+  "issue": "4",
+  "latency": "4/4",
+  "pattern": "#19",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDC.L @Rm+,SR"
+  ]
+ },
+ "140": {
+  "no": 140,
+  "mnem": "LDC.L",
+  "ops": "@Rm+,SSR",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1/3",
+  "pattern": "#17",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDC.L @Rm+,SSR"
+  ]
+ },
+ "141": {
+  "no": 141,
+  "mnem": "LDC.L",
+  "ops": "@Rm+,SPC",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1/3",
+  "pattern": "#17",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDC.L @Rm+,SPC"
+  ]
+ },
+ "142": {
+  "no": 142,
+  "mnem": "LDC.L",
+  "ops": "@Rm+,VBR",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1/3",
+  "pattern": "#17",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDC.L @Rm+,VBR"
+  ]
+ },
+ "143": {
+  "no": 143,
+  "mnem": "LDS",
+  "ops": "Rm,MACH",
+  "group": "CO",
+  "issue": "1",
+  "latency": "3",
+  "pattern": "#28",
+  "lock_stage": "F1",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDS Rm,MACH"
+  ]
+ },
+ "144": {
+  "no": 144,
+  "mnem": "LDS",
+  "ops": "Rm,MACL",
+  "group": "CO",
+  "issue": "1",
+  "latency": "3",
+  "pattern": "#28",
+  "lock_stage": "F1",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDS Rm,MACL"
+  ]
+ },
+ "145": {
+  "no": 145,
+  "mnem": "LDS",
+  "ops": "Rm,PR",
+  "group": "CO",
+  "issue": "2",
+  "latency": "3",
+  "pattern": "#24",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDS Rm,PR"
+  ]
+ },
+ "146": {
+  "no": 146,
+  "mnem": "LDS.L",
+  "ops": "@Rm+,MACH",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1/3",
+  "pattern": "#29",
+  "lock_stage": "F1",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDS.L @Rm+,MACH"
+  ]
+ },
+ "147": {
+  "no": 147,
+  "mnem": "LDS.L",
+  "ops": "@Rm+,MACL",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1/3",
+  "pattern": "#29",
+  "lock_stage": "F1",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDS.L @Rm+,MACL"
+  ]
+ },
+ "148": {
+  "no": 148,
+  "mnem": "LDS.L",
+  "ops": "@Rm+,PR",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2/3",
+  "pattern": "#25",
+  "lock_stage": "SX",
+  "lock_start": "3",
+  "lock_cycles": "2",
+  "forms": [
+   "LDS.L @Rm+,PR"
+  ]
+ },
+ "149": {
+  "no": 149,
+  "mnem": "STC",
+  "ops": "DBR,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2",
+  "pattern": "#20",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC DBR,Rn"
+  ]
+ },
+ "150": {
+  "no": 150,
+  "mnem": "STC",
+  "ops": "SGR,Rn",
+  "group": "CO",
+  "issue": "3",
+  "latency": "3",
+  "pattern": "#21",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC SGR,Rn"
+  ]
+ },
+ "151": {
+  "no": 151,
+  "mnem": "STC",
+  "ops": "GBR,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2",
+  "pattern": "#20",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC GBR,Rn"
+  ]
+ },
+ "152": {
+  "no": 152,
+  "mnem": "STC",
+  "ops": "Rp_BANK,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2",
+  "pattern": "#20",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": []
+ },
+ "153": {
+  "no": 153,
+  "mnem": "STC",
+  "ops": "SR,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2",
+  "pattern": "#20",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC SR,Rn"
+  ]
+ },
+ "154": {
+  "no": 154,
+  "mnem": "STC",
+  "ops": "SSR,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2",
+  "pattern": "#20",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC SSR,Rn"
+  ]
+ },
+ "155": {
+  "no": 155,
+  "mnem": "STC",
+  "ops": "SPC,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2",
+  "pattern": "#20",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC SPC,Rn"
+  ]
+ },
+ "156": {
+  "no": 156,
+  "mnem": "STC",
+  "ops": "VBR,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2",
+  "pattern": "#20",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC VBR,Rn"
+  ]
+ },
+ "157": {
+  "no": 157,
+  "mnem": "STC.L",
+  "ops": "DBR,@-Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2/2",
+  "pattern": "#22",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC.L DBR,@-Rn"
+  ]
+ },
+ "158": {
+  "no": 158,
+  "mnem": "STC.L",
+  "ops": "SGR,@-Rn",
+  "group": "CO",
+  "issue": "3",
+  "latency": "3/3",
+  "pattern": "#23",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC.L SGR,@-Rn"
+  ]
+ },
+ "159": {
+  "no": 159,
+  "mnem": "STC.L",
+  "ops": "GBR,@-Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2/2",
+  "pattern": "#22",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC.L GBR,@-Rn"
+  ]
+ },
+ "160": {
+  "no": 160,
+  "mnem": "STC.L",
+  "ops": "Rp_BANK,@-Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2/2",
+  "pattern": "#22",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": []
+ },
+ "161": {
+  "no": 161,
+  "mnem": "STC.L",
+  "ops": "SR,@-Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2/2",
+  "pattern": "#22",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC.L SR,@-Rn"
+  ]
+ },
+ "162": {
+  "no": 162,
+  "mnem": "STC.L",
+  "ops": "SSR,@-Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2/2",
+  "pattern": "#22",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC.L SSR,@-Rn"
+  ]
+ },
+ "163": {
+  "no": 163,
+  "mnem": "STC.L",
+  "ops": "SPC,@-Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2/2",
+  "pattern": "#22",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC.L SPC,@-Rn"
+  ]
+ },
+ "164": {
+  "no": 164,
+  "mnem": "STC.L",
+  "ops": "VBR,@-Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2/2",
+  "pattern": "#22",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STC.L VBR,@-Rn"
+  ]
+ },
+ "165": {
+  "no": 165,
+  "mnem": "STS",
+  "ops": "MACH,Rn",
+  "group": "CO",
+  "issue": "1",
+  "latency": "3",
+  "pattern": "#30",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STS MACH,Rn"
+  ]
+ },
+ "166": {
+  "no": 166,
+  "mnem": "STS",
+  "ops": "MACL,Rn",
+  "group": "CO",
+  "issue": "1",
+  "latency": "3",
+  "pattern": "#30",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STS MACL,Rn"
+  ]
+ },
+ "167": {
+  "no": 167,
+  "mnem": "STS",
+  "ops": "PR,Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2",
+  "pattern": "#26",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STS PR,Rn"
+  ]
+ },
+ "168": {
+  "no": 168,
+  "mnem": "STS.L",
+  "ops": "MACH,@-Rn",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1/1",
+  "pattern": "#31",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STS.L MACH,@-Rn"
+  ]
+ },
+ "169": {
+  "no": 169,
+  "mnem": "STS.L",
+  "ops": "MACL,@-Rn",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1/1",
+  "pattern": "#31",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STS.L MACL,@-Rn"
+  ]
+ },
+ "170": {
+  "no": 170,
+  "mnem": "STS.L",
+  "ops": "PR,@-Rn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "2/2",
+  "pattern": "#27",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STS.L PR,@-Rn"
+  ]
+ },
+ "171": {
+  "no": 171,
+  "mnem": "FLDI0",
+  "ops": "FRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FLDI0 FRn"
+  ]
+ },
+ "172": {
+  "no": 172,
+  "mnem": "FLDI1",
+  "ops": "FRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FLDI1 FRn"
+  ]
+ },
+ "173": {
+  "no": 173,
+  "mnem": "FMOV",
+  "ops": "FRm,FRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV FRm,FRn"
+  ]
+ },
+ "174": {
+  "no": 174,
+  "mnem": "FMOV.S",
+  "ops": "@Rm,FRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV.S @Rm,FRn"
+  ]
+ },
+ "175": {
+  "no": 175,
+  "mnem": "FMOV.S",
+  "ops": "@Rm+,FRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1/2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV.S @Rm+,FRn"
+  ]
+ },
+ "176": {
+  "no": 176,
+  "mnem": "FMOV.S",
+  "ops": "@(R0,Rm),FRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV.S @(R0,Rm),FRn"
+  ]
+ },
+ "177": {
+  "no": 177,
+  "mnem": "FMOV.S",
+  "ops": "FRm,@Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV.S FRm,@Rn"
+  ]
+ },
+ "178": {
+  "no": 178,
+  "mnem": "FMOV.S",
+  "ops": "FRm,@-Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1/1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV.S FRm,@-Rn"
+  ]
+ },
+ "179": {
+  "no": 179,
+  "mnem": "FMOV.S",
+  "ops": "FRm,@(R0,Rn)",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV.S FRm,@(R0,Rn)"
+  ]
+ },
+ "180": {
+  "no": 180,
+  "mnem": "FLDS",
+  "ops": "FRm,FPUL",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FLDS FRm,FPUL"
+  ]
+ },
+ "181": {
+  "no": 181,
+  "mnem": "FSTS",
+  "ops": "FPUL,FRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FSTS FPUL,FRn"
+  ]
+ },
+ "182": {
+  "no": 182,
+  "mnem": "FABS",
+  "ops": "FRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FABS FRn"
+  ]
+ },
+ "183": {
+  "no": 183,
+  "mnem": "FADD",
+  "ops": "FRm,FRn",
+  "group": "FE",
+  "issue": "1",
+  "latency": "3/4",
+  "pattern": "#36",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FADD FRm,FRn"
+  ]
+ },
+ "184": {
+  "no": 184,
+  "mnem": "FCMP/EQ",
+  "ops": "FRm,FRn",
+  "group": "FE",
+  "issue": "1",
+  "latency": "2/4",
+  "pattern": "#36",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FCMP/EQ FRm,FRn"
+  ]
+ },
+ "185": {
+  "no": 185,
+  "mnem": "FCMP/GT",
+  "ops": "FRm,FRn",
+  "group": "FE",
+  "issue": "1",
+  "latency": "2/4",
+  "pattern": "#36",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FCMP/GT FRm,FRn"
+  ]
+ },
+ "186": {
+  "no": 186,
+  "mnem": "FDIV",
+  "ops": "FRm,FRn",
+  "group": "FE",
+  "issue": "1",
+  "latency": "12/13",
+  "pattern": "#37",
+  "lock_stage": "F3",
+  "lock_start": "2",
+  "lock_cycles": "10",
+  "forms": [
+   "FDIV FRm,FRn"
+  ]
+ },
+ "187": {
+  "no": 187,
+  "mnem": "FLOAT",
+  "ops": "FPUL,FRn",
+  "group": "FE",
+  "issue": "1",
+  "latency": "3/4",
+  "pattern": "#36",
+  "lock_stage": "F1",
+  "lock_start": "2",
+  "lock_cycles": "2",
+  "forms": [
+   "FLOAT FPUL,FRn"
+  ]
+ },
+ "188": {
+  "no": 188,
+  "mnem": "FMAC",
+  "ops": "FR0,FRm,FRn",
+  "group": "FE",
+  "issue": "1",
+  "latency": "3/4",
+  "pattern": "#36",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMAC FR0,FRm,FRn"
+  ]
+ },
+ "189": {
+  "no": 189,
+  "mnem": "FMUL",
+  "ops": "FRm,FRn",
+  "group": "FE",
+  "issue": "1",
+  "latency": "3/4",
+  "pattern": "#36",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMUL FRm,FRn"
+  ]
+ },
+ "190": {
+  "no": 190,
+  "mnem": "FNEG",
+  "ops": "FRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FNEG FRn"
+  ]
+ },
+ "191": {
+  "no": 191,
+  "mnem": "FSQRT",
+  "ops": "FRn",
+  "group": "FE",
+  "issue": "1",
+  "latency": "11/12",
+  "pattern": "#37",
+  "lock_stage": "F3",
+  "lock_start": "2",
+  "lock_cycles": "9",
+  "forms": [
+   "FSQRT FRn"
+  ]
+ },
+ "192": {
+  "no": 192,
+  "mnem": "FSUB",
+  "ops": "FRm,FRn",
+  "group": "FE",
+  "issue": "1",
+  "latency": "3/4",
+  "pattern": "#36",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FSUB FRm,FRn"
+  ]
+ },
+ "193": {
+  "no": 193,
+  "mnem": "FTRC",
+  "ops": "FRm,FPUL",
+  "group": "FE",
+  "issue": "1",
+  "latency": "3/4",
+  "pattern": "#36",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FTRC FRm,FPUL"
+  ]
+ },
+ "194": {
+  "no": 194,
+  "mnem": "FMOV",
+  "ops": "DRm,DRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV DRm,DRn"
+  ]
+ },
+ "195": {
+  "no": 195,
+  "mnem": "FMOV",
+  "ops": "@Rm,DRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV @Rm,DRn"
+  ]
+ },
+ "196": {
+  "no": 196,
+  "mnem": "FMOV",
+  "ops": "@Rm+,DRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1/2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV @Rm+,DRn"
+  ]
+ },
+ "197": {
+  "no": 197,
+  "mnem": "FMOV",
+  "ops": "@(R0,Rm),DRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV @(R0,Rm),DRn"
+  ]
+ },
+ "198": {
+  "no": 198,
+  "mnem": "FMOV",
+  "ops": "DRm,@Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV DRm,@Rn"
+  ]
+ },
+ "199": {
+  "no": 199,
+  "mnem": "FMOV",
+  "ops": "DRm,@-Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1/1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV DRm,@-Rn"
+  ]
+ },
+ "200": {
+  "no": 200,
+  "mnem": "FMOV",
+  "ops": "DRm,@(R0,Rn)",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV DRm,@(R0,Rn)"
+  ]
+ },
+ "201": {
+  "no": 201,
+  "mnem": "FABS",
+  "ops": "DRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FABS DRn"
+  ]
+ },
+ "203": {
+  "no": 203,
+  "mnem": "FCMP/EQ",
+  "ops": "DRm,DRn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "3/5",
+  "pattern": "#40",
+  "lock_stage": "F1",
+  "lock_start": "2",
+  "lock_cycles": "2",
+  "forms": [
+   "FCMP/EQ DRm,DRn"
+  ]
+ },
+ "204": {
+  "no": 204,
+  "mnem": "FCMP/GT",
+  "ops": "DRm,DRn",
+  "group": "CO",
+  "issue": "2",
+  "latency": "3/5",
+  "pattern": "#40",
+  "lock_stage": "F1",
+  "lock_start": "2",
+  "lock_cycles": "2",
+  "forms": [
+   "FCMP/GT DRm,DRn"
+  ]
+ },
+ "205": {
+  "no": 205,
+  "mnem": "FCNVDS",
+  "ops": "DRm,FPUL",
+  "group": "FE",
+  "issue": "1",
+  "latency": "4/5",
+  "pattern": "#38",
+  "lock_stage": "F1",
+  "lock_start": "2",
+  "lock_cycles": "2",
+  "forms": [
+   "FCNVDS DRm,FPUL"
+  ]
+ },
+ "210": {
+  "no": 210,
+  "mnem": "FNEG",
+  "ops": "DRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FNEG DRn"
+  ]
+ },
+ "213": {
+  "no": 213,
+  "mnem": "FTRC",
+  "ops": "DRm,FPUL",
+  "group": "FE",
+  "issue": "1",
+  "latency": "4/5",
+  "pattern": "#38",
+  "lock_stage": "F1",
+  "lock_start": "2",
+  "lock_cycles": "2",
+  "forms": [
+   "FTRC DRm,FPUL"
+  ]
+ },
+ "215": {
+  "no": 215,
+  "mnem": "LDS",
+  "ops": "Rm,FPSCR",
+  "group": "CO",
+  "issue": "1",
+  "latency": "4",
+  "pattern": "#32",
+  "lock_stage": "F1",
+  "lock_start": "3",
+  "lock_cycles": "3",
+  "forms": [
+   "LDS Rm,FPSCR"
+  ]
+ },
+ "216": {
+  "no": 216,
+  "mnem": "LDS.L",
+  "ops": "@Rm+,FPUL",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1/2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "LDS.L @Rm+,FPUL"
+  ]
+ },
+ "217": {
+  "no": 217,
+  "mnem": "LDS.L",
+  "ops": "@Rm+,FPSCR",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1/4",
+  "pattern": "#33",
+  "lock_stage": "F1",
+  "lock_start": "3",
+  "lock_cycles": "3",
+  "forms": [
+   "LDS.L @Rm+,FPSCR"
+  ]
+ },
+ "218": {
+  "no": 218,
+  "mnem": "STS",
+  "ops": "FPUL,Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "3",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STS FPUL,Rn"
+  ]
+ },
+ "219": {
+  "no": 219,
+  "mnem": "STS",
+  "ops": "FPSCR,Rn",
+  "group": "CO",
+  "issue": "1",
+  "latency": "3",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STS FPSCR,Rn"
+  ]
+ },
+ "220": {
+  "no": 220,
+  "mnem": "STS.L",
+  "ops": "FPUL,@-Rn",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1/1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STS.L FPUL,@-Rn"
+  ]
+ },
+ "221": {
+  "no": 221,
+  "mnem": "STS.L",
+  "ops": "FPSCR,@-Rn",
+  "group": "CO",
+  "issue": "1",
+  "latency": "1/1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "STS.L FPSCR,@-Rn"
+  ]
+ },
+ "222": {
+  "no": 222,
+  "mnem": "FMOV",
+  "ops": "DRm,XDn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV DRm,XDn"
+  ]
+ },
+ "223": {
+  "no": 223,
+  "mnem": "FMOV",
+  "ops": "XDm,DRn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV XDm,DRn"
+  ]
+ },
+ "224": {
+  "no": 224,
+  "mnem": "FMOV",
+  "ops": "XDm,XDn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "0",
+  "pattern": "#1",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV XDm,XDn"
+  ]
+ },
+ "225": {
+  "no": 225,
+  "mnem": "FMOV",
+  "ops": "@Rm,XDn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV @Rm,XDn"
+  ]
+ },
+ "226": {
+  "no": 226,
+  "mnem": "FMOV",
+  "ops": "@Rm+,XDn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1/2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV @Rm+,XDn"
+  ]
+ },
+ "227": {
+  "no": 227,
+  "mnem": "FMOV",
+  "ops": "@(R0,Rm),XDn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "2",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV @(R0,Rm),XDn"
+  ]
+ },
+ "228": {
+  "no": 228,
+  "mnem": "FMOV",
+  "ops": "XDm,@Rn",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV XDm,@Rn"
+  ]
+ },
+ "229": {
+  "no": 229,
+  "mnem": "FMOV",
+  "ops": "XDm,@-Rm",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1/1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": []
+ },
+ "230": {
+  "no": 230,
+  "mnem": "FMOV",
+  "ops": "XDm,@(R0,Rn)",
+  "group": "LS",
+  "issue": "1",
+  "latency": "1",
+  "pattern": "#2",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FMOV XDm,@(R0,Rn)"
+  ]
+ },
+ "231": {
+  "no": 231,
+  "mnem": "FIPR",
+  "ops": "FVm,FVn",
+  "group": "FE",
+  "issue": "1",
+  "latency": "4/5",
+  "pattern": "#42",
+  "lock_stage": "F1",
+  "lock_start": "3",
+  "lock_cycles": "1",
+  "forms": [
+   "FIPR FVm,FVn"
+  ]
+ },
+ "232": {
+  "no": 232,
+  "mnem": "FRCHG",
+  "ops": "",
+  "group": "FE",
+  "issue": "1",
+  "latency": "1/4",
+  "pattern": "#36",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FRCHG"
+  ]
+ },
+ "233": {
+  "no": 233,
+  "mnem": "FSCHG",
+  "ops": "",
+  "group": "FE",
+  "issue": "1",
+  "latency": "1/4",
+  "pattern": "#36",
+  "lock_stage": "\u2014",
+  "lock_start": "\u2014",
+  "lock_cycles": "\u2014",
+  "forms": [
+   "FSCHG"
+  ]
+ }
+}

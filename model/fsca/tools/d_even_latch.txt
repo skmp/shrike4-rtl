@@ -1,0 +1,10 @@
+du0 t-342 J interval[4616715,4616775] bindings 13,12 baseline 4616714
+du0 t-17 J interval[11405,11404] bindings 8,5 baseline 11407
+du0 t17 J interval[11405,11404] bindings 8,5 baseline 11407
+du0 t342 J interval[4616709,4616709] bindings 14,3 baseline 4616711
+du0 impossible t=2 baseline common-J hits=951 baseline even-pair violations=75
+du2 t-342 J interval[18466858,18467100] bindings 13,12 baseline 18466856
+du2 t-17 J interval[45617,45617] bindings 8,5 baseline 45628
+du2 t17 J interval[45617,45617] bindings 8,5 baseline 45628
+du2 t342 J interval[18466836,18466836] bindings 14,3 baseline 18466844
+du2 impossible t=0 baseline common-J hits=951 baseline even-pair violations=75

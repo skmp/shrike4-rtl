@@ -1,0 +1,34 @@
+Shared square witness: 10240 angles RN=0 RZ=0 mismatches
+node=3 C0=19480674 feasible=0 integer coefficient interval=[48057883,48053656] bindings=-325,18
+node=3 accepted C0 choices=0
+node=4 C0=25681450 feasible=0 integer coefficient interval=[63354894,63354891] bindings=-447,242
+node=4 accepted C0 choices=0
+node=5 C0=31634899 feasible=0 integer coefficient interval=[78041814,78023969] bindings=361,-17
+node=5 accepted C0 choices=0
+node=6 C0=37283686 feasible=0 integer coefficient interval=[91977086,91976964] bindings=367,186
+node=6 C0=37283687 feasible=0 integer coefficient interval=[535660719,91979313] bindings=1,509
+node=6 accepted C0 choices=0
+node=7 C0=42573411 feasible=0 integer coefficient interval=[105026640,105025121] bindings=-189,40
+node=7 accepted C0 choices=0
+node=8 C0=47453131 feasible=0 integer coefficient interval=[117064609,117064588] bindings=376,-259
+node=8 accepted C0 choices=0
+node=9 C0=51875851 feasible=0 integer coefficient interval=[127975387,127974263] bindings=-86,51
+node=9 accepted C0 choices=0
+node=10 C0=55798982 feasible=0 integer coefficient interval=[137653460,137653258] bindings=-383,249
+node=10 C0=55798983 feasible=0 integer coefficient interval=[179062676,137655623] bindings=-3,-497
+node=10 accepted C0 choices=0
+node=11 C0=59184734 feasible=0 integer coefficient interval=[146003725,119276297] bindings=510,3
+node=11 C0=59184735 feasible=0 integer coefficient interval=[146005945,146003798] bindings=-469,65
+node=11 accepted C0 choices=0
+node=12 C0=62000504 feasible=0 integer coefficient interval=[152952333,152952083] bindings=-469,-228
+node=12 C0=62000505 feasible=0 integer coefficient interval=[535660719,152954505] bindings=1,-500
+node=12 C0=62000506 feasible=0 integer coefficient interval=[1071321437,152956652] bindings=1,-500
+node=12 accepted C0 choices=0
+node=13 C0=64219180 feasible=0 integer coefficient interval=[158425687,158425586] bindings=307,251
+node=13 C0=64219181 feasible=0 integer coefficient interval=[535660719,158428013] bindings=1,-499
+node=13 accepted C0 choices=0
+node=14 C0=65819382 feasible=0 integer coefficient interval=[162373310,162372924] bindings=400,201
+node=14 C0=65819383 feasible=0 integer coefficient interval=[535660719,162375372] bindings=1,-503
+node=14 accepted C0 choices=0
+node=15 C0=66785715 feasible=0 integer coefficient interval=[164757155,164757099] bindings=-209,-439
+node=15 accepted C0 choices=0

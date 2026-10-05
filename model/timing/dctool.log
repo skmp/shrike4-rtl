@@ -1,0 +1,256 @@
+Console enabled
+Upload <fpu_timing.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 314592
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c05cce0, size 54
+Section .fini, lma 0x8c05cd18, size 42
+Section .rodata, lma 0x8c05cd44, size 48028
+Section .eh_frame, lma 0x8c0688e0, size 452
+Section .ctors, lma 0x8c068b24, size 8
+Section .dtors, lma 0x8c068b2c, size 8
+Section .data, lma 0x8c068b40, size 11880
+Section .got, lma 0x8c06b9a8, size 12
+Transferred 375076 bytes at 14532194.975789 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac078ac0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+  A1: Visual Memory                  (0e000000: Clock, LCD, MemoryCard)
+
+fpu_timing: N=4096 reps=5, PRFC1 CPU cycles, irqs off, fpscr 00040000
+enables line: cyc/iter with FPSCR enables V=800 Z=400 O=200 U=100 I=080 all=f80; trapping instructions are skipped by the EXC_FPU handler
+empty loop: 3.01 cyc/iter
+nop x16                             16 instr/iter:   11.01 cyc/iter   0.688 cyc/instr  ( 0.500 excl. loop)
+    enables:  V 11.01  Z 11.01  O 11.01  U 11.01  I 11.01  all 11.01
+add x16 (int, dependent)            16 instr/iter:   19.01 cyc/iter   1.188 cyc/instr  ( 1.000 excl. loop)
+    enables:  V 19.01  Z 19.01  O 19.01  U 19.01  I 19.01  all 19.01
+-- latency (dependent chains) --
+fadd chain                          16 instr/iter:   48.01 cyc/iter   3.001 cyc/instr  ( 2.813 excl. loop)
+    enables:  V 48.01  Z 48.01  O 7404.34 (16 traps/iter, +459.8/trap, cause -, at f010 f010 f010 f010 ...)  U 7404.33 (16 traps/iter, +459.8/trap, cause -, at f010 f010 f010 f010 ...)  I 7404.33 (16 traps/iter, +459.8/trap, cause -, at f010 f010 f010 f010 ...)  all 7404.33 (16 traps/iter, +459.8/trap, cause -, at f010 f010 f010 f010 ...)
+fmul chain                          16 instr/iter:   48.01 cyc/iter   3.001 cyc/instr  ( 2.813 excl. loop)
+    enables:  V 48.01  Z 48.01  O 6299.82 (16 traps/iter, +390.7/trap, cause -, at f012 f012 f012 f012 ...)  U 6299.82 (16 traps/iter, +390.7/trap, cause -, at f012 f012 f012 f012 ...)  I 6299.82 (16 traps/iter, +390.7/trap, cause -, at f012 f012 f012 f012 ...)  all 6299.81 (16 traps/iter, +390.7/trap, cause -, at f012 f012 f012 f012 ...)
+fmac chain (fr2+=fr0*fr1)           16 instr/iter:   48.01 cyc/iter   3.001 cyc/instr  ( 2.813 excl. loop)
+    enables:  V 48.01  Z 48.01  O 6299.81 (16 traps/iter, +390.7/trap, cause -, at f21e f21e f21e f21e ...)  U 6299.82 (16 traps/iter, +390.7/trap, cause -, at f21e f21e f21e f21e ...)  I 6299.82 (16 traps/iter, +390.7/trap, cause -, at f21e f21e f21e f21e ...)  all 6299.82 (16 traps/iter, +390.7/trap, cause -, at f21e f21e f21e f21e ...)
+fdiv chain                          16 instr/iter:  192.01 cyc/iter  12.001 cyc/instr  (11.813 excl. loop)
+    enables:  V 192.01  Z 192.01  O 7520.02 (16 traps/iter, +458.0/trap, cause -, at f013 f013 f013 f013 ...)  U 7520.01 (16 traps/iter, +458.0/trap, cause -, at f013 f013 f013 f013 ...)  I 7520.01 (16 traps/iter, +458.0/trap, cause -, at f013 f013 f013 f013 ...)  all 7520.03 (16 traps/iter, +458.0/trap, cause -, at f013 f013 f013 f013 ...)
+fsqrt chain                         16 instr/iter:  176.01 cyc/iter  11.001 cyc/instr  (10.813 excl. loop)
+    enables:  V 176.01  Z 176.01  O 176.01  U 176.01  I 6299.82 (16 traps/iter, +382.7/trap, cause -, at f06d f06d f06d f06d ...)  all 6299.82 (16 traps/iter, +382.7/trap, cause -, at f06d f06d f06d f06d ...)
+fsrra chain                         16 instr/iter:   96.01 cyc/iter   6.001 cyc/instr  ( 5.813 excl. loop)
+    enables:  V 96.01  Z 96.01  O 96.01  U 96.01  I 6299.81 (16 traps/iter, +387.7/trap, cause I, at f07d f07d f07d f07d ...)  all 6299.82 (16 traps/iter, +387.7/trap, cause I, at f07d f07d f07d f07d ...)
+fipr chain (fv0,fv4 -> fr7)         16 instr/iter:   64.01 cyc/iter   4.001 cyc/instr  ( 3.813 excl. loop)
+    enables:  V 64.01  Z 64.01  O 6299.81 (16 traps/iter, +389.7/trap, cause I, at f4ed f4ed f4ed f4ed ...)  U 6299.80 (16 traps/iter, +389.7/trap, cause I, at f4ed f4ed f4ed f4ed ...)  I 6299.81 (16 traps/iter, +389.7/trap, cause I, at f4ed f4ed f4ed f4ed ...)  all 6299.82 (16 traps/iter, +389.7/trap, cause I, at f4ed f4ed f4ed f4ed ...)
+ftrv chain (xmtrx,fv0)              16 instr/iter:  112.01 cyc/iter   7.001 cyc/instr  ( 6.813 excl. loop)
+    enables:  V 6299.83 (16 traps/iter, +386.7/trap, cause I, at f1fd f1fd f1fd f1fd ...)  Z 112.01  O 6299.80 (16 traps/iter, +386.7/trap, cause I, at f1fd f1fd f1fd f1fd ...)  U 6299.82 (16 traps/iter, +386.7/trap, cause I, at f1fd f1fd f1fd f1fd ...)  I 6299.82 (16 traps/iter, +386.7/trap, cause I, at f1fd f1fd f1fd f1fd ...)  all 6299.82 (16 traps/iter, +386.7/trap, cause I, at f1fd f1fd f1fd f1fd ...)
+fsca+flds chain                     32 instr/iter:  151.17 cyc/iter   4.724 cyc/instr  ( 4.630 excl. loop)
+    enables:  V 151.17  Z 151.17  O 151.17  U 151.17  I 6361.21 (16 traps/iter, +388.1/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 6361.23 (16 traps/iter, +388.1/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+flds+fsts chain                     32 instr/iter:   34.01 cyc/iter   1.063 cyc/instr  ( 0.969 excl. loop)
+    enables:  V 34.01  Z 34.01  O 34.01  U 34.01  I 34.01  all 34.01
+fmov chain                          32 instr/iter:   34.01 cyc/iter   1.063 cyc/instr  ( 0.969 excl. loop)
+    enables:  V 34.01  Z 34.01  O 34.01  U 34.01  I 34.01  all 34.01
+fneg chain                          16 instr/iter:   18.01 cyc/iter   1.126 cyc/instr  ( 0.938 excl. loop)
+    enables:  V 18.01  Z 18.01  O 18.01  U 18.01  I 18.01  all 18.01
+-- pitch (independent streams) --
+fadd x8 indep                       16 instr/iter:   18.01 cyc/iter   1.126 cyc/instr  ( 0.938 excl. loop)
+    enables:  V 18.01  Z 18.01  O 6299.80 (16 traps/iter, +392.6/trap, cause -, at f010 f230 f450 f670 ...)  U 6299.82 (16 traps/iter, +392.6/trap, cause -, at f010 f230 f450 f670 ...)  I 6299.82 (16 traps/iter, +392.6/trap, cause -, at f010 f230 f450 f670 ...)  all 6299.83 (16 traps/iter, +392.6/trap, cause -, at f010 f230 f450 f670 ...)
+fmul x8 indep                       16 instr/iter:   18.01 cyc/iter   1.126 cyc/instr  ( 0.938 excl. loop)
+    enables:  V 18.01  Z 18.01  O 6299.81 (16 traps/iter, +392.6/trap, cause -, at f012 f232 f452 f672 ...)  U 6299.80 (16 traps/iter, +392.6/trap, cause -, at f012 f232 f452 f672 ...)  I 6299.81 (16 traps/iter, +392.6/trap, cause -, at f012 f232 f452 f672 ...)  all 6299.81 (16 traps/iter, +392.6/trap, cause -, at f012 f232 f452 f672 ...)
+fmac x8 indep                       16 instr/iter:   20.01 cyc/iter   1.251 cyc/instr  ( 1.063 excl. loop)
+    enables:  V 20.01  Z 20.01  O 6299.81 (16 traps/iter, +392.5/trap, cause -, at f21e f43e f65e f87e ...)  U 6299.81 (16 traps/iter, +392.5/trap, cause -, at f21e f43e f65e f87e ...)  I 6299.81 (16 traps/iter, +392.5/trap, cause -, at f21e f43e f65e f87e ...)  all 6299.82 (16 traps/iter, +392.5/trap, cause -, at f21e f43e f65e f87e ...)
+fdiv x16 indep                      16 instr/iter:  160.01 cyc/iter  10.001 cyc/instr  ( 9.813 excl. loop)
+    enables:  V 160.01  Z 160.01  O 7343.10 (16 traps/iter, +448.9/trap, cause -, at f013 f233 f453 f673 ...)  U 7343.10 (16 traps/iter, +448.9/trap, cause -, at f013 f233 f453 f673 ...)  I 7343.09 (16 traps/iter, +448.9/trap, cause -, at f013 f233 f453 f673 ...)  all 7343.11 (16 traps/iter, +448.9/trap, cause -, at f013 f233 f453 f673 ...)
+fsqrt x16 indep                     16 instr/iter:  144.01 cyc/iter   9.001 cyc/instr  ( 8.813 excl. loop)
+    enables:  V 144.01  Z 144.01  O 144.01  U 144.01  I 7288.65 (16 traps/iter, +446.5/trap, cause -, at f06d f16d f26d f36d ...)  all 7288.64 (16 traps/iter, +446.5/trap, cause -, at f06d f16d f26d f36d ...)
+fsrra x16 indep                     16 instr/iter:   48.01 cyc/iter   3.001 cyc/instr  ( 2.813 excl. loop)
+    enables:  V 48.01  Z 48.01  O 48.01  U 48.01  I 6299.80 (16 traps/iter, +390.7/trap, cause I, at f07d f17d f27d f37d ...)  all 6299.82 (16 traps/iter, +390.7/trap, cause I, at f07d f17d f27d f37d ...)
+fsca x8 indep                       16 instr/iter:   64.01 cyc/iter   4.001 cyc/instr  ( 3.813 excl. loop)
+    enables:  V 64.01  Z 64.01  O 64.01  U 64.01  I 6299.81 (16 traps/iter, +389.7/trap, cause I, at f0fd f2fd f4fd f6fd ...)  all 6299.81 (16 traps/iter, +389.7/trap, cause I, at f0fd f2fd f4fd f6fd ...)
+fipr x3 indep (fv0 src)             15 instr/iter:   21.01 cyc/iter   1.401 cyc/instr  ( 1.200 excl. loop)
+    enables:  V 21.01  Z 21.01  O 5902.52 (15 traps/iter, +392.1/trap, cause I, at f4ed f8ed fced f4ed ...)  U 5902.53 (15 traps/iter, +392.1/trap, cause I, at f4ed f8ed fced f4ed ...)  I 5902.55 (15 traps/iter, +392.1/trap, cause I, at f4ed f8ed fced f4ed ...)  all 5902.54 (15 traps/iter, +392.1/trap, cause I, at f4ed f8ed fced f4ed ...)
+fipr x2 indep                       16 instr/iter:   32.01 cyc/iter   2.001 cyc/instr  ( 1.813 excl. loop)
+    enables:  V 32.01  Z 32.01  O 6299.82 (16 traps/iter, +391.7/trap, cause I, at f4ed f8ed f4ed f8ed ...)  U 6299.82 (16 traps/iter, +391.7/trap, cause I, at f4ed f8ed f4ed f8ed ...)  I 6299.82 (16 traps/iter, +391.7/trap, cause I, at f4ed f8ed f4ed f8ed ...)  all 6299.82 (16 traps/iter, +391.7/trap, cause I, at f4ed f8ed f4ed f8ed ...)
+ftrv x4 indep                       16 instr/iter:   64.02 cyc/iter   4.001 cyc/instr  ( 3.813 excl. loop)
+    enables:  V 6299.82 (16 traps/iter, +389.7/trap, cause I, at f1fd f5fd f9fd fdfd ...)  Z 64.02  O 6299.83 (16 traps/iter, +389.7/trap, cause I, at f1fd f5fd f9fd fdfd ...)  U 6299.83 (16 traps/iter, +389.7/trap, cause I, at f1fd f5fd f9fd fdfd ...)  I 6299.82 (16 traps/iter, +389.7/trap, cause I, at f1fd f5fd f9fd fdfd ...)  all 6299.83 (16 traps/iter, +389.7/trap, cause I, at f1fd f5fd f9fd fdfd ...)
+-- mixed / structural --
+fmul+fadd alternating (indep)       16 instr/iter:   25.01 cyc/iter   1.563 cyc/instr  ( 1.375 excl. loop)
+    enables:  V 25.01  Z 25.01  O 6299.81 (16 traps/iter, +392.2/trap, cause -, at f012 f230 f012 f230 ...)  U 6299.83 (16 traps/iter, +392.2/trap, cause -, at f012 f230 f012 f230 ...)  I 6299.82 (16 traps/iter, +392.2/trap, cause -, at f012 f230 f012 f230 ...)  all 6299.83 (16 traps/iter, +392.2/trap, cause -, at f012 f230 f012 f230 ...)
+fadd+int add alternating            16 instr/iter:   25.01 cyc/iter   1.563 cyc/instr  ( 1.375 excl. loop)
+    enables:  V 25.01  Z 25.01  O 3138.81 (8 traps/iter, +389.2/trap, cause -, at f010 f010 f010 f010 ...)  U 3138.81 (8 traps/iter, +389.2/trap, cause -, at f010 f010 f010 f010 ...)  I 3138.79 (8 traps/iter, +389.2/trap, cause -, at f010 f010 f010 f010 ...)  all 3138.80 (8 traps/iter, +389.2/trap, cause -, at f010 f010 f010 f010 ...)
+fsca + 4 fadd                       20 instr/iter:   38.01 cyc/iter   1.900 cyc/instr  ( 1.750 excl. loop)
+    enables:  V 38.01  Z 38.01  O 6316.85 (16 traps/iter, +392.4/trap, cause -, at f890 fab0 fcd0 fef0 ...)  U 6316.87 (16 traps/iter, +392.4/trap, cause -, at f890 fab0 fcd0 fef0 ...)  I 7896.03 (20 traps/iter, +392.9/trap, cause I, at f0fd f890 fab0 fcd0 ...)  all 7896.01 (20 traps/iter, +392.9/trap, cause I, at f0fd f890 fab0 fcd0 ...)
+fsca + 8 fadd                       36 instr/iter:   54.01 cyc/iter   1.500 cyc/instr  ( 1.417 excl. loop)
+    enables:  V 54.01  Z 54.01  O 12685.95 (32 traps/iter, +394.7/trap, cause -, at f890 fab0 fcd0 fef0 ...)  U 12685.96 (32 traps/iter, +394.7/trap, cause -, at f890 fab0 fcd0 fef0 ...)  I 14255.34 (36 traps/iter, +394.5/trap, cause I, at f0fd f890 fab0 fcd0 ...)  all 14255.34 (36 traps/iter, +394.5/trap, cause I, at f0fd f890 fab0 fcd0 ...)
+fsrra + 4 fmul                      20 instr/iter:   34.01 cyc/iter   1.700 cyc/instr  ( 1.550 excl. loop)
+    enables:  V 34.01  Z 34.01  O 6316.83 (16 traps/iter, +392.7/trap, cause -, at f892 fab2 fcd2 fef2 ...)  U 6316.85 (16 traps/iter, +392.7/trap, cause -, at f892 fab2 fcd2 fef2 ...)  I 7896.05 (20 traps/iter, +393.1/trap, cause I, at f07d f892 fab2 fcd2 ...)  all 7896.00 (20 traps/iter, +393.1/trap, cause I, at f07d f892 fab2 fcd2 ...)
+fsrra + 4 fadd                      20 instr/iter:   34.01 cyc/iter   1.701 cyc/instr  ( 1.550 excl. loop)
+    enables:  V 34.01  Z 34.01  O 6316.85 (16 traps/iter, +392.7/trap, cause -, at f890 fab0 fcd0 fef0 ...)  U 6316.86 (16 traps/iter, +392.7/trap, cause -, at f890 fab0 fcd0 fef0 ...)  I 7896.04 (20 traps/iter, +393.1/trap, cause I, at f07d f890 fab0 fcd0 ...)  all 7896.02 (20 traps/iter, +393.1/trap, cause I, at f07d f890 fab0 fcd0 ...)
+fipr + 3 fadd                       16 instr/iter:   22.01 cyc/iter   1.376 cyc/instr  ( 1.188 excl. loop)
+    enables:  V 22.01  Z 22.01  O 6299.81 (16 traps/iter, +392.4/trap, cause I, at f4ed f890 fab0 fcd0 ...)  U 6299.81 (16 traps/iter, +392.4/trap, cause I, at f4ed f890 fab0 fcd0 ...)  I 6299.81 (16 traps/iter, +392.4/trap, cause I, at f4ed f890 fab0 fcd0 ...)  all 6299.81 (16 traps/iter, +392.4/trap, cause I, at f4ed f890 fab0 fcd0 ...)
+fipr + 3 fmul                       16 instr/iter:   22.01 cyc/iter   1.376 cyc/instr  ( 1.188 excl. loop)
+    enables:  V 22.01  Z 22.01  O 6299.80 (16 traps/iter, +392.4/trap, cause I, at f4ed f892 fab2 fcd2 ...)  U 6299.82 (16 traps/iter, +392.4/trap, cause I, at f4ed f892 fab2 fcd2 ...)  I 6299.83 (16 traps/iter, +392.4/trap, cause I, at f4ed f892 fab2 fcd2 ...)  all 6299.82 (16 traps/iter, +392.4/trap, cause I, at f4ed f892 fab2 fcd2 ...)
+fsca + 2 fipr (fv4,fv8/fv4,fv12)    15 instr/iter:   32.01 cyc/iter   2.134 cyc/instr  ( 1.934 excl. loop)
+    enables:  V 32.01  Z 32.01  O 3933.56 (10 traps/iter, +390.2/trap, cause I, at f9ed fded f9ed fded ...)  U 3933.58 (10 traps/iter, +390.2/trap, cause I, at f9ed fded f9ed fded ...)  I 5902.55 (15 traps/iter, +391.4/trap, cause I, at f0fd f9ed fded f0fd ...)  all 5902.54 (15 traps/iter, +391.4/trap, cause I, at f0fd f9ed fded f0fd ...)
+fsrra + fsca alternating            16 instr/iter:   56.01 cyc/iter   3.501 cyc/instr  ( 3.313 excl. loop)
+    enables:  V 56.01  Z 56.01  O 56.01  U 56.01  I 6299.83 (16 traps/iter, +390.2/trap, cause I, at f47d f0fd f47d f0fd ...)  all 6299.83 (16 traps/iter, +390.2/trap, cause I, at f47d f0fd f47d f0fd ...)
+fmul + 4 int add                    20 instr/iter:   19.01 cyc/iter   0.950 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 19.01  Z 19.01  O 1541.64 (4 traps/iter, +380.7/trap, cause -, at f012 f012 f012 f012)  U 1541.64 (4 traps/iter, +380.7/trap, cause -, at f012 f012 f012 f012)  I 1541.64 (4 traps/iter, +380.7/trap, cause -, at f012 f012 f012 f012)  all 1541.64 (4 traps/iter, +380.7/trap, cause -, at f012 f012 f012 f012)
+fdiv + 8 fadd                       36 instr/iter:   48.01 cyc/iter   1.334 cyc/instr  ( 1.250 excl. loop)
+    enables:  V 48.01  Z 48.01  O 14288.01 (36 traps/iter, +395.6/trap, cause -, at f013 f890 fab0 fcd0 ...)  U 14287.98 (36 traps/iter, +395.6/trap, cause -, at f013 f890 fab0 fcd0 ...)  I 14287.98 (36 traps/iter, +395.6/trap, cause -, at f013 f890 fab0 fcd0 ...)  all 14287.97 (36 traps/iter, +395.6/trap, cause -, at f013 f890 fab0 fcd0 ...)
+-- consumer latency (op then dependent fadd; compare with the independent-consumer line) --
+fsca ; fadd fr8,fr9 (indep)         16 instr/iter:   50.01 cyc/iter   3.126 cyc/instr  ( 2.938 excl. loop)
+    enables:  V 50.01  Z 50.01  O 3565.10 (8 traps/iter, +439.4/trap, cause -, at f980 f980 f980 f980 ...)  U 3565.10 (8 traps/iter, +439.4/trap, cause -, at f980 f980 f980 f980 ...)  I 7166.17 (16 traps/iter, +444.8/trap, cause I, at f0fd f980 f0fd f980 ...)  all 7166.18 (16 traps/iter, +444.8/trap, cause I, at f0fd f980 f0fd f980 ...)
+fsca ; fadd fr0,fr9 (sin)           16 instr/iter:   58.01 cyc/iter   3.626 cyc/instr  ( 3.438 excl. loop)
+    enables:  V 58.01  Z 58.01  O 3164.31 (8 traps/iter, +388.3/trap, cause I, at f900 f900 f900 f900 ...)  U 3164.31 (8 traps/iter, +388.3/trap, cause I, at f900 f900 f900 f900 ...)  I 6299.83 (16 traps/iter, +390.1/trap, cause I, at f0fd f900 f0fd f900 ...)  all 6299.82 (16 traps/iter, +390.1/trap, cause I, at f0fd f900 f0fd f900 ...)
+fsca ; fadd fr1,fr9 (cos)           16 instr/iter:   66.01 cyc/iter   4.126 cyc/instr  ( 3.938 excl. loop)
+    enables:  V 66.01  Z 66.01  O 3179.91 (8 traps/iter, +389.2/trap, cause I, at f910 f910 f910 f910 ...)  U 3179.92 (8 traps/iter, +389.2/trap, cause I, at f910 f910 f910 f910 ...)  I 6299.81 (16 traps/iter, +389.6/trap, cause I, at f0fd f910 f0fd f910 ...)  all 6299.81 (16 traps/iter, +389.6/trap, cause I, at f0fd f910 f0fd f910 ...)
+fsca ; nop ; fadd fr0,fr9           24 instr/iter:   58.01 cyc/iter   2.417 cyc/instr  ( 2.292 excl. loop)
+    enables:  V 58.01  Z 58.01  O 3164.30 (8 traps/iter, +388.3/trap, cause I, at f900 f900 f900 f900 ...)  U 3164.30 (8 traps/iter, +388.3/trap, cause I, at f900 f900 f900 f900 ...)  I 6316.78 (16 traps/iter, +391.2/trap, cause I, at f0fd f900 f0fd f900 ...)  all 6316.79 (16 traps/iter, +391.2/trap, cause I, at f0fd f900 f0fd f900 ...)
+fsca ; 4 int add ; fadd fr0,fr9     48 instr/iter:   58.01 cyc/iter   1.209 cyc/instr  ( 1.146 excl. loop)
+    enables:  V 58.01  Z 58.01  O 3164.30 (8 traps/iter, +388.3/trap, cause I, at f900 f900 f900 f900 ...)  U 3164.31 (8 traps/iter, +388.3/trap, cause I, at f900 f900 f900 f900 ...)  I 6332.64 (16 traps/iter, +392.2/trap, cause I, at f0fd f900 f0fd f900 ...)  all 6332.65 (16 traps/iter, +392.2/trap, cause I, at f0fd f900 f0fd f900 ...)
+fsca ; 8 int add ; fadd fr0,fr9     80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 67.01  Z 67.01  O 3179.93 (8 traps/iter, +389.1/trap, cause I, at f900 f900 f900 f900 ...)  U 3179.93 (8 traps/iter, +389.1/trap, cause I, at f900 f900 f900 f900 ...)  I 6365.82 (16 traps/iter, +393.7/trap, cause I, at f0fd f900 f0fd f900 ...)  all 6365.82 (16 traps/iter, +393.7/trap, cause I, at f0fd f900 f0fd f900 ...)
+fsca ; 8 int add ; fadd fr1,fr9     80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 67.01  Z 67.01  O 3179.92 (8 traps/iter, +389.1/trap, cause I, at f910 f910 f910 f910 ...)  U 3179.92 (8 traps/iter, +389.1/trap, cause I, at f910 f910 f910 f910 ...)  I 6365.80 (16 traps/iter, +393.7/trap, cause I, at f0fd f910 f0fd f910 ...)  all 6365.81 (16 traps/iter, +393.7/trap, cause I, at f0fd f910 f0fd f910 ...)
+fsca ; 8 int add ; fadd fr8,fr9     80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 67.01  Z 67.01  O 3179.94 (8 traps/iter, +389.1/trap, cause -, at f980 f980 f980 f980 ...)  U 3179.94 (8 traps/iter, +389.1/trap, cause -, at f980 f980 f980 f980 ...)  I 6365.84 (16 traps/iter, +393.7/trap, cause I, at f0fd f980 f0fd f980 ...)  all 6365.83 (16 traps/iter, +393.7/trap, cause I, at f0fd f980 f0fd f980 ...)
+fsrra fr4 ; 8 int add ; fadd fr4,fr9  80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 67.01  Z 67.01  O 3179.93 (8 traps/iter, +389.1/trap, cause -, at f940 f940 f940 f940 ...)  U 3179.92 (8 traps/iter, +389.1/trap, cause -, at f940 f940 f940 f940 ...)  I 6365.82 (16 traps/iter, +393.7/trap, cause I, at f47d f940 f47d f940 ...)  all 6365.82 (16 traps/iter, +393.7/trap, cause I, at f47d f940 f47d f940 ...)
+fsrra fr4 ; 8 int add ; fadd fr8,fr9  80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 67.01  Z 67.01  O 3179.91 (8 traps/iter, +389.1/trap, cause -, at f980 f980 f980 f980 ...)  U 3179.92 (8 traps/iter, +389.1/trap, cause -, at f980 f980 f980 f980 ...)  I 6365.81 (16 traps/iter, +393.7/trap, cause I, at f47d f980 f47d f980 ...)  all 6365.81 (16 traps/iter, +393.7/trap, cause I, at f47d f980 f47d f980 ...)
+fipr fv0,fv4 ; 8 int add ; fadd fr7,fr9  80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 67.01  Z 67.01  O 6365.82 (16 traps/iter, +393.7/trap, cause I, at f4ed f970 f4ed f970 ...)  U 6365.85 (16 traps/iter, +393.7/trap, cause I, at f4ed f970 f4ed f970 ...)  I 6365.84 (16 traps/iter, +393.7/trap, cause I, at f4ed f970 f4ed f970 ...)  all 6365.84 (16 traps/iter, +393.7/trap, cause I, at f4ed f970 f4ed f970 ...)
+fipr fv0,fv4 ; 8 int add ; fadd fr8,fr9  80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 67.01  Z 67.01  O 6365.83 (16 traps/iter, +393.7/trap, cause I, at f4ed f980 f4ed f980 ...)  U 6365.86 (16 traps/iter, +393.7/trap, cause I, at f4ed f980 f4ed f980 ...)  I 6365.86 (16 traps/iter, +393.7/trap, cause I, at f4ed f980 f4ed f980 ...)  all 6365.87 (16 traps/iter, +393.7/trap, cause I, at f4ed f980 f4ed f980 ...)
+ftrv ; 8 int add ; fadd fr0,fr9     80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 3181.58 (8 traps/iter, +389.3/trap, cause I, at f1fd f1fd f1fd f1fd ...)  Z 67.01  O 6365.80 (16 traps/iter, +393.7/trap, cause I, at f1fd f900 f1fd f900 ...)  U 6365.81 (16 traps/iter, +393.7/trap, cause I, at f1fd f900 f1fd f900 ...)  I 6365.80 (16 traps/iter, +393.7/trap, cause I, at f1fd f900 f1fd f900 ...)  all 6365.81 (16 traps/iter, +393.7/trap, cause I, at f1fd f900 f1fd f900 ...)
+ftrv ; 8 int add ; fadd fr1,fr9     80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 3509.37 (8 traps/iter, +430.3/trap, cause I, at f1fd f1fd f1fd f1fd ...)  Z 67.01  O 6956.07 (16 traps/iter, +430.6/trap, cause I, at f1fd f910 f1fd f910 ...)  U 6956.06 (16 traps/iter, +430.6/trap, cause I, at f1fd f910 f1fd f910 ...)  I 6956.06 (16 traps/iter, +430.6/trap, cause I, at f1fd f910 f1fd f910 ...)  all 6956.06 (16 traps/iter, +430.6/trap, cause I, at f1fd f910 f1fd f910 ...)
+ftrv ; 8 int add ; fadd fr2,fr9     80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 3181.58 (8 traps/iter, +389.3/trap, cause I, at f1fd f1fd f1fd f1fd ...)  Z 67.01  O 6365.81 (16 traps/iter, +393.7/trap, cause I, at f1fd f920 f1fd f920 ...)  U 6365.84 (16 traps/iter, +393.7/trap, cause I, at f1fd f920 f1fd f920 ...)  I 6365.85 (16 traps/iter, +393.7/trap, cause I, at f1fd f920 f1fd f920 ...)  all 6365.85 (16 traps/iter, +393.7/trap, cause I, at f1fd f920 f1fd f920 ...)
+ftrv ; 8 int add ; fadd fr3,fr9     80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 3181.60 (8 traps/iter, +389.3/trap, cause I, at f1fd f1fd f1fd f1fd ...)  Z 67.01  O 6365.81 (16 traps/iter, +393.7/trap, cause I, at f1fd f930 f1fd f930 ...)  U 6365.81 (16 traps/iter, +393.7/trap, cause I, at f1fd f930 f1fd f930 ...)  I 6365.82 (16 traps/iter, +393.7/trap, cause I, at f1fd f930 f1fd f930 ...)  all 6365.82 (16 traps/iter, +393.7/trap, cause I, at f1fd f930 f1fd f930 ...)
+ftrv ; 8 int add ; fadd fr8,fr9     80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 3181.60 (8 traps/iter, +389.3/trap, cause I, at f1fd f1fd f1fd f1fd ...)  Z 67.01  O 6365.81 (16 traps/iter, +393.7/trap, cause I, at f1fd f980 f1fd f980 ...)  U 6365.82 (16 traps/iter, +393.7/trap, cause I, at f1fd f980 f1fd f980 ...)  I 6365.82 (16 traps/iter, +393.7/trap, cause I, at f1fd f980 f1fd f980 ...)  all 6365.83 (16 traps/iter, +393.7/trap, cause I, at f1fd f980 f1fd f980 ...)
+fmul fr1,fr0 ; 8 int add ; fadd fr0,fr9  80 instr/iter:   67.01 cyc/iter   0.838 cyc/instr  ( 0.800 excl. loop)
+    enables:  V 67.01  Z 67.01  O 6365.81 (16 traps/iter, +393.7/trap, cause -, at f012 f900 f012 f900 ...)  U 6365.83 (16 traps/iter, +393.7/trap, cause -, at f012 f900 f012 f900 ...)  I 6365.83 (16 traps/iter, +393.7/trap, cause -, at f012 f900 f012 f900 ...)  all 6365.83 (16 traps/iter, +393.7/trap, cause -, at f012 f900 f012 f900 ...)
+lds r2,fpul ; fsca (x8)             16 instr/iter:   41.02 cyc/iter   2.564 cyc/instr  ( 2.376 excl. loop)
+    enables:  V 41.02  Z 41.02  O 41.02  U 41.02  I 3144.76 (8 traps/iter, +388.0/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 3144.77 (8 traps/iter, +388.0/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+lds r2,fpul ; fsts fpul,fr0 (x8)    16 instr/iter:   18.01 cyc/iter   1.125 cyc/instr  ( 0.938 excl. loop)
+    enables:  V 18.01  Z 18.01  O 18.01  U 18.01  I 18.01  all 18.01
+fldi0/fldi1 x16                     16 instr/iter:   18.01 cyc/iter   1.126 cyc/instr  ( 0.938 excl. loop)
+    enables:  V 18.01  Z 18.01  O 18.01  U 18.01  I 18.01  all 18.01
+-- direct consumer pairs (op ; fadd dependent) vs (op ; fadd independent) --
+fsrra fr4 ; fadd fr8,fr9 (indep)    16 instr/iter:   49.01 cyc/iter   3.063 cyc/instr  ( 2.875 excl. loop)
+    enables:  V 49.01  Z 49.01  O 3146.36 (8 traps/iter, +387.2/trap, cause -, at f980 f980 f980 f980 ...)  U 3146.37 (8 traps/iter, +387.2/trap, cause -, at f980 f980 f980 f980 ...)  I 6299.83 (16 traps/iter, +390.7/trap, cause I, at f47d f980 f47d f980 ...)  all 6299.83 (16 traps/iter, +390.7/trap, cause I, at f47d f980 f47d f980 ...)
+fsrra fr4 ; fadd fr4,fr9 (dep)      16 instr/iter:   58.01 cyc/iter   3.626 cyc/instr  ( 3.438 excl. loop)
+    enables:  V 58.01  Z 58.01  O 3164.29 (8 traps/iter, +388.3/trap, cause -, at f940 f940 f940 f940 ...)  U 3164.30 (8 traps/iter, +388.3/trap, cause -, at f940 f940 f940 f940 ...)  I 6299.81 (16 traps/iter, +390.1/trap, cause I, at f47d f940 f47d f940 ...)  all 6299.82 (16 traps/iter, +390.1/trap, cause I, at f47d f940 f47d f940 ...)
+ftrv fv0 ; fadd fr8,fr9 (indep)     16 instr/iter:   57.01 cyc/iter   3.563 cyc/instr  ( 3.375 excl. loop)
+    enables:  V 3138.82 (8 traps/iter, +385.2/trap, cause I, at f1fd f1fd f1fd f1fd ...)  Z 57.01  O 6299.80 (16 traps/iter, +390.2/trap, cause I, at f1fd f980 f1fd f980 ...)  U 6299.82 (16 traps/iter, +390.2/trap, cause I, at f1fd f980 f1fd f980 ...)  I 6299.83 (16 traps/iter, +390.2/trap, cause I, at f1fd f980 f1fd f980 ...)  all 6299.82 (16 traps/iter, +390.2/trap, cause I, at f1fd f980 f1fd f980 ...)
+ftrv fv0 ; fadd fr0,fr9             16 instr/iter:   57.01 cyc/iter   3.563 cyc/instr  ( 3.375 excl. loop)
+    enables:  V 3138.82 (8 traps/iter, +385.2/trap, cause I, at f1fd f1fd f1fd f1fd ...)  Z 57.01  O 6299.81 (16 traps/iter, +390.2/trap, cause I, at f1fd f900 f1fd f900 ...)  U 6299.85 (16 traps/iter, +390.2/trap, cause I, at f1fd f900 f1fd f900 ...)  I 6299.84 (16 traps/iter, +390.2/trap, cause I, at f1fd f900 f1fd f900 ...)  all 6299.85 (16 traps/iter, +390.2/trap, cause I, at f1fd f900 f1fd f900 ...)
+ftrv fv0 ; fadd fr1,fr9             16 instr/iter:   57.01 cyc/iter   3.563 cyc/instr  ( 3.375 excl. loop)
+    enables:  V 3138.82 (8 traps/iter, +385.2/trap, cause I, at f1fd f1fd f1fd f1fd ...)  Z 57.01  O 6299.83 (16 traps/iter, +390.2/trap, cause I, at f1fd f910 f1fd f910 ...)  U 6299.82 (16 traps/iter, +390.2/trap, cause I, at f1fd f910 f1fd f910 ...)  I 6299.82 (16 traps/iter, +390.2/trap, cause I, at f1fd f910 f1fd f910 ...)  all 6299.83 (16 traps/iter, +390.2/trap, cause I, at f1fd f910 f1fd f910 ...)
+ftrv fv0 ; fadd fr2,fr9             16 instr/iter:   58.01 cyc/iter   3.626 cyc/instr  ( 3.438 excl. loop)
+    enables:  V 3138.82 (8 traps/iter, +385.1/trap, cause I, at f1fd f1fd f1fd f1fd ...)  Z 58.01  O 6299.81 (16 traps/iter, +390.1/trap, cause I, at f1fd f920 f1fd f920 ...)  U 6299.81 (16 traps/iter, +390.1/trap, cause I, at f1fd f920 f1fd f920 ...)  I 6299.81 (16 traps/iter, +390.1/trap, cause I, at f1fd f920 f1fd f920 ...)  all 6299.82 (16 traps/iter, +390.1/trap, cause I, at f1fd f920 f1fd f920 ...)
+ftrv fv0 ; fadd fr3,fr9             16 instr/iter:   66.01 cyc/iter   4.126 cyc/instr  ( 3.938 excl. loop)
+    enables:  V 3138.80 (8 traps/iter, +384.1/trap, cause I, at f1fd f1fd f1fd f1fd ...)  Z 66.01  O 6299.81 (16 traps/iter, +389.6/trap, cause I, at f1fd f930 f1fd f930 ...)  U 6299.82 (16 traps/iter, +389.6/trap, cause I, at f1fd f930 f1fd f930 ...)  I 6299.80 (16 traps/iter, +389.6/trap, cause I, at f1fd f930 f1fd f930 ...)  all 6299.81 (16 traps/iter, +389.6/trap, cause I, at f1fd f930 f1fd f930 ...)
+fipr fv0,fv4 ; fadd fr8,fr9 (indep)  16 instr/iter:   33.01 cyc/iter   2.063 cyc/instr  ( 1.875 excl. loop)
+    enables:  V 33.01  Z 33.01  O 7520.03 (16 traps/iter, +467.9/trap, cause I, at f4ed f980 f4ed f980 ...)  U 7520.03 (16 traps/iter, +467.9/trap, cause I, at f4ed f980 f4ed f980 ...)  I 7520.03 (16 traps/iter, +467.9/trap, cause I, at f4ed f980 f4ed f980 ...)  all 7520.02 (16 traps/iter, +467.9/trap, cause I, at f4ed f980 f4ed f980 ...)
+fipr fv0,fv4 ; fadd fr7,fr9 (dep)   16 instr/iter:   42.01 cyc/iter   2.626 cyc/instr  ( 2.438 excl. loop)
+    enables:  V 42.01  Z 42.01  O 6299.82 (16 traps/iter, +391.1/trap, cause I, at f4ed f970 f4ed f970 ...)  U 6299.82 (16 traps/iter, +391.1/trap, cause I, at f4ed f970 f4ed f970 ...)  I 6299.83 (16 traps/iter, +391.1/trap, cause I, at f4ed f970 f4ed f970 ...)  all 6299.81 (16 traps/iter, +391.1/trap, cause I, at f4ed f970 f4ed f970 ...)
+fmul fr1,fr0 ; fadd fr8,fr9 (indep)  16 instr/iter:   25.01 cyc/iter   1.563 cyc/instr  ( 1.375 excl. loop)
+    enables:  V 25.01  Z 25.01  O 6299.82 (16 traps/iter, +392.2/trap, cause -, at f012 f980 f012 f980 ...)  U 6299.82 (16 traps/iter, +392.2/trap, cause -, at f012 f980 f012 f980 ...)  I 6299.82 (16 traps/iter, +392.2/trap, cause -, at f012 f980 f012 f980 ...)  all 6299.83 (16 traps/iter, +392.2/trap, cause -, at f012 f980 f012 f980 ...)
+fmul fr1,fr0 ; fadd fr0,fr9 (dep)   16 instr/iter:   34.02 cyc/iter   2.126 cyc/instr  ( 1.938 excl. loop)
+    enables:  V 34.02  Z 34.02  O 6299.82 (16 traps/iter, +391.6/trap, cause -, at f012 f900 f012 f900 ...)  U 6299.82 (16 traps/iter, +391.6/trap, cause -, at f012 f900 f012 f900 ...)  I 6299.81 (16 traps/iter, +391.6/trap, cause -, at f012 f900 f012 f900 ...)  all 6299.82 (16 traps/iter, +391.6/trap, cause -, at f012 f900 f012 f900 ...)
+fadd fr1,fr0 ; fadd fr8,fr9 (indep)  16 instr/iter:   25.01 cyc/iter   1.563 cyc/instr  ( 1.375 excl. loop)
+    enables:  V 25.01  Z 25.01  O 6299.81 (16 traps/iter, +392.2/trap, cause -, at f010 f980 f010 f980 ...)  U 6299.82 (16 traps/iter, +392.2/trap, cause -, at f010 f980 f010 f980 ...)  I 6299.82 (16 traps/iter, +392.2/trap, cause -, at f010 f980 f010 f980 ...)  all 6299.82 (16 traps/iter, +392.2/trap, cause -, at f010 f980 f010 f980 ...)
+fadd fr1,fr0 ; fadd fr0,fr9 (dep)   16 instr/iter:   34.01 cyc/iter   2.126 cyc/instr  ( 1.938 excl. loop)
+    enables:  V 34.01  Z 34.01  O 6299.81 (16 traps/iter, +391.6/trap, cause -, at f010 f900 f010 f900 ...)  U 6299.83 (16 traps/iter, +391.6/trap, cause -, at f010 f900 f010 f900 ...)  I 6299.82 (16 traps/iter, +391.6/trap, cause -, at f010 f900 f010 f900 ...)  all 6299.82 (16 traps/iter, +391.6/trap, cause -, at f010 f900 f010 f900 ...)
+fmac fr0,fr1,fr2 ; fadd fr8,fr9 (indep)  16 instr/iter:   25.01 cyc/iter   1.563 cyc/instr  ( 1.375 excl. loop)
+    enables:  V 25.01  Z 25.01  O 6299.82 (16 traps/iter, +392.2/trap, cause -, at f21e f980 f21e f980 ...)  U 6299.82 (16 traps/iter, +392.2/trap, cause -, at f21e f980 f21e f980 ...)  I 6299.82 (16 traps/iter, +392.2/trap, cause -, at f21e f980 f21e f980 ...)  all 6299.81 (16 traps/iter, +392.2/trap, cause -, at f21e f980 f21e f980 ...)
+fmac fr0,fr1,fr2 ; fadd fr2,fr9 (dep)  16 instr/iter:   34.01 cyc/iter   2.126 cyc/instr  ( 1.938 excl. loop)
+    enables:  V 34.01  Z 34.01  O 6299.80 (16 traps/iter, +391.6/trap, cause -, at f21e f920 f21e f920 ...)  U 6299.81 (16 traps/iter, +391.6/trap, cause -, at f21e f920 f21e f920 ...)  I 6299.81 (16 traps/iter, +391.6/trap, cause -, at f21e f920 f21e f920 ...)  all 6299.81 (16 traps/iter, +391.6/trap, cause -, at f21e f920 f21e f920 ...)
+fdiv fr1,fr0 ; fadd fr8,fr9 (indep)  16 instr/iter:   96.01 cyc/iter   6.001 cyc/instr  ( 5.813 excl. loop)
+    enables:  V 96.01  Z 96.01  O 6316.83 (16 traps/iter, +388.8/trap, cause -, at f013 f980 f013 f980 ...)  U 6316.84 (16 traps/iter, +388.8/trap, cause -, at f013 f980 f013 f980 ...)  I 6316.84 (16 traps/iter, +388.8/trap, cause -, at f013 f980 f013 f980 ...)  all 6316.85 (16 traps/iter, +388.8/trap, cause -, at f013 f980 f013 f980 ...)
+fdiv fr1,fr0 ; fadd fr0,fr9 (dep)   16 instr/iter:  106.01 cyc/iter   6.626 cyc/instr  ( 6.438 excl. loop)
+    enables:  V 106.01  Z 106.01  O 6316.85 (16 traps/iter, +388.2/trap, cause -, at f013 f900 f013 f900 ...)  U 6316.84 (16 traps/iter, +388.2/trap, cause -, at f013 f900 f013 f900 ...)  I 6316.84 (16 traps/iter, +388.2/trap, cause -, at f013 f900 f013 f900 ...)  all 6316.85 (16 traps/iter, +388.2/trap, cause -, at f013 f900 f013 f900 ...)
+fsqrt fr0 ; fadd fr8,fr9 (indep)    16 instr/iter:   88.01 cyc/iter   5.501 cyc/instr  ( 5.313 excl. loop)
+    enables:  V 88.01  Z 88.01  O 3138.79 (8 traps/iter, +381.3/trap, cause -, at f980 f980 f980 f980 ...)  U 3138.79 (8 traps/iter, +381.3/trap, cause -, at f980 f980 f980 f980 ...)  I 6299.81 (16 traps/iter, +388.2/trap, cause -, at f06d f980 f06d f980 ...)  all 6299.81 (16 traps/iter, +388.2/trap, cause -, at f06d f980 f06d f980 ...)
+fsqrt fr0 ; fadd fr0,fr9 (dep)      16 instr/iter:   98.01 cyc/iter   6.126 cyc/instr  ( 5.938 excl. loop)
+    enables:  V 98.01  Z 98.01  O 3208.57 (8 traps/iter, +388.8/trap, cause -, at f900 f900 f900 f900 ...)  U 3208.58 (8 traps/iter, +388.8/trap, cause -, at f900 f900 f900 f900 ...)  I 6299.82 (16 traps/iter, +387.6/trap, cause -, at f06d f900 f06d f900 ...)  all 6299.82 (16 traps/iter, +387.6/trap, cause -, at f06d f900 f06d f900 ...)
+fsca ; fmov fr0,fr8 (sin -> fmov)   16 instr/iter:   51.01 cyc/iter   3.188 cyc/instr  ( 3.000 excl. loop)
+    enables:  V 51.01  Z 51.01  O 51.01  U 51.01  I 3138.79 (8 traps/iter, +386.0/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 3138.81 (8 traps/iter, +386.0/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+fsca ; fmov fr1,fr8 (cos -> fmov)   16 instr/iter:   59.01 cyc/iter   3.688 cyc/instr  ( 3.500 excl. loop)
+    enables:  V 59.01  Z 59.01  O 59.01  U 59.01  I 3138.83 (8 traps/iter, +385.0/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 3138.84 (8 traps/iter, +385.0/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+fsca ; fmov fr4,fr8 (indep fmov)    16 instr/iter:   40.01 cyc/iter   2.501 cyc/instr  ( 2.313 excl. loop)
+    enables:  V 40.01  Z 40.01  O 40.01  U 40.01  I 3138.81 (8 traps/iter, +387.4/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 3138.81 (8 traps/iter, +387.4/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+-- data dependence --
+fsrra x16 (fr0 reset each time) input 1: 112.01 cyc/iter
+    enables:  V 112.01  Z 112.01  O 112.01  U 112.01  I 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)  all 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)
+fsrra x16 (fr0 reset each time) input 1.0001: 112.01 cyc/iter
+    enables:  V 112.01  Z 112.01  O 112.01  U 112.01  I 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)  all 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)
+fsrra x16 (fr0 reset each time) input 1.5: 112.01 cyc/iter
+    enables:  V 112.01  Z 112.01  O 112.01  U 112.01  I 6361.22 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)  all 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)
+fsrra x16 (fr0 reset each time) input 1.9999: 112.01 cyc/iter
+    enables:  V 112.01  Z 112.01  O 112.01  U 112.01  I 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)  all 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)
+fsrra x16 (fr0 reset each time) input 2: 112.01 cyc/iter
+    enables:  V 112.01  Z 112.01  O 112.01  U 112.01  I 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)  all 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)
+fsrra x16 (fr0 reset each time) input 3.9999: 112.01 cyc/iter
+    enables:  V 112.01  Z 112.01  O 112.01  U 112.01  I 6361.22 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)  all 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)
+fsrra x16 (fr0 reset each time) input 0.25: 112.01 cyc/iter
+    enables:  V 112.01  Z 112.01  O 112.01  U 112.01  I 6361.24 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)  all 6361.22 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)
+fsrra x16 (fr0 reset each time) input 1e-30: 112.01 cyc/iter
+    enables:  V 112.01  Z 112.01  O 112.01  U 112.01  I 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)  all 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)
+fsrra x16 (fr0 reset each time) input 1e+30: 112.01 cyc/iter
+    enables:  V 112.01  Z 112.01  O 112.01  U 112.01  I 6361.22 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)  all 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)
+fsrra x16 (fr0 reset each time) input 0.75: 112.01 cyc/iter
+    enables:  V 112.01  Z 112.01  O 112.01  U 112.01  I 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)  all 6361.23 (16 traps/iter, +390.6/trap, cause I, at f07d f07d f07d f07d ...)
+fsca x16 angle 0x0000: 80.01 cyc/iter
+    enables:  V 80.01  Z 80.01  O 80.01  U 80.01  I 6299.81 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+fsca x16 angle 0x0001: 80.01 cyc/iter
+    enables:  V 80.01  Z 80.01  O 80.01  U 80.01  I 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+fsca x16 angle 0x0200: 80.01 cyc/iter
+    enables:  V 80.01  Z 80.01  O 80.01  U 80.01  I 6299.81 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+fsca x16 angle 0x03ff: 80.01 cyc/iter
+    enables:  V 80.01  Z 80.01  O 80.01  U 80.01  I 6299.81 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+fsca x16 angle 0x1000: 80.01 cyc/iter
+    enables:  V 80.01  Z 80.01  O 80.01  U 80.01  I 6299.81 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+fsca x16 angle 0x3fff: 80.01 cyc/iter
+    enables:  V 80.01  Z 80.01  O 80.01  U 80.01  I 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+fsca x16 angle 0x4000: 80.01 cyc/iter
+    enables:  V 80.01  Z 80.01  O 80.01  U 80.01  I 6299.81 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+fsca x16 angle 0x7fff: 80.01 cyc/iter
+    enables:  V 80.01  Z 80.01  O 80.01  U 80.01  I 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+fsca x16 angle 0x8000: 80.01 cyc/iter
+    enables:  V 80.01  Z 80.01  O 80.01  U 80.01  I 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+fsca x16 angle 0xc000: 80.01 cyc/iter
+    enables:  V 80.01  Z 80.01  O 80.01  U 80.01  I 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+fsca x16 angle 0xffff: 80.01 cyc/iter
+    enables:  V 80.01  Z 80.01  O 80.01  U 80.01  I 6299.82 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)  all 6299.83 (16 traps/iter, +388.7/trap, cause I, at f0fd f0fd f0fd f0fd ...)
+DONE
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 22, vbl_cntr = 1777, dma_cntr = 977
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+exit 0

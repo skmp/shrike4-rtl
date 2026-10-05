@@ -1,0 +1,6 @@
+node 1 + side: reference (cube from t^3) 660 ; R0 = C3/B2 = 0.006151670
+  cube from square term (integer T2): best 757 at R = R0*1.00002, c3 -0.0005
+  cube from square term (T2 with 2 guard bits): best 663 at R = R0*1.00000, c3 -0.0005
+  cube from square term (T2 with 4 guard bits): best 665 at R = R0*1.00000, c3 -0.0024
+  cube from square term (T2 with 8 guard bits): best 665 at R = R0*1.00000, c3 -0.0024
+  cube from square term (T2 with 16 guard bits): best 666 at R = R0*1.00000, c3 -0.0024

@@ -1,0 +1,332 @@
+# f2_k2: exact set of second-latch rounding constants K2 = q*2^s2 + r admitting SOME integer I1
+# at EVERY offset simultaneously.  r exhausted over [0,2^s2), q over [-4,8].
+# cols: |K2 all-t| over all q ; best q ; |K2 for the 3 pinned offsets 342,-342,17| ; max over t of
+# the smallest |I1| that works (a physical operand needs < 2^24 = 16777216)
+
+=== final variant sv=0, latch scale shift 18, feasible t = 1024 ===
+role0 g= 8 s2= 8 s2-g= 0 : |K2 all-t|=        0/256       q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2= 9 s2-g= 1 : |K2 all-t|=        0/512       q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=10 s2-g= 2 : |K2 all-t|=        0/1024      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=11 s2-g= 3 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=12 s2-g= 4 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=13 s2-g= 5 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=14 s2-g= 6 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=15 s2-g= 7 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=16 s2-g= 8 : |K2 all-t|=    65536/65536     q=-4    |K2 3pinned|=    65536 q=-4    r=0 maxminI1=20694305 wide
+role0 g= 8 s2=17 s2-g= 9 : |K2 all-t|=   131072/131072    q=-4    |K2 3pinned|=   131072 q=-4    r=0 maxminI1=41388610 wide
+role0 g= 8 s2=18 s2-g=10 : |K2 all-t|=   262144/262144    q=-4    |K2 3pinned|=   262144 q=-4    r=0 maxminI1=-2 wide
+role0 g= 8 s2=19 s2-g=11 : |K2 all-t|=        0/524288    q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=20 s2-g=12 : |K2 all-t|=        0/1048576   q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2= 9 s2-g= 0 : |K2 all-t|=        0/512       q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=10 s2-g= 1 : |K2 all-t|=        0/1024      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=11 s2-g= 2 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=12 s2-g= 3 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=13 s2-g= 4 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=14 s2-g= 5 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=15 s2-g= 6 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=16 s2-g= 7 : |K2 all-t|=    65536/65536     q=-3    |K2 3pinned|=    65536 q=-3    r=0 maxminI1=10347152 FITS24
+role0 g= 9 s2=17 s2-g= 8 : |K2 all-t|=   131072/131072    q=-2    |K2 3pinned|=   131072 q=-2    r=0 maxminI1=20694304 wide
+role0 g= 9 s2=18 s2-g= 9 : |K2 all-t|=   262144/262144    q=-4    |K2 3pinned|=   262144 q=-4    r=0 maxminI1=41388610 wide
+role0 g= 9 s2=19 s2-g=10 : |K2 all-t|=   524288/524288    q=-4    |K2 3pinned|=   524288 q=-4    r=0 maxminI1=-2 wide
+role0 g= 9 s2=20 s2-g=11 : |K2 all-t|=        0/1048576   q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=21 s2-g=12 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=-2 wide
+role0 g=10 s2=10 s2-g= 0 : |K2 all-t|=        0/1024      q=0     |K2 3pinned|=        0 q=0  
+role0 g=10 s2=11 s2-g= 1 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role0 g=10 s2=12 s2-g= 2 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role0 g=10 s2=13 s2-g= 3 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role0 g=10 s2=14 s2-g= 4 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g=10 s2=15 s2-g= 5 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g=10 s2=16 s2-g= 6 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=    65536 q=1  
+role0 g=10 s2=17 s2-g= 7 : |K2 all-t|=   131072/131072    q=0     |K2 3pinned|=   131072 q=0     r=0 maxminI1=10347151 FITS24
+role0 g=10 s2=18 s2-g= 8 : |K2 all-t|=   262144/262144    q=-2    |K2 3pinned|=   262144 q=-2    r=0 maxminI1=20694304 wide
+role0 g=10 s2=19 s2-g= 9 : |K2 all-t|=   524288/524288    q=-4    |K2 3pinned|=   524288 q=-4    r=0 maxminI1=41388610 wide
+role0 g=10 s2=20 s2-g=10 : |K2 all-t|=  1048576/1048576   q=-4    |K2 3pinned|=  1048576 q=-4    r=0 maxminI1=-2 wide
+role0 g=10 s2=21 s2-g=11 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=-2 wide
+role0 g=10 s2=22 s2-g=12 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=-2 wide
+role0 g=11 s2=11 s2-g= 0 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role0 g=11 s2=12 s2-g= 1 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role0 g=11 s2=13 s2-g= 2 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role0 g=11 s2=14 s2-g= 3 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g=11 s2=15 s2-g= 4 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g=11 s2=16 s2-g= 5 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=    65536 q=6  
+role0 g=11 s2=17 s2-g= 6 : |K2 all-t|=    65536/131072    q=3     |K2 3pinned|=   131072 q=-2    r=65536 maxminI1=5173576 FITS24
+role0 g=11 s2=18 s2-g= 7 : |K2 all-t|=   196608/262144    q=-1    |K2 3pinned|=   196608 q=-1    r=65536 maxminI1=10347152 FITS24
+role0 g=11 s2=19 s2-g= 8 : |K2 all-t|=   458752/524288    q=-4    |K2 3pinned|=   458752 q=-4    r=65536 maxminI1=20694305 wide
+role0 g=11 s2=20 s2-g= 9 : |K2 all-t|=  1048576/1048576   q=-4    |K2 3pinned|=  1048576 q=-4    r=0 maxminI1=41388610 wide
+role0 g=11 s2=21 s2-g=10 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=-2 wide
+role0 g=11 s2=22 s2-g=11 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=-2 wide
+role0 g=12 s2=12 s2-g= 0 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role0 g=12 s2=13 s2-g= 1 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role0 g=12 s2=14 s2-g= 2 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g=12 s2=15 s2-g= 3 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g=12 s2=16 s2-g= 4 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role0 g=12 s2=17 s2-g= 5 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=        0 q=0  
+role0 g=12 s2=18 s2-g= 6 : |K2 all-t|=   196608/262144    q=2     |K2 3pinned|=   196608 q=-3    r=65536 maxminI1=5173576 FITS24
+role0 g=12 s2=19 s2-g= 7 : |K2 all-t|=   524288/524288    q=-4    |K2 3pinned|=   524288 q=-4    r=0 maxminI1=10347152 FITS24
+role0 g=12 s2=20 s2-g= 8 : |K2 all-t|=   983040/1048576   q=0     |K2 3pinned|=   983040 q=0     r=0 maxminI1=20694303 wide
+role0 g=12 s2=21 s2-g= 9 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=41388610 wide
+role0 g=12 s2=22 s2-g=10 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=-2 wide
+role0 g=13 s2=13 s2-g= 0 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role0 g=13 s2=14 s2-g= 1 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g=13 s2=15 s2-g= 2 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g=13 s2=16 s2-g= 3 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role0 g=13 s2=17 s2-g= 4 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=        0 q=0  
+role0 g=13 s2=18 s2-g= 5 : |K2 all-t|=        0/262144    q=0     |K2 3pinned|=    65536 q=2  
+role0 g=13 s2=19 s2-g= 6 : |K2 all-t|=   458752/524288    q=7     |K2 3pinned|=   458752 q=7     r=0 maxminI1=5173575 FITS24
+role0 g=13 s2=20 s2-g= 7 : |K2 all-t|=   917504/1048576   q=4     |K2 3pinned|=   917504 q=4     r=0 maxminI1=10347151 FITS24
+role0 g=13 s2=21 s2-g= 8 : |K2 all-t|=  1900544/2097152   q=-3    |K2 3pinned|=  1900544 q=-3    r=196608 maxminI1=20694304 wide
+role0 g=13 s2=22 s2-g= 9 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=41388610 wide
+role0 g=14 s2=14 s2-g= 0 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g=14 s2=15 s2-g= 1 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g=14 s2=16 s2-g= 2 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role0 g=14 s2=17 s2-g= 3 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=        0 q=0  
+role0 g=14 s2=18 s2-g= 4 : |K2 all-t|=        0/262144    q=0     |K2 3pinned|=        0 q=0  
+role0 g=14 s2=19 s2-g= 5 : |K2 all-t|=        0/524288    q=0     |K2 3pinned|=   196608 q=2  
+role0 g=14 s2=20 s2-g= 6 : |K2 all-t|=   983040/1048576   q=-4    |K2 3pinned|=   983040 q=-4    r=0 maxminI1=5173577 FITS24
+role0 g=14 s2=21 s2-g= 7 : |K2 all-t|=  1966080/2097152   q=1     |K2 3pinned|=  1966080 q=1     r=131072 maxminI1=10347151 FITS24
+role0 g=14 s2=22 s2-g= 8 : |K2 all-t|=  4128768/4194304   q=-3    |K2 3pinned|=  4128768 q=-3    r=65536 maxminI1=20694305 wide
+role1 g= 8 s2= 8 s2-g= 0 : |K2 all-t|=        0/256       q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2= 9 s2-g= 1 : |K2 all-t|=        0/512       q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=10 s2-g= 2 : |K2 all-t|=        0/1024      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=11 s2-g= 3 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=12 s2-g= 4 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=13 s2-g= 5 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=14 s2-g= 6 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=15 s2-g= 7 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=16 s2-g= 8 : |K2 all-t|=    65536/65536     q=-4    |K2 3pinned|=    65536 q=-4    r=0 maxminI1=20694305 wide
+role1 g= 8 s2=17 s2-g= 9 : |K2 all-t|=   131072/131072    q=-4    |K2 3pinned|=   131072 q=-4    r=0 maxminI1=41388610 wide
+role1 g= 8 s2=18 s2-g=10 : |K2 all-t|=   262144/262144    q=-4    |K2 3pinned|=   262144 q=-4    r=0 maxminI1=-2 wide
+role1 g= 8 s2=19 s2-g=11 : |K2 all-t|=        0/524288    q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=20 s2-g=12 : |K2 all-t|=        0/1048576   q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2= 9 s2-g= 0 : |K2 all-t|=        0/512       q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=10 s2-g= 1 : |K2 all-t|=        0/1024      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=11 s2-g= 2 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=12 s2-g= 3 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=13 s2-g= 4 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=14 s2-g= 5 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=15 s2-g= 6 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=16 s2-g= 7 : |K2 all-t|=    65536/65536     q=-4    |K2 3pinned|=    65536 q=-4    r=0 maxminI1=10347152 FITS24
+role1 g= 9 s2=17 s2-g= 8 : |K2 all-t|=   131072/131072    q=-2    |K2 3pinned|=   131072 q=-2    r=0 maxminI1=20694304 wide
+role1 g= 9 s2=18 s2-g= 9 : |K2 all-t|=   262144/262144    q=-4    |K2 3pinned|=   262144 q=-4    r=0 maxminI1=41388610 wide
+role1 g= 9 s2=19 s2-g=10 : |K2 all-t|=   524288/524288    q=-4    |K2 3pinned|=   524288 q=-4    r=0 maxminI1=-2 wide
+role1 g= 9 s2=20 s2-g=11 : |K2 all-t|=        0/1048576   q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=21 s2-g=12 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=-2 wide
+role1 g=10 s2=10 s2-g= 0 : |K2 all-t|=        0/1024      q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=11 s2-g= 1 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=12 s2-g= 2 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=13 s2-g= 3 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=14 s2-g= 4 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=15 s2-g= 5 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=16 s2-g= 6 : |K2 all-t|=    65536/65536     q=-2    |K2 3pinned|=    65536 q=-2    r=0 maxminI1=5173576 FITS24
+role1 g=10 s2=17 s2-g= 7 : |K2 all-t|=    65536/131072    q=-4    |K2 3pinned|=    65536 q=-4    r=65536 maxminI1=10347152 FITS24
+role1 g=10 s2=18 s2-g= 8 : |K2 all-t|=   262144/262144    q=-1    |K2 3pinned|=   262144 q=-1    r=0 maxminI1=20694304 wide
+role1 g=10 s2=19 s2-g= 9 : |K2 all-t|=   524288/524288    q=-4    |K2 3pinned|=   524288 q=-4    r=0 maxminI1=41388610 wide
+role1 g=10 s2=20 s2-g=10 : |K2 all-t|=  1048576/1048576   q=-4    |K2 3pinned|=  1048576 q=-4    r=0 maxminI1=-2 wide
+role1 g=10 s2=21 s2-g=11 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=-2 wide
+role1 g=10 s2=22 s2-g=12 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=-2 wide
+role1 g=11 s2=11 s2-g= 0 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role1 g=11 s2=12 s2-g= 1 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role1 g=11 s2=13 s2-g= 2 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role1 g=11 s2=14 s2-g= 3 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g=11 s2=15 s2-g= 4 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g=11 s2=16 s2-g= 5 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role1 g=11 s2=17 s2-g= 6 : |K2 all-t|=   131072/131072    q=2     |K2 3pinned|=   131072 q=-3    r=0 maxminI1=5173576 FITS24
+role1 g=11 s2=18 s2-g= 7 : |K2 all-t|=   262144/262144    q=-4    |K2 3pinned|=   262144 q=-4    r=0 maxminI1=10347152 FITS24
+role1 g=11 s2=19 s2-g= 8 : |K2 all-t|=   524288/524288    q=-4    |K2 3pinned|=   524288 q=-4    r=0 maxminI1=20694305 wide
+role1 g=11 s2=20 s2-g= 9 : |K2 all-t|=  1048576/1048576   q=-4    |K2 3pinned|=  1048576 q=-4    r=0 maxminI1=41388610 wide
+role1 g=11 s2=21 s2-g=10 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=-2 wide
+role1 g=11 s2=22 s2-g=11 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=-2 wide
+role1 g=12 s2=12 s2-g= 0 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role1 g=12 s2=13 s2-g= 1 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role1 g=12 s2=14 s2-g= 2 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g=12 s2=15 s2-g= 3 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g=12 s2=16 s2-g= 4 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role1 g=12 s2=17 s2-g= 5 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=        0 q=0  
+role1 g=12 s2=18 s2-g= 6 : |K2 all-t|=   262144/262144    q=-4    |K2 3pinned|=   262144 q=-4    r=0 maxminI1=5173576 FITS24
+role1 g=12 s2=19 s2-g= 7 : |K2 all-t|=   524288/524288    q=1     |K2 3pinned|=   524288 q=1     r=0 maxminI1=10347151 FITS24
+role1 g=12 s2=20 s2-g= 8 : |K2 all-t|=  1048576/1048576   q=-3    |K2 3pinned|=  1048576 q=-3    r=0 maxminI1=20694305 wide
+role1 g=12 s2=21 s2-g= 9 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=41388610 wide
+role1 g=12 s2=22 s2-g=10 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=-2 wide
+role1 g=13 s2=13 s2-g= 0 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role1 g=13 s2=14 s2-g= 1 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g=13 s2=15 s2-g= 2 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g=13 s2=16 s2-g= 3 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role1 g=13 s2=17 s2-g= 4 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=        0 q=0  
+role1 g=13 s2=18 s2-g= 5 : |K2 all-t|=        0/262144    q=0     |K2 3pinned|=   131072 q=2  
+role1 g=13 s2=19 s2-g= 6 : |K2 all-t|=   393216/524288    q=-4    |K2 3pinned|=   393216 q=-4    r=0 maxminI1=5173576 FITS24
+role1 g=13 s2=20 s2-g= 7 : |K2 all-t|=   917504/1048576   q=1     |K2 3pinned|=   917504 q=1     r=131072 maxminI1=10347152 FITS24
+role1 g=13 s2=21 s2-g= 8 : |K2 all-t|=  2097152/2097152   q=-3    |K2 3pinned|=  2097152 q=-3    r=0 maxminI1=20694304 wide
+role1 g=13 s2=22 s2-g= 9 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=41388610 wide
+role1 g=14 s2=14 s2-g= 0 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g=14 s2=15 s2-g= 1 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g=14 s2=16 s2-g= 2 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role1 g=14 s2=17 s2-g= 3 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=        0 q=0  
+role1 g=14 s2=18 s2-g= 4 : |K2 all-t|=        0/262144    q=0     |K2 3pinned|=        0 q=0  
+role1 g=14 s2=19 s2-g= 5 : |K2 all-t|=        0/524288    q=0     |K2 3pinned|=   262144 q=1  
+role1 g=14 s2=20 s2-g= 6 : |K2 all-t|=  1048576/1048576   q=1     |K2 3pinned|=  1048576 q=1     r=0 maxminI1=5173576 FITS24
+role1 g=14 s2=21 s2-g= 7 : |K2 all-t|=  2097152/2097152   q=1     |K2 3pinned|=  2097152 q=1     r=0 maxminI1=10347151 FITS24
+role1 g=14 s2=22 s2-g= 8 : |K2 all-t|=  4063232/4194304   q=1     |K2 3pinned|=  4063232 q=1     r=0 maxminI1=20694303 wide
+
+=== final variant sv=0, latch scale shift 20, feasible t = 1022 ===
+role0 g= 8 s2= 8 s2-g= 0 : |K2 all-t|=        0/256       q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2= 9 s2-g= 1 : |K2 all-t|=        0/512       q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=10 s2-g= 2 : |K2 all-t|=        0/1024      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=11 s2-g= 3 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=12 s2-g= 4 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=13 s2-g= 5 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=14 s2-g= 6 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g= 8 s2=15 s2-g= 7 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=    32768 q=-1 
+role0 g= 8 s2=16 s2-g= 8 : |K2 all-t|=    65536/65536     q=-4    |K2 3pinned|=    65536 q=-4    r=0 maxminI1=5173578 FITS24
+role0 g= 8 s2=17 s2-g= 9 : |K2 all-t|=   131072/131072    q=-4    |K2 3pinned|=   131072 q=-4    r=0 maxminI1=10347155 FITS24
+role0 g= 8 s2=18 s2-g=10 : |K2 all-t|=   262144/262144    q=-4    |K2 3pinned|=   262144 q=-4    r=0 maxminI1=20694311 wide
+role0 g= 8 s2=19 s2-g=11 : |K2 all-t|=   524288/524288    q=-4    |K2 3pinned|=   524288 q=-4    r=0 maxminI1=41388622 wide
+role0 g= 8 s2=20 s2-g=12 : |K2 all-t|=  1048576/1048576   q=-4    |K2 3pinned|=  1048576 q=-4    r=0 maxminI1=-2 wide
+role0 g= 9 s2= 9 s2-g= 0 : |K2 all-t|=        0/512       q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=10 s2-g= 1 : |K2 all-t|=        0/1024      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=11 s2-g= 2 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=12 s2-g= 3 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=13 s2-g= 4 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=14 s2-g= 5 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=15 s2-g= 6 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g= 9 s2=16 s2-g= 7 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=    65536 q=-3 
+role0 g= 9 s2=17 s2-g= 8 : |K2 all-t|=   131072/131072    q=-2    |K2 3pinned|=   131072 q=-4    r=0 maxminI1=5173577 FITS24
+role0 g= 9 s2=18 s2-g= 9 : |K2 all-t|=   262144/262144    q=-4    |K2 3pinned|=   262144 q=-4    r=0 maxminI1=10347155 FITS24
+role0 g= 9 s2=19 s2-g=10 : |K2 all-t|=   524288/524288    q=-4    |K2 3pinned|=   524288 q=-4    r=0 maxminI1=20694311 wide
+role0 g= 9 s2=20 s2-g=11 : |K2 all-t|=  1048576/1048576   q=-4    |K2 3pinned|=  1048576 q=-4    r=0 maxminI1=41388622 wide
+role0 g= 9 s2=21 s2-g=12 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=-2 wide
+role0 g=10 s2=10 s2-g= 0 : |K2 all-t|=        0/1024      q=0     |K2 3pinned|=        0 q=0  
+role0 g=10 s2=11 s2-g= 1 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role0 g=10 s2=12 s2-g= 2 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role0 g=10 s2=13 s2-g= 3 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role0 g=10 s2=14 s2-g= 4 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g=10 s2=15 s2-g= 5 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g=10 s2=16 s2-g= 6 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=    65536 q=-3 
+role0 g=10 s2=17 s2-g= 7 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=    65536 q=-3 
+role0 g=10 s2=18 s2-g= 8 : |K2 all-t|=   131072/262144    q=-1    |K2 3pinned|=   262144 q=3     r=0 maxminI1=5173576 FITS24
+role0 g=10 s2=19 s2-g= 9 : |K2 all-t|=   524288/524288    q=-4    |K2 3pinned|=   524288 q=-4    r=0 maxminI1=10347155 FITS24
+role0 g=10 s2=20 s2-g=10 : |K2 all-t|=  1048576/1048576   q=-4    |K2 3pinned|=  1048576 q=-4    r=0 maxminI1=20694311 wide
+role0 g=10 s2=21 s2-g=11 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=41388622 wide
+role0 g=10 s2=22 s2-g=12 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=-2 wide
+role0 g=11 s2=11 s2-g= 0 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role0 g=11 s2=12 s2-g= 1 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role0 g=11 s2=13 s2-g= 2 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role0 g=11 s2=14 s2-g= 3 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g=11 s2=15 s2-g= 4 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g=11 s2=16 s2-g= 5 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role0 g=11 s2=17 s2-g= 6 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=   131072 q=0  
+role0 g=11 s2=18 s2-g= 7 : |K2 all-t|=        0/262144    q=0     |K2 3pinned|=   131072 q=-1 
+role0 g=11 s2=19 s2-g= 8 : |K2 all-t|=   327680/524288    q=5     |K2 3pinned|=   458752 q=-3    r=0 maxminI1=5173573 FITS24
+role0 g=11 s2=20 s2-g= 9 : |K2 all-t|=  1048576/1048576   q=-4    |K2 3pinned|=  1048576 q=-4    r=0 maxminI1=10347155 FITS24
+role0 g=11 s2=21 s2-g=10 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=20694311 wide
+role0 g=11 s2=22 s2-g=11 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=41388622 wide
+role0 g=12 s2=12 s2-g= 0 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role0 g=12 s2=13 s2-g= 1 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role0 g=12 s2=14 s2-g= 2 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g=12 s2=15 s2-g= 3 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g=12 s2=16 s2-g= 4 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role0 g=12 s2=17 s2-g= 5 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=        0 q=0  
+role0 g=12 s2=18 s2-g= 6 : |K2 all-t|=        0/262144    q=0     |K2 3pinned|=   196608 q=-1 
+role0 g=12 s2=19 s2-g= 7 : |K2 all-t|=        0/524288    q=0     |K2 3pinned|=   196608 q=-4 
+role0 g=12 s2=20 s2-g= 8 : |K2 all-t|=   851968/1048576   q=3     |K2 3pinned|=   917504 q=-2    r=196608 maxminI1=5173574 FITS24
+role0 g=12 s2=21 s2-g= 9 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=10347155 FITS24
+role0 g=12 s2=22 s2-g=10 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=20694311 wide
+role0 g=13 s2=13 s2-g= 0 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role0 g=13 s2=14 s2-g= 1 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g=13 s2=15 s2-g= 2 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g=13 s2=16 s2-g= 3 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role0 g=13 s2=17 s2-g= 4 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=        0 q=0  
+role0 g=13 s2=18 s2-g= 5 : |K2 all-t|=        0/262144    q=0     |K2 3pinned|=        0 q=0  
+role0 g=13 s2=19 s2-g= 6 : |K2 all-t|=        0/524288    q=0     |K2 3pinned|=   262144 q=4  
+role0 g=13 s2=20 s2-g= 7 : |K2 all-t|=        0/1048576   q=0     |K2 3pinned|=   393216 q=6  
+role0 g=13 s2=21 s2-g= 8 : |K2 all-t|=  1900544/2097152   q=3     |K2 3pinned|=  1966080 q=-1    r=131072 maxminI1=5173574 FITS24
+role0 g=13 s2=22 s2-g= 9 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=10347156 FITS24
+role0 g=14 s2=14 s2-g= 0 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role0 g=14 s2=15 s2-g= 1 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role0 g=14 s2=16 s2-g= 2 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role0 g=14 s2=17 s2-g= 3 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=        0 q=0  
+role0 g=14 s2=18 s2-g= 4 : |K2 all-t|=        0/262144    q=0     |K2 3pinned|=        0 q=0  
+role0 g=14 s2=19 s2-g= 5 : |K2 all-t|=        0/524288    q=0     |K2 3pinned|=        0 q=0  
+role0 g=14 s2=20 s2-g= 6 : |K2 all-t|=        0/1048576   q=0     |K2 3pinned|=   524288 q=-2 
+role0 g=14 s2=21 s2-g= 7 : |K2 all-t|=        0/2097152   q=0     |K2 3pinned|=   720896 q=1  
+role0 g=14 s2=22 s2-g= 8 : |K2 all-t|=  3932160/4194304   q=3     |K2 3pinned|=  4128768 q=-1    r=0 maxminI1=5173575 FITS24
+role1 g= 8 s2= 8 s2-g= 0 : |K2 all-t|=        0/256       q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2= 9 s2-g= 1 : |K2 all-t|=        0/512       q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=10 s2-g= 2 : |K2 all-t|=        0/1024      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=11 s2-g= 3 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=12 s2-g= 4 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=13 s2-g= 5 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=14 s2-g= 6 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g= 8 s2=15 s2-g= 7 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=    32768 q=-3 
+role1 g= 8 s2=16 s2-g= 8 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=    65536 q=-3 
+role1 g= 8 s2=17 s2-g= 9 : |K2 all-t|=   131072/131072    q=-4    |K2 3pinned|=   131072 q=-4    r=0 maxminI1=10347155 FITS24
+role1 g= 8 s2=18 s2-g=10 : |K2 all-t|=   262144/262144    q=-4    |K2 3pinned|=   262144 q=-4    r=0 maxminI1=20694311 wide
+role1 g= 8 s2=19 s2-g=11 : |K2 all-t|=   524288/524288    q=-4    |K2 3pinned|=   524288 q=-4    r=0 maxminI1=41388622 wide
+role1 g= 8 s2=20 s2-g=12 : |K2 all-t|=  1048576/1048576   q=-4    |K2 3pinned|=  1048576 q=-4    r=0 maxminI1=-2 wide
+role1 g= 9 s2= 9 s2-g= 0 : |K2 all-t|=        0/512       q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=10 s2-g= 1 : |K2 all-t|=        0/1024      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=11 s2-g= 2 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=12 s2-g= 3 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=13 s2-g= 4 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=14 s2-g= 5 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=15 s2-g= 6 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g= 9 s2=16 s2-g= 7 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=    65536 q=-2 
+role1 g= 9 s2=17 s2-g= 8 : |K2 all-t|=   131072/131072    q=0     |K2 3pinned|=   131072 q=-3    r=0 maxminI1=5173576 FITS24
+role1 g= 9 s2=18 s2-g= 9 : |K2 all-t|=   262144/262144    q=-4    |K2 3pinned|=   262144 q=-4    r=0 maxminI1=10347155 FITS24
+role1 g= 9 s2=19 s2-g=10 : |K2 all-t|=   524288/524288    q=-4    |K2 3pinned|=   524288 q=-4    r=0 maxminI1=20694311 wide
+role1 g= 9 s2=20 s2-g=11 : |K2 all-t|=  1048576/1048576   q=-4    |K2 3pinned|=  1048576 q=-4    r=0 maxminI1=41388622 wide
+role1 g= 9 s2=21 s2-g=12 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=-2 wide
+role1 g=10 s2=10 s2-g= 0 : |K2 all-t|=        0/1024      q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=11 s2-g= 1 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=12 s2-g= 2 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=13 s2-g= 3 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=14 s2-g= 4 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=15 s2-g= 5 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=16 s2-g= 6 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role1 g=10 s2=17 s2-g= 7 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=    65536 q=-4 
+role1 g=10 s2=18 s2-g= 8 : |K2 all-t|=   262144/262144    q=-4    |K2 3pinned|=   262144 q=-4    r=0 maxminI1=5173578 FITS24
+role1 g=10 s2=19 s2-g= 9 : |K2 all-t|=   524288/524288    q=-4    |K2 3pinned|=   524288 q=-4    r=0 maxminI1=10347155 FITS24
+role1 g=10 s2=20 s2-g=10 : |K2 all-t|=  1048576/1048576   q=-4    |K2 3pinned|=  1048576 q=-4    r=0 maxminI1=20694311 wide
+role1 g=10 s2=21 s2-g=11 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=41388622 wide
+role1 g=10 s2=22 s2-g=12 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=-2 wide
+role1 g=11 s2=11 s2-g= 0 : |K2 all-t|=        0/2048      q=0     |K2 3pinned|=        0 q=0  
+role1 g=11 s2=12 s2-g= 1 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role1 g=11 s2=13 s2-g= 2 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role1 g=11 s2=14 s2-g= 3 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g=11 s2=15 s2-g= 4 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g=11 s2=16 s2-g= 5 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role1 g=11 s2=17 s2-g= 6 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=   131072 q=-1 
+role1 g=11 s2=18 s2-g= 7 : |K2 all-t|=    65536/262144    q=1     |K2 3pinned|=   131072 q=-4    r=131072 maxminI1=2586788 FITS24
+role1 g=11 s2=19 s2-g= 8 : |K2 all-t|=   524288/524288    q=6     |K2 3pinned|=   524288 q=-2    r=0 maxminI1=5173573 FITS24
+role1 g=11 s2=20 s2-g= 9 : |K2 all-t|=  1048576/1048576   q=-4    |K2 3pinned|=  1048576 q=-4    r=0 maxminI1=10347155 FITS24
+role1 g=11 s2=21 s2-g=10 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=20694311 wide
+role1 g=11 s2=22 s2-g=11 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=41388622 wide
+role1 g=12 s2=12 s2-g= 0 : |K2 all-t|=        0/4096      q=0     |K2 3pinned|=        0 q=0  
+role1 g=12 s2=13 s2-g= 1 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role1 g=12 s2=14 s2-g= 2 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g=12 s2=15 s2-g= 3 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g=12 s2=16 s2-g= 4 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role1 g=12 s2=17 s2-g= 5 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=        0 q=0  
+role1 g=12 s2=18 s2-g= 6 : |K2 all-t|=        0/262144    q=0     |K2 3pinned|=   131072 q=4  
+role1 g=12 s2=19 s2-g= 7 : |K2 all-t|=        0/524288    q=0     |K2 3pinned|=   131072 q=-3 
+role1 g=12 s2=20 s2-g= 8 : |K2 all-t|=  1048576/1048576   q=3     |K2 3pinned|=  1048576 q=-1    r=0 maxminI1=5173574 FITS24
+role1 g=12 s2=21 s2-g= 9 : |K2 all-t|=  2097152/2097152   q=-4    |K2 3pinned|=  2097152 q=-4    r=0 maxminI1=10347155 FITS24
+role1 g=12 s2=22 s2-g=10 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=20694311 wide
+role1 g=13 s2=13 s2-g= 0 : |K2 all-t|=        0/8192      q=0     |K2 3pinned|=        0 q=0  
+role1 g=13 s2=14 s2-g= 1 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g=13 s2=15 s2-g= 2 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g=13 s2=16 s2-g= 3 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role1 g=13 s2=17 s2-g= 4 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=        0 q=0  
+role1 g=13 s2=18 s2-g= 5 : |K2 all-t|=        0/262144    q=0     |K2 3pinned|=        0 q=0  
+role1 g=13 s2=19 s2-g= 6 : |K2 all-t|=        0/524288    q=0     |K2 3pinned|=   262144 q=-2 
+role1 g=13 s2=20 s2-g= 7 : |K2 all-t|=        0/1048576   q=0     |K2 3pinned|=   524288 q=-2 
+role1 g=13 s2=21 s2-g= 8 : |K2 all-t|=  1966080/2097152   q=3     |K2 3pinned|=  2097152 q=3     r=0 maxminI1=5173574 FITS24
+role1 g=13 s2=22 s2-g= 9 : |K2 all-t|=  4194304/4194304   q=-4    |K2 3pinned|=  4194304 q=-4    r=0 maxminI1=10347156 FITS24
+role1 g=14 s2=14 s2-g= 0 : |K2 all-t|=        0/16384     q=0     |K2 3pinned|=        0 q=0  
+role1 g=14 s2=15 s2-g= 1 : |K2 all-t|=        0/32768     q=0     |K2 3pinned|=        0 q=0  
+role1 g=14 s2=16 s2-g= 2 : |K2 all-t|=        0/65536     q=0     |K2 3pinned|=        0 q=0  
+role1 g=14 s2=17 s2-g= 3 : |K2 all-t|=        0/131072    q=0     |K2 3pinned|=        0 q=0  
+role1 g=14 s2=18 s2-g= 4 : |K2 all-t|=        0/262144    q=0     |K2 3pinned|=        0 q=0  
+role1 g=14 s2=19 s2-g= 5 : |K2 all-t|=        0/524288    q=0     |K2 3pinned|=        0 q=0  
+role1 g=14 s2=20 s2-g= 6 : |K2 all-t|=        0/1048576   q=0     |K2 3pinned|=   262144 q=-2 
+role1 g=14 s2=21 s2-g= 7 : |K2 all-t|=        0/2097152   q=0     |K2 3pinned|=   655360 q=-2 
+role1 g=14 s2=22 s2-g= 8 : |K2 all-t|=  3932160/4194304   q=3     |K2 3pinned|=  3932160 q=3     r=0 maxminI1=5173575 FITS24

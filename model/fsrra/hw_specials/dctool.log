@@ -1,0 +1,102 @@
+Console enabled
+Upload <fpu_specials2.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 267428
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c0514a4, size 54
+Section .fini, lma 0x8c0514dc, size 42
+Section .rodata, lma 0x8c051508, size 45648
+Section .eh_frame, lma 0x8c05c758, size 452
+Section .ctors, lma 0x8c05c99c, size 8
+Section .dtors, lma 0x8c05c9a4, size 8
+Section .data, lma 0x8c05c9c0, size 11884
+Section .got, lma 0x8c05f82c, size 12
+Transferred 325536 bytes at 12764655.893350 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06c040
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+  A1: Visual Memory                  (0e000000: Clock, LCD, MemoryCard)
+
+fpu_specials2: boot fpscr=00040000
+FSRRA2 [PR=1, causes+flags preset] cfg=000ff07c x=00000000 -> res=00000000 fpscr=000ff07c cause=EVZOUI flag=VZOUI no-trap (FR0 unchanged)
+FSRRA2 [PR=1, causes+flags preset] cfg=000ff07c x=00000001 -> res=00000001 fpscr=000ff07c cause=EVZOUI flag=VZOUI no-trap (FR0 unchanged)
+FSRRA2 [PR=1, causes+flags preset] cfg=000ff07c x=3f800000 -> res=3f800000 fpscr=000ff07c cause=EVZOUI flag=VZOUI no-trap (FR0 unchanged)
+FSRRA2 [PR=1, causes+flags preset] cfg=000ff07c x=40000000 -> res=40000000 fpscr=000ff07c cause=EVZOUI flag=VZOUI no-trap (FR0 unchanged)
+FSRRA2 [PR=1, causes+flags preset] cfg=000ff07c x=bf800000 -> res=bf800000 fpscr=000ff07c cause=EVZOUI flag=VZOUI no-trap (FR0 unchanged)
+FSRRA2 [PR=1, causes+flags preset] cfg=000ff07c x=7f800000 -> res=7f800000 fpscr=000ff07c cause=EVZOUI flag=VZOUI no-trap (FR0 unchanged)
+FSRRA2 [PR=1, causes+flags preset] cfg=000ff07c x=7fbfffff -> res=7fbfffff fpscr=000ff07c cause=EVZOUI flag=VZOUI no-trap (FR0 unchanged)
+FSRRA2 [PR=1, causes+flags preset] cfg=000ff07c x=7fc00000 -> res=7fc00000 fpscr=000ff07c cause=EVZOUI flag=VZOUI no-trap (FR0 unchanged)
+FSRRA2 [PR=1, enable I] cfg=000c0080 x=00000000 -> res=00000000 fpscr=000c0080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, enable I] cfg=000c0080 x=00000001 -> res=00000001 fpscr=000c0080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, enable I] cfg=000c0080 x=3f800000 -> res=3f800000 fpscr=000c0080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, enable I] cfg=000c0080 x=40000000 -> res=40000000 fpscr=000c0080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, enable I] cfg=000c0080 x=bf800000 -> res=bf800000 fpscr=000c0080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, enable I] cfg=000c0080 x=7f800000 -> res=7f800000 fpscr=000c0080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, enable I] cfg=000c0080 x=7fbfffff -> res=7fbfffff fpscr=000c0080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, enable I] cfg=000c0080 x=7fc00000 -> res=7fc00000 fpscr=000c0080 cause=------ flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, all enables, causes preset] cfg=000fff80 x=00000000 -> res=00000000 fpscr=000fff80 cause=EVZOUI flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, all enables, causes preset] cfg=000fff80 x=00000001 -> res=00000001 fpscr=000fff80 cause=EVZOUI flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, all enables, causes preset] cfg=000fff80 x=3f800000 -> res=3f800000 fpscr=000fff80 cause=EVZOUI flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, all enables, causes preset] cfg=000fff80 x=40000000 -> res=40000000 fpscr=000fff80 cause=EVZOUI flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, all enables, causes preset] cfg=000fff80 x=bf800000 -> res=bf800000 fpscr=000fff80 cause=EVZOUI flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, all enables, causes preset] cfg=000fff80 x=7f800000 -> res=7f800000 fpscr=000fff80 cause=EVZOUI flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, all enables, causes preset] cfg=000fff80 x=7fbfffff -> res=7fbfffff fpscr=000fff80 cause=EVZOUI flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=1, all enables, causes preset] cfg=000fff80 x=7fc00000 -> res=7fc00000 fpscr=000fff80 cause=EVZOUI flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=0, all enables, flags preset] cfg=00040ffc x=00000000 -> res=00000000 fpscr=00048ffc cause=--Z--- flag=VZOUI TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=0, all enables, flags preset] cfg=00040ffc x=00000001 -> res=00000001 fpscr=00048ffc cause=--Z--- flag=VZOUI TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=0, all enables, flags preset] cfg=00040ffc x=3f800000 -> res=3f800000 fpscr=00041ffc cause=-----I flag=VZOUI TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=0, all enables, flags preset] cfg=00040ffc x=40000000 -> res=40000000 fpscr=00041ffc cause=-----I flag=VZOUI TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=0, all enables, flags preset] cfg=00040ffc x=bf800000 -> res=bf800000 fpscr=00050ffc cause=-V---- flag=VZOUI TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=0, all enables, flags preset] cfg=00040ffc x=7f800000 -> res=7f800000 fpscr=00040ffc cause=------ flag=VZOUI TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=0, all enables, flags preset] cfg=00040ffc x=7fbfffff -> res=7fbfffff fpscr=00040ffc cause=------ flag=VZOUI TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=0, all enables, flags preset] cfg=00040ffc x=7fc00000 -> res=7fc00000 fpscr=00050ffc cause=-V---- flag=VZOUI TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=0, DN=0, no enables, E preset] cfg=00020000 x=00000000 -> res=7f800000 fpscr=00008020 cause=--Z--- flag=-Z--- no-trap
+FSRRA2 [PR=0, DN=0, no enables, E preset] cfg=00020000 x=00000001 -> res=00000001 fpscr=00020000 cause=E----- flag=----- TRAP-FPU (FR0 unchanged)
+FSRRA2 [PR=0, DN=0, no enables, E preset] cfg=00020000 x=3f800000 -> res=3f800000 fpscr=00001004 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA2 [PR=0, DN=0, no enables, E preset] cfg=00020000 x=40000000 -> res=3f3504f3 fpscr=00001004 cause=-----I flag=----I no-trap
+FSRRA2 [PR=0, DN=0, no enables, E preset] cfg=00020000 x=bf800000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA2 [PR=0, DN=0, no enables, E preset] cfg=00020000 x=7f800000 -> res=00000000 fpscr=00000000 cause=------ flag=----- no-trap
+FSRRA2 [PR=0, DN=0, no enables, E preset] cfg=00020000 x=7fbfffff -> res=7fbfffff fpscr=00000000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA2 [PR=0, DN=0, no enables, E preset] cfg=00020000 x=7fc00000 -> res=7fbfffff fpscr=00010040 cause=-V---- flag=V---- no-trap
+FSRRA2 [PR=0, SZ=1] cfg=00140000 x=00000000 -> res=7f800000 fpscr=00148020 cause=--Z--- flag=-Z--- no-trap
+FSRRA2 [PR=0, SZ=1] cfg=00140000 x=00000001 -> res=7f800000 fpscr=00148020 cause=--Z--- flag=-Z--- no-trap
+FSRRA2 [PR=0, SZ=1] cfg=00140000 x=3f800000 -> res=3f800000 fpscr=00141004 cause=-----I flag=----I no-trap (FR0 unchanged)
+FSRRA2 [PR=0, SZ=1] cfg=00140000 x=40000000 -> res=3f3504f3 fpscr=00141004 cause=-----I flag=----I no-trap
+FSRRA2 [PR=0, SZ=1] cfg=00140000 x=bf800000 -> res=7fbfffff fpscr=00150040 cause=-V---- flag=V---- no-trap
+FSRRA2 [PR=0, SZ=1] cfg=00140000 x=7f800000 -> res=00000000 fpscr=00140000 cause=------ flag=----- no-trap
+FSRRA2 [PR=0, SZ=1] cfg=00140000 x=7fbfffff -> res=7fbfffff fpscr=00140000 cause=------ flag=----- no-trap (FR0 unchanged)
+FSRRA2 [PR=0, SZ=1] cfg=00140000 x=7fc00000 -> res=7fbfffff fpscr=00150040 cause=-V---- flag=V---- no-trap
+FSCA2 [PR=1, causes+flags preset] cfg=000ff07c a=1234 -> fr0=12345678 fr1=9abcdef0 fpscr=000ff07c cause=EVZOUI flag=VZOUI no-trap (FR0/FR1 unchanged)
+FSCA2 [PR=1, enable I] cfg=000c0080 a=1234 -> fr0=12345678 fr1=9abcdef0 fpscr=000c0080 cause=------ flag=----- TRAP-FPU (FR0/FR1 unchanged)
+FSCA2 [PR=1, all enables, causes preset] cfg=000fff80 a=1234 -> fr0=12345678 fr1=9abcdef0 fpscr=000fff80 cause=EVZOUI flag=----- TRAP-FPU (FR0/FR1 unchanged)
+FSCA2 [PR=0, all enables, flags preset] cfg=00040ffc a=1234 -> fr0=12345678 fr1=9abcdef0 fpscr=00041ffc cause=-----I flag=VZOUI TRAP-FPU (FR0/FR1 unchanged)
+FSCA2 [PR=0, DN=0, no enables, E preset] cfg=00020000 a=1234 -> fr0=3edd3684 fr1=3f66df6a fpscr=00001004 cause=-----I flag=----I no-trap
+FSCA2 [PR=0, SZ=1] cfg=00140000 a=1234 -> fr0=3edd3684 fr1=3f66df6a fpscr=00141004 cause=-----I flag=----I no-trap
+DONE
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 22, vbl_cntr = 12, dma_cntr = 11
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+exit 0

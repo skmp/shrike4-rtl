@@ -1,0 +1,53 @@
+# final-multiply representations that keep nodes 0, 1/31, 2/30 and 16 EXACT for all 1024
+# offsets at the PUBLISHED chain I1=(arr(dx,KC)+2^19)>>23, J=(arr(I1,dx)+2^19)>>20.
+# baseline (W=23 RNe norm-sine-ROM b=1 a=30 arr(J,S) K3=2^19 pos) = 147 violations.
+# columns: violations | W rounding field-source b a role K3 sign
+ 146 | W=23 RNe      norm-sine-ROM      b=1 a=30 arr(J,S) K3=2^19       neg-1c
+ 146 | W=23 ceil     C0-table-norm      b=1 a=30 arr(J,S) K3=2^19+2^16  neg-1c
+ 146 | W=23 ceil     C0-table-norm      b=1 a=30 arr(J,S) K3=2^19       neg-1c
+ 146 | W=23 ceil     C0-table-norm      b=1 a=30 arr(J,S) K3=2^19       pos
+ 146 | W=23 ceil     norm-sine-ROM      b=1 a=30 arr(J,S) K3=2^19+2^16  neg-1c
+ 146 | W=23 ceil     norm-sine-ROM      b=1 a=30 arr(J,S) K3=2^19       neg-1c
+ 146 | W=23 ceil     norm-sine-ROM      b=1 a=30 arr(J,S) K3=2^19       pos
+ 146 | W=23 half-up  norm-sine-ROM      b=1 a=30 arr(J,S) K3=2^19       neg-1c
+ 147 | W=23 half-up  norm-sine-ROM      b=1 a=30 arr(J,S) K3=2^19+2^16  neg-1c
+ 147 | W=23 RNe      norm-sine-ROM      b=1 a=30 arr(J,S) K3=2^19       pos
+ 147 | W=23 half-up  norm-sine-ROM      b=1 a=30 arr(J,S) K3=2^19       pos
+ 147 | W=23 RNe      norm-sine-ROM      b=1 a=30 arr(J,S) K3=2^19+2^16  neg-1c
+ 148 | W=23 ceil     C0-table-norm      b=1 a=30 arr(S,J) K3=2^19+2^16  neg-1c
+ 148 | W=23 ceil     norm-sine-ROM      b=1 a=30 arr(J,S) K3=2^19+2^16  pos
+ 148 | W=23 ceil     norm-sine-ROM      b=1 a=30 arr(S,J) K3=2^19       pos
+ 148 | W=23 ceil     norm-sine-ROM      b=1 a=30 arr(S,J) K3=2^19       neg-1c
+ 148 | W=23 ceil     norm-sine-ROM      b=1 a=30 arr(S,J) K3=2^19+2^16  neg-1c
+ 148 | W=23 ceil     C0-table-norm      b=1 a=30 arr(J,S) K3=2^19+2^16  pos
+ 148 | W=23 ceil     C0-table-norm      b=1 a=30 arr(S,J) K3=2^19       pos
+ 148 | W=23 ceil     C0-table-norm      b=1 a=30 arr(S,J) K3=2^19       neg-1c
+ 149 | W=23 RNe      norm-sine-ROM      b=1 a=30 arr(S,J) K3=2^19       pos
+ 149 | W=23 RNe      norm-sine-ROM      b=1 a=30 arr(J,S) K3=2^19+2^16  pos
+ 149 | W=23 RNe      norm-sine-ROM      b=1 a=30 arr(S,J) K3=2^19       neg-1c
+ 149 | W=23 half-up  norm-sine-ROM      b=1 a=30 arr(J,S) K3=2^19+2^16  pos
+ 149 | W=23 half-up  norm-sine-ROM      b=1 a=30 arr(S,J) K3=2^19       pos
+ 149 | W=23 half-up  norm-sine-ROM      b=1 a=30 arr(S,J) K3=2^19       neg-1c
+ 149 | W=23 half-up  norm-sine-ROM      b=1 a=30 arr(S,J) K3=2^19+2^16  neg-1c
+ 149 | W=23 RNe      norm-sine-ROM      b=1 a=30 arr(S,J) K3=2^19+2^16  neg-1c
+ 150 | W=23 half-up  C0-table-norm      b=1 a=30 arr(J,S) K3=2^19+2^16  pos
+ 150 | W=23 half-up  C0-table-norm      b=1 a=30 arr(S,J) K3=2^19+2^16  neg-1c
+ 150 | W=23 half-up  C0-table-norm      b=1 a=30 arr(S,J) K3=2^19       neg-1c
+ 150 | W=23 half-up  C0-table-norm      b=1 a=30 arr(S,J) K3=2^19       pos
+ 150 | W=23 half-up  C0-table-norm      b=1 a=30 arr(J,S) K3=2^19+2^16  neg-1c
+ 150 | W=23 half-up  C0-table-norm      b=1 a=30 arr(J,S) K3=2^19       neg-1c
+ 150 | W=23 half-up  C0-table-norm      b=1 a=30 arr(J,S) K3=2^19       pos
+ 152 | W=23 RNe      C0-table-norm      b=1 a=30 arr(S,J) K3=2^19       pos
+ 152 | W=23 RNe      C0-table-norm      b=1 a=30 arr(S,J) K3=2^19       neg-1c
+ 152 | W=23 RNe      C0-table-norm      b=1 a=30 arr(S,J) K3=2^19+2^16  neg-1c
+ 152 | W=23 RNe      C0-table-norm      b=1 a=30 arr(J,S) K3=2^19+2^16  neg-1c
+ 152 | W=23 RNe      C0-table-norm      b=1 a=30 arr(J,S) K3=2^19+2^16  pos
+ 152 | W=23 RNe      C0-table-norm      b=1 a=30 arr(J,S) K3=2^19       neg-1c
+ 152 | W=23 RNe      C0-table-norm      b=1 a=30 arr(J,S) K3=2^19       pos
+ 155 | W=23 trunc    C0-table-norm      b=1 a=30 arr(J,S) K3=2^19       neg-1c
+ 156 | W=23 trunc    C0-table-norm      b=1 a=30 arr(S,J) K3=2^19+2^16  neg-1c
+ 156 | W=23 trunc    C0-table-norm      b=1 a=30 arr(S,J) K3=2^19       neg-1c
+ 156 | W=23 trunc    C0-table-norm      b=1 a=30 arr(S,J) K3=2^19       pos
+ 156 | W=23 trunc    C0-table-norm      b=1 a=30 arr(J,S) K3=2^19+2^16  neg-1c
+ 156 | W=23 trunc    C0-table-norm      b=1 a=30 arr(J,S) K3=2^19+2^16  pos
+ 156 | W=23 trunc    C0-table-norm      b=1 a=30 arr(J,S) K3=2^19       pos

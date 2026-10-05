@@ -1,0 +1,14 @@
+QUANT cut=16 C16=165554320 mantissa23=0 mu=-75/1048576 beta=175/8192
+QUANT cut=16 C16=165554321 mantissa23=0 mu=-37/524288 beta=691/32768
+QUANT cut=16 C16=165554322 mantissa23=0 mu=-37/524288 beta=691/32768
+QUANT cut=16 C16=165554323 mantissa23=0 mu=-37/524288 beta=691/32768
+QUANT cut=16 C16=165554324 mantissa23=0 mu=-73/1048576 beta=341/16384
+cut=16 integer C16 feasible=5 dyadic witnesses=5
+QUANT cut=15 C16=165554332 mantissa23=0 mu=-137/2097152 beta=127/16384
+QUANT cut=15 C16=165554333 mantissa23=0 mu=-67/1048576 beta=15/2048
+QUANT cut=15 C16=165554334 mantissa23=0 mu=-131/2097152 beta=29/4096
+QUANT cut=15 C16=165554335 mantissa23=0 mu=-1/16384 beta=55/8192
+QUANT cut=15 C16=165554336 mantissa23=1 mu=-63/1048576 beta=51/8192
+QUANT cut=15 C16=165554337 mantissa23=0 mu=-61/1048576 beta=195/32768
+QUANT cut=15 C16=165554338 mantissa23=0 mu=-15/262144 beta=23/4096
+cut=15 integer C16 feasible=7 dyadic witnesses=7

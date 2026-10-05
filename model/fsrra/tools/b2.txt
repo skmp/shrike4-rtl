@@ -1,0 +1,7 @@
+node 2 + side reference: 696
+  delta -1.00: square-only 9266, cube-only 716, both 9361
+  delta -0.50: square-only 4774, cube-only 711, both 4896
+  delta -0.25: square-only 2534, cube-only 706, both 2673
+  delta +0.25: square-only 2458, cube-only 710, both 2587
+  delta +0.50: square-only 4701, cube-only 721, both 4811
+  delta +1.00: square-only 9195, cube-only 732, both 9297

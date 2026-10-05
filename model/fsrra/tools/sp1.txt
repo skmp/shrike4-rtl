@@ -1,0 +1,4 @@
+node 1 + side, reference (single product, c1 0.008): 1794
+  split at 8 bits: best 60807 (ca 0.0230 cb 0.0288)
+  split at 9 bits: best 61028 (ca 0.0230 cb 0.0288)
+  split at 10 bits: best 60789 (ca 0.0230 cb 0.0288)

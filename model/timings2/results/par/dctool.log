@@ -1,0 +1,148 @@
+Console enabled
+Upload <runner/t2run.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 270500
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c0520a4, size 54
+Section .fini, lma 0x8c0520dc, size 42
+Section .rodata, lma 0x8c052108, size 45996
+Section .eh_frame, lma 0x8c05d4b4, size 452
+Section .ctors, lma 0x8c05d6f8, size 8
+Section .dtors, lma 0x8c05d700, size 8
+Section .data, lma 0x8c05d720, size 12076
+Section .got, lma 0x8c06064c, size 12
+Transferred 329148 bytes at 12986170.248916 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06f9e0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+t2run: pass par event 14 n1 8 n2 136 reps 3
+scratch=8c063000
+code=8c062000
+exit=8c011268
+sr=400000f0
+vbr=8c03e044
+chunk 0: 1500 cases, 0 exceptions, 3 s
+chunk 1: 1500 cases, 0 exceptions, 7 s
+chunk 2: 1500 cases, 0 exceptions, 10 s
+chunk 3: 1500 cases, 0 exceptions, 14 s
+chunk 4: 1500 cases, 0 exceptions, 18 s
+chunk 5: 1500 cases, 0 exceptions, 21 s
+chunk 6: 1500 cases, 0 exceptions, 25 s
+chunk 7: 1500 cases, 0 exceptions, 29 s
+chunk 8: 1500 cases, 0 exceptions, 33 s
+chunk 9: 1500 cases, 0 exceptions, 36 s
+chunk 10: 1500 cases, 0 exceptions, 40 s
+chunk 11: 1500 cases, 0 exceptions, 44 s
+chunk 12: 1500 cases, 0 exceptions, 47 s
+chunk 13: 1500 cases, 0 exceptions, 51 s
+chunk 14: 1500 cases, 0 exceptions, 55 s
+chunk 15: 1500 cases, 0 exceptions, 59 s
+chunk 16: 1500 cases, 0 exceptions, 62 s
+chunk 17: 1500 cases, 0 exceptions, 66 s
+chunk 18: 1500 cases, 0 exceptions, 69 s
+chunk 19: 1500 cases, 0 exceptions, 73 s
+chunk 20: 1500 cases, 0 exceptions, 77 s
+chunk 21: 1500 cases, 0 exceptions, 80 s
+chunk 22: 1500 cases, 0 exceptions, 84 s
+chunk 23: 1500 cases, 0 exceptions, 87 s
+chunk 24: 1500 cases, 0 exceptions, 91 s
+chunk 25: 1500 cases, 0 exceptions, 94 s
+chunk 26: 1500 cases, 0 exceptions, 98 s
+chunk 27: 1500 cases, 0 exceptions, 102 s
+chunk 28: 1500 cases, 0 exceptions, 106 s
+chunk 29: 1500 cases, 0 exceptions, 110 s
+chunk 30: 1500 cases, 0 exceptions, 113 s
+chunk 31: 1500 cases, 0 exceptions, 117 s
+chunk 32: 1500 cases, 0 exceptions, 121 s
+chunk 33: 1500 cases, 0 exceptions, 124 s
+chunk 34: 1500 cases, 0 exceptions, 128 s
+chunk 35: 1500 cases, 0 exceptions, 132 s
+chunk 36: 1500 cases, 0 exceptions, 136 s
+chunk 37: 1500 cases, 0 exceptions, 139 s
+chunk 38: 1500 cases, 0 exceptions, 143 s
+chunk 39: 1500 cases, 0 exceptions, 146 s
+chunk 40: 1500 cases, 0 exceptions, 150 s
+chunk 41: 1500 cases, 0 exceptions, 154 s
+chunk 42: 1500 cases, 0 exceptions, 158 s
+chunk 43: 1500 cases, 0 exceptions, 161 s
+chunk 44: 1500 cases, 0 exceptions, 165 s
+chunk 45: 1500 cases, 0 exceptions, 169 s
+chunk 46: 1500 cases, 0 exceptions, 172 s
+chunk 47: 1500 cases, 0 exceptions, 175 s
+chunk 48: 1500 cases, 0 exceptions, 179 s
+chunk 49: 1500 cases, 0 exceptions, 183 s
+chunk 50: 1500 cases, 0 exceptions, 186 s
+chunk 51: 1500 cases, 0 exceptions, 190 s
+chunk 52: 1500 cases, 0 exceptions, 194 s
+chunk 53: 1500 cases, 0 exceptions, 197 s
+chunk 54: 1500 cases, 0 exceptions, 201 s
+chunk 55: 1500 cases, 0 exceptions, 205 s
+chunk 56: 1500 cases, 0 exceptions, 209 s
+chunk 57: 1500 cases, 0 exceptions, 212 s
+chunk 58: 1500 cases, 0 exceptions, 216 s
+chunk 59: 1500 cases, 0 exceptions, 219 s
+chunk 60: 1500 cases, 0 exceptions, 223 s
+chunk 61: 1500 cases, 0 exceptions, 227 s
+chunk 62: 1500 cases, 0 exceptions, 231 s
+chunk 63: 1500 cases, 0 exceptions, 235 s
+chunk 64: 1500 cases, 0 exceptions, 238 s
+chunk 65: 1500 cases, 0 exceptions, 242 s
+chunk 66: 1500 cases, 0 exceptions, 246 s
+chunk 67: 1500 cases, 0 exceptions, 250 s
+chunk 68: 1500 cases, 0 exceptions, 254 s
+chunk 69: 1500 cases, 0 exceptions, 257 s
+chunk 70: 1500 cases, 0 exceptions, 261 s
+chunk 71: 1500 cases, 0 exceptions, 265 s
+chunk 72: 1500 cases, 0 exceptions, 268 s
+chunk 73: 1500 cases, 0 exceptions, 272 s
+chunk 74: 1500 cases, 0 exceptions, 276 s
+chunk 75: 1500 cases, 0 exceptions, 279 s
+chunk 76: 1500 cases, 0 exceptions, 283 s
+chunk 77: 1500 cases, 0 exceptions, 287 s
+chunk 78: 1500 cases, 0 exceptions, 291 s
+chunk 79: 1500 cases, 0 exceptions, 294 s
+chunk 80: 1500 cases, 0 exceptions, 300 s
+chunk 81: 1500 cases, 0 exceptions, 305 s
+chunk 82: 1500 cases, 0 exceptions, 310 s
+chunk 83: 1500 cases, 0 exceptions, 314 s
+chunk 84: 1500 cases, 0 exceptions, 318 s
+chunk 85: 1500 cases, 0 exceptions, 321 s
+chunk 86: 1500 cases, 0 exceptions, 325 s
+chunk 87: 1500 cases, 0 exceptions, 329 s
+chunk 88: 1500 cases, 0 exceptions, 333 s
+chunk 89: 1500 cases, 0 exceptions, 338 s
+chunk 90: 1500 cases, 0 exceptions, 343 s
+chunk 91: 1500 cases, 0 exceptions, 347 s
+chunk 92: 1500 cases, 0 exceptions, 351 s
+chunk 93: 1500 cases, 0 exceptions, 355 s
+chunk 94: 1096 cases, 0 exceptions, 357 s
+t2run: 142096 cases, 0 with exceptions
+DONE
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 21256, dma_cntr = 21240
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+exit 0

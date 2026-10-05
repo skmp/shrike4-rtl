@@ -1,0 +1,2 @@
+node  0 (511 pairs) ODD: best 0  C1 0xc90fda (+0 vs trunc true) C3 0xa55ff1 (true 10837479.2) | exact: C1 [0xc90fda,0xc90fda] C3 [0xa55ff1,0xa56021]
+         EVEN: best 6  C0 0 (true 0.000) C2 0x0000000 (true 0.0) c2 -0.0469 | exact: C0 [1152921504606846976,-1152921504606846976] C2 [0x1000000000000000,0xffffffffffffffff] c2 [9.0000,-9.0000]

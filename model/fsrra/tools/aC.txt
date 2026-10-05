@@ -1,0 +1,11 @@
+mode C (exact-product reference: 261435 hits of 262144):
+  261360  cubic: C3<<5 a3>>35 rec 1 K 0 c3 +0.0020
+  261360  cubic: C3<<5 a3>>35 rec 1 K 0 c3 +0.0000
+  261358  cubic: C3<<5 a3>>36 rec 1 K 0 c3 +0.0020
+  261358  cubic: C3<<5 a3>>36 rec 1 K 0 c3 +0.0000
+  261356  cubic: C3<<6 a3>>36 rec 1 K 0 c3 +0.0020
+  261356  cubic: C3<<6 a3>>36 rec 1 K 0 c3 +0.0000
+  261345  cubic: C3<<8 a3>>36 rec 1 K 524288 c3 -0.0016
+  261341  cubic: C3<<7 a3>>35 rec 1 K 524288 c3 -0.0016
+  261341  cubic: C3<<4 a3>>34 rec 1 K 0 c3 +0.0020
+  261341  cubic: C3<<4 a3>>34 rec 1 K 0 c3 +0.0000

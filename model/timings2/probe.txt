@@ -1,0 +1,5 @@
+scratch=8c063000
+code=8c062000
+exit=8c0112b8
+sr=400000f0
+vbr=8c03e094

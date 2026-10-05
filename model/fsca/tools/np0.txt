@@ -1,0 +1,3 @@
+node 0: 511 exact pairs, non-integer even parts: 46
+EVEN best mism 0: C0 0 (true 0.000) C2 mant 0 (-nan x true) c2 0.0000 | zero-fit 129: C0 [0,1] C2 [0,0] c2 [0.0000,1.0000]
+ODD best mism 35: C1 mant 13176793 (trunc true -1) c1 0.03711 C3 mant 10837817 (1.00003 x true) c3 0.0078 | zero-fit 0: C1 [1152921504606846976,-1] c1 [9.00000,-9.00000] C3 [1152921504606846976,-1] c3 [9.0000,-9.0000]

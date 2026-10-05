@@ -1,0 +1,220 @@
+cfg: rec s cut hot | total misses (K free per node) | per node misses 1..16 | common-K best: nodes at zero misses
+  1: rec=M  s=0 cut= 0 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+  2: rec=M  s=0 cut= 1 hot= 1 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+  3: rec=M  s=0 cut= 1 hot= 3 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+  4: rec=M  s=0 cut= 1 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+  5: rec=M  s=0 cut= 2 hot= 2 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+  6: rec=M  s=0 cut= 2 hot= 4 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+  7: rec=M  s=0 cut= 2 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+  8: rec=M  s=0 cut= 3 hot= 3 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+  9: rec=M  s=0 cut= 3 hot= 5 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248272
+ 10: rec=M  s=0 cut= 3 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 11: rec=M  s=0 cut= 4 hot= 4 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 12: rec=M  s=0 cut= 4 hot= 6 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248272
+ 13: rec=M  s=0 cut= 4 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 14: rec=M  s=0 cut= 5 hot= 5 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248256
+ 15: rec=M  s=0 cut= 5 hot= 7 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248256
+ 16: rec=M  s=0 cut= 5 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248272
+ 17: rec=M  s=0 cut= 6 hot= 6 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248256
+ 18: rec=M  s=0 cut= 6 hot= 8 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248256
+ 19: rec=M  s=0 cut= 6 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248272
+ 20: rec=M  s=0 cut= 7 hot= 7 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248192
+ 21: rec=M  s=0 cut= 7 hot= 9 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248192
+ 22: rec=M  s=0 cut= 7 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248208
+ 23: rec=M  s=0 cut= 8 hot= 8 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248064
+ 24: rec=M  s=0 cut= 8 hot=10 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248064
+ 25: rec=M  s=0 cut= 8 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248080
+ 26: rec=M  s=0 cut= 9 hot= 9 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-247808
+ 27: rec=M  s=0 cut= 9 hot=11 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-246784
+ 28: rec=M  s=0 cut= 9 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-247824
+ 29: rec=M  s=0 cut=10 hot=10 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-246784
+ 30: rec=M  s=0 cut=10 hot=12 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-245760
+ 31: rec=M  s=0 cut=10 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-246800
+ 32: rec=M  s=0 cut=11 hot=11 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-245760
+ 33: rec=M  s=0 cut=11 hot=13 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-245760
+ 34: rec=M  s=0 cut=11 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-246800
+ 35: rec=M  s=0 cut=12 hot=12 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-241664
+ 36: rec=M  s=0 cut=12 hot=14 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-241664
+ 37: rec=M  s=0 cut=12 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-241988
+ 38: rec=M  s=0 cut=13 hot=13 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-237568
+ 39: rec=M  s=0 cut=13 hot=15 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-237568
+ 40: rec=M  s=0 cut=13 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-237892
+ 41: rec=M  s=0 cut=14 hot=14 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-901120
+ 42: rec=M  s=0 cut=14 hot=16 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-212992
+ 43: rec=M  s=0 cut=14 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-939281
+ 44: rec=M  s=0 cut=15 hot=15 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-851968
+ 45: rec=M  s=0 cut=15 hot=17 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-819200
+ 46: rec=M  s=0 cut=15 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-935188
+ 47: rec=M  s=0 cut=16 hot=16 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-720896
+ 48: rec=M  s=0 cut=16 hot=18 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-786432
+ 49: rec=M  s=0 cut=16 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-804116
+ 50: rec=M  s=0 cut=17 hot=17 |    45 | 0 2 2 2 2 1 1 1 6 3 7 3 5 5 2 3 | 10 nodes share K=-524288
+ 51: rec=M  s=0 cut=17 hot=19 |    45 | 0 2 2 2 2 1 1 1 6 3 7 3 5 5 2 3 | 9 nodes share K=-524288
+ 52: rec=M  s=0 cut=17 hot= 0 |    45 | 0 2 2 2 2 1 1 1 6 3 7 3 5 5 2 3 | 11 nodes share K=-459780
+ 53: rec=M  s=0 cut=18 hot=18 |    47 | 0 2 2 2 2 1 1 1 6 3 7 4 5 6 2 3 | 10 nodes share K=0
+ 54: rec=M  s=0 cut=18 hot=20 |    47 | 0 2 2 2 2 1 1 1 6 3 7 4 5 6 2 3 | 10 nodes share K=524288
+ 55: rec=M  s=0 cut=18 hot= 0 |    47 | 0 2 2 2 2 1 1 1 6 3 7 4 5 6 2 3 | 11 nodes share K=519868
+ 56: rec=M  s=0 cut=19 hot=19 |    65 | 0 2 2 2 4 5 3 1 6 7 6 4 5 7 6 5 | 11 nodes share K=1048576
+ 57: rec=M  s=0 cut=19 hot=21 |    65 | 0 2 2 2 4 5 3 1 6 7 6 4 5 7 6 5 | 12 nodes share K=1572864
+ 58: rec=M  s=0 cut=19 hot= 0 |    65 | 0 2 2 2 4 5 3 1 6 7 6 4 5 7 6 5 | 12 nodes share K=1030896
+ 59: rec=M  s=0 cut=20 hot=20 |    90 | 0 2 4 6 6 5 3 2 6 6 8 3 12 10 8 9 | 11 nodes share K=3145728
+ 60: rec=M  s=0 cut=20 hot=22 |    90 | 0 2 4 6 6 5 3 2 6 6 8 3 12 10 8 9 | 12 nodes share K=3145728
+ 61: rec=M  s=0 cut=20 hot= 0 |    90 | 0 2 4 6 6 5 3 2 6 6 8 3 12 10 8 9 | 12 nodes share K=3079916
+ 62: rec=M  s=0 cut=21 hot=21 |   176 | 0 6 4 8 13 10 7 7 10 23 15 11 18 17 16 11 | 14 nodes share K=8388608
+ 63: rec=M  s=0 cut=21 hot=23 |   176 | 0 6 4 8 13 10 7 7 10 23 15 11 18 17 16 11 | 13 nodes share K=12582912
+ 64: rec=M  s=0 cut=21 hot= 0 |   176 | 0 6 4 8 13 10 7 7 10 23 15 11 18 17 16 11 | 14 nodes share K=8126192
+ 65: rec=M  s=0 cut=22 hot=22 |   312 | 0 12 9 18 21 14 18 5 14 38 16 26 26 30 32 33 | 15 nodes share K=16777216
+ 66: rec=M  s=0 cut=22 hot=24 |   312 | 0 12 9 18 21 14 18 5 14 38 16 26 26 30 32 33 | 13 nodes share K=20971520
+ 67: rec=M  s=0 cut=22 hot= 0 |   312 | 0 12 9 18 21 14 18 5 14 38 16 26 26 30 32 33 | 15 nodes share K=16759740
+ 68: rec=M  s=0 cut=23 hot=23 |   682 | 2 16 24 31 39 35 36 24 40 77 49 55 83 73 54 44 | 15 nodes share K=33554432
+ 69: rec=M  s=0 cut=23 hot=25 |   682 | 2 16 24 31 39 35 36 24 40 77 49 55 83 73 54 44 | 15 nodes share K=33554432
+ 70: rec=M  s=0 cut=23 hot= 0 |   682 | 2 16 24 31 39 35 36 24 40 77 49 55 83 73 54 44 | 16 nodes share K=45792188
+ 71: rec=M  s=0 cut=24 hot=24 |  1569 | 10 36 52 63 117 84 58 52 63 197 108 115 144 195 127 148 | 15 nodes share K=67108864
+ 72: rec=M  s=0 cut=24 hot=26 |  1569 | 10 36 52 63 117 84 58 52 63 197 108 115 144 195 127 148 | 15 nodes share K=67108864
+ 73: rec=M  s=0 cut=24 hot= 0 |  1569 | 10 36 52 63 117 84 58 52 63 197 108 115 144 195 127 148 | 16 nodes share K=79346672
+ 74: rec=sq s=0 cut= 0 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 75: rec=sq s=0 cut= 1 hot= 1 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 76: rec=sq s=0 cut= 1 hot= 3 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 77: rec=sq s=0 cut= 1 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 78: rec=sq s=0 cut= 2 hot= 2 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 79: rec=sq s=0 cut= 2 hot= 4 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 80: rec=sq s=0 cut= 2 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 81: rec=sq s=0 cut= 3 hot= 3 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 82: rec=sq s=0 cut= 3 hot= 5 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248272
+ 83: rec=sq s=0 cut= 3 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 84: rec=sq s=0 cut= 4 hot= 4 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 85: rec=sq s=0 cut= 4 hot= 6 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248272
+ 86: rec=sq s=0 cut= 4 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248288
+ 87: rec=sq s=0 cut= 5 hot= 5 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248256
+ 88: rec=sq s=0 cut= 5 hot= 7 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248192
+ 89: rec=sq s=0 cut= 5 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248272
+ 90: rec=sq s=0 cut= 6 hot= 6 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248192
+ 91: rec=sq s=0 cut= 6 hot= 8 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248128
+ 92: rec=sq s=0 cut= 6 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248208
+ 93: rec=sq s=0 cut= 7 hot= 7 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-247936
+ 94: rec=sq s=0 cut= 7 hot= 9 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-247680
+ 95: rec=sq s=0 cut= 7 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-248016
+ 96: rec=sq s=0 cut= 8 hot= 8 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-247552
+ 97: rec=sq s=0 cut= 8 hot=10 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-247296
+ 98: rec=sq s=0 cut= 8 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-247632
+ 99: rec=sq s=0 cut= 9 hot= 9 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-246272
+100: rec=sq s=0 cut= 9 hot=11 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-246272
+101: rec=sq s=0 cut= 9 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-246608
+102: rec=sq s=0 cut=10 hot=10 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-244736
+103: rec=sq s=0 cut=10 hot=12 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-244736
+104: rec=sq s=0 cut=10 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-245072
+105: rec=sq s=0 cut=11 hot=11 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-241664
+106: rec=sq s=0 cut=11 hot=13 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1017856
+107: rec=sq s=0 cut=11 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-242000
+108: rec=sq s=0 cut=12 hot=12 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1015808
+109: rec=sq s=0 cut=12 hot=14 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1011712
+110: rec=sq s=0 cut=12 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-237904
+111: rec=sq s=0 cut=13 hot=13 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-999424
+112: rec=sq s=0 cut=13 hot=15 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-999424
+113: rec=sq s=0 cut=13 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1003792
+114: rec=sq s=0 cut=14 hot=14 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-966656
+115: rec=sq s=0 cut=14 hot=16 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-966656
+116: rec=sq s=0 cut=14 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-213312
+117: rec=sq s=0 cut=15 hot=15 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-950272
+118: rec=sq s=0 cut=15 hot=17 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-950272
+119: rec=sq s=0 cut=15 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-950288
+120: rec=sq s=0 cut=16 hot=16 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-786432
+121: rec=sq s=0 cut=16 hot=18 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-786432
+122: rec=sq s=0 cut=16 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-790548
+123: rec=sq s=0 cut=17 hot=17 |    45 | 0 2 2 2 2 1 1 1 6 3 6 5 5 5 1 3 | 9 nodes share K=-655360
+124: rec=sq s=0 cut=17 hot=19 |    45 | 0 2 2 2 2 1 1 1 6 3 6 5 5 5 1 3 | 9 nodes share K=-655360
+125: rec=sq s=0 cut=17 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-528404
+126: rec=sq s=0 cut=18 hot=18 |    52 | 0 2 2 2 4 3 1 1 6 3 8 5 5 5 2 3 | 9 nodes share K=-524288
+127: rec=sq s=0 cut=18 hot=20 |    52 | 0 2 2 2 4 3 1 1 6 3 8 5 5 5 2 3 | 9 nodes share K=-524288
+128: rec=sq s=0 cut=18 hot= 0 |    46 | 0 2 2 2 4 1 1 1 6 3 6 5 5 5 0 3 | 8 nodes share K=-524304
+129: rec=sq s=0 cut=19 hot=19 |    70 | 0 2 2 2 6 1 2 2 6 3 10 7 10 7 7 3 | 9 nodes share K=1048576
+130: rec=sq s=0 cut=19 hot=21 |    70 | 0 2 2 2 6 1 2 2 6 3 10 7 10 7 7 3 | 9 nodes share K=1048576
+131: rec=sq s=0 cut=19 hot= 0 |    59 | 0 2 2 2 6 1 1 2 4 3 6 6 10 6 5 3 | 8 nodes share K=524028
+132: rec=sq s=0 cut=20 hot=20 |   133 | 0 2 4 6 10 5 5 1 6 9 18 16 17 17 10 7 | 8 nodes share K=2097152
+133: rec=sq s=0 cut=20 hot=22 |   133 | 0 2 4 6 10 5 5 1 6 9 18 16 17 17 10 7 | 8 nodes share K=2097152
+134: rec=sq s=0 cut=20 hot= 0 |   104 | 0 2 2 4 8 3 3 1 6 7 15 13 13 13 9 5 | 5 nodes share K=2093052
+135: rec=sq s=0 cut=21 hot=21 |   278 | 0 4 6 14 21 5 10 10 14 22 28 37 28 32 22 25 | 12 nodes share K=4194304
+136: rec=sq s=0 cut=21 hot=23 |   278 | 0 4 6 14 21 5 10 10 14 22 28 37 28 32 22 25 | 12 nodes share K=4194304
+137: rec=sq s=0 cut=21 hot= 0 |   220 | 0 4 4 12 15 5 5 6 10 18 24 33 19 24 22 19 | 5 nodes share K=6274816
+138: rec=sq s=0 cut=22 hot=22 |   593 | 0 6 20 32 32 24 19 20 42 59 64 65 47 66 50 47 | 13 nodes share K=8388608
+139: rec=sq s=0 cut=22 hot=24 |   593 | 0 6 20 32 32 24 19 20 42 59 64 65 47 66 50 47 | 13 nodes share K=8388608
+140: rec=sq s=0 cut=22 hot= 0 |   482 | 0 6 20 24 21 22 19 16 30 56 51 49 40 53 42 33 | 5 nodes share K=12566204
+141: rec=sq s=0 cut=23 hot=23 |  1295 | 10 18 30 68 90 44 62 54 79 118 104 127 112 144 110 125 | 12 nodes share K=16777216
+142: rec=sq s=0 cut=23 hot=25 |  1295 | 10 18 30 68 90 44 62 54 79 118 104 127 112 144 110 125 | 12 nodes share K=16777216
+143: rec=sq s=0 cut=23 hot= 0 |  1076 | 6 14 28 54 74 36 50 37 65 95 94 118 85 122 97 101 | 3 nodes share K=25161664
+144: rec=sq s=0 cut=24 hot=24 |  2691 | 28 36 99 141 178 124 127 120 138 266 245 251 260 238 223 217 | 13 nodes share K=50331648
+145: rec=sq s=0 cut=24 hot=26 |  2691 | 28 36 99 141 178 124 127 120 138 266 245 251 260 238 223 217 | 13 nodes share K=50331648
+146: rec=sq s=0 cut=24 hot= 0 |  2247 | 18 28 82 126 146 98 115 79 122 236 222 192 188 207 207 181 | 3 nodes share K=50330620
+147: rec=sq s=1 cut= 0 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496576
+148: rec=sq s=1 cut= 1 hot= 1 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496574
+149: rec=sq s=1 cut= 1 hot= 3 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496574
+150: rec=sq s=1 cut= 1 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496575
+151: rec=sq s=1 cut= 2 hot= 2 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496572
+152: rec=sq s=1 cut= 2 hot= 4 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496572
+153: rec=sq s=1 cut= 2 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496573
+154: rec=sq s=1 cut= 3 hot= 3 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496568
+155: rec=sq s=1 cut= 3 hot= 5 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496568
+156: rec=sq s=1 cut= 3 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496569
+157: rec=sq s=1 cut= 4 hot= 4 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496560
+158: rec=sq s=1 cut= 4 hot= 6 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496560
+159: rec=sq s=1 cut= 4 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496561
+160: rec=sq s=1 cut= 5 hot= 5 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496544
+161: rec=sq s=1 cut= 5 hot= 7 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496544
+162: rec=sq s=1 cut= 5 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496545
+163: rec=sq s=1 cut= 6 hot= 6 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496512
+164: rec=sq s=1 cut= 6 hot= 8 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496512
+165: rec=sq s=1 cut= 6 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496513
+166: rec=sq s=1 cut= 7 hot= 7 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496512
+167: rec=sq s=1 cut= 7 hot= 9 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496512
+168: rec=sq s=1 cut= 7 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496513
+169: rec=sq s=1 cut= 8 hot= 8 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496384
+170: rec=sq s=1 cut= 8 hot=10 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496384
+171: rec=sq s=1 cut= 8 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496385
+172: rec=sq s=1 cut= 9 hot= 9 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496128
+173: rec=sq s=1 cut= 9 hot=11 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-495104
+174: rec=sq s=1 cut= 9 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-496129
+175: rec=sq s=1 cut=10 hot=10 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-495616
+176: rec=sq s=1 cut=10 hot=12 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-494592
+177: rec=sq s=1 cut=10 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-495617
+178: rec=sq s=1 cut=11 hot=11 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-491520
+179: rec=sq s=1 cut=11 hot=13 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-491520
+180: rec=sq s=1 cut=11 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-492545
+181: rec=sq s=1 cut=12 hot=12 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-487424
+182: rec=sq s=1 cut=12 hot=14 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-487424
+183: rec=sq s=1 cut=12 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-488449
+184: rec=sq s=1 cut=13 hot=13 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-475136
+185: rec=sq s=1 cut=13 hot=15 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-2015232
+186: rec=sq s=1 cut=13 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 11 nodes share K=-476161
+187: rec=sq s=1 cut=14 hot=14 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1998848
+188: rec=sq s=1 cut=14 hot=16 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1933312
+189: rec=sq s=1 cut=14 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1998913
+190: rec=sq s=1 cut=15 hot=15 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1966080
+191: rec=sq s=1 cut=15 hot=17 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1966080
+192: rec=sq s=1 cut=15 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1982529
+193: rec=sq s=1 cut=16 hot=16 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1900544
+194: rec=sq s=1 cut=16 hot=18 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1900544
+195: rec=sq s=1 cut=16 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1905988
+196: rec=sq s=1 cut=17 hot=17 |    44 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 2 3 | 9 nodes share K=-1572864
+197: rec=sq s=1 cut=17 hot=19 |    44 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 2 3 | 9 nodes share K=-1572864
+198: rec=sq s=1 cut=17 hot= 0 |    43 | 0 2 2 2 2 1 1 1 6 3 6 3 5 5 1 3 | 10 nodes share K=-1511425
+199: rec=sq s=1 cut=18 hot=18 |    47 | 0 2 2 2 2 1 1 1 6 3 6 5 5 5 3 3 | 10 nodes share K=-1048576
+200: rec=sq s=1 cut=18 hot=20 |    47 | 0 2 2 2 2 1 1 1 6 3 6 5 5 5 3 3 | 10 nodes share K=-1048576
+201: rec=sq s=1 cut=18 hot= 0 |    44 | 0 2 2 2 2 1 1 1 6 3 6 4 5 5 1 3 | 11 nodes share K=-1066000
+202: rec=sq s=1 cut=19 hot=19 |    50 | 0 2 2 2 2 1 1 1 6 5 6 4 5 5 5 3 | 11 nodes share K=0
+203: rec=sq s=1 cut=19 hot=21 |    50 | 0 2 2 2 2 1 1 1 6 5 6 4 5 5 5 3 | 11 nodes share K=0
+204: rec=sq s=1 cut=19 hot= 0 |    48 | 0 2 2 2 2 1 1 1 6 3 6 4 5 5 5 3 | 11 nodes share K=-1088
+205: rec=sq s=1 cut=20 hot=20 |    67 | 0 2 2 2 4 1 5 1 6 7 6 8 7 7 6 3 | 8 nodes share K=0
+206: rec=sq s=1 cut=20 hot=22 |    67 | 0 2 2 2 4 1 5 1 6 7 6 8 7 7 6 3 | 8 nodes share K=0
+207: rec=sq s=1 cut=20 hot= 0 |    58 | 0 2 2 2 4 1 1 1 6 6 6 6 6 7 5 3 | 7 nodes share K=978620
+208: rec=sq s=1 cut=21 hot=21 |   136 | 0 4 4 10 10 7 7 5 6 13 9 12 13 17 12 7 | 8 nodes share K=6291456
+209: rec=sq s=1 cut=21 hot=23 |   136 | 0 4 4 10 10 7 7 5 6 13 9 12 13 17 12 7 | 8 nodes share K=6291456
+210: rec=sq s=1 cut=21 hot= 0 |   113 | 0 2 4 8 8 5 6 5 6 8 7 10 12 17 10 5 | 5 nodes share K=6221823
+211: rec=sq s=1 cut=22 hot=22 |   274 | 0 4 6 16 14 14 16 9 14 25 27 26 21 33 30 19 | 11 nodes share K=8388608
+212: rec=sq s=1 cut=22 hot=24 |   274 | 0 4 6 16 14 14 16 9 14 25 27 26 21 33 30 19 | 11 nodes share K=8388608
+213: rec=sq s=1 cut=22 hot= 0 |   230 | 0 2 4 10 11 12 12 7 12 23 26 25 18 27 30 11 | 4 nodes share K=12500655
+214: rec=sq s=1 cut=23 hot=23 |   629 | 0 6 14 32 34 29 32 32 32 52 57 59 51 70 64 65 | 10 nodes share K=25165824
+215: rec=sq s=1 cut=23 hot=25 |   629 | 0 6 14 32 34 29 32 32 32 52 57 59 51 70 64 65 | 10 nodes share K=25165824
+216: rec=sq s=1 cut=23 hot= 0 |   539 | 0 4 8 20 25 17 25 26 28 48 52 57 43 70 61 55 | 4 nodes share K=25149167
+217: rec=sq s=1 cut=24 hot=24 |  1289 | 6 18 40 68 74 49 53 54 83 119 123 113 126 126 124 113 | 12 nodes share K=50331648
+218: rec=sq s=1 cut=24 hot=26 |  1289 | 6 18 40 68 74 49 53 54 83 119 123 113 126 126 124 113 | 12 nodes share K=50331648
+219: rec=sq s=1 cut=24 hot= 0 |  1103 | 4 14 34 54 68 45 33 43 65 100 108 113 103 110 116 93 | 3 nodes share K=50327471

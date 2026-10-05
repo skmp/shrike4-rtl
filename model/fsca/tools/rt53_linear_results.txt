@@ -1,0 +1,33 @@
+field complementary linear KCbase 3293599
+configs 657800; f16=normalised S, others fixed fraction bits; all latches >>23
+v=86 guard=6 f=16 k=-1 d=14 tree=4 roles=7 p=0 | 0 0 2 3 5 6 4 5 7 11 6 3 5 10 7 8 4
+v=86 guard=6 f=16 k=-1 d=14 tree=4 roles=6 p=0 | 0 0 2 3 5 6 4 5 7 11 6 3 5 10 7 8 4
+v=91 guard=6 f=16 k=-1 d=14 tree=4 roles=3 p=0 | 0 0 2 3 5 10 4 5 7 11 6 4 5 10 7 8 4
+v=91 guard=6 f=16 k=-1 d=14 tree=4 roles=2 p=0 | 0 0 2 3 5 10 4 5 7 11 6 4 5 10 7 8 4
+v=94 guard=8 f=16 k=-1 d=14 tree=4 roles=5 p=0 | 0 0 2 3 7 6 4 6 7 11 6 6 5 10 7 8 6
+v=94 guard=8 f=16 k=-1 d=14 tree=4 roles=4 p=0 | 0 0 2 3 7 6 4 6 7 11 6 6 5 10 7 8 6
+v=98 guard=8 f=22 k=-1 d=14 tree=4 roles=7 p=0 | 0 0 4 7 8 10 4 4 7 11 6 3 5 10 7 8 4
+v=98 guard=8 f=22 k=-1 d=14 tree=4 roles=6 p=0 | 0 0 4 7 8 10 4 4 7 11 6 3 5 10 7 8 4
+v=99 guard=8 f=16 k=-1 d=14 tree=4 roles=1 p=0 | 0 0 2 3 7 10 4 6 7 11 6 7 5 10 7 8 6
+v=99 guard=8 f=16 k=-1 d=14 tree=4 roles=0 p=0 | 0 0 2 3 7 10 4 6 7 11 6 7 5 10 7 8 6
+v=102 guard=8 f=22 k=-1 d=14 tree=4 roles=3 p=0 | 0 0 4 11 7 10 4 4 7 11 6 4 5 10 7 8 4
+v=102 guard=8 f=22 k=-1 d=14 tree=4 roles=2 p=0 | 0 0 4 11 7 10 4 4 7 11 6 4 5 10 7 8 4
+v=104 guard=6 f=16 k=-1 d=14 tree=4 roles=7 p=1 | 0 0 2 3 5 6 4 5 9 11 6 4 7 17 11 10 4
+v=104 guard=6 f=16 k=-1 d=14 tree=4 roles=6 p=1 | 0 0 2 3 5 6 4 5 9 11 6 4 7 17 11 10 4
+v=104 guard=6 f=16 k=-1 d=14 tree=4 roles=3 p=1 | 0 0 2 3 5 6 4 5 7 11 6 4 9 17 11 10 4
+v=104 guard=6 f=16 k=-1 d=14 tree=4 roles=2 p=1 | 0 0 2 3 5 6 4 5 7 11 6 4 9 17 11 10 4
+v=106 guard=8 f=16 k=1 d=13 tree=4 roles=6 p=0 | 0 0 6 3 6 8 6 3 6 12 7 8 11 11 14 3 2
+v=106 guard=10 f=22 k=-1 d=14 tree=4 roles=5 p=0 | 0 0 4 7 10 10 4 5 7 11 6 6 5 10 7 8 6
+v=106 guard=10 f=22 k=-1 d=14 tree=4 roles=4 p=0 | 0 0 4 7 10 10 4 5 7 11 6 6 5 10 7 8 6
+v=110 guard=8 f=16 k=-1 d=14 tree=4 roles=4 p=1 | 0 0 2 3 7 6 4 6 9 11 6 7 7 15 11 10 6
+v=110 guard=8 f=16 k=-1 d=14 tree=4 roles=0 p=1 | 0 0 2 3 7 6 4 6 7 11 6 7 9 15 11 10 6
+v=110 guard=8 f=16 k=-1 d=14 tree=4 roles=5 p=1 | 0 0 2 3 7 6 4 6 9 11 6 7 7 15 11 10 6
+v=110 guard=9 f=16 k=1 d=13 tree=4 roles=7 p=0 | 0 0 6 3 6 8 8 3 6 12 7 8 11 12 14 3 3
+v=110 guard=10 f=22 k=-1 d=14 tree=4 roles=1 p=0 | 0 0 4 11 9 10 4 5 7 11 6 7 5 10 7 8 6
+v=110 guard=10 f=22 k=-1 d=14 tree=4 roles=0 p=0 | 0 0 4 11 9 10 4 5 7 11 6 7 5 10 7 8 6
+best per tree and best guard-clean per tree:
+v=149 guard=5 f=23 k=0 d=14 tree=0 roles=3 p=1 | 0 0 2 6 5 16 9 6 1 16 6 14 12 20 13 20 3
+v=150 guard=3 f=25 k=1 d=14 tree=1 roles=5 p=1 | 0 0 2 6 5 16 12 6 1 18 7 16 11 18 13 18 1
+v=148 guard=4 f=16 k=2 d=13 tree=2 roles=1 p=1 | 0 0 2 6 5 16 12 6 2 17 9 16 11 17 13 14 2
+v=145 guard=12 f=16 k=2 d=13 tree=3 roles=0 p=2 | 0 0 8 6 7 19 9 2 5 17 9 7 8 17 11 16 4
+v=86 guard=6 f=16 k=-1 d=14 tree=4 roles=7 p=0 | 0 0 2 3 5 6 4 5 7 11 6 3 5 10 7 8 4
