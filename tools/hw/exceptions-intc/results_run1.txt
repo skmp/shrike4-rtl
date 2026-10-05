@@ -1,0 +1,144 @@
+hwrun: 04:26:35 lock taken by pid 2922022 for tools/hw/exceptions-intc/excint.elf
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac070820
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+excint: SR 40000001 VBR 8c0403c0 ICR 8000 IPRA f0f0 IPRB 0000 IPRC 0300 IPRD(FFD00010) 0000 STBCR 03 STBCR2 00
+excint: EXPEVT 00000060 INTEVT 00000400 TRA 00000080 TEA 00000000 MMUCR 00000000 QACR0 00000004 WTCSR 00 WTCNT 00
+A masks: EXPEVT 00000fff INTEVT 00000fff TRA 000003fc ICR c381 IPRA ffff IPRB fff0 IPRC ffff
+A masks: SR 700083f3 VBR ffffffff SSR ffffffff SPC ffffffff DBR ffffffff GBR ffffffff FPSCR 003fffff (SGR 8cfffc0c R15 8cfffee8)
+trapa          #0 k1 EXP=160 INT=400 TRA=168 TEA=00000000 spc=8c0127fc(L+2) ssr=400000f1 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=8c0127f8 r2=8c060828 fpscr=00040000
+ill_fffd       #0 k1 EXP=180 INT=400 TRA=168 TEA=00000000 spc=8c012800(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c012800 r2=8c060828 fpscr=00040000
+ill_0000       none  ret=00000007 rec=0 fpscr=00040000
+slot_fffd      #0 k1 EXP=1a0 INT=400 TRA=168 TEA=00000000 spc=8c01280e(L+0) ssr=400000f1 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c01280e r2=8c060828 fpscr=00040000
+slot_trapa     #0 k1 EXP=1a0 INT=400 TRA=168 TEA=00000000 spc=8c012816(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c012816 r2=8c060828 fpscr=00040000
+slot_bra       #0 k1 EXP=1a0 INT=400 TRA=168 TEA=00000000 spc=8c01281e(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c01281e r2=8c060828 fpscr=00040000
+slot_mova      #0 k1 EXP=1a0 INT=400 TRA=168 TEA=00000000 spc=8c012826(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c012826 r2=8c060828 fpscr=00040000
+slot_movpc     #0 k1 EXP=1a0 INT=400 TRA=168 TEA=00000000 spc=8c01282e(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c01282e r2=8c060828 fpscr=00040000
+slot_ldcsr     #0 k1 EXP=1a0 INT=400 TRA=168 TEA=00000000 spc=8c012838(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=400000f0 r2=8c060828 fpscr=00040000
+slot_bt        #0 k1 EXP=1a0 INT=400 TRA=168 TEA=00000000 spc=8c012840(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c012840 r2=8c060828 fpscr=00040000
+slot_0000      none  ret=00000007 rec=0 fpscr=00040000
+fd_fadd        #0 k1 EXP=800 INT=3a0 TRA=168 TEA=00000000 spc=8c01285c(L+0) ssr=400080f1 sr=700080f0 sgr=r15 pr=8c01272c r0=8c06083c r1=400080f1 r2=8000 fpscr=00040000
+fd_lds_fpscr   #0 k1 EXP=800 INT=3a0 TRA=168 TEA=00000000 spc=8c012870(L+0) ssr=400080f0 sr=700080f0 sgr=r15 pr=8c01272c r0=40000 r1=400080f0 r2=8000 fpscr=00040000
+fd_sts_fpul    #0 k1 EXP=800 INT=3a0 TRA=168 TEA=00000000 spc=8c012882(L+0) ssr=400080f0 sr=700080f0 sgr=r15 pr=8c01272c r0=8c06083c r1=400080f0 r2=8000 fpscr=00040000
+fd_fschg       #0 k1 EXP=800 INT=3a0 TRA=168 TEA=00000000 spc=8c012894(L+0) ssr=400080f0 sr=700080f0 sgr=r15 pr=8c01272c r0=8c06083c r1=400080f0 r2=8000 fpscr=00040000
+fd_fmov        #0 k1 EXP=800 INT=3a0 TRA=168 TEA=00000000 spc=8c0128a6(L+0) ssr=400080f0 sr=700080f0 sgr=r15 pr=8c01272c r0=8c06083c r1=400080f0 r2=8000 fpscr=00040000
+fd_fffd        #0 k1 EXP=180 INT=3a0 TRA=168 TEA=00000000 spc=8c0128b8(L+0) ssr=400080f0 sr=700080f0 sgr=r15 pr=8c01272c r0=8c06083c r1=400080f0 r2=8000 fpscr=00040000
+fd_slot        #0 k1 EXP=820 INT=3a0 TRA=168 TEA=00000000 spc=8c0128ca(L+0) ssr=400080f0 sr=700080f0 sgr=r15 pr=8c01272c r0=8c06083c r1=400080f0 r2=8000 fpscr=00040000
+fd_slot_fffd   #0 k1 EXP=1a0 INT=3a0 TRA=168 TEA=00000000 spc=8c0128de(L+0) ssr=400080f0 sr=700080f0 sgr=r15 pr=8c01272c r0=8c06083c r1=400080f0 r2=8000 fpscr=00040000
+fd_ldsl_fpul   #0 k1 EXP=800 INT=400 TRA=168 TEA=00000000 spc=8c0128f4(L+0) ssr=400080f0 sr=700080f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8cfffed0 r2=8000 fpscr=00040000
+fpe_fadd_I     #0 k1 EXP=120 INT=400 TRA=168 TEA=00000000 spc=8c012900(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c0128fa r2=8c060828 fpscr=00040080
+fpe_slot_I     #0 k1 EXP=120 INT=400 TRA=168 TEA=00000000 spc=8c01290c(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c012906 r2=8c060828 fpscr=00040080
+fpe_sqrt-1_V   #0 k1 EXP=120 INT=400 TRA=168 TEA=00000000 spc=8c01291a(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c012914 r2=8c060828 fpscr=00050840
+fpe_sqrt+1_V   none  ret=8c06083c rec=0 fpscr=00040800
+fpe_div0_Z     #0 k1 EXP=120 INT=400 TRA=168 TEA=00000000 spc=8c012930(L+0) ssr=400000f1 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c01292a r2=8c060828 fpscr=00048420
+fpe_div1_Z     none  ret=8c06083c rec=0 fpscr=00040400
+fpe_div0_none  none  ret=8c06083c rec=0 fpscr=00048020
+buf=8c063780
+dae_w_rd+1     #0 k1 EXP=0e0 INT=3a0 TRA=168 TEA=8c063781 spc=8c012946(L+0) ssr=400000f1 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063781 r2=8c060828 fpscr=00040000
+dae_l_wr+2     #0 k1 EXP=100 INT=3a0 TRA=168 TEA=8c063782 spc=8c012950(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063782 r2=8c060828 fpscr=00040000
+dae_l_@r+      #0 k1 EXP=0e0 INT=3a0 TRA=168 TEA=8c063782 spc=8c01295c(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063782 r2=0 fpscr=00040000
+dae_l_@-r      #0 k1 EXP=100 INT=3a0 TRA=168 TEA=8c063782 spc=8c012966(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063786 r2=8c060828 fpscr=00040000
+dae_fmovd_rd+4 #0 k1 EXP=0e0 INT=3a0 TRA=168 TEA=8c063784 spc=8c012974(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063784 r2=140000 fpscr=00140000
+dae_fmovd_wr+4 #0 k1 EXP=100 INT=3a0 TRA=168 TEA=8c063784 spc=8c012982(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063784 r2=140000 fpscr=00140000
+dae_fmovs+2    #0 k1 EXP=0e0 INT=3a0 TRA=168 TEA=8c063782 spc=8c01298c(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063782 r2=8c060828 fpscr=00040000
+dae_movca+2    #0 k1 EXP=100 INT=3a0 TRA=168 TEA=8c063782 spc=8c012996(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063782 r2=8c060828 fpscr=00040000
+dae_ocbwb+1    none  ret=00000007 rec=0 fpscr=00040000
+dae_ocbp+1     none  ret=00000007 rec=0 fpscr=00040000
+dae_ocbi+1     none  ret=00000007 rec=0 fpscr=00040000
+dae_pref+1     none  ret=00000007 rec=0 fpscr=00040000
+dae_tas+1      none  ret=00000007 rec=0 fpscr=00040000
+dae_macl_2nd   #0 k1 EXP=0e0 INT=400 TRA=168 TEA=8c063782 spc=8c0129d6(L+0) ssr=400000f1 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063780 r2=8c063782 fpscr=00040000
+dae_macl_both  #0 k1 EXP=0e0 INT=400 TRA=168 TEA=8c063786 spc=8c0129e6(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063782 r2=8c063786 fpscr=00040000
+dae_macw_2nd   #0 k1 EXP=0e0 INT=400 TRA=168 TEA=8c063781 spc=8c0129f4(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063780 r2=8c063781 fpscr=00040000
+dae_ldcl_sr    #0 k1 EXP=0e0 INT=400 TRA=168 TEA=8c063782 spc=8c0129fe(L+0) ssr=400000f1 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063782 r2=8c060828 fpscr=00040000
+ds_bra         #0 k1 EXP=0e0 INT=3a0 TRA=168 TEA=8c063781 spc=8c012a0c(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063781 r2=8c060828 fpscr=00040000
+ds_bsr         #0 k1 EXP=0e0 INT=3a0 TRA=168 TEA=8c063781 spc=8c012a1e(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c012a22 r0=8c06083c r1=8c063781 r2=13572468 fpscr=00040000
+ds_jsr         #0 k1 EXP=0e0 INT=3a0 TRA=168 TEA=8c063781 spc=8c012a38(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c012a3c r0=8c06083c r1=8c063781 r2=13572468 fpscr=00040000
+ds_bfs_nt      #0 k1 EXP=0e0 INT=3a0 TRA=168 TEA=8c063781 spc=8c012a48(L+0) ssr=400000f1 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063781 r2=8c060828 fpscr=00040000
+ds_bts_t       #0 k1 EXP=0e0 INT=3a0 TRA=168 TEA=8c063781 spc=8c012a56(L+0) ssr=400000f1 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06083c r1=8c063781 r2=8c060828 fpscr=00040000
+ds_rts         #0 k1 EXP=0e0 INT=3a0 TRA=168 TEA=8c063781 spc=8c012a68(L+0) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c012a6c r0=8c06083c r1=8c063781 r2=8c012a6c fpscr=00040000
+iae_jmp_odd    #0 k1 EXP=0e0 INT=400 TRA=168 TEA=8c012a7b spc=8c012a7b(L+1) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=1 r1=8c012a72 r2=8c012a7b fpscr=00040000
+iae_rts_odd    #0 k1 EXP=0e0 INT=400 TRA=168 TEA=8c012a8b spc=8c012a8b(L+1) ssr=400000f0 sr=700000f0 sgr=r15 pr=8c012a8b r0=1 r1=8c012a7e r2=8c012a8b fpscr=00040000
+rte_slot_rb    none  ret=00000022 rec=0 fpscr=00040000
+rte_slot_t     none  ret=00000001 rec=0 fpscr=00040000
+u_rd_p1        #0 k1 EXP=0e0 INT=400 TRA=168 TEA=8c000000 spc=0c012b0c(L+0) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=8c000000 r2=8c060828 fpscr=00040000
+u_rd_p4        #0 k1 EXP=0e0 INT=400 TRA=168 TEA=ff000020 spc=0c012b0c(L+0) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=ff000020 r2=8c060828 fpscr=00040000
+u_rd_p2        #0 k1 EXP=0e0 INT=400 TRA=168 TEA=a0000000 spc=0c012b0c(L+0) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=a0000000 r2=8c060828 fpscr=00040000
+u_wr_sq_md0    #0 k1 EXP=160 INT=400 TRA=3b8 TEA=a0000000 spc=0c012b14(L+4) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=e0063740 r2=8c060828 fpscr=00040000
+u_wr_sq_md1    #0 k1 EXP=100 INT=400 TRA=3b8 TEA=e0063740 spc=0c012b10(L+0) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=e0063740 r2=8c060828 fpscr=00040000
+u_pref_sq_md1  #0 k1 EXP=0e0 INT=400 TRA=3b8 TEA=e0063740 spc=0c012b14(L+0) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=e0063740 r2=8c060828 fpscr=00040000
+u_pref_p1      #0 k1 EXP=0e0 INT=400 TRA=3b8 TEA=8c063740 spc=0c012b14(L+0) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=8c063740 r2=8c060828 fpscr=00040000
+u_ocbi_p1      #0 k1 EXP=100 INT=3a0 TRA=3b8 TEA=8c063740 spc=0c012b18(L+0) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=8c063740 r2=8c060828 fpscr=00040000
+u_stc_sr       #0 k1 EXP=180 INT=3a0 TRA=3b8 TEA=8c063740 spc=0c012b1c(L+0) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=0 r2=8c060828 fpscr=00040000
+u_gbr          #0 k1 EXP=160 INT=3a0 TRA=3b8 TEA=8c063740 spc=0c012b26(L+6) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=8c06ed78 r1=0 r2=8c060828 fpscr=00040000
+u_stc_sgr      #0 k1 EXP=180 INT=3a0 TRA=3b8 TEA=8c063740 spc=0c012b26(L+0) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=0 r2=8c060828 fpscr=00040000
+u_ldtlb        #0 k1 EXP=180 INT=3a0 TRA=3b8 TEA=8c063740 spc=0c012b2a(L+0) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=0 r2=8c060828 fpscr=00040000
+u_rte          #0 k1 EXP=180 INT=3a0 TRA=3b8 TEA=8c063740 spc=0c012b3a(L+8) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=0 r2=8c060828 fpscr=00040000
+u_slot_stcsr   #0 k1 EXP=1a0 INT=3a0 TRA=3b8 TEA=8c063740 spc=0c012b40(L+0) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=0 r2=8c060828 fpscr=00040000
+u_fetch_p1     #0 k1 EXP=0e0 INT=3a0 TRA=3b8 TEA=8c012b46 spc=8c012b46(L+0) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=0 r2=8c060828 fpscr=00040000
+u_fetch_u0     #0 k1 EXP=160 INT=3a0 TRA=3b8 TEA=8c012b46 spc=0c012b4a(L+4) ssr=000000f0 sr=700000f0 sgr=r15 pr=8c01272c r0=0 r1=0 r2=8c060828 fpscr=00040000
+u_sleep        #0 k1 EXP=180 INT=3a0 TRA=3b8 TEA=8c012b46 spc=0c012b2e(L-2147483648) ssr=00000060 sr=70000060 sgr=r15 pr=8c01272c r0=0 r1=0 r2=8c060828 fpscr=00040000
+C: sr6=40000061 sr15=400000f1
+C1 ldc_sr     k: 7/7 8/8 8/8 8/8 8/8 8/8 8/8 8/8  cyc(pmctr before unmask -> handler): 61 22 22 22 22 22 22 22  INT=420 ssr=40000061
+C1 ldc.l_sr   k: 0/0 7/7 7/7 7/7 7/7 7/7 7/7 7/7  cyc(pmctr before unmask -> handler): 63 21 21 21 21 21 21 21  INT=420 ssr=40000061
+C1 rte        k: 8/8 7/7 7/7 7/7 7/7 7/7 7/7 7/7  cyc(pmctr before unmask -> handler): 64 50 50 50 50 50 50 50  INT=420 ssr=40000061
+C1 bl_1to0    k: 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0  cyc(pmctr before unmask -> handler): 38 14 14 14 14 14 14 14  INT=420 ssr=40000061
+C1 ipr_write  k: 13/13 17/17 15/15 15/15 15/15 15/15 15/15 15/15  INT=420 ssr=40000061
+C1 unie_write k: 13/13 17/17 15/15 15/15 15/15 15/15 15/15 15/15  INT=420 ssr=40000061
+C1g tstr cnt=0 k: 24/89 29/64 19/54 19/54 27/62 31/98 27/62 27/62 25/50 29/54 25/56 21/46
+C1g tstr cnt=1 k: 41/79 41/76 35/70 35/70 39/74 35/70 43/78 47/114 37/62 41/82 45/70 37/62
+C1g tstr cnt=2 k: 65/133 53/88 59/94 59/94 59/94 55/90 55/90 59/94 65/90 53/78 57/82 57/82
+C1h bra@0 spc-bra: +6/2 +6/2 +6/2 +6/2 +6/2 +6/2
+C1h bra@1 spc-bra: +8/4 +8/4 +8/4 +8/4 +8/4 +8/4
+C1h bra@2 spc-bra: -4/0 -4/0 -4/0 -4/0 -4/0 -4/0
+C1h bra@3 spc-bra: +6/5 +10/7 +10/7 +10/7 +10/7 +10/7
+C1h bra@4 spc-bra: -8/0 -8/0 -8/0 -8/0 -8/0 -8/0
+C1h bra@5 spc-bra: +4/6 +4/6 +4/6 +4/6 +4/6 +4/6
+C1h bra@6 spc-bra: -2/5 -2/5 -2/5 -2/5 -2/5 -2/5
+C1h bra@7 spc-bra: -14/0 -14/0 -14/0 -14/0 -14/0 -14/0
+prio_irq_ill   #0 k1 EXP=180 INT=420 TRA=3b8 TEA=8c012b46 spc=8c013128(L+0) ssr=40000061 sr=70000060 sgr=r15 pr=8c01272c r0=0 r1=8c013124 r2=8c060828 fpscr=00040000
+C2 same_lvl10   tmu=1 wdt=1: INT=420@0 INT=560@0
+C2 wdt12_tmu10  tmu=1 wdt=1: INT=560@4 INT=420@4
+C2 tmu12_wdt10  tmu=1 wdt=1: INT=420@4 INT=560@4
+C2 tmu6_imask6  tmu=1 wdt=0: none
+C2 tmu7_imask6  tmu=1 wdt=0: INT=420@4
+irl_imask5     none  ret=00000000 rec=0 fpscr=00040000
+irl_imask6     none  ret=00000000 rec=0 fpscr=00040000
+C4 sleep INT=420 spc=L+2 cyc(start->handler)=91 tcnt1=fffffffb ssr=40000061
+C4 busy  INT=420 spc=L+0 cyc(start->handler)=1085 tcnt1=fffffffc ssr=40000060
+C4 sleep INT=420 spc=L+2 cyc(start->handler)=79 tcnt1=fffffffb ssr=40000061
+C4 busy  INT=420 spc=L+2 cyc(start->handler)=1083 tcnt1=fffffffc ssr=40000060
+C4 sleep INT=420 spc=L+2 cyc(start->handler)=63 tcnt1=fffffffc ssr=40000061
+C4 busy  INT=420 spc=L+0 cyc(start->handler)=1095 tcnt1=fffffffc ssr=40000060
+C4 sleep INT=420 spc=L+2 cyc(start->handler)=83 tcnt1=fffffffb ssr=40000061
+C4 busy  INT=420 spc=L+0 cyc(start->handler)=1095 tcnt1=fffffffc ssr=40000060
+D cost (cyc): [base 23 trapa 35 ill 8 dae 35 fd 8 fpe 35] [base 3 trapa 11 ill 8 dae 11 fd 8 fpe 11] [base 3 trapa 11 ill 8 dae 11 fd 8 fpe 11] [base 3 trapa 11 ill 8 dae 11 fd 8 fpe 11]
+excint: done
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 12, dma_cntr = 11
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+exit 0

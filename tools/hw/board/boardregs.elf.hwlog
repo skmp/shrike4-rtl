@@ -1,0 +1,443 @@
+Console enabled
+Upload <tools/hw/board/boardregs.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 269860
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c051e24, size 54
+Section .fini, lma 0x8c051e5c, size 42
+Section .rodata, lma 0x8c051e88, size 52408
+Section .eh_frame, lma 0x8c05eb40, size 452
+Section .ctors, lma 0x8c05ed84, size 8
+Section .dtors, lma 0x8c05ed8c, size 8
+Section .data, lma 0x8c05eda0, size 12972
+Section .got, lma 0x8c06204c, size 12
+Transferred 335816 bytes at 13265970.257255 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac0723a0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+B start pre_done c0de old_sr 500000f0 old_vbr 8c00f400 old_stack 8c00f3fc old_fpscr 00040000
+B reg SB_C2DSTAT         a05f6800 pre 11480400 post 11480400
+B reg SB_C2DLEN          a05f6804 pre 00000000 post 00000000
+B reg SB_C2DST           a05f6808 pre 00000000 post 00000000
+B reg SB_SDSTAW          a05f6810 pre 0cff0000 post 0cff0000
+B reg SB_SDBAAW          a05f6814 pre 0cff0000 post 0cff0000
+B reg SB_SDWLT           a05f6818 pre 00000000 post 00000000
+B reg SB_SDLAS           a05f681c pre 00000000 post 00000000
+B reg SB_SDST            a05f6820 pre 00000000 post 00000000
+B reg SB_DBREQM          a05f6840 pre 00000000 post 00000000
+B reg SB_BAVLWC          a05f6844 pre 00000000 post 00000000
+B reg SB_C2DPRYC         a05f6848 pre 00000000 post 00000000
+B reg SB_C2DMAXL         a05f684c pre 00000000 post 00000000
+B reg SB_TFREM           a05f6880 pre 00000008 post 00000008
+B reg SB_LMMODE0         a05f6884 pre 00000000 post 00000000
+B reg SB_LMMODE1         a05f6888 pre 00000000 post 00000000
+B reg SB_FFST            a05f688c pre 0000000e post 0000000e
+B reg SB_SBREV           a05f689c pre 00000010 post 00000010
+B reg SB_RBSPLT          a05f68a0 pre 80000000 post 80000000
+B reg SB_ISTNRM          a05f6900 pre 00000038 post 00000000
+B reg SB_ISTEXT          a05f6904 pre 00000000 post 00000000
+B reg SB_ISTERR          a05f6908 pre 00000000 post 00000000
+B reg SB_IML2NRM         a05f6910 pre 00000000 post 00001008
+B reg SB_IML2EXT         a05f6914 pre 00000000 post 00000000
+B reg SB_IML2ERR         a05f6918 pre 00000000 post 00000000
+B reg SB_IML4NRM         a05f6920 pre 00000000 post 0007c000
+B reg SB_IML4EXT         a05f6924 pre 00000000 post 00000000
+B reg SB_IML4ERR         a05f6928 pre 00000000 post 00003000
+B reg SB_IML6NRM         a05f6930 pre 00000000 post 00000000
+B reg SB_IML6EXT         a05f6934 pre 00000000 post 00000000
+B reg SB_IML6ERR         a05f6938 pre 00000000 post 00000000
+B reg SB_PDTNRM          a05f6940 pre 00000000 post 00000000
+B reg SB_PDTEXT          a05f6944 pre 00000000 post 00000000
+B reg SB_G2DTNRM         a05f6950 pre 00000000 post 00000000
+B reg SB_G2DTEXT         a05f6954 pre 00000000 post 00000000
+B reg SB_MDSTAR          a05f6c04 pre 0c070b60 post 0c0723a0
+B reg SB_MDTSEL          a05f6c10 pre 00000000 post 00000000
+B reg SB_MDEN            a05f6c14 pre 00000001 post 00000001
+B reg SB_MDST            a05f6c18 pre 00000000 post 00000000
+B reg SB_MSYS            a05f6c80 pre c3500000 post c3500000
+B reg SB_MST             a05f6c84 pre 00ff0000 post 00ff0000
+B reg SB_MMSEL           a05f6ce8 pre 00000001 post 00000001
+B reg SB_MTXDAD          a05f6cf4 pre 0c070b60 post 0c0723a0
+B reg SB_MRXDAD          a05f6cf8 pre 0c0704c0 post 0c071d60
+B reg SB_MRXDBD          a05f6cfc pre 0c0704a0 post 0c071ce0
+B reg SB_GDSTAR          a05f7404 pre 0c015d40 post 0c015d40
+B reg SB_GDLEN           a05f7408 pre 00000020 post 00000020
+B reg SB_GDDIR           a05f740c pre 00000001 post 00000001
+B reg SB_GDEN            a05f7414 pre 00000001 post 00000001
+B reg SB_GDST            a05f7418 pre 00000000 post 00000000
+B reg SB_G1SYSM          a05f74b0 pre 00000000 post 00000000
+B reg SB_G1PROTST        a05f74ec pre 00000003 post 00000003
+B reg SB_GDSTARD         a05f74f4 pre 0c015d60 post 0c015d60
+B reg SB_GDLEND          a05f74f8 pre 00000020 post 00000020
+B reg SB_ADSTAG          a05f7800 pre 009f0000 post 009f0000
+B reg SB_ADSTAR          a05f7804 pre 0cff0000 post 0cff0000
+B reg SB_ADLEN           a05f7808 pre 00000020 post 00000020
+B reg SB_ADDIR           a05f780c pre 00000000 post 00000000
+B reg SB_ADTSEL          a05f7810 pre 00000005 post 00000005
+B reg SB_ADEN            a05f7814 pre 00000000 post 00000000
+B reg SB_ADST            a05f7818 pre 00000000 post 00000000
+B reg SB_ADSUSP          a05f781c pre 00000020 post 00000020
+B reg SB_E1TSEL          a05f7830 pre 00000005 post 00000005
+B reg SB_E1EN            a05f7834 pre 00000000 post 00000000
+B reg SB_E1ST            a05f7838 pre 00000000 post 00000000
+B reg SB_E1SUSP          a05f783c pre 00000000 post 00000000
+B reg SB_E2SUSP          a05f785c pre 00000000 post 00000000
+B reg SB_DDSUSP          a05f787c pre 00000000 post 00000000
+B reg SB_G2ID            a05f7880 pre 00000012 post 00000012
+B reg SB_G2DSTO          a05f7890 pre 0000001b post 0000001b
+B reg SB_G2TRTO          a05f7894 pre 00000271 post 00000271
+B reg SB_G2MDMTO         a05f7898 pre 00000000 post 00000000
+B reg SB_G2MDMW          a05f789c pre 00000001 post 00000001
+B reg SB_ADSTAGD         a05f78c0 pre 009f0000 post 009f0000
+B reg SB_ADSTARD         a05f78c4 pre 0cff0000 post 0cff0000
+B reg SB_ADLEND          a05f78c8 pre 00000020 post 00000020
+B reg SB_PDSTAP          a05f7c00 pre 04ff0000 post 04ff0000
+B reg SB_PDSTAR          a05f7c04 pre 0cff0000 post 0cff0000
+B reg SB_PDLEN           a05f7c08 pre 00000020 post 00000020
+B reg SB_PDDIR           a05f7c0c pre 00000000 post 00000000
+B reg SB_PDTSEL          a05f7c10 pre 00000000 post 00000000
+B reg SB_PDEN            a05f7c14 pre 00000000 post 00000000
+B reg SB_PDST            a05f7c18 pre 00000000 post 00000000
+B reg SB_PDSTAPD         a05f7cf0 pre 04000800 post 04000800
+B reg SB_PDSTARD         a05f7cf4 pre 08042a00 post 08042a00
+B reg SB_PDLEND          a05f7cf8 pre 00004800 post 00004800
+B reg GD_ALTSTAT         a05f7018 pre 00000050 post 00000050
+B reg GD_ERROR           a05f7084 pre 00000004 post 00000004
+B reg GD_IREASON         a05f7088 pre 00000003 post 00000003
+B reg GD_SECTNUM         a05f708c pre 00000022 post 00000022
+B reg GD_BYCTLLO         a05f7090 pre 00000098 post 00000098
+B reg GD_BYCTLHI         a05f7094 pre 00000001 post 00000001
+B reg GD_DRVSEL          a05f7098 pre 00000000 post 00000000
+B reg ID                 a05f8000 pre 17fd11db post 17fd11db
+B reg REVISION           a05f8004 pre 00000011 post 00000011
+B reg SOFTRESET          a05f8008 pre 00000000 post 00000000
+B reg STARTRENDER        a05f8014 pre 00000000 post 00000000
+B reg TEST_SELECT        a05f8018 pre 00000000 post 00000000
+B reg PARAM_BASE         a05f8020 pre 00400000 post 00400000
+B reg REGION_BASE        a05f802c pre 005667c0 post 005667c0
+B reg SPAN_SORT_CFG      a05f8030 pre 00000101 post 00000101
+B reg VO_BORDER_COL      a05f8040 pre 00000000 post 00000000
+B reg FB_R_CTRL          a05f8044 pre 00800001 post 00800005
+B reg FB_W_CTRL          a05f8048 pre 00000009 post 00000009
+B reg FB_W_LINESTRIDE    a05f804c pre 000000a0 post 000000a0
+B reg FB_R_SOF1          a05f8050 pre 00000000 post 00000000
+B reg FB_R_SOF2          a05f8054 pre 00000000 post 00000000
+B reg FB_R_SIZE          a05f805c pre 00177d3f post 00177d3f
+B reg FB_W_SOF1          a05f8060 pre 00600000 post 00600000
+B reg FB_W_SOF2          a05f8064 pre 00600000 post 00600000
+B reg FB_X_CLIP          a05f8068 pre 027f0000 post 027f0000
+B reg FB_Y_CLIP          a05f806c pre 01df0000 post 01df0000
+B reg FPU_SHAD_SCALE     a05f8074 pre 00000001 post 00000001
+B reg FPU_CULL_VAL       a05f8078 pre 3f800000 post 3f800000
+B reg FPU_PARAM_CFG      a05f807c pre 0027df77 post 0027df77
+B reg HALF_OFFSET        a05f8080 pre 00000007 post 00000007
+B reg FPU_PERP_VAL       a05f8084 pre 00000000 post 00000000
+B reg ISP_BACKGND_D      a05f8088 pre 38d1b710 post 38d1b710
+B reg ISP_BACKGND_T      a05f808c pre 01000000 post 01000000
+B reg ISP_FEED_CFG       a05f8098 pre 00800408 post 00800408
+B reg SDRAM_REFRESH      a05f80a0 pre 00000020 post 00000020
+B reg SDRAM_ARB_CFG      a05f80a4 pre 0000001f post 0000001f
+B reg SDRAM_CFG          a05f80a8 pre 15d1c951 post 15d1c951
+B reg FOG_COL_RAM        a05f80b0 pre 007f7f7f post 007f7f7f
+B reg FOG_COL_VERT       a05f80b4 pre 007f7f7f post 007f7f7f
+B reg FOG_DENSITY        a05f80b8 pre 0000ff07 post 0000ff07
+B reg FOG_CLAMP_MAX      a05f80bc pre ffffffff post ffffffff
+B reg FOG_CLAMP_MIN      a05f80c0 pre ff000000 post ff000000
+B reg SPG_TRIGGER_POS    a05f80c4 pre 00400220 post 00400220
+B reg SPG_HBLANK_INT     a05f80c8 pre 03450000 post 03450000
+B reg SPG_VBLANK_INT     a05f80cc pre 00150208 post 00150208
+B reg SPG_CONTROL        a05f80d0 pre 00000100 post 00000100
+B reg SPG_HBLANK         a05f80d4 pre 007e0345 post 007e0345
+B reg SPG_LOAD           a05f80d8 pre 020c0359 post 020c0359
+B reg SPG_VBLANK         a05f80dc pre 00280208 post 00240204
+B reg SPG_WIDTH          a05f80e0 pre 03f1933f post 03f1933f
+B reg TEXT_CONTROL       a05f80e4 pre 00000000 post 00000000
+B reg VO_CONTROL         a05f80e8 pre 00160000 post 00160000
+B reg VO_STARTX          a05f80ec pre 000000a8 post 000000ac
+B reg VO_STARTY          a05f80f0 pre 00280028 post 00280028
+B reg SCALER_CTL         a05f80f4 pre 00000400 post 00000400
+B reg PAL_RAM_CTRL       a05f8108 pre 00000000 post 00000000
+B reg SPG_STATUS         a05f810c pre 000038ae post 000039cd
+B reg FB_BURSTCTRL       a05f8110 pre 00093f39 post 00093f39
+B reg FB_C_SOF           a05f8114 pre 00000000 post 00000000
+B reg Y_COEFF            a05f8118 pre 00008040 post 00008040
+B reg PT_ALPHA_REF       a05f811c pre 000000ff post 000000ff
+B reg TA_OL_BASE         a05f8124 pre 000c2680 post 000c2680
+B reg TA_ISP_BASE        a05f8128 pre 00000000 post 00000000
+B reg TA_OL_LIMIT        a05f812c pre 0009e800 post 0009e800
+B reg TA_ISP_LIMIT       a05f8130 pre 0009e740 post 0009e740
+B reg TA_NEXT_OPB        a05f8134 pre 00030980 post 00030980
+B reg TA_ISP_CURRENT     a05f8138 pre 00000000 post 00000000
+B reg TA_GLOB_TILE_CLIP  a05f813c pre 000e0013 post 000e0013
+B reg TA_ALLOC_CTRL      a05f8140 pre 00100203 post 00100203
+B reg TA_LIST_INIT       a05f8144 pre 00000000 post 00000000
+B reg TA_YUV_TEX_BASE    a05f8148 pre 00000000 post 00000000
+B reg TA_YUV_TEX_CTRL    a05f814c pre 00000000 post 00000000
+B reg TA_YUV_TEX_CNT     a05f8150 pre 00000000 post 00000000
+B reg TA_LIST_CONT       a05f8160 pre 00000000 post 00000000
+B reg TA_NEXT_OPB_INIT   a05f8164 pre 000c2680 post 000c2680
+B reg AICA_2800          a0702800 pre 00000010 post 00000010
+B reg AICA_2804          a0702804 pre 00000000 post 00000000
+B reg AICA_2808          a0702808 pre 00000900 post 09000900
+B reg AICA_2880          a0702880 pre 00000000 post 00000000
+B reg AICA_2884          a0702884 pre 00000000 post 00000000
+B reg AICA_2890          a0702890 pre 00000000 post 00000000
+B reg AICA_28B4          a07028b4 pre 00000000 post 00000000
+B reg AICA_28B8          a07028b8 pre 000005c0 post 05c005c0
+B reg AICA_2C00          a0702c00 pre 00000001 post 00000000
+B reg AICA_2D00          a0702d00 pre 00000000 post 00000000
+B reg AICA_2D04          a0702d04 pre 00000000 post 00000000
+B reg AICA_RTC_HI        a0710000 pre 00005bfd post 00005bfd
+B reg AICA_RTC_LO        a0710004 pre 00000c2d post 0c2e0c2e
+B reg AICA_RTC_CTL       a0710008 pre 00000000 post 00000000
+B reg PTEH               ff000000 pre 8c062000 post 8c062000
+B reg PTEL               ff000004 pre 00000000 post 00000000
+B reg TTB                ff000008 pre 00000000 post 00000000
+B reg TEA                ff00000c pre 8c062002 post 8c062002
+B reg MMUCR              ff000010 pre 00000000 post 00000000
+B reg BASRA              ff000014 pre 00000000 post 00000000
+B reg BASRB              ff000018 pre 00000000 post 00000000
+B reg CCR                ff00001c pre 00000105 post 00000105
+B reg TRA                ff000020 pre 00000000 post 00000000
+B reg EXPEVT             ff000024 pre 000000e0 post 000000e0
+B reg INTEVT             ff000028 pre 00000400 post 000003a0
+B reg PTEA               ff000034 pre 00000000 post 00000000
+B reg QACR0              ff000038 pre 00000004 post 00000004
+B reg QACR1              ff00003c pre 00000004 post 00000004
+B reg PMCR1              ff000084 pre 0000c023 post 0000c023
+B reg PMCR2              ff000088 pre 00000023 post 00000023
+B reg BARA               ff200000 pre 00000000 post 00000000
+B reg BAMRA              ff200004 pre 00000000 post 00000000
+B reg BBRA               ff200008 pre 00000000 post 00000000
+B reg BARB               ff20000c pre 00000000 post 00000000
+B reg BAMRB              ff200010 pre 00000000 post 00000000
+B reg BBRB               ff200014 pre 00000000 post 00000000
+B reg BDRB               ff200018 pre dbfd4777 post dbfd4777
+B reg BDMRB              ff20001c pre dfffdbdf post dfffdbdf
+B reg BRCR               ff200020 pre 00000000 post 00000000
+B reg BCR1               ff800000 pre a3020008 post a3020008
+B reg BCR2               ff800004 pre 00000001 post 00000001
+B reg WCR1               ff800008 pre 01110111 post 01110111
+B reg WCR2               ff80000c pre 618066d8 post 618066d8
+B reg WCR3               ff800010 pre 07777777 post 07777777
+B reg MCR                ff800014 pre c00a0e24 post c00a0e24
+B reg PCR                ff800018 pre 00000000 post 00000000
+B reg RTCSR              ff80001c pre 00000094 post 00000094
+B reg RTCNT              ff800020 pre 00000033 post 00000031
+B reg RTCOR              ff800024 pre 0000005e post 0000005e
+B reg RFCR               ff800028 pre 0000011c post 000003ca
+B reg PCTRA              ff80002c pre 000a03f0 post 000a03f0
+B reg PDTRA              ff800030 pre 000000e7 post 00001ce7
+B reg PCTRB              ff800040 pre 00000000 post 00000000
+B reg PDTRB              ff800044 pre 00000000 post 0000000e
+B reg GPIOIC             ff800048 pre 00000000 post 00000000
+B reg SAR0               ffa00000 pre 0c070b80 post 0c0723c0
+B reg DAR0               ffa00004 pre 0c0704c0 post 0c071d00
+B reg DMATCR0            ffa00008 pre 00000000 post 00000000
+B reg CHCR0              ffa0000c pre 000853c3 post 000853c3
+B reg SAR1               ffa00010 pre ffe80014 post ffe80014
+B reg DAR1               ffa00014 pre 0c0628a5 post 0c0628a5
+B reg DMATCR1            ffa00018 pre 00000000 post 00000000
+B reg CHCR1              ffa0001c pre 00000000 post 00000000
+B reg SAR2               ffa00020 pre acd9e540 post acd9e540
+B reg DAR2               ffa00024 pre 00000000 post 00000000
+B reg DMATCR2            ffa00028 pre 00000000 post 00000000
+B reg CHCR2              ffa0002c pre 000012c0 post 000012c0
+B reg SAR3               ffa00030 pre 0c07a5c0 post 0c07a5c0
+B reg DAR3               ffa00034 pre 0c06a5c0 post 0c06a5c0
+B reg DMATCR3            ffa00038 pre 00000000 post 00000000
+B reg CHCR3              ffa0003c pre 00000000 post 00000000
+B reg DMAOR              ffa00040 pre 00008201 post 00008201
+B reg FRQCR              ffc00000 pre 00000e0a post 00000e0a
+B reg STBCR              ffc00004 pre 00000003 post 00000003
+B reg WTCNT              ffc00008 pre 00000000 post 00000000
+B reg WTCSR              ffc0000c pre 00000000 post 00000000
+B reg STBCR2             ffc00010 pre 00000000 post 00000000
+B reg R64CNT             ffc80000 pre 00000000 post 00000000
+B reg RSECCNT            ffc80004 pre 00000000 post 00000000
+B reg RMINCNT            ffc80008 pre 00000000 post 00000000
+B reg RHRCNT             ffc8000c pre 00000000 post 00000000
+B reg RWKCNT             ffc80010 pre 00000000 post 00000000
+B reg RDAYCNT            ffc80014 pre 00000000 post 00000000
+B reg RMONCNT            ffc80018 pre 00000000 post 00000000
+B reg RYRCNT             ffc8001c pre 00000000 post 00000000
+B reg RCR1               ffc80038 pre 00000000 post 00000000
+B reg RCR2               ffc8003c pre 00000000 post 00000000
+B reg ICR                ffd00000 pre 00008000 post 00008000
+B reg IPRA               ffd00004 pre 00000000 post 0000f0f0
+B reg IPRB               ffd00008 pre 00000000 post 00000000
+B reg IPRC               ffd0000c pre 00000000 post 00000300
+B reg TOCR               ffd80000 pre 00000000 post 00000000
+B reg TSTR               ffd80004 pre 00000000 post 00000005
+B reg TCOR0              ffd80008 pre 0001e70f post 0001e70f
+B reg TCNT0              ffd8000c pre 0001ba82 post 00006a75
+B reg TCR0               ffd80010 pre 00000020 post 00000020
+B reg TCOR1              ffd80014 pre 000030b4 post 000030b4
+B reg TCNT1              ffd80018 pre 000030a9 post 000030aa
+B reg TCR1               ffd8001c pre 00000000 post 00000000
+B reg TCOR2              ffd80020 pre 00be41f0 post 00be41f0
+B reg TCNT2              ffd80024 pre 00044291 post 004873ed
+B reg TCR2               ffd80028 pre 00000020 post 00000020
+B reg TCPR2              ffd8002c pre ff9b8012 post ff9b8012
+B reg SCSMR1             ffe00000 pre 00000000 post 00000000
+B reg SCBRR1             ffe00004 pre 00000000 post 00000000
+B reg SCSCR1             ffe00008 pre 00000000 post 00000000
+B reg SCTDR1             ffe0000c pre 00000000 post 00000000
+B reg SCSSR1             ffe00010 pre 00000000 post 00000000
+B reg SCSPTR1            ffe0001c pre 00000000 post 00000000
+B reg SCSMR2             ffe80000 pre 00000000 post 00000000
+B reg SCBRR2             ffe80004 pre 0000000c post 0000000c
+B reg SCSCR2             ffe80008 pre 00000030 post 00000030
+B reg SCFSR2             ffe80010 pre 00000060 post 00000060
+B reg SCFCR2             ffe80018 pre 00000040 post 00000040
+B reg SCFDR2             ffe8001c pre 00000000 post 00000000
+B reg SCSPTR2            ffe80020 pre 00000011 post 00000011
+B reg SCLSR2             ffe80024 pre 00000000 post 00000000
+B cdrom_get_status rv 0 status 2 disc_type 32
+B vbl events 8
+B vbl 0 768505 08 00002208
+B vbl 1 933309 10 00002015
+B vbl 2 4096789 08 00002208
+B vbl 3 4261641 10 00002015
+B vbl 4 7425133 08 00002208
+B vbl 5 7589957 10 00002015
+B vbl 6 10753437 08 00002208
+B vbl 7 10918289 10 00002015
+B hbl events 0
+B line 0 5351 000020d7
+B line 1 11642 000020d8
+B line 2 17990 000020d9
+B line 3 24346 000020da
+B line 4 30730 000020db
+B line 5 37010 000020dc
+B line 6 43378 000020dd
+B line 7 49746 000020de
+B line 8 56026 000020df
+B line 9 62394 000020e0
+B line 10 68762 000020e1
+B line 11 75042 000020e2
+B line 12 81410 000020e3
+B line 13 87778 000020e4
+B line 14 94074 000020e5
+B line 15 100454 000020e6
+B line 16 106810 000020e7
+B line 17 113090 000020e8
+B line 18 119458 000020e9
+B line 19 125826 000020ea
+B line 20 132106 000020eb
+B line 21 138474 000020ec
+B line 22 144842 000020ed
+B line 23 151138 000020ee
+B line 24 157506 000020ef
+B line 25 163786 000020f0
+B line 26 170154 000020f1
+B line 27 176522 000020f2
+B line 28 182890 000020f3
+B line 29 189170 000020f4
+B line 30 195538 000020f5
+B line 31 201838 000020f6
+B line 32 208202 000020f7
+B line 33 214570 000020f8
+B line 34 220850 000020f9
+B line 35 227218 000020fa
+B line 36 233586 000020fb
+B line 37 239866 000020fc
+B line 38 246238 000020fd
+B line 39 252602 000020fe
+B line 40 1660954 00002204
+B line 41 1667338 00002205
+B line 42 1673598 00002206
+B line 43 1679962 00002207
+B line 44 1686330 00002208
+B line 45 1692698 00002209
+B line 46 1698978 0000220a
+B line 47 1705346 0000220b
+B line 48 1711714 0000220c
+B line 49 1717994 00000000
+B line 50 1724378 00000001
+B line 51 1730658 00000002
+B line 52 1737026 00002003
+B line 53 1743394 00002004
+B line 54 1749674 00002005
+B line 55 1756042 00002006
+B line 56 1762410 00002007
+B line 57 1768690 00002008
+B line 58 1775058 00002009
+B line 59 1781442 0000200a
+B line 60 1787722 0000200b
+B line 61 1794090 0000200c
+B line 62 1800458 0000200d
+B line 63 1806738 0000200e
+B line 64 1813106 0000200f
+B line 65 1819474 00002010
+B line 66 1825754 00002011
+B line 67 1832122 00002012
+B line 68 1838490 00002013
+B line 69 1844786 00002014
+B line 70 1851154 00002015
+B line 71 1857522 00002016
+B line 72 1863802 00002017
+B line 73 1870170 00002018
+B line 74 1876538 00002019
+B line 75 1882818 0000201a
+B line 76 1889186 0000201b
+B line 77 1895554 0000201c
+B line 78 1901850 0000201d
+B line 79 1908218 0000201e
+B lat cached RAM read (hit)    394 cycles / 256 = 1.53
+B lat P2 RAM read              4258 cycles / 256 = 16.63
+B lat P2 RAM write             2656 cycles / 256 = 10.37
+B lat P2 VRAM32 read           23922 cycles / 256 = 93.44
+B lat P2 VRAM32 write          6167 cycles / 256 = 24.08
+B lat P2 VRAM64 read           25578 cycles / 256 = 99.91
+B lat PVR reg read (ID)        19694 cycles / 256 = 76.92
+B lat SB reg read (ISTNRM)     4745 cycles / 256 = 18.53
+B lat SB reg read (FFST)       4729 cycles / 256 = 18.47
+B lat GD altstat read8         27173 cycles / 256 = 106.14
+B lat BIOS ROM read32          52601 cycles / 256 = 205.47
+B lat BIOS ROM read16          34343 cycles / 256 = 134.15
+B lat flash read8              23042 cycles / 256 = 90.00
+B lat flash read32             44391 cycles / 256 = 173.40
+B lat AICA reg read32 (2C00)   65047 cycles / 256 = 254.08
+B lat AICA RTC read32          64962 cycles / 256 = 253.75
+B lat AICA RAM read32          65258 cycles / 256 = 254.91
+B ffst after 8 AICA writes (207 cycles to issue): 342:1f 552:f 894:e
+B aica ram readback 11110000 11110007
+B lat P1 line miss (256 lines) 5679 cycles, re-read hits 775 cycles
+B lat OCBWB dirty line (256 lines) 3112 cycles
+B lat SQ->RAM        64 bursts issue 1870 cycles (+drain 37, +fifo 26)
+B lat SQ->VRAM32     64 bursts issue 4774 cycles (+drain 97, +fifo 53)
+B lat SQ->AICA RAM   64 bursts issue 51334 cycles (+drain 857, +fifo 2542)
+B sq readback RAM 5a5a0007 VRAM 5a5a0007 AICA 5a5a0007
+B mirror RAM AC b0a7d0c5 AD b0a7d0c5 AE b0a7d0c5 AF b0a7d0c5
+B mirror VRAM32 A5700010 7ea7beef A7700010 7ea7beef A5F00010 ffffffff
+B mirror VRAM64 A4700010 00000000 A6700010 00000000
+B done
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 20, dma_cntr = 19
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

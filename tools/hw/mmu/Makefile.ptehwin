@@ -1,0 +1,17 @@
+# Makefile.ptehwin -- the M2 verification's PTEH landing probe (ptehwin.c; agents/reports/integration/M2-verify.md).
+# Build: source /opt/toolchains/dc/kos/environ.sh && make -f Makefile.ptehwin OUT=<dir>   (objects and the ELF go to
+# OUT, default the M2 verification's scratch directory, so this directory stays clean).
+# Run (serialised console access): HW_LOCK_WAIT=540 ../hwrun.sh <OUT>/ptehwin.elf <log>
+OUT ?= ../../../agents/scratch/M2-verify/hw
+all: $(OUT)/ptehwin.elf
+$(OUT):
+	mkdir -p $@
+$(OUT)/probes.o: probes.S | $(OUT)
+	kos-cc -c $< -o $@
+$(OUT)/probes2.o: probes2.S | $(OUT)
+	kos-cc -c $< -o $@
+$(OUT)/ptehwin.o: ptehwin.c | $(OUT)
+	kos-cc -O2 -c $< -o $@
+$(OUT)/ptehwin.elf: $(OUT)/ptehwin.o $(OUT)/probes.o $(OUT)/probes2.o
+	kos-cc -o $@ $^
+.PHONY: all

@@ -1,0 +1,76 @@
+hwrun: 21:19:12 lock taken by pid 830034 for tools/hw/fpdn/fpdn.elf
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac07f920
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+fpdn: boot fpscr=00040000
+sanity DN=0 FADD 1.5+dmin: fr0=3fc00000 fpscr=00020000 trap=120
+sanity DN=1 FADD 1.5+dmin: fr0=3fc00000 fpscr=00040000 trap=000
+p1 FADD       rows  196  traps with DN=0 / no enables: 80
+p1 FSUB       rows  196  traps with DN=0 / no enables: 80
+p1 FMUL       rows  196  traps with DN=0 / no enables: 80
+p1 FDIV       rows  196  traps with DN=0 / no enables: 72
+p1 FCMP/EQ    rows  196  traps with DN=0 / no enables: 0
+p1 FCMP/GT    rows  196  traps with DN=0 / no enables: 0
+p1 FMAC       rows 2744  traps with DN=0 / no enables: 1168
+p1 FSQRT      rows   14  traps with DN=0 / no enables: 3
+p1 FTRC       rows   14  traps with DN=0 / no enables: 0
+p1 FABS       rows   14  traps with DN=0 / no enables: 0
+p1 FNEG       rows   14  traps with DN=0 / no enables: 0
+p1 FSRRA      rows   14  traps with DN=0 / no enables: 3
+p1 FADD.D     rows  196  traps with DN=0 / no enables: 88
+p1 FSUB.D     rows  196  traps with DN=0 / no enables: 88
+p1 FMUL.D     rows  196  traps with DN=0 / no enables: 82
+p1 FDIV.D     rows  196  traps with DN=0 / no enables: 74
+p1 FCMP/EQ.D  rows  196  traps with DN=0 / no enables: 0
+p1 FCMP/GT.D  rows  196  traps with DN=0 / no enables: 0
+p1 FSQRT.D    rows   14  traps with DN=0 / no enables: 3
+p1 FTRC.D     rows   14  traps with DN=0 / no enables: 0
+p1 FABS.D     rows   14  traps with DN=0 / no enables: 0
+p1 FNEG.D     rows   14  traps with DN=0 / no enables: 0
+p1 FCNVDS     rows   14  traps with DN=0 / no enables: 4
+p1 FCNVSD     rows   14  traps with DN=0 / no enables: 4
+p1 done: 36750 records, 14674 traps
+p2 FMUL       done, traps 0
+p2 FDIV       done, traps 0
+p2 FMAC       done, traps 0
+p2 FADD       done, traps 2
+p2 FSUB       done, traps 4
+p2 FCNVDS     done, traps 0
+p2 FMUL.D     done, traps 0
+p2 FDIV.D     done, traps 0
+p2 FADD.D     done, traps 0
+p2 FSUB.D     done, traps 2
+p2 FCMP/EQ    done, traps 0
+p2 FCMP/GT    done, traps 0
+p2 FCMP/EQ.D  done, traps 0
+p2 FCMP/GT.D  done, traps 0
+p2 done: 172032 records, 8 traps
+fpdn: fpscr at exit=00040000, handler calls 14683
+DONE
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 121, dma_cntr = 121
+vid_set_mode: 640x480 VGA with 1 framebuffers.

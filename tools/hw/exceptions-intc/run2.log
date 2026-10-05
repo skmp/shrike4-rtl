@@ -1,0 +1,74 @@
+Console enabled
+Upload <tools/hw/exceptions-intc/excint2.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 280900
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c054944, size 54
+Section .fini, lma 0x8c05497c, size 42
+Section .rodata, lma 0x8c0549a8, size 46352
+Section .eh_frame, lma 0x8c05feb8, size 452
+Section .ctors, lma 0x8c0600fc, size 8
+Section .dtors, lma 0x8c060104, size 8
+Section .data, lma 0x8c060120, size 14024
+Section .got, lma 0x8c0637e8, size 12
+Transferred 341852 bytes at 13470919.597215 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac0708e0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+excint2: SR 40000001 buf 8c063840
+mac.l_rm     #0 EXP=0e0 INT=3a0 TEA=8c063842 spc=L+0 ssr=400000f1 pr=8c011b2c r0=8c060944 r1=8c063842 r2=8c063840 fpscr=00040000 fr0=30633820 fr1=34383336
+mac.w_rm     #0 EXP=0e0 INT=3a0 TEA=8c063841 spc=L+0 ssr=400000f0 pr=8c011b2c r0=8c060944 r1=8c063841 r2=8c063840 fpscr=00040000 fr0=34303030 fr1=30303030
+pk_add       #0 EXP=0e0 INT=3a0 TEA=8c063841 spc=L+0 ssr=400000f0 pr=8c011b2c r0=8c060944 r1=8c012888 r2=0 fpscr=00040000 fr0=34303030 fr1=30303030
+pk_sett      #0 EXP=0e0 INT=3a0 TEA=8c063841 spc=L+0 ssr=400000f0 pr=8c011b2c r0=8c060944 r1=8c012894 r2=8c060928 fpscr=00040000 fr0=72662030 fr1=34333d30
+pk_fcmp      #0 EXP=0e0 INT=3a0 TEA=8c063841 spc=L+0 ssr=400000f0 pr=8c011b2c r0=8c060944 r1=8c0128a0 r2=8c060928 fpscr=00040000 fr0=3f800000 fr1=30303030
+pk_fadd      #0 EXP=0e0 INT=3a0 TEA=8c063841 spc=L+0 ssr=400000f0 pr=8c011b2c r0=8c060944 r1=8c0128ae r2=8c060928 fpscr=00040000 fr0=3f800000 fr1=00000000
+pk_frchg     #0 EXP=0e0 INT=3a0 TEA=8c063841 spc=L+0 ssr=400000f0 pr=8c011b2c r0=8c060944 r1=8c0128bc r2=8c060928 fpscr=00040000 fr0=34303030 fr1=30303030
+pk_older     #0 EXP=0e0 INT=3a0 TEA=8c063841 spc=L+0 ssr=400000f0 pr=8c011b2c r0=8c060944 r1=8c0128c6 r2=1 fpscr=00040000 fr0=34303030 fr1=30303030
+pk_fpe       #0 EXP=120 INT=400 TEA=8c063841 spc=L+0 ssr=400000f0 pr=8c011b2c r0=8c060944 r1=8c0128d2 r2=0 fpscr=00040080 fr0=3f800000 fr1=34333d30
+pk_trapa     #0 EXP=160 INT=400 TEA=8c063841 spc=L+2 ssr=400000f0 pr=8c011b2c r0=8c060944 r1=8c0128e2 r2=1 fpscr=00040000 fr0=72662030 fr1=66333d30
+R rte ssr=sr   cyc: 9 9 9 9 9
+R rte imask6   cyc: 9 9 9 9 9
+R rte T^1      cyc: 9 9 9 9 9
+R jmp          cyc: 22 29 29 29 29
+R ldcsr same   cyc: 8 8 8 8 8
+R ldcsr imask6 cyc: 8 8 8 8 8
+S PH imask 15->6 k(n=0..11): 7/7 0/7 8/8 0/7 8/8 7/7 0/0 0/0 6/6 7/7 7/8 6/6
+S PH BL 1->0     k(n=0..11): 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0 0/0
+S PB bra@+6 slot@+8 tgt@+10 spc(n=0..11): +16/7 +0/0 +14/6 +16/7 +18/8 +16/7 +18/8 +14/6 +0/0 +0/0 +14/6 +0/0
+S PS bf/s(nt)@+6 slot@+8 spc(n=0..11): +16/7 +16/7 +18/8 +16/7 +10/4 +12/5 +18/8 +16/7 +0/0 +0/0 +18/8 +0/0
+S PF ldc sr; fffd: records(n=0..11): [180@+0] [180@+0] [180@+0] [420@+0 180@+0] [420@+0 180@+0] [180@+0] [180@+0] [420@+0 180@+0] [180@+0] [420@+0 180@+0] [180@+0] [420@+0 180@+0]
+S PI ipra store k(n=0..11): 15/15 21/21 10/15 14/14 17/17 19/19 20/15 20/14 19/17 17/16 14/15 10/14
+I holly: ISTNRM 00000000 ISTEXT 00000000 ISTERR 00000000 IML2 00001008/00000000/00000000 IML4 0007c000/00000000/00003000 IML6 00000000/00000000/00000000
+irl2_imask1  #0 EXP=180 INT=3a0 TEA=8c063841 spc=L+2 ssr=40000010 pr=8c011b2c r0=8c060944 r1=8c012820 r2=8c060928 fpscr=00040000 fr0=4c4d4920 fr1=30302036
+irl2_imask2  none ret=00000000 fpscr=00040000 fr0=34303030 fr1=30303030
+irl4_imask3  #0 EXP=180 INT=360 TEA=8c063841 spc=L+0 ssr=40000030 pr=8c011b2c r0=8c060944 r1=8c012820 r2=8c060928 fpscr=00040000 fr0=66203033 fr1=333d3172
+irl6_imask5  #0 EXP=180 INT=320 TEA=8c063841 spc=L+0 ssr=40000050 pr=8c011b2c r0=8c060944 r1=8c012820 r2=8c060928 fpscr=00040000 fr0=34303030 fr1=30303030
+excint2: done
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 8, dma_cntr = 7
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

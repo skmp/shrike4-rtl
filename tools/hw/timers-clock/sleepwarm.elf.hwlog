@@ -1,0 +1,84 @@
+Console enabled
+Upload <tools/hw/timers-clock/sleepwarm.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 272708
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c052944, size 54
+Section .fini, lma 0x8c05297c, size 42
+Section .rodata, lma 0x8c0529a8, size 45452
+Section .eh_frame, lma 0x8c05db34, size 452
+Section .ctors, lma 0x8c05dd78, size 8
+Section .dtors, lma 0x8c05dd80, size 8
+Section .data, lma 0x8c05dda0, size 11880
+Section .got, lma 0x8c060c08, size 12
+Transferred 330616 bytes at 12981567.400268 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06eb00
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+sleepwarm: start
+sleepwarm: (flag hs k spc-SLEEP af); hs = PMCTR1L A -> handler, k = TMU1 ticks since the reload at the handler's TCNT1 read, af = PMCTR1L A -> after the SLEEP; the first of each W row is the warm-up
+W J N=100: (1 110 6 2 240) (1 66 2 2 148) (1 54 3 2 136) (1 66 2 2 148) (1 58 3 2 140) (1 62 3 2 144) (1 66 2 2 148) (1 66 2 2 148) (1 66 2 2 148)
+W J N=101: (1 50 2 2 132) (1 58 2 2 140) (1 66 2 2 148) (1 66 2 2 148) (1 66 2 2 148) (1 66 3 2 148) (1 66 3 2 148) (1 66 2 2 148) (1 58 2 2 140)
+W J N=102: (1 58 3 2 140) (1 66 3 2 148) (1 58 2 2 140) (1 66 3 2 148) (1 66 3 2 148) (1 66 2 2 148) (1 66 3 2 148) (1 66 2 2 148) (1 66 2 2 148)
+W J N=103: (1 58 2 2 140) (1 66 2 2 148) (1 50 3 2 132) (1 66 2 2 148) (1 66 2 2 148) (1 66 2 2 148) (1 58 2 2 140) (1 58 3 2 140) (1 66 2 2 148)
+W S N=100: (1 110 5 2 198) (1 70 2 2 130) (1 66 1 2 126) (1 82 2 2 142) (1 66 1 2 126) (1 82 2 2 142) (1 86 2 2 146) (1 66 2 2 126) (1 66 1 2 126)
+W S N=101: (1 82 1 2 142) (1 66 2 2 126) (1 82 2 2 142) (1 66 2 2 126) (1 82 1 2 142) (1 82 1 2 142) (1 66 2 2 126) (1 66 2 2 126) (1 66 2 2 126)
+W S N=102: (1 82 2 2 142) (1 82 2 2 142) (1 66 2 2 126) (1 82 2 2 142) (1 82 2 2 142) (1 66 2 2 126) (1 82 2 2 142) (1 66 2 2 126) (1 66 2 2 126)
+W S N=103: (1 82 2 2 142) (1 66 1 2 126) (1 82 2 2 142) (1 86 2 2 146) (1 66 2 2 126) (1 110 4 2 170) (1 122 5 2 182) (1 74 2 2 134) (1 82 2 2 142)
+E J N=0: (1 47 2 2 132) (1 43 2 2 128) (1 43 2 2 128) (1 47 2 2 132)
+E J N=1: (1 62 3 2 144) (1 62 3 2 144) (1 59 2 2 144) (1 46 2 2 128)
+E J N=2: (1 62 2 2 144) (1 46 3 2 128) (1 50 3 2 132) (1 66 2 2 148)
+E J N=3: (1 62 3 2 144) (1 74 4 2 168) (1 82 5 2 176) (1 90 4 2 184)
+E J N=4: (1 50 3 2 132) (1 58 3 2 140) (1 62 3 2 144) (1 66 2 2 148)
+E J N=5: (1 66 3 2 148) (1 50 3 2 132) (1 66 2 2 148) (1 66 2 2 148)
+E J N=6: (1 62 2 2 144) (1 62 3 2 144) (1 62 2 2 144) (1 66 2 2 148)
+E J N=7: (1 54 3 2 136) (1 62 3 2 144) (1 66 2 2 148) (1 46 2 2 128)
+E J N=8: (1 62 2 2 144) (1 58 2 2 140) (1 62 2 2 144) (1 66 2 2 148)
+E J N=9: (1 58 3 2 140) (1 58 2 2 140) (1 66 2 2 148) (1 54 2 2 136)
+E J N=10: (1 62 3 2 144) (1 54 3 2 136) (1 60 2 2 142) (1 64 2 2 146)
+E J N=11: (1 60 2 2 142) (1 66 3 2 148) (1 66 2 2 148) (1 58 2 2 140)
+P J K=0: (1 50 2 2 132) (1 66 2 2 148) (1 50 2 2 132) (1 66 2 2 148)
+P J K=1: (1 50 3 2 132) (1 62 3 2 144) (1 66 2 2 148) (1 58 3 2 140)
+P J K=2: (1 65 2 2 147) (1 54 2 2 136) (1 66 2 2 148) (1 66 2 2 148)
+P J K=3: (1 53 2 2 135) (1 66 2 2 148) (1 66 2 2 148) (1 58 3 2 140)
+P J K=4: (1 66 2 2 148) (1 66 2 2 148) (1 66 2 2 148) (1 66 2 2 148)
+P J K=5: (1 53 2 2 135) (1 66 2 2 148) (1 66 2 2 148) (1 58 3 2 140)
+P J K=6: (1 68 2 2 150) (1 54 3 2 136) (1 66 2 2 148) (1 66 2 2 148)
+P J K=7: (1 52 2 2 134) (1 62 2 2 144) (1 66 2 2 148) (1 66 2 2 148)
+P S K=0: (1 78 1 2 138) (1 66 2 2 126) (1 82 1 2 142) (1 66 1 2 126)
+P S K=1: (1 86 2 2 146) (1 82 1 2 142) (1 66 1 2 126) (1 82 2 2 142)
+P S K=2: (1 86 1 2 146) (1 82 2 2 142) (1 86 2 2 146) (1 66 2 2 126)
+P S K=3: (1 86 1 2 146) (1 74 2 2 134) (1 66 2 2 126) (1 66 1 2 126)
+P S K=4: (1 86 1 2 146) (1 66 2 2 126) (1 66 1 2 126) (1 66 1 2 126)
+P S K=5: (1 86 2 2 146) (1 66 1 2 126) (1 66 1 2 126) (1 66 2 2 126)
+P S K=6: (1 86 2 2 146) (1 90 1 2 150) (1 90 2 2 150) (1 90 2 2 150)
+P S K=7: (1 78 1 2 138) (1 78 2 2 138) (1 90 1 2 150) (1 90 2 2 150)
+sleepwarm: done
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 6, dma_cntr = 6
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

@@ -1,0 +1,81 @@
+Console enabled
+Upload <tools/hw/timers-clock/tc4.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 267972
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c0516c4, size 54
+Section .fini, lma 0x8c0516fc, size 42
+Section .rodata, lma 0x8c051728, size 46288
+Section .eh_frame, lma 0x8c05cbf8, size 452
+Section .ctors, lma 0x8c05ce3c, size 8
+Section .dtors, lma 0x8c05ce44, size 8
+Section .data, lma 0x8c05ce60, size 11880
+Section .got, lma 0x8c05fcc8, size 12
+Transferred 326716 bytes at 8803061.828544 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06cd20
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+tc4: STBCR 03 WTCSR 00 WTCNT 00 IPRA f0f0 IPRB 0000
+W WTCSR wr A510 -> 10, A500 -> 00, A520 -> 20, A518 -> 18, A500 -> 00; restored 00 00
+tc4 as found (MSTP1 cleared):      2000-06-15 wk4 12:35:00 R64 00 RCR1 00 RCR2 09
+AF gate (RCR2 written -> read, RCR1): 00->00 00 01->01 00 08->08 01 09->09 01 00->00 00 09->09 01
+after AF gate:                     2000-06-15 wk4 12:34:45 R64 00 RCR1 00 RCR2 09
+2000-01-32 (day 32, 31-day month): 2000-02-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2001-02-30 (day 30 in Feb):        2001-03-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-04-31 (day 31, 30-day):       2000-05-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2001-02-29 (29 in non-leap):       2001-03-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-02-2a (day 2A, leap Feb):     2000-03-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-01-3f (day 3F):               2000-02-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-01-00 (day 00):               2000-01-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-01-1a (day 1A):               2000-01-20 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-00-31 (month 00):             2000-01-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-00-28 (month 00, day 28):     2000-00-29 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-13-31 (month 13):             2001-01-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-1a-31 (month 1A):             2001-01-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-0a-31 (month 0A):             2000-10-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-0a-30 (month 0A, day 30):     2000-0a-31 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+12:3a:45 (minute 3A):              2000-06-15 wk4 12:40:00 R64 00 RCR1 00 RCR2 09
+12:5a:45 (minute 5A):              2000-06-15 wk4 13:00:00 R64 00 RCR1 00 RCR2 09
+12:7f:45 (minute 7F):              2000-06-15 wk4 13:00:00 R64 00 RCR1 00 RCR2 09
+1a:59:45 (hour 1A):                2000-06-15 wk4 20:00:00 R64 00 RCR1 00 RCR2 09
+24:59:45 (hour 24):                2000-06-16 wk5 00:00:00 R64 00 RCR1 00 RCR2 09
+3f:59:45 (hour 3F):                2000-06-16 wk5 00:00:00 R64 00 RCR1 00 RCR2 09
+23:59:45 wk7 (week 7):             2000-06-16 wk0 00:00:00 R64 00 RCR1 00 RCR2 09
+12:34:5a (second 5A):              2000-06-15 wk4 12:35:00 R64 00 RCR1 00 RCR2 09
+12:34:7f (second 7F):              2000-06-15 wk4 12:35:00 R64 00 RCR1 00 RCR2 09
+12:34:2a (second 2A):              2000-06-15 wk4 12:34:00 R64 00 RCR1 00 RCR2 09
+199a-12-31 (year 199A):            2000-01-01 wk5 00:00:00 R64 00 RCR1 00 RCR2 09
+1a99-12-31 (year 1A99):            2000-01-01 wk5 00:00:00 R64 00 RCR1 00 RCR2 09
+ffff-12-31 (year FFFF):            0000-01-01 wk5 00:00:00 R64 00 RCR1 00 RCR2 09
+2100-02-29 (29, /100 year):        2100-03-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+START 0, then wr 0D (ADJ+START):   2000-06-15 wk4 12:35:00 R64 00 RCR1 00 RCR2 09
+START 1, then wr 0C (ADJ, START 0): 2000-06-15 wk4 12:34:00 R64 00 RCR1 00 RCR2 08
+tc4: done; STBCR 03 WTCSR 00 WTCNT 00
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 16, dma_cntr = 13
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

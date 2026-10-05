@@ -1,0 +1,169 @@
+hwrun: 04:26:53 lock taken by pid 2924269 for tools/hw/debug-ubc-hudi/ubcbrk.elf
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac07a860
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+ubcbrk: start
+A UBC regs 11111111 02 0000 44444444 05 0000 77777777 88888888 0008 (BASRA 33 BASRB 66)
+A ff200100 r32: 8cffff38 8cffff94 8cffff94 8cffff30 8cffff30 636d6165 636d6165 746e6f43 746e6f43 00000000
+A ff200200 r32: 00000000 00000000 00000000 00000001 00000001 8cffff60 8cffff60 8cffff58 8cffff58 8c01e7b0
+A ff200100 r16: 078c 078c c1d8 c1d8 0000 0000 7678 7678 9708 9708
+A ff200100 r8: 28 28 01 01 30 30 c8 c8 3c 3c
+A BARA=9abcdef0 -> @ff200100 ff200000; BARA=0 -> @ff200100 d000b510 @ff200000 00000000
+A PMCTR stopped, ff100000..3c: 00000000 00000001 39f52784 00000000 01bcdf51 01bcdf51 01bcdf51 01bcdf51 00000000 00000001 39f52784 00000000 01bcdf51 01bcdf51 01bcdf51 01bcdf51
+A PMCTR1H r16 0001 r16+2 0001 r8 01 r8+3 00 | ff100100 00000000 ff101004 00000001 ff120004 00000001
+A PMCR2 w16@+100 0015 -> 0015, w32 00000016 -> 0015, w8 17 -> 0015, w16@+2 0018 -> 0015
+X: branch snippets, exact d(event) over 64 iterations (n=80 minus n=16)
+X: snippets base btnt btt bts bfnt bfsnt bra braf bsrf jmp bsr+rts jsr+rts lds+rts ex8
+X 10 ev 64 128 64 128 128 128 128 128 64 128 64 64 64 64 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704
+X 11 ev 64 64 64 128 64 64 128 128 64 128 64 64 64 64 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704
+X 12 ev 0 0 0 0 0 0 0 0 64 0 64 64 0 0 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704
+X 13 ev 128 192 256 256 192 256 192 256 256 256 384 384 320 640 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704
+X 14 ev 128 128 64 128 128 128 128 64 64 64 64 64 64 64 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704
+X 27 ev 64 64 64 128 64 64 128 64 64 64 64 64 64 64 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704
+X 28 ev 0 0 0 0 0 0 0 0 0 0 64 0 64 0 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704
+X 06 ev 192 256 320 384 256 320 320 384 384 384 576 576 448 512 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704
+X 0a ev 192 256 320 384 256 320 320 384 384 384 576 576 448 512 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704
+X 09 ev 0 0 0 0 0 0 0 0 0 0 0 0 0 0 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704
+X 15 ev 0 0 0 0 0 0 0 0 0 0 0 0 0 0 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704
+X 23 ev 192 256 320 384 256 320 320 384 384 384 576 576 576 704 | cyc 192 256 320 384 256 320 320 384 384 384 576 576 576 704
+Y: run-1 snippets nop ld st ldP2 ldCCN ldTMU br fp ocm icm, exact d(event) over 32 iterations
+Y 00 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2238
+Y 01 ev 0 128 0 0 0 0 0 0 64 0 | cyc 224 192 192 602 160 640 416 160 1742 2246
+Y 02 ev 0 0 128 0 0 0 0 0 0 0 | cyc 224 192 192 598 160 640 416 160 1716 2246
+Y 03 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1714 2248
+Y 04 ev 0 0 0 0 0 0 0 0 64 0 | cyc 224 192 192 576 160 640 416 160 1714 2244
+Y 05 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2252
+Y 06 ev 224 160 160 128 128 128 416 160 128 288 | cyc 224 192 192 576 160 640 416 160 1724 2246
+Y 07 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1742 2240
+Y 08 ev 0 0 0 0 0 0 0 0 0 64 | cyc 224 192 192 598 160 640 416 160 1744 2244
+Y 09 ev 0 128 128 32 32 32 0 0 64 0 | cyc 224 192 192 576 160 640 416 160 1742 2240
+Y 0a ev 224 160 160 128 128 128 416 160 128 160 | cyc 224 192 192 554 160 640 416 160 1742 2250
+Y 0b ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1742 2240
+Y 0c ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 598 160 640 416 160 1724 2248
+Y 0d ev 0 0 0 0 32 32 0 0 0 0 | cyc 224 192 192 554 160 640 416 160 1742 2250
+Y 0e ev 0 128 128 0 0 0 0 0 64 0 | cyc 224 192 192 552 160 640 416 160 1740 2248
+Y 0f ev 0 0 0 0 0 0 0 0 64 0 | cyc 224 192 192 598 160 640 416 160 1730 2246
+Y 10 ev 32 32 32 32 32 32 96 32 32 96 | cyc 224 192 192 576 160 640 416 160 1742 2242
+Y 11 ev 32 32 32 32 32 32 64 32 32 96 | cyc 224 192 192 598 160 640 416 160 1742 2244
+Y 12 ev 0 0 0 0 0 0 32 0 0 0 | cyc 224 192 192 576 160 640 416 160 1714 2244
+Y 13 ev 192 160 160 64 64 64 256 128 96 192 | cyc 224 192 192 576 160 640 416 160 1742 2240
+Y 14 ev 160 64 64 64 64 64 96 96 64 32 | cyc 224 192 192 598 160 640 416 160 1714 2246
+Y 15 ev 0 0 0 0 0 0 0 96 0 0 | cyc 224 192 192 576 160 640 416 160 1724 2246
+Y 16 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2238
+Y 17 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2242
+Y 18 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1744 2240
+Y 19 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2250
+Y 1a ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1742 2230
+Y 1b ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 598 160 640 416 160 1724 2246
+Y 1c ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 602 160 640 416 160 1742 2246
+Y 1d ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1714 2244
+Y 1e ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 550 160 640 416 160 1742 2246
+Y 1f ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2246
+Y 20 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2240
+Y 21 ev 0 0 0 0 0 0 0 0 0 1532 | cyc 224 192 192 576 160 640 416 160 1714 2246
+Y 22 ev 0 0 0 0 0 0 0 0 1532 0 | cyc 224 192 192 576 160 640 416 160 1740 2240
+Y 23 ev 224 192 192 598 160 640 416 160 1726 2246 | cyc 224 192 192 598 160 640 416 160 1726 2246
+Y 24 ev 0 0 0 0 0 0 0 0 0 1962 | cyc 224 192 192 576 160 640 416 160 1742 2250
+Y 25 ev 0 0 0 480 64 544 0 0 1612 0 | cyc 224 192 192 576 160 640 416 160 1740 2258
+Y 26 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 598 160 640 416 160 1728 2246
+Y 27 ev 32 32 32 32 32 32 96 32 32 32 | cyc 224 192 192 576 160 640 416 160 1714 2244
+Y 28 ev 0 0 0 0 0 0 32 0 0 0 | cyc 224 192 192 576 160 640 416 160 1742 2240
+Y 29 ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 598 160 640 416 160 1714 2248
+Y 2a ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1714 2246
+Y 2b ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2250
+Y 2c ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2248
+Y 2d ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 554 160 640 416 160 1744 2244
+Y 2e ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 576 160 640 416 160 1740 2230
+Y 2f ev 0 0 0 0 0 0 0 0 0 0 | cyc 224 192 192 598 160 640 416 160 1744 2244
+Z interrupts (0x16) in 1 s: 221
+ubcbrk: DBR 8c000010 -> 8c012000, SR 40000001, PTEH 8c063400, sp~8cfffe28
+B pcA_pre        n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2 ret=7 evA=1 evB=0
+B pcA_post       n=1 spc=t_lin+10 ssr=400000f1 exp=1e0 brcr@h=8401 after=0401 r9@brk=3 ret=7 evA=1 evB=0
+B pcA_pre_szW    n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2 ret=7 evA=1 evB=0
+B pcA_pre_szL    n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0
+B pcA_pre_szQ    n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0
+B pcA_pre_W      n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0
+B pcA_pre_RW     n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2 ret=7 evA=1 evB=0
+B pcA_pre_IDboth n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2 ret=7 evA=1 evB=0
+B pcA_asop       n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0
+B pcA_odd        n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0
+B pcA_P1vsA1     n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0
+B pcB_pre        n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=4001 after=0001 r9@brk=2 ret=7 evA=0 evB=1
+B pcB_post       n=1 spc=t_lin+10 ssr=400000f1 exp=1e0 brcr@h=4041 after=0041 r9@brk=3 ret=7 evA=0 evB=1
+B pcB_post_dbeb  n=1 spc=t_lin+10 ssr=400000f1 exp=1e0 brcr@h=40c1 after=00c1 r9@brk=3 ret=7 evA=0 evB=1
+B AB_sameSPC     n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=8401 after=0401 r9@brk=2 ret=7 evA=1 evB=0
+B slot_ds_pre    n=1 spc=t_slot+4 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=2 evA=1 evB=0
+B slot_ds_post   n=1 spc=t_slot+12 ssr=400000f1 exp=1e0 brcr@h=8401 after=0401 r9@brk=1 ret=2 evA=1 evB=0
+B slot_br_post   n=1 spc=t_slot+12 ssr=400000f1 exp=1e0 brcr@h=8401 after=0401 r9@brk=1 ret=2 evA=1 evB=0
+B slot_br_pre    n=1 spc=t_slot+4 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=2 evA=1 evB=0
+B slot_overrun   n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=2 evA=0 evB=0
+B slot_target    n=1 spc=t_slot+12 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=1 ret=2 evA=1 evB=0
+B bfsnt_br_post  n=1 spc=t_bfs+10 ssr=400000f1 exp=1e0 brcr@h=8401 after=0401 r9@brk=1 ret=3 evA=1 evB=0
+B bfsnt_ds_pre   n=1 spc=t_bfs+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=3 evA=1 evB=0
+B bfsnt_ds_post  n=1 spc=t_bfs+10 ssr=400000f1 exp=1e0 brcr@h=8401 after=0401 r9@brk=1 ret=3 evA=1 evB=0
+B seq_Bonly_thenAB n=1(first call 0) spc=t_seq+16 ssr=400000f0 exp=1e0 brcr@h=4009 after=0009 r9@brk=1 ret=2,3 evA=1 evB=1
+B seq_AB         n=1 spc=t_seq+16 ssr=400000f0 exp=1e0 brcr@h=4009 after=0009 r9@brk=1 ret=3 evA=1 evB=1
+B indep_AB       n=1 spc=t_seq+8 ssr=400000f0 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=3 evA=1 evB=0
+B mask10_pre     n=1 spc=t_mask+0 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2348886016 ret=3 evA=1 evB=0
+B mask0_mid      n=1 spc=t_mask+266 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2 ret=3 evA=1 evB=0
+B asid_match     n=1 spc=t_lin+8 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=2 ret=7 evA=1 evB=0
+B asid_mismatch  n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0
+B asid_mism80    n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=7 evA=0 evB=0
+B opA_rd         n=1 spc=t_ld+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0
+B opA_rd_L       n=1 spc=t_ld+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0
+B opA_rd_W_onL   n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=8 evA=0 evB=0
+B opA_rd_W_onW   n=1 spc=t_ldw+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0
+B opA_rd_anysz+2 n=1 spc=t_ld+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0
+B opA_rd_L+2     n=1 spc=t_ld+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0
+B opA_wr         n=1 spc=t_st+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0
+B opA_rd_onwr    n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=8 evA=0 evB=0
+B opA_ifetch_onld n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=8 evA=0 evB=0
+B opA_mask10     n=1 spc=t_ld+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=8 evA=1 evB=0
+B opA_P1vsA1     n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0001 r9@brk=0 ret=8 evA=0 evB=0
+B opA_rd_use     n=1 spc=t_ldu+6 ssr=400000f1 exp=1e0 brcr@h=8001 after=0001 r9@brk=0 ret=2779096492 evA=1 evB=0
+B opB_wr_data    n=1 spc=t_st+8 ssr=400000f1 exp=1e0 brcr@h=4081 after=0081 r9@brk=1 ret=8 evA=0 evB=1
+B opB_wr_nodata  n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=0081 r9@brk=0 ret=8 evA=0 evB=0
+B opB_wr_masked  n=1 spc=t_st+8 ssr=400000f1 exp=1e0 brcr@h=4081 after=0081 r9@brk=1 ret=8 evA=0 evB=1
+B opB_rd_data    n=1 spc=t_ld+8 ssr=400000f1 exp=1e0 brcr@h=4081 after=0081 r9@brk=1 ret=8 evA=0 evB=1
+B opB_rd_data_use n=1 spc=t_ldu+6 ssr=400000f1 exp=1e0 brcr@h=4081 after=0081 r9@brk=0 ret=2779096492 evA=0 evB=1
+B opB_rd_nodbeb  n=1 spc=t_ld+6 ssr=400000f1 exp=1e0 brcr@h=4001 after=0001 r9@brk=0 ret=8 evA=0 evB=1
+L latency: n=1 pm@handler-pm@before = 10 (ret 2)
+L latency (no break): n=0 ret 2
+T settle (NOP fillers, k = 0..14): breaks/spc-offset 0:0/-1 1:0/-1 2:0/-1 3:0/-1 4:0/-1 5:0/-1 6:0/-1 7:0/-1 8:0/-1 9:0/-1 10:0/-1 11:0/-1 12:0/-1 13:1/28 14:1/30
+T settle (ADD fillers, k = 0..8): breaks/spc-offset 0:0/-1 1:0/-1 2:0/-1 3:0/-1 4:0/-1 5:0/-1 6:0/-1 7:0/-1 8:0/-1
+V vbr_pre n=1 evt=1e0 pc=t_lin+8 sr=400000f1 brcr@h=8000 after=0000 r9=2 ret=7
+V vbr_post n=1 evt=1e0 pc=t_lin+10 sr=400000f1 brcr@h=8400 after=0400 r9=3 ret=7
+B bl1_pre        n=0 spc=- ssr=00000000 exp=000 brcr@h=0000 after=8001 r9@brk=0 ret=2 evA=1 evB=0
+ubcbrk: area-7 UTLB test starting
+7 saved MMUCR 00000000 PTEH 8c063400 PTEL 00000000 PTEA 00000000 | exc 000 at 00000000 | ok 600df00d
+7 @1f000030 040205c1 @1f00001c 00000105 @1fd80024 003117ec @ffd80024 003117ea | BARA after w@1f200000 13579bdf | r16 @1fd0000c 0300
+7 now MMUCR 00000000 PTEH 8c063400 PTEL 00000000 PTEA 00000000
+ubcbrk: done
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 201, dma_cntr = 201
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+exit 0

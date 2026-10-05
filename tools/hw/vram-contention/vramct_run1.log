@@ -1,0 +1,55 @@
+Console enabled
+Upload <tools/hw/vram-contention/vramct.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 268484
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c0518c4, size 54
+Section .fini, lma 0x8c0518fc, size 42
+Section .rodata, lma 0x8c051928, size 45488
+Section .eh_frame, lma 0x8c05cad8, size 452
+Section .ctors, lma 0x8c05cd1c, size 8
+Section .dtors, lma 0x8c05cd24, size 8
+Section .data, lma 0x8c05cd40, size 11880
+Section .got, lma 0x8c05fba8, size 12
+Transferred 326428 bytes at 12741622.146332 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac072c20
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+vramct: FB_R_CTRL 00800005 SPG_STATUS 0000385b (display on)
+vramct A run 0: display on 21113391 cycles (80.54 per burst), off 20173570 (76.95 per burst)
+vramct A run 1: display on 20967506 cycles (79.98 per burst), off 20173602 (76.95 per burst)
+vramct A run 2: display on 20797094 cycles (79.33 per burst), off 20173550 (76.95 per burst)
+vramct A mean: on - off = 785756 cycles per 8 MB clear (3.928 ms at 200 MHz), 2.99 cycles per burst
+vramct B on : per 2 KB chunk (64 bursts): min 4976 max 5920; outside blank 1075 chunks avg 5179.01, in blank 3021 chunks avg 5214.26 cycles
+vramct B on : by scan line band (32 lines): 0:5004 32:5190 64:5261 96:5263 128:5263 160:5252 192:5234 224:5229 256:5230 288:5231 320:5233 352:5197 384:5194 416:5197 448:5197 480:5197 512:5111
+vramct B off: per 2 KB chunk (64 bursts): min 4976 max 5082; outside blank 986 chunks avg 5003.56, in blank 3110 chunks avg 5003.66 cycles
+vramct B off: by scan line band (32 lines): 0:5002 32:5002 64:5003 96:5004 128:5004 160:5004 192:5004 224:5004 256:5002 288:5003 320:5004 352:5003 384:5004 416:5002 448:5002 480:5003 512:5003
+vramct: done
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 12, dma_cntr = 9
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

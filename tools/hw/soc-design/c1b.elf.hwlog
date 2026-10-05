@@ -1,0 +1,86 @@
+Console enabled
+Upload <tools/hw/soc-design/c1b.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 290284
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c056dec, size 54
+Section .fini, lma 0x8c056e24, size 42
+Section .rodata, lma 0x8c056e50, size 45564
+Section .eh_frame, lma 0x8c06204c, size 452
+Section .ctors, lma 0x8c062290, size 8
+Section .dtors, lma 0x8c062298, size 8
+Section .data, lma 0x8c0622a0, size 11880
+Section .got, lma 0x8c065108, size 12
+Transferred 348304 bytes at 13723102.347621 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac0730a0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+c1b: sr 40000001 base 0x8c012000 vt0 0x8c012400 end 0x8c01454c scratch 0x8c065f60
+L v0 ill       26.004 (max   26.004)
+L v0 dae       28.004 (max   28.004)
+L v0 ref       22.004 (max   22.004)
+L v1 ill       28.004 (max   28.004)
+L v1 dae       30.004 (max   30.004)
+L v1 ref       24.004 (max   24.004)
+L v2 ill       23.004 (max   23.004)
+L v2 dae       25.004 (max   25.004)
+L v2 ref       17.004 (max   17.004)
+L v2 trap      25.004 (max   25.004)
+L v2 fpe       23.004 (max   23.004)
+L v3 ill       26.004 (max   26.004)
+L v3 dae       28.004 (max   28.004)
+L v3 ref       22.004 (max   22.004)
+L v4 ill       27.285 (max   27.285)
+L v4 dae       28.801 (max   28.801)
+L v4 ref       20.805 (max   20.969)
+B v0 b3 ill     27   14   14   14   14   14
+B v0 b3 dae     34   16   16   16   16   16
+B v0 b3 ref     33    8    8    8    8    8
+B v0 d0 ill      8    8    8    8    8    8
+B v0 d2 ill     11   11   11   11   11   11
+B v1 b3 ill     29   16   16   16   16   16
+B v1 b3 dae     36   18   18   18   18   18
+B v1 b3 ref     35   10   10   10   10   10
+B v3 b3 ill     27   14   14   14   14   14
+B v3 b3 dae     34   16   16   16   16   16
+B v3 b3 ref     33   55   33   33   33   33
+B v3 d0 ill      8    8    8    8    8    8
+B v3 d2 ill     11   11   11   11   11   11
+B v3 d0 ref      9    4    4    4    4    4
+B v3 d2 ref      9    5    5    5    5    5
+B v3 j0 ill     10   10   10   10   10   10
+B v3 j2 ill     11   11   11   11   11   11
+B v3 j0 trap    13   13   13   13   13   13
+B v3 j2 trap    13   13   13   13   13   13
+B v4 b3 ill     31   40   40   40   40   40
+B v4 b3 dae     38   23   23   23   23   23
+B v4 b3 ref     35   10   10   10   10   10
+c1b: done
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 5, dma_cntr = 5
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

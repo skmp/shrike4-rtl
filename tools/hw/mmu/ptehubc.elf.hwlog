@@ -1,0 +1,119 @@
+Console enabled
+Upload <agents/scratch/M2-fix/hw/ptehubc.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 269284
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c051be4, size 54
+Section .fini, lma 0x8c051c1c, size 42
+Section .rodata, lma 0x8c051c48, size 46140
+Section .eh_frame, lma 0x8c05d084, size 452
+Section .ctors, lma 0x8c05d2c8, size 8
+Section .dtors, lma 0x8c05d2d0, size 8
+Section .data, lma 0x8c05d2e0, size 11880
+Section .got, lma 0x8c060148, size 12
+Transferred 327880 bytes at 12733124.657605 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06da60
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+ptehubc: start (MMUCR 00000000 PTEH 4c0b7000, data 8c060a00)
+N BASRA 2, PTEH.ASID 1 -> 2 (1 = the target compared with the NEW ASID)
+  N k= 0 at 8c0108a0 tgt 8c0108a2: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  N k= 1 at 8c0108c0 tgt 8c0108c4: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  N k= 2 at 8c0108e0 tgt 8c0108e6: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  N k= 3 at 8c010900 tgt 8c010908: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  N k= 4 at 8c010920 tgt 8c01092a: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  N k= 5 at 8c010940 tgt 8c01094c: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  N k= 6 at 8c010960 tgt 8c01096e: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  N k= 7 at 8c010980 tgt 8c010990: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  N k= 8 at 8c0109a0 tgt 8c0109b2: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  N k= 9 at 8c0109c0 tgt 8c0109d4: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  N k=10 at 8c0109e0 tgt 8c0109f6: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  N k=11 at 8c010a00 tgt 8c010a18: cold 1/24 1/24 1/24 | warm 0/0 0/0 0/0 |
+  N k=12 at 8c010a20 tgt 8c010a3a: cold 1/26 1/26 1/26 | warm 0/0 0/0 0/0 |
+  N k=13 at 8c010a40 tgt 8c010a5c: cold 1/28 1/28 1/28 | warm 1/28 1/28 1/28 |
+  N k=14 at 8c010a80 tgt 8c010a9e: cold 1/30 1/30 1/30 | warm 1/30 1/30 1/30 |
+O BASRA 1, PTEH.ASID 1 -> 2 (1 = the target compared with the OLD ASID)
+  O k= 0 at 8c0108a0 tgt 8c0108a2: cold 1/2 1/2 1/2 | warm 1/2 1/2 1/2 |
+  O k= 1 at 8c0108c0 tgt 8c0108c4: cold 1/4 1/4 1/4 | warm 1/4 1/4 1/4 |
+  O k= 2 at 8c0108e0 tgt 8c0108e6: cold 1/6 1/6 1/6 | warm 1/6 1/6 1/6 |
+  O k= 3 at 8c010900 tgt 8c010908: cold 1/8 1/8 1/8 | warm 1/8 1/8 1/8 |
+  O k= 4 at 8c010920 tgt 8c01092a: cold 1/10 1/10 1/10 | warm 1/10 1/10 1/10 |
+  O k= 5 at 8c010940 tgt 8c01094c: cold 1/12 1/12 1/12 | warm 1/12 1/12 1/12 |
+  O k= 6 at 8c010960 tgt 8c01096e: cold 1/14 1/14 1/14 | warm 1/14 1/14 1/14 |
+  O k= 7 at 8c010980 tgt 8c010990: cold 1/16 1/16 1/16 | warm 1/16 1/16 1/16 |
+  O k= 8 at 8c0109a0 tgt 8c0109b2: cold 1/18 1/18 1/18 | warm 1/18 1/18 1/18 |
+  O k= 9 at 8c0109c0 tgt 8c0109d4: cold 1/20 1/20 1/20 | warm 1/20 1/20 1/20 |
+  O k=10 at 8c0109e0 tgt 8c0109f6: cold 1/22 1/22 1/22 | warm 1/22 1/22 1/22 |
+  O k=11 at 8c010a00 tgt 8c010a18: cold 0/0 0/0 0/0 | warm 1/24 1/24 1/24 |
+  O k=12 at 8c010a20 tgt 8c010a3a: cold 0/0 0/0 0/0 | warm 1/26 1/26 1/26 |
+  O k=13 at 8c010a40 tgt 8c010a5c: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  O k=14 at 8c010a80 tgt 8c010a9e: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+T reference: ubcbrk T, BBRA armed by the store (console: 0 for k <= 12, 1 for k >= 13)
+  T k= 0 at 8c010ac0 tgt 8c010ac2: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k= 1 at 8c010ae0 tgt 8c010ae4: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k= 2 at 8c010b00 tgt 8c010b06: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k= 3 at 8c010b20 tgt 8c010b28: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k= 4 at 8c010b40 tgt 8c010b4a: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k= 5 at 8c010b60 tgt 8c010b6c: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k= 6 at 8c010b80 tgt 8c010b8e: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k= 7 at 8c010ba0 tgt 8c010bb0: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k= 8 at 8c010bc0 tgt 8c010bd2: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k= 9 at 8c010be0 tgt 8c010bf4: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k=10 at 8c010c00 tgt 8c010c16: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k=11 at 8c010c20 tgt 8c010c38: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k=12 at 8c010c40 tgt 8c010c5a: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  T k=13 at 8c010c60 tgt 8c010c7c: cold 1/28 1/28 1/28 | warm 1/28 1/28 1/28 |
+  T k=14 at 8c010ca0 tgt 8c010cbe: cold 1/30 1/30 1/30 | warm 1/30 1/30 1/30 |
+P operand read, BASRA 2, PTEH.ASID 1 -> 2 (1 = the load compared with the NEW ASID)
+  P k= 0 at 8c010ce0 tgt 8c010ce2: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  P k= 1 at 8c010d00 tgt 8c010d04: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  P k= 2 at 8c010d20 tgt 8c010d26: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  P k= 3 at 8c010d40 tgt 8c010d48: cold 1/10 1/10 1/10 | warm 1/10 1/10 1/10 |
+  P k= 4 at 8c010d60 tgt 8c010d6a: cold 1/12 1/12 1/12 | warm 1/12 1/12 1/12 |
+  P k= 5 at 8c010d80 tgt 8c010d8c: cold 1/14 1/14 1/14 | warm 1/14 1/14 1/14 |
+  P k= 6 at 8c010da0 tgt 8c010dae: cold 1/16 1/16 1/16 | warm 1/16 1/16 1/16 |
+Q operand read, BASRA 1, PTEH.ASID 1 -> 2 (1 = the load compared with the OLD ASID)
+  Q k= 0 at 8c010ce0 tgt 8c010ce2: cold 1/4 1/4 1/4 | warm 1/4 1/4 1/4 |
+  Q k= 1 at 8c010d00 tgt 8c010d04: cold 1/6 1/6 1/6 | warm 1/6 1/6 1/6 |
+  Q k= 2 at 8c010d20 tgt 8c010d26: cold 1/8 1/8 1/8 | warm 1/8 1/8 1/8 |
+  Q k= 3 at 8c010d40 tgt 8c010d48: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  Q k= 4 at 8c010d60 tgt 8c010d6a: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  Q k= 5 at 8c010d80 tgt 8c010d8c: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  Q k= 6 at 8c010da0 tgt 8c010dae: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+S operand reference: ubcevt S, BBRA armed by the store (console: 0 for k <= 2, 1 for k >= 3)
+  S k= 0 at 8c010dc0 tgt 8c010dc2: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  S k= 1 at 8c010de0 tgt 8c010de4: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  S k= 2 at 8c010e00 tgt 8c010e06: cold 0/0 0/0 0/0 | warm 0/0 0/0 0/0 |
+  S k= 3 at 8c010e20 tgt 8c010e28: cold 1/10 1/10 1/10 | warm 1/10 1/10 1/10 |
+  S k= 4 at 8c010e40 tgt 8c010e4a: cold 1/12 1/12 1/12 | warm 1/12 1/12 1/12 |
+  S k= 5 at 8c010e60 tgt 8c010e6c: cold 1/14 1/14 1/14 | warm 1/14 1/14 1/14 |
+  S k= 6 at 8c010e80 tgt 8c010e8e: cold 1/16 1/16 1/16 | warm 1/16 1/16 1/16 |
+ptehubc: done, safety-net breaks 0, DBR 8c000010, PTEH 4c0b7000, MMUCR 00000000
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 8, dma_cntr = 7
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

@@ -1,0 +1,114 @@
+Console enabled
+Upload <tools/hw/timers-clock/tc.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 274760
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c053148, size 54
+Section .fini, lma 0x8c053180, size 42
+Section .rodata, lma 0x8c0531ac, size 48740
+Section .eh_frame, lma 0x8c05f010, size 452
+Section .ctors, lma 0x8c05f254, size 8
+Section .dtors, lma 0x8c05f25c, size 8
+Section .data, lma 0x8c05f280, size 11880
+Section .got, lma 0x8c0620e8, size 12
+Transferred 335956 bytes at 13299935.766829 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06f560
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+0: PMCR0 c023 FRQCR 0e0a STBCR 03 STBCR2 00 WTCNT 00 WTCSR 00 (16-bit reads WTCNT 0000 WTCSR 0000)
+0: IPRA f0f0 IPRB 0000 IPRC 0300 TOCR 00 TSTR 05 TCR0 0020 TCR1 0000 TCR2 0020
+0: TCOR0 0001e70f TCNT0 000197ce TCOR1 000030b4 TCNT1 000030a9 TCOR2 00be41f0 TCNT2 0067456e TCPR2 ff9b8012
+0: RTC R64CNT 00 SEC 00 MIN 00 HR 00 WK 00 DAY 00 MON 00 YR 0000 AR 00 00 00 00 00 00 RCR1 00 RCR2 00
+A tpsc 0: 2000056 cycles / 125004 counts = 15.999 cycles per count
+A tpsc 1: 2000111 cycles / 31252 counts = 63.999 cycles per count
+A tpsc 2: 4000252 cycles / 15626 counts = 255.999 cycles per count
+A tpsc 3: 8000504 cycles / 7813 counts = 1023.998 cycles per count
+A tpsc 4: 16003084 cycles / 3907 counts = 4096.003 cycles per count
+A tpsc 5: TCNT1 ffffffff -> ffffffff over 4M cycles
+A tpsc 6: TCNT1 ffffffff -> ffffffff over 4M cycles
+A tpsc 7: TCNT1 ffffffff -> ffffffff over 4M cycles
+B tpsc 4 start->first decrement (cycles), first->second: [2151 4100 r1000 v999] [3783 4088 r1000 v999] [3755 4088 r1000 v999] [3559 4092 r1000 v999] [3307 4088 r1000 v999] [3027 4088 r1000 v999] [3643 4088 r1000 v999] [2439 4116 r1000 v999] [2243 4088 r1000 v999] [443 4088 r1000 v999] [1711 4088 r1000 v999] [1459 4088 r1000 v999] [1207 4088 r1000 v999] [899 4116 r1000 v999] [787 4088 r1000 v999] [507 4088 r1000 v999]
+B tpsc 2 start->first decrement (cycles), first->second: [243 236 r1000 v999] [59 252 r1000 v999] [59 252 r1000 v999] [59 280 r1000 v999] [59 252 r1000 v999] [33 250 r1000 v999] [255 252 r1000 v999] [115 252 r1000 v999] [87 252 r1000 v999] [199 252 r1000 v999] [255 252 r1000 v999] [255 252 r1000 v999] [255 252 r1000 v999] [199 252 r1000 v999] [171 252 r1000 v999] [115 252 r1000 v999]
+C tpsc 4 TCNT write while running: (cw-e0, ce-e0, ce-cw, readback): [84 127 43 4294967294] [422 467 45 4294967292] [766 811 45 4294967290] [1108 1151 43 4294967287] [1444 1493 49 4294967284] [1788 1837 49 4294967281] [2132 2181 49 4294967278] [2470 2521 51 4294967275] [2814 2865 51 4294967272] [3156 3205 49 4294967269] [3492 3541 49 4294967266] [3836 3885 49 4294967263]
+D tpsc 4 TCOR 2 TCNT 2: (cycle, TCNT, TCR): (1028 1 0004) (5128 0 0004) (9168 0 0104) (9224 2 0104) (13312 1 0104) (17400 0 0104) (21488 2 0104) (25576 1 0104) (29664 0 0104) (33800 2 0104) (37888 1 0104) (41976 0 0104) (46064 2 0104) (50152 1 0104) (54240 0 0104) (58376 2 0104)
+D tpsc 4 TCOR 0 TCNT 0: (cycle, TCNT, TCR): (2704 0 0104)
+D tpsc 4 TCOR 3 TCNT 1: (cycle, TCNT, TCR): (3376 0 0004) (7464 3 0104) (11552 2 0104) (15640 1 0104) (19776 0 0104) (23864 3 0104) (27952 2 0104)
+E TCNT1=12345678: rd32 12345678 rd16@0 0000 rd16@2 0000 rd8@0..3 00 00 00 00
+E wr16@0 AAAA -> 12345678; wr8@3 BB -> 12345678; TCOR1 rd16@0 0000 rd16@2 0000
+E TCR1 wr FFFF -> 003f, wr 0000 -> 0000; TCR1 rd32 00000000 rd8 00
+E UNF: after underflow 0100, wr 0100 -> 0100, wr 0000 -> 0000, wr 0100 again -> 0000
+E TOCR wr FE -> 00; TSTR 05 wr |F8 -> 05; TCPR2 ff9b8012; TSTR rd16 0000
+F empty PMCTR bracket 3 cycles; per-access cycles (x16 total - bracket):
+F   rd32 PMCTR0L           total   51  per access 3.00
+F   rd32 RAM(P1)           total   19  per access 1.00
+F   rd32 INTEVT(CCN)       total   51  per access 3.00
+F   rd32 TCNT1             total  320  per access 19.81
+F   rd32 TCOR1             total  320  per access 19.81
+F   rd16 TCR1              total  256  per access 15.81
+F   rd8 TSTR               total  256  per access 15.81
+F   rd8 TOCR               total  256  per access 15.81
+F   rd32 TCNT2(running)    total  320  per access 19.81
+F   rd16 FRQCR             total  256  per access 15.81
+F   rd8 STBCR              total  256  per access 15.81
+F   rd8 WTCNT              total  256  per access 15.81
+F   rd8 R64CNT             total  256  per access 15.81
+F   rd8 RCR2               total  256  per access 15.81
+F   rd16 IPRA              total  256  per access 15.81
+F   wr32 TCOR1             total  181  per access 11.12
+F   wr32 TCNT1             total  181  per access 11.12
+F   wr16 TCR1              total  124  per access 7.56
+F   wr8 TOCR               total  124  per access 7.56
+F   wr16/rd16 TCR1 pair    total  192  per access 11.81
+G WTCSR/WTCNT after A500/5A00: 00 00
+G WTCSR wr8 03 -> 00; wr16 0003 -> 00; wr16 5A03 -> 00; wr32 0000A503 -> 00; wr32 A5030000 -> 00
+G WTCNT wr16 5A42 -> 42; wr8 11 -> 42; wr16 A522 -> 42 (WTCSR 00); wr16 0033 -> 42; wr32 00005A44 -> 42; rd16 0000 rd32 00000000
+G WTCSR wr IOVF=1 -> 08; wr 00 -> 00
+G CKS 0: edges (cycle,WTCNT): (122 4) (236 7) (293 9) (349 11) (408 13) (465 14) (521 16) (577 18) | reach 0x80 at 4114, IOVF at 8170 (WTCNT 255), end WTCSR 88 WTCNT 2e, stopped 2f->2f
+G CKS 3: edges (cycle,WTCNT): (127 1) (293 2) (557 3) (821 4) (1089 5) (1353 6) (1565 7) (1829 8) | reach 0x80 at 32563, IOVF at 65323 (WTCNT 0), end WTCSR 8b WTCNT 2d, stopped 2d->2d
+G CKS 7: edges (cycle,WTCNT): (59 1) (2461 2) (6573 3) (10633 4) (14749 5) (18861 6) (22921 7) (27033 8) | reach 0x80 at 518539, IOVF at 1042803 (WTCNT 255), end WTCSR 8f WTCNT 2d, stopped 2d->2d
+G restored: WTCSR 00 WTCNT 00
+H RTC as found: R64CNT 00 -> 00, RSECCNT 00 -> 00 over 20M cycles; RCR1 00 RCR2 00
+H after RCR2=02 (00) and writes 12 34 05 03 21 09 1999: 00 00 00 00 00 00 0000 R64CNT 00
+H wr FF to SEC/WK/MON -> 00 00 00; alarms wr FF -> 00 00 00 00 00 00
+H RCR1 wr 00 -> 00, 80 -> 00, 01 -> 00, E7 -> 00, 00 -> 00
+H RCR2=09 (00): R64CNT 00 -> 00, RSECCNT 00 -> 00 over 40M cycles; after ADJ 00 (SEC 00 MIN 00), RESET 00, PES7 00
+H restored RCR1 00 RCR2 00
+I MSTP2 other regs before/after: TCR0 0020/0020 TCR2 0020/0020 TCOR0 0001e70f/0001e70f TCOR2 00be41f0/00be41f0 TOCR 00/00
+I MSTP2: STBCR 03 (07 while set); TSTR 05 -> 00 after; 160103 cycles: TCNT1 -3 counts, TCNT2 -1 counts (x16 = 48)
+J spin (N, flag, handler-start, TCNT1 in handler, SPC-off, INTEVT, after-sleep-start): (100 1 1644 fffffffc -14 420 0) (101 1 1650 fffffffd -12 420 0) (102 1 1680 fffffffc -14 420 0) (103 1 1681 fffffffd -10 420 0) (104 1 1705 fffffffd -10 420 0) (105 1 1728 fffffffc -14 420 0) (106 1 1734 fffffffd -12 420 0) (107 1 1753 fffffffd -10 420 0) (108 1 1765 fffffffd -10 420 0) (109 1 1789 fffffffd -10 420 0) (110 1 1794 fffffffd -12 420 0) (111 1 1824 fffffffc -14 420 0) (112 1 1836 fffffffc -14 420 0) (113 1 1849 fffffffd -10 420 0) (114 1 1866 fffffffd -12 420 0) (115 1 1878 fffffffd -12 420 0)
+J sleep (N, flag, handler-start, TCNT1 in handler, SPC-off, INTEVT, after-sleep-start): (100 1 56 fffffffc 2 420 150) (101 1 48 fffffffb 2 420 163) (102 1 64 fffffffc 2 420 183) (103 1 52 fffffffc 2 420 167) (104 1 56 fffffffc 2 420 171) (105 1 48 fffffffc 2 420 163) (106 1 64 fffffffc 2 420 183) (107 1 52 fffffffb 2 420 167) (108 1 64 fffffffb 2 420 179) (109 1 68 fffffffc 2 420 183) (110 1 52 fffffffc 2 420 171) (111 1 76 fffffffc 2 420 191) (112 1 60 fffffffc 2 420 175) (113 1 52 fffffffc 2 420 167) (114 1 52 fffffffc 2 420 171) (115 1 68 fffffffc 2 420 187)
+J poll (N, flag, handler-start, TCNT1 in handler, SPC-off, INTEVT, after-sleep-start): (100 4 1653 00000000 1946084992 000 0) (101 4 1654 00000000 1946084992 000 0) (102 4 1674 00000000 1946084992 000 0) (103 4 1694 00000000 1946084992 000 0) (104 4 1714 00000000 1946084992 000 0) (105 4 1716 00000000 1946084992 000 0) (106 4 1754 00000000 1946084992 000 0) (107 4 1754 00000000 1946084992 000 0) (108 4 1774 00000000 1946084992 000 0) (109 4 1794 00000000 1946084992 000 0) (110 4 1794 00000000 1946084992 000 0) (111 4 1834 00000000 1946084992 000 0) (112 4 1834 00000000 1946084992 000 0) (113 4 1854 00000000 1946084992 000 0) (114 4 1874 00000000 1946084992 000 0) (115 4 1874 00000000 1946084992 000 0)
+K AICA RTC 1543310239 -> 1543310242 (3 s): 598517376 CPU cycles (199505792 per s), 37407336 TMU1 P/4 counts (12469112 per s), cycles/count 16.0000
+Z: PMCR0 c023 FRQCR 0e0a STBCR 03 STBCR2 00 WTCNT 00 WTCSR 00 (16-bit reads WTCNT 0000 WTCSR 0000)
+Z: IPRA f0f0 IPRB 0000 IPRC 0300 TOCR 00 TSTR 05 TCR0 0020 TCR1 0000 TCR2 0020
+Z: TCOR0 0001e70f TCNT0 00017eb1 TCOR1 ffffffff TCNT1 fd8be2f3 TCOR2 00be41f0 TCNT2 007eb983 TCPR2 ff9b8012
+Z: RTC R64CNT 00 SEC 00 MIN 00 HR 00 WK 00 DAY 00 MON 00 YR 0000 AR 00 00 00 00 00 00 RCR1 00 RCR2 00
+tc: done
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 154, dma_cntr = 151
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

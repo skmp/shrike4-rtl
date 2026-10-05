@@ -1,0 +1,78 @@
+Console enabled
+Upload <tools/hw/mmu/mmutest2.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 274084
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c052ea4, size 54
+Section .fini, lma 0x8c052edc, size 42
+Section .rodata, lma 0x8c052f08, size 46700
+Section .eh_frame, lma 0x8c05e574, size 452
+Section .ctors, lma 0x8c05e7b8, size 8
+Section .dtors, lma 0x8c05e7c0, size 8
+Section .data, lma 0x8c05e7e0, size 11880
+Section .got, lma 0x8c061648, size 12
+Transferred 333240 bytes at 13150213.241006 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06e760
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+mmutest2: start
+mmutest2: code 0c090000 data 0c0b0000 sq 0c06e4e0
+R1 jsr to 'rts;nop' at p5+pos, p6 mapped in the UTLB only; ITLB [e0..e3] LRUI after (cold IC | warm IC)
+  pos ffc: cold [--65] 1e        warm [--65] 1e 
+  pos ff8: cold [--65] 1e        warm [--65] 1e 
+  pos ff4: cold [---5] 0b        warm [---5] 0b 
+  pos ff0: cold [---5] 0b        warm [---5] 0b 
+  pos fec: cold [---5] 0b        warm [---5] 0b 
+  pos fe8: cold [---5] 0b        warm [---5] 0b 
+  pos fe4: cold [---5] 0b        warm [---5] 0b 
+  pos fe0: cold [---5] 0b        warm [---5] 0b 
+  pos fdc: cold [---5] 0b        warm [---5] 0b 
+  pos fd8: cold [---5] 0b        warm [---5] 0b 
+  pos fd0: cold [---5] 0b        warm [---5] 0b 
+  pos fc0: cold [---5] 0b        warm [---5] 0b 
+  pos fa0: cold [---5] 0b        warm [---5] 0b 
+  pos f80: cold [---5] 0b        warm [---5] 0b 
+R2 call 'rts;nop' at p5+ffc: p6 in ITLB min 9 max 9 | p6 ITLB entry dropped each time (UTLB hit) min 40 max 40 [itlb -6-5] | p6 not in UTLB min 13 max 13
+R2 call 8 nops at p11+ff0 falling into rts;nop at p12: both in ITLB min 13 max 13 [itlb --cb] | p12 dropped min 45 max 45 | p11 dropped min 34 max 45
+R3 bsr; slot TLB miss             exc 1 ev 040 spc-branch +0 PR 8c011d6e (marker 12345678, return address = branch+4)
+R3 jsr; slot TLB miss             exc 1 ev 040 spc-branch +0 PR 8c011dae (marker 12345678, return address = branch+4)
+R3 jsr; slot misaligned (AE)      exc 1 ev 0e0 spc-branch +0 PR 8c011dae (marker 12345678, return address = branch+4)
+R3 jsr; slot illegal FFFD         exc 1 ev 1a0 spc-branch +0 PR 8c011d92 (marker 12345678, return address = branch+4)
+R3 jsr to unmapped P0; slot ok    exc 1 ev 040 spc-branch -1073163690 PR 8c011dae (marker 12345678, return address = branch+4)
+R3 branch addresses: bsr 8c011d6a jsr 8c011daa jsr(ill) 8c011d8e
+R4 URC:  start 10  ocbwb (line maybe cached) 11  ocbi 12  pref, line not cached 12  pref, line cached 12  movca.l 13  fmov.s store 14  load 15
+R5 MMUCR AT 0->1, n instr, load unmapped P0 (040 = translated): n0:000 n1:000 n2:000 n3:040 n4:040 n5:040 n6:040 n7:040 n8:040
+R5 MMUCR AT 1->0, n instr, load unmapped P0 (040 = still translated): n0:000 n1:000 n2:000 n3:000 n4:000 n5:000 n6:000 n7:000 n8:000
+R5 MMUCR AT 0->1, n instr, jsr to unmapped P0 (040 = translated): n0:000 n1:040 n2:040 n3:040 n4:040 n5:040 n6:040 n7:040 n8:040 n9:040 n10:040
+R6 LDTLB, n instr, load through the new entry (040 = not yet visible): n0:000 n1:000 n2:000 n3:000
+R6 UTLB aa write (V=1), n instr, load through it (040 = not yet visible): n0:000 n1:000 n2:000 n3:000
+R7 SQ writes with no UTLB entry: exc 8 ev 060; then mapped + PREF: exc 0 ev 000; memory: b0010000 b0010001 b0010002 b0010003 b0010004 b0010005 b0010006 b0010007
+mmutest2: done, unexpected exceptions 0, MMUCR 00000000
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 5, dma_cntr = 5
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

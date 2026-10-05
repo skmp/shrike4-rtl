@@ -1,0 +1,314 @@
+Console enabled
+Upload <tools/hw/serial/scif_probe.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 276132
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c0536a4, size 54
+Section .fini, lma 0x8c0536dc, size 42
+Section .rodata, lma 0x8c053708, size 49288
+Section .eh_frame, lma 0x8c05f790, size 452
+Section .ctors, lma 0x8c05f9d4, size 8
+Section .dtors, lma 0x8c05f9dc, size 8
+Section .data, lma 0x8c05fa00, size 11880
+Section .got, lma 0x8c062868, size 12
+Transferred 337876 bytes at 13226635.726723 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac070b60
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+scif_probe run1
+S1 KOS-set SCIF: SCSMR2 0000 SCBRR2 0c SCSCR2 0030 SCFSR2 0060 SCFCR2 0040 SCFDR2 0000 SCSPTR2 0011 SCLSR2 0000
+S1 SCI: SCSMR1 00 SCBRR1 00 SCSCR1 00 SCTDR1 00 SCSSR1 00 SCRDR1 00 SCSCMR1 00 SCSPTR1 00
+S1 STBCR 03 FRQCR 0e0a IPRB 0000 IPRC 0300 DMAOR 00008201 CHCR1 00000000
+S2 SCFSR2 r16 0060 r8@10 00 r8@11 00 r32@10 00000000 | SCSMR2 r32 00000000 | SCBRR2 r16 0000 r32 00000000
+S2 SCSCR2 r8@08 00 r8@09 00 | SCFDR2 r8@1c 00 r8@1d 00 | SCSPTR2 r32 00000000 | SCLSR2 r32 00000000
+S2 SCI SCBRR1 r8 00 r16 0000 r32 00000000 | SCTDR1 r16 0000 r32 00000000 | SCSSR1 r16 0000
+S2 SCBRR2(=0c) aliases: +40:00 +80:00 +100:00 +400:00 +1000:00 +4000:00 +10000:00 +40000:00
+S2 SCIF holes r16: 28:0000 2c:0000 30:0000 34:0000 38:0000 3c:0000
+S2 SCBRR1(=5a) aliases: +40:00 +80:00 +100:00 +400:00 +1000:00 +4000:00 +10000:00 +40000:00
+S2 SCI holes r8: 20:00 24:00 28:00 2c:00 30:00 | +0x20 aliases: 24:00 2c:00
+S3 SCIF w/r: SMR2 ffff->007b BRR2 a5->a5 FCR2 ffff->00ff 0006->0006 SCR2 fffd->00f8 LSR2 ffff->0000
+S3 SCIF: FSR2 0060, w ffff->0060; FDR2 w ffff->0000; SPTR2 0000->0011 ff5d->0011 00f3->00b3 00a2->00f3 0000->0001
+S3 SCI w/r: SMR1 7f->00 SCR1 dc->00 (SSR1 after 20k cyc RE=1: 00) SCMR1 ff->00 SPTR1 f0->00 00->00 TDR1 5a->00
+S3 SCI SSR1 00 w00->00 w01->00 | RDR1 w33->00
+S4 SCI before MSTP0: 00 00 00 00 00 00 00 00 after: 00 00 00 00 00 00 00 00 (STBCR 03)
+S4 SCIF before MSTP3: fdr 0300 fsr 0060 brr 5a after: fdr 0300 fsr 0060 brr 5a
+S5 cost (32 accesses, Icyc incl. 1 PMCTR read): PMCTR rd 141, SCFDR2 rd16 562, SCBRR2 rd8 587, SCSSR1 rd8 562, SCSPTR2 wr16 286, 32wr+1rd 324, 16x(wr+rd) 416 (acc 0)
+S6a 8N1 55 brr3 (TEND not cleared): 3 events, 91 polls in 8000 cyc
+       0-   269 fdr 0100 fsr 0060 sptr 0011 lsr 0000
+     793-   877 fdr 0000 fsr 0060 sptr 0011 lsr 0000
+    5093-  5177 fdr 0001 fsr 0062 sptr 0011 lsr 0000
+S6a again: 3 events, 93 polls in 8000 cyc
+       0-   209 fdr 0100 fsr 0060 sptr 0011 lsr 0000
+     761-   845 fdr 0000 fsr 0060 sptr 0011 lsr 0000
+    5145-  5229 fdr 0001 fsr 0062 sptr 0011 lsr 0000
+S6a again: 3 events, 93 polls in 8000 cyc
+       0-   210 fdr 0100 fsr 0060 sptr 0011 lsr 0000
+     762-   846 fdr 0000 fsr 0060 sptr 0011 lsr 0000
+    5146-  5230 fdr 0001 fsr 0062 sptr 0011 lsr 0000
+S6e 8N1 55 brr3 trace2 (sptr+fdr only): 3 events, 142 polls in 7000 cyc
+       0-   156 fdr 0100 fsr 0000 sptr 0011 lsr 0000
+     800-   848 fdr 0000 fsr 0000 sptr 0011 lsr 0000
+    5136-  5184 fdr 0001 fsr 0000 sptr 0011 lsr 0000
+S6b 8N2 55 brr3 (TDFE/TEND cleared after write): 5 events, 98 polls in 8500 cyc
+       0-   261 fdr 0100 fsr 0020 sptr 0011 lsr 0000
+     813-   897 fdr 0000 fsr 0020 sptr 0011 lsr 0000
+    5113-  5197 fdr 0000 fsr 0022 sptr 0011 lsr 0000
+    5197-  5297 fdr 0001 fsr 0022 sptr 0011 lsr 0000
+    5901-  5985 fdr 0001 fsr 0062 sptr 0011 lsr 0000
+S6c 7E1 55 brr3 (TEND cleared): 4 events, 93 polls in 8000 cyc
+       0-   233 fdr 0100 fsr 0020 sptr 0011 lsr 0000
+     785-   869 fdr 0000 fsr 0020 sptr 0011 lsr 0000
+    5169-  5253 fdr 0001 fsr 0022 sptr 0011 lsr 0000
+    5353-  5437 fdr 0001 fsr 0062 sptr 0011 lsr 0000
+S6d phase scan 8N1 brr3 (first-seen Icyc after write: startedge startend tx0 rx1 tend polls):
+   0:     0     0   885  5221  5373   78
+   1:     0     0   882  5218  5442   80
+   2:     0     0   881  5217  5369   80
+   3:     0     0   881  5217  5441   80
+   4:     0     0   881  5217  5441   80
+   5:     0     0   801  5213  5365   80
+   6:     0     0   881  5217  5441   80
+   7:     0     0   881  5217  5441   80
+   8:     0     0   881  5217  5441   80
+   9:     0     0   802  5214  5366   80
+  10:     0     0   881  5217  5441   80
+  11:     0     0   881  5217  5441   80
+  12:     0     0   882  5218  5442   80
+  13:     0     0   882  5218  5442   80
+  14:     0     0   881  5217  5441   80
+  15:     0     0   881  5217  5441   80
+  16:     0     0   882  5218  5370   80
+  17:     0     0   881  5217  5441   80
+  18:     0     0   881  5217  5441   80
+  19:     0     0   881  5217  5441   80
+S7a two bytes brr0: 5 events, 39 polls in 3500 cyc
+       0-   242 fdr 0200 fsr 0060 sptr 0011 lsr 0000
+     242-   374 fdr 0100 fsr 0060 sptr 0011 lsr 0000
+    1314-  1398 fdr 0101 fsr 0062 sptr 0011 lsr 0000
+    1498-  1582 fdr 0001 fsr 0062 sptr 0011 lsr 0000
+    2606-  2690 fdr 0002 fsr 0062 sptr 0011 lsr 0000
+S7a fifo: [0002 0062 11] [0001 0062 22] | after fdr 0000 fsr 0062 lsr 0000
+S7b TE=0: fsr 0060 fdr 0000; +3 bytes fdr 0300 fsr 0060; clr TDFE,TEND -> 0060; +7 fdr 0a00 fsr 0060; clr TDFE -> 0040; +8 fdr 1000 fsr 0040
+S7b then TE=1: 33 events, 260 polls in 23000 cyc
+       0-   223 fdr 1000 fsr 0040 sptr 0011 lsr 0000
+     223-   355 fdr 0f00 fsr 0040 sptr 0011 lsr 0000
+    1295-  1379 fdr 0f01 fsr 0042 sptr 0011 lsr 0000
+    1479-  1563 fdr 0e01 fsr 0042 sptr 0011 lsr 0000
+    2587-  2671 fdr 0e02 fsr 0042 sptr 0011 lsr 0000
+    2771-  2855 fdr 0d02 fsr 0042 sptr 0011 lsr 0000
+    3879-  3963 fdr 0d03 fsr 0042 sptr 0011 lsr 0000
+    4091-  4175 fdr 0c03 fsr 0042 sptr 0011 lsr 0000
+    5199-  5283 fdr 0c04 fsr 0042 sptr 0011 lsr 0000
+    5283-  5415 fdr 0b04 fsr 0042 sptr 0011 lsr 0000
+    6439-  6523 fdr 0b05 fsr 0042 sptr 0011 lsr 0000
+    6659-  6743 fdr 0a05 fsr 0042 sptr 0011 lsr 0000
+    7767-  7851 fdr 0a06 fsr 0042 sptr 0011 lsr 0000
+    7851-  7991 fdr 0906 fsr 0042 sptr 0011 lsr 0000
+    9015-  9099 fdr 0907 fsr 0042 sptr 0011 lsr 0000
+    9099-  9235 fdr 0807 fsr 0042 sptr 0011 lsr 0000
+   10259- 10343 fdr 0808 fsr 0042 sptr 0011 lsr 0000
+   10475- 10559 fdr 0708 fsr 0062 sptr 0011 lsr 0000
+   11583- 11667 fdr 0709 fsr 0062 sptr 0011 lsr 0000
+   11667- 11799 fdr 0609 fsr 0062 sptr 0011 lsr 0000
+   12823- 12907 fdr 060a fsr 0062 sptr 0011 lsr 0000
+   13043- 13127 fdr 050a fsr 0062 sptr 0011 lsr 0000
+   14151- 14235 fdr 050b fsr 0062 sptr 0011 lsr 0000
+   14235- 14375 fdr 040b fsr 0062 sptr 0011 lsr 0000
+   15399- 15483 fdr 040c fsr 0062 sptr 0011 lsr 0000
+   15619- 15703 fdr 030c fsr 0062 sptr 0011 lsr 0000
+   16727- 16811 fdr 030d fsr 0062 sptr 0011 lsr 0000
+   16811- 16951 fdr 020d fsr 0062 sptr 0011 lsr 0000
+   17975- 18059 fdr 020e fsr 0062 sptr 0011 lsr 0000
+   18059- 18195 fdr 010e fsr 0062 sptr 0011 lsr 0000
+   19219- 19303 fdr 010f fsr 0062 sptr 0011 lsr 0000
+   19443- 19527 fdr 000f fsr 0062 sptr 0011 lsr 0000
+   20551- 20635 fdr 0010 fsr 0062 sptr 0011 lsr 0000
+S7b fifo: [0010 0062 01] [000f 0062 02] [000e 0062 03] [000d 0062 04] [000c 0062 05] [000b 0062 06] [000a 0062 07] [0009 0062 08] [0008 0062 09] [0007 0062 0a] [0006 0062 0b] [0005 0062 0c] [0004 0062 0d] [0003 0062 0e] [0002 0062 0f] [0001 0062 10] | after fdr 0000 fsr 0062 lsr 0000
+S8 idle TE=1: fsr 0060, clr TEND -> 0060, +300 0060 | TE=0: fsr 0060, clr TDFE TEND -> 0060, +300 0060
+S9a DR: one byte, RTRG=4: 4 events, 81 polls in 7000 cyc
+       0-   212 fdr 0100 fsr 0060 sptr 0011 lsr 0000
+     212-   344 fdr 0000 fsr 0060 sptr 0011 lsr 0000
+    1284-  1368 fdr 0001 fsr 0060 sptr 0011 lsr 0000
+    3232-  3316 fdr 0001 fsr 0061 sptr 0011 lsr 0000
+S9a fifo: [0001 0061 5a] | after fdr 0000 fsr 0061 lsr 0000
+S9b no-read clear: fdr 0001 byte 5b fdr 0000; write 0060 -> fsr 0061; after read, clear DR -> 0060
+S9c DR unread: fsr 0061 clrDR -> 0061 +8000 0061; read 5c -> 0061 clrDR -> 0060
+S10 RDF: 2 bytes fsr 0062 clrRDF -> 0062; read both -> 0062 clrRDF -> 0060 fdr 0000
+S10b RTRG=8, 9 bytes: fsr 0062; read 2 -> fsr 0062; clrRDF -> 0060 fdr 0007
+S11 16 received: fdr 0010 lsr 0000
+S11 17th byte: 3 events, 28 polls in 2500 cyc
+       0-   234 fdr 0110 fsr 0062 sptr 0011 lsr 0000
+     234-   366 fdr 0010 fsr 0062 sptr 0011 lsr 0000
+    1306-  1390 fdr 0010 fsr 0062 sptr 0011 lsr 0001
+S11 after 18th: fdr 0010 lsr 0001 fsr 0062
+S11 fifo: [0010 0062 30] [000f 0062 31] [000e 0062 32] [000d 0062 33] [000c 0062 34] [000b 0062 35] [000a 0062 36] [0009 0062 37] [0008 0062 38] [0007 0062 39] [0006 0062 3a] [0005 0062 3b] [0004 0062 3c] [0003 0062 3d] [0002 0062 3e] [0001 0062 3f] | after fdr 0000 fsr 0062 lsr 0001
+S11 ORER still set, send 72: fdr 0000 lsr 0001 byte 00; clear ORER 0001 -> 0000; send 73: fdr 0001 byte 73
+S12a break (TE=0, SPB2IO=1, SPB2DT=0), PE odd: 1 events, 82 polls in 7000 cyc
+       0-   217 fdr 0001 fsr 0062 sptr 0013 lsr 0000
+S12a release (SPB2DT=1): 1 events, 34 polls in 3000 cyc
+       0-   237 fdr 0001 fsr 0062 sptr 0013 lsr 0000
+S12a fifo: [0001 0062 41] | after fdr 0000 fsr 0062 lsr 0000
+S13 RFRST: before fsr 0060 fdr 0000; RFRST=1 fsr 0060 fdr 0000; RFRST=0 fsr 0060
+S12b TE=1 with SPB2IO=1 SPB2DT=0, byte 42: 3 events, 58 polls in 5000 cyc
+       0-   213 fdr 0100 fsr 0060 sptr 0013 lsr 0000
+     213-   345 fdr 0000 fsr 0060 sptr 0013 lsr 0000
+    1369-  1453 fdr 0001 fsr 0062 sptr 0013 lsr 0000
+S12b fifo: [0001 0062 42] | after fdr 0000 fsr 0062 lsr 0000
+S12c loop, TE=0, SPB2IO=0: 1 events, 58 polls in 5000 cyc
+       0-   223 fdr 0000 fsr 0060 sptr 0011 lsr 0000
+S12c fifo: | after fdr 0000 fsr 0060 lsr 0000
+S12d SCSPTR2 reads: noloop TE|RE 0011, loop 0011, MCE 0011, MCE|loop 0011, all off 0011 (SCSPTR1 00)
+S14 reads 61 62, empty reads 32 32, fdr 0000 fsr 0062, next byte 63 fdr 0000
+S15 MCE+LOOP flow control (lsr column = fed | reads<<8):
+       0-   156 fdr 0000 fsr 0060 sptr 0011 fed 1 rd 0
+     156-   388 fdr 0100 fsr 0060 sptr 0011 fed 2 rd 0
+     504-   596 fdr 0200 fsr 0060 sptr 0011 fed 4 rd 0
+     596-   712 fdr 0300 fsr 0060 sptr 0011 fed 5 rd 0
+     712-   828 fdr 0400 fsr 0060 sptr 0011 fed 6 rd 0
+     828-   944 fdr 0500 fsr 0060 sptr 0011 fed 7 rd 0
+     944-  1060 fdr 0600 fsr 0060 sptr 0011 fed 8 rd 0
+    1060-  1176 fdr 0700 fsr 0060 sptr 0011 fed 9 rd 0
+    1176-  1292 fdr 0800 fsr 0060 sptr 0011 fed 10 rd 0
+    1292-  1408 fdr 0900 fsr 0060 sptr 0011 fed 11 rd 0
+    1408-  1524 fdr 0a01 fsr 0062 sptr 0011 fed 12 rd 0
+    1524-  1640 fdr 0b01 fsr 0062 sptr 0011 fed 13 rd 0
+    1756-  1848 fdr 0c01 fsr 0062 sptr 0011 fed 15 rd 0
+    1848-  1964 fdr 0d01 fsr 0062 sptr 0011 fed 16 rd 0
+    1964-  2080 fdr 0e01 fsr 0062 sptr 0011 fed 17 rd 0
+    2080-  2236 fdr 0f01 fsr 0062 sptr 0011 fed 18 rd 0
+    2236-  2352 fdr 1001 fsr 0062 sptr 0011 fed 18 rd 0
+    2744-  2828 fdr 1002 fsr 0062 sptr 0011 fed 18 rd 0
+    2936-  3020 fdr 0f02 fsr 0062 sptr 0011 fed 19 rd 0
+    3020-  3168 fdr 1002 fsr 0062 sptr 0011 fed 19 rd 0
+    4032-  4116 fdr 1003 fsr 0062 sptr 0011 fed 19 rd 0
+    4260-  4344 fdr 0f03 fsr 0062 sptr 0011 fed 20 rd 0
+    4344-  4460 fdr 1003 fsr 0062 sptr 0011 fed 20 rd 0
+    5280-  5364 fdr 1004 fsr 0062 sptr 0011 fed 20 rd 0
+    5472-  5556 fdr 0f04 fsr 0062 sptr 0011 fed 21 rd 0
+    5556-  5712 fdr 1004 fsr 0062 sptr 0011 fed 21 rd 0
+    6588-  6672 fdr 1005 fsr 0062 sptr 0011 fed 21 rd 0
+    6816-  6900 fdr 0f05 fsr 0062 sptr 0011 fed 22 rd 0
+    6900-  7016 fdr 1005 fsr 0062 sptr 0011 fed 22 rd 0
+    7920-  8004 fdr 1006 fsr 0062 sptr 0011 fed 22 rd 0
+    8004-  8112 fdr 0f06 fsr 0062 sptr 0011 fed 23 rd 0
+    8112-  8268 fdr 1006 fsr 0062 sptr 0011 fed 23 rd 0
+    9132-  9216 fdr 1007 fsr 0062 sptr 0011 fed 23 rd 0
+    9364-  9448 fdr 0f07 fsr 0062 sptr 0011 fed 24 rd 0
+    9448-  9564 fdr 1007 fsr 0062 sptr 0011 fed 24 rd 0
+   10464- 10548 fdr 1008 fsr 0062 sptr 0011 fed 24 rd 0
+   10656- 10740 fdr 0f08 fsr 0062 sptr 0011 fed 24 rd 0
+   11676- 11764 fdr 0f09 fsr 0062 sptr 0011 fed 24 rd 0
+   11876- 11964 fdr 0e09 fsr 0062 sptr 0011 fed 24 rd 0
+   12976- 13064 fdr 0e0a fsr 0062 sptr 0011 fed 24 rd 0
+   13176- 13264 fdr 0d0a fsr 0062 sptr 0011 fed 24 rd 0
+   14284- 14372 fdr 0d0b fsr 0062 sptr 0011 fed 24 rd 0
+   14484- 14572 fdr 0c0b fsr 0062 sptr 0011 fed 24 rd 0
+   15592- 15680 fdr 0c0c fsr 0062 sptr 0011 fed 24 rd 0
+   15680- 15792 fdr 0b0c fsr 0062 sptr 0011 fed 24 rd 0
+   16820- 16908 fdr 0b0d fsr 0062 sptr 0011 fed 24 rd 0
+   17020- 17108 fdr 0a0d fsr 0062 sptr 0011 fed 24 rd 0
+   18132- 18220 fdr 0a0e fsr 0062 sptr 0011 fed 24 rd 0
+   18332- 18420 fdr 090e fsr 0062 sptr 0011 fed 24 rd 0
+   19352- 19440 fdr 090e fsr 0062 sptr 0051 fed 24 rd 0
+   19440- 19552 fdr 090f fsr 0062 sptr 0051 fed 24 rd 0
+   45048- 45152 fdr 090e fsr 0062 sptr 0011 fed 24 rd 2
+   45152- 45280 fdr 090d fsr 0062 sptr 0011 fed 24 rd 3
+   45280- 45444 fdr 080c fsr 0062 sptr 0011 fed 24 rd 4
+   45444- 45572 fdr 080b fsr 0062 sptr 0011 fed 24 rd 4
+   46384- 46468 fdr 080c fsr 0062 sptr 0011 fed 24 rd 4
+   46576- 46660 fdr 070c fsr 0062 sptr 0011 fed 24 rd 4
+   47628- 47712 fdr 070d fsr 0062 sptr 0011 fed 24 rd 4
+   47820- 47904 fdr 060d fsr 0062 sptr 0011 fed 24 rd 4
+   48956- 49040 fdr 060e fsr 0062 sptr 0011 fed 24 rd 4
+   49148- 49232 fdr 050e fsr 0062 sptr 0011 fed 24 rd 4
+   50212- 50296 fdr 050f fsr 0062 sptr 0051 fed 24 rd 4
+S15 lsr 0000
+S15 fifo: [050f 0062 84] [040f 0062 85] [030f 0062 86] [020f 0062 87] [010f 0062 88] [000f 0062 89] [000e 0062 8a] [000d 0062 8b] [000c 0062 8c] [000b 0062 8d] [000a 0062 8e] [0009 0062 8f] [0008 0062 90] [0007 0062 91] [0006 0062 92] [0005 0062 93] [0004 0062 94] [0003 0062 95] [0002 0062 96] [0001 0062 97] | after fdr 0000 fsr 0062 lsr 0000
+I1 TIE=1 with TDFE=1: 1 interrupts
+  +605 INTEVT 760 fsr 0060 scr 00b0 fdr 0000 lsr 0000
+I2 RXI+TXI pending, then unmask: 2 interrupts
+  +596 INTEVT 720 fsr 0062 scr 00f0 fdr 0001 lsr 0000
+  +1178 INTEVT 760 fsr 0062 scr 00b0 fdr 0001 lsr 0000
+I3 one byte, RTRG=4, RIE=1: 1 interrupts
+  +3813 INTEVT 720 fsr 0061 scr 0070 fdr 0001 lsr 0000
+I4 break, REIE=1 RIE=0: 0 interrupts
+I4 fifo: | after fdr 0000 fsr 0060 lsr 0000
+I5 overrun, REIE=1 RIE=0: 1 interrupts
+  +554 INTEVT 740 fsr 0062 scr 0038 fdr 0010 lsr 0001
+I6 12 bytes queued, TDFE cleared, TIE=1: 1 interrupts
+  +5687 INTEVT 760 fsr 0022 scr 00b0 fdr 0704 lsr 0000
+S17 D1 tx dma: CHCR1 at end 00001a13, DMATCR1 0, received 24: a0 a1 a2 a3 a4 a5 a6 a7 a8 a9 aa ab ac ad ae af b0 b1 b2 b3 b4 b5 b6 b7
+       0-    64 fdr 0000 tcr 23 rx 0
+      64-   360 fdr 0500 tcr 17 rx 0
+     360-   446 fdr 0800 tcr 15 rx 0
+    1506-  1572 fdr 0800 tcr 14 rx 1
+    2818-  2874 fdr 0800 tcr 13 rx 2
+    4078-  4136 fdr 0700 tcr 12 rx 3
+    4136-  4202 fdr 0800 tcr 12 rx 3
+    5370-  5434 fdr 0800 tcr 11 rx 4
+    6638-  6696 fdr 0700 tcr 10 rx 5
+    6696-  6762 fdr 0800 tcr 10 rx 5
+    7930-  7986 fdr 0800 tcr 9 rx 6
+    9190-  9260 fdr 0700 tcr 8 rx 7
+    9260-  9326 fdr 0800 tcr 8 rx 7
+   10494- 10546 fdr 0800 tcr 7 rx 8
+   11750- 11820 fdr 0700 tcr 6 rx 9
+   11820- 11914 fdr 0800 tcr 6 rx 9
+   13042- 13118 fdr 0800 tcr 5 rx 10
+   14306- 14380 fdr 0800 tcr 4 rx 11
+   15586- 15652 fdr 0800 tcr 3 rx 12
+   16898- 16958 fdr 0800 tcr 2 rx 13
+   18162- 18234 fdr 0800 tcr 1 rx 14
+   19430- 19504 fdr 0700 tcr 0 rx 15
+   19504- 19570 fdr 0800 tcr 0 rx 15
+   20726- 20766 fdr 0700 tcr 0 rx 16
+   22014- 22054 fdr 0600 tcr 0 rx 17
+   23294- 23334 fdr 0500 tcr 0 rx 18
+   24582- 24622 fdr 0400 tcr 0 rx 19
+   25862- 25902 fdr 0300 tcr 0 rx 20
+   27110- 27150 fdr 0200 tcr 0 rx 21
+   28390- 28430 fdr 0100 tcr 0 rx 22
+   29678- 29718 fdr 0000 tcr 0 rx 23
+S17 D2 rx dma: CHCR1 00004b13 DMATCR1 0 data b0 b1 b2 b3 b4 ee, fdr 0000 fsr 0060
+       0-   150 fdr 0500 tcr 5 fsr 0060 chcr 4b11
+     150-   362 fdr 0400 tcr 5 fsr 0060 chcr 4b11
+    1322-  1398 fdr 0401 tcr 5 fsr 0060 chcr 4b11
+    1566-  1642 fdr 0301 tcr 5 fsr 0060 chcr 4b11
+    2646-  2722 fdr 0302 tcr 5 fsr 0060 chcr 4b11
+    2814-  2890 fdr 0202 tcr 5 fsr 0060 chcr 4b11
+    3894-  3970 fdr 0203 tcr 5 fsr 0060 chcr 4b11
+    4062-  4138 fdr 0103 tcr 5 fsr 0060 chcr 4b11
+    5142-  5246 fdr 0103 tcr 4 fsr 0060 chcr 4b11
+    5414-  5490 fdr 0003 tcr 4 fsr 0060 chcr 4b11
+    6514-  6590 fdr 0003 tcr 3 fsr 0060 chcr 4b11
+    8458-  8550 fdr 0000 tcr 0 fsr 0060 chcr 4b13
+restored: SCSMR2 0000 SCBRR2 0c SCSCR2 0030 SCFSR2 0060 SCFCR2 0040 SCFDR2 0000 SCSPTR2 0011 SCLSR2 0000 STBCR 03 IPRC 0300
+scif_probe done
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 12, dma_cntr = 12
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

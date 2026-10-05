@@ -1,0 +1,15 @@
+# Makefile.ptehubc -- the M2-fix UBC / PTEH.ASID probe (ptehubc.c, ptehubc_s.s; agents/reports/integration/M2-fix.md).
+# Build: source /opt/toolchains/dc/kos/environ.sh && make -f Makefile.ptehubc OUT=<dir>   (objects and the ELF go to
+# OUT, default the M2-fix scratch directory, so this directory stays clean).
+# Run (serialised console access): HW_LOCK_WAIT=540 ../hwrun.sh <OUT>/ptehubc.elf <log>
+OUT ?= ../../../agents/scratch/M2-fix/hw
+all: $(OUT)/ptehubc.elf
+$(OUT):
+	mkdir -p $@
+$(OUT)/ptehubc_s.o: ptehubc_s.s | $(OUT)
+	kos-as $< -o $@
+$(OUT)/ptehubc.o: ptehubc.c | $(OUT)
+	kos-cc -O2 -c $< -o $@
+$(OUT)/ptehubc.elf: $(OUT)/ptehubc.o $(OUT)/ptehubc_s.o
+	kos-cc -o $@ $^
+.PHONY: all

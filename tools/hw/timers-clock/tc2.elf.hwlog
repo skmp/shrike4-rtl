@@ -1,0 +1,78 @@
+Console enabled
+Upload <tools/hw/timers-clock/tc2.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 273732
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c052d44, size 54
+Section .fini, lma 0x8c052d7c, size 42
+Section .rodata, lma 0x8c052da8, size 46996
+Section .eh_frame, lma 0x8c05e53c, size 452
+Section .ctors, lma 0x8c05e700, size 8
+Section .dtors, lma 0x8c05e708, size 8
+Section .data, lma 0x8c05e720, size 11880
+Section .got, lma 0x8c061588, size 12
+Transferred 333184 bytes at 13085584.380692 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06e620
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+tc2: STBCR 03 STBCR2 00 TSTR 05 IPRA f0f0 IPRB 0000
+Q tpsc 0 TCNT write 5000 while running (rb, +200 cyc, after stop): [ffffffbe ffffffaf ffffffab] [ffffffaa ffffff9b ffffff98] [ffffff95 ffffff86 ffffff83] [ffffff80 ffffff72 ffffff6f]
+Q tpsc 4 TCNT write 5000 while running (rb, +200 cyc, after stop): [ffffffff ffffffff ffffffff] [fffffffe fffffffe fffffffe] [ffffffff ffffffff ffffffff] [fffffffe fffffffe fffffffe]
+Q TCOR1 wr 1000 while running: reads 1000; TCNT1 after the underflow 790 (TCR1 0100)
+Q TCR1 TPSC 0->4 while running: TCR1 0004, edges 4120 apart then 4088 (values ffffffdb ffffffda ffffffd9)
+Q UNF while running: 0100, wr 0000 -> 0000; UNIE wr 0020 -> 0020
+Q TCR1=0025: rd16 0025 rd32 00000000 rd8@0 00 rd8@1 00
+Q tpsc 2 restart: (start mod per, first edge mod per, edge-start): (177 138 217) (69 138 69) (109 150 41) (153 162 265) (205 158 209) (241 138 153) (253 150 153) (49 146 97)
+Q tpsc 4 restart: (start mod per, first edge mod per, edge-start): (2413 1306 2989) (1973 1306 3429) (2493 1294 2897) (2993 1290 2393) (3509 1302 1889) (4041 1302 1357) (457 1310 853) (985 1306 321)
+R CKS 3: (start mod per, e1-start, e2-e1, e3-e2, e1 mod per): (189 39 135 268 228) (93 19 267 244 112) (85 42 244 268 127) (125 19 219 268 144) (149 19 195 268 168) (173 19 171 268 192) (205 19 147 268 224) (237 138 244 268 119) (5 114 244 268 119) (29 90 244 268 119)
+R CKS 7: (start mod per, e1-start, e2-e1, e3-e2, e1 mod per): (2813 31 2511 4108 2844) (1893 19 3459 4084 1912) (2261 19 3075 4108 2280) (2677 19 2667 4108 2696) (3101 19 2235 4108 3120) (3501 1866 4084 4108 1271) (3917 1458 4084 4108 1279) (237 1026 4108 4084 1263) (637 642 4084 4108 1279) (1061 210 4084 4108 1271)
+R WTCNT write while counting (cw-e0, ce-e0, readback, next): (134 4112 10 11) (628 4088 10 11) (1132 4112 10 11) (1628 4104 10 11) (2134 4084 10 11) (2630 4100 10 11) (3134 4100 10 11) (3628 4088 10 11)
+R restored: WTCSR 00 WTCNT 00
+S spin (N flag k handler-start after-start): (100 1 1 1668 0) (101 1 1 1672 0) (102 1 1 1696 0) (103 1 1 1716 0) (104 1 1 1724 0) (105 1 1 1744 0) (106 1 1 1756 0) (107 1 1 1780 0) (108 1 1 1784 0) (109 1 1 1804 0) (110 1 1 1828 0) (111 1 1 1836 0) (112 1 1 1860 0) (113 1 1 1864 0) (114 1 1 1888 0) (115 1 1 1904 0) | k histogram 0..7: 0 32 0 0 0 0 0 0
+S sleep (N flag k handler-start after-start): (100 1 2 68 139) (101 1 2 88 159) (102 1 1 84 155) (103 1 2 68 139) (104 1 2 84 155) (105 1 2 88 159) (106 1 1 84 155) (107 1 2 88 159) (108 1 1 88 159) (109 1 2 84 155) (110 1 1 76 147) (111 1 1 88 159) (112 1 2 72 143) (113 1 1 72 143) (114 1 2 76 147) (115 1 2 84 155) | k histogram 0..7: 0 6 26 0 0 0 0 0
+S poll (N flag k handler-start after-start): (100 4 1 1655 0) (101 4 2 1695 0) (102 4 2 1695 0) (103 4 1 1715 0) (104 4 2 1735 0) (105 4 1 1735 0) (106 4 2 1775 0) (107 4 2 1775 0) (108 4 1 1795 0) (109 4 1 1815 0) (110 4 2 1835 0) (111 4 1 1835 0) (112 4 2 1855 0) (113 4 2 1875 0) (114 4 2 1895 0) (115 4 2 1915 0) | k histogram 0..7: 0 12 20 0 0 0 0 0
+T bracket 3; single access (bracketed total): rd32 TCNT1 21, rd16 TCR1 17, wr32 TCOR1 6, wr16 TCR1 6, wr16 TCR1+rd16 IPRA 26, rd32 PMCTR 6
+P STBCR 03 -> 01
+P as found: R64 00 SEC 7f MIN 7f HR 3f WK 07 DAY 3f MON 1f YR ffff AR 7f 7f 3f 05 3f 00 RCR1 00 RCR2 09
+P R64CNT/RSECCNT/RCR1 samples every 10M cycles: 00/7f/00 00/7f/00 00/7f/00 00/7f/00 00/7f/00 00/7f/00 00/7f/00 00/7f/00
+P TMU1 TPSC 6: TCNT1 ffffffff -> ffffffff over 8M cycles
+P RCR2 wr 02 -> 00
+P after writes 45 34 05 03 21 09 1999: R64 00 SEC 45 MIN 34 HR 05 WK 03 DAY 21 MON 09 YR 1999 AR 7f 7f 3f 05 3f 00 RCR1 00 RCR2 00
+P after FF to every counter / alarm: R64 00 SEC 7f MIN 7f HR 3f WK 07 DAY 3f MON 1f YR ffff AR ff ff bf 87 bf 9f RCR1 00 RCR2 00
+P RCR1 wr 00 -> 00, 80 -> 80, 01 -> 00, 66 -> 00
+P RCR2 wr 09 -> 09; R64CNT/RSECCNT/RCR1 every 20M cycles: 00/45/00 00/45/00 00/45/00 00/45/00 00/45/00 00/45/00 00/45/00 00/45/00 00/45/00 00/45/00 00/45/00 00/45/00
+P after 1.2 s: R64 00 SEC 45 MIN 34 HR 05 WK 03 DAY 21 MON 09 YR 1999 AR 00 00 00 00 00 00 RCR1 00 RCR2 09
+P after ADJ: R64 00 SEC 00 MIN 35 HR 05 WK 03 DAY 21 MON 09 YR 1999 AR 00 00 00 00 00 00 RCR1 00 RCR2 09
+P RCR2 after ADJ write 09, after RESET write 09, R64CNT 00
+P RCR2 PES=1 after 20 ms: 19; wr 09 -> 09
+P TMU1 TPSC 6 with RCR2 09: TCNT1 ffffffff -> ffffffff over 8M cycles
+P restored: RCR1 00 RCR2 00 (read with MSTP1 set) STBCR 03
+tc2: done; STBCR 03 TSTR 05 IPRA f0f0 WTCSR 00
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 107, dma_cntr = 107
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

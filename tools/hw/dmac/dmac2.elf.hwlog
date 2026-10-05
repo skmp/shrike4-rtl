@@ -1,0 +1,75 @@
+Console enabled
+Upload <tools/hw/dmac/dmac2.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 268964
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c051aa4, size 54
+Section .fini, lma 0x8c051adc, size 42
+Section .rodata, lma 0x8c051b08, size 46864
+Section .eh_frame, lma 0x8c05d218, size 452
+Section .ctors, lma 0x8c05d45c, size 8
+Section .dtors, lma 0x8c05d464, size 8
+Section .data, lma 0x8c05d480, size 11880
+Section .got, lma 0x8c0602e8, size 12
+Transferred 328284 bytes at 13003332.650260 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac08d380
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+dmac2: bufA 0c070360 bufB 0c060360 DMAOR 00008201
+T1 before: SAR0 0c08d3a0 DAR0 0c08cce0 DMATCR0 00000000 CHCR0 000853c3
+T1 w DMATCR0=0: SAR0 0c08d3a0 DAR0 0c08cce0 DMATCR0 00000000 | w SAR0=0C0DEAD0: SAR0 00000000 DAR0 0c08cce0 | w DAR0=0C0BEEF0: SAR0 00000000 DAR0 00000000 | w DMATCR0=7: 00000000 | 2000 cyc later SAR0 00000000 DAR0 00000000 DMATCR0 00000000 CHCR0 000853c3
+T1 after 100 ms (6 maple DMAs seen): SAR0 0c08d3a0 DAR0 0c08cce0 DMATCR0 00000000 CHCR0 000853c3
+T2 TE=1 IE=1 DE=0: CHCR 000054b3 -> 000054b6 fired=1 code 660 CHCR in handler 000054b6
+T3 RS=6 SAR=TSTR(1FD80004) byte SM=0 -> RAM       DMAOR 00008201 DMATCR 0 CHCR 00004613 SAR 1fd80004 DAR-start +4 | dst 05050505 eeeeeeee eeeeeeee | DMAOR after 00008201
+T3 RS=4 SAR=TSTR(1FD80004) byte ext->ext          DMAOR 00008205 DMATCR 3 CHCR 00004411 SAR 1fd80004 DAR-start +1 | dst eeeeee11 eeeeeeee eeeeeeee | DMAOR after 00008201
+T3 RS=4 SAR=TOCR(1FD80000) long ext->ext          DMAOR 00008205 DMATCR 3 CHCR 00005431 SAR 1fd80004 DAR-start +4 | dst 00005431 eeeeeeee eeeeeeee | DMAOR after 00008201
+T3 RS=6 SAR=RAM (not on-chip) long                DMAOR 00008205 DMATCR 3 CHCR 00005631 SAR 0c070364 DAR-start +4 | dst 04040404 eeeeeeee eeeeeeee | DMAOR after 00008201
+T3 RS=6 SAR=1F300000 (no module) long             DMAOR 00008205 DMATCR 3 CHCR 00004631 SAR 1f300000 DAR-start +4 | dst 04040404 eeeeeeee eeeeeeee | DMAOR after 00008201
+T3 RS=6 SAR=FFD80004 (P4 form) byte               DMAOR 00008201 DMATCR 0 CHCR 00004613 SAR ffd80004 DAR-start +4 | dst 05050505 eeeeeeee eeeeeeee | DMAOR after 00008201
+T3 RS=2 (ext req single) SAR=1FD80004 byte        DMAOR 00008201 DMATCR 4 CHCR 00001211 SAR 1fd80004 DAR-start +0 | dst eeeeeeee eeeeeeee eeeeeeee | DMAOR after 00008201
+T3 RS=2 (ext req single) SAR=RAM+1 long           DMAOR 00008205 DMATCR 4 CHCR 00001231 SAR 0c070361 DAR-start +0 | dst eeeeeeee eeeeeeee eeeeeeee | DMAOR after 00008201
+T3 RS=4 DAR misaligned (+4) 32B                   DMAOR 00008205 DMATCR 2 CHCR 00005441 SAR 0c070360 DAR-start +0 | dst eeeeeeee eeeeeeee eeeeeeee | DMAOR after 00008201
+T3 TSTR now 05 TOCR 00
+T4 reference: alu_loop(50000) 300140 cyc; burst of 2048 x 32B 94896 cyc
+T4 probe none (cyc() right after)        : t1   94845  end   94964 (wait 50)
+T4 probe alu_loop(50000) then cyc()      : t1  394846  end  394972 (wait 50)
+T4 probe read TMU TCNT0 then alu         : t1  394973  end  395092 (wait 50)
+T4 probe read CCN PTEH then alu          : t1  394967  end  395086 (wait 50)
+T4 probe read DMAC DMATCR1 then alu      : t1  394859  end  394978 (wait 50)
+T4 probe read P2 RAM then alu            : t1  394911  end  395030 (wait 50)
+T4 probe read cached RAM (hit) then alu  : t1  394842  end  394968 (wait 50)
+T4 probe write DMAC SAR3 then alu        : t1  394891  end  395010 (wait 50)
+T4 probe read Holly ISTNRM then alu      : t1  394909  end  395028 (wait 50)
+T4 probe write P2 RAM then alu           : t1  394953  end  395090 (wait 50)
+T5 no DMA            : 2000 uncached RAM reads 44686 cyc (22.3 each); DMA units in that time 0
+T5 cycle steal 4B DMA: 2000 uncached RAM reads 132791 cyc (66.4 each); DMA units in that time 2005
+T5 cycle steal 32B   : 2000 uncached RAM reads 129249 cyc (64.6 each); DMA units in that time 2006
+dmac2: end DMAOR 00008201 CHCR0-3 000853c3 00000000 000012c0 00000000
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 12, dma_cntr = 12
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

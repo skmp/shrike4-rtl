@@ -1,0 +1,103 @@
+hwrun: 04:35:00 lock taken by pid 2928583 for tools/hw/core-integration/ci2.elf
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06f3a0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+ci2: sr 40000001 vbr_f 0x8c011c00 vbr_t 0x8c012400 scratch 0x8c061e20
+F trapa x2        ab=0 nrec=2 out: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+    R0 dt=45 vec=1 spc=8c010b1e ssr=400000f1 expevt=160 intevt=400 tea=8c063841 pr=8c010a82 sr=700000f0
+    R1 dt=13 vec=1 spc=8c010b1e ssr=400000f0 expevt=160 intevt=400 tea=8c063841 pr=8c010a82 sr=700000f0
+F illegal x2      ab=0 nrec=2 out: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+    R0 dt=51 vec=1 spc=8c010b58 ssr=400000f1 expevt=180 intevt=400 tea=8c063841 pr=8c010a82 sr=700000f0
+    R1 dt=11 vec=1 spc=8c010b58 ssr=400000f0 expevt=180 intevt=400 tea=8c063841 pr=8c010a82 sr=700000f0
+F irq_ldc x2      ab=0 nrec=2 out: 8c010bb8 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+    R0 dt=58 vec=6 spc=8c010bb8 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=21 vec=6 spc=8c010bc6 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_bl x2       ab=0 nrec=2 out: 8c010c5e 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+    R0 dt=54 vec=6 spc=8c010c5e ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=14 vec=6 spc=8c010c5e ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_rte x2      ab=0 nrec=2 out: 8c010cf4 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+    R0 dt=73 vec=6 spc=8c010d00 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=23 vec=6 spc=8c010d02 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_br0 x2      ab=0 nrec=2 out: 8c010dae 8c010db0 8c010db2 8c010db8 00000000 00000000 00000000 00000000 00000000
+    R0 dt=61 vec=6 spc=8c010dc0 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=21 vec=6 spc=8c010dc2 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_br1 x2      ab=0 nrec=2 out: 8c010e72 8c010e76 8c010e78 8c010e7e 00000000 00000000 00000000 00000000 00000000
+    R0 dt=59 vec=6 spc=8c010e80 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=22 vec=6 spc=8c010e8a ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_br2 x2      ab=0 nrec=2 out: 8c010f3a 8c010f40 8c010f42 8c010f48 00000000 00000000 00000000 00000000 00000000
+    R0 dt=56 vec=6 spc=8c010f3c ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=22 vec=6 spc=8c010f52 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_br3 x2      ab=0 nrec=2 out: 8c011002 8c01100a 8c01100c 8c011012 00000000 00000000 00000000 00000000 00000000
+    R0 dt=64 vec=6 spc=8c01101c ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=22 vec=6 spc=8c01101c ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_br4 x2      ab=0 nrec=2 out: 8c0110ce 8c0110d8 8c0110da 8c0110e0 00000000 00000000 00000000 00000000 00000000
+    R0 dt=61 vec=6 spc=8c0110e0 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=21 vec=6 spc=8c0110e6 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_br5 x2      ab=0 nrec=2 out: 8c01119a 8c0111a6 8c0111a8 8c0111ae 00000000 00000000 00000000 00000000 00000000
+    R0 dt=56 vec=6 spc=8c01119c ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=21 vec=6 spc=8c0111b4 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_br6 x2      ab=0 nrec=2 out: 8c01126a 8c011278 8c01127a 8c011280 00000000 00000000 00000000 00000000 00000000
+    R0 dt=61 vec=6 spc=8c011280 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=21 vec=6 spc=8c011284 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_br7 x2      ab=0 nrec=2 out: 8c01133a 8c01134a 8c01134c 8c011352 00000000 00000000 00000000 00000000 00000000
+    R0 dt=66 vec=6 spc=8c01133c ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=22 vec=6 spc=8c011358 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_br8 x2      ab=0 nrec=2 out: 8c01140e 8c011420 8c011422 8c011428 00000000 00000000 00000000 00000000 00000000
+    R0 dt=61 vec=6 spc=8c011420 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=22 vec=6 spc=8c01142c ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_br9 x2      ab=0 nrec=2 out: 8c0114e2 8c0114f6 8c0114f8 8c0114fe 00000000 00000000 00000000 00000000 00000000
+    R0 dt=64 vec=6 spc=8c011500 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=22 vec=6 spc=8c011502 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_ldc x2 b    ab=0 nrec=2 out: 8c010bb8 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+    R0 dt=58 vec=6 spc=8c010bb8 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=21 vec=6 spc=8c010bc6 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F irq_rte x2 b    ab=0 nrec=2 out: 8c010cf4 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+    R0 dt=62 vec=6 spc=8c010d00 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+    R1 dt=23 vec=6 spc=8c010d02 ssr=400000e0 expevt=180 intevt=420 tea=8c063841 pr=8c010a82 sr=700000e0
+F mac_mis         ab=0 nrec=3 out: 8c061e21 8c061e31 8c061e40 8c061e51 8c061e41 8c061e50 00000000 00000000 00000000
+    R0 dt=5665586 vec=1 spc=8c01156c ssr=400000f1 expevt=0e0 intevt=420 tea=8c061e31 pr=8c010a82 sr=700000f0
+    R1 dt=5665840 vec=1 spc=8c0115ac ssr=400000f1 expevt=0e0 intevt=420 tea=8c061e51 pr=8c010a82 sr=700000f0
+    R2 dt=5666024 vec=1 spc=8c0115ec ssr=400000f1 expevt=0e0 intevt=420 tea=8c061e41 pr=8c010a82 sr=700000f0
+F frchg_kill      ab=0 nrec=2 out: 00040000 00040000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+    R0 dt=6122484 vec=1 spc=8c01163e ssr=400000f1 expevt=0e0 intevt=3a0 tea=8c061e21 pr=8c010a82 sr=700000f0
+    R1 dt=271 vec=1 spc=8c011668 ssr=400000f1 expevt=0e0 intevt=3a0 tea=8c061e21 pr=8c010a82 sr=700000f0
+F fdiv_cause      ab=0 nrec=1 out: 00000000 00000000 00000000 00000000 00000000 00050844 00000000 00000000 3eaaaaab
+    R0 dt=6441386 vec=1 spc=8c0116ea ssr=400000f1 expevt=120 intevt=3a0 tea=8c061e21 pr=8c010a82 sr=700000f0
+T irqloop           29.000 (max   29.000) budget_left=9
+T ldcloop            9.000 (max    9.000) budget_left=280
+T vbyp              25.000 (max   25.000) budget_left=8
+T vbyp_ok            5.000 (max    5.000) budget_left=280
+T vfar              25.000 (max   25.000) budget_left=8
+T vfar_ok            6.000 (max    6.000) budget_left=280
+T pair_l1           25.000 (max   25.000) budget_left=8
+T pair_l0           25.000 (max   25.000) budget_left=8
+T pair_ok            4.000 (max    4.000) budget_left=280
+ci2: done ipra f0f0 tstr 05 tcr1 0000
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 6, dma_cntr = 6
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+exit=0

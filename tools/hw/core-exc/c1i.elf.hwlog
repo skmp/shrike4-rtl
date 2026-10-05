@@ -1,0 +1,95 @@
+Console enabled
+Upload <tools/hw/core-exc/c1i.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 290284
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c056dec, size 54
+Section .fini, lma 0x8c056e24, size 42
+Section .rodata, lma 0x8c056e50, size 45472
+Section .eh_frame, lma 0x8c061ff0, size 452
+Section .ctors, lma 0x8c062234, size 8
+Section .dtors, lma 0x8c06223c, size 8
+Section .data, lma 0x8c062260, size 14472
+Section .got, lma 0x8c065ae8, size 12
+Transferred 350804 bytes at 13848139.033195 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac072d80
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+c1i: sr 40000001 base 0x8c012000 end 0x8c0158dc
+ad_h0   L ill  31.000 trap  33.000 ref  27.000 (max  31.000  33.000  27.000)  E ill  6.000 trap  8.000
+    B-A ill 9 trap 11 ref 5
+ld_h0   L ill  33.000 trap  35.000 ref  27.000 (max  33.000  35.000  27.000)  E ill  8.000 trap 10.000
+    B-A ill 11 trap 13 ref 5
+lp_h0   L ill  33.000 trap  35.000 ref  27.000 (max  33.000  35.000  27.000)  E ill  8.000 trap 10.000
+    B-A ill 11 trap 13 ref 5
+pf_h0   L ill  32.996 trap  35.000 ref  27.004 (max  33.000  35.000  27.004)  E ill  7.992 trap  9.996
+    B-A ill 11 trap 13 ref 5
+ob_h0   L ill  33.000 trap  35.000 ref  27.000 (max  33.000  35.055  27.000)  E ill  8.000 trap 10.000
+    B-A ill 11 trap 13 ref 5
+fs_h0   L ill  33.000 trap  35.000 ref  27.000 (max  33.000  35.000  27.000)  E ill  8.000 trap 10.000
+    B-A ill 11 trap 13 ref 5
+st_h0   L ill  33.000 trap  35.000 ref  27.000 (max  33.000  35.000  27.000)  E ill  8.000 trap 10.000
+    B-A ill 11 trap 13 ref 5
+l2_h0   L ill  33.000 trap  35.000 ref  27.000 (max  33.000  35.000  27.000)  E ill  8.000 trap 10.000
+    B-A ill 11 trap 13 ref 5
+l3_h0   L ill  34.000 trap  36.000 ref  28.000 (max  34.000  36.000  28.000)  E ill  8.000 trap 10.000
+    B-A ill 11 trap 13 ref 5
+p2_h0   L ill  33.000 trap  35.000 ref  27.000 (max  33.000  35.000  27.000)  E ill  8.000 trap 10.000
+    B-A ill 11 trap 13 ref 5
+f2_h0   L ill  33.000 trap  35.000 ref  27.000 (max  33.000  35.000  27.000)  E ill  8.000 trap 10.000
+    B-A ill 11 trap 13 ref 5
+ad_n    L ill  30.973 trap  33.016 ref  26.973 (max  31.016  33.020  26.988)  E ill  6.000 trap  8.043
+    B-A ill 9 trap 11 ref 5
+ld_n    L ill  33.000 trap  35.004 ref  27.000 (max  33.000  35.020  27.000)  E ill  8.000 trap 10.004
+    B-A ill 11 trap 13 ref 5
+ad_spc  L ill  34.859 trap  37.000 ref  29.152 (max  34.945  37.000  29.324)  E ill  7.707 trap  9.848
+    B-A ill 13 trap 15 ref 7
+ld_spc  L ill  37.000 trap  39.000 ref  29.000 (max  37.000  39.195  29.000)  E ill 10.000 trap 12.000
+    B-A ill 15 trap 17 ref 7
+st_spc  L ill  37.000 trap  38.875 ref  29.000 (max  37.000  39.117  29.000)  E ill 10.000 trap 11.875
+    B-A ill 15 trap 17 ref 7
+ad_gbr  L ill  35.000 trap  37.000 ref  29.000 (max  35.000  37.000  29.000)  E ill  8.000 trap 10.000
+    B-A ill 13 trap 15 ref 7
+ad_vbr  L ill  35.000 trap  37.000 ref  29.000 (max  35.000  37.000  29.000)  E ill  8.000 trap 10.000
+    B-A ill 13 trap 15 ref 7
+ad_dbr  L ill  35.000 trap  37.000 ref  29.000 (max  35.000  37.000  29.000)  E ill  8.000 trap 10.000
+    B-A ill 13 trap 15 ref 7
+ad_pr   L ill  35.000 trap  36.996 ref  29.000 (max  35.000  37.000  29.000)  E ill  8.000 trap  9.996
+    B-A ill 13 trap 15 ref 7
+ad_gm   L ill  33.914 trap  35.914 ref  28.000 (max  34.000  36.000  28.000)  E ill  7.914 trap  9.914
+    B-A ill 12 trap 14 ref 6
+ad_rts  L ill  36.000 trap  38.000 ref  30.000 (max  36.000  38.000  30.000)  E ill  8.000 trap 10.000
+    B-A ill 14 trap 16 ref 8
+un_ssr  L brk  40.000 op  40.000 ref  33.000 (max  40.000  40.000  33.000)  E brk  9.000 op  9.000
+    T/spc/B-A brk 0/104/18 op 0/102/17 ref 1/172/11
+up_ssr  L brk  39.000 op  39.000 ref  32.000 (max  39.000  39.000  32.000)  E brk  9.000 op  9.000
+    T/spc/B-A brk 1/104/18 op 0/102/17 ref 1/172/11
+c1i: done aborted 0
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 7, dma_cntr = 7
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

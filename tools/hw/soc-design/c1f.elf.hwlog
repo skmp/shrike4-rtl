@@ -1,0 +1,75 @@
+Console enabled
+Upload <tools/hw/soc-design/c1f.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 282092
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c054dec, size 54
+Section .fini, lma 0x8c054e24, size 42
+Section .rodata, lma 0x8c054e50, size 45264
+Section .eh_frame, lma 0x8c05ff20, size 452
+Section .ctors, lma 0x8c060164, size 8
+Section .dtors, lma 0x8c06016c, size 8
+Section .data, lma 0x8c060180, size 13160
+Section .got, lma 0x8c0634e8, size 12
+Transferred 341092 bytes at 13406711.022931 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac070640
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+c1f: sr 40000001 base 0x8c012000 end 0x8c013070
+f0  L ill  29.000 dae  31.906 ref  25.000 (max  29.000  32.086  25.000)  E ill  6.000 dae  8.906
+    B-A ill: 8 8 8 8 8 8 8 8 8 8
+    B-A dae: 11 11 11 11 11 11 11 11 11 11
+    B-A ref: 4 4 4 4 4 4 4 4 4 4
+f2  L ill  30.000 dae  32.000 ref  26.000 (max  30.000  32.000  26.000)  E ill  6.000 dae  8.000
+    B-A ill: 9 9 9 9 9 9 9 9 9 9
+    B-A dae: 11 11 11 11 11 11 11 11 11 11
+    B-A ref: 5 5 5 5 5 5 5 5 5 5
+fb  L ill  33.000 dae  35.000 ref  29.000 (max  33.000  35.000  29.000)  E ill  6.000 dae  8.000
+    B-A ill: 12 12 12 12 12 12 12 12 12 12
+    B-A dae: 14 14 14 14 14 14 14 14 14 14
+    B-A ref: 8 8 8 8 8 8 8 8 8 8
+r0  L ill  27.000 dae  29.000 ref  23.000 (max  27.000  29.000  23.000)  E ill  6.000 dae  8.000
+    B-A ill: 1946171671 1946179307 1946179983 1946187557 1946188233 1946195804 1946196480 1946204068 1946204744 1946212315
+    B-A dae: 1946213381 1946221530 1946222240 1946230360 1946231070 1946239204 1946239914 1946248031 1946248741 1946256858
+    B-A ref: 1946257837 1946264365 1946264990 1946271510 1946272135 1946278631 1946279256 1946285752 1946286377 1946292873
+r2  L ill  29.000 dae  31.000 ref  25.000 (max  29.000  31.000  25.000)  E ill  6.000 dae  8.000
+    B-A ill: 1946293991 1946302172 1946302881 1946311000 1946311709 1946319825 1946320534 1946328650 1946329359 1946337483
+    B-A dae: 1946338549 1946347238 1946347980 1946356644 1946357386 1946366047 1946366789 1946375458 1946376200 1946384861
+    B-A ref: 1946385941 1946393035 1946393692 1946400735 1946401392 1946408447 1946409104 1946416144 1946416801 1946423841
+r4  L ill  31.000 dae  33.000 ref  27.000 (max  31.000  33.000  27.133)  E ill  6.000 dae  8.000
+    B-A ill: 1946424907 1946433631 1946434371 1946443080 1946443822 1946452512 1946453254 1946461944 1946462686 1946471380
+    B-A dae: 1946472487 1946481784 1946482558 1946491766 1946492540 1946501745 1946502519 1946511724 1946512498 1946521748
+    B-A ref: 1946522782 1946530481 1946531227 1946538865 1946539595 1946547221 1946547951 1946555573 1946556301 1946563923
+r8  L ill  35.000 dae  37.000 ref  30.996 (max  35.000  37.000  31.000)  E ill  6.004 dae  8.004
+    B-A ill: 1946565201 1946575013 1946575817 1946585567 1946586371 1946596126 1946596930 1946606677 1946607481 1946617228
+    B-A dae: 1946618525 1946628846 1946629684 1946640001 1946640839 1946651132 1946651970 1946662263 1946663101 1946673394
+    B-A ref: 1946674636 1946683465 1946684307 1946693071 1946693909 1946702673 1946703519 1946712283 1946713125 1946721909
+c1f: done aborted 0
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 6, dma_cntr = 6
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

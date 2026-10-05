@@ -1,0 +1,68 @@
+Console enabled
+Upload <tools/hw/mmu/r5warm.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 271236
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c052384, size 54
+Section .fini, lma 0x8c0523bc, size 42
+Section .rodata, lma 0x8c0523e8, size 45904
+Section .eh_frame, lma 0x8c05d738, size 452
+Section .ctors, lma 0x8c05d97c, size 8
+Section .dtors, lma 0x8c05d984, size 8
+Section .data, lma 0x8c05d9a0, size 11880
+Section .got, lma 0x8c060808, size 12
+Transferred 329596 bytes at 12994067.254923 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06d8e0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+r5warm: start
+r5warm: code 0c090000 data 0c0b0000
+J MMUCR AT 0->1, jsr to unmapped P0 (040 = translated); per variant 4 repetitions
+  J mjc0 n0 console layout, slot next line   at 8c011574 slot 8c011580: cold 040 040 040 040 | warm 000 000 000 000 | slotcold 040 040 040 040 |
+  J mjc1 n1 console layout, slot same line   at 8c0115b0 slot 8c0115be: cold 040 040 040 040 | warm 000 000 000 000 | slotcold 000 000 000 000 |
+  J mjm0 n0 mid-line, slot same line         at 8c0115e0 slot 8c0115ec: cold 000 000 000 000 | warm 000 000 000 000 | slotcold 000 000 000 000 |
+  J mjn1 n1, slot next line                  at 8c011612 slot 8c011620: cold 040 040 040 040 | warm 000 000 000 000 | slotcold 040 040 040 040 |
+  J mjmp0 (probes2)                          at 8c0112b4 slot 8c0112c0: cold 040 040 040 040 | warm 000 000 000 000 | slotcold 040 040 040 040 |
+  J mjmp1 (probes2)                          at 8c0112d0 slot 8c0112de: cold 040 040 040 040 | warm 000 000 000 000 | slotcold 000 000 000 000 |
+  J mjmp2 (probes2)                          at 8c0112f0 slot 8c011300: cold 040 040 040 040 | warm 040 040 040 040 | slotcold 040 040 040 040 |
+L MMUCR AT 0->1, load of unmapped P0 (040 = translated); per variant 4 repetitions
+  L mlat0 at 8c01119c load 8c0111a4: cold 000 000 000 000 | warm 000 000 000 000 | slotcold 000 000 000 000 |
+  L mlat1 at 8c0111b4 load 8c0111be: cold 000 000 000 000 | warm 000 000 000 000 | slotcold 000 000 000 000 |
+  L mlat2 at 8c0111cc load 8c0111d8: cold 000 000 000 000 | warm 000 000 000 000 | slotcold 000 000 000 000 |
+  L mlat3 at 8c0111e8 load 8c0111f6: cold 040 040 040 040 | warm 040 040 040 040 | slotcold 040 040 040 040 |
+Q cycles per call of an RTS at p5+ffc with p6 not mapped (mmutest2 R2: 13 x 16; mmutest3 V: 11..13)
+  Q R2 order: p6 dropped each call (UTLB hit)    15 39 29 29 36 29 29 30 29 29 30 29 29 30 29 29
+  Q R2 order: after the p6-dropped calls         13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13
+  Q V order: hard clear, p5 only                 11 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13
+  Q R2 order: p6 dropped each call (UTLB hit)    15 39 29 29 30 29 29 30 29 29 30 29 29 30 29 29
+  Q R2 order: after the p6-dropped calls         13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13
+  Q V order: hard clear, p5 only                 11 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13
+r5warm: done, unexpected exceptions 0, MMUCR 00000000
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 5, dma_cntr = 5
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

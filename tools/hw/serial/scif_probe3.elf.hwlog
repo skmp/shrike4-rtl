@@ -1,0 +1,153 @@
+Console enabled
+Upload <tools/hw/serial/scif_probe3.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 268964
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c051aa4, size 54
+Section .fini, lma 0x8c051adc, size 42
+Section .rodata, lma 0x8c051b08, size 46256
+Section .eh_frame, lma 0x8c05cfb8, size 452
+Section .ctors, lma 0x8c05d1fc, size 8
+Section .dtors, lma 0x8c05d204, size 8
+Section .data, lma 0x8c05d220, size 11880
+Section .got, lma 0x8c060088, size 12
+Transferred 327676 bytes at 12971042.569193 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06d180
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+scif_probe3 run3
+I SCI SSR1 after 40k cyc RE=1: 8N1 86, 8N1+MPIE 86, MP 86, MP+MPIE 86 (RDR1 00)
+H1 TFRST=1: fdr 0000, after writes 0100 0100 0100, +500 0000; TFRST=0 0000; TE=1 +8000: fdr 0000 rx:
+H2 SCFTDR2 read 00 (fdr 0100); SCFRDR2 write 33 -> fdr 0100, read 55
+H3 DR: read 0061, write-1 -> 0061, then write 0 (latched read before the write-1) -> 0060
+H3 DR: read 0061, other-register read, write 0 -> 0060
+H3 DR: read 0061, new byte arrives and is read, fsr 0061 (not re-read before write), write 0 -> 0060
+G1 8E1 -> PE=0, byte 55: tau fsr fdr lsr byte
+   8800 0062 0001 0000 55
+   8864 0062 0001 0000 55
+   8928 0062 0001 0000 55
+   8992 0062 0001 0000 55
+   9056 0062 0001 0000 55
+   9120 0062 0001 0000 55
+   9184 0062 0001 0000 55
+   9248 0062 0001 0000 55
+   9312 0062 0001 0000 55
+   9376 0062 0001 0000 55
+   9440 0062 0001 0000 55
+   9504 0062 0001 0000 55
+   9568 0062 0001 0000 55
+   9632 0062 0001 0000 55
+   9696 0062 0001 0000 55
+   9760 0062 0001 0000 55
+   9824 0062 0001 0000 55
+   9888 0062 0001 0000 55
+   9952 0062 0001 0000 55
+  10016 0062 0001 0000 55
+  10080 0062 0001 0000 55
+  10144 0062 0001 0000 55
+  10208 0060 0000 0000 55
+  10272 0060 0000 0000 55
+  10336 0060 0000 0000 55
+  10400 0060 0000 0000 55
+  10464 0060 0000 0000 55
+  10528 0060 0000 0000 55
+  10592 0060 0000 0000 55
+  10656 0060 0000 0000 55
+G2 8N1 -> PE=1, byte 55: tau fsr fdr lsr byte
+   8800 0062 0001 0000 55
+   8864 0062 0001 0000 55
+   8928 0062 0001 0000 55
+   8992 0062 0001 0000 55
+   9056 0062 0001 0000 55
+   9120 0062 0001 0000 55
+   9184 0062 0001 0000 55
+   9248 0062 0001 0000 55
+   9312 0062 0001 0000 55
+   9376 0062 0001 0000 55
+   9440 0062 0001 0000 55
+   9504 0062 0001 0000 55
+   9568 0062 0001 0000 55
+   9632 0062 0001 0000 55
+   9696 0062 0001 0000 55
+   9760 0062 0001 0000 55
+   9824 0062 0001 0000 55
+   9888 0062 0001 0000 55
+   9952 0062 0001 0000 55
+  10016 0062 0001 0000 55
+  10080 0062 0001 0000 55
+  10144 0062 0001 0000 55
+  10208 0062 0001 0000 55
+  10272 0062 0001 0000 55
+  10336 0062 0001 0000 55
+  10400 0062 0001 0000 55
+  10464 0062 0001 0000 55
+  10528 0062 0001 0000 55
+  10592 0062 0001 0000 55
+  10656 0062 0001 0000 55
+G3 8N1 -> PE=1, byte 54: tau fsr fdr lsr byte
+   8800 0062 0001 0000 54
+   8864 0062 0001 0000 54
+   8928 0062 0001 0000 54
+   8992 0062 0001 0000 54
+   9056 0062 0001 0000 54
+   9120 0062 0001 0000 54
+   9184 0062 0001 0000 54
+   9248 0062 0001 0000 54
+   9312 0062 0001 0000 54
+   9376 0062 0001 0000 54
+   9440 0062 0001 0000 54
+   9504 0062 0001 0000 54
+   9568 0062 0001 0000 54
+   9632 0062 0001 0000 54
+   9696 0062 0001 0000 54
+   9760 0062 0001 0000 54
+   9824 0062 0001 0000 54
+   9888 0062 0001 0000 54
+   9952 0062 0001 0000 54
+  10016 0062 0001 0000 54
+  10080 0062 0001 0000 54
+  10144 0062 0001 0000 54
+  10208 10e6 0001 0000 54
+  10272 0062 0001 0000 54
+  10336 0062 0001 0000 54
+  10400 0062 0001 0000 54
+  10464 0062 0001 0000 54
+  10528 0062 0001 0000 54
+  10592 0062 0001 0000 54
+  10656 0062 0001 0000 54
+G using 0000 -> 0020 at 10208, byte 54
+G4 good/err/good: fsr before 0062; REIE -> 0 interrupts (scr after 0038)
+  reads: [fsr 0062 fdr 0003 byte 31] [fsr 0062 fdr 0002 byte 54] [fsr 0062 fdr 0001 byte 32] [fsr 0062 fdr 0000 byte 00]
+G5 two error bytes: fsr 0062 fdr 0002; RFRST=1 -> fsr 0062 fdr 0000; RFRST=0 fsr 0062
+G5 clear ER -> 0062
+G6 17th byte with the error: fsr 0062 lsr 0001 fdr 0010
+restored: SCSMR2 0000 SCBRR2 0c SCSCR2 0030 SCFSR2 0060 SCFCR2 0040 SCFDR2 0000 SCSPTR2 0011 SCLSR2 0000 STBCR 03
+scif_probe3 done
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 8, dma_cntr = 8
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

@@ -1,0 +1,84 @@
+Console enabled
+Upload <tools/hw/bsc-memmap/bscmm2.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 279620
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c054444, size 54
+Section .fini, lma 0x8c05447c, size 42
+Section .rodata, lma 0x8c0544a8, size 46188
+Section .eh_frame, lma 0x8c05f914, size 452
+Section .ctors, lma 0x8c05fb58, size 8
+Section .dtors, lma 0x8c05fb60, size 8
+Section .data, lma 0x8c05fb80, size 11880
+Section .got, lma 0x8c0629e8, size 12
+Transferred 338264 bytes at 13360661.904079 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06fa40
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+B ubuf ac083a80 cbuf 8c093ac0 big 8c0a3b00
+P idle PDTRA and 00e7 or dce7 PDTRB and 0001 or 000d
+P ram hi 000ac3c3 -> PDTRA 00e7 PDTRB 0000 | lo 12345678 -> PDTRA d4e7 PDTRB 0006
+P ram hi 00053c3c -> PDTRA 00e7 PDTRB 0000 | lo 12345678 -> PDTRA 00e7 PDTRB 0000
+P ram hi 000f0000 -> PDTRA 00e7 PDTRB 0000 | lo 12345678 -> PDTRA 00e7 PDTRB 0000
+P ram hi 0000ffff -> PDTRA 00e7 PDTRB 0000 | lo 12345678 -> PDTRA 00e7 PDTRB 0000
+P vram hi 000ac3c3 -> PDTRA c0e7 PDTRB 000a
+P vram hi 00053c3c -> PDTRA 3ce7 PDTRB 0001
+S WCR3 07777777 b0 07777777 b3 07777777 w0 07777777 w2 07777777 l 07777700 - 00000000 restored 07777777
+S PCR 0000 l 0000 b0 0000 b1 0000 w 1111 restored 0000
+F RTCNT wraps 6: 5d->00(38) 5d->00(38) 5d->00(38) 5e->00(22) 5d->00(22) 5e->00(22)
+F x384 reads: 6194*41 6202*1 6204*1 6205*1 6218*3 6974*1
+F x128 reads: 2050*14 2056*1 2074*32 2340*1
+M ram            rd_wr         19    45   227   643 lat   26 per   26.00
+M sb_iml2nrm     rd_wr         20    48   245   693 lat   28 per   28.00
+M vram64top      rd_wr         95   215  1055  2987 lat  120 per  120.75
+M ram>sb         wr_rdalt       3    30   226   674 lat   27 per   28.00
+M sb>ram         wr_rdalt       3    30   226   674 lat   27 per   28.00
+M vram>ram       wr_rdalt       3    32   242   722 lat   29 per   30.00
+M ram>vram       wr_rdalt       3   104   834  2562 lat  101 per  108.00
+M sb/vram        rd_alt         3   113   917  2869 lat  110 per  122.00
+M ram_p2         tas            3    27   237   749 lat   24 per   32.00
+M ram_p1         tas            3    27   237   755 lat   24 per   32.37
+M ram_p1         rd_l           3     4    11    27 lat    1 per    1.00
+M oc_miss        c_rd           3    20   132   388 lat   17 per   16.00
+M oc_miss        c_p0_8         3    24   164   484 lat   21 per   20.00
+M oc_miss        c_p0_16        3    26   180   532 lat   23 per   22.00
+M oc_miss        c_p0_24        3    26   194   578 lat   23 per   24.00
+M oc_miss        c_rd_last      3    26   194   578 lat   23 per   24.00
+M oc_miss        c_p16_0        3    26   180   532 lat   23 per   22.00
+M oc_miss        c_p16_8        3    26   194   578 lat   23 per   24.00
+M oc_miss        c_p16_24       3    24   164   484 lat   21 per   20.00
+M oc_miss        c_p8_0         3    26   194   578 lat   23 per   24.00
+M oc_miss        c_p24_16       3    26   194   578 lat   23 per   24.00
+M oc_miss_big    c_rd           3    20   132   388 lat   17 per   16.00
+M oc_miss_dbank  c_rd           3    20   188   572 lat   17 per   24.00
+M oc_wmiss_dbank c_wr          19    53   221   595 lat   34 per   23.37
+R WCR3 07777777 PCR 0000 RTCOR 005e BCR1 a3020008 MCR c00a0e24
+DONE
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 6, dma_cntr = 6
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

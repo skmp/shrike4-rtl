@@ -1,0 +1,55 @@
+Console enabled
+Upload <tools/hw/soc-design/c2b.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 269484
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c051cac, size 54
+Section .fini, lma 0x8c051ce4, size 42
+Section .rodata, lma 0x8c051d10, size 45152
+Section .eh_frame, lma 0x8c05cd70, size 452
+Section .ctors, lma 0x8c05cfb4, size 8
+Section .dtors, lma 0x8c05cfbc, size 8
+Section .data, lma 0x8c05cfe0, size 11880
+Section .got, lma 0x8c05fe48, size 12
+Transferred 327092 bytes at 12836709.089759 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06cee0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+c2b: K               0      1      2      3      4      6      8     12     16     24
+B expevt  bk        6      6      6      7      8     10     12     16     20     28
+L expevt  xk     5.00   6.00   7.00   8.00   9.00  11.00  13.00  17.00  21.00  29.00
+B ram     bk        4      4      4      5      6      8     10     14     18     26
+L ram     xk     3.00   4.00   5.00   6.00   7.00   9.00  11.00  15.00  19.00  27.00
+B ocaa    bk        7      7      7      8      9     11     13     17     21     29
+L ocaa    xk    14.05  14.05  28.09  28.09  28.09  28.09  28.14  30.13  32.14  40.07
+B utlbaa  bk        7      7      7      8      9     11     13     17     21     29
+L utlbaa  xk    14.06  14.05  28.09  28.09  28.09  28.11  28.10  30.08  32.14  40.12
+c2b: done
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 5, dma_cntr = 4
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

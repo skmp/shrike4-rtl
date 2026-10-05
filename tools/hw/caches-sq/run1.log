@@ -1,0 +1,294 @@
+Console enabled
+Upload <tools/hw/caches-sq/cachetest.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 290244
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c056dc4, size 54
+Section .fini, lma 0x8c056dfc, size 42
+Section .rodata, lma 0x8c056e28, size 49296
+Section .eh_frame, lma 0x8c062eb8, size 452
+Section .ctors, lma 0x8c0630fc, size 8
+Section .dtors, lma 0x8c063104, size 8
+Section .data, lma 0x8c063120, size 11880
+Section .got, lma 0x8c065f88, size 12
+Transferred 351996 bytes at 13790194.571119 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac0e9020
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+cachetest: CCR 00000105 QACR0 00000004 QACR1 00000004 MCR c00a0e24
+regions: R0 8c06c1a0 (OC idx 13) R1 8c074020 sp-idx 495 kd 8c068160
+T empty                      n=  1 cyc=    12 c/u=  12.00 frzoc=4.00
+T chain hit s32 w0           n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+T chain miss s32 w0          n= 64 cyc=  1179 c/u=  18.42 rdmiss=1.00 ocfill=14.25 frzoc=15.31
+T chain miss s32 w0 cleanV   n= 64 cyc=  1179 c/u=  18.42 rdmiss=1.00 ocfill=14.25 frzoc=15.31
+T chain miss s32 w0 dirtyV   n= 64 cyc=  2681 c/u=  41.89 rdmiss=1.00 ocfill=23.93 frzoc=38.78
+T chain hit s32 w7           n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+T chain miss s32 w7          n= 64 cyc=  1179 c/u=  18.42 rdmiss=1.00 ocfill=14.25 frzoc=15.31
+T chain miss s32 w3          n= 64 cyc=  1179 c/u=  18.42 rdmiss=1.00 ocfill=14.25 frzoc=15.31
+T chain hit s4128            n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+T chain miss s4128           n= 64 cyc=  1799 c/u=  28.10 rdmiss=1.00 ocfill=23.93 frzoc=25.00
+T chain P2 s32               n= 64 cyc=  1178 c/u=  18.40 frzoc=15.29
+T chain P2 s4128             n= 64 cyc=  1798 c/u=  28.09 frzoc=24.98
+T ldstream hit               n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+T ldstream miss              n= 64 cyc=  1179 c/u=  18.42 rdmiss=1.00 ocfill=14.25 frzoc=15.31
+T ldstream miss dirtyV       n= 64 cyc=  2681 c/u=  41.89 rdmiss=1.00 ocfill=23.93 frzoc=38.78
+T ld2 hit                    n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ld2 miss                   n= 64 cyc=  1690 c/u=  26.40 rdmiss=1.00 ocfill=14.25 frzoc=22.29
+T ldhot hit                  n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldhot miss                 n= 64 cyc=  1307 c/u=  20.42 rdmiss=1.00 ocfill=14.25 frzoc=16.31
+T ldgap4 hit                 n= 64 cyc=   907 c/u=  14.17 frzoc=0.06
+T ldgap4 miss                n= 64 cyc=  1819 c/u=  28.42 rdmiss=1.00 ocfill=14.25 frzoc=14.31
+T ldgap4 miss dirtyV         n= 64 cyc=  2691 c/u=  42.04 rdmiss=1.00 ocfill=23.93 frzoc=27.93
+T ldgap8 hit                 n= 64 cyc=  1675 c/u=  26.17 frzoc=0.06
+T ldgap8 miss                n= 64 cyc=  2587 c/u=  40.42 rdmiss=1.00 ocfill=14.34 frzoc=14.40
+T ldgap8 miss dirtyV         n= 64 cyc=  3215 c/u=  50.23 rdmiss=1.00 ocfill=23.93 frzoc=24.12
+T ldgap16 hit                n= 64 cyc=  3211 c/u=  50.17 frzoc=0.06
+T ldgap16 miss               n= 64 cyc=  4129 c/u=  64.51 rdmiss=1.00 ocfill=14.34 frzoc=14.40
+T ldgap16 miss dirtyV        n= 64 cyc=  4737 c/u=  74.01 rdmiss=1.00 ocfill=23.87 frzoc=23.96
+T ldgap32 hit                n= 64 cyc=  6283 c/u=  98.17 frzoc=0.06
+T ldgap32 miss               n= 64 cyc=  7197 c/u= 112.45 rdmiss=1.00 ocfill=14.43 frzoc=14.34
+T ldgap32 miss dirtyV        n= 64 cyc=  7807 c/u= 121.98 rdmiss=1.00 ocfill=23.81 frzoc=23.87
+T ldgap64 hit                n= 64 cyc= 12427 c/u= 194.17 frzoc=0.06
+T ldgap64 miss               n= 64 cyc= 13353 c/u= 208.64 rdmiss=1.00 ocfill=14.62 frzoc=14.65
+T ldgap64 miss dirtyV        n= 64 cyc= 13943 c/u= 217.85 rdmiss=1.00 ocfill=23.68 frzoc=23.75
+T ldstream P2 s32            n= 64 cyc=  1178 c/u=  18.40 frzoc=15.29
+T ststream hit               n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+T ststream miss              n= 64 cyc=  1418 c/u=  22.15 wrmiss=1.00 ocfill=14.07 frzoc=19.04
+T ststream miss dirtyV       n= 64 cyc=  2663 c/u=  41.60 wrmiss=1.00 ocfill=23.68 frzoc=38.75
+T stgap4 hit                 n= 64 cyc=   907 c/u=  14.17 frzoc=0.06
+T stgap4 miss                n= 64 cyc=  1429 c/u=  22.32 wrmiss=1.00 ocfill=14.25 frzoc=8.21
+T stgap4 P2 s4               n= 64 cyc=  1035 c/u=  16.17 frzoc=2.06
+T stgap8 hit                 n= 64 cyc=  1675 c/u=  26.17 frzoc=0.06
+T stgap8 miss                n= 64 cyc=  1807 c/u=  28.23 wrmiss=1.00 ocfill=14.25 frzoc=2.12
+T stgap8 P2 s4               n= 64 cyc=  1803 c/u=  28.17 frzoc=2.06
+T stgap16 hit                n= 64 cyc=  3211 c/u=  50.17 frzoc=0.06
+T stgap16 miss               n= 64 cyc=  3339 c/u=  52.17 wrmiss=1.00 ocfill=14.43 frzoc=2.06
+T stgap16 P2 s4              n= 64 cyc=  3339 c/u=  52.17 frzoc=2.06
+T stgap32 hit                n= 64 cyc=  6283 c/u=  98.17 frzoc=0.06
+T stgap32 miss               n= 64 cyc=  6411 c/u= 100.17 wrmiss=1.00 ocfill=14.43 frzoc=2.06
+T stgap32 P2 s4              n= 64 cyc=  6411 c/u= 100.17 frzoc=2.06
+T stgap64 hit                n= 64 cyc= 12427 c/u= 194.17 frzoc=0.06
+T stgap64 miss               n= 64 cyc= 12555 c/u= 196.17 wrmiss=1.00 ocfill=14.71 frzoc=2.06
+T stgap64 P2 s4              n= 64 cyc= 12555 c/u= 196.17 frzoc=2.06
+T ststream P2 s4             n= 64 cyc=   648 c/u=  10.12 frzoc=7.01
+T ststream P2 s8             n= 64 cyc=   648 c/u=  10.12 frzoc=7.01
+T ststream P2 s32            n= 64 cyc=   656 c/u=  10.25 frzoc=7.14
+T prefstream hit             n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+T prefstream miss            n= 64 cyc=   919 c/u=  14.35 rdmiss=1.00 ocfill=14.17 frzoc=11.25
+T prefstream miss dirtyV     n= 64 cyc=  2663 c/u=  41.60 rdmiss=1.00 ocfill=23.68 frzoc=38.50
+T prefstream P2              n= 64 cyc=  1178 c/u=  18.40 frzoc=15.29
+T prefld d1 hit              n= 64 cyc=   395 c/u=   6.17 frzoc=0.06
+T prefld d1 miss             n= 64 cyc=  1307 c/u=  20.42 rdmiss=1.00 ocfill=14.25 frzoc=14.31
+T prefld d2 hit              n= 64 cyc=   587 c/u=   9.17 frzoc=0.06
+T prefld d2 miss             n= 64 cyc=  1307 c/u=  20.42 rdmiss=1.00 ocfill=14.25 frzoc=11.31
+T prefld d3 hit              n= 64 cyc=   779 c/u=  12.17 frzoc=0.06
+T prefld d3 miss             n= 64 cyc=  1307 c/u=  20.42 rdmiss=1.00 ocfill=14.25 frzoc=8.31
+T prefld d4 hit              n= 64 cyc=   971 c/u=  15.17 frzoc=0.06
+T prefld d4 miss             n= 64 cyc=  1307 c/u=  20.42 rdmiss=1.00 ocfill=14.25 frzoc=5.31
+T prefld d5 hit              n= 64 cyc=  1163 c/u=  18.17 frzoc=0.06
+T prefld d5 miss             n= 64 cyc=  1307 c/u=  20.42 rdmiss=1.00 ocfill=14.25 frzoc=2.31
+T prefld d6 hit              n= 64 cyc=  1355 c/u=  21.17 frzoc=0.06
+T prefld d6 miss             n= 64 cyc=  1555 c/u=  24.29 rdmiss=1.00 ocfill=14.25 frzoc=3.18
+T prefld d7 hit              n= 64 cyc=  1547 c/u=  24.17 frzoc=0.06
+T prefld d7 miss             n= 64 cyc=  1679 c/u=  26.23 rdmiss=1.00 ocfill=14.25 frzoc=2.12
+T prefld d8 hit              n= 64 cyc=  1739 c/u=  27.17 frzoc=0.06
+T prefld d8 miss             n= 64 cyc=  1869 c/u=  29.20 rdmiss=1.00 ocfill=14.25 frzoc=2.09
+T prefld d16 hit             n= 64 cyc=  3275 c/u=  51.17 frzoc=0.06
+T prefld d16 miss            n= 64 cyc=  3403 c/u=  53.17 rdmiss=1.00 ocfill=14.43 frzoc=2.06
+T prefld d24 hit             n= 64 cyc=  4811 c/u=  75.17 frzoc=0.06
+T prefld d24 miss            n= 64 cyc=  4939 c/u=  77.17 rdmiss=1.00 ocfill=14.43 frzoc=2.06
+T prefld d32 hit             n= 64 cyc=  6347 c/u=  99.17 frzoc=0.06
+T prefld d32 miss            n= 64 cyc=  6475 c/u= 101.17 rdmiss=1.00 ocfill=14.43 frzoc=2.06
+T prefld d40 hit             n= 64 cyc=  7883 c/u= 123.17 frzoc=0.06
+T prefld d40 miss            n= 64 cyc=  8011 c/u= 125.17 rdmiss=1.00 ocfill=14.53 frzoc=2.06
+T prefld d48 hit             n= 64 cyc=  9419 c/u= 147.17 frzoc=0.06
+T prefld d48 miss            n= 64 cyc=  9547 c/u= 149.17 rdmiss=1.00 ocfill=14.53 frzoc=2.06
+T prefld d56 hit             n= 64 cyc= 10955 c/u= 171.17 frzoc=0.06
+T prefld d56 miss            n= 64 cyc= 11083 c/u= 173.17 rdmiss=1.00 ocfill=14.62 frzoc=2.06
+T prefld d64 hit             n= 64 cyc= 12491 c/u= 195.17 frzoc=0.06
+T prefld d64 miss            n= 64 cyc= 12619 c/u= 197.17 rdmiss=1.00 ocfill=14.62 frzoc=2.06
+T ocbwb invalid              n= 64 cyc=   331 c/u=   5.17 frzoc=2.06
+T ocbwb clean                n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+T ocbwb dirty                n= 64 cyc=   782 c/u=  12.21 frzoc=9.10
+T ocbp invalid               n= 64 cyc=   331 c/u=   5.17 frzoc=2.06
+T ocbp clean                 n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+T ocbp dirty                 n= 64 cyc=   783 c/u=  12.23 frzoc=9.12
+T ocbi invalid               n= 64 cyc=   331 c/u=   5.17 frzoc=2.06
+T ocbi clean                 n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+T ocbi dirty                 n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+T movca hit                  n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+T movca miss                 n= 64 cyc=   331 c/u=   5.17 frzoc=2.06
+T movca miss dirtyV          n= 64 cyc=   785 c/u=  12.26 frzoc=9.15
+T movca P2                   n= 64 cyc=   656 c/u=  10.25 frzoc=7.14
+T ocbwb dirty P0alias        n= 64 cyc=   782 c/u=  12.21 frzoc=9.10
+T sq stores only             n= 64 cyc=   651 c/u=  10.17 frzoc=0.06
+T sq SQ0 only                n= 64 cyc=  1423 c/u=  22.23 frzoc=11.12
+T sq SQ0/SQ1 alternate       n= 32 cyc=   847 c/u=  26.46 frzoc=6.25
+T sq pref0 pref1             n= 64 cyc=  1545 c/u=  24.14 frzoc=20.01
+T sq pref0 st0               n= 64 cyc=  1167 c/u=  18.23 frzoc=14.12
+T sq SQ0 gap1                n= 64 cyc=  1425 c/u=  22.26 frzoc=9.15
+T sq SQ0 gap2                n= 64 cyc=  1427 c/u=  22.29 frzoc=6.18
+T sq SQ0 gap4                n= 64 cyc=  1555 c/u=  24.29 frzoc=2.18
+T sq SQ0 gap8                n= 64 cyc=  2315 c/u=  36.17 frzoc=2.06
+T sq SQ0 gap16               n= 64 cyc=  3851 c/u=  60.17 frzoc=2.06
+T sq SQ0 gap32               n= 64 cyc=  6923 c/u= 108.17 frzoc=2.06
+T sq SQ0 gap64               n= 64 cyc= 13067 c/u= 204.17 frzoc=2.06
+T WT ststream hit s4         n= 64 cyc=   648 c/u=  10.12 frzoc=7.01
+T WT ststream hit s32        n= 64 cyc=   656 c/u=  10.25 frzoc=7.14
+T WT ststream miss s32       n= 64 cyc=   656 c/u=  10.25 frzoc=7.14
+T WT stgap4 hit s4           n= 64 cyc=  1035 c/u=  16.17 frzoc=2.06
+T WT stgap8 hit s4           n= 64 cyc=  1803 c/u=  28.17 frzoc=2.06
+T WT stgap16 hit s4          n= 64 cyc=  3339 c/u=  52.17 frzoc=2.06
+T WT stgap32 hit s4          n= 64 cyc=  6411 c/u= 100.17 frzoc=2.06
+T WT stgap64 hit s4          n= 64 cyc= 12555 c/u= 196.17 frzoc=2.06
+T WT chain miss              n= 64 cyc=  1179 c/u=  18.42 rdmiss=1.00 ocfill=14.25 frzoc=15.31
+T icA straight warm          n= 32 cyc=   267 c/u=   8.34 frzoc=0.12
+T icA straight cold          n= 32 cyc=   719 c/u=  22.46 frzoc=0.12 icmiss=1.00 icfill=14.18 frzic=14.18
+T icA straight P2            n= 32 cyc=  4149 c/u= 129.65 frzoc=0.12 icmiss=8.03 frzic=121.40
+T icB bra/line warm          n= 32 cyc=    74 c/u=   2.31 frzoc=0.12
+T icB bra/line cold          n= 32 cyc=   780 c/u=  24.37 frzoc=0.12 icmiss=1.00 icfill=14.18 frzic=22.12
+T icB bra/line P2            n= 32 cyc=  1036 c/u=  32.37 frzoc=0.12 icmiss=2.00 frzic=30.18
+T icC bra@24 warm            n= 32 cyc=    74 c/u=   2.31 frzoc=0.12
+T icC bra@24 cold            n= 32 cyc=   781 c/u=  24.40 frzoc=0.12 icmiss=1.00 icfill=14.18 frzic=22.15
+T icC bra@24 P2              n= 32 cyc=  1036 c/u=  32.37 frzoc=0.12 icmiss=2.00 frzic=30.18
+F X=8c07c000 Y=8c080000 entry 0
+F CCR                                          00000105
+F QACR0                                        00000004
+F QACR1                                        00000004
+F QACR0 after write ffffffff                   0000001c
+F load: value                                  aaaa0001  want aaaa0001  ok
+F load: OC addr array (tag|V)                  0c07c001  want 0c07c001  ok
+F store hit: addr array (tag|U|V)              0c07c003  want 0c07c003  ok
+F store hit copy-back: memory unchanged        aaaa0001  want aaaa0001  ok
+F OC data array word 0                         c8244b1a  want bbbb0002  DIFF
+F OCBWB: addr array                            01848000  want 0c07c001  DIFF
+F OCBWB: memory                                bbbb0002  want bbbb0002  ok
+F OCBI dirty: addr array V                     00000000  want 00000000  ok
+F OCBI dirty: memory keeps old                 bbbb0002  want bbbb0002  ok
+F OCBI dirty: reload                           bbbb0002  want bbbb0002  ok
+F OCBP dirty: addr array V                     00000000  want 00000000  ok
+F OCBP dirty: memory                           dddd0004  want dddd0004  ok
+F OCBP: addr array raw (tag kept?)             0c07c000
+F OCBI @P2 alias of dirty line: addr array     0c07c003
+F OCBI @P2 alias: memory                       dddd0004
+F OCBP @P0 alias: addr array                   0c07c000
+F OCBP @P0 alias: memory                       eeee0006  want eeee0006  ok
+F AA write 0 (non-assoc) on dirty: V           00000000  want 00000000  ok
+F AA write 0 (non-assoc) on dirty: written back 11110007  want 11110007  ok
+F AA write tag|V (U=0, non-assoc) on dirty: entry 0c07c001  want 0c07c001  ok
+F AA write tag|V (U=0, non-assoc) on dirty: memory 22220008  want 22220008  ok
+F AA assoc write match V=0 on dirty: V         00000000  want 00000000  ok
+F AA assoc write match V=0 on dirty: memory    33330009  want 33330009  ok
+F AA assoc write mismatch: entry unchanged     0c07c003  want 0c07c003  ok
+F AA assoc write match U=0 V=1 on dirty: entry 01848000  want 0c07c001  DIFF
+F AA assoc write match U=0 V=1 on dirty: memory 4444000a  want 4444000a  ok
+F AA assoc write with P2 address in data: entry 01848000
+F AA write e0000000|tagY V=0: read back        0c080000
+F DA write: addr array (U not set)             0c07c001  want 0c07c001  ok
+F DA write: cached value                       5555000b  want 5555000b  ok
+F DA write: memory (old)                       00000000
+F MOVCA miss (clean victim X): entry           0c080003  want 0c080003  ok
+F MOVCA miss: Y word 0 (X was C0DE000k)        1111aaaa
+F MOVCA miss: Y word 1 (X was C0DE000k)        00000000
+F MOVCA miss: Y word 2 (X was C0DE000k)        c0de0002
+F MOVCA miss: Y word 3 (X was C0DE000k)        c0de0003
+F MOVCA miss: Y word 4 (X was C0DE000k)        c0de0004
+F MOVCA miss: Y word 5 (X was C0DE000k)        c0de0005
+F MOVCA miss: Y word 6 (X was C0DE000k)        c0de0006
+F MOVCA miss: Y word 7 (X was C0DE000k)        c0de0007
+F MOVCA miss (dirty victim): X written back    7777000c  want 7777000c  ok
+F MOVCA miss (dirty victim): entry             0c080003  want 0c080003  ok
+F MOVCA miss (dirty victim): Y word 2          00000000
+F MOVCA @P2: addr array                        01848000
+F MOVCA @P2: memory                            3333cccc  want 3333cccc  ok
+F PREF miss: entry                             0c07c001  want 0c07c001  ok
+F PREF @P2: entry                              01848000
+F PREF @P0 alias: entry                        0c07c001  want 0c07c001  ok
+F load via P0 then entry                       0c07c001  want 0c07c001  ok
+F WT store miss: no allocate (V)               00000000  want 00000000  ok
+F WT store miss: memory                        20000002  want 20000002  ok
+F WT load miss: allocates                      0c07c001  want 0c07c001  ok
+F WT store hit: U stays 0                      0c07c001  want 0c07c001  ok
+F WT store hit: memory                         30000003  want 30000003  ok
+F WT MOVCA miss: entry                         0c07c000
+F WT MOVCA miss: memory                        4000aaaa  want 4000aaaa  ok
+F IC addr array of blkA line 0                 0c014801  want 0c014801  ok
+F IC data array word 0                         00090009  want 00090009  ok
+F IC data array word 7                         00090009  want 00090009  ok
+F SQ test line off 001fd480 sq0 e01fd480 sq1 e11fd4a0
+F SQ1 via QACR1=area1: VRAM word 1             51510001  want 51510001  ok
+F SQ1 via QACR1=area1: VRAM word 7             51510007  want 51510007  ok
+F SQ1 via QACR1: RAM (QACR0 view) untouched    eeee0001  want eeee0001  ok
+F SQ0 via QACR0=area3: RAM word 1              50500001  want 50500001  ok
+F SQ0 (PREF @+0x14): RAM word 7                50500007  want 50500007  ok
+F SQ area read E0000004                        00090009
+F SQ area read E0000024                        00000000
+F ORA OIX=0 7c000000 reads a0000008
+F ORA OIX=0 7c001000 reads a0000008
+F ORA OIX=0 7c002000 reads a000000a
+F ORA OIX=0 7c003000 reads a000000a
+F ORA OIX=0 7c004000 reads a0000008
+F ORA OIX=0 7c005000 reads a0000008
+F ORA OIX=0 7dfff000 reads a000000a
+F ORA OIX=0 7e000000 reads a0000008
+F ORA OIX=0 7e001000 reads a0000008
+F ORA OIX=0 7e002000 reads a000000a
+F ORA OIX=0 7ffff000 reads a000000a
+F ORA OIX=0 7c000fe0 reads a000000b
+F ORA: OC data array entry 128 word 0          a0000008
+F ORA: OC data array entry 255 word 0          a000000b
+F ORA: OC data array entry 384 word 0          a000000a
+F ORA: OC data array entry 511 word 0          64b3400b
+F ORA: OC addr array entry 128                 00000000
+F ORA: OC addr array entry 384                 00000000
+F ORA cached X=8c07d000 idx 128: entry 0 = 0c07d001, entry 128 = 00000000 (tag 0c07d000)
+T ORA chain OC-RAM           n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+F ORA chain event 0x0B (on-chip RAM operand accesses) per run: 64
+F ORA OIX=1 7c000000 reads b0000006
+F ORA OIX=1 7c001000 reads b0000006
+F ORA OIX=1 7c002000 reads b0000006
+F ORA OIX=1 7c003000 reads b0000006
+F ORA OIX=1 7c004000 reads b0000006
+F ORA OIX=1 7c005000 reads b0000006
+F ORA OIX=1 7dfff000 reads b0000006
+F ORA OIX=1 7e000000 reads b000000a
+F ORA OIX=1 7e001000 reads b000000a
+F ORA OIX=1 7e002000 reads b000000a
+F ORA OIX=1 7ffff000 reads b000000a
+F ORA OIX=1 7c000fe0 reads b000000b
+F CCR after leaving RAM mode (OCI written)     00000105
+F OIX: Z=8c07e000: entry 0 = 0c07e001, entry 256 = 0e07e001 (tags 0c07e000 / 0e07e000)
+F IIX=1 call 8c015400: IC entry 32 = 0c015401, entry 160 = 0c01b400
+F IIX=1 call 8e015400: IC entry 32 = 0c015401, entry 160 = 0e015401
+F IIX=0 call 8c015400: IC entry 32 = 0c015400, entry 160 = 0c015401
+F CCR write cycles (P2 code): plain 6 OCI 6 ICI 6 both 6
+exceptions caught: last code 000 pc 00000000
+cachetest DONE
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 23, dma_cntr = 23
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

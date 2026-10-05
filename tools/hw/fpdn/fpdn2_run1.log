@@ -1,0 +1,44 @@
+hwrun: 21:30:22 lock taken by pid 833440 for tools/hw/fpdn/fpdn2.elf
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac07c3c0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+fpdn2: boot fpscr=00040000
+p3 FADD.D     rows  441  traps with DN=0 / no enables: 168
+p3 FSUB.D     rows  441  traps with DN=0 / no enables: 168
+p3 FMUL.D     rows  441  traps with DN=0 / no enables: 144
+p3 FDIV.D     rows  441  traps with DN=0 / no enables: 129
+p3 FCMP/EQ.D  rows  441  traps with DN=0 / no enables: 0
+p3 FCMP/GT.D  rows  441  traps with DN=0 / no enables: 0
+p3 FSQRT.D    rows   21  traps with DN=0 / no enables: 4
+p3 FTRC.D     rows   21  traps with DN=0 / no enables: 0
+p3 FCNVDS     rows   21  traps with DN=0 / no enables: 6
+p3 done: 16254 records, 4951 traps
+fpdn2: fpscr at exit=00040000, handler calls 4951
+DONE
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 9, dma_cntr = 9
+vid_set_mode: 640x480 VGA with 1 framebuffers.

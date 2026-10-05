@@ -1,0 +1,108 @@
+Console enabled
+Upload <tools/hw/caches-sq/cachetest3.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 282052
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c054dc4, size 54
+Section .fini, lma 0x8c054dfc, size 42
+Section .rodata, lma 0x8c054e28, size 45848
+Section .eh_frame, lma 0x8c060140, size 452
+Section .ctors, lma 0x8c060384, size 8
+Section .dtors, lma 0x8c06038c, size 8
+Section .data, lma 0x8c0603a0, size 11880
+Section .got, lma 0x8c063208, size 12
+Transferred 340356 bytes at 13328445.952832 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac0b5020
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+cachetest3: CCR 00000105
+F a dirty victim, MOVCA w0: Y              entry 0c07c001: 9999aaaa 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+F a  ... after OCBP Y: memory Y            entry 00000000: 9999aaaa 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+F a  ... memory X (written back)           entry 00000000: c0de0000 c0de0001 7777000c c0de0003 c0de0004 c0de0005 c0de0006 c0de0007
+F b dirty victim, MOVCA w5: Y              entry 0c07c001: 00000000 00000000 00000000 00000000 00000000 8888bbbb 00000000 00000000
+F c clean victim, MOVCA w5: Y              entry 0c07c001: c2de0000 c2de0001 c2de0002 c2de0003 00000000 7777cccc c2de0006 c2de0007
+F d MOVCA hit w2: Y                        entry 0c07c001: 5d5d0000 5d5d0001 6666dddd 5d5d0003 5d5d0004 5d5d0005 5d5d0006 5d5d0007
+F e store hit w2: Y                        entry 0c07c001: 5e5e0000 5e5e0001 5555eeee 5e5e0003 5e5e0004 5e5e0005 5e5e0006 5e5e0007
+F f store miss w0, dirty victim: Y         entry 0c07c001: 3333ffff 5f5f0001 5f5f0002 5f5f0003 5f5f0004 5f5f0005 5f5f0006 5f5f0007
+F g dirty victim MOVCA w0 + MOVCA w3: Y    entry 0c07c001: 1111aaaa 00000000 00000000 1111bbbb 00000000 00000000 00000000 00000000
+F h MOVCA-dirty victim, MOVCA w1: Y        entry 0c07c001: 00000000 0b0b0b0b 00000000 00000000 00000000 00000000 00000000 00000000
+R0 8c068400 idx 32
+T ldw w0 then +4 hit         n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w0 then +4 miss        n= 64 cyc=  1307 c/u=  20.42 rdmiss=1.00 ocfill=14.25 frzoc=16.31
+T ldw w0 then +8 hit         n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w0 then +8 miss        n= 64 cyc=  1434 c/u=  22.40 rdmiss=1.00 ocfill=14.25 frzoc=18.31
+T ldw w0 then +12 hit        n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w0 then +12 miss       n= 64 cyc=  1434 c/u=  22.40 rdmiss=1.00 ocfill=14.25 frzoc=18.31
+T ldw w0 then +16 hit        n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w0 then +16 miss       n= 64 cyc=  1562 c/u=  24.40 rdmiss=1.00 ocfill=14.25 frzoc=20.31
+T ldw w0 then +20 hit        n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w0 then +20 miss       n= 64 cyc=  1562 c/u=  24.40 rdmiss=1.00 ocfill=14.25 frzoc=20.31
+T ldw w0 then +24 hit        n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w0 then +24 miss       n= 64 cyc=  1690 c/u=  26.40 rdmiss=1.00 ocfill=14.25 frzoc=22.29
+T ldw w0 then +28 hit        n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w0 then +28 miss       n= 64 cyc=  1690 c/u=  26.40 rdmiss=1.00 ocfill=14.25 frzoc=22.31
+T ldw w4 then +4 hit         n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w4 then +4 miss        n= 64 cyc=  1307 c/u=  20.42 rdmiss=1.00 ocfill=14.25 frzoc=16.31
+T ldw w4 then +8 hit         n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w4 then +8 miss        n= 64 cyc=  1434 c/u=  22.40 rdmiss=1.00 ocfill=14.25 frzoc=18.29
+T ldw w4 then +12 hit        n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w4 then +12 miss       n= 64 cyc=  1434 c/u=  22.40 rdmiss=1.00 ocfill=14.25 frzoc=18.31
+T ldw w4 then -16 hit        n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w4 then -16 miss       n= 64 cyc=  1562 c/u=  24.40 rdmiss=1.00 ocfill=14.25 frzoc=20.29
+T ldw w4 then -12 hit        n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w4 then -12 miss       n= 64 cyc=  1562 c/u=  24.40 rdmiss=1.00 ocfill=14.25 frzoc=20.29
+T ldw w4 then -8 hit         n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w4 then -8 miss        n= 64 cyc=  1690 c/u=  26.40 rdmiss=1.00 ocfill=14.25 frzoc=22.31
+T ldw w4 then -4 hit         n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldw w4 then -4 miss        n= 64 cyc=  1690 c/u=  26.40 rdmiss=1.00 ocfill=14.25 frzoc=22.29
+T ocbpgap1 clean             n= 64 cyc=   331 c/u=   5.17 frzoc=0.06
+T ocbpgap1 dirty             n= 64 cyc=   783 c/u=  12.23 frzoc=7.12
+T ocbwbgap1 dirty            n= 64 cyc=   782 c/u=  12.21 frzoc=7.12
+T ocbpgap2 clean             n= 64 cyc=   523 c/u=   8.17 frzoc=0.06
+T ocbpgap2 dirty             n= 64 cyc=   785 c/u=  12.26 frzoc=4.15
+T ocbwbgap2 dirty            n= 64 cyc=   784 c/u=  12.25 frzoc=4.14
+T ocbpgap4 clean             n= 64 cyc=   907 c/u=  14.17 frzoc=0.06
+T ocbpgap4 dirty             n= 64 cyc=   911 c/u=  14.23 frzoc=0.12
+T ocbwbgap4 dirty            n= 64 cyc=   910 c/u=  14.21 frzoc=0.10
+T ocbpgap8 clean             n= 64 cyc=  1675 c/u=  26.17 frzoc=0.06
+T ocbpgap8 dirty             n= 64 cyc=  1675 c/u=  26.17 frzoc=0.06
+T ocbwbgap8 dirty            n= 64 cyc=  1675 c/u=  26.17 frzoc=0.06
+T ocbpgap16 clean            n= 64 cyc=  3211 c/u=  50.17 frzoc=0.06
+T ocbpgap16 dirty            n= 64 cyc=  3211 c/u=  50.17 frzoc=0.06
+T ocbwbgap16 dirty           n= 64 cyc=  3211 c/u=  50.17 frzoc=0.06
+T sqld hit                   n= 64 cyc=  1415 c/u=  22.10 frzoc=10.00
+T sqld miss                  n= 64 cyc=  3467 c/u=  54.17 rdmiss=1.00 ocfill=24.00 frzoc=42.06
+T sq SQ0 only (ref)          n= 64 cyc=  1414 c/u=  22.09 frzoc=11.00
+T P2 stld same line          n= 64 cyc=  1814 c/u=  28.34 frzoc=24.23
+T P2 stldo other line        n= 64 cyc=  1816 c/u=  28.37 frzoc=23.26
+T P2 ststream s32 (ref)      n= 64 cyc=   656 c/u=  10.25 frzoc=7.14
+T P2 chain (ref)             n= 64 cyc=  1178 c/u=  18.40 frzoc=15.29
+cachetest3 DONE
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 8, dma_cntr = 7
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

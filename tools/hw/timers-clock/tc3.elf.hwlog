@@ -1,0 +1,69 @@
+Console enabled
+Upload <tools/hw/timers-clock/tc3.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 267524
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c051504, size 54
+Section .fini, lma 0x8c05153c, size 42
+Section .rodata, lma 0x8c051568, size 45792
+Section .eh_frame, lma 0x8c05c848, size 452
+Section .ctors, lma 0x8c05ca8c, size 8
+Section .dtors, lma 0x8c05ca94, size 8
+Section .data, lma 0x8c05caa0, size 11880
+Section .got, lma 0x8c05f908, size 12
+Transferred 325772 bytes at 12852006.759860 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06c960
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+tc3 as found (MSTP1 cleared):      f860-02-03 wk0 1e:11:00 R64 00 RCR1 00 RCR2 09
+29 s rounds down:                  2000-06-15 wk4 12:34:00 R64 00 RCR1 00 RCR2 09
+30 s rounds up:                    2000-06-15 wk4 12:35:00 R64 00 RCR1 00 RCR2 09
+BCD minute 09->10:                 2000-06-15 wk4 12:10:00 R64 00 RCR1 00 RCR2 09
+hour 09:59->10:00:                 2000-06-15 wk4 10:00:00 R64 00 RCR1 00 RCR2 09
+2000-02-28 23:59 (leap /400):      2000-02-29 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+1900-02-28 (/100):                 1900-03-01 wk4 00:00:00 R64 00 RCR1 00 RCR2 09
+2100-02-28 (/100):                 2100-03-01 wk1 00:00:00 R64 00 RCR1 00 RCR2 09
+2004-02-28 (/4):                   2004-02-29 wk0 00:00:00 R64 00 RCR1 00 RCR2 09
+2001-02-28:                        2001-03-01 wk4 00:00:00 R64 00 RCR1 00 RCR2 09
+2004-02-29:                        2004-03-01 wk1 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-04-30 (30-day month):         2000-05-01 wk1 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-01-31 (31-day month):         2000-02-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-09-30:                        2000-10-01 wk0 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-10-31 (month 10 BCD):         2000-11-01 wk3 00:00:00 R64 00 RCR1 00 RCR2 09
+1999-12-31 wk5 (year carry):       2000-01-01 wk6 00:00:00 R64 00 RCR1 00 RCR2 09
+2009-12-31 (BCD year):             2010-01-01 wk5 00:00:00 R64 00 RCR1 00 RCR2 09
+9999-12-31 (year wrap):            0000-01-01 wk6 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-02-31 (invalid day):          2000-03-01 wk2 00:00:00 R64 00 RCR1 00 RCR2 09
+2000-06-15 wk6 (wk 6->0):          2000-06-16 wk0 00:00:00 R64 00 RCR1 00 RCR2 09
+ADJ with START=0, 12:34:45:        2000-06-15 wk4 12:34:00 R64 00 RCR1 00 RCR2 08
+alarm: AF before 00, after ADJ onto match 01, after clear while matching 01, alarm set to held match 01, after counter write 01
+after alarm test:                  2000-06-15 wk4 12:35:00 R64 00 RCR1 01 RCR2 09
+tc3: done; STBCR 03
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 5, dma_cntr = 5
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

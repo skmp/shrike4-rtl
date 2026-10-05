@@ -1,0 +1,58 @@
+hwrun: 04:41:31 lock taken by pid 2931946 for tools/hw/core-integration/ci3.elf
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac06ddc0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+T ram_empty          2.996 (max    2.996)
+T p4_empty           4.996 (max    4.996)
+T p2_empty          18.105 (max   18.176)
+T ram_nop8           6.996 (max    6.996)
+T p4_nop8            8.996 (max    8.996)
+T p2_nop8           22.152 (max   22.168)
+T ram_nop16         10.996 (max   10.996)
+T p2_nop16          26.105 (max   26.160)
+T ram_ldcsr          8.996 (max    8.996)
+T p4_ldcsr          10.996 (max   10.996)
+T p2_ldcsr          24.121 (max   24.184)
+T ram_stcsr          5.996 (max    5.996)
+T p4_stcsr           7.996 (max    7.996)
+T p2_stcsr          20.086 (max   20.168)
+T ram_use            5.984 (max    6.000)
+T p4_use             7.996 (max    7.996)
+T p2_use            20.152 (max   20.211)
+T ram_fdiv          14.996 (max   14.996)
+T p4_fdiv           14.996 (max   14.996)
+T p2_fdiv           24.121 (max   24.168)
+T ram_fdiv2         11.996 (max   11.996)
+T p2_fdiv2          20.098 (max   20.184)
+T ram_st_nop8        6.996 (max    7.023)
+T p2_st_nop8        10.086 (max   10.133)
+T p4_st_nop8         8.996 (max    8.996)
+ci3: done bara 00000000
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 5, dma_cntr = 5
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+exit=0

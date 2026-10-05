@@ -1,0 +1,232 @@
+Console enabled
+Upload <tools/hw/caches-sq/cachetest2.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 282052
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c054dc4, size 54
+Section .fini, lma 0x8c054dfc, size 42
+Section .rodata, lma 0x8c054e28, size 46668
+Section .eh_frame, lma 0x8c060474, size 452
+Section .ctors, lma 0x8c0606b8, size 8
+Section .dtors, lma 0x8c0606c0, size 8
+Section .data, lma 0x8c0606e0, size 11880
+Section .got, lma 0x8c063548, size 12
+Transferred 341176 bytes at 13335034.260272 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac0b5020
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+cachetest2: CCR 00000105
+F dirty: OC addr array                           0c078003  want 0c078003  ok
+F dirty: OC data array w0                        bbbb0002  want bbbb0002  ok
+F dirty: OC data array w1                        10000001  want 10000001  ok
+F OCBWB dirty: addr array                        0c078001  want 0c078001  ok
+F OCBWB dirty: memory                            bbbb0002  want bbbb0002  ok
+F assoc U=0 V=1: before                          0c078003  want 0c078003  ok
+F assoc U=0 V=1 on dirty: entry                  0c078001  want 0c078001  ok
+F assoc U=0 V=1 on dirty: memory                 4444000a  want 4444000a  ok
+F assoc data=P2 alias V=0: entry                 0c078000
+F assoc data=P0 alias V=0: entry                 0c078000
+F assoc data=mirror (bit25) V=0: entry           0c078001
+F PREF @P2 X, Y in entry: entry                  0c07c001  want 0c07c001  ok
+F MOVCA @P2 X, Y in entry: entry                 0c07c001  want 0c07c001  ok
+F MOVCA @P2: memory                              3333cccc  want 3333cccc  ok
+F MOVCA w0, clean victim X: entry                0c07c003
+F MOVCA w0 clean victim: w0                      1111aaaa
+F MOVCA w0 clean victim: w1                      00000000
+F MOVCA w0 clean victim: w2                      c0de0002
+F MOVCA w0 clean victim: w3                      c0de0003
+F MOVCA w0 clean victim: w4                      c0de0004
+F MOVCA w0 clean victim: w5                      c0de0005
+F MOVCA w0 clean victim: w6                      c0de0006
+F MOVCA w0 clean victim: w7                      c0de0007
+F MOVCA w4 clean victim: w0                      c0de0000
+F MOVCA w4 clean victim: w1                      c0de0001
+F MOVCA w4 clean victim: w2                      c0de0002
+F MOVCA w4 clean victim: w3                      c0de0003
+F MOVCA w4 clean victim: w4                      2222bbbb
+F MOVCA w4 clean victim: w5                      00000000
+F MOVCA w4 clean victim: w6                      c0de0006
+F MOVCA w4 clean victim: w7                      c0de0007
+F MOVCA w1 clean victim: w0                      00000000
+F MOVCA w1 clean victim: w1                      5555eeee
+F MOVCA w1 clean victim: w2                      c0de0002
+F MOVCA w1 clean victim: w3                      c0de0003
+F MOVCA w1 clean victim: w4                      c0de0004
+F MOVCA w1 clean victim: w5                      c0de0005
+F MOVCA w1 clean victim: w6                      c0de0006
+F MOVCA w1 clean victim: w7                      c0de0007
+F MOVCA dirty victim: X written back             7777000c  want 7777000c  ok
+F MOVCA w0 dirty victim: w0                      3333cccc
+F MOVCA w0 dirty victim: w1                      00000000
+F MOVCA w0 dirty victim: w2                      00000000
+F MOVCA w0 dirty victim: w3                      00000000
+F MOVCA w0 dirty victim: w4                      00000000
+F MOVCA w0 dirty victim: w5                      00000000
+F MOVCA w0 dirty victim: w6                      00000000
+F MOVCA w0 dirty victim: w7                      00000000
+F MOVCA w0 invalid entry (stale X): w0           4444dddd
+F MOVCA w0 invalid entry (stale X): w1           00000000
+F MOVCA w0 invalid entry (stale X): w2           7777000c
+F MOVCA w0 invalid entry (stale X): w3           c0de0003
+F MOVCA w0 invalid entry (stale X): w4           c0de0004
+F MOVCA w0 invalid entry (stale X): w5           c0de0005
+F MOVCA w0 invalid entry (stale X): w6           c0de0006
+F MOVCA w0 invalid entry (stale X): w7           c0de0007
+F store miss w0 + store w1 during fill: w0       000000a1
+F store miss w0 + store w1 during fill: w1       000000a2
+F store miss w0 + store w1 during fill: w2       60000002
+F store miss w0 + store w1 during fill: w3       60000003
+F store miss w0 + store w1 during fill: w4       60000004
+F store miss w0 + store w1 during fill: w5       60000005
+F store miss w0 + store w1 during fill: w6       60000006
+F store miss w0 + store w1 during fill: w7       60000007
+F load miss w0 + store w1 during fill: w0        70000000
+F load miss w0 + store w1 during fill: w1        000000b2
+F load miss w0 + store w1 during fill: w2        70000002
+F load miss w0 + store w1 during fill: w3        70000003
+F load miss w0 + store w1 during fill: w4        70000004
+F load miss w0 + store w1 during fill: w5        70000005
+F load miss w0 + store w1 during fill: w6        70000006
+F load miss w0 + store w1 during fill: w7        70000007
+F store miss w0 + load w1 during fill: value     80000001  want 80000001  ok
+F IC entry after running blkA                    0c012801  want 0c012801  ok
+F IC assoc write mismatch: entry                 0c012801  want 0c012801  ok
+F IC assoc write match V=0: entry                0c012800  want 0c012800  ok
+F read E0000000                                  00000000
+F read E0000004                                  00000000
+F read E0000008                                  00000000
+F read E000000c                                  00000000
+F read E0000010                                  00000000
+F read E0000014                                  00000000
+F read E0000018                                  00000000
+F read E000001c                                  00000000
+F read E0000020                                  00000000
+F read E0000024                                  00000000
+F read E0000028                                  00000000
+F read E000002c                                  00000000
+F read E0000030                                  00000000
+F read E0000034                                  00000000
+F read E0000038                                  00000000
+F read E000003c                                  00000000
+F exceptions during SQ-area reads                00000000
+F read FF001000                                  8c063400
+F read FF001004                                  00000000
+F read FF001008                                  00000000
+F read FF00100c                                  8c063781
+F read FF001010                                  00000000
+F read FF001014                                  00000000
+F read FF001018                                  00000000
+F read FF00101c                                  00000105
+F read FF001020                                  00000004
+F read FF001024                                  000001e0
+F read FF001028                                  000003a0
+F read FF00102c                                  00000000
+F read FF001030                                  040205c1
+F read FF001034                                  00000000
+F read FF001038                                  00000004
+F read FF00103c                                  00000004
+F exceptions during FF001000 reads               00000000
+F last exception code                            00000000
+F BSC RTCSR                                      00000094
+F BSC RTCOR                                      0000005e
+F BSC RFCR                                       0000032f
+F BSC BCR1                                       a3020008
+F BSC BCR2                                       00000001
+F BSC MCR                                        c00a0e24
+F CPG FRQCR                                      00000e0a
+R0 8c068000 idx 0
+T chain hit n8               n=  8 cyc=    35 c/u=   4.37 frzoc=0.50
+T chain miss n8              n=  8 cyc=   161 c/u=  20.12 rdmiss=1.00 ocfill=14.75 frzoc=16.25
+T ldgap4 miss n8             n=  8 cyc=   241 c/u=  30.12 rdmiss=1.00 ocfill=14.75 frzoc=15.25
+T ldgap4 hit n8              n=  8 cyc=   123 c/u=  15.37 frzoc=0.50
+T chain hit n16              n= 16 cyc=    59 c/u=   3.68 frzoc=0.25
+T chain miss n16             n= 16 cyc=   305 c/u=  19.06 rdmiss=1.00 ocfill=14.37 frzoc=15.62
+T ldgap4 miss n16            n= 16 cyc=   465 c/u=  29.06 rdmiss=1.00 ocfill=14.37 frzoc=14.62
+T ldgap4 hit n16             n= 16 cyc=   235 c/u=  14.68 frzoc=0.25
+T chain hit n32              n= 32 cyc=   107 c/u=   3.34 frzoc=0.12
+T chain miss n32             n= 32 cyc=   593 c/u=  18.53 rdmiss=1.00 ocfill=14.18 frzoc=15.31
+T ldgap4 miss n32            n= 32 cyc=   913 c/u=  28.53 rdmiss=1.00 ocfill=14.18 frzoc=14.31
+T ldgap4 hit n32             n= 32 cyc=   459 c/u=  14.34 frzoc=0.12
+T chain hit n64              n= 64 cyc=   203 c/u=   3.17 frzoc=0.06
+T chain miss n64             n= 64 cyc=  1169 c/u=  18.26 rdmiss=1.00 ocfill=14.09 frzoc=15.15
+T ldgap4 miss n64            n= 64 cyc=  1809 c/u=  28.26 rdmiss=1.00 ocfill=14.09 frzoc=14.15
+T ldgap4 hit n64             n= 64 cyc=   907 c/u=  14.17 frzoc=0.06
+T chain hit n128             n=128 cyc=   395 c/u=   3.08 frzoc=0.03
+T chain miss n128            n=128 cyc=  2353 c/u=  18.38 rdmiss=1.00 ocfill=14.17 frzoc=15.32
+T ldgap4 miss n128           n=128 cyc=  3623 c/u=  28.30 rdmiss=1.00 ocfill=14.17 frzoc=14.25
+T ldgap4 hit n128            n=128 cyc=  1803 c/u=  14.08 frzoc=0.03
+T stld hit                   n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T stld miss                  n= 64 cyc=  1423 c/u=  22.23 wrmiss=1.00 ocfill=14.09 frzoc=18.12
+T stst hit                   n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T stst miss                  n= 64 cyc=  1680 c/u=  26.25 wrmiss=1.00 ocfill=14.09 frzoc=22.14
+T ldst hit                   n= 64 cyc=   267 c/u=   4.17 frzoc=0.06
+T ldst miss                  n= 64 cyc=  1680 c/u=  26.25 rdmiss=1.00 ocfill=14.09 frzoc=22.14
+T ld2gap1 hit                n= 64 cyc=   395 c/u=   6.17 frzoc=0.06
+T ld2gap1 miss               n= 64 cyc=  1681 c/u=  26.26 rdmiss=1.00 ocfill=14.09 frzoc=20.15
+T stldgap1 hit               n= 64 cyc=   395 c/u=   6.17 frzoc=0.06
+T stldgap1 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=20.15
+T ld2gap2 hit                n= 64 cyc=   587 c/u=   9.17 frzoc=0.06
+T ld2gap2 miss               n= 64 cyc=  1681 c/u=  26.26 rdmiss=1.00 ocfill=14.09 frzoc=17.15
+T stldgap2 hit               n= 64 cyc=   587 c/u=   9.17 frzoc=0.06
+T stldgap2 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=17.15
+T ld2gap3 hit                n= 64 cyc=   779 c/u=  12.17 frzoc=0.06
+T ld2gap3 miss               n= 64 cyc=  1681 c/u=  26.26 rdmiss=1.00 ocfill=14.09 frzoc=14.15
+T stldgap3 hit               n= 64 cyc=   779 c/u=  12.17 frzoc=0.06
+T stldgap3 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=14.15
+T ld2gap4 hit                n= 64 cyc=   971 c/u=  15.17 frzoc=0.06
+T ld2gap4 miss               n= 64 cyc=  1937 c/u=  30.26 rdmiss=1.00 ocfill=14.09 frzoc=15.15
+T stldgap4 hit               n= 64 cyc=   971 c/u=  15.17 frzoc=0.06
+T stldgap4 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=11.15
+T ld2gap5 hit                n= 64 cyc=  1163 c/u=  18.17 frzoc=0.06
+T ld2gap5 miss               n= 64 cyc=  2065 c/u=  32.26 rdmiss=1.00 ocfill=14.09 frzoc=14.15
+T stldgap5 hit               n= 64 cyc=  1163 c/u=  18.17 frzoc=0.06
+T stldgap5 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=8.15
+T ld2gap6 hit                n= 64 cyc=  1355 c/u=  21.17 frzoc=0.06
+T ld2gap6 miss               n= 64 cyc=  2320 c/u=  36.25 rdmiss=1.00 ocfill=14.09 frzoc=15.14
+T stldgap6 hit               n= 64 cyc=  1355 c/u=  21.17 frzoc=0.06
+T stldgap6 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=5.15
+T ld2gap7 hit                n= 64 cyc=  1547 c/u=  24.17 frzoc=0.06
+T ld2gap7 miss               n= 64 cyc=  2449 c/u=  38.26 rdmiss=1.00 ocfill=14.09 frzoc=14.37
+T stldgap7 hit               n= 64 cyc=  1547 c/u=  24.17 frzoc=0.06
+T stldgap7 miss              n= 64 cyc=  1681 c/u=  26.26 wrmiss=1.00 ocfill=14.09 frzoc=2.15
+T ld2gap8 hit                n= 64 cyc=  1739 c/u=  27.17 frzoc=0.06
+T ld2gap8 miss               n= 64 cyc=  2704 c/u=  42.25 rdmiss=1.00 ocfill=14.09 frzoc=15.14
+T stldgap8 hit               n= 64 cyc=  1739 c/u=  27.17 frzoc=0.06
+T stldgap8 miss              n= 64 cyc=  1870 c/u=  29.21 wrmiss=1.00 ocfill=14.09 frzoc=2.20
+T stldo hit                  n= 64 cyc=   331 c/u=   5.17 frzoc=0.06
+T stldo miss                 n= 64 cyc=  3596 c/u=  56.18 rdmiss=1.00 wrmiss=1.00 ocfill=47.87 frzoc=51.07
+T ldldo hit                  n= 64 cyc=   331 c/u=   5.17 frzoc=0.06
+T ldldo miss                 n= 64 cyc=  3475 c/u=  54.29 rdmiss=2.00 ocfill=47.87 frzoc=49.18
+T ldsto hit                  n= 64 cyc=   331 c/u=   5.17 frzoc=0.06
+T ldsto miss                 n= 64 cyc=  3580 c/u=  55.93 rdmiss=1.00 wrmiss=1.00 ocfill=47.54 frzoc=50.95
+T ldstream miss s64          n= 64 cyc=  1180 c/u=  18.43 rdmiss=1.00 ocfill=14.25 frzoc=15.32
+T ststream miss s64          n= 64 cyc=  1419 c/u=  22.17 wrmiss=1.00 ocfill=14.03 frzoc=19.06
+cachetest2 DONE
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 11, dma_cntr = 11
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

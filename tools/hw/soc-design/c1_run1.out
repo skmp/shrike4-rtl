@@ -1,0 +1,107 @@
+hwrun: 05:23:20 lock taken by pid 2940925 for tools/hw/soc-design/c1.elf
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac0727c0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+c1: sr 40000001 vt 0x8c012000 hp 0x8c013cc0 vf 0x8c012800 end 0x8c01471e scratch 0x8c065280
+L nop       3.000 (max    3.000)
+L ref      22.000 (max   22.000)
+L ill      26.000 (max   26.000)
+L fpe      26.000 (max   26.000)
+L dae      27.988 (max   27.988)
+L trap     28.000 (max   28.000)
+E (=L-Lref+2): ill 6.000 fpe 6.000 dae 7.988 trap 8.000   (nop loop 3.000)
+B d_ref        9    5    5    5    5    5
+B b0_ref      33    6    6    6    6    6
+B b1_ref      33    7    7    7    7    7
+B b2_ref      33    7    7    7    7    7
+B b3_ref      33    8    8    8    8    8
+B b4_ref      33    8    8    8    8    8
+B b6_ref      33   11   11   11   11   11
+B d_ill       35   11   11   11   11   11
+B b0_ill      49   12   12   12   12   12
+B b1_ill      51   27   27   27   27   27
+B b2_ill      51   13   13   13   13   13
+B b3_ill      51   27   27   27   27   27
+B b4_ill      51   27   27   27   27   27
+B b6_ill      53   15   15   15   15   15
+B d_fpe       36   11   11   11   11   11
+B b0_fpe      56   12   12   12   12   12
+B b1_fpe      56   36   36   36   36   36
+B b2_fpe      56   32   32   32   32   32
+B b3_fpe      56   14   14   14   14   14
+B b4_fpe      56   14   14   14   14   14
+B b6_fpe      56   15   15   15   15   15
+B d_dae       38   13   13   13   13   13
+B b0_dae      58   19   19   19   19   19
+B b1_dae      58   15   15   15   15   15
+B b2_dae      58   15   15   15   15   15
+B b3_dae      58   16   16   16   16   16
+B b4_dae      58   16   16   16   16   16
+B b6_dae      58   34   34   34   34   34
+B d_trap      37   13   13   13   13   13
+B b0_trap     51   14   14   14   14   14
+B b1_trap     53   15   15   15   15   15
+B b2_trap     53   15   15   15   15   15
+B b3_trap     53   29   29   29   29   29
+B b4_trap     53   29   29   29   29   29
+B b6_trap     55   17   17   17   17   17
+P p_ill     lean:   11   11   11   11   11   11  ci2-handler (pass1/pass2): 26/11 11/11 11/11 11/11 11/11 11/11
+P p_trap    lean:   13   13   13   13   13   13  ci2-handler (pass1/pass2): 28/13 13/13 13/13 13/13 13/13 13/13
+Q d_ill     ci2-handler direct:   35   11   11   11   11   11
+Q d_trap    ci2-handler direct:   37   13   13   13   13   13
+W ipra0   B-A / C-B: 6/3 6/3 6/3 6/3
+W ipra4   B-A / C-B: 7/3 7/3 7/3 7/3
+W ipra8   B-A / C-B: 9/3 9/3 9/3 9/3
+W ipra16  B-A / C-B: 27/3 27/3 27/3 27/3
+W bara0   B-A / C-B: 6/3 6/3 6/3 6/3
+W bara4   B-A / C-B: 7/3 7/3 7/3 7/3
+S event 13 (issue groups):
+S ab         2    2    2    2
+S llb_i      3    3    3    3
+S llb_d      3    3    3    3
+S dlb_i      2    2    2    2
+S nnb        2    2    2    2
+S eeb        3    3    3    3
+S event 23 (cycles):
+S ab         4    3    3    3
+S llb_i      5    5    5    5
+S llb_d      5    5    5    5
+S dlb_i      5    5    5    5
+S nnb        4    4    4    4
+S eeb        5    5    5    5
+S event 14 (dual issue):
+S ab         1    1    1    1
+S llb_i      0    0    0    0
+S llb_d      0    0    0    0
+S dlb_i      1    1    1    1
+S nnb        2    2    2    2
+S eeb        1    1    1    1
+c1: done budget 1 aborted 0
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 6, dma_cntr = 6
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+exit 0

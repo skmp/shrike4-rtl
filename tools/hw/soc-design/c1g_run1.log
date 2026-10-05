@@ -1,0 +1,50 @@
+hwrun: 05:49:58 lock taken by pid 2947523 for tools/hw/soc-design/c1g.elf
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac070de0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+c1g: sr 40000001 base 0x8c012000 end 0x8c012bd6
+f0  L ill  29.184 dae  32.000 ref  24.887 (max  29.734  32.000  24.887)  E ill  6.297 dae  9.113
+    B-A ill: 24 8 8 8 8 8 8 8 8 8 8 8
+    B-A dae: 11 11 11 11 11 11 11 11 11 11 11 11
+    B-A ref: 17 4 4 4 4 4 4 4 4 4 4 4
+f2  L ill  30.000 dae  32.000 ref  26.000 (max  30.000  32.000  26.000)  E ill  6.000 dae  8.000
+    B-A ill: 10 9 9 9 9 9 9 9 9 9 9 9
+    B-A dae: 11 11 11 11 11 11 11 11 11 11 11 11
+    B-A ref: 29 5 5 5 5 5 5 5 5 5 5 5
+fb  L ill  33.000 dae  35.000 ref  29.000 (max  33.000  35.000  29.000)  E ill  6.000 dae  8.000
+    B-A ill: 34 12 12 12 12 12 12 12 12 12 12 12
+    B-A dae: 34 14 14 14 14 14 14 14 14 14 14 14
+    B-A ref: 43 8 8 8 8 8 8 8 8 8 8 8
+p2  L ill  34.000 dae  36.000 ref  27.000 (max  35.516  36.000  27.000)  E ill  9.000 dae 11.000
+    B-A ill: 11 10 11 11 11 11 11 11 11 10 11 11
+    B-A dae: 13 13 13 13 13 13 13 13 13 13 13 13
+    B-A ref: 24 5 5 5 5 5 5 5 5 5 5 5
+c1g: done aborted 0
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 5, dma_cntr = 4
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+exit 0

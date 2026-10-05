@@ -1,0 +1,58 @@
+Console enabled
+Upload <tools/hw/board/boardio.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 110672
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c02b050, size 54
+Section .fini, lma 0x8c02b088, size 42
+Section .rodata, lma 0x8c02b0b4, size 10028
+Section .eh_frame, lma 0x8c02d7e0, size 292
+Section .ctors, lma 0x8c02d984, size 8
+Section .dtors, lma 0x8c02d98c, size 8
+Section .data, lma 0x8c02d994, size 3348
+Section .got, lma 0x8c02e6a8, size 12
+Transferred 124464 bytes at 4789092.830266 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+
+B init_ms 396
+B vblank irqs in thd_sleep(100): 7, 29066 cycles, now 505 ms
+B maple start MDEN 1 MDSTAR 0c0b5020 MSYS c3500000 MDTSEL 0 MST 00ff0000
+B maple devinfo_ABCD mdst0 816283 int 816283 istnrm 00001030 isterr 00000000 SAR0 0c02e740 DAR0 0c02fb20 CHCR0 000853c3 DMATCR0 00000000 MTXDAD 0c02e700 MRXDAD 0c02fb00
+B maple devinfo_ABCD rx0 1c200005 01000000 fe060f00 00000000 00000000 724400ff 636d6165 20747361
+B maple devinfo_ABCD rx1 ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+B maple devinfo_ABCD rx2 ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+B maple devinfo_ABCD rx3 ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+B maple devinfo_D mdst0 205273 int 205273 istnrm 00001030 isterr 00000000 SAR0 0c02e720 DAR0 0c02ef20 CHCR0 000853c3 DMATCR0 00000000 MTXDAD 0c02e700 MRXDAD 0c02ef00
+B maple devinfo_D rx0 ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff
+B maple devinfo_A mdst0 201805 int 201805 istnrm 00003038 isterr 00000000 SAR0 0c02e720 DAR0 0c02ef80 CHCR0 000853c3 DMATCR0 00000000 MTXDAD 0c02e700 MRXDAD 0c02ef80
+B maple devinfo_A rx0 1c200005 01000000 fe060f00 00000000 00000000 724400ff 636d6165 20747361
+B maple getcond_A mdst0 40543 int 40543 istnrm 00001010 isterr 00000000 SAR0 0c02e720 DAR0 0c02ef20 CHCR0 000853c3 DMATCR0 00000000 MTXDAD 0c02e700 MRXDAD 0c02ef20
+B maple getcond_A rx0 03200008 01000000 0000ffff 80808080 4c2c5345 4c2c5345 4c2c5345 4c2c5345
+B maple devinfo+getcond_A mdst0 241773 int 241773 istnrm 00001010 isterr 00000000 SAR0 0c02e720 DAR0 0c02f320 CHCR0 000853c3 DMATCR0 00000000 MTXDAD 0c02e700 MRXDAD 0c02f320
+B maple devinfo+getcond_A rx0 1c200005 01000000 fe060f00 00000000 00000000 724400ff 636d6165 20747361
+B maple devinfo+getcond_A rx1 03200008 01000000 0000ffff 80808080 4c2c5345 4c2c5345 4c2c5345 4c2c5345
+B gd start alt 50 secnum 21 istext 00000000 gdst 00000000
+B gd req_stat ok 1 drq 364 pkt 583 bsy 910 int 2489 int2 3747 | st 58 ir 02 bc 10 alt 58 istnrm 40000010 istext 00000001 | st2 50 ir2 03 err 04 secnum 21 | data(5) 2f01 0241 0001 732e 0000
+B gd test_unit ok 1 drq 363 pkt 516 bsy 902 int 1885 int2 0 | st 50 ir 03 bc 0 alt 50 istnrm 40000010 istext 00000001 | st2 00 ir2 00 err 04 secnum 21 | data(0)
+B gd req_error ok 1 drq 363 pkt 534 bsy 902 int 2121 int2 3339 | st 58 ir 02 bc 10 alt 58 istnrm 40000010 istext 00000001 | st2 50 ir2 03 err 04 secnum 21 | data(5) 00f0 0000 0000 0000 0000
+B gd req_stat2 ok 1 drq 363 pkt 516 bsy 902 int 2645 int2 3871 | st 58 ir 02 bc 10 alt 58 istnrm 40000010 istext 00000001 | st2 50 ir2 03 err 04 secnum 21 | data(5) 2f01 0241 0001 732e 0000
+B hbl events 2 (SPG_HBLANK_INT 03450000)
+B hbl 0 1670730 00001000
+B hbl 1 4998998 00001000
+B done
+
+arch: exit return code 0
+arch: shutting down kernel
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0

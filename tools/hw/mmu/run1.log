@@ -1,0 +1,254 @@
+Console enabled
+Upload <tools/hw/mmu/mmutest.elf>
+File format is ELF, start address is 0x8c010000
+Section .text, lma 0x8c010000, size 289284
+dcload-ip 2.0.3 using Broadband Adapter (HIT-0400)
+Section .init, lma 0x8c056a04, size 54
+Section .fini, lma 0x8c056a3c, size 42
+Section .rodata, lma 0x8c056a68, size 51728
+Section .eh_frame, lma 0x8c063478, size 452
+Section .ctors, lma 0x8c0636bc, size 8
+Section .dtors, lma 0x8c0636c4, size 8
+Section .data, lma 0x8c0636e0, size 11880
+Section .got, lma 0x8c066548, size 12
+Transferred 353468 bytes at 13861976.477751 bytes / sec
+Executing at <0xac010000>
+Sending execute command (0xac010000, console=1, cdfsredir=0)...executing
+
+--
+KallistiOS v2.1.0
+  Git revision: a02b86e8
+  Tue Mar  3 18:50:08 EET 2026
+  user@host:/opt/toolchains/dc/kos
+  sh-elf-gcc (GCC) 13.2.0
+thd: pre-emption enabled, HZ=100
+maple: active drivers:
+    Dreameye (Camera): Camera
+    Sound Input Peripheral: Microphone
+    PuruPuru (Vibration) Pack: JumpPack
+    VMU Driver: Clock, LCD, MemoryCard
+    Mouse Driver: Mouse
+    Keyboard Driver: Keyboard
+    Controller Driver: Controller
+    Lightgun: LightGun
+  DMA Buffer at ac073fa0
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+dc-load console support enabled
+maple: attached devices:
+  A0: Dreamcast Controller           (01000000: Controller)
+
+mmutest: start
+mmutest: code 0c090000 data 0c0b0000 chase 0c0d0000 sq 0c073d20
+A0 initial PTEH 00000000 PTEL 00000000 PTEA 00000000 TTB 00000000 TEA 00000000 MMUCR 00000000 CCR 00000105 QACR 00000004 00000004
+A1 PTEH wr ffffffff rd fffffcff | wr 0 rd 00000000 | wr 5a5aa5a5 rd 5a5aa4a5
+A1 PTEL wr ffffffff rd 1ffffdff | wr 0 rd 00000000 | wr 5a5aa5a5 rd 1a5aa5a5
+A1 PTEA wr ffffffff rd 0000000f | wr 0 rd 00000000 | wr 5a5aa5a5 rd 00000005
+A1 TTB  wr ffffffff rd ffffffff | wr 0 rd 00000000 | wr 5a5aa5a5 rd 5a5aa5a5
+A1 TEA  wr ffffffff rd ffffffff | wr 0 rd 00000000 | wr 5a5aa5a5 rd 5a5aa5a5
+A2 MMUCR wr fcfcff04 rd fcfcff00 | wr 1c56a800 rd 1c54a800 | wr e0000004 rd e0000000
+A3 TI  before: UTLB5 aa 12345333 da1 0abcd1ff da2 0000000d  ITLB2 aa 23456144 da1 0bcde1da da2 0000000a
+A3 TI  after : UTLB5 aa 12345233 da1 0abcd0ff da2 0000000d  ITLB2 aa 23456044 da1 0bcde0da da2 0000000a  MMUCR 00000000
+B1 ITLB1 aa=ffffffff: aa fffffdff da1 00000100 | da1=0: aa fffffcff da1 00000000 | da1=ffffffff: da1 1ffffdda aa fffffdff
+B1 ITLB1 da2=ffffffff: da2 0000000f da1 1ffffdda | aa=0: aa 00000000 da1 1ffffeda da2 0000000f
+B2 UTLB37 aa=ffffffff: aa ffffffff da1 00000104 | da1=0: aa fffffcff da1 00000000 | da1=ffffffff: da1 1ffffdff aa ffffffff
+B2 UTLB37 da2=ffffffff: da2 0000000f da1 1ffffdff | aa=200: aa 00000200 da1 1ffffeff | aa=0: aa 00000000 da1 1ffffefb da2 0000000f
+B3 ITLB0 (e<<8) 10000011  (e<<16) 10000011  (|80) 10000011  (|ffc00) 10000011
+B3 ITLB1 (e<<8) 20000022  (e<<16) 10000011  (|80) 20000022  (|ffc00) 20000022
+B3 ITLB2 (e<<8) 30000033  (e<<16) 10000011  (|80) 30000033  (|ffc00) 30000033
+B3 ITLB3 (e<<8) 40000044  (e<<16) 10000011  (|80) 40000044  (|ffc00) 40000044
+B4 UTLB decode e<<8: 0 mismatches; aa5|ffc000 00005005 aa5|7f 05500550 da1-5|7fc000 00000000 da1-5|800000(=da2) 00000000 aa5|80 00005005 da2-9|7fc000 00000005
+B5 associative UTLB writes, AT=0 (UTLB20 / ITLB1 hold VPN 2a000000, 4K)
+  a: VPN+D1+V1 (U:V1 D0, I:V1)       -> UTLB20 aa 2a000300 da1 0c000374  ITLB1 aa 2a000100 da1 0c000350  urc 0->0
+  b: VPN+D0+V0                       -> UTLB20 aa 2a000000 da1 0c000270  ITLB1 aa 2a000100 da1 0c000350  urc 0->0
+  c: VPN+0x800 (same page) V0        -> UTLB20 aa 2a000000 da1 0c000270  ITLB1 aa 2a000100 da1 0c000350  urc 0->0
+  d: UTLB ASID55 SH0, PTEH.ASID0, V0 -> UTLB20 aa 2a000155 da1 0c000170  ITLB1 aa 2a000100 da1 0c000350  urc 0->0
+  e: UTLB ASID55 SH1, V0             -> UTLB20 aa 2a000055 da1 0c000072  ITLB1 aa 2a000100 da1 0c000350  urc 0->0
+  f: UTLB V0, ITLB V1: write V0      -> UTLB20 aa 2a000000 da1 0c000270  ITLB1 aa 2a000100 da1 0c000350  urc 0->0
+  g: UTLB V1, ITLB V0: write V1 D1   -> UTLB20 aa 2a000300 da1 0c000374  ITLB1 aa 2a000000 da1 0c000250  urc 0->0
+  h: UTLB V1 D1, ITLB V1: write V1 D0 -> UTLB20 aa 2a000100 da1 0c000370  ITLB1 aa 2a000100 da1 0c000350  urc 0->0
+B5 associative UTLB writes, AT=1 (UTLB20 / ITLB1 hold VPN 2a000000, 4K)
+  a: VPN+D1+V1 (U:V1 D0, I:V1)       -> UTLB20 aa 2a000300 da1 0c000374  ITLB1 aa 2a000100 da1 0c000350  urc 0->0
+  b: VPN+D0+V0                       -> UTLB20 aa 2a000000 da1 0c000270  ITLB1 aa 2a000000 da1 0c000250  urc 0->0
+  c: VPN+0x800 (same page) V0        -> UTLB20 aa 2a000000 da1 0c000270  ITLB1 aa 2a000000 da1 0c000250  urc 0->0
+  d: UTLB ASID55 SH0, PTEH.ASID0, V0 -> UTLB20 aa 2a000155 da1 0c000170  ITLB1 aa 2a000000 da1 0c000250  urc 0->0
+  e: UTLB ASID55 SH1, V0             -> UTLB20 aa 2a000055 da1 0c000072  ITLB1 aa 2a000000 da1 0c000250  urc 0->0
+  f: UTLB V0, ITLB V1: write V0      -> UTLB20 aa 2a000000 da1 0c000270  ITLB1 aa 2a000000 da1 0c000250  urc 0->0
+  g: UTLB V1, ITLB V0: write V1 D1   -> UTLB20 aa 2a000300 da1 0c000374  ITLB1 aa 2a000000 da1 0c000250  urc 0->0
+  h: UTLB V1 D1, ITLB V1: write V1 D0 -> UTLB20 aa 2a000100 da1 0c000370  ITLB1 aa 2a000100 da1 0c000350  urc 0->0
+C1 LDTLB all-ones -> UTLB42 aa ffffffff da1 1fffffff da2 0000000f MMUCR 0000a800
+C2 LDTLB PTEH 87654021 PTEL 0abcd1c5 PTEA 6, URC 21 URB 16 -> UTLB21 aa 87654321 da1 0abcd3c5 da2 00000006 MMUCR 00405400
+D1 URC after each step (URB = 0; exc code if one was taken):
+  AT0 start                        urc  5
+  AT0 P1 load                      urc  5
+  AT0 P0 load                      urc  5
+  AT0 UTLB aa read                 urc  5
+  AT0 assoc write (no match)       urc  5
+  AT1 start                        urc  5
+  P1 load                          urc  5
+  P1 store                         urc  5
+  P0 load                          urc  6
+  P0 store                         urc  7
+  4 P0 loads                       urc 11
+  P0 load byte                     urc 12
+  P0 fmov.s load                   urc 13
+  P0 fmov dr load                  urc 14
+  P0 pref                          urc 14
+  P0 ocbwb                         urc 15
+  P0 ocbp                          urc 16
+  P0 mac.l (2 reads)               urc 18
+  P0 tst.b gbr                     urc 19
+  P0 and.b gbr (rmw)               urc 21
+  P0 tas.b                         urc 24
+  P0 misaligned load (AE)          urc 24  exc 0e0
+  P0 load TLB miss                 urc 24  exc 040
+  P0 store prot viol               urc 24  exc 0c0
+  UTLB aa read                     urc 24
+  UTLB da1 read                    urc 24
+  UTLB aa write (non-assoc)        urc 24
+  UTLB assoc write (no match)      urc 24
+  UTLB assoc write (match)         urc 24
+  ITLB aa read                     urc 24
+  P0 ifetch (ITLB miss->refill)    urc 24
+  P0 ifetch (ITLB hit)             urc 24
+  P0 ifetch (UTLB miss exc)        urc 24  exc 040
+  SQ store (mapped)                urc 25
+  SQ pref (mapped)                 urc 26
+  MMUCR URC=60                     urc 60
+  LDTLB                            urc 60
+  P0 load                          urc 61
+D2 URB  8 URC  6 :  6 -> 7 0 1 2 3 4 5 6
+D2 URB  8 URC 61 : 61 -> 62 63 0 1 2 3 4 5
+D2 URB  0 URC 62 : 62 -> 63 0 1 2 3 4 5 6
+D2 URB  1 URC  0 :  0 -> 0 0 0 0 0 0 0 0
+D2 URB 63 URC 61 : 61 -> 62 0 1 2 3 4 5 6
+D2 URB  2 URC  1 :  1 -> 0 1 0 1 0 1 0 1
+E1 fetch page:LRUI-after[ITLB e0..e3] ...
+  p0:0b[---0] p1:1e[--10] p2:38[-210] p3:00[3210] p0:0b[3210] p4:1e[3240] p1:38[3140] p0:3b[3140] p2:03[2140] p3:16[2130] p4:30[2430] p4:30[2430] p1:3b[2431] 
+E1b lrui(fill)=00 itlb[3210] set 38 -> fetch p4: lrui 00 itlb [4 2 1 0]
+E1b lrui(fill)=00 itlb[3210] set 06 -> fetch p4: lrui 20 itlb [3 4 1 0]
+E1b lrui(fill)=00 itlb[3210] set 01 -> fetch p4: lrui 14 itlb [3 2 4 0]
+E1b lrui(fill)=00 itlb[3210] set 00 -> fetch p4: lrui 0b itlb [3 2 1 4]
+E1b lrui(fill)=00 itlb[3210] set 3f -> fetch p4: lrui 07 itlb [4 2 1 0]
+E1b lrui(fill)=00 itlb[3210] set 1e -> fetch p4: lrui 38 itlb [3 4 1 0]
+E1b lrui(fill)=00 itlb[3210] set 07 -> fetch p4: lrui 21 itlb [3 4 1 0]
+E1c after p3 [---3]; LRUI:=0, fetch p0 -> itlb [- - - 0] lrui 0b
+E2 4K fetch at 4c090c00: ITLB3 aa 4c090d5a da1 0c09015a da2 0000000d | UTLB0 aa 4c09035a da1 0c09017f da2 0000000d | TEA 7ea7ea00 PTEH 00000000 exc 0
+E2 1M (PR=10) fetch at 6c090800: ITLB3 aa 6c090900 da1 0c0003d8 exc 0
+E4 rts;nop at end of p5, p6 mapped  : ITLB-miss count 0, itlb [- - 6 5], exc 0 ev 000
+E4 rts;nop at end of p5, p6 unmapped: ITLB-miss count 0, itlb [- - - 5], exc 0 ev 000
+E4 rts;nop at end of p5, p6 mapped  : UTLB-miss count 0, itlb [- - 6 5], exc 0 ev 000
+E4 rts;nop at end of p5, p6 unmapped: UTLB-miss count 0, itlb [- - - 5], exc 0 ev 000
+E4c delay slot in p8 (unmapped): exc 1 ev 040 tea 4c098000 pteh 4c098000 spc-rts +0 pr-ret +0 i   (p8 VA 4c098000)
+E4d delay slot in p8 (mapped): exc 0 ev 000 tea 00000000 pteh 00000000 spc-rts +0 pr-ret +0 itl   (p8 VA 4c098000)
+F  (dp0 PR11 D1, dp1 PR00 D1, dp2 PR10 D1, dp3 PR01 D0, dp4 PR00 D0, dp5 PR11 D0, dp7 unmapped = 4c0b7000)
+  ld32 unmapped                  exc=1 ev=040 tea=4c0b7124 pteh=4c0b7000 spc+0 ret=ffffffff
+  st32 unmapped                  exc=1 ev=060 tea=4c0b7124 pteh=4c0b7000 spc+0 ret=ffffffff
+  ld8 unmapped                   exc=1 ev=040 tea=4c0b73ff pteh=4c0b7000 spc+0 ret=ffffffff
+  ld16 unmapped +1 (misal)       exc=1 ev=0e0 tea=4c0b7001 pteh=4c0b7000 spc+0 ret=ffffffff
+  st32 unmapped +2 (misal)       exc=1 ev=100 tea=4c0b7002 pteh=4c0b7000 spc+0 ret=ffffffff
+  ld32 dp0 +2 (misal)            exc=1 ev=0e0 tea=4c0b0002 pteh=4c0b0000 spc+0 ret=ffffffff
+  ldf64 dp0 +4 (misal)           exc=1 ev=0e0 tea=4c0b0004 pteh=4c0b0000 spc+0 ret=00140000
+  ldf64 unmapped                 exc=1 ev=040 tea=4c0b7000 pteh=4c0b7000 spc+0 ret=00140000
+  ld32 dp1 PR00                  exc=0 ev=000 tea=00000000 pteh=00000000 spc+0 ret=d0001000
+  st32 dp1 PR00                  exc=1 ev=0c0 tea=4c0b1000 pteh=4c0b1000 spc+0 ret=d0001000
+  ld32 dp2 PR10                  exc=0 ev=000 tea=00000000 pteh=00000000 spc+0 ret=d0002000
+  st32 dp2 PR10                  exc=1 ev=0c0 tea=4c0b2000 pteh=4c0b2000 spc+0 ret=d0002000
+  ld32 dp3 PR01 D0               exc=0 ev=000 tea=00000000 pteh=00000000 spc+0 ret=d0003000
+  st32 dp3 PR01 D0               exc=1 ev=080 tea=4c0b3000 pteh=4c0b3000 spc+0 ret=d0003000
+  st32 dp4 PR00 D0               exc=1 ev=0c0 tea=4c0b4000 pteh=4c0b4000 spc+0 ret=d0003000
+  st8 dp5 PR11 D0                exc=1 ev=080 tea=4c0b5003 pteh=4c0b5000 spc+0 ret=8c0158e8
+  st32 dp0 PR11 D1               exc=0 ev=000 tea=00000000 pteh=00000000 spc+0 ret=8c0158e8
+  and.b gbr unmapped             exc=1 ev=040 tea=4c0b7000 pteh=4c0b7000 spc+0 ret=00000000
+  and.b gbr dp1 PR00             exc=1 ev=0c0 tea=4c0b1010 pteh=4c0b1000 spc+0 ret=00000000
+  and.b gbr dp3 D0               exc=1 ev=080 tea=4c0b3010 pteh=4c0b3000 spc+0 ret=00000000
+  tst.b gbr dp1 PR00             exc=0 ev=000 tea=00000000 pteh=00000000 spc+0 ret=00000001
+  tst.b gbr unmapped             exc=1 ev=040 tea=4c0b7000 pteh=4c0b7000 spc+0 ret=00000001
+  tas.b unmapped                 exc=1 ev=040 tea=4c0b7005 pteh=4c0b7000 spc+0 ret=00000001
+  tas.b dp1 PR00                 exc=1 ev=0c0 tea=4c0b1011 pteh=4c0b1000 spc+0 ret=00000001
+  tas.b dp3 D0                   exc=1 ev=080 tea=4c0b3011 pteh=4c0b3000 spc+0 ret=00000001
+  ocbi unmapped                  exc=1 ev=060 tea=4c0b7040 pteh=4c0b7000 spc+0 ret=00000001
+  ocbp unmapped                  exc=1 ev=040 tea=4c0b7040 pteh=4c0b7000 spc+0 ret=00000001
+  ocbwb unmapped                 exc=1 ev=040 tea=4c0b7040 pteh=4c0b7000 spc+0 ret=00000001
+  pref unmapped                  exc=0 ev=000 tea=00000000 pteh=00000000 spc+0 ret=00000001
+  movca unmapped                 exc=1 ev=060 tea=4c0b7040 pteh=4c0b7000 spc+0 ret=00000001
+  ocbi dp1 PR00                  exc=1 ev=0c0 tea=4c0b1040 pteh=4c0b1000 spc+0 ret=00000001
+  ocbi dp3 D0                    exc=1 ev=080 tea=4c0b3040 pteh=4c0b3000 spc+0 ret=00000001
+  ocbp dp1 PR00                  exc=0 ev=000 tea=00000000 pteh=00000000 spc+0 ret=00000001
+  ocbwb dp1 PR00                 exc=0 ev=000 tea=00000000 pteh=00000000 spc+0 ret=00000001
+  movca dp1 PR00                 exc=1 ev=0c0 tea=4c0b1040 pteh=4c0b1000 spc+0 ret=00000001
+  movca dp3 D0                   exc=1 ev=080 tea=4c0b3040 pteh=4c0b3000 spc+0 ret=00000001
+  pref dp1 PR00                  exc=0 ev=000 tea=00000000 pteh=00000000 spc+0 ret=00000001
+  ocbi misaligned dp0+3          exc=0 ev=000 tea=00000000 pteh=00000000 spc+0 ret=00000001
+  mac.l dp0, unmapped            exc=1 ev=040 tea=4c0b7008 pteh=4c0b7000 spc+0 ret=4c0b0080
+  mac.l unmapped, dp0            exc=1 ev=040 tea=4c0b7008 pteh=4c0b7000 spc+0 ret=4c0b7008
+  mov.l @r4+ unmapped (r4)       exc=1 ev=040 tea=4c0b7020 pteh=4c0b7000 spc+0 ret=4c0b7020
+  mov.l r5,@-r4 unmapped (r4)    exc=1 ev=060 tea=4c0b7020 pteh=4c0b7000 spc+0 ret=4c0b7024
+  add;ld pair, ld faults (r5)    exc=1 ev=040 tea=4c0b7000 pteh=4c0b7000 spc+0 ret=00000065
+  ld;add pair, ld faults (r5)    exc=1 ev=040 tea=4c0b7000 pteh=4c0b7000 spc+0 ret=00000064
+  add;ld pair, no fault (r5)     exc=0 ev=000 tea=00000000 pteh=00000000 spc+0 ret=00000065
+  ld faults; st next (sink)      exc=1 ev=040 tea=4c0b7000 pteh=4c0b7000 spc+0 ret=00000000
+  st faults; st next (sink)      exc=1 ev=060 tea=4c0b7000 pteh=4c0b7000 spc+0 ret=00000000
+  ld faults; fadd (fr2)          exc=1 ev=040 tea=4c0b7000 pteh=4c0b7000 spc+0 ret=00000000
+  ld ok; fadd (fr2)              exc=0 ev=000 tea=00000000 pteh=00000000 spc+0 ret=3f800000
+  bra; ld in slot faults         exc=1 ev=040 tea=4c0b7000 pteh=4c0b7000 spc+0 ret=8c015b04
+  jsr; ld in slot faults (PR)    exc=1 ev=040 tea=4c0b7000 pteh=4c0b7000 spc+0 ret=8c015b1c
+    PR at the exception 8c015b2a (marker 12345678)
+  AT0 ld32 P1 misaligned         exc=1 ev=0e0 tea=8c0b0002 pteh=8c0b0000 spc+0 ret=ffffffff
+  mac.l dp0,unmapped: r4 4c0b0080 r5 4c0b7008 (in 4c0b0080 4c0b7008) | mac.l unmapped,dp0: r4 4c0b7008 r5 4c0b0080
+  PTEH preset 00000300, miss at 4c0b73fc: PTEH 4c0b7000 TEA 4c0b73fc
+  AT0 st16 P1 misaligned: exc 1 ev 100 TEA 8c0b0001 PTEH 8c0b0078 (preset 12345678)
+  G 1K +0                          va 3c0b0000 got d0000000 phys d0000000 == exc 0 ev 000
+  G 1K +3fc                        va 3c0b03fc got d00003fc phys d00003fc == exc 0 ev 000
+  G 1K +400 (miss)                 va 3c0b0400 got ffffffff phys 00000000    exc 1 ev 040
+  G 4K dp0 +ffc                    va 4c0b0ffc got d0000ffc phys d0000ffc == exc 0 ev 000
+  G 4K dp6 (miss)                  va 4c0b6000 got ffffffff phys 00000000    exc 1 ev 040
+  G 64K +0                         va 5c0b0000 got d0000000 phys d0000000 == exc 0 ev 000
+  G 64K +fffc                      va 5c0bfffc got d000fffc phys d000fffc == exc 0 ev 000
+  G 64K +10000 (miss)              va 5c0c0000 got ffffffff phys 00000000    exc 1 ev 040
+  G 1M +off                        va 6c0b0000 got d0000000 phys d0000000 == exc 0 ev 000
+  G 1M +ffffc                      va 6c0ffffc got 2020977a phys 2020977a == exc 0 ev 000
+  G 1M +100000 (miss)              va 6c100000 got ffffffff phys 00000000    exc 1 ev 040
+  G 4K VPN|400: +0                 va 0c0b1000 got d0001000 phys d0001000 == exc 0 ev 000
+  G 4K VPN|400: +400               va 0c0b1400 got d0001400 phys d0001400 == exc 0 ev 000
+  G 4K VPN|400: +c00               va 0c0b1c00 got d0001c00 phys d0001c00 == exc 0 ev 000
+  G 4K PPN|400: +0 (vs pa+0)       va 0c0b1000 got d0001000 phys d0001000 == exc 0 ev 000
+  G 4K PPN|400: +0 (vs pa+400)     va 0c0b1000 got d0001000 phys d0001400 != exc 0 ev 000
+  G 4K PPN|400: +800               va 0c0b1800 got d0001800 phys d0001800 == exc 0 ev 000
+  G 64K PPN|fc00: +100             va 5c0b0100 got d0000100 phys d0000100 == exc 0 ev 000
+  G ASID12 SH0, PTEH.ASID 00       va 2c0b2000 got ffffffff phys 00000000    exc 1 ev 040
+  G ASID12 SH0, PTEH.ASID 12       va 2c0b2000 got d0002000 phys d0002000 == exc 0 ev 000
+  G PTEH.ASID 12, miss elsewhere   va 2c0b3000 got ffffffff phys 00000000    exc 1 ev 040
+  G ASID12 SH1, PTEH.ASID 00       va 2c0b2000 got d0002000 phys d0002000 == exc 0 ev 000
+  G SV=1 priv, ASID12 SH0, PTEH 00 va 2c0b2000 got d0002000 phys d0002000 == exc 0 ev 000
+  G P3 mapped                      va cc0b3000 got d0003000 phys d0003000 == exc 0 ev 000
+  G P3 next page (miss)            va cc0b4000 got ffffffff phys 00000000    exc 1 ev 040
+  G PTEH after a miss with PTEH.ASID=12: 2c0b3012
+  G area7 via TLB: [3f00000c] 13572468 (TEA written 13572468) exc 0; [3f000010] 00000401 exc 0 (MMUCR 00000801)
+S  SQ address e0073d20 -> buffer PA 0c073d20 (values tag<<16|i)
+S no SQ mapping  st x8: exc 8 ev 060 tea e0073d3c | pref: exc 1 ev 040 | urc 0->0->0 | mem: 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+S 1M PR01 D1     st x8: exc 0 ev 000 tea 00000000 | pref: exc 0 ev 000 | urc 0->8->9 | mem: a0020000 a0020001 a0020002 a0020003 a0020004 a0020005 a0020006
+S 1M PR00 D1     st x8: exc 8 ev 0c0 tea e0073d3c | pref: exc 0 ev 000 | urc 0->0->1 | mem: a0030000 a0030001 a0030002 a0030003 a0030004 a0030005 a0030006
+S 1M PR01 D0     st x8: exc 8 ev 080 tea e0073d3c | pref: exc 0 ev 000 | urc 0->0->1 | mem: a0040000 a0040001 a0040002 a0040003 a0040004 a0040005 a0040006
+S 1M PR10 D1     st x8: exc 8 ev 0c0 tea e0073d3c | pref: exc 0 ev 000 | urc 0->0->1 | mem: a0050000 a0050001 a0050002 a0050003 a0050004 a0050005 a0050006
+T1 jsr to a P0 'rts;nop' (IC warm): ITLB hit min 9 max 9 | ITLB miss (UTLB idx 0) min 16 max 16 (itlb-miss events 0 / 32) | UTLB idx 63 min 16 max 43 (events 0 / 32)
+T2 256 dependent loads (32 x 8 + loop): P1 16 pages 545 | P0 16 pages / 16 UTLB entries 545 | P1 1 page 545 | P0 1 page 545 cycles
+  U ld dp1 PR00                  exc=1 ev=0a0 tea=4c0b1000 spc-pc+0
+  U ld dp3 PR01                  exc=1 ev=0a0 tea=4c0b3000 spc-pc+0
+  U ld dp2 PR10 (ok -> esc)      exc=1 ev=0e0 tea=80000100 spc-pc+2  (= escape: access allowed)
+  U st dp2 PR10                  exc=1 ev=0c0 tea=4c0b2000 spc-pc+0
+  U st dp5 PR11 D0               exc=1 ev=080 tea=4c0b5000 spc-pc+0
+  U st dp0 PR11 D1 (ok -> esc)   exc=1 ev=0e0 tea=80000100 spc-pc+2  (= escape: access allowed)
+  U ld P1 (address error)        exc=1 ev=0e0 tea=8c0b0000 spc-pc+0
+  U st SQ, SQMD0 (ok -> esc)     exc=1 ev=0e0 tea=80000100 spc-pc+2  (= escape: access allowed)
+  U st SQ, SQMD1                 exc=1 ev=100 tea=e0073d20 spc-pc+0
+  U fetch page PR01 (ITLB PR0)   exc=1 ev=0a0 tea=4c09a000 spc-pc+0
+  U fetch P1                     exc=1 ev=0e0 tea=8c015b38 spc-pc+0
+  U AT0 st SQ, SQMD1             exc=1 ev=100 tea=e0073d20 spc-pc+0
+  U ITLB entry for the PR01 page: e3 da1 0c09a318
+mmutest: done, unexpected exceptions 0, MMUCR 00000000
+
+arch: exit return code 0
+arch: shutting down kernel
+maple: final stats -- device count = 23, vbl_cntr = 11, dma_cntr = 11
+vid_set_mode: 640x480 VGA with 1 framebuffers.
+hwrun-exit 0
