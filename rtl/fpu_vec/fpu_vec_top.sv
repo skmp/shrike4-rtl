@@ -27,6 +27,23 @@
 //   step 3  FM0: (M0>>3 = I) x dx(recoded) -> T3   ADD: C0 - T1 + T2 - T3
 // Adder slots: slot i always takes product register M[i], except that slot 1 takes C0 for FSCA / FSRRA -- the one
 // selector in front of the aligners.  The linear term therefore always sits on FM3 and FM1 is FIPR-only.
+//
+// Kill (rtl/v1/SOC.md 4.3.1, WI-CORE-F): every operation carries its instruction's ISN (`isn` at start) through the
+// multiplier steps, F2 and F3; kill_v with ISN >= kill_isn (kill_incl) or > kill_isn drops it at whatever stage it is
+// (the multiplier steps stop, its F2 / F3 slot empties, no res_valid).  The result register's own cycle is the host's
+// to gate.  The host asserts the kill only in cycles with hold = 0 (a take happens in an unheld cycle).
+// `st_x` is the cause of the operand special case of the operation presented with `start` (combinational, the start
+// cycle): the host's operand trap check (FIPR V, FSRRA V / Z) is decided from it at issue.
+//
+// FPSCR.DN = 0 (`dn0`, latched with the operation; WI-FPDN, [HW] model/fipr/hw_specials, model/fsrra/hw_specials):
+//   * FIPR / FTRV compute with a denormal operand as it is: no hidden bit, exponent 1, the `ea + eb <= 75` discard
+//     rule unchanged, never an FPU error; the sum is rounded once at the denormal position (fpu_normround) and a zero
+//     or denormal result raises U as any exponent-field-0 result does (model/fipr/sh4_fipr.h, 0 of 1M x RN / RZ);
+//   * FSRRA of a positive denormal is the FPU error E (`st_e` at the start, `res_e` with its result word: the host
+//     traps, the destination is not written, the cause is E alone), of a negative denormal V and the qNaN
+//     (model/fsrra: sh4_fsrra_ex);
+//   * FSCA has no floating-point operand.
+// With dn0 = 0 (FPSCR.DN = 1) a denormal operand is a zero on every path, as before.
 module fpu_vec_top
   import fpu_vec_pkg::*;
 (
@@ -36,15 +53,25 @@ module fpu_vec_top
   input  logic        hold,        // the host pipeline is frozen: every register holds (start is ignored)
   input  op_e         op,
   input  logic        rz,          // FPSCR.RM == RZ
+  input  logic        dn0,         // FPSCR.DN == 0 (denormal operands as numbers, gradual underflow, FSRRA's E)
   input  logic [31:0] fva [4],     // FIPR FVm (port A)
   input  logic [31:0] fvb [4],     // FIPR FVn (port B, recoded)
+  /* verilator lint_off UNUSEDSIGNAL */          // fpul[31:16]: FSCA takes the low 16 bits of the angle
   input  logic [31:0] fpul,        // FSCA angle (low 16 bits)
+  /* verilator lint_on UNUSEDSIGNAL */
   input  logic [31:0] frn,         // FSRRA operand
+  input  logic [7:0]  isn,         // ISN of the instruction a start belongs to
+  input  logic        kill_v,      // kill ISN >= kill_isn (kill_incl) or > kill_isn
+  input  logic [7:0]  kill_isn,
+  input  logic        kill_incl,
+  output logic [4:0]  st_x,        // operand special case of the start operands {V, Z, O, U, I} (0: none)
+  output logic        st_e,        // ... the FPU error E (DN = 0: FSRRA of a positive denormal)
   output logic        busy,
   output logic        res_valid,
   output logic        res_second,  // FSCA: 0 = sine (FR[n]), 1 = cosine (FR[n+1])
   output logic [31:0] res,
-  output logic [4:0]  res_x        // FPSCR cause of this result word {V, Z, O, U, I} (model/*/sh4_*.h *_ex, DN = 1)
+  output logic [4:0]  res_x,       // FPSCR cause of this result word {V, Z, O, U, I} (model/*/sh4_*.h *_ex)
+  output logic        res_e        // ... and its E (the word of an FSRRA whose operand was a DN = 0 denormal)
 );
   `include "fpu_vec_tables.svh"
 
@@ -53,7 +80,9 @@ module fpu_vec_top
   // q = node[5:4] is the quadrant.  ROM A[r] = Word(r), ROM B[r] = Word(16-r), Word(m) = the fields built from
   // sin(m*pi/32).  In an odd quadrant the roles of the two words swap and the odd terms change sign; the second half
   // turn negates the adder output.  The cosine is the sine one quadrant on: q + 1.  No comparators, no 32-m subtractor.
+  /* verilator lint_off UNUSEDSIGNAL */          // q[1] is the sign's, not the swap's
   function automatic logic pass_swap(input logic [1:0] q, input logic cosine); return q[0] ^ cosine; endfunction
+  /* verilator lint_on UNUSEDSIGNAL */
   function automatic logic pass_neg (input logic [1:0] q, input logic cosine); return cosine ? (q[1] ^ q[0]) : q[1]; endfunction
   function automatic logic [25:0] rom_c0(input logic sw, input logic [3:0] r); return sw ? FSCA_B_C0[r] : FSCA_A_C0[r]; endfunction
   function automatic logic [22:0] rom_s (input logic sw, input logic [3:0] r); return sw ? FSCA_B_S[r]  : FSCA_A_S[r];  endfunction
@@ -127,7 +156,7 @@ module fpu_vec_top
 
   // ================================================================== instruction state (loaded at cycle 0)
   op_e         op_r;
-  logic        rz_r;
+  logic        rz_r, dn0_r;
   logic [2:0]  step;                       // 0 idle, 1..4 = F1 steps
   logic signed [23:0] dx_r;                // sign expander output
   logic [3:0]  rom_r;                      // FSCA: r = node[3:0], the address of both ROMs
@@ -136,8 +165,18 @@ module fpu_vec_top
   logic [8:0]  emax_r;                     // FSRRA: 254 - k
   logic        sp_v;   logic [31:0] sp_r;  // pre-decided special result (NaN / inf / zero)
   logic [4:0]  sp_x;                       // and its cause
+  logic        sp_e;                       // and its E
   logic [8:0]  pE [4]; logic pvalid [4], psign [4];   // FIPR per-product exponent sum, validity, sign
   logic [8:0]  fipr_emax;
+  logic [7:0]  isn_r, isn_f2, isn_f3;      // the ISN of the operation in the steps / F2 / F3
+  function automatic logic [7:0] e1(input logic [7:0] xe);   // the exponent a product uses (a denormal's is 1)
+    return xe == 8'd0 ? 8'd1 : xe;
+  endfunction
+  function automatic logic kl(input logic [7:0] i);   // killed this cycle: (i - K) mod 256 < 128, and != K unless incl
+    logic [7:0] d;
+    d = i - kill_isn;
+    return kill_v && !d[7] && (kill_incl || d != 8'd0);
+  endfunction
 
   // ================================================================== cycle-0 decode (combinational on the inputs)
   logic [5:0]  node6;
@@ -147,8 +186,11 @@ module fpu_vec_top
   logic [7:0]  fr_exp; logic [22:0] fr_man; logic fr_sign;
   logic signed [8:0] fr_e, fr_k; logic fr_par;
   logic [5:0]  d_ent_r;
-  logic        d_sp_v; logic [31:0] d_sp_r; logic [4:0] d_sp_x;
-  logic [1:0]  n_pinf, n_ninf; logic n_nan, n_any, n_inv;
+  logic        d_sp_v; logic [31:0] d_sp_r; logic [4:0] d_sp_x; logic d_sp_e;
+  logic        fr_den;                     // FSRRA: a denormal operand with DN = 0
+  // infinite products of each sign: 0..4 (3 bits -- four infinities of one sign wrapped a 2-bit count to 0, a +0 / U
+  // result instead of the infinity; WI-CORE-F's random FPU programs against model/fipr/sh4_fipr.h)
+  logic [2:0]  n_pinf, n_ninf; logic n_nan, n_any, n_inv;
   always_comb begin
     // FSCA: node = (angle + 512) >> 10, t = signed low 10 bits, dx = t << 13
     node6 = fpul[15:10] + 6'(fpul[9]);                  // round to the nearest centre, wraps at the full turn
@@ -163,33 +205,42 @@ module fpu_vec_top
     d_dx    = (op == OP_FSCA) ? (24'(t10) <<< 13) : (24'(t19) <<< 4);
     // specials
     // causes {V, Z, O, U, I}: a signalling NaN has mantissa bit 22 set; an infinity or quiet NaN passing through raises
-    // nothing; FSRRA of +-0 (a denormal is a zero, DN = 1) is a division by zero
-    d_sp_v = 1'b0; d_sp_r = 32'h0; d_sp_x = 5'b0;
+    // nothing; FSRRA of +-0 (a denormal is a zero, DN = 1) is a division by zero; with DN = 0 a denormal is E when
+    // positive, V (qNaN) when negative [HW model/fsrra/hw_specials]
+    d_sp_v = 1'b0; d_sp_r = 32'h0; d_sp_x = 5'b0; d_sp_e = 1'b0;
+    fr_den = dn0 && fr_exp == 8'h00 && fr_man != 23'd0;
     if (op == OP_FSRRA) begin   // SH7750 manual; not exercised by the dumps
       d_sp_v = (fr_exp == 8'hff) || (fr_exp == 8'h00) || fr_sign;
       d_sp_r = (fr_exp == 8'hff) ? ((fr_man != 0 || fr_sign) ? 32'h7fbfffff : 32'h00000000)
-             : (fr_exp == 8'h00) ? {fr_sign, 31'h7f800000}
+             : (fr_exp == 8'h00 && !fr_den) ? {fr_sign, 31'h7f800000}
              : 32'h7fbfffff;
       d_sp_x = (fr_exp == 8'hff) ? {(fr_man != 0) ? fr_man[22] : fr_sign, 4'b0}
-             : (fr_exp == 8'h00) ? 5'b01000
+             : (fr_exp == 8'h00 && !fr_den) ? 5'b01000
+             : (fr_den && !fr_sign) ? 5'b00000
              : 5'b10000;
+      d_sp_e = fr_den && !fr_sign;
     end
-    n_pinf = 2'd0; n_ninf = 2'd0; n_nan = 1'b0; n_any = 1'b0; n_inv = 1'b0;
+    n_pinf = 3'd0; n_ninf = 3'd0; n_nan = 1'b0; n_any = 1'b0; n_inv = 1'b0;
     for (int i = 0; i < 4; i++) begin
       logic [7:0] ea, eb; logic [22:0] fa, fb; logic ia, ib, na, nb, za, zb;
       ea = fva[i][30:23]; eb = fvb[i][30:23]; fa = fva[i][22:0]; fb = fvb[i][22:0];
       ia = (ea == 8'hff) && (fa == 0); ib = (eb == 8'hff) && (fb == 0);
       na = (ea == 8'hff) && (fa != 0); nb = (eb == 8'hff) && (fb != 0);
-      za = (ea == 0); zb = (eb == 0);
+      za = (ea == 0) && (!dn0 || fa == 0); zb = (eb == 0) && (!dn0 || fb == 0);   // DN = 0: a denormal is nonzero
       if (na || nb || (ia && zb) || (ib && za)) n_nan = 1'b1;
       if ((na && fa[22]) || (nb && fb[22]) || (!na && !nb && ((ia && zb) || (ib && za)))) n_inv = 1'b1;
-      else if (ia || ib) begin if (fva[i][31] ^ fvb[i][31]) n_ninf = n_ninf + 2'd1; else n_pinf = n_pinf + 2'd1; end
-      else if (!za && !zb && (9'(ea) + 9'(eb) > 9'd75)) n_any = 1'b1;
+      // a product with a NaN operand is a NaN, not an infinity: it never counts towards "infinities of both signs"
+      // (model/fipr/sh4_fipr.h: `if (na || nb) { ...; continue; }`; WI-CORE-F: a quiet NaN x -inf beside a +inf product
+      // raised V here -- the cause only, the qNaN result was already right)
+      else if ((ia || ib) && !na && !nb) begin
+        if (fva[i][31] ^ fvb[i][31]) n_ninf = n_ninf + 3'd1; else n_pinf = n_pinf + 3'd1;
+      end
+      else if (!za && !zb && (9'(e1(ea)) + 9'(e1(eb)) > 9'd75)) n_any = 1'b1;
     end
     if (op == OP_FIPR) begin   // model/fipr/README.md rules
       d_sp_v = n_nan || (n_pinf != 0) || (n_ninf != 0) || !n_any;
       d_sp_r = (n_nan || (n_pinf != 0 && n_ninf != 0)) ? 32'h7fbfffff
-             : (n_pinf + n_ninf >= 2'd2) ? ((fva[0][31] ^ fvb[0][31]) ? 32'hff800000 : 32'h7f800000)
+             : (n_pinf + n_ninf >= 3'd2) ? ((fva[0][31] ^ fvb[0][31]) ? 32'hff800000 : 32'h7f800000)
              : (n_pinf != 0) ? 32'h7f800000 : (n_ninf != 0) ? 32'hff800000 : 32'h00000000;
       // NaN: V when invalid (signalling operand, inf x 0, infinities of both signs); inf: none; no product: +0, U I
       d_sp_x = (n_nan || (n_pinf != 0 && n_ninf != 0)) ? {n_inv || (n_pinf != 0 && n_ninf != 0), 4'b0}
@@ -197,10 +248,15 @@ module fpu_vec_top
     end
   end
 
+  assign st_x = d_sp_v ? d_sp_x : 5'd0;
+  assign st_e = d_sp_v && d_sp_e;
+
   // ================================================================== multipliers, latches, feedback selectors
   logic signed [MULW-1:0]  la [4], la_n [4];
   logic signed [RECW-1:0]  lb [4], lb_n [4];
+  /* verilator lint_off UNUSEDSIGNAL */          // raw_c: the multiplier's diagnostic row sum (the product register is prod_c)
   logic signed [RAWW-1:0]  raw_c [4];
+  /* verilator lint_on UNUSEDSIGNAL */
   logic signed [PRODW-1:0] prod_c [4];     // M[n]: combinational array outputs
   logic signed [PRODW-1:0] pr [4];         // product registers
   logic [2:0] s_next;
@@ -212,7 +268,9 @@ module fpu_vec_top
   always_comb begin
     s_next = start ? 3'd1 : step + 3'd1;
     for (int i = 0; i < 4; i++) begin
+      /* verilator lint_off UNUSEDSIGNAL */      // fb[28]: the feedback ports are 25 / 28 bits wide
       mul_ctl_t c; op_e o; logic signed [PRODW-1:0] fb; logic signed [23:0] dxv; logic sw; logic [3:0] rr; logic [1:0] qq; logic [5:0] er;
+      /* verilator lint_on UNUSEDSIGNAL */
       o   = start ? op : op_r;
       c   = mctl(o, s_next, i);
       fb  = prod_c[c.fb_src] >>> c.fb_sh;                   // M[fb_src] fed back, top bits into the 25-bit port
@@ -222,14 +280,14 @@ module fpu_vec_top
       sw  = pass_swap(qq, c.tab_cos);
       er  = start ? d_ent_r : ent_r;
       unique case (c.a_sel)
-        A_OPA:   la_n[i] = MULW'({2'b01, fva[i][22:0]});
+        A_OPA:   la_n[i] = MULW'({1'b0, fva[i][30:23] != 8'd0, fva[i][22:0]});   // a denormal: no hidden bit
         A_DX:    la_n[i] = MULW'(dxv);
         A_TAB:   la_n[i] = MULW'(rom_s(sw, rr));
         A_FB:    la_n[i] = MULW'(fb);
         default: la_n[i] = la[i];
       endcase
       unique case (c.b_sel)
-        B_OPB:   lb_n[i] = RECW'({1'b1, fvb[i][22:0]});
+        B_OPB:   lb_n[i] = RECW'({fvb[i][30:23] != 8'd0, fvb[i][22:0]});
         B_DX:    lb_n[i] = RECW'(dxv);
         B_CONST: lb_n[i] = const_of(o, c.const_sel, sw, rr, er);
         B_FB:    lb_n[i] = RECW'(fb);
@@ -243,7 +301,7 @@ module fpu_vec_top
   logic [26:0]  c0_n, c0_r;
   logic         negate_n, negate_r, second_n, f2_second, f2_v, rz_f2;
   logic [8:0]   emax_n, emax_f2;
-  logic         sp_f2_v; logic [31:0] sp_f2_r; logic [4:0] sp_f2_x; logic fipr_f2;
+  logic         sp_f2_v; logic [31:0] sp_f2_r; logic [4:0] sp_f2_x; logic fipr_f2, sp_f2_e, dn0_f2;
   logic signed [PRODW-1:0] p_in [4];
   logic signed [ALNW-1:0]  q [4];
   logic         cin [4];
@@ -299,8 +357,8 @@ module fpu_vec_top
   logic [8:0]   emax_f3;
   logic [31:0]  sp_f3_r, f_c;
   logic [4:0]   sp_f3_x;
-  logic         fipr_f3, ovf_c;
-  fpu_normround u_nr (.sum(sum_r), .negate(negate_f3), .emax(emax_f3), .rz(rz_f3), .f(f_c), .ovf(ovf_c));
+  logic         fipr_f3, ovf_c, sp_f3_e, dn0_f3;
+  fpu_normround u_nr (.sum(sum_r), .negate(negate_f3), .emax(emax_f3), .rz(rz_f3), .dn0(dn0_f3), .f(f_c), .ovf(ovf_c));
 
   // ================================================================== registers
   always_ff @(posedge clk) begin
@@ -309,19 +367,22 @@ module fpu_vec_top
     end else if (!hold) begin
       // ---- issue (cycle 0)
       if (start) begin
-        op_r <= op; rz_r <= rz; step <= 3'd1; dx_r <= d_dx;
+        op_r <= op; rz_r <= rz; dn0_r <= dn0; step <= 3'd1; dx_r <= d_dx; isn_r <= isn;
         rom_r <= node6[3:0]; quad <= node6[5:4];
         ent_r <= d_ent_r; emax_r <= 9'(9'sd254 - fr_k);
-        sp_v <= d_sp_v; sp_r <= d_sp_r; sp_x <= d_sp_x;
+        sp_v <= d_sp_v; sp_r <= d_sp_r; sp_x <= d_sp_x; sp_e <= d_sp_e;
         for (int i = 0; i < 4; i++) begin
           logic [7:0] ea, eb;
+          logic       nza, nzb;                            // nonzero finite operand (DN = 0: a denormal too)
           ea = fva[i][30:23]; eb = fvb[i][30:23];
-          pE[i]     <= 9'(ea) + 9'(eb);
-          pvalid[i] <= (ea != 0) && (eb != 0) && (ea != 8'hff) && (eb != 8'hff) && (9'(ea) + 9'(eb) > 9'd75);
+          nza = ea != 0 || (dn0 && fva[i][22:0] != 0);
+          nzb = eb != 0 || (dn0 && fvb[i][22:0] != 0);
+          pE[i]     <= 9'(e1(ea)) + 9'(e1(eb));             // a denormal's exponent is 1
+          pvalid[i] <= nza && nzb && (ea != 8'hff) && (eb != 8'hff) && (9'(e1(ea)) + 9'(e1(eb)) > 9'd75);
           psign[i]  <= fva[i][31] ^ fvb[i][31];
         end
       end else if (step != 3'd0) begin
-        step <= (step == last_step(op_r)) ? 3'd0 : step + 3'd1;
+        step <= (step == last_step(op_r) || kl(isn_r)) ? 3'd0 : step + 3'd1;
       end
       // ---- multiplier latches (for the next step) and product registers
       for (int i = 0; i < 4; i++) begin
@@ -329,19 +390,21 @@ module fpu_vec_top
         if (step != 3'd0) pr[i] <= prod_c[i];
       end
       // ---- F1 -> F2 (for the step whose products go to the adder)
-      f2_v <= (step != 3'd0) && add_go(op_r, step);
+      f2_v <= (step != 3'd0) && add_go(op_r, step) && !kl(isn_r);
+      isn_f2 <= isn_r; isn_f3 <= isn_f2;
       for (int i = 0; i < 4; i++) actl_r[i] <= actl_n[i];
-      c0_r <= c0_n; negate_r <= negate_n; emax_f2 <= emax_n; f2_second <= second_n; rz_f2 <= rz_r;
-      sp_f2_v <= sp_v; sp_f2_r <= sp_r; sp_f2_x <= sp_x; fipr_f2 <= op_r == OP_FIPR;
+      c0_r <= c0_n; negate_r <= negate_n; emax_f2 <= emax_n; f2_second <= second_n; rz_f2 <= rz_r; dn0_f2 <= dn0_r;
+      sp_f2_v <= sp_v; sp_f2_r <= sp_r; sp_f2_x <= sp_x; sp_f2_e <= sp_e; fipr_f2 <= op_r == OP_FIPR;
       // ---- F2 -> F3
-      sum_r <= sum_c; f3_v <= f2_v; negate_f3 <= negate_r; emax_f3 <= emax_f2; f3_second <= f2_second; rz_f3 <= rz_f2;
-      sp_f3_v <= sp_f2_v; sp_f3_r <= sp_f2_r; sp_f3_x <= sp_f2_x; fipr_f3 <= fipr_f2;
+      sum_r <= sum_c; f3_v <= f2_v && !kl(isn_f2); negate_f3 <= negate_r; emax_f3 <= emax_f2; f3_second <= f2_second; rz_f3 <= rz_f2;
+      sp_f3_v <= sp_f2_v; sp_f3_r <= sp_f2_r; sp_f3_x <= sp_f2_x; sp_f3_e <= sp_f2_e; fipr_f3 <= fipr_f2; dn0_f3 <= dn0_f2;
       // ---- F3 -> result
-      res_valid  <= f3_v;
+      res_valid  <= f3_v && !kl(isn_f3);
       res_second <= f3_second;
       res        <= sp_f3_v ? sp_f3_r : f_c;
       // a finite result is always inexact; FIPR adds U for a zero / denormal-range result and O on overflow
       res_x      <= sp_f3_v ? sp_f3_x : {2'b00, fipr_f3 && ovf_c, fipr_f3 && f_c[30:23] == 8'd0, 1'b1};
+      res_e      <= sp_f3_v && sp_f3_e;
     end
   end
   assign busy = (step != 3'd0) || f2_v || f3_v;

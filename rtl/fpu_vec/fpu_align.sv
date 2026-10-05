@@ -23,7 +23,7 @@ module fpu_align
 );
   logic signed [ALNW-1:0] shifted, pw;
   always_comb begin
-    pw = p;                           // sign-extend
+    pw = ALNW'(p);                    // sign-extend
     // NB: keep this an if/else -- an unsigned operand anywhere in a ?: makes the whole expression unsigned and
     // silently turns >>> into a logical shift.
     if (sh >= 6'd32) shifted = p[PRODW-1] ? -32'sd1 : 32'sd0;
