@@ -1564,7 +1564,7 @@ warm-up run then N1 and N2. A boot stub sets CCR = 0x105 from P2 and PMCR1 / PMC
   the console's own runs sampled one phase each; a cache-block point (an OCBP write-back per iteration) can then show
   an odd N2 - N1 at one phase and the console's value at others (id 127775 n 40, FMOV DR2,@-R1 | OCBP @R1: T 85 / Tb 86
   at 146 of 151 phases). So `soc_tb --sweep` runs every point whose timing mismatches in a clean boot again, in fresh boots,
-  after the driver's pre-job delays of 251, 733 and 1187 DT iterations (about 500 / 1470 / 2370 Icyc of the 3008-Icyc
+  after the driver's pre-job delays of 167, 490 and 790 DT iterations (3 Icyc each: about 500 / 1470 / 2370 Icyc of the 3008-Icyc
   refresh period; the job table's word + 28, `tb/v1_sweep_drv.S`), and takes the first retry that matches the console
   on every metric (result flag R_PHASE; each shard prints the retried and the phase-matched counts, and
   `tb/v1_vectors.py report` the phase-matched points). A functional mismatch or a failed boot is never retried.
@@ -1579,9 +1579,22 @@ warm-up run then N1 and N2. A boot stub sets CCR = 0x105 from P2 and PMCR1 / PMC
   own scratch-image source (the runner's scratch_img and jit_exit literal share OC entry 0x98) and a BCR2 read before
   the first PMCTR read (a Bclk synchronisation). Results go through P2. `tb/v1_soc_sweep_sel.py` picks the sets:
   `make v1-soc-sweep` (the gate: the class representatives, the 1/50 subsample's cache-block records at every n, every
-  OCBx ; @(disp,GBR) record, the LDTLB records at every n: 2,304 records / 4,497 points, 8 shards in lockstep),
-  `make v1-soc-sweep-sub` (incremental: the six OCBI records, the LDTLB records at one n, every 10th class record: 336
-  points) and `make v1-soc-sweep-full` (M6).
+  OCBx ; @(disp,GBR) record, the LDTLB records at every n, and since the full sweep the MAC x SR.S-writer records and
+  the two MOVA ; OCBI @R0 refresh-phase records at every n: 2,328 records / 4,929 points, 8 shards in lockstep),
+  `make v1-soc-sweep-sub` (incremental: the six OCBI records, the LDTLB records at one n, every 10th class record, the
+  four MAC x SETS records: 408 points) and `make v1-soc-sweep-full` (M6).
+- **The full sweep's two findings (2026-10-05).** (a) **MAC's saturation mode.** id 42512, `MAC.L @R2+,@R1+ ; SETS`,
+  failed lockstep: `v1_fpu` saturated with SR.S as it was at the multiplier's MACH / MACL write, four cycles after the
+  MAC's EX, so the younger SETS switched the older MAC.L to 48-bit saturation (MACH 00007FFF against the model's
+  348A6415). **[HW `tools/hw/mac-s`]** the console takes the S the MAC executes under: MAC.L and MAC.W, a SETS or a
+  CLRS 0..7 NOPs behind, 64 of 64 runs each. The multiplier record now carries S from its first micro-op's EX, in
+  program order (`ex_s`: the S-stage SR write, then lane 0's SETS / CLRS before lane 1; `mr_t.s`). Only lockstep sees
+  this: the runner restores MACH / MACL before the final state, so `make v1` / `make v1-full` cannot (the same record
+  passes there, before and after). (b) **The retry's phases.** id 23612 n 9 (`MOVA @(disp,PC),R0 ; OCBI @R0`, Tb 58
+  against 56) matches the console at 7 of 16 first-run delays and met none of the retry's: the delays 251 / 733 / 1187
+  were sized for 2 Icyc per DT iteration, the loop takes 3 (1000 more iterations per job add 3008 Icyc to a boot), so
+  they sat at 753 / 2199 / 3561 Icyc, the first and the last 0.07 of a period apart. They are 167 / 490 / 790 now, the
+  phases the rule names. Six points of the 1.8M need the retry at all, every one of them in ids 23612 / 23614.
 
 **Gates.**
 - `make v1` (100 % timing except the six records; 100 % final state vs the ISS) at every merge that touches the core

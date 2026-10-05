@@ -181,7 +181,9 @@ module v1_fpu import tp_pkg::*; import v1_pkg::*; import v1_fp_pkg::*; import v1
   // multiplier operands from the integer pipe
   input  logic        mac_ld_a_v, mac_ld_b_v, def_ld_v,
   input  logic [31:0] mac_ld_a, mac_ld_b, def_ld,
-  input  logic        sr_s,
+  // SR.S as each EX micro-op sees it, in program order: the saturation mode of a MAC is the S it executes under,
+  // not the S at its MACH / MACL write (a SETS / CLRS right behind it does not change it; [HW] tools/hw/mac-s)
+  input  logic [1:0]  ex_s,
   // register reads (write-through)
   output logic [31:0] fr_now [32],
   output logic [31:0] fpul_now, fpscr_now, mach_now, macl_now,
@@ -364,6 +366,7 @@ module v1_fpu import tp_pkg::*; import v1_pkg::*; import v1_fp_pkg::*; import v1
     logic        clr;
     logic [31:0] a, b;
     logic        av, bv;
+    logic        s;                     // SR.S of a MAC, taken at its first micro-op's EX (ex_s)
     logic [7:0]  isn;
   } mr_t;
   mr_t mq [MN];
@@ -635,7 +638,7 @@ module v1_fpu import tp_pkg::*; import v1_pkg::*; import v1_fp_pkg::*; import v1
         mc_we = 1'b1; mc_isn = mq[i].isn;
         if (mq[i].clr) mc_v = 64'd0;
         else if (mq[i].def) mc_v = mq[i].defh ? {mq[i].a, macl} : {mach, mq[i].a};
-        else mc_v = v1_mul(mq[i].op, mq[i].a, mq[i].b, sr_s, {mach, macl});
+        else mc_v = v1_mul(mq[i].op, mq[i].a, mq[i].b, mq[i].s, {mach, macl});
         // the architectural writes: MUL.L / MULS.W / MULU.W and LDS MACL write MACL, LDS MACH MACH, the rest both
         mc_h = mq[i].clr || (mq[i].def ? mq[i].defh : !(mq[i].op == M_MULL || mq[i].op == M_MULSW || mq[i].op == M_MULUW));
         mc_l = mq[i].clr || !(mq[i].def && mq[i].defh);
@@ -1164,7 +1167,7 @@ module v1_fpu import tp_pkg::*; import v1_pkg::*; import v1_fp_pkg::*; import v1
           mr_t r;
           logic go;
           r = '0; go = 1'b1;
-          r.v = 1'b1; r.isn = ex[l].isn;
+          r.v = 1'b1; r.isn = ex[l].isn; r.s = ex_s[l];
           unique case (ex[l].form)
             F_MUL_L_RM_RN:   begin r.op = M_MULL;  r.eta = 3'd4; r.a = ex_res[l].b; r.b = ex_res[l].a; r.av = 1; r.bv = 1; end
             F_MULS_W_RM_RN:  begin r.op = M_MULSW; r.eta = 3'd4; r.a = ex_res[l].b; r.b = ex_res[l].a; r.av = 1; r.bv = 1; end

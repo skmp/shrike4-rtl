@@ -1396,6 +1396,16 @@ module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import 
   // order: the S-stage SR write, lane 0's FCMP T and flag writes, lane 1's (`ex_flp`, a block of its own: it reads
   // v1_fpu's F1 T, and v1_fpu's EX view reads ex_fin's faults; the pipeline latch MA takes both).
   logic [3:0] ex_flp [2];
+  logic [1:0] ex_s;                              // S alone, for the multiplier's MAC records (v1_fpu): a block of its
+  always_comb begin                              // own, since ex_flp's T reads v1_fpu's F1 T
+    logic s;
+    s = sr[1];
+    for (int l = 0; l < 2; l++) if (sl[l].v && sl[l].uk == UK_NORM && sl[l].crw == CR_SR) s = sl[l].crv[1];
+    for (int l = 0; l < 2; l++) begin
+      ex_s[l] = s;
+      if (ex_res[l].sw) s = ex_res[l].sv;
+    end
+  end
   always_comb begin
     logic [3:0] fl;                              // {T, S, Q, M}
     fl = {sr[0], sr[1], sr[8], sr[9]};
@@ -2020,7 +2030,7 @@ module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import 
     .di_v, .di_isn, .di_op, .di_d, .di_c, .di_md, .di_fcmpd, .di_fcmpd_op, .di_fcmpd_md,
     .kill_v(pk_v && !frz), .kill_isn(pk_isn), .kill_incl(pk_incl),
     .trap_f1, .trap_f1_lane, .trap_f1_isn, .frec(fpu_rec),
-    .ex_res, .mac_ld_a_v, .mac_ld_a, .mac_ld_b_v, .mac_ld_b, .def_ld_v, .def_ld, .sr_s(sr[1]),
+    .ex_res, .mac_ld_a_v, .mac_ld_a, .mac_ld_b_v, .mac_ld_b, .def_ld_v, .def_ld, .ex_s,
     .fr_now, .fpul_now, .fpscr_now, .mach_now, .macl_now,
     .t_busy, .flag_busy, .t_we(fpu_t_we), .t_val(fpu_t_val), .t_lane(fpu_t_lane), .idle(fpu_idle)
   );
