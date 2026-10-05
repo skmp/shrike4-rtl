@@ -1,0 +1,478 @@
+[
+ {
+  "from": "WI-CORE-A step A1",
+  "issue": "v1_fetch's port during A1: WI-CORE-B has not landed, so the core still instantiates v1's old v1_fetch, which has no ifr.ack handshake. Until WI-CORE-B is integrated, the core is correct only on memory that acks a fetch in the request cycle (v1_ideal_mem does)."
+ },
+ {
+  "from": "WI-CORE-A step A1",
+  "issue": "v1_pkg leftovers: ictl_t.tag_wr, oc_use and oc_hold (and the 'tag write freezes' comments) are no longer read by the core. v1_pkg.sv belongs to WI-0b."
+ },
+ {
+  "from": "WI-CORE-A step A1",
+  "issue": "README.md and ARCH.md are not assigned to any WI in 8.1. They still describe v1's if_*/dm_*/cnt_* ports and the tfrz/oc_waited freezes, so they need an owner."
+ },
+ {
+  "from": "WI-CORE-A step A1",
+  "issue": "Reset values: no WI is assigned the power-on/manual reset values (SR 0x700000F0, VBR 0; FPSCR 0x00040001 lives in v1_fpu). Proposal: A2 applies them unless the backdoor wrote during this reset; WI-CORE-F handles FPSCR."
+ },
+ {
+  "from": "WI-CORE-A step A1",
+  "issue": "oc_coll: SOC.md 3.2.2 says 'an access micro-op in EX', but record 87744 (OCBWB ; LDTLB) needs LDTLB included too, as v1 did. The coll-ldtlb mutant proves it. SOC.md should say 'an access micro-op or LDTLB'."
+ },
+ {
+  "from": "WI-CORE-A step A1",
+  "issue": "With run as the core's clock enable, the MA-port ack latch (ma_done, ma_rdq) has to sit outside that enable, because units ack on their own clock. A1 does this [P]; SOC.md could state it."
+ },
+ {
+  "from": "WI-CORE-A step A1",
+  "issue": "tb/mk/v1.mk (a WI-CORE-A file) was edited by someone else at 09:19 while this step ran: make v1 became a 1/50 subsample and make v1-full the whole sweep. The edit is kept, merged with my targets."
+ },
+ {
+  "from": "WI-CORE-A step A2",
+  "issue": "v1_soc_pkg ubc_ctl_t lacks BRCR.SEQ: v1_core has an extra input ubc_seq (from v1_ubc ctl_seq), tied 0 in tb/v1_tb_top.sv"
+ },
+ {
+  "from": "WI-CORE-A step A2",
+  "issue": "WI-CORE-B: the P claim needs pre-decode (memop, branch) of every queue entry behind the leader, not only q1_mem/q2_mem (SOC.md 4.1 item 2 / 4.3.4 item 2), and the fetch must deliver the next 8-byte block by t (c1i H'FFFD with the access 2/3 behind, c1b j0: class fetch)"
+ },
+ {
+  "from": "WI-CORE-A step A2",
+  "issue": "WI-CORE-B: the entry redirect's wait for irsp.busy belongs to the fetch unit (v1_core does not wait; a combinational wait formed a loop); the ubc_pre_armed hold of a pre-armed branch whose slot is not queued; the core's fetch shadow (UBC tags, q2/q3 pre-decode, fsh_cur) is interim"
+ },
+ {
+  "from": "WI-CORE-A step A2",
+  "issue": "WI-CORE-F: FPU kill (kill_v/kill_isn/kill_incl exported, unconnected), D-decided trap_d computed in the core (interim), trap FPSCR cause bits, F1 operand trap V/Z/E, FPSCR reset 0x00040001; 4 directed tests XFAIL on these"
+ },
+ {
+  "from": "WI-CORE-A step A2",
+  "issue": "SOC.md 4.3.3: STC SSR first is stated to cost +2 like STC SPC, but only STC SPC was measured (plus the ci2 irqloop fit); c1i UBC rows with STC SSR first enter 2 cycles earlier than the model"
+ },
+ {
+  "from": "WI-CORE-A step A2",
+  "issue": "CPU-only reset SR/VBR loaded by the core on rst.cpu (PC from v1_fetch reset_pc); UBC continuation PC rides uop ftea; TAS.B purge not presented on ubc_opq; commit-log tap emits only CK_EXC records (others need WI-CORE-F's FPU record port)"
+ },
+ {
+  "from": "WI-CORE-A step A3",
+  "issue": "SOC.md 3.4 / v1_intc (WI-EXC): an IMASK raise must mask the request at once. v1_intc delays a raise like a lowering (s+9/10), and the core then re-takes the interrupt after an RTE or LDC SR that raises IMASK. The console rules that out: ci2 F nrec=2 for 2 passes; ci2 irqloop budget_left=9, i.e. 271 entries in 272 iterations; excint C1i has a single record. The scripted INTC gates irq.req with the live sr_imask (level > sr_imask). v1_intc needs the winner's level at its output and irq.req = rq & (level > sr_imask), or an equivalent."
+ },
+ {
+  "from": "WI-CORE-A step A3",
+  "issue": "v1_pkg (WI-0b): v1_ictl_op leaves SLEEP at k = 1, but SOC.md 4.4.3, exceptions-intc 3.15 and core-integration 3.8 say 4 issue cycles (SOC.md's '(v1)' is inaccurate). The core overrides it with k0 until v1_pkg sets k = 4 for XF_SLEEP."
+ },
+ {
+  "from": "WI-CORE-A step A3",
+  "issue": "SOC.md 4.3.3 / 4.3.4 item 2 (the P claim), refuted in part by console run c1j. The rule should read: 2 per already-fetched memory instruction in program order after the excepting one; for an interrupt, starting at the interrupted instruction itself (SOC.md's 'the one after the D leader' is wrong); claims add (two loads: +4); up to the next branch, its delay slot excluded (c1b j2 trap = 13 under additivity). The '2-step lsr1 -> lsr2 release' becomes a down-counter of 2 steps per claimant. v1_fetch's frozen pre-decode (q1_mem, q2_mem) must also cover q0, and q3."
+ },
+ {
+  "from": "WI-CORE-A step A3",
+  "issue": "SOC.md 4.4.1 empty-queue boundary (WI-CORE-B): with v1's fetch the only empty-queue boundary is the asleep one (SPC = slp_cont). WI-CORE-B's fetch must provide fpc and a stall indication so the core can take an interrupt with the queue empty and fetch stalled (SPC = fpc). The c1j rows with the memory instruction 1 or 2 after X need the 8-byte fetch block (6 XFAIL rows)."
+ },
+ {
+  "from": "WI-CORE-A step A3",
+  "issue": "tb/v1_intc_sched_top.sv (WI-EXC) does not build: it lacks A2's extra ubc_seq port on v1_core (itself A2's contract issue: ubc_ctl_t has no BRCR.SEQ). Adding .ubc_seq(1'b0) fixes it; verified from a scratch copy, which passes 29 / 29 on the A3 core."
+ },
+ {
+  "from": "WI-CORE-A step A3",
+  "issue": "irq_t.code: v1_soc_pkg says 'stable while req', but v1_intc lets it change while req stays up. Harmless to the core, which latches the code at the take."
+ },
+ {
+  "from": "WI-CORE-A step A3",
+  "issue": "PMC 0x16 counts accepted non-NMI interrupts and 0x17 NMIs [P]."
+ },
+ {
+  "from": "WI-CORE-A step A3",
+  "issue": "Still open from A2: the ubc_seq port; WI-CORE-F's FPU kill / trap ports and FPSCR reset value; the commit-log tap produces only entry records (CK_EXC / CK_IRQ), not CK_SLEEP / CK_WAKE / RETIRE."
+ },
+ {
+  "from": "WI-CORE-A fixes",
+  "issue": "SOC.md 3.2.2 rule 1: lreq.v must also be 0 for the lane-1 follower when the lane-0 micro-op takes at MA in the same cycle. The rule should also list the SQ store with a TLB fault, which is presented although it faults [HW mmu 3.8]."
+ },
+ {
+  "from": "WI-CORE-A fixes",
+  "issue": "SOC.md 3.2.2 rule 4: kill_ma does not fire for a data break whose access group ends in a one-cycle delayed branch, because the slot's access completes."
+ },
+ {
+  "from": "WI-CORE-A fixes",
+  "issue": "SOC.md 4.3.2 / 4.3.5 / 9.16 and debug-ubc-hudi 4.3 [HW c1k]: when the access group ends in BRA / BSR / BT/S / BF/S, the slot completes, the data break is taken at the slot's MA commit point (completion type), and SPC = the branch's continuation (target, or slot + 2 when not taken). The case where the slot faults is [P]: SPC = the branch."
+ },
+ {
+  "from": "WI-CORE-A fixes",
+  "issue": "WI-REF, tb/sh4_iss.h: step_past_data_break must also run the slot of a delayed-branch follower and re-arm SPC = the continuation. The plain step() path enters before the branch, which the console refutes, so v1-exc checks these rows against explicit expectations instead of the ISS."
+ },
+ {
+  "from": "WI-CORE-A fixes",
+  "issue": "SOC.md 2.5 / 4.4.3: sleep_req is a level that the core drops while run = 0 and in the first cycle after run rises, so a CPG may take either its level or its rising edge. v1_cpg's header comment about a held level describes the old core."
+ },
+ {
+  "from": "WI-CORE-A fixes",
+  "issue": "SOC.md 4.3.1: 'no timing decision reads the ISN' is true again, because the claim now picks younger micro-ops by pipeline position."
+ },
+ {
+  "from": "WI-CORE-A fixes",
+  "issue": "SOC.md 4.3.3 / 4.3.4 item 2 / 9.1: the branch stop applies to issued micro-ops as well as queued ones, and a claimant is an instruction, counted at its first micro-op [P]."
+ },
+ {
+  "from": "WI-CORE-A fixes",
+  "issue": "WI-CORE-F: v1_fpu's multiplier records need the ISN kill. After that, the core's interim exf_mul hiding and its fhzc hazard can be removed."
+ },
+ {
+  "from": "WI-CORE-A fixes",
+  "issue": "WI-CORE-B: q0_fx / q1_fx (with vec400) replace the core's interim q_fx / fpois / slot0_rte, and must also suppress the ireq. Poison flags for q2 and q3 are needed for the claim's pre-decode."
+ },
+ {
+  "from": "WI-CORE-B",
+  "issue": "SOC.md 1.3.2 v1_fetch port list needs: `md` (SR.MD for ireq.md and the own user-mode poison), `hold_ma` next to `hold` (the MA unit's same-cycle hold is seen one cycle late [HW ldCCN / stP4 4 fetches in 5 cycles]), the claim window `w_mem[3:0]`, `w_br[2:0]`, `w_op2`, `w_op3` (q1_mem / q2_mem kept as w_mem[1] / w_mem[2]) and `q2_tag` (pre-break on a paired delayed branch's slot). The q-entry slot bit covers taken branches only (a not-taken BT/S/BF/S slot is the core's slot0_q)."
+ },
+ {
+  "from": "WI-CORE-B",
+  "issue": "SOC.md 3.8 v1_core needs an input `ubc_pre_armed` (v1_ubc's ctl_pre_armed); v1_soc must wire it. v1_fetch implements the pre-armed hold by hiding the delayed branch from D until its slot is queued."
+ },
+ {
+  "from": "WI-CORE-B",
+  "issue": "SOC.md 4.1 item 5 (run-ahead) should read: 6 halfwords, a word requested when it fits in the occupancy at the START of the cycle, a request in every redirect cycle (the sequential word, dropped), the MA unit's hold seen one cycle late [HW: 36 debug-ubc-hudi snippets exact]. 9.5 closes with v1_ubc IF_DLY = 3."
+ },
+ {
+  "from": "WI-CORE-B",
+  "issue": "SOC.md 4.3.3 / 4.3.4 item 2 / 9.1: 'already fetched at t' = the queue plus the word read in the take cycle, except a follower-candidate take's claimant that reads a register the leader issuing at t writes [HW c1j, c1i 2/3 behind, c1b j0 vs d0; the exception is P]. The six c1j rows are no longer XFAIL."
+ },
+ {
+  "from": "WI-CORE-B",
+  "issue": "SOC.md 4.3.4 item 5: the core redirects to the vector on exc_rd; v1_fetch holds the redirect while busy (busy_wait) and EXC_SAVE waits for it (F). The spec's 'exc_rd and !irsp.busy' would be a combinational loop."
+ },
+ {
+  "from": "WI-CORE-B",
+  "issue": "SOC.md 4.4.1: the empty-window interrupt boundary is implemented (SPC = v1_fetch.fpc) with a registered stall flag [P]."
+ },
+ {
+  "from": "WI-CORE-B",
+  "issue": "WI-CORE-A's files were edited by this integration step (the chain had no later CORE-A step): v1_core.sv (integration), tb/v1_tb_top.sv and tb/v1_exc_tb.sv (ubc_pre_armed tie/connect), tb/v1_exc_tb.cpp (six stale 'WI-CORE-B' XFAIL marks removed), tb/v1_exc_mutants.py (5 anchors re-anchored, d1-rte / d1-odd-pre moved to tb/v1_fetchx_mutants.py)."
+ },
+ {
+  "from": "WI-CORE-B",
+  "issue": "WI-EXC: tb/v1_intc_sched_top.sv was already broken (no ubc_seq) and now also needs .ubc_pre_armed(1'b0)."
+ },
+ {
+  "from": "WI-CORE-B",
+  "issue": "M3 (WI-CACHE / WI-SOC): the fetch has only been run against the C++ IC model and the real v1_mmu (TRANSLATE=0), not yet against v1_icache on the BSC."
+ },
+ {
+  "from": "WI-CORE-F",
+  "issue": "v1_pkg fpx_opnd has no V / Z for FSRRA, but the header and model raise them (negative / +-0 operand). v1_fpu computes FSRRA V / Z itself (vq.tv from st_x). v1_pkg is not this WI's file."
+ },
+ {
+  "from": "WI-CORE-F",
+  "issue": "SOC.md 4.5 says the request takes the slot in a cycle with hold_pipe = 0. The console (ci3 p2_fdiv 24, ci4 p2_fd*) shows the grant one cycle after the hold ends, which the RTL implements (mahq)."
+ },
+ {
+  "from": "WI-CORE-F",
+  "issue": "SOC.md 4.5 has `done` post the request at wlo-3. The RTL keeps `done` at rounding (quotient capture) and adds v1_fdiv `rq` three divider cycles earlier for the request. The timing is the same."
+ },
+ {
+  "from": "WI-CORE-F",
+  "issue": "The width / format of trap_cause is unspecified. It is implemented as {V, Z, E, 0, 0} and is not yet consumed by the core."
+ },
+ {
+  "from": "WI-CORE-F",
+  "issue": "di_fcmpd has no ISN port. The FCMP DR compare pass latches the ISN from its first micro-op."
+ },
+ {
+  "from": "WI-CORE-F",
+  "issue": "run = 0 is folded into both holds (hold_pipe = frz, hold_div = pfz || !run). There is no separate run port."
+ },
+ {
+  "from": "WI-CORE-F",
+  "issue": "SOC.md 4.3.8 says FSRRA never E-traps; v1_fpu's header / model say it E-traps with DN = 0. Left to WI-FPDN; no difference at DN = 1."
+ },
+ {
+  "from": "WI-CORE-F",
+  "issue": "SOC.md does not size the vector records. VN = 12 is needed (FTRV ; FIPR ; FTRV)."
+ },
+ {
+  "from": "WI-CORE-F",
+  "issue": "The ci4 cacheable miss is an SDRAM row miss (24 / 25, miss_em 28.1). This concerns the OC / BSC model; the tb stand-in uses 24."
+ },
+ {
+  "from": "WI-CORE-F",
+  "issue": "Pre-existing: with PR = 1 and SZ = 1 (a reserved mode), tp_decode makes the 64-bit FMOVs illegal and the ISS does not. fpfuzz avoids the combination."
+ },
+ {
+  "from": "WI-CORE-F",
+  "issue": "Edits in WI-CORE-A's files: v1_core.sv (integration: FPU instance, trap_d, trap pass di_v, ftake / EXC0 conversion, dmw gate, ok_* / kexo / kmao FPU view, interim exf_mul / mulx removed); tb/v1_exc_tb.cpp (six stale WI-CORE-F XFAIL marks removed); tb/v1_exc_mutants.py (trap-d / exc0-late / fault-incl re-anchored; f2-exf / f2-hazard / fcmp-kill removed with comments)."
+ },
+ {
+  "from": "WI-FPDN",
+  "issue": "SOC.md 1.3 / 8.1 file ownership: DN = 0 needs integration edits in WI-CORE-F's rtl/v1/v1_fpu.sv (dn0 to every value function, the divider and the vector unit; E from v1_fp_pkg's e / fdiv_spec, replacing the inline approximation; FSRRA E via vr_t.te and {res_e, res_x}; den_s/den_d/nan_s/div_vz removed) and rtl/fpu_vec/fpu_vec_top.sv (dn0, st_e, res_e, FIPR denormal operands, FSRRA DN = 0 specials), plus tie-offs in tb/fpu_vec_tb_top.sv and tb/v1_fp_tb_top.sv (Verilator 5.014 has no port defaults; PINMISSING is fatal). Originals are in agents/scratch/WI-FPDN/orig/."
+ },
+ {
+  "from": "WI-FPDN",
+  "issue": "SOC.md 4.3.8 DN = 0 bullets vs the console: FTRC does NOT raise E (remove it from the E list); FSRRA DOES raise E for a positive denormal (V for a negative one), so 'FIPR / FTRV / FSCA / FSRRA never E-trap' is wrong; E comes after the NaNs (single: any NaN; double: only a NaN visible in the high word), FDIV x/0 (Z), FMAC's invalid cases and FSQRT's negative-operand V; doubles are classified from the high word; the E trap's cause is E alone and the flags are unchanged."
+ },
+ {
+  "from": "WI-FPDN",
+  "issue": "SOC.md 4.3.8 'Trap effects' / core-integration 3.5.5 / exceptions-intc 3.8: the console reports the computed O / U / I (and V / Z) in cause and flags for an O/U/I enable trap (FSQRT(1.5) + EN.I leaves 0x00001084; FMUL.D max x 1.5 leaves 0x00085094). v1_fpu's trap pass (WI-CORE-F) and sh4_iss.h trap_fpscr (WI-REF) write V/Z/E only. Not a DN matter; v1-fpdn masks those bits and counts them (203 records)."
+ },
+ {
+  "from": "WI-FPDN",
+  "issue": "tb/sh4_iss.h (WI-REF) differs from the console with DN = 0 in 1,635 of 74,508 records (v1_fpdn_core --iss): dn0_E raises E for FTRC and for FDIV x/0; E comes before FMAC's inf-inf V and FSQRT's negative-denormal V; there are no high/low word rules for doubles; FSRRA's E trap is missed with no enables (check() runs the vector check pass only with an enable or a memory access); plus the O/U/I trap cause. SOC.md 6.1 wants the ISS on WI-FPDN's header: it should call sh4fpdn::eval / compose in SoC mode."
+ },
+ {
+  "from": "WI-FPDN",
+  "issue": "v1_pkg fpx_opnd has no V/Z/E for FSRRA (WI-CORE-F's issue 1); FSRRA's E comes from fpu_vec_top st_e."
+ },
+ {
+  "from": "WI-FPDN",
+  "issue": "Stale text not owned by WI-FPDN: rtl/v1/ARCH.md:98 ('with DN = 0 it behaves as DN = 1'); the tb/v1_fpuhold_x.cpp header (DN = 0 now covered by make v1-fpdn)."
+ },
+ {
+  "from": "WI-P4",
+  "issue": "F5: SOC.md 6.3 has no VOLRD term for MMUCR (CCN 0x10), but tb/mmu_ref.h marks it volatile (LRUI), so Sh4Sys logs an error on every MMUCR read. The lead decides: add 'reads of MMUCR' to SOC.md 6.3, or WI-MMU drops the flag. If the rule is added, add blk == P4B_CCN_MMU && base[7:0] == 8'h10 to v1_lsu's vol and the same clause to p4bus_ref.h lsu_volatile."
+ },
+ {
+  "from": "WI-P4",
+  "issue": "F8 and its mirror: (1) a posted write's MEMW is logged at its ack (MA3), but a manual reset drops un-strobed entries, so the write is in the checker set but never performed; (2) new and measured: a posted write can be strobed in its MA2, before its ack, so a reset in MA2 / MA3 leaves a performed write with no MEMW. Both windows are 1-4 cycles and need a reset. The lead should state which wins."
+ },
+ {
+  "from": "WI-P4",
+  "issue": "SOC.md 3.1.5: 'the request is registered at the end of MA1' now holds for posted writes too; this withdraws the earlier implementer note that the entry is loaded at the end of MA3. The table row 'Pclk 16-bit write, then a Pclk 16-bit read of another module | 23' should read '21-24 by phase' (p4b probe; tc2 T measured one phase). Suggest adding: 'the posted entry is free 7 Icyc after its strobe for any size; a Pclk bus cycle lasts its transfers + 1 Pcyc (word 2, longword 3)'."
+ },
+ {
+  "from": "WI-P4",
+  "issue": "Still open from the implementer's report: a stalled strobe is re-presented at the path's next bce / pce; arr_strobe pulses in the capture cycle; the PMC split between v1_lsu and v1_ocache; the CPU-only reset and DMAC err choices [P]; no bm port is owned by WI-P4; the d1 / d2 convention."
+ },
+ {
+  "from": "WI-EXC",
+  "issue": "irq_t.code in v1_soc_pkg.sv says 'stable while req'. It should read 'valid while req; follows the current winner; the core latches it at the take (SOC 4.3.4)'. The RTL keeps the correct priority behaviour (finding 4)."
+ },
+ {
+  "from": "WI-EXC",
+  "issue": "IMASK raise: SOC 3.4 specifies only the lowering latency. The RTL uses the same synchroniser in both directions [P], so after IMASK is raised at s, an already-presented request stays up to s+8 (s even) or s+9 (s odd) and falls at s+9 / s+10. The lead must choose one of two: (a) WI-REF's lockstep legality check (SOC 6.2) allows entries with level <= the new IMASK before s+10, or (b) SOC specifies an immediate raise path. A PH-style console probe (a TMU source rising just before irq_disable) could decide (finding 5)."
+ },
+ {
+  "from": "WI-EXC",
+  "issue": "IPR / TCR.UNIE store -> request is a joint WI-P4 + WI-EXC calibration (SOC 9.4 / 9.13). The console gives 13/17/15x6 and the PI sweep 10-21. With v1_p4bus.sv as edited at 09:17 today, the INTC strobe comes at MA1+1..+4, which predicts k = 6-9. The INTC side agrees with the console's equal IPR/UNIE k (IPR 6, TMU level 4/5). expected.json now pins the console values, so M1a fails these lines until the posted-write strobe point or the core's store schedule is calibrated (finding 1)."
+ },
+ {
+  "from": "WI-EXC",
+  "issue": "WI-CLK: the v1_cpg.sv RESYNC comment assumes the INTC's wake changes right after a pce. It actually changes in a ph-1 or ph-3 cycle, 4/5 cycles after the source (now pinned by v1_intc_tb). RESYNC is 6 or 8 by phase, so the M1a SLEEP wake cost (8-12 [HW]) needs re-deriving (finding 10)."
+ },
+ {
+  "from": "WI-EXC",
+  "issue": "Carried over from the implementation: SOC 3.4 wording 'irq.req rises at s + 9 when s is even, s + 10 when s is odd'. The PH parity needs the Pclk read ack at ph 2; P_D2 = 11 is still the value after today's v1_p4bus edit."
+ },
+ {
+  "from": "WI-CLK",
+  "issue": "SOC.md 2.5 / 4.4.3 / 4.6 say 'RESYNC (2 Pcyc) -> the measured 8-12 Icyc'. With v1_intc the 2-Pcyc synchroniser adds 7 Icyc to every on-chip wake (wake rises in ph 1) and 7 or 9 to an NMI/IRL wake. The 8-12 is an end-to-end reading of console S that M1b must gate; tb/bm/timers-clock 'S sleep' now requires k=2 in at least 16 of 32. If M1b fails, the lead chooses between a third pce stage in v1_cpg (11/13 Icyc) and a core restart cost."
+ },
+ {
+  "from": "WI-CLK",
+  "issue": "SOC.md 2.5 diagram says 'SETTLE --wdt_ovf--> RUN'. v1_cpg now does SETTLE -> RESYNC (2 Pcyc) -> RUN for a standby exit (a relock settle still goes straight to RUN) so irq.req, from v1_intc's bce-clocked registers, is up when cpu_run rises, which keeps 4.4.3 true. STATUS reads LL from the overflow (hm 9.5.2). The diagram should show this."
+ },
+ {
+  "from": "WI-CLK",
+  "issue": "MD straps (verifier C1, implementer issue 1): v1_cpg and v1_bsc_regs load from md while rst.pin is asserted. v1_soc must drive md from the pins or from a latch transparent during rst.pin; SOC.md 2.2 should state this."
+ },
+ {
+  "from": "WI-CLK",
+  "issue": "ratio_inc is now 24/Bdiv (IFC treated as x1, consistent with the enables, SOC.md 9.18). debug-ubc-hudi 4.6 and the comments in v1_perfctr.sv and tb/sh4_dbg.h still say 24*Idiv/Bdiv; the two agree whenever IFC = x1 (the DC). The 9.18 FRQCR row could name ratio_inc."
+ },
+ {
+  "from": "WI-CLK",
+  "issue": "sleep_req is edge-taken; both a level held until the take (v1_core's sleep_issued && pipe_empty) and a one-cycle pulse work, including in the cycle a relocking FRQCR write lands. SOC.md 4.4.3 could say so."
+ },
+ {
+  "from": "WI-CLK",
+  "issue": "Unchanged from the implementer's report: dmac_run already includes !STBCR.MSTP4; a posted FRQCR write that drains while asleep changes FRQCR without a relock settle [P]."
+ },
+ {
+  "from": "WI-SER",
+  "issue": "serial.md 3.4 (line 475) and the section 6 H3 row say run 3 H3 measured that the read-1 latch survives a write of 1 and new set events. H3 isolated only survival across a read of another register: scif_probe3.c re-reads SCFSR2 before the write of 0 in cases 1 and 3. The behaviour should be marked [P]. The RTL keeps it and now says [P]."
+ },
+ {
+  "from": "WI-SER",
+  "issue": "serial.md 3.3.5 arms break detection only after a 0x00 framing-error frame. hm 16.2.7's BRK text names any framing-error frame, while hm 16.1.1 ('also at the space level') and the Figure 16.10 note ('last data is H'00') support the spec. The readings differ only for a break that starts inside a frame, which cannot be measured on the DC. The RTL keeps the spec, marked [P] and pinned by a test; the lead decides."
+ },
+ {
+  "from": "WI-SER",
+  "issue": "serial.md 3.2.2: the table's model column says 'pop at S + 17'; step 3 says the pop is at S + 16 and visible at S + 17. The RTL now follows step 3's meaning under TFRST too. Suggest 'pop visible at S + 17' in the table."
+ },
+ {
+  "from": "WI-DBG",
+  "issue": "ubc_ctl_t has no seq and no pre_armed field (verifier finding 2, confirmed). v1_ubc exports ctl_seq and ctl_pre_armed beyond its SOC.md 3.8 port list. Lead: add both fields to ubc_ctl_t and SOC.md 3.8, and name v1_ubc as the driver of v1_fetch.ubc_pre_armed in 4.1 item 7."
+ },
+ {
+  "from": "WI-DBG",
+  "issue": "SOC.md 3.8 / ubc_opq_t does not say what the core presents on ubc_opq for each dkind (verifier finding 3, confirmed). v1_core.sv line 1008 drives v=1 and nodata=dk_ctl(dk) for every dkind, and dk_ctl includes DK_TAS_PURGE, so the TAS.B purge is presented as a read with no data. The proposed table is in WI-DBG-fix.md section 1.3: the purge has v=0; PREF/OCBP/OCBWB are read, size L, no data; OCBI is write, size L, no data; MOVCA.L is write, size L, with data (R0). Spec debug-ubc-hudi 4.1 says MOVCA.L has no data, but manual 20.3.1 / 20.3.5(3) do not list it among the no-data accesses; this needs a decision."
+ },
+ {
+  "from": "WI-DBG",
+  "issue": "SOC.md 4.1 item 5 ('the UBC settle boundaries are met through the UBC's fetch-side copy delay') cannot hold with v1's frozen 4-halfword fetch queue: no copy delay from 1 to 8 fits all 44 console points (settle-dly table). A run-ahead of 5-6 halfwords with IF_DLY=3 fits all 44. The lead / WI-CORE-B must decide the run-ahead, then fix 4.1 item 5 and the WI-DBG acceptance text."
+ },
+ {
+  "from": "WI-MMU",
+  "issue": "SOC.md 2.3 table, manual-reset column: the row 'MMUCR / TLB V / TEA / PTEH PTEL PTEA TTB / TLB' says PTEH 0 [P], which contradicts the 2.3 note and hm 5.6.1 (FIND-1). The RTL and mmu_ref.h now hold PTEH (hm App. A: undefined, so holding is legal). Suggested row: PTEH held, PTEL PTEA TTB 0 [P]."
+ },
+ {
+  "from": "WI-MMU",
+  "issue": "SOC.md 3.6/3.8: in TRANSLATE=0, v1_mmu now drives at=0 whatever MMUCR.AT holds (MMUCR still reads AT back); otherwise v1_sq would take the SQ burst address from the identity x.pa (FIND-5). Suggested note: 'MMU-0: at = 0'."
+ },
+ {
+  "from": "WI-MMU",
+  "issue": "SOC.md 6.3 ITLBFILL semantics: emitted only when RF_WR really writes the ITLB entry (never after a TI in the refill window). It means ITLB[idx] <- UTLB[data[5:0]] as that entry was at the end of the refill's search cycle (m+1), VPN = addr[31:10], so the copy is ordered before an LDTLB landing at that edge. WI-REF must apply ITLBFILL before an LDTLB record of the same ISN, or the record must carry the copied fields (data[63:6] is free)."
+ },
+ {
+  "from": "WI-MMU",
+  "issue": "ma_commit qualification (still open; confirmed at v1_core.sv 699/827): add a 'cnt' bit to dxlat_t, driven by v1_mmu in EX and latched with the micro-op; ma_commit = lreq.v & lrsp.ack & lreq.arch & lreq.x.cnt (lead + WI-CORE-A). Interim: the SoC ANDs in v1_mmu_pkg::mmu_urc_counts(lreq, at, ccr.ora)."
+ },
+ {
+  "from": "WI-MMU",
+  "issue": "SOC.md 3.8 xl_stall rule (still open): as written, an access held in EX by mah would own the UTLB CAM and deadlock an OC associative write. It should read: xl_stall only in the refill's UTLB search cycle; the data side has its own compare port (as the RTL does)."
+ },
+ {
+  "from": "WI-MMU",
+  "issue": "ISN of the LDTLB / ITLBFILL commit records is 0 (still open): v1_mmu has no ISN input. WI-SOC stamps it (LDTLB: its micro-op's ISN in MA; ITLBFILL: tap.core.next_isn), or the lead adds an isn port."
+ },
+ {
+  "from": "WI-MMU",
+  "issue": "dxlat_t.c includes CCR.OCE (from the implementation round), for WI-CACHE / WI-P4."
+ },
+ {
+  "from": "WI-DMAC",
+  "issue": "F2 (SOC.md 3.1.1 / 3.1.5, WI-P4): v1_p4bus posts master-1 (DMAC) writes and acks them before the slave's strobe. While a CPU longword Pclk write is in flight, the SCTDR1 strobe comes 3-5 Icyc after the ack, so the DMAC re-samples TDRE before the SCI clears it, and 20 of 40 bytes are overwritten. DMAC writes should be non-posted, acked in the slave's capture cycle after the SOC.md 3.5 auto-clear. Regression: make v1-dmac-int (XFAIL today; --strict fails)"
+ },
+ {
+  "from": "WI-DMAC",
+  "issue": "F1 (SOC.md 3.3.2 / bs_t): SOC.md must define rd_beat for a non-line read (v1_bsc reports addr[4:3]) and how many rd_v / wd_req / done a split BZ_Q gives the requester (v1_bsc gives one each). The DMAC now accepts either one or two beats."
+ },
+ {
+  "from": "WI-DMAC",
+  "issue": "F8 (SOC.md 3.3.2): the [P] 'BSC splits a DMAC 8-byte unit into two longword cycles' contradicts spec 3.13 observation 1 (8 B costs the same 46.3 Icyc as every other size). With v1_bsc an 8-byte unit costs 66 Icyc, against 42-50 for the other sizes."
+ },
+ {
+  "from": "WI-DMAC",
+  "issue": "F10 (SOC.md 3.8 / 3.4): run = dmac_run & !MSTP4 also covers deep sleep, so DMTE/DMAE are forced to 0 there and a pending DMTE cannot wake the CPU. Either add an mstp input to v1_dmac or state the masking in SOC.md."
+ },
+ {
+  "from": "WI-DMAC",
+  "issue": "Still open from the implementation report: breq_t.lock on the DMAC dual-address pair, the cycle-steal hand-over window, single-address pipelining and p4q timing (WI-DMAC-impl.md section 5)."
+ },
+ {
+  "from": "WI-BOARD",
+  "issue": "board.md 3.7.3 / 4.5: the GD numbers (DRQ 363, BSY ~320-390, INTRQ, completion ~120-160) are readings of boardio's poll loop, not drive delays. The delays that reproduce them are: DRQ 275 after the command-write beat; BSY 285 and INTRQ 1335 / 1560 / 1985 after the 6th packet-word beat; completion 90 after the last data-word beat. The spec should state these reference beats."
+ },
+ {
+  "from": "WI-BOARD",
+  "issue": "board.md 4.1 / SOC.md 3.3.2: the pins a bclk() call drives must reflect the register state before that call's beat. A write, or a read with a side effect such as the GD status read, reaches IRL at the next Bcyc. Now implemented."
+ },
+ {
+  "from": "WI-BOARD",
+  "issue": "board.md 4.1: the IRL formula uses the stored ISTNRM bits 21:0; the summary bits 30 / 31 do not take part (minicast) [P]."
+ },
+ {
+  "from": "WI-BOARD",
+  "issue": "board.md 3.4.4 / 4.3: PDAPRO has the other APRO registers' range format ([14:8] lowest / [6:0] highest MB above 0x08000000); the key is not verified. POR 0 allows no RAM; the direct-boot preset is 0x6702007F [P]."
+ },
+ {
+  "from": "WI-BOARD",
+  "issue": "board.md 3.6 / 4.3: a last descriptor that is not a START frame ends the DMA normally after the last START frame. A receive address outside MDAPRO ends the DMA when the engine reaches that frame: ISTERR 8, MDST 0, no ISTNRM 12 (in frame 1 at once) [P]."
+ },
+ {
+  "from": "WI-BOARD",
+  "issue": "board.md 3.10: SB_SFRES with a boot ROM resets Holly, the AICA registers and the GD drive to POR, not to the direct-boot preset. The memories and the AICA RTC persist [P]."
+ },
+ {
+  "from": "WI-BOARD",
+  "issue": "board.md 3.8.4: a G2 DMA whose LEN is not a multiple of 32 / 4 moves exactly LEN bytes; the timing still counts 32-byte units [P]."
+ },
+ {
+  "from": "WI-BOARD",
+  "issue": "The implementer's six contract issues still stand: Sh4Board irl_n / port_in / tick; the ch2 text in board.md 4.3; ISTNRM in 5.3 against 3.2; the DMAW isn; the 9.11 facts; xb_end against xb_last."
+ },
+ {
+  "from": "WI-REF",
+  "issue": "Sh4CacheIf (SOC.md 6.1) is incomplete for a system model. WI-REF uses sh4sys::CacheX = Sh4CacheIf + ccr_slave, ccr, qacr, ifill, set_lockstep, ic_misses_unfilled, reset, access_rg (with the region), peek, xlat. WI-CACHE's tb/sh4_cache.h provides all of them through a thin adapter. SOC.md should adopt that interface."
+ },
+ {
+  "from": "WI-REF",
+  "issue": "MMUCR reads are outside the VOLRD rule, but their LRUI field follows the RTL's speculative fetch hits. Proposal: add MMUCR reads to the VOLRD rule. The model counts the affected reads (n_mmucr_at_reads, in the checker summary). URC itself is exact in the model (mmu 3.6)."
+ },
+ {
+  "from": "WI-REF",
+  "issue": "WITHDRAWN: the implementer's contract issue 3 (the VOLRD rule misses device reads with OCE=0) was wrong. v1_mmu folds CCR.OCE into dxlat.c, and the model now does the same."
+ },
+ {
+  "from": "WI-REF",
+  "issue": "Flash reads (0x00200000-0x0021FFFF) are never VOLRD, so a program that programs the flash cannot run in lockstep (kept from the implementer)."
+ },
+ {
+  "from": "WI-REF",
+  "issue": "SOC.md 6.3 does not state these record conventions; the checker assumes them and soc_checker.h lists them. (1) Entry register records carry the EXC/IRQ ISN. (2) Reset-type entries are EXC records with EXPEVT 0x020/0x140 and handler A0000000. (3) Two RETIREs of one cycle come in program order. (4) DMAW isn is the next ISN to retire. (5) ITLBFILL addr is the refill VA and LDTLB data is {AA, DA1}. (6) NEW: LDTLB records carry the LDTLB's ISN; v1_mmu leaves isn=0, so WI-SOC must stamp it. (7) NEW: an SQ store whose TLB check fails still writes the queue (mmu R7); its MEMW carries the store's ISN (= the EXC's), although lreq.v is defined as non-faulting. (8) NEW: MEMW data is right-aligned with be used as a byte count; DMAW data is lane-aligned with be = lanes."
+ },
+ {
+  "from": "WI-REF",
+  "issue": "Associative-write multiple-hit reset (SOC.md 4.3.2, imprecise). The checker accepts the store retired first or not retired, and rejects any younger retirement before the EXC 0x140. SOC.md should fix the RTL's shape, and say whether a paired follower may retire first."
+ },
+ {
+  "from": "WI-REF",
+  "issue": "Channel-B data break (SOC.md 4.3.2/4.3.5). Exactly one follower RETIRE is accepted. [P] If the follower raises its own completion entry (TRAPA, a break), the older data break wins with SPC after the follower. [P] If the follower is a delayed branch, SPC is its slot. WI-CORE-A should confirm both, or SOC.md should fix them."
+ },
+ {
+  "from": "WI-REF",
+  "issue": "ITLB multiple hit vs a UBC pre-execution break on the same instruction: the ISS now follows hm Table 5.2 (the 0x140 reset, level 1, wins) [M]. SOC.md 4.3.2 should say so for WI-CORE-A's D-stage priority; 9.9 cannot measure it."
+ },
+ {
+  "from": "WI-REF",
+  "issue": "Fetch-ahead vs fill records (SOC.md 6.2). IFILL/ITLBFILL records can replace the line or entry of an instruction already fetched but not yet retired. [P] The model serves such fetches from the last 16 replaced lines/entries, and for 16 instructions after an ICI or IC array write from the invalidated entry. Only an unexplained miss is flagged. SOC.md 6.2 should state the IC-fill and ITLB-refill injection rule with this in mind."
+ },
+ {
+  "from": "WI-REF",
+  "issue": "Asynchronous resets (WDT, H-UDI, the RESET pin) have no lockstep injection rule in SOC.md 6.2, so the checker cannot follow them. WI-CACHE's new note in tb/sh4_cache.h (a reset completes an access killed after its claim) also needs a lockstep rule."
+ },
+ {
+  "from": "WI-REF",
+  "issue": "core-integration 8.2 says URC depends on speculative fetch-side refills; mmu 3.6 [HW D1] and v1_mmu say refills never change URC. The model keeps the core-integration exemption, which is conservative. The spec text should be reconciled."
+ },
+ {
+  "from": "WI-REF",
+  "issue": "Kept from the implementer, unchanged: p4[] indexed by port plus additive Sh4Board members; WI-EXC expected.json relaxations; the D-stage FD-first priority for undecoded H'Fxxx codes."
+ },
+ {
+  "from": "WI-CACHE",
+  "issue": "SOC 3.8 should state that each unit drives xl_req, xl_itlb and xl_va to 0 when it is not requesting. v1_icache used to drive xl_itlb = 1 in every cycle (F4, now fixed)."
+ },
+ {
+  "from": "WI-CACHE",
+  "issue": "Accesses killed by a reset (F6). The RTL rule: an access killed after its claim (m + 1 or later: it allocated its buffer or raised its request) is completed. Its fill validates the line, and its stored bytes, WTB store, MOVCA.L allocation and SQ burst stand. An access killed before its claim has no effect. SOC 2.3 names only 'a started write-back / WTB store'; it should adopt this rule, and WI-REF's checker must apply such accesses. v1_ocache has no tap port to report the claim."
+ },
+ {
+  "from": "WI-CACHE",
+  "issue": "TAS.B across a manual reset can deadlock the SoC. A locked read claimed before the reset but not yet accepted stays presented, as SOC 3.3.2 requires. It is taken after the reset and holds the bus for a pair write that the restarted core never issues; the stub keeps its lock across rst.man. SOC 2.3 ('v1_biu queued requests dropped') contradicts 3.3.2. Proposal for WI-BSC: clear the BIU lock at a manual reset."
+ },
+ {
+  "from": "WI-CACHE",
+  "issue": "C1 / C2's m is the tag-compare cycle: MA1, or MA2 when the V-clear comparator holds a same-entry access right behind an OCBI / OCBP / TAS-purge hit. This comparator produces the six OCBI records. v1_ideal_mem (WI-CORE-A) could adopt it so that make v1 matches them too."
+ },
+ {
+  "from": "WI-CACHE",
+  "issue": "Lockstep order for WI-REF (written in the tb/sh4_cache.h header): an OCI / ICI applies after every older acked access, including those whose fills are still in flight (the RTL kills those fills); an IFILL record comes before an ICI in the same cycle; a fetch acked in a CCR write's capture cycle comes before the write."
+ },
+ {
+  "from": "WI-CACHE",
+  "issue": "irsp.busy now means the uncached read is still on the bus: it falls when the word arrives, even if the fetch has not taken it yet. SOC 3.2.1 / 4.1 item 4 should say so. Otherwise a redirect waiting for busy while the fetch is halted (pfz / mah, or an exception's take cycle up to its redirect) would deadlock."
+ },
+ {
+  "from": "WI-CACHE",
+  "issue": "The implementer's contract issues 1-6 in WI-CACHE-impl.md section 6 still stand. Its section 8 item 3 (stld / prefld deferred to M3) is withdrawn: the kern.S loops match on the stub."
+ },
+ {
+  "from": "WI-BSC",
+  "issue": "MD strap polarity (verify finding 12): SOC.md 3.6 gives only BCR1[31:29] = 101, SOC.md 9.18 says 'md[7] = master', and bsc-memmap 3.2 cites hm Appendix C's inverted pins. The RTL, tb/sh4_bsc.h and WI-BOARD (tb/dc_board/dc_core.h:112, dc_board.h:203) all use md[k] = the BCR1 bit value (hm 13.2.1), with md = 0x065 on the DC. SOC.md should pin md = 0x065 in that convention, or the RTL and the board must change together."
+ },
+ {
+  "from": "WI-BSC",
+  "issue": "xb_out_t's SDRAM side band has no chip select (extends impl contract issue 4 and verify finding 11). An SDMR write to a non-SDRAM area now issues nothing [P]. With DRAMTP 011 (SDRAM in areas 2 and 3), a PALL or MRS still cannot name its area; a CS / area field would settle it."
+ },
+ {
+  "from": "WI-BSC",
+  "issue": "The implementer's contract issues 1-7 (WI-BSC-impl.md) stand unchanged."
+ }
+]

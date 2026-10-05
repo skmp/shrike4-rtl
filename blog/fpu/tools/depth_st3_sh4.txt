@@ -1,0 +1,68 @@
+
+6. Executing LTP pass (find longest path).
+
+Longest topological path in st3_sh4 (length=41):
+    0: \s [15]
+    1: $abc$2142$new_n98_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2166)
+    2: $abc$2142$new_n99_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2167)
+    3: $abc$2142$new_n100_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2168)
+    4: $abc$2142$new_n101_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2169)
+    5: $abc$2142$new_n122_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2190)
+    6: $abc$2142$new_n123_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2191)
+    7: $abc$2142$new_n124_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2192)
+    8: $abc$2142$new_n125_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2193)
+    9: $abc$2142$new_n126_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2194)
+   10: $abc$2142$new_n127_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2195)
+   11: $abc$2142$new_n289_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2357)
+   12: $abc$2142$new_n291_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2359)
+   13: $abc$2142$new_n292_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2360)
+   14: $abc$2142$new_n293_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2361)
+   15: $abc$2142$new_n294_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2362)
+   16: $abc$2142$new_n295_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2363)
+   17: $abc$2142$new_n334_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2402)
+   18: $abc$2142$new_n355_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2423)
+   19: $abc$2142$new_n376_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2444)
+   20: $abc$2142$new_n398_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2466)
+   21: $abc$2142$new_n399_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2467)
+   22: $abc$2142$new_n400_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2468)
+   23: $abc$2142$new_n401_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2469)
+   24: $abc$2142$new_n402_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2470)
+   25: $abc$2142$new_n434_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2502)
+   26: $abc$2142$new_n435_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2503)
+   27: $abc$2142$new_n436_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2504)
+   28: $abc$2142$new_n560_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2628)
+   29: $abc$2142$new_n561_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2629)
+   30: $abc$2142$new_n629_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2697)
+   31: $abc$2142$new_n636_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2704)
+   32: $abc$2142$new_n637_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2705)
+   33: $abc$2142$new_n644_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2712)
+   34: $abc$2142$new_n645_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2713)
+   35: $abc$2142$new_n661_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2729)
+   36: $abc$2142$new_n662_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2730)
+   37: $abc$2142$new_n681_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2749)
+   38: $abc$2142$new_n682_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2750)
+   39: $abc$2142$new_n688_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2756)
+   40: $abc$2142$new_n689_ (via $abc$2142$auto$blifparse.cc:386:parse_blif$2757)
+   41: \z [30] (via $abc$2142$auto$blifparse.cc:386:parse_blif$2758)
+
+7. Printing statistics.
+
+=== st3_sh4 ===
+
+   Number of wires:                719
+   Number of wire bits:            947
+   Number of public wires:         133
+   Number of public wire bits:     361
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                617
+     $_AND_                        137
+     $_MUX_                        216
+     $_NAND_                        12
+     $_NOR_                         52
+     $_NOT_                         67
+     $_OR_                          55
+     $_XNOR_                         6
+     $_XOR_                         72
+

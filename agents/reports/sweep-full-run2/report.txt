@@ -1,0 +1,32 @@
+v1 direct run: 1807027 points with a result (0 without); 0 did not halt or accessed memory outside the image; 3445 not periodic
+functional (every register + scratch / code / pool / jit_save / state vs the ISS, 4 runs per point): 1806027 / 1807027 points match
+refresh phase (soc_tb --sweep, SOC.md 5): 5 points matched the console only in a retry at another phase of the free-running refresh timer
+timing, in scope (every form but TAS.B): records 141241 / 141242 match on every compared point and metric
+  T        1792127 /  1792127  (100.000 %)   dropped: 2570 not integral
+  Tb       1792128 /  1792129  (100.000 %)   dropped: 2568 not integral
+  par      1794697 /  1794697  (100.000 %)
+  brkp     1794697 /  1794697  (100.000 %)
+  frzreg   1794697 /  1794697  (100.000 %)
+  frzfpu   1794697 /  1794697  (100.000 %)
+  of which: the ISA without the cache-block forms: records 137621 / 137621 match on every compared point and metric
+  T        1742065 /  1742065  (100.000 %)
+  Tb       1742065 /  1742065  (100.000 %)
+  par      1742065 /  1742065  (100.000 %)
+  brkp     1742065 /  1742065  (100.000 %)
+  frzreg   1742065 /  1742065  (100.000 %)
+  frzfpu   1742065 /  1742065  (100.000 %)
+  of which: OCBI / OCBP / OCBWB / MOVCA.L: records 3620 / 3621 match on every compared point and metric
+  T          50062 /    50062  (100.000 %)   dropped: 2570 not integral
+  Tb         50063 /    50064  ( 99.998 %)   dropped: 2568 not integral
+  par        52632 /    52632  (100.000 %)
+  brkp       52632 /    52632  (100.000 %)
+  frzreg     52632 /    52632  (100.000 %)
+  frzfpu     52632 /    52632  (100.000 %)
+
+largest clusters (metric, A, B, variant kind, model - measured by n): 1 clusters
+      1  Tb     MOVA @(disp,PC),R0     | OCBI @Rn               [ov] 9:+2   e.g. M0 ov:R0>Rn id 23612 (proxy rid 60401)
+
+forms with most mismatching curves:
+       1  Tb     MOVA @(disp,PC),R0
+       1  Tb       as B: OCBI @Rn
+v1: FAIL

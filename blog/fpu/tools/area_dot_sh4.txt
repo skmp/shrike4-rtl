@@ -1,0 +1,22 @@
+
+42. Printing statistics.
+
+=== dot_sh4 ===
+
+   Number of wires:              12005
+   Number of wire bits:          15377
+   Number of public wires:          96
+   Number of public wire bits:    3468
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              11941
+     $_AND_                       1599
+     $_MUX_                        547
+     $_NAND_                      5191
+     $_NOR_                        201
+     $_NOT_                        293
+     $_OR_                         681
+     $_XNOR_                      1453
+     $_XOR_                       1976
+

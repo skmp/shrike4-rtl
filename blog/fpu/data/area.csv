@@ -1,0 +1,8 @@
+design,cells,nand2_eq
+mul_trunc,2426,3774
+mul_full,3201,5054
+fmul_ieee,3184,5049
+fadd_ieee,1128,1815
+dot_sh4,11941,18898
+dot_fused,16553,27015
+dot_ieee,16408,26133

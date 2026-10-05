@@ -1,0 +1,55 @@
+design -reset
+read_verilog area_models.v
+hierarchy -top mul_trunc
+synth -flatten -top mul_trunc
+abc -g AND,NAND,OR,NOR,XOR,XNOR,MUX
+opt_clean
+tee -o area_mul_trunc.txt stat
+
+design -reset
+read_verilog area_models.v
+hierarchy -top mul_full
+synth -flatten -top mul_full
+abc -g AND,NAND,OR,NOR,XOR,XNOR,MUX
+opt_clean
+tee -o area_mul_full.txt stat
+
+design -reset
+read_verilog area_models.v
+hierarchy -top fmul_ieee
+synth -flatten -top fmul_ieee
+abc -g AND,NAND,OR,NOR,XOR,XNOR,MUX
+opt_clean
+tee -o area_fmul_ieee.txt stat
+
+design -reset
+read_verilog area_models.v
+hierarchy -top fadd_ieee
+synth -flatten -top fadd_ieee
+abc -g AND,NAND,OR,NOR,XOR,XNOR,MUX
+opt_clean
+tee -o area_fadd_ieee.txt stat
+
+design -reset
+read_verilog area_models.v
+hierarchy -top dot_ieee
+synth -flatten -top dot_ieee
+abc -g AND,NAND,OR,NOR,XOR,XNOR,MUX
+opt_clean
+tee -o area_dot_ieee.txt stat
+
+design -reset
+read_verilog area_models.v
+hierarchy -top dot_fused
+synth -flatten -top dot_fused
+abc -g AND,NAND,OR,NOR,XOR,XNOR,MUX
+opt_clean
+tee -o area_dot_fused.txt stat
+
+design -reset
+read_verilog area_models.v
+hierarchy -top dot_sh4
+synth -flatten -top dot_sh4
+abc -g AND,NAND,OR,NOR,XOR,XNOR,MUX
+opt_clean
+tee -o area_dot_sh4.txt stat

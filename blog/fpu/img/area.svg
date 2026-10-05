@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="Helvetica,Arial,sans-serif" font-size="13">
+<rect width="900" height="400" fill="#ffffff"/>
+<text x="450.0" y="24" text-anchor="middle" font-size="16" font-weight="bold" fill="#1f2430">Rough gate count, NAND2 equivalents (yosys sketch, not the real netlist)</text>
+<text x="475.0" y="388" text-anchor="middle" fill="#1f2430"></text>
+<text transform="translate(18,187.0) rotate(-90)" text-anchor="middle" fill="#1f2430">gates</text>
+<line x1="70" x2="880" y1="330.0" y2="330.0" stroke="#d9dde5"/><text x="62" y="334.0" text-anchor="end" fill="#1f2430">0</text>
+<line x1="70" x2="880" y1="250.6" y2="250.6" stroke="#d9dde5"/><text x="62" y="254.6" text-anchor="end" fill="#1f2430">10000</text>
+<line x1="70" x2="880" y1="171.1" y2="171.1" stroke="#d9dde5"/><text x="62" y="175.1" text-anchor="end" fill="#1f2430">20000</text>
+<line x1="70" x2="880" y1="91.7" y2="91.7" stroke="#d9dde5"/><text x="62" y="95.7" text-anchor="end" fill="#1f2430">30000</text>
+<rect x="70" y="44" width="810" height="286" fill="none" stroke="#1f2430"/>
+<rect x="102.4" y="300.0" width="97.2" height="30.0" fill="#d1495b"/>
+<text x="151.0" y="295.3" text-anchor="middle" font-size="12" fill="#1f2430">3.8k</text>
+<text x="151.0" y="348" text-anchor="middle" fill="#1f2430">one multiplier:</text>
+<text x="151.0" y="363" text-anchor="middle" fill="#1f2430">truncated (SH-4)</text>
+<rect x="264.4" y="289.8" width="97.2" height="40.2" fill="#f2b632"/>
+<text x="313.0" y="285.1" text-anchor="middle" font-size="12" fill="#1f2430">5.1k</text>
+<text x="313.0" y="348" text-anchor="middle" fill="#1f2430">one multiplier:</text>
+<text x="313.0" y="363" text-anchor="middle" fill="#1f2430">exact 24x24</text>
+<rect x="426.4" y="179.9" width="97.2" height="150.1" fill="#d1495b"/>
+<text x="475.0" y="175.1" text-anchor="middle" font-size="12" fill="#1f2430">18.9k</text>
+<text x="475.0" y="348" text-anchor="middle" fill="#1f2430">inner product:</text>
+<text x="475.0" y="363" text-anchor="middle" fill="#1f2430">SH-4 block</text>
+<rect x="588.4" y="115.4" width="97.2" height="214.6" fill="#f2b632"/>
+<text x="637.0" y="110.6" text-anchor="middle" font-size="12" fill="#1f2430">27.0k</text>
+<text x="637.0" y="348" text-anchor="middle" fill="#1f2430">inner product:</text>
+<text x="637.0" y="363" text-anchor="middle" fill="#1f2430">fused full</text>
+<rect x="750.4" y="122.4" width="97.2" height="207.6" fill="#2e86ab"/>
+<text x="799.0" y="117.6" text-anchor="middle" font-size="12" fill="#1f2430">26.1k</text>
+<text x="799.0" y="348" text-anchor="middle" fill="#1f2430">inner product:</text>
+<text x="799.0" y="363" text-anchor="middle" fill="#1f2430">IEEE parts</text>
+<text x="232.0" y="269.2" text-anchor="middle" font-size="12" fill="#1f2430">truncation: -25%</text>
+<text x="637.0" y="71.8" text-anchor="middle" font-size="12" fill="#1f2430">SH-4 block vs fused full: -30%   vs IEEE parts: -28%</text>
+</svg>

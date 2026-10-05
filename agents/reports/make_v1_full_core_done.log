@@ -1,0 +1,55 @@
+verilator --cc --exe --build -O3 --x-assign fast --x-initial fast -Wno-WIDTH -Wno-UNOPTFLAT -Wno-DECLFILENAME -Wno-UNUSEDSIGNAL -Wno-UNUSEDPARAM -j 24 -CFLAGS "-O2 -Itb" -Wno-LATCH -Wno-CASEINCOMPLETE \
+  -CFLAGS -frounding-math -Irtl/timing-proxy -Irtl/fpu_vec -Irtl/v1 \
+  --top-module v1_tb_top rtl/timing-proxy/tp_pkg.sv rtl/fpu_vec/fpu_vec_pkg.sv rtl/v1/v1_alu.sv rtl/v1/v1_mul.sv rtl/v1/v1_fp.sv rtl/v1/v1_soc_pkg.sv rtl/v1/v1_pkg.sv rtl/timing-proxy/tp_decode.sv rtl/timing-proxy/tp_core.sv rtl/fpu_vec/fpu_booth_mul.sv rtl/fpu_vec/fpu_align.sv rtl/fpu_vec/fpu_add4.sv rtl/fpu_vec/fpu_normround.sv rtl/fpu_vec/fpu_vec_top.sv rtl/v1/v1_core.sv rtl/v1/v1_fdiv.sv rtl/v1/v1_fetch.sv rtl/v1/v1_fpu.sv rtl/v1/v1_ideal_mem.sv tb/v1_tb_top.sv tb/v1_tb.cpp --Mdir build/obj_v1_tb -o tb
+make[1]: Entering directory 'build/obj_v1_tb'
+make[1]: Nothing to be done for 'default'.
+make[1]: Leaving directory 'build/obj_v1_tb'
+rm -f build/v1/results_*.bin build/v1/log_*.txt; seq 0 $((24 - 1)) | xargs -P 24 -I{} sh -c 'build/obj_v1_tb/tb --vec build/v1/vectors.bin --t2 model/timings2 --out build/v1/results_{}.bin --shard {}/24 > build/v1/log_{}.txt 2>&1; true'
+python3 tb/v1_vectors.py report build/v1
+v1 direct run: 1807027 points with a result (0 without); 0 did not halt or accessed memory outside the image; 0 not periodic
+functional (every register + scratch / code / pool / jit_save / state vs the ISS, 4 runs per point): 1807027 / 1807027 points match
+timing, in scope (every form but TAS.B): records 141236 / 141242 match on every compared point and metric
+  T        1792109 /  1792127  ( 99.999 %)   dropped: 2570 not integral
+  Tb       1792111 /  1792129  ( 99.999 %)   dropped: 2568 not integral
+  par      1794697 /  1794697  (100.000 %)
+  brkp     1794697 /  1794697  (100.000 %)
+  frzreg   1794697 /  1794697  (100.000 %)
+  frzfpu   1794697 /  1794697  (100.000 %)
+  of which: the ISA without the cache-block forms: records 137621 / 137621 match on every compared point and metric
+  T        1742065 /  1742065  (100.000 %)
+  Tb       1742065 /  1742065  (100.000 %)
+  par      1742065 /  1742065  (100.000 %)
+  brkp     1742065 /  1742065  (100.000 %)
+  frzreg   1742065 /  1742065  (100.000 %)
+  frzfpu   1742065 /  1742065  (100.000 %)
+  of which: OCBI / OCBP / OCBWB / MOVCA.L: records 3615 / 3621 match on every compared point and metric
+  T          50044 /    50062  ( 99.964 %)   dropped: 2570 not integral
+  Tb         50046 /    50064  ( 99.964 %)   dropped: 2568 not integral
+  par        52632 /    52632  (100.000 %)
+  brkp       52632 /    52632  (100.000 %)
+  frzreg     52632 /    52632  (100.000 %)
+  frzfpu     52632 /    52632  (100.000 %)
+
+largest clusters (metric, A, B, variant kind, model - measured by n): 6 clusters
+      2  T      OCBI @Rn               | MOV.B R0,@(disp,GBR)   [mem] 0:-1 1:-1 2:-1   e.g. M0 mem:same id 86478 (proxy rid 65467)
+      2  Tb     OCBI @Rn               | MOV.B R0,@(disp,GBR)   [mem] 0:-1 1:-1 2:-1   e.g. M0 mem:same id 86478 (proxy rid 65467)
+      2  T      OCBI @Rn               | MOV.W R0,@(disp,GBR)   [mem] 0:-1 1:-1 2:-1   e.g. M0 mem:same id 86481 (proxy rid 65565)
+      2  Tb     OCBI @Rn               | MOV.W R0,@(disp,GBR)   [mem] 0:-1 1:-1 2:-1   e.g. M0 mem:same id 86481 (proxy rid 65565)
+      2  T      OCBI @Rn               | MOV.L R0,@(disp,GBR)   [mem] 0:-1 1:-1 2:-1   e.g. M0 mem:same id 86484 (proxy rid 65508)
+      2  Tb     OCBI @Rn               | MOV.L R0,@(disp,GBR)   [mem] 0:-1 1:-1 2:-1   e.g. M0 mem:same id 86484 (proxy rid 65508)
+
+forms with most mismatching curves:
+       6  T      OCBI @Rn
+       6  Tb     OCBI @Rn
+       2  T        as B: MOV.B R0,@(disp,GBR)
+       2  Tb       as B: MOV.B R0,@(disp,GBR)
+       2  T        as B: MOV.W R0,@(disp,GBR)
+       2  Tb       as B: MOV.W R0,@(disp,GBR)
+       2  T        as B: MOV.L R0,@(disp,GBR)
+       2  Tb       as B: MOV.L R0,@(disp,GBR)
+v1: FAIL
+make: *** [tb/mk/v1.mk:91: v1-full] Error 1
+
+real	47m36.906s
+user	1000m44.192s
+sys	4m0.846s

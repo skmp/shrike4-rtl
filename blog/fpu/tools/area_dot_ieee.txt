@@ -1,0 +1,22 @@
+
+30. Printing statistics.
+
+=== dot_ieee ===
+
+   Number of wires:              16496
+   Number of wire bits:          20591
+   Number of public wires:         120
+   Number of public wire bits:    4215
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              16408
+     $_AND_                       2473
+     $_MUX_                        995
+     $_NAND_                      6953
+     $_NOR_                        243
+     $_NOT_                        476
+     $_OR_                         668
+     $_XNOR_                      1739
+     $_XOR_                       2861
+

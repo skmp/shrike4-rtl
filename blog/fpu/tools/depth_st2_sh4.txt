@@ -1,0 +1,61 @@
+
+6. Executing LTP pass (find longest path).
+
+Longest topological path in st2_sh4 (length=34):
+    0: \d1 [7]
+    1: $abc$2225$new_n260_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2299)
+    2: $abc$2225$new_n261_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2300)
+    3: $abc$2225$new_n311_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2350)
+    4: $abc$2225$new_n516_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2555)
+    5: $abc$2225$new_n624_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2663)
+    6: $abc$2225$new_n878_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2917)
+    7: $abc$2225$new_n879_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2918)
+    8: $abc$2225$new_n880_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2919)
+    9: $abc$2225$new_n881_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2920)
+   10: $abc$2225$new_n882_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2921)
+   11: $abc$2225$new_n883_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2922)
+   12: $abc$2225$new_n946_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2985)
+   13: $abc$2225$new_n947_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2986)
+   14: $abc$2225$new_n948_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$2987)
+   15: $abc$2225$new_n998_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3037)
+   16: $abc$2225$new_n999_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3038)
+   17: $abc$2225$new_n1046_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3085)
+   18: $abc$2225$new_n1047_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3086)
+   19: $abc$2225$new_n1087_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3126)
+   20: $abc$2225$new_n1088_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3127)
+   21: $abc$2225$new_n1165_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3204)
+   22: $abc$2225$new_n1166_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3205)
+   23: $abc$2225$new_n1308_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3347)
+   24: $abc$2225$new_n1309_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3348)
+   25: $abc$2225$new_n1312_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3351)
+   26: $abc$2225$new_n1583_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3622)
+   27: $abc$2225$new_n1584_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3623)
+   28: $abc$2225$new_n1706_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3745)
+   29: $abc$2225$new_n1707_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3746)
+   30: $abc$2225$new_n1736_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3775)
+   31: $abc$2225$new_n1737_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3776)
+   32: $abc$2225$new_n1742_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3781)
+   33: $abc$2225$new_n1743_ (via $abc$2225$auto$blifparse.cc:386:parse_blif$3782)
+   34: \s [31] (via $abc$2225$auto$blifparse.cc:386:parse_blif$3783)
+
+7. Printing statistics.
+
+=== st2_sh4 ===
+
+   Number of wires:               1559
+   Number of wire bits:           1863
+   Number of public wires:          14
+   Number of public wire bits:     318
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1579
+     $_AND_                        442
+     $_MUX_                        436
+     $_NAND_                        32
+     $_NOR_                         56
+     $_NOT_                         78
+     $_OR_                         210
+     $_XNOR_                        94
+     $_XOR_                        231
+

@@ -1,0 +1,22 @@
+
+12. Printing statistics.
+
+=== mul_full ===
+
+   Number of wires:               3175
+   Number of wire bits:           3968
+   Number of public wires:          22
+   Number of public wire bits:     815
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               3201
+     $_AND_                        385
+     $_MUX_                         15
+     $_NAND_                      1623
+     $_NOR_                         39
+     $_NOT_                         22
+     $_OR_                          27
+     $_XNOR_                       381
+     $_XOR_                        709
+

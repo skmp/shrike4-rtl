@@ -1,0 +1,13 @@
+  phase: id 23612 n 5 matched the console at retry delay 251 (first run: T 49 (measured 51) NOT PERIODIC)
+  phase: id 23612 n 7 matched the console at retry delay 251 (first run: Tb 52 (measured 54))
+  phase: id 23612 n 2 matched the console at retry delay 733 (first run: Tb 47 (measured 49) NOT PERIODIC)
+  phase: id 23612 n 6 matched the console at retry delay 1187 (first run: Tb 55 (measured 53) NOT PERIODIC)
+  id 23612 n 9 (proxy rid 60401) A MOVA @(388,PC),R0 ; 0x00000188 | B OCBI @R0: Tb 58 (measured 56)
+v1-soc-sweep shard 92/96: 18903 points in 22 boots (0 failed), 552671866 Icyc, 10301.9 s (53648 Icyc/s); not periodic 40; timing retried at other refresh phases 5, matched there 4
+  T          18749 /    18749  (61 not compared)
+  Tb         18748 /    18749  (61 not compared)
+  par        18810 /    18810  (0 not compared)
+  brkp       18810 /    18810  (0 not compared)
+  frzreg     18810 /    18810  (0 not compared)
+  frzfpu     18810 /    18810  (0 not compared)
+v1-soc-sweep shard: FAIL

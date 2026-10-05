@@ -1,0 +1,22 @@
+
+24. Printing statistics.
+
+=== fadd_ieee ===
+
+   Number of wires:               1103
+   Number of wire bits:           1290
+   Number of public wires:           7
+   Number of public wire bits:     194
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1128
+     $_AND_                        239
+     $_MUX_                        271
+     $_NAND_                       307
+     $_NOR_                         23
+     $_NOT_                        101
+     $_OR_                          69
+     $_XNOR_                        78
+     $_XOR_                         40
+

@@ -1,0 +1,69 @@
+
+6. Executing LTP pass (find longest path).
+
+Longest topological path in st2_fused (length=42):
+    0: \d2 [7]
+    1: $abc$4848$new_n517_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5076)
+    2: $abc$4848$new_n518_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5077)
+    3: $abc$4848$new_n519_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5078)
+    4: $abc$4848$new_n795_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5354)
+    5: $abc$4848$new_n1052_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5611)
+    6: $abc$4848$new_n1071_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5630)
+    7: $abc$4848$new_n1072_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5631)
+    8: $abc$4848$new_n1073_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5632)
+    9: $abc$4848$new_n1074_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5633)
+   10: $abc$4848$new_n1075_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5634)
+   11: $abc$4848$new_n1083_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5642)
+   12: $abc$4848$new_n1095_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5654)
+   13: $abc$4848$new_n1096_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5655)
+   14: $abc$4848$new_n1097_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5656)
+   15: $abc$4848$new_n1098_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5657)
+   16: $abc$4848$new_n1099_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5658)
+   17: $abc$4848$new_n1100_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$5659)
+   18: $abc$4848$new_n1454_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$6013)
+   19: $abc$4848$new_n1458_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$6017)
+   20: $abc$4848$new_n2164_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$6723)
+   21: $abc$4848$new_n2165_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$6724)
+   22: $abc$4848$new_n2166_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$6725)
+   23: $abc$4848$new_n2167_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$6726)
+   24: $abc$4848$new_n2207_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$6766)
+   25: $abc$4848$new_n2208_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$6767)
+   26: $abc$4848$new_n2285_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$6844)
+   27: $abc$4848$new_n2286_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$6845)
+   28: $abc$4848$new_n2438_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$6997)
+   29: $abc$4848$new_n2439_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$6998)
+   30: $abc$4848$new_n2747_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$7306)
+   31: $abc$4848$new_n2748_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$7307)
+   32: $abc$4848$new_n3313_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$7872)
+   33: $abc$4848$new_n3314_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$7873)
+   34: $abc$4848$new_n3813_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$8372)
+   35: $abc$4848$new_n3814_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$8373)
+   36: $abc$4848$new_n3912_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$8471)
+   37: $abc$4848$new_n3913_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$8472)
+   38: $abc$4848$new_n3932_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$8491)
+   39: $abc$4848$new_n3933_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$8492)
+   40: $abc$4848$new_n3937_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$8496)
+   41: $abc$4848$new_n3938_ (via $abc$4848$auto$blifparse.cc:386:parse_blif$8497)
+   42: \s [55] (via $abc$4848$auto$blifparse.cc:386:parse_blif$8498)
+
+7. Printing statistics.
+
+=== st2_fused ===
+
+   Number of wires:               3626
+   Number of wire bits:           4777
+   Number of public wires:          22
+   Number of public wire bits:    1173
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               3661
+     $_AND_                        487
+     $_MUX_                       1128
+     $_NAND_                         4
+     $_NOR_                        446
+     $_NOT_                        500
+     $_OR_                         518
+     $_XNOR_                       162
+     $_XOR_                        416
+

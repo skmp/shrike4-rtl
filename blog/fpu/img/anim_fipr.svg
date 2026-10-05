@@ -1,0 +1,483 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1340" height="910" viewBox="0 0 1340 910" font-family="Helvetica,Arial,'Liberation Sans',sans-serif">
+<style>.stp{opacity:0;animation-duration:10s;animation-iteration-count:infinite;animation-timing-function:step-end}@keyframes k0{0%{opacity:1}20.0000%{opacity:0}}.s0{animation-name:k0}@keyframes k1{0%{opacity:0}20.0000%{opacity:1}40.0000%{opacity:0}}.s1{animation-name:k1}@keyframes k2{0%{opacity:0}40.0000%{opacity:1}60.0000%{opacity:0}}.s2{animation-name:k2}@keyframes k3{0%{opacity:0}60.0000%{opacity:1}80.0000%{opacity:0}}.s3{animation-name:k3}@keyframes k4{0%{opacity:0}80.0000%{opacity:1}100.0000%{opacity:0}}.s4{animation-name:k4}</style>
+<defs><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="11" cy="11" r="1" fill="#ffffff" fill-opacity="0.05"/></pattern>
+<marker id="mw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" fill="#9fb0cc"/></marker>
+<marker id="mr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" fill="#ef6f80"/></marker>
+<marker id="ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" fill="#f2b632"/></marker>
+<marker id="md" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" fill="#39445a"/></marker>
+<marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" fill="#5bb2d6"/></marker>
+</defs>
+<rect width="1340" height="910" fill="#141820"/><rect width="1340" height="910" fill="url(#dots)"/>
+<rect x="24.0" y="66.0" width="1292.0" height="50.0" rx="8" fill="#232b3b" stroke="#2a3244" stroke-width="1.2"/>
+<rect x="24.0" y="126.0" width="253.6" height="6.0" rx="3" fill="#39445a" stroke="none" stroke-width="0"/>
+<rect x="283.6" y="126.0" width="253.6" height="6.0" rx="3" fill="#39445a" stroke="none" stroke-width="0"/>
+<rect x="543.2" y="126.0" width="253.6" height="6.0" rx="3" fill="#39445a" stroke="none" stroke-width="0"/>
+<rect x="802.8" y="126.0" width="253.6" height="6.0" rx="3" fill="#39445a" stroke="none" stroke-width="0"/>
+<rect x="1062.4" y="126.0" width="253.6" height="6.0" rx="3" fill="#39445a" stroke="none" stroke-width="0"/>
+<rect x="24.0" y="140.0" width="1006.0" height="750.0" rx="12" fill="#1c2230" stroke="#2a3244" stroke-width="1.2"/>
+<rect x="1042.0" y="140.0" width="274.0" height="750.0" rx="12" fill="#1c2230" stroke="#2a3244" stroke-width="1.2"/>
+<text x="42.0" y="252.5" font-size="12" fill="#65718a" text-anchor="middle" font-weight="bold" transform="rotate(-90 42 252.5)">RR · read + select</text>
+<rect x="25.0" y="365.0" width="1004.0" height="148.0" rx="0" fill="#ffffff" fill-opacity="0.022" stroke="none" stroke-width="0"/>
+<text x="42.0" y="439.0" font-size="12" fill="#65718a" text-anchor="middle" font-weight="bold" transform="rotate(-90 42 439.0)">F1 · multiply</text>
+<text x="42.0" y="614.0" font-size="12" fill="#65718a" text-anchor="middle" font-weight="bold" transform="rotate(-90 42 614.0)">F2 · align + add</text>
+<rect x="25.0" y="715.0" width="1004.0" height="104.0" rx="0" fill="#ffffff" fill-opacity="0.022" stroke="none" stroke-width="0"/>
+<text x="42.0" y="767.0" font-size="12" fill="#65718a" text-anchor="middle" font-weight="bold" transform="rotate(-90 42 767.0)">F3 · round</text>
+<text x="42.0" y="854.5" font-size="12" fill="#65718a" text-anchor="middle" font-weight="bold" transform="rotate(-90 42 854.5)">WB</text>
+<polyline points="155.0,365.0 1018.0,365.0" fill="none" stroke="#4b5978" stroke-width="1.6" stroke-dasharray="12,7" stroke-linejoin="round"/>
+<text x="146.0" y="359.0" font-size="10" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >input latches</text>
+<polyline points="155.0,513.0 1018.0,513.0" fill="none" stroke="#4b5978" stroke-width="1.6" stroke-dasharray="12,7" stroke-linejoin="round"/>
+<text x="146.0" y="507.0" font-size="10" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >product regs</text>
+<polyline points="155.0,715.0 1018.0,715.0" fill="none" stroke="#4b5978" stroke-width="1.6" stroke-dasharray="12,7" stroke-linejoin="round"/>
+<text x="146.0" y="709.0" font-size="10" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >sum register</text>
+<polyline points="155.0,819.0 1018.0,819.0" fill="none" stroke="#4b5978" stroke-width="1.6" stroke-dasharray="12,7" stroke-linejoin="round"/>
+<text x="146.0" y="813.0" font-size="10" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >result reg</text>
+<rect x="158.0" y="156.0" width="262.0" height="72.0" rx="5" fill="#232b3b" stroke="#39445a" stroke-width="1.4"/>
+<text x="168.0" y="174.0" font-size="13" fill="#65718a" text-anchor="start" font-weight="bold" >FR registers</text>
+<text x="168.0" y="190.0" font-size="8.4" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm[i] → port A = {0, 1, mantissa}   25b</text>
+<text x="168.0" y="200.6" font-size="8.4" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVn[i] → port B = {1, mantissa}  24b → 28b</text>
+<text x="168.0" y="211.2" font-size="8.4" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >zero operand or E[i] ≤ 75 → that slot is 0</text>
+<rect x="436.0" y="156.0" width="284.0" height="72.0" rx="5" fill="#232b3b" stroke="#39445a" stroke-width="1.4"/>
+<text x="446.0" y="174.0" font-size="13" fill="#65718a" text-anchor="start" font-weight="bold" >decode</text>
+<text x="446.0" y="190.0" font-size="8.4" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >E[i] = ea + eb   (9b)</text>
+<text x="446.0" y="200.6" font-size="8.4" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >valid[i] = ea,eb ∉ {0,255} and E[i] &gt; 75</text>
+<text x="446.0" y="211.2" font-size="8.4" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >Emax = max valid E[i]</text>
+<text x="446.0" y="221.8" font-size="8.4" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >sh[i] = min(Emax − E[i], 63);  inv[i] = sa^sb</text>
+<rect x="736.0" y="156.0" width="264.0" height="72.0" rx="5" fill="#232b3b" stroke="#39445a" stroke-width="1.4"/>
+<text x="746.0" y="174.0" font-size="13" fill="#65718a" text-anchor="start" font-weight="bold" >coefficient ROM</text>
+<text x="746.0" y="190.0" font-size="8.4" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >not used by FIPR</text>
+<polyline points="150.0,246.0 975.0,246.0" fill="none" stroke="#9fb0cc" stroke-width="1.6" stroke-opacity="0.4" stroke-linejoin="round"/>
+<text x="146.0" y="249.5" font-size="9.5" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm · FVn</text>
+<polyline points="150.0,260.0 975.0,260.0" fill="none" stroke="#5bb2d6" stroke-width="1.6" stroke-opacity="0.4" stroke-linejoin="round"/>
+<text x="146.0" y="263.5" font-size="9.5" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >dx</text>
+<polyline points="150.0,274.0 975.0,274.0" fill="none" stroke="#f2b632" stroke-width="1.6" stroke-opacity="0.4" stroke-linejoin="round"/>
+<text x="146.0" y="277.5" font-size="9.5" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >coeff</text>
+<polyline points="150.0,288.0 991.0,288.0" fill="none" stroke="#ef6f80" stroke-width="1.6" stroke-opacity="0.4" stroke-linejoin="round"/>
+<text x="146.0" y="291.5" font-size="9.5" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M0 »3</text>
+<polyline points="150.0,302.0 1001.0,302.0" fill="none" stroke="#ef6f80" stroke-width="1.6" stroke-opacity="0.4" stroke-linejoin="round"/>
+<text x="146.0" y="305.5" font-size="9.5" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M2 »3</text>
+<polyline points="289.0,228.0 289.0,246.0" fill="none" stroke="#9fb0cc" stroke-width="1.5" stroke-opacity="0.4" stroke-linejoin="round"/>
+<circle cx="289.0" cy="246.0" r="3" fill="#39445a"/>
+<polyline points="578.0,228.0 578.0,260.0" fill="none" stroke="#5bb2d6" stroke-width="1.5" stroke-opacity="0.4" stroke-linejoin="round"/>
+<circle cx="578.0" cy="260.0" r="3" fill="#39445a"/>
+<polyline points="868.0,228.0 868.0,274.0" fill="none" stroke="#f2b632" stroke-width="1.5" stroke-opacity="0.4" stroke-linejoin="round"/>
+<circle cx="868.0" cy="274.0" r="3" fill="#39445a"/>
+<polyline points="190.0,246.0 190.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="208.0,260.0 208.0,318.0" fill="none" stroke="#5bb2d6" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="226.0,288.0 226.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="244.0,302.0 244.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polygon points="180.0,318.0 254.0,318.0 243.0,342.0 191.0,342.0" fill="#232b3b" stroke="#39445a" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="217.0,342.0 217.0,350.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="175.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M176,359.0 L183,365.0 L176,371.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="183.0" y="363.0" font-size="8.6" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >A 25b</text>
+<polyline points="217.0,380.0 217.0,394.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<polyline points="279.0,246.0 279.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="294.0,260.0 294.0,318.0" fill="none" stroke="#5bb2d6" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="309.0,274.0 309.0,318.0" fill="none" stroke="#f2b632" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="324.0,288.0 324.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="339.0,302.0 339.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polygon points="272.0,318.0 346.0,318.0 335.0,342.0 283.0,342.0" fill="#232b3b" stroke="#39445a" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="309.0,342.0 309.0,350.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="267.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M268,359.0 L275,365.0 L268,371.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="275.0" y="363.0" font-size="8.6" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >B 28b</text>
+<polyline points="309.0,380.0 309.0,394.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<rect x="175.0" y="396.0" width="176.0" height="78.0" rx="8" fill="#232b3b" stroke="#39445a" stroke-width="1.5"/>
+<text x="184.0" y="413.0" font-size="13" fill="#65718a" text-anchor="start" font-weight="bold" >FM0</text>
+<text x="342.0" y="413.0" font-size="9" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >25b × 28b</text>
+<text x="263.0" y="466.0" font-size="8.6" fill="#65718a" text-anchor="middle" font-weight="normal" >Booth, rows cut below col 16</text>
+<polyline points="263.0,474.0 263.0,498.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="207.0" y="498.0" width="112.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M208,507.0 L215,513.0 L208,519.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="213.0" y="517.0" font-size="9.5" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M0 29b</text>
+<polyline points="263.0,528.0 263.0,574.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<rect x="189.0" y="576.0" width="148.0" height="52.0" rx="6" fill="#232b3b" stroke="#39445a" stroke-width="1.4"/>
+<text x="263.0" y="593.0" font-size="12" fill="#65718a" text-anchor="middle" font-weight="bold" >align</text>
+<text x="331.0" y="593.0" font-size="9" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >slot 0</text>
+<polyline points="263.0,628.0 263.0,638.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<polyline points="400.0,246.0 400.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="418.0,260.0 418.0,318.0" fill="none" stroke="#5bb2d6" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="436.0,288.0 436.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="454.0,302.0 454.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polygon points="390.0,318.0 464.0,318.0 453.0,342.0 401.0,342.0" fill="#232b3b" stroke="#39445a" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="427.0,342.0 427.0,350.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="385.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M386,359.0 L393,365.0 L386,371.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="393.0" y="363.0" font-size="8.6" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >A 25b</text>
+<polyline points="427.0,380.0 427.0,394.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<polyline points="489.0,246.0 489.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="504.0,260.0 504.0,318.0" fill="none" stroke="#5bb2d6" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="519.0,274.0 519.0,318.0" fill="none" stroke="#f2b632" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="534.0,288.0 534.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="549.0,302.0 549.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polygon points="482.0,318.0 556.0,318.0 545.0,342.0 493.0,342.0" fill="#232b3b" stroke="#39445a" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="519.0,342.0 519.0,350.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="477.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M478,359.0 L485,365.0 L478,371.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="485.0" y="363.0" font-size="8.6" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >B 28b</text>
+<polyline points="519.0,380.0 519.0,394.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<rect x="385.0" y="396.0" width="176.0" height="78.0" rx="8" fill="#232b3b" stroke="#39445a" stroke-width="1.5"/>
+<text x="394.0" y="413.0" font-size="13" fill="#65718a" text-anchor="start" font-weight="bold" >FM1</text>
+<text x="552.0" y="413.0" font-size="9" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >25b × 28b</text>
+<text x="473.0" y="466.0" font-size="8.6" fill="#65718a" text-anchor="middle" font-weight="normal" >Booth, rows cut below col 16</text>
+<polyline points="473.0,474.0 473.0,498.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="417.0" y="498.0" width="112.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M418,507.0 L425,513.0 L418,519.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="423.0" y="517.0" font-size="9.5" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M1 29b</text>
+<polyline points="473.0,528.0 473.0,542.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<rect x="399.0" y="576.0" width="148.0" height="52.0" rx="6" fill="#232b3b" stroke="#39445a" stroke-width="1.4"/>
+<text x="473.0" y="593.0" font-size="12" fill="#65718a" text-anchor="middle" font-weight="bold" >align</text>
+<text x="541.0" y="593.0" font-size="9" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >slot 1</text>
+<polyline points="473.0,628.0 473.0,638.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<polyline points="610.0,246.0 610.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="628.0,260.0 628.0,318.0" fill="none" stroke="#5bb2d6" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="646.0,288.0 646.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="664.0,302.0 664.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polygon points="600.0,318.0 674.0,318.0 663.0,342.0 611.0,342.0" fill="#232b3b" stroke="#39445a" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="637.0,342.0 637.0,350.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="595.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M596,359.0 L603,365.0 L596,371.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="603.0" y="363.0" font-size="8.6" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >A 25b</text>
+<polyline points="637.0,380.0 637.0,394.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<polyline points="699.0,246.0 699.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="714.0,260.0 714.0,318.0" fill="none" stroke="#5bb2d6" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="729.0,274.0 729.0,318.0" fill="none" stroke="#f2b632" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="744.0,288.0 744.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="759.0,302.0 759.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polygon points="692.0,318.0 766.0,318.0 755.0,342.0 703.0,342.0" fill="#232b3b" stroke="#39445a" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="729.0,342.0 729.0,350.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="687.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M688,359.0 L695,365.0 L688,371.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="695.0" y="363.0" font-size="8.6" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >B 28b</text>
+<polyline points="729.0,380.0 729.0,394.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<rect x="595.0" y="396.0" width="176.0" height="78.0" rx="8" fill="#232b3b" stroke="#39445a" stroke-width="1.5"/>
+<text x="604.0" y="413.0" font-size="13" fill="#65718a" text-anchor="start" font-weight="bold" >FM2</text>
+<text x="762.0" y="413.0" font-size="9" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >25b × 28b</text>
+<text x="683.0" y="466.0" font-size="8.6" fill="#65718a" text-anchor="middle" font-weight="normal" >Booth, rows cut below col 16</text>
+<polyline points="683.0,474.0 683.0,498.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="627.0" y="498.0" width="112.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M628,507.0 L635,513.0 L628,519.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="633.0" y="517.0" font-size="9.5" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M2 29b</text>
+<polyline points="683.0,528.0 683.0,574.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<rect x="609.0" y="576.0" width="148.0" height="52.0" rx="6" fill="#232b3b" stroke="#39445a" stroke-width="1.4"/>
+<text x="683.0" y="593.0" font-size="12" fill="#65718a" text-anchor="middle" font-weight="bold" >align</text>
+<text x="751.0" y="593.0" font-size="9" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >slot 2</text>
+<polyline points="683.0,628.0 683.0,638.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<polyline points="820.0,246.0 820.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="838.0,260.0 838.0,318.0" fill="none" stroke="#5bb2d6" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="856.0,288.0 856.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="874.0,302.0 874.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polygon points="810.0,318.0 884.0,318.0 873.0,342.0 821.0,342.0" fill="#232b3b" stroke="#39445a" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="847.0,342.0 847.0,350.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="805.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M806,359.0 L813,365.0 L806,371.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="813.0" y="363.0" font-size="8.6" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >A 25b</text>
+<polyline points="847.0,380.0 847.0,394.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<polyline points="909.0,246.0 909.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="924.0,260.0 924.0,318.0" fill="none" stroke="#5bb2d6" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="939.0,274.0 939.0,318.0" fill="none" stroke="#f2b632" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="954.0,288.0 954.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polyline points="969.0,302.0 969.0,318.0" fill="none" stroke="#ef6f80" stroke-width="1.1" stroke-opacity="0.28" stroke-linejoin="round"/>
+<polygon points="902.0,318.0 976.0,318.0 965.0,342.0 913.0,342.0" fill="#232b3b" stroke="#39445a" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="939.0,342.0 939.0,350.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="897.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M898,359.0 L905,365.0 L898,371.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="905.0" y="363.0" font-size="8.6" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >B 28b</text>
+<polyline points="939.0,380.0 939.0,394.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<rect x="805.0" y="396.0" width="176.0" height="78.0" rx="8" fill="#232b3b" stroke="#39445a" stroke-width="1.5"/>
+<text x="814.0" y="413.0" font-size="13" fill="#65718a" text-anchor="start" font-weight="bold" >FM3</text>
+<text x="972.0" y="413.0" font-size="9" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >25b × 28b</text>
+<text x="893.0" y="466.0" font-size="8.6" fill="#65718a" text-anchor="middle" font-weight="normal" >Booth, rows cut below col 16</text>
+<polyline points="893.0,474.0 893.0,498.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="837.0" y="498.0" width="112.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M838,507.0 L845,513.0 L838,519.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="843.0" y="517.0" font-size="9.5" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M3 29b</text>
+<polyline points="893.0,528.0 893.0,574.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<rect x="819.0" y="576.0" width="148.0" height="52.0" rx="6" fill="#232b3b" stroke="#39445a" stroke-width="1.4"/>
+<text x="893.0" y="593.0" font-size="12" fill="#65718a" text-anchor="middle" font-weight="bold" >align</text>
+<text x="961.0" y="593.0" font-size="9" fill="#65718a" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >slot 3</text>
+<polyline points="893.0,628.0 893.0,638.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<polygon points="431.0,542.0 515.0,542.0 504.0,566.0 442.0,566.0" fill="#232b3b" stroke="#39445a" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="473.0" y="558.0" font-size="9.5" fill="#65718a" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M1 | C0</text>
+<polyline points="473.0,566.0 473.0,574.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<polyline points="263.0,482.0 991.0,482.0 991.0,288.0" fill="none" stroke="#ef6f80" stroke-width="1.4" stroke-opacity="0.35" stroke-linejoin="round"/>
+<polyline points="683.0,490.0 1001.0,490.0 1001.0,302.0" fill="none" stroke="#ef6f80" stroke-width="1.4" stroke-opacity="0.35" stroke-linejoin="round"/>
+<rect x="966.0" y="330.0" width="50.0" height="22.0" rx="4" fill="#1c2230" stroke="#39445a" stroke-width="1.2"/>
+<text x="991.0" y="345.0" font-size="10" fill="#65718a" text-anchor="middle" font-weight="bold" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >&gt;&gt;&gt;3</text>
+<polyline points="1000.0,196.0 1013.0,196.0 1013.0,554.0 517.0,554.0" fill="none" stroke="#f2b632" stroke-width="1.4" stroke-opacity="0.35" stroke-linejoin="round"/>
+<polygon points="64.0,640.0 990.0,640.0 860.0,690.0 194.0,690.0" fill="#232b3b" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="214.0" y="666.0" font-size="13" fill="#65718a" text-anchor="start" font-weight="bold" >4-input adder</text>
+<text x="527.0" y="680.0" font-size="10" fill="#65718a" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >sum = Σ q[i] + Σ cin[i]   ·   35b</text>
+<polyline points="527.0,690.0 527.0,700.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="417.0" y="700.0" width="220.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M418,709.0 L425,715.0 L418,721.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="425.0" y="719.0" font-size="9.5" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >sum 35b</text>
+<polyline points="527.0,730.0 527.0,740.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<rect x="347.0" y="742.0" width="360.0" height="50.0" rx="8" fill="#232b3b" stroke="#39445a" stroke-width="1.5"/>
+<text x="527.0" y="759.0" font-size="13" fill="#65718a" text-anchor="middle" font-weight="bold" >normalise + round</text>
+<text x="527.0" y="773.0" font-size="9.5" fill="#65718a" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >negate · |·| · leading one · 24b · RN/RZ</text>
+<polyline points="527.0,792.0 527.0,804.0" fill="none" stroke="#39445a" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="417.0" y="804.0" width="220.0" height="30.0" rx="3" fill="#232b3b" stroke="#39445a" stroke-width="1.6"/>
+<path d="M418,813.0 L425,819.0 L418,825.0" fill="none" stroke="#39445a" stroke-width="1.4"/>
+<text x="425.0" y="823.0" font-size="9.5" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >result 32b</text>
+<polyline points="527.0,834.0 527.0,856.0" fill="none" stroke="#39445a" stroke-width="1.4" marker-end="url(#md)" stroke-linejoin="round"/>
+<text x="527.0" y="874.0" font-size="11" fill="#65718a" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FR / FV register file</text>
+<text x="1056.0" y="166.0" font-size="10.5" fill="#f2b632" text-anchor="start" font-weight="bold" >MULTIPLIER  FM0..FM3 — all four identical</text>
+<text x="1056.0" y="181.0" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M = (Σ rows + 2^19) &gt;&gt;&gt; 20      → 29b signed</text>
+<text x="1056.0" y="192.4" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >port B is radix-4 Booth recoded: 14 digits</text>
+<text x="1056.0" y="203.8" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >  d(k) over bits −1..27,  d(k) ∈ {−2..+2}</text>
+<text x="1056.0" y="215.2" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >row k = |d(k)| · A &lt;&lt; 2k  (A = port A, 25b)</text>
+<text x="1056.0" y="226.6" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >negative digit → row = one's complement,</text>
+<text x="1056.0" y="238.0" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >  hot one at col 2k only when 2k ≥ 18</text>
+<text x="1056.0" y="249.4" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >every row is cut below column 16</text>
+<text x="1056.0" y="260.8" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >rows 0,1,2: + majority(col-15 bits) &lt;&lt; 16</text>
+<text x="1056.0" y="272.2" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >rows 6,7,8: − parity(col-16 bits)   &lt;&lt; 16</text>
+<text x="1056.0" y="294.6" font-size="10.5" fill="#f2b632" text-anchor="start" font-weight="bold" >ALIGNER — one per adder slot</text>
+<text x="1056.0" y="309.6" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >q   = inv ? ~(P &gt;&gt;&gt; sh) : (P &gt;&gt;&gt; sh)    32b</text>
+<text x="1056.0" y="321.0" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >cin = q[31]: a negative input gets a hot one</text>
+<text x="1056.0" y="332.4" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >sh ≥ 32 → q = (P &lt; 0) ? −1 : 0</text>
+<text x="1056.0" y="343.8" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >truncating: no guard bits, no sticky bit</text>
+<text x="1056.0" y="366.2" font-size="10.5" fill="#f2b632" text-anchor="start" font-weight="bold" >FOUR-INPUT ADDER</text>
+<text x="1056.0" y="381.2" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >sum = Σ q[i] + Σ cin[i]         35b signed</text>
+<text x="1056.0" y="403.6" font-size="10.5" fill="#f2b632" text-anchor="start" font-weight="bold" >NORMALISE + ROUND — the only rounding</text>
+<text x="1056.0" y="418.6" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >s = negate ? −sum : sum;   mag = |s|</text>
+<text x="1056.0" y="430.0" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >top = index of highest set bit; mag=0 → +0</text>
+<text x="1056.0" y="441.4" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >q24 = mag &gt;&gt; (top−23)</text>
+<text x="1056.0" y="452.8" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >rem = mag mod 2^(top−23);  half = 2^(top−24)</text>
+<text x="1056.0" y="464.2" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >RN: +1 if rem &gt; half, or rem = half and odd</text>
+<text x="1056.0" y="475.6" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >RZ: truncate.  carry out → q24 &gt;&gt;= 1, top += 1</text>
+<text x="1056.0" y="487.0" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >e = top + emax − 280 + 127</text>
+<text x="1056.0" y="498.4" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >e ≤ 0 → ±0;  e ≥ 255 → ±inf (RN) / ±max (RZ)</text>
+<text x="1056.0" y="509.8" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >emax: FIPR/FTRV max(ea+eb) · FSCA 254</text>
+<text x="1056.0" y="521.2" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >          FSRRA 254 − k</text>
+<text x="1056.0" y="543.6" font-size="10.5" fill="#f2b632" text-anchor="start" font-weight="bold" >FEEDBACK</text>
+<text x="1056.0" y="558.6" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >the ARRAY OUTPUT is fed back, not the</text>
+<text x="1056.0" y="570.0" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >register: latch ← M[j] &gt;&gt;&gt; 3 on the same</text>
+<text x="1056.0" y="581.4" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >edge that loads M[j].  Only FM0 and FM2 are</text>
+<text x="1056.0" y="592.8" font-size="8.8" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >tapped, and every feedback shift is 3.</text>
+<text x="1056.0" y="613.2" font-size="8.8" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >ROM words are in model/fsca/fsca_table.h</text>
+<text x="1056.0" y="624.2" font-size="8.8" fill="#65718a" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >and model/fsrra/sh4_fsrra_words.h</text>
+<text x="28.0" y="48.0" font-size="25" fill="#eef1f6" text-anchor="start" font-weight="bold" >FIPR</text>
+<text x="116.0" y="48.0" font-size="13" fill="#9aa6ba" text-anchor="start" font-weight="normal" >inner product FVm·FVn → FVn[3]; latency 4, a new one can issue every cycle</text>
+<g class="stp s0">
+<text x="28.0" y="88.0" font-size="14" fill="#eef1f6" text-anchor="start" font-weight="bold" >RR — the register file reads both vectors.</text>
+<text x="28.0" y="106.0" font-size="12.5" fill="#9aa6ba" text-anchor="start" font-weight="normal" >Each lane's two selectors take the operand pair; the input latches capture them at the end of this cycle.</text>
+<text x="1312.0" y="52.0" font-size="17" fill="#f2b632" text-anchor="end" font-weight="bold" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >cycle 0 / 4</text>
+<rect x="24.0" y="126.0" width="253.6" height="6.0" rx="3" fill="#f2b632" stroke="none" stroke-width="0"/>
+<rect x="158.0" y="156.0" width="262.0" height="72.0" rx="5" fill="#9fb0cc" fill-opacity="0.1" stroke="#9fb0cc" stroke-width="1.8"/>
+<text x="168.0" y="174.0" font-size="13" fill="#9fb0cc" text-anchor="start" font-weight="bold" >FR registers</text>
+<text x="168.0" y="190.0" font-size="8.4" fill="#eef1f6" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm[i] → port A = {0, 1, mantissa}   25b</text>
+<text x="168.0" y="200.6" font-size="8.4" fill="#eef1f6" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVn[i] → port B = {1, mantissa}  24b → 28b</text>
+<text x="168.0" y="211.2" font-size="8.4" fill="#eef1f6" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >zero operand or E[i] ≤ 75 → that slot is 0</text>
+<polyline points="289.0,228.0 289.0,246.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<circle cx="289.0" cy="246.0" r="3.5" fill="#9fb0cc"/>
+<polyline points="150.0,246.0 975.0,246.0" fill="none" stroke="#9fb0cc" stroke-width="2" stroke-linejoin="round"/>
+<text x="146.0" y="249.5" font-size="9.5" fill="#9fb0cc" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm · FVn</text>
+<polyline points="190.0,246.0 190.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="2" marker-end="url(#mw)" stroke-linejoin="round"/>
+<polygon points="180.0,318.0 254.0,318.0 243.0,342.0 191.0,342.0" fill="#232b3b" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="217.0,342.0 217.0,350.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="175.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M176,359.0 L183,365.0 L176,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="183.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >A 25b</text>
+<text x="251.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm0</text>
+<polyline points="279.0,246.0 279.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="2" marker-end="url(#mw)" stroke-linejoin="round"/>
+<polygon points="272.0,318.0 346.0,318.0 335.0,342.0 283.0,342.0" fill="#232b3b" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="309.0,342.0 309.0,350.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="267.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M268,359.0 L275,365.0 L268,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="275.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >B 28b</text>
+<text x="343.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVn0</text>
+<polyline points="400.0,246.0 400.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="2" marker-end="url(#mw)" stroke-linejoin="round"/>
+<polygon points="390.0,318.0 464.0,318.0 453.0,342.0 401.0,342.0" fill="#232b3b" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="427.0,342.0 427.0,350.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="385.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M386,359.0 L393,365.0 L386,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="393.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >A 25b</text>
+<text x="461.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm1</text>
+<polyline points="489.0,246.0 489.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="2" marker-end="url(#mw)" stroke-linejoin="round"/>
+<polygon points="482.0,318.0 556.0,318.0 545.0,342.0 493.0,342.0" fill="#232b3b" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="519.0,342.0 519.0,350.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="477.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M478,359.0 L485,365.0 L478,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="485.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >B 28b</text>
+<text x="553.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVn1</text>
+<polyline points="610.0,246.0 610.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="2" marker-end="url(#mw)" stroke-linejoin="round"/>
+<polygon points="600.0,318.0 674.0,318.0 663.0,342.0 611.0,342.0" fill="#232b3b" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="637.0,342.0 637.0,350.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="595.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M596,359.0 L603,365.0 L596,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="603.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >A 25b</text>
+<text x="671.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm2</text>
+<polyline points="699.0,246.0 699.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="2" marker-end="url(#mw)" stroke-linejoin="round"/>
+<polygon points="692.0,318.0 766.0,318.0 755.0,342.0 703.0,342.0" fill="#232b3b" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="729.0,342.0 729.0,350.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="687.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M688,359.0 L695,365.0 L688,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="695.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >B 28b</text>
+<text x="763.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVn2</text>
+<polyline points="820.0,246.0 820.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="2" marker-end="url(#mw)" stroke-linejoin="round"/>
+<polygon points="810.0,318.0 884.0,318.0 873.0,342.0 821.0,342.0" fill="#232b3b" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="847.0,342.0 847.0,350.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="805.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M806,359.0 L813,365.0 L806,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="813.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >A 25b</text>
+<text x="881.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm3</text>
+<polyline points="909.0,246.0 909.0,318.0" fill="none" stroke="#9fb0cc" stroke-width="2" marker-end="url(#mw)" stroke-linejoin="round"/>
+<polygon points="902.0,318.0 976.0,318.0 965.0,342.0 913.0,342.0" fill="#232b3b" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<polyline points="939.0,342.0 939.0,350.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="897.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M898,359.0 L905,365.0 L898,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="905.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >B 28b</text>
+<text x="973.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVn3</text>
+</g>
+<g class="stp s1">
+<text x="28.0" y="88.0" font-size="14" fill="#eef1f6" text-anchor="start" font-weight="bold" >F1 — four truncated Booth multiplies, in parallel.</text>
+<text x="28.0" y="106.0" font-size="12.5" fill="#9aa6ba" text-anchor="start" font-weight="normal" >Port B is Booth-recoded; every row of every array is cut below product column 16. The product registers capture 29 bits.</text>
+<text x="1312.0" y="52.0" font-size="17" fill="#f2b632" text-anchor="end" font-weight="bold" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >cycle 1 / 4</text>
+<rect x="283.6" y="126.0" width="253.6" height="6.0" rx="3" fill="#f2b632" stroke="none" stroke-width="0"/>
+<rect x="175.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M176,359.0 L183,365.0 L176,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="183.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >A 25b</text>
+<text x="251.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm0</text>
+<rect x="267.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M268,359.0 L275,365.0 L268,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="275.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >B 28b</text>
+<text x="343.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVn0</text>
+<rect x="385.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M386,359.0 L393,365.0 L386,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="393.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >A 25b</text>
+<text x="461.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm1</text>
+<rect x="477.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M478,359.0 L485,365.0 L478,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="485.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >B 28b</text>
+<text x="553.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVn1</text>
+<rect x="595.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M596,359.0 L603,365.0 L596,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="603.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >A 25b</text>
+<text x="671.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm2</text>
+<rect x="687.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M688,359.0 L695,365.0 L688,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="695.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >B 28b</text>
+<text x="763.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVn2</text>
+<rect x="805.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M806,359.0 L813,365.0 L806,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="813.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >A 25b</text>
+<text x="881.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm3</text>
+<rect x="897.0" y="350.0" width="84.0" height="30.0" rx="3" fill="#232b3b" stroke="#eef1f6" stroke-width="1.6"/>
+<path d="M898,359.0 L905,365.0 L898,371.0" fill="none" stroke="#eef1f6" stroke-width="1.4"/>
+<text x="905.0" y="363.0" font-size="8.6" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >B 28b</text>
+<text x="973.0" y="376.0" font-size="9.5" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVn3</text>
+<rect x="175.0" y="396.0" width="176.0" height="78.0" rx="8" fill="#d1495b" fill-opacity="0.16" stroke="#ef6f80" stroke-width="2"/>
+<text x="184.0" y="413.0" font-size="13" fill="#ef6f80" text-anchor="start" font-weight="bold" >FM0</text>
+<text x="342.0" y="413.0" font-size="9" fill="#9aa6ba" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >25b × 28b</text>
+<text x="263.0" y="438.0" font-size="11" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm0 × FVn0</text>
+<text x="263.0" y="454.0" font-size="9" fill="#9aa6ba" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >(Σ rows + 2¹⁹) &gt;&gt;&gt; 20</text>
+<text x="263.0" y="466.0" font-size="8.6" fill="#9aa6ba" text-anchor="middle" font-weight="normal" >Booth, rows cut below col 16</text>
+<polyline points="263.0,474.0 263.0,498.0" fill="none" stroke="#ef6f80" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="385.0" y="396.0" width="176.0" height="78.0" rx="8" fill="#d1495b" fill-opacity="0.16" stroke="#ef6f80" stroke-width="2"/>
+<text x="394.0" y="413.0" font-size="13" fill="#ef6f80" text-anchor="start" font-weight="bold" >FM1</text>
+<text x="552.0" y="413.0" font-size="9" fill="#9aa6ba" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >25b × 28b</text>
+<text x="473.0" y="438.0" font-size="11" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm1 × FVn1</text>
+<text x="473.0" y="454.0" font-size="9" fill="#9aa6ba" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >(Σ rows + 2¹⁹) &gt;&gt;&gt; 20</text>
+<text x="473.0" y="466.0" font-size="8.6" fill="#9aa6ba" text-anchor="middle" font-weight="normal" >Booth, rows cut below col 16</text>
+<polyline points="473.0,474.0 473.0,498.0" fill="none" stroke="#ef6f80" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="595.0" y="396.0" width="176.0" height="78.0" rx="8" fill="#d1495b" fill-opacity="0.16" stroke="#ef6f80" stroke-width="2"/>
+<text x="604.0" y="413.0" font-size="13" fill="#ef6f80" text-anchor="start" font-weight="bold" >FM2</text>
+<text x="762.0" y="413.0" font-size="9" fill="#9aa6ba" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >25b × 28b</text>
+<text x="683.0" y="438.0" font-size="11" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm2 × FVn2</text>
+<text x="683.0" y="454.0" font-size="9" fill="#9aa6ba" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >(Σ rows + 2¹⁹) &gt;&gt;&gt; 20</text>
+<text x="683.0" y="466.0" font-size="8.6" fill="#9aa6ba" text-anchor="middle" font-weight="normal" >Booth, rows cut below col 16</text>
+<polyline points="683.0,474.0 683.0,498.0" fill="none" stroke="#ef6f80" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="805.0" y="396.0" width="176.0" height="78.0" rx="8" fill="#d1495b" fill-opacity="0.16" stroke="#ef6f80" stroke-width="2"/>
+<text x="814.0" y="413.0" font-size="13" fill="#ef6f80" text-anchor="start" font-weight="bold" >FM3</text>
+<text x="972.0" y="413.0" font-size="9" fill="#9aa6ba" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >25b × 28b</text>
+<text x="893.0" y="438.0" font-size="11" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >FVm3 × FVn3</text>
+<text x="893.0" y="454.0" font-size="9" fill="#9aa6ba" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >(Σ rows + 2¹⁹) &gt;&gt;&gt; 20</text>
+<text x="893.0" y="466.0" font-size="8.6" fill="#9aa6ba" text-anchor="middle" font-weight="normal" >Booth, rows cut below col 16</text>
+<polyline points="893.0,474.0 893.0,498.0" fill="none" stroke="#ef6f80" stroke-width="1.8" stroke-linejoin="round"/>
+</g>
+<g class="stp s2">
+<text x="28.0" y="88.0" font-size="14" fill="#eef1f6" text-anchor="start" font-weight="bold" >F2 — align to the largest exponent, then one four-input add.</text>
+<text x="28.0" y="106.0" font-size="12.5" fill="#9aa6ba" text-anchor="start" font-weight="normal" >An aligner truncates (no guard bits) and inverts a negative product; its carry-in is the hot one. The sum register captures 35 bits.</text>
+<text x="1312.0" y="52.0" font-size="17" fill="#f2b632" text-anchor="end" font-weight="bold" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >cycle 2 / 4</text>
+<rect x="543.2" y="126.0" width="253.6" height="6.0" rx="3" fill="#f2b632" stroke="none" stroke-width="0"/>
+<rect x="207.0" y="498.0" width="112.0" height="30.0" rx="3" fill="#232b3b" stroke="#ef6f80" stroke-width="1.6"/>
+<path d="M208,507.0 L215,513.0 L208,519.0" fill="none" stroke="#ef6f80" stroke-width="1.4"/>
+<text x="213.0" y="517.0" font-size="9.5" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M0 29b</text>
+<text x="313.0" y="517.0" font-size="10" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >a0·b0</text>
+<rect x="417.0" y="498.0" width="112.0" height="30.0" rx="3" fill="#232b3b" stroke="#ef6f80" stroke-width="1.6"/>
+<path d="M418,507.0 L425,513.0 L418,519.0" fill="none" stroke="#ef6f80" stroke-width="1.4"/>
+<text x="423.0" y="517.0" font-size="9.5" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M1 29b</text>
+<text x="523.0" y="517.0" font-size="10" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >a1·b1</text>
+<rect x="627.0" y="498.0" width="112.0" height="30.0" rx="3" fill="#232b3b" stroke="#ef6f80" stroke-width="1.6"/>
+<path d="M628,507.0 L635,513.0 L628,519.0" fill="none" stroke="#ef6f80" stroke-width="1.4"/>
+<text x="633.0" y="517.0" font-size="9.5" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M2 29b</text>
+<text x="733.0" y="517.0" font-size="10" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >a2·b2</text>
+<rect x="837.0" y="498.0" width="112.0" height="30.0" rx="3" fill="#232b3b" stroke="#ef6f80" stroke-width="1.6"/>
+<path d="M838,507.0 L845,513.0 L838,519.0" fill="none" stroke="#ef6f80" stroke-width="1.4"/>
+<text x="843.0" y="517.0" font-size="9.5" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M3 29b</text>
+<text x="943.0" y="517.0" font-size="10" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >a3·b3</text>
+<polygon points="431.0,542.0 515.0,542.0 504.0,566.0 442.0,566.0" fill="#232b3b" stroke="#9fb0cc" stroke-width="1.6" stroke-linejoin="round"/>
+<text x="473.0" y="558.0" font-size="9.5" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >M1 | C0</text>
+<rect x="189.0" y="576.0" width="148.0" height="52.0" rx="6" fill="#2e86ab" fill-opacity="0.18" stroke="#5bb2d6" stroke-width="1.8"/>
+<text x="263.0" y="593.0" font-size="12" fill="#eef1f6" text-anchor="middle" font-weight="bold" >align</text>
+<text x="331.0" y="593.0" font-size="9" fill="#9aa6ba" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >slot 0</text>
+<text x="263.0" y="609.0" font-size="10" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >sh=Emax−E0</text>
+<text x="263.0" y="622.0" font-size="10" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >inv=s0</text>
+<polyline points="263.0,628.0 263.0,638.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" marker-end="url(#mw)" stroke-linejoin="round"/>
+<text x="335.0" y="638.0" font-size="8.6" fill="#9aa6ba" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >32b+cin</text>
+<rect x="399.0" y="576.0" width="148.0" height="52.0" rx="6" fill="#2e86ab" fill-opacity="0.18" stroke="#5bb2d6" stroke-width="1.8"/>
+<text x="473.0" y="593.0" font-size="12" fill="#eef1f6" text-anchor="middle" font-weight="bold" >align</text>
+<text x="541.0" y="593.0" font-size="9" fill="#9aa6ba" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >slot 1</text>
+<text x="473.0" y="609.0" font-size="10" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >sh=Emax−E1</text>
+<text x="473.0" y="622.0" font-size="10" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >inv=s1</text>
+<polyline points="473.0,628.0 473.0,638.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" marker-end="url(#mw)" stroke-linejoin="round"/>
+<text x="545.0" y="638.0" font-size="8.6" fill="#9aa6ba" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >32b+cin</text>
+<rect x="609.0" y="576.0" width="148.0" height="52.0" rx="6" fill="#2e86ab" fill-opacity="0.18" stroke="#5bb2d6" stroke-width="1.8"/>
+<text x="683.0" y="593.0" font-size="12" fill="#eef1f6" text-anchor="middle" font-weight="bold" >align</text>
+<text x="751.0" y="593.0" font-size="9" fill="#9aa6ba" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >slot 2</text>
+<text x="683.0" y="609.0" font-size="10" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >sh=Emax−E2</text>
+<text x="683.0" y="622.0" font-size="10" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >inv=s2</text>
+<polyline points="683.0,628.0 683.0,638.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" marker-end="url(#mw)" stroke-linejoin="round"/>
+<text x="755.0" y="638.0" font-size="8.6" fill="#9aa6ba" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >32b+cin</text>
+<rect x="819.0" y="576.0" width="148.0" height="52.0" rx="6" fill="#2e86ab" fill-opacity="0.18" stroke="#5bb2d6" stroke-width="1.8"/>
+<text x="893.0" y="593.0" font-size="12" fill="#eef1f6" text-anchor="middle" font-weight="bold" >align</text>
+<text x="961.0" y="593.0" font-size="9" fill="#9aa6ba" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >slot 3</text>
+<text x="893.0" y="609.0" font-size="10" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >sh=Emax−E3</text>
+<text x="893.0" y="622.0" font-size="10" fill="#eef1f6" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >inv=s3</text>
+<polyline points="893.0,628.0 893.0,638.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" marker-end="url(#mw)" stroke-linejoin="round"/>
+<text x="965.0" y="638.0" font-size="8.6" fill="#9aa6ba" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >32b+cin</text>
+<polygon points="64.0,640.0 990.0,640.0 860.0,690.0 194.0,690.0" fill="#2e86ab" fill-opacity="0.2" stroke="#5bb2d6" stroke-width="2" stroke-linejoin="round"/>
+<text x="214.0" y="666.0" font-size="13" fill="#5bb2d6" text-anchor="start" font-weight="bold" >4-input adder</text>
+<text x="527.0" y="664.0" font-size="14" fill="#eef1f6" text-anchor="middle" font-weight="bold" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >Σ = a0b0 + a1b1 + a2b2 + a3b3</text>
+<polyline points="527.0,690.0 527.0,700.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+</g>
+<g class="stp s3">
+<text x="28.0" y="88.0" font-size="14" fill="#eef1f6" text-anchor="start" font-weight="bold" >F3 — normalise and round, once.</text>
+<text x="28.0" y="106.0" font-size="12.5" fill="#9aa6ba" text-anchor="start" font-weight="normal" >The same rounding circuit every instruction ends in: leading one, 24 bits, round-to-nearest-even or truncate.</text>
+<text x="1312.0" y="52.0" font-size="17" fill="#f2b632" text-anchor="end" font-weight="bold" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >cycle 3 / 4</text>
+<rect x="802.8" y="126.0" width="253.6" height="6.0" rx="3" fill="#f2b632" stroke="none" stroke-width="0"/>
+<rect x="417.0" y="700.0" width="220.0" height="30.0" rx="3" fill="#232b3b" stroke="#5bb2d6" stroke-width="1.6"/>
+<path d="M418,709.0 L425,715.0 L418,721.0" fill="none" stroke="#5bb2d6" stroke-width="1.4"/>
+<text x="425.0" y="719.0" font-size="9.5" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >sum 35b</text>
+<text x="629.0" y="719.0" font-size="10" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >Σ aᵢbᵢ</text>
+<polyline points="527.0,730.0 527.0,740.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" marker-end="url(#mw)" stroke-linejoin="round"/>
+<rect x="347.0" y="742.0" width="360.0" height="50.0" rx="8" fill="#2e86ab" fill-opacity="0.32" stroke="#5bb2d6" stroke-width="2.4"/>
+<text x="527.0" y="759.0" font-size="13" fill="#eef1f6" text-anchor="middle" font-weight="bold" >normalise + round</text>
+<text x="527.0" y="773.0" font-size="9.5" fill="#9aa6ba" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >negate · |·| · leading one · 24b · RN/RZ</text>
+<text x="527.0" y="787.0" font-size="10" fill="#f2b632" text-anchor="middle" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >emax = Emax</text>
+<polyline points="527.0,792.0 527.0,804.0" fill="none" stroke="#9fb0cc" stroke-width="1.8" stroke-linejoin="round"/>
+</g>
+<g class="stp s4">
+<text x="28.0" y="88.0" font-size="14" fill="#eef1f6" text-anchor="start" font-weight="bold" >WB — the result register is written back.</text>
+<text x="28.0" y="106.0" font-size="12.5" fill="#9aa6ba" text-anchor="start" font-weight="normal" >FVn[3] takes the inner product: four multiplies and three adds, rounded exactly once.</text>
+<text x="1312.0" y="52.0" font-size="17" fill="#f2b632" text-anchor="end" font-weight="bold" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >cycle 4 / 4</text>
+<rect x="1062.4" y="126.0" width="253.6" height="6.0" rx="3" fill="#f2b632" stroke="none" stroke-width="0"/>
+<rect x="417.0" y="804.0" width="220.0" height="30.0" rx="3" fill="#232b3b" stroke="#f2b632" stroke-width="1.6"/>
+<path d="M418,813.0 L425,819.0 L418,825.0" fill="none" stroke="#f2b632" stroke-width="1.4"/>
+<text x="425.0" y="823.0" font-size="9.5" fill="#9aa6ba" text-anchor="start" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >result 32b</text>
+<text x="629.0" y="823.0" font-size="10" fill="#eef1f6" text-anchor="end" font-weight="normal" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >float32</text>
+<polyline points="527.0,834.0 527.0,856.0" fill="none" stroke="#f2b632" stroke-width="1.8" marker-end="url(#ma)" stroke-linejoin="round"/>
+<text x="622.0" y="874.0" font-size="12" fill="#f2b632" text-anchor="start" font-weight="bold" font-family="'DejaVu Sans Mono',Menlo,Consolas,monospace" >→  FVn[3]</text>
+</g>
+</svg>

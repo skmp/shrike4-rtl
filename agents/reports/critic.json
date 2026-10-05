@@ -1,0 +1,148 @@
+{
+ "gaps": [
+  {
+   "area": "reset controller (exceptions-intc, timers-clock, mmu, core-integration, debug-ubc-hudi, board)",
+   "issue": "No spec owns chip-level reset distribution. The reset kinds are: RESET-pin power-on; WDT power-on, which keeps FRQCR, WTCNT and WTCSR and clears STBCR/STBCR2; manual reset from pin or WDT; H-UDI power-on reset; TLB multiple-hit reset 0x140; BL=1 CPU reset; and SB_SFRES board reset. Each spec emits a request into an unspecified 'reset controller': timers-clock rst_req_por/man, exceptions-intc cpu_reset_req, mmu mhit_reset, debug hudi_rst. core-integration \u00a73.10 lists the kinds but defines no module, and no spec has a per-module reset table.",
+   "fix": "Add a v1_rstc section to core-integration.md (or exceptions-intc.md). It needs the request inputs, rst_pin / rst_por / rst_man / cpu_only outputs, and one table giving what each unit does under each reset kind. Build the table from the Appendix A columns plus the exceptions in timers-clock \u00a74.2 and \u00a73.1."
+  },
+  {
+   "area": "direct-boot preset of on-chip registers (board, bsc-memmap, timers-clock, dmac, caches-sq, debug-ubc-hudi, serial)",
+   "issue": "board.md \u00a75.3 says the post-BIOS module values are loaded 'through the RTL's reset backdoor': BSC, STBCR 0x03, DMAOR 0x8201, PMCR1, QACR, SCIF and UBC. v1's dbg_* backdoor covers only CPU registers, and no module spec defines a preset port. bsc-memmap \u00a75.4 leaves the choice open ('a reset option or backdoor writes').",
+   "fix": "Pick one mechanism and record it in board.md. Preferred: the testbench puts a small boot stub at physical 0 (the boot-ROM area) and lets the real reset vector 0xA0000000 run. The stub writes the \u00a75.3 values over the real P4 bus, sets SR/R15/VBR/GBR/DBR/PR/FPSCR, and jumps to 0x8C010000. This needs no module backdoors and exercises the real write paths. Alternative: a DIRECT_BOOT reset-value parameter in each module."
+  },
+  {
+   "area": "P4 bus: DMAC as a second master (dmac, serial, timers-clock, core-integration)",
+   "issue": "The DMAC's on-chip legs (dmac \u00a77.2 pm_* with pm_dmac, class-B pm_err) and the SCIF/SCI/TMU DMA auto-clears (serial reg_dma, timers-clock dack_ic) need DMAC-mastered accesses to 0x1Fxxxxxx registers. core-integration \u00a77.4 v1_p4bus has only the LSU as master, and neither arbitration nor the 'no module' error response is defined.",
+   "fix": "Extend v1_p4bus with a DMAC master port, CPU/DMAC arbitration, a dma attribute on the access, and a no-module (pm_err) response. Physical 0x1F decode for DMAC addresses follows debug-ubc-hudi \u00a72.2. Unify the attribute names: reg_dma / pm_dmac."
+  },
+  {
+   "area": "fetch unit behaviour (core-integration, caches-sq, mmu, debug-ubc-hudi)",
+   "issue": "Several specs change v1_fetch, and their fetch-side requirements have not been reconciled:\n- Run-ahead depth: the UBC settle vectors favour 5 instructions, while the PMCR 0x06 counts fit v1's 4 plus one discarded word. MMU R1 fetches W+8 but not W+12; core-integration allows up to PC+11.\n- A redirect must wait for an in-flight uncached fetch or ITLB refill (caches-sq \u00a77.1, mmu \u00a73.5). core-integration's if_cancel port lets fetch move on.\n- UBC wants a delayed branch held until its slot is queued while a pre-execution break is armed.\n- debug-ubc-hudi \u00a74.7.1 measured that a taken BT/BF with disp=0 (skip one instruction) costs no bubble and does not count as a branch. v1_fetch/v1_core have no such form, and core-integration does not mention it.",
+   "fix": "core-integration owns one consolidated v1_fetch change list. It calibrates the queue against the UBC settle vectors, the PMCR 0x06/0x0A counts, MMU R1/T1 and caches-sq's P2 two-reads-per-bra. It holds a new request until an outstanding uncached read or ITLB refill completes. It decides whether to model the BT/BF skip form after checking whether the timings2 sweep contains it."
+  },
+  {
+   "area": "undefined address regions (mmu, core-integration, debug-ubc-hudi, caches-sq)",
+   "issue": "Two behaviours have no owner:\n- Instruction fetch from P4, the arrays, the SQ window or the OC-RAM window: mmu Q3, core-integration Q9 and caches-sq \u00a72.5 leave it open.\n- Data accesses to reserved P4 0xE4000000-0xEFFFFFFF and 0xF8000000-0xFEFFFFFF: debug-ubc-hudi \u00a72.1 says 'not probed, left unimplemented', but no spec states what a read returns or whether a write is dropped.",
+   "fix": "core-integration states a [P] rule for both. Suggested: a privileged fetch at or above 0xE0000000 is poisoned as an instruction address error 0x0E0. A reserved-P4 data read returns 0 and a write is ignored, with Iclk-class timing. Mark both as unmeasured."
+  },
+  {
+   "area": "NMI to DMAC NMIF (exceptions-intc, dmac)",
+   "issue": "dmac \u00a73.7 needs an nmi_evt pulse from the INTC NMI edge detector to set DMAOR.NMIF. The exceptions-intc \u00a77.2 v1_intc port list has no such output.",
+   "fix": "Add nmi_evt to v1_intc. On the DC it is always 0 because the NMI pin is tied high."
+  },
+  {
+   "area": "reference-model composition (core-integration, board, caches-sq, mmu, timers-clock, serial, dmac)",
+   "issue": "Each spec proposes its own C++ reference: sh4_sys.h with a Sh4Board interface (core-integration), a DcBoard behind an Sh4Mem adapter (board \u00a79), sh4_cache.h, mmu_ref.h, sh4_timers.h, scif_model.h and dmac_ref.h. No spec defines how they compose, and the per-Icyc timer and SCIF models do not fit core-integration's instruction-step and VOLRD-injection scheme.",
+   "fix": "core-integration \u00a78 names each unit model's slot in Sh4Sys. The unit models are used only functionally at instruction granularity, with time-dependent reads injected from the RTL. board.md's DcBoard implements the Sh4Board interface."
+  },
+  {
+   "area": "sleep fast-forward (board, timers-clock)",
+   "issue": "board \u00a78 fast-forwards a sleeping core to 'the TMU's next event if the chip exposes a next-event hint'. timers-clock defines no such output.",
+   "fix": "Optional: v1_tmu exports the cycles until the next underflow of an enabled channel (tb-only port). Otherwise the board only fast-forwards to its own events."
+  },
+  {
+   "area": "AICA RTC rate (board, timers-clock)",
+   "issue": "board \u00a73.8.2 advances the AICA RTC every 199,499,520 Icyc. timers-clock measured 199,505,792 Icyc per AICA second (test K); the 31 ppm difference is the AICA crystal against the SH4 crystal.",
+   "fix": "The board uses the measured 199,505,792 Icyc per RTC second. The SPG keeps its own measured 27 MHz ratio."
+  }
+ ],
+ "conflicts": [
+  {
+   "areas": "exceptions-intc \u00a77.4 vs core-integration \u00a73.5.3 / \u00a76 (also debug-ubc-hudi \u00a74.3 latency)",
+   "issue": "The two specs disagree on exception entry timing and structure, and each says it was measured.\n- exceptions-intc: a 4-cycle SQ_EXC in D. Decode-time fault: handler issues at d+5. TRAPA, DAE and FPE: handler at issue+8, i.e. FPE = DAE = TRAPA = illegal+3 (PMCTR deltas 8 / 11 / 11 / 11). Interrupt: d+6.\n- core-integration: an xop through D/EX/MA/S. Handler at d+8 for every class, with d = D for illegal and FPE, d = D+2 for DAE and TRAPA (so FPE = illegal, DAE/TRAPA = illegal+2). Interrupt: a+8. Its loop numbers: FFFD 23.0, FPE 23.0, DAE/TRAPA 25.0.\n- debug-ubc-hudi's pre-break latency (10 Icyc including a literal load and a PMCTR read) fits d+5.\nThe gap between classes differs too (0 vs +3 for FPE), so a single constant offset cannot reconcile them.",
+   "resolution": "Reconcile before building v1_exc. Two independent PMCTR-bracket programs agree on d+5. core-integration's E values depend on an unvalidated v1 model of the handler path (STC SPC / LDC SPC / RTE). One HW program should run FFFD, FADD EN.I, a misaligned MOV.L and TRAPA under both a loop harness and a PMCTR bracket, and should pin where a P4 PMCTR read samples. Adopt one entry model that fits all of excint, ci and ubcbrk L. exceptions-intc owns the result."
+  },
+  {
+   "areas": "exceptions-intc \u00a77.3 + mmu \u00a77.3 vs core-integration \u00a73.3 (MA port dm_exc)",
+   "issue": "The specs place data-fault detection in different stages.\n- exceptions-intc detects alignment, privilege and SQMD faults combinationally in EX, which blocks the younger lane-1 end-of-EX T/Q/M/S and F1 FCMP-T writes. It measured paired SETT and FCMP T being cancelled.\n- mmu computes ex_exc in EX, with the UTLB CAM in EX.\n- core-integration returns faults with dm_ack in MA and says the LSU checks privilege/SQMD at MA. Because v1 writes T at the end of EX, MA detection cannot cancel a paired SETT.",
+   "resolution": "Every data fault (alignment, user-area, SQMD, TLB) is decided in EX from maddr and the MMU CAM, rides the uop, and is taken at the end-of-MA commit point, so entry cost is unchanged. core-integration's dm_* port keeps only functional side effects and waits; drop the late-ack dm_exc path, since mmu measured zero data-translation cost."
+  },
+  {
+   "areas": "mmu \u00a73.4 table vs exceptions-intc \u00a73.3 and core-integration \u00a73.3",
+   "issue": "MAC.L/MAC.W access order: mmu says 'read @Rm, then read @Rn'. exceptions-intc and core-integration both measured @Rn first: both misaligned gives TEA = Rn; only Rm misaligned gives TEA = Rm and Rn is not incremented.",
+   "resolution": "@Rn first, then @Rm (the pm pseudo-code, the ISS and two HW runs). Correct the mmu table; its TLB observations say 'first/second operand' and do not contradict this. v1 must swap its micro-op 0 address."
+  },
+  {
+   "areas": "exceptions-intc \u00a73.9 vs mmu \u00a73.1 row 1 / \u00a73.4 vs caches-sq \u00a73.3.6",
+   "issue": "PREF exceptions: exceptions-intc measured PREF to P1 in user mode raising 0x0E0, and PREF to the SQ with SQMD=1 raising 0x0E0. mmu says 'PREF never faults', and caches-sq's table gives PREF on normal memory no TLB exception and no address error.",
+   "resolution": "PREF never raises an alignment error and never a TLB exception outside the SQ window. It does raise the user-mode privilege address error (VA \u2265 0x80000000 outside the SQ, or the SQ with SQMD=1) as read type 0x0E0. Fix the mmu and caches-sq tables."
+  },
+  {
+   "areas": "mmu \u00a73.4 vs exceptions-intc \u00a73.5(3) vs caches-sq \u00a73.3.6",
+   "issue": "TAS.B exception typing: mmu measured an unmapped TAS.B giving 0x040 (read type), PR 00 giving 0x0C0 and D=0 giving 0x080, with URC +3. exceptions-intc and caches-sq say TAS.B 'is checked as a byte store', which would give 0x060 on a miss.",
+   "resolution": "Follow mmu's HW: a miss is read type; protection and initial-page-write are checked as a write at the first access, which is core-integration's dm_rmw rule. Only the three architectural accesses count for URC. Correct exceptions-intc and caches-sq."
+  },
+  {
+   "areas": "caches-sq \u00a77.2 vs core-integration \u00a73.1 / \u00a73.3",
+   "issue": "OCBI/OCBP freeze: caches-sq measured OCBI/OCBP/OCBWB hits costing 0 and misses 2. It proposes removing v1's unconditional 2-cycle tag_wr freeze and producing it from the OC miss path, preloading the sweep scratch lines so make v1 stays green. core-integration requires pfz/tfrz to stay 'exactly as it is', unconditional, with the LSU adding only the functional effect.",
+   "resolution": "Adopt caches-sq's line-state-dependent cost, since it is measured and core-integration's rule contradicts the hit case. LDTLB keeps its own 2-cycle freeze. Regressions: make v1 with preloaded line state, and the six OCBI+GBR-store records as a check."
+  },
+  {
+   "areas": "caches-sq \u00a73.9 / \u00a77.2 vs core-integration \u00a73.3 (mah)",
+   "issue": "Which hold a cache miss uses: caches-sq ORs oc_frz into v1's pfz, which freezes every FPU unit including the divider. core-integration's new mah hold for data waits lets the divider recurrence run; ci3 measured this with P4 and P2 loads.",
+   "resolution": "Use two holds. The 2-cycle miss-path freeze of cache ops, store misses and PREF stays pfz-type, as the sweep validated. Every wait beyond it (critical word, uncached, P4, WTB/WBB/SQ-busy) is mah. Confirm with an FDIV followed by an OC load-miss loop."
+  },
+  {
+   "areas": "caches-sq \u00a73.4 vs core-integration \u00a76.1",
+   "issue": "Array access cost: caches-sq says array reads cost 'as a CCN register (3 Icyc)'. core-integration measured about 4.75-5 Icyc for the IC/ITLB/OC/UTLB address arrays and the OC data array, and about 6.5-7 for the IC data array.",
+   "resolution": "Use core-integration's measured costs in the array-port timing."
+  },
+  {
+   "areas": "core-integration \u00a77.4 (v1_p4bus) vs debug-ubc-hudi \u00a78.1 (v1_p4_regbus) vs bsc-memmap \u00a78.4; write timing vs timers-clock \u00a73.0 and serial \u00a72.1",
+   "issue": "Three specs each claim the P4 bridge. core-integration's per-block addr[7:0] cannot express debug's decode rules: CCN a[7:2] repeating every 0x100 to +0x20000, PMCTR a[4:2], the UBC's undriven a[17:8] window returning last_rdata, and the size-rule exceptions for PMCTR, SDDR and WTC*.\nWrites: core-integration charges the full class latency as a blocking mah (Pclk write 8, TMU 12). timers-clock measured isolated Pclk writes as posted: +3 Icyc, draining in 2 Pcyc (16-bit) or 3 Pcyc (32-bit), with a later Pclk read waiting (23). exceptions-intc's 10-21-instruction IPRA write-to-effect also fits posting.\nReads: only TCNT is listed at 20, but every 32-bit Pclk read (TCOR, TCPR2) is 5 Pcyc.",
+   "resolution": "core-integration owns v1_p4bus and implements debug-ubc-hudi \u00a72.2 decode verbatim. It adds a one-entry posted write per P4 path that drains in 2 or 3 Pcyc (Bclk measured similarly), with later P4 reads waiting for the drain. The latency classes are Iclk 3; Bclk 8 read; Pclk 16 read; any 32-bit Pclk read 20."
+  },
+  {
+   "areas": "CCN register homes: exceptions-intc \u00a77.1 (v1_exc), mmu \u00a77.1 (v1_mmu_regs), caches-sq \u00a77.5 and core-integration \u00a77.1 (v1_ccn), debug-ubc-hudi \u00a78.1 (v1_ccn_id, v1_ubc)",
+   "issue": "Several modules are named as the home of the same registers:\n- TRA/EXPEVT/INTEVT: v1_exc and v1_ccn.\n- PTEH/PTEL/PTEA/TTB/TEA/MMUCR: v1_mmu_regs and v1_ccn.\n- PVR/PRR: v1_ccn_id and v1_ccn.\n- QACR0/1: v1_sq or v1_ccn.\n- BASRA/B: in the UBC, reached through the CCN window.\nThe behavioural specs agree with each other; only the placement conflicts.",
+   "resolution": "v1_ccn is just the 0xFF000000 window decoder with the CCN mirror rule. Storage lives with the behaviour owner: mmu, caches-sq (CCR, QACR), exceptions-intc (TRA/EXPEVT/INTEVT), ubc (BASRx), perfctr (PMCRx), and debug-ubc-hudi (PVR constant, CVR/PRR = 0). Exception entry writes EXPEVT/INTEVT/TRA/TEA/PTEH.VPN through a dedicated port, not the P4 bus."
+  },
+  {
+   "areas": "core-integration \u00a72.3 vs debug-ubc-hudi \u00a73.3 / \u00a74.6 / \u00a74.7",
+   "issue": "Both specs own PMCR/PMCTR, and their content conflicts:\n- PMCLK: core-integration says '+12 per Icyc'; debug says each counted event adds 12.\n- CLR: core-integration says 'write 1 clears'; debug measured that it clears only if the counter was stopped before the write.\n- Sleep: core-integration calls counting while asleep unknown; debug, timers-clock and board measured that the counters freeze.\n- Validated events: core-integration says only 0x14/0x23/0x28/0x29; debug measured about 30 events exactly.\n- Event 0x27: core-integration counts 'D starved after a redirect'; debug measured that only PC-relative branch bubbles count.",
+   "resolution": "debug-ubc-hudi owns PMCR/PMCTR (v1_perfctr, mask 0xC13F, a[4:2] decode). core-integration keeps only the event-signal wiring and deletes its \u00a72.3 semantics."
+  },
+  {
+   "areas": "exceptions-intc \u00a73.4 / \u00a73.16 vs core-integration \u00a73.10 / \u00a77.3",
+   "issue": "What a general exception with SR.BL=1 resets. exceptions-intc: CPU registers only, other modules retain their state (hm \u00a75.5.3 and \u00a75.7). core-integration: a manual reset with Initialize_Module(Manual), sent as reset_req to a CPG manual reset. The manual contradicts itself: \u00a75.6.1(2) lists this case under manual reset.",
+   "resolution": "CPU-only reset with EXPEVT 0x020, VBR 0, SR 0x700000F0, FPSCR 0x00040001 and PC 0xA0000000; modules keep their state. Two manual passages say so and exceptions-intc owns the case. It cannot be measured, so flag it [M]."
+  },
+  {
+   "areas": "board \u00a75.2 / \u00a75.3 vs exceptions-intc \u00a74.3 / core-integration \u00a74.1 / serial \u00a74 / bsc-memmap \u00a75.4 / caches-sq \u00a77.5",
+   "issue": "The direct-boot state differs between specs:\n- CPU: board uses SR 0x400000F0, R15 0x8C00F400, PR 0x8C00F800 (the exit stub); exceptions-intc and core-integration give the BIOS values SR 0x400000F1, R15 0x8D000000, PR 0xAC00043C.\n- STBCR: serial says a direct boot starts at 0; board and timers-clock say it must be 0x03.\n- PCTRA: board 0x000A03F0, bsc-memmap 0x000003F0.\n- QACR: board 4, caches-sq reset 0.",
+   "resolution": "board.md owns the direct-boot preset and the other specs reference it. STBCR = 0x03 (measured, and the SCI/RTC must read 0). PCTRA and QACR are don't-care for KOS, which rewrites them; use board's values."
+  },
+  {
+   "areas": "exceptions-intc \u00a77.2 / \u00a77.5 vs core-integration \u00a73.7 / \u00a73.8",
+   "issue": "The INTC-to-core contract differs.\n- IMASK: exceptions-intc compares on Pclk edges (k \u2208 {0,6,7,8}); core-integration uses a two-stage Bclk synchroniser (7-9 Icyc).\n- NMI: exceptions-intc applies BL/NMIB/MAI in the INTC (nmi_req); core-integration applies NMIB in the core (irq_nmi).\n- irq_ack: at entry start vs at the xop's S.\n- SLEEP: exceptions-intc drains the FPU before sleep_req; core-integration does not.",
+   "resolution": "exceptions-intc owns the INTC and its ports. Calibrate one synchroniser against both data sets (excint PH sweep and the 12 ci2 cases). NMI gating stays in the INTC. irq_ack goes with the entry's architectural write. SLEEP need not drain the FPU for the silicon, but the tb 'halted' condition still requires fpu_idle."
+  },
+  {
+   "areas": "board \u00a74.3 vs dmac \u00a74.3 / \u00a77.4",
+   "issue": "board's phase-1 ch2-DMA says software runs DMAC ch2 in auto-request mode and the board only accepts area-4 writes. KOS actually writes CHCR2 = 0x12C1: RS 0010, single address, one 32-byte unit per Holly DDT request. The data leaves as single-address TDACK reads of RAM, not as writes to area 4, so with no ch2_req nothing moves.",
+   "resolution": "The phase-1 board drives dmac's transaction-level ch2_req, one per 32 bytes of SB_C2DLEN, and captures the single-address read data for the TA/texture sink. The hello targets do not use ch2-DMA."
+  },
+  {
+   "areas": "bsc-memmap \u00a72.2 / debug-ubc-hudi \u00a72.5 vs core-integration \u00a72.4 (mmu \u00a73.1, caches-sq \u00a73.1)",
+   "issue": "Untranslated area 7 (P0-P3 with AT=0, physical 0x1Cxxxxxx-0x1Fxxxxxx): bsc-memmap and debug propose routing it to the P4 register bus with P4 timing. core-integration measured a read of 0x1F000024 through P0 (MMU off, OC on) costing 1 Icyc per access, i.e. cached like memory, and nobody recorded what the line fill returned. mmu and caches-sq call it undefined.",
+   "resolution": "Do not route untranslated area 7 to the registers. Treat it as cacheable address space with undefined data and no register side effects. Only UTLB-translated area 7 (measured) and DMAC 0x1F addresses reach the registers. A safe one-read probe could record the value later."
+  },
+  {
+   "areas": "caches-sq open question 11 vs bsc-memmap \u00a74.7",
+   "issue": "bsc-memmap gives an OC write miss (clean victim) 25 Icyc and OCBP of a clean line 2 Icyc. caches-sq measured +2 for a store miss followed by independent work, and 0 for a clean OCBx hit.",
+   "resolution": "Use caches-sq's structural rules: a store to the line being filled waits for the fill, and a memory access right after OCBWB meets the one-cycle port hold. bsc-memmap's rows become kernel-specific calibration vectors, not per-access costs."
+  },
+  {
+   "areas": "debug-ubc-hudi \u00a74.7 vs caches-sq \u00a73.11",
+   "issue": "Events 0x21/0x22: debug defines them as 'Icyc a fill is in progress' (24 per fill, from row-miss snippets); caches-sq defines them as 'cycles until the critical beat' (14.2 on a row hit, 23.9 on a row miss). The numbers agree; the definitions do not.",
+   "resolution": "Use 'fill active until the critical beat arrives', which fits both data sets."
+  },
+  {
+   "areas": "board \u00a72.1 vs serial \u00a74 / \u00a77.5",
+   "issue": "CTS2 tie-off: board says CTS2 = 0 (asserted); serial measured CTS2 = 1 (pulled up) and ties it to 1.",
+   "resolution": "Tie CTS2 to 1, as measured. With MCE=0 under KOS it has no effect."
+  }
+ ],
+ "p4_map_coverage": "Every register in Appendix A (hm.txt line 33559) has exactly one behaviour owner:\n- mmu: PTEH, PTEL, TTB, TEA, MMUCR, PTEA, and the ITLB/UTLB arrays.\n- caches-sq: CCR, QACR0/1, the IC/OC arrays and the store queues.\n- exceptions-intc: TRA, EXPEVT, INTEVT, ICR and IPRA-C.\n- debug-ubc-hudi: BASRA/B and every UBC register, SDIR/SDDR, and the undocumented registers (PVR 0x040205C1, CVR/PRR reading 0, PMCR1/2, PMCTR1/2H/L).\n- bsc-memmap: BCR1/2, WCR1-3, MCR, PCR, RTCSR/RTCNT/RTCOR/RFCR, PCTRA/PDTRA/PCTRB/PDTRB/GPIOIC and SDMR2/3.\n- dmac: SAR/DAR/DMATCR/CHCR 0-3 and DMAOR.\n- timers-clock: FRQCR, STBCR, STBCR2, WTCNT, WTCSR, all RTC registers and all TMU registers.\n- serial: SCI and SCIF, including SCSPTR1/2, which bsc-memmap hands over.\n\nNo Appendix A register is unowned. The SH7750S/R-only registers (IPRD, BCR3, RCR3/RYRAR, DMAC ch4+, CVR/PRR, the 0xFE0x blocks) are covered as absent, reading 0.\n\nDoubly owned or doubly specified:\n1. PMCR1/2 and PMCTR1/2: both debug-ubc-hudi (v1_perfctr) and core-integration \u00a72.3 (v1_pmu) claim them, with conflicting semantics.\n2. PVR/PRR: debug-ubc-hudi (v1_ccn_id) and core-integration (v1_ccn); the values agree.\n3. The P4 bridge (decode, size rule, latency): debug-ubc-hudi v1_p4_regbus, core-integration v1_p4bus, and bsc-memmap \u00a78.4.\n4. Module homes that are claimed twice with consistent behaviour: TRA/EXPEVT/INTEVT (v1_exc vs v1_ccn), PTEH..MMUCR/PTEA (v1_mmu_regs vs v1_ccn), QACR (v1_sq vs v1_ccn). core-integration \u00a72.2 also restates TRA/EXPEVT/INTEVT/TEA/PTEH, consistently.\n\nRegions or behaviours with no settled owner: untranslated area 7 (conflicting proposal and measurement); the contents of reserved P4 0xE4-0xEF and 0xF8-0xFE; instruction fetch from P4, the arrays, the SQ and OC-RAM; and DMAC-mastered P4 accesses, which the bridge spec has no port for.",
+ "boot_path_ready": "Functionally, yes. Each chip unit the KOS hello0/1/2 direct boot touches (board.md \u00a75.4) has a spec:\n- startup.S: CCR from P2 (caches-sq); the 0xAC/0xADFFFFFF RAM mirror probe (bsc-memmap, board).\n- Init: WDT disable (timers-clock); UBC init (debug-ubc-hudi); IPR/VBR/SR (exceptions-intc); SCIF banner with TDFE/TEND polling (serial, plus the board's UART receiver); TMU0/1/2 (timers-clock); PMCR1 0xC023 (debug-ubc-hudi).\n- The sysinfo syscall's OCBWB and flash reads (caches-sq, board).\n- G2/FFST/AICA RTC (board); SQ bursts to AICA RAM through QACR=0 over MPX and to the VRAM 32-bit path (caches-sq, bsc-memmap, board); PCTRA/PDTRA cable detect (bsc-memmap).\n- hello1: MOVCA.L in the IRQ entry; TMU and IRL interrupts, and SLEEP waking with BL ignored (exceptions-intc, timers-clock, board).\n- hello2: TAS.B for the GD lock and IC associative writes (caches-sq, mmu); maple and GD over the phase-1 DMA backdoor (board).\n- Exit: MMUCR \u2190 4 (mmu); return to the exit stub and sim-control port in area 6 (board).\n\nWhat is missing before a build:\n1. A mechanism to preload the post-BIOS module registers (STBCR 0x03, BSC, DMAOR, PMCR1, QACR, SCIF). v1's dbg backdoor is CPU-only. Recommendation: a testbench boot stub at the reset vector.\n2. A reset controller that no spec owns.\n3. A single P4 bridge owner and write-posting model, with a DMAC master port.\n4. The v1 decode additions for TRAPA and SLEEP-wake, which core-integration lists but which do not exist yet (today SLEEP halts).\n\nSeveral conflicts affect timing fidelity but not whether KOS reaches main: the exception/interrupt entry timing model, EX- vs MA-stage data-fault detection, pfz vs mah for cache misses, and whether OCBI/OCBP freeze on a hit. hello0 never takes an exception with the MMU off, so these matter first at hello1 (interrupt entry, IMASK latency) and in the `make v1` regression, not in the boot itself.\n\nThe direct-boot CPU state has to be taken from board.md, not from exceptions-intc or core-integration. board.md's phase-1 ch2-DMA description is wrong but is not needed by any hello target."
+}

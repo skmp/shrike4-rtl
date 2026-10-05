@@ -1,0 +1,22 @@
+
+36. Printing statistics.
+
+=== dot_fused ===
+
+   Number of wires:              16625
+   Number of wire bits:          20735
+   Number of public wires:         104
+   Number of public wire bits:    4214
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              16553
+     $_AND_                       2490
+     $_MUX_                       1363
+     $_NAND_                      6306
+     $_NOR_                        297
+     $_NOT_                        609
+     $_OR_                         755
+     $_XNOR_                      1867
+     $_XOR_                       2866
+

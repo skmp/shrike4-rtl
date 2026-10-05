@@ -1,0 +1,9 @@
+  phase: id 23614 n 6 matched the console at retry delay 1187 (first run: T 50 (measured 52) NOT PERIODIC)
+v1-soc-sweep shard 94/96: 18986 points in 22 boots (0 failed), 554866886 Icyc, 10063.5 s (55137 Icyc/s); not periodic 35; timing retried at other refresh phases 1, matched there 1
+  T          18827 /    18827  (30 not compared)
+  Tb         18827 /    18827  (30 not compared)
+  par        18857 /    18857  (0 not compared)
+  brkp       18857 /    18857  (0 not compared)
+  frzreg     18857 /    18857  (0 not compared)
+  frzfpu     18857 /    18857  (0 not compared)
+v1-soc-sweep shard: PASS

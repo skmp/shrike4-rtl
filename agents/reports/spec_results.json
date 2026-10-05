@@ -1,0 +1,689 @@
+{
+ "spec:bsc-memmap": {
+  "spec_file": "rtl/v1/spec/bsc-memmap.md",
+  "summary": "The spec covers the SH7091 bus state controller, the external bus, the full address map and the I/O ports, as the Dreamcast wires them. It has 10 sections, from manual Sections 13, 18, 3.3 and 2.3, Appendices A / C / F / H, and minicast.\n\n- **Address map.** P0-P4 and area 7 (0x1Fxxxxxx = control registers through the TLB; undefined otherwise), every P4 block with its base and measured access cost, SH7091 vs SH7750(R) differences, and the Dreamcast board map (minicast plus measured mirrors).\n- **Registers.** All 18 BSC and port registers, bit by bit, with power-on reset values and the Dreamcast values: BCR1 A3020008, BCR2 0001, WCR1 01110111, WCR2 618066D8, WCR3 07777777, MCR C00A0E24, RTCSR 0094, RTCOR 5E, PCTRA 000A03F0. The measured field meanings settle contradictions in the manual (MASTER and A0MPX polarity).\n- **Access rules (measured).** A wrong-size read returns 0 and a wrong-size write is ignored. The refresh registers take keyed word writes only.\n- **Behaviour.** Byte lanes and endianness; idle cycles (WCR1); waits and RDY#; the SDRAM interface in RAS-down mode with the Dreamcast's bank / row / column split; the MPX interface Holly uses. The refresh timer's period is RTCOR ticks, one refresh every 3008 Icyc, each costing 24 Icyc to the CPU. Also bus arbitration and the bus side of DDT, and the interrupts RCMI 0x580, ROVI 0x5A0 and GPIOI 0x620.\n- **CPU-visible timing (measured).**\n  - System RAM: uncached read 16 Icyc (26 on a row miss), write 10 (posted), 64-bit FMOV = two longword cycles.\n  - Line fill: 16 per line, restart on the critical beat, then wrap-around beat order.\n  - Store-queue burst 12; TAS.B 32.\n  - Holly: system-bus registers 18, PVR registers 76, texture memory 94, boot ROM 96 / 133 / 205 (byte / word / long), G2 252.\n  - P4 registers: 3 (Iclk blocks), 8 (Bclk), 16 (Pclk).\n- **Direct boot.** The post-BIOS register state the testbench must load, since the boot ROM does not run.\n- **minicast deviations.** No size or key rules, a 16-bit PCTRA, a synthesized PDTRA, texture-memory mirrors that are not real, no refresh counting or interrupts.\n- **Proposed RTL.** Module split and three interfaces: an internal request port, a beat-level external bus for a C++ board model, and the P4 register-bus timing.\n- **Verification plan.** It includes running the same hardware kernels on the RTL as the timing sign-off.",
+  "registers": 18,
+  "hw_programs": [
+   {
+    "path": "tools/hw/bsc-memmap/bscmm.c",
+    "finding": "Run 1 (log: bscmm.elf.hwlog; kernels in tests.S from gen_tests.py). Register dump: BCR1 a3020008 BCR2 0001 WCR1 01110111 WCR2 618066d8 WCR3 07777777 MCR c00a0e24 PCR 0 RTCSR 0094 RTCOR 5e PCTRA 000a03f0 PDTRA ?0e7, PVR 040205c1, PRR 0, DMAOR 8201. BSC reads at the wrong size return 0; the unused BSC addresses read 0. RFCR / RTCOR take writes only with the key (0xA400 / 0xA5xx); byte and unkeyed writes are ignored. RTCNT counts at CKIO/16 (32 Icyc); one refresh every 3008 Icyc. System RAM mirrors every 16 MB; texture memory mirrors at +32 MB but NOT at +8 MB (minicast mirrors it there). Timings in Icyc: RAM uncached read 16 (row miss 26, bank alternation 16), write 10 (posted, 3 alone), 64-bit FMOV twice the cost; store-queue burst to RAM 12; Holly system-bus register read 18 / write 12; PVR register 76; boot ROM 96 / 133 / 205, flash 88 / 117 / 173 (byte / word / long); AICA 252; texture memory read 94, write 24, cached line fill 133, store-queue burst 76; P4 registers: Iclk blocks 3, Bclk 8, Pclk 16, TMU TCNT 20."
+   },
+   {
+    "path": "tools/hw/bsc-memmap/bscmm2.c",
+    "finding": "Run 2 (log: bscmm2.elf.hwlog). Writes at the wrong size to WCR3 and PCR are ignored. RTCNT wraps 5D/5E -> 00; the value RTCOR is visible for under a tick. Each refresh costs 24 Icyc to a stream of reads. Port inputs that nothing drives show the last MPX (Holly) data on D51..D32. RAM read->write and write->read pairs cost 26 each (no turnaround); SB and texture-memory reads alternating cost 6 more per pair. TAS.B costs 32 per instruction, 24 for a single one. Operand-cache line fill: 16 per line with a clean victim, 24 with a dirty victim in another bank; the fill starts with the critical 8 bytes and wraps (16 -> 24 -> 0 -> 8); a second load to the same line pays +4 / +6 / +8 for beats 2 / 3 / 4."
+   }
+  ],
+  "rtl_modules": [
+   "v1_amap_pkg: pure address classification (U0/P0-P4, store-queue area, cache/TLB arrays, P4 block id, physical address, area = phys[28:26], area-7 rule)",
+   "v1_bsc: BSC top (single Iclk domain, bclk_en/pclk_en clock enables): registers, arbiter, sequencers, refresh, ports, interrupt outputs",
+   "v1_bsc_regs: BCR1/2 WCR1/2/3 MCR PCR RTCSR/RTCNT/RTCOR/RFCR PCTRA/B PDTRA/B GPIOIC with the size rule, write keys, read-only pin bits, POR/manual/direct-boot values; SDMR2/3 decode into an MRS/PALL command",
+   "v1_bsc_rfsh: CKS prescaler, 8-bit RTCNT compare (clear one Bclk after the match), CMF/OVF/RFCR, single-entry refresh request, RCMI (0x580) / ROVI (0x5A0) levels",
+   "v1_bsc_arb: external/DDT > refresh > DMAC > CPU; grants only between cycles, never inside a burst, TAS pair or width split; WCR1 idle insertion (MPX minimum 1); BREQ/BACK and DBREQ/BAVL",
+   "v1_bsc_sdram: SDRAM command sequencer for areas 2/3: open-row table for 4 banks, RAS-down and auto-precharge paths, TPC/RCD/CL/TRWL/TRAS+TRC counters, 4-beat wrap bursts with DQM, REF/PALL/MRS",
+   "v1_bsc_mpx: MPX sequencer: Tm1 address + size code on D63-61, WCR2 first-data and later-beat waits, RDY# sampled on every data beat, 32-byte bursts",
+   "v1_bsc_basic (optional): SRAM / burst ROM / byte-control SRAM / PCMCIA / DRAM interfaces, unused on the Dreamcast",
+   "v1_bsc_port: port A/B latches and direction, pin muxing, GPIO interrupt (0x620); optional hold of the last D51..D32 data for undriven inputs",
+   "v1_biu (shared with the cache spec): CPU-side queue into the BSC: 1-entry uncached write buffer, copy-back buffer, IC/OC fills, SQ bursts, TAS lock, read-waits-for-write-drain ordering",
+   "External bus port xb_* (beat-level, Bclk): start/area/addr/we/size/lock/dack, then per beat: index/address/byte-enables/write data, board returns rdy/rdata; SDRAM command side-band; DDT and port pins. The C++ board model implements this port."
+  ],
+  "cross_unit_dependencies": [
+   "Cache / store-queue spec: issues line fills (critical 8 bytes first, wrap order; the CPU restarts on the critical beat), copy-backs (after the fill that evicted them), SQ bursts to (QACR.AREA<<26)|(a&0x03FFFFE0), and the TAS purge-then-locked-read/write through the v1_biu request port. It owns P0 0x7C000000-0x7FFFFFFF (OC RAM) and the P4 array windows 0xF0-0xF7.",
+   "Core pipeline: uncached loads stall in MA until data (RAM 16 Icyc); uncached stores retire into a 1-entry posted write buffer (a following P4 read costs 3); a 64-bit FMOV becomes two longword bus requests; TAS.B holds the bus for its read and write.",
+   "MMU spec: supplies the physical address and cacheability (TLB C/WT, PTEA.TC for PCMCIA); the area-7 rule (0x1Fxxxxxx through the TLB = control registers); address errors for user access to P1-P4.",
+   "P4 register-bus owner: routes 0xFF800000-0xFF80004F and the SDMR windows (0xFF900000-0xFF90FFFF, 0xFF940000-0xFF94FFFF) to the BSC. Measured costs per block class: Iclk 3, Bclk 8 read / 6 write, Pclk 16 read / 8 write, TMU TCNT 20. Wrong-size reads return 0 and wrong-size writes are ignored (proposed for every block); unmapped registers read 0.",
+   "INTC spec: receives RCMI (INTEVT 0x580) and ROVI (0x5A0), priority IPRB[11:8], and GPIOI (0x620), priority IPRC[15:12]; all level requests.",
+   "DMAC spec: DMAC bus cycles, single-address DMA with DACK/TDACK, and DDT (DMAOR 0x8201 on the Dreamcast). DBREQ/BAVL/TR/ID are arbitrated here; the DTR decode, channel queues and Holly's channel-0/channel-2 transfers are the DMAC spec's.",
+   "CPG spec: FRQCR 0x0E0A defines the Icyc:Bcyc:Pcyc ratio (200:100:50); the BSC uses bclk_en, and the refresh prescaler uses CKIO.",
+   "SCI/SCIF specs: SCSPTR1/SCSPTR2 (manual Section 18) belong to them.",
+   "Board model (testbench, C++): implements the xb_* port with the Section 2.5 map, the SDRAM array (area 3; answers every beat, RDY ignored), and Holly RDY# wait counts and write FIFO from Section 5.3. Also drives the port pins (cable type on bits 9:8) and the DDT side for Holly DMA.",
+   "Direct-boot testbench: loads the Section 5.4 post-BIOS BSC state (plus reios_setup_state for the CPU), syscalls.bin at 0x8C000000 and the program at 0x8C010000.",
+   "ISS (tb/sh4_iss.h): extend Sh4Mem with the Section 2.5 map and mirrors, and add a functional BSC/port register model with the size and key rules."
+  ],
+  "open_questions": [
+   "Area 7 reached through P0-P3 with the MMU off (e.g. 0xBF800000): the manual says undefined and minicast maps the registers. Not probed, for fear of a bus hang. The proposed rule is to route 0x1Fxxxxxx to the registers and make 0x1C000000-0x1EFFFFFF reserved.",
+   "What Holly returns (or whether it hangs) for area 0 0x02000000-0x03FFFFFF, for areas 2 and 6, and for the reserved area-0/G2 holes. Not probed.",
+   "RTCNT clear timing: the value RTCOR is visible for under a tick (up to about 22 Icyc). The proposal is one Bclk.",
+   "How the measured 8-Bcyc SDRAM access splits between the CPU-side front end (about 3-4 Bcyc) and the bus. The same question applies to the 3-Icyc cost of a posted write followed by a P4 read.",
+   "Holly-internal timing: RDY# wait counts are inferred from totals (system-bus registers taken as 0 waits); the write FIFO depth (about 4) and drain rate come from comparing 8 and 24 back-to-back writes.",
+   "Port pins: what drives ports 0-7; whether ports 0 and 1 are tied together, as minicast's BIOS-derived table implies (untested because it needs driving a port as an output); why undriven inputs show MPX data but not SDRAM data; how PORTEN=1 coexists with the 64-bit SDRAM bus the manual says it excludes.",
+   "The order of the two bus cycles of an uncached 64-bit FMOV.",
+   "Timing and back-pressure of the area-4 TA FIFO, YUV converter and direct texture path: not measured.",
+   "Bus occupancy of Holly DMA through DDT, and its effect on CPU accesses: not measured.",
+   "Manual reset: does SDRAM bank state and refresh continue as the manual says? This matters only if manual reset is modelled."
+  ],
+  "hardware_status": "ok: 2 runs through hwrun.sh (bscmm.elf, bscmm2.elf), both finished with exit 0; all changed registers and memory were restored and checked by a final dump."
+ },
+ "spec:timers-clock": {
+  "spec_file": "rtl/v1/spec/timers-clock.md",
+  "summary": "Specifies the SH7091's TMU (3 channels), RTC, CPG (FRQCR, STBCR, STBCR2), WDT, and SLEEP / deep sleep / standby / module stop. Coverage: every register with address, access-size rules, reset values per reset type, bit fields and side effects; behaviour and timing in CPU and peripheral cycles; interrupt sources (INTEVT codes, IPR fields, default order); DC and KOS usage; minicast's deviations; a 4-module single-clock RTL proposal; a verification plan. It rests on three console runs. Key measured facts: I\u03c6 = 199.506 MHz and P\u03c6 = I\u03c6/4 exactly; TMU rates 16..4096 Icyc per count; a free-running TMU prescaler (a start never adds a count); TCNT writes while counting are ignored, while TCOR and TCR writes take effect; underflow period = TCOR+1 ticks; wrong-size accesses read 0 and writes are ignored; the WDT is key-protected and counts on the rising edge of TME AND the divider tap (an early first count); peripheral read/write costs; the DC boots with STBCR = 0x03, and the RTC reads 0 while module-stopped and has no oscillator on the DC; full Gregorian leap rule and continuous alarm compare, found through ADJ-forced carries; MSTP2 clears TSTR and holds the counts; SLEEP stops the CPU cycle counter, SPC = SLEEP+2, and waking adds about 8-12 Icyc to an 11-26 Icyc interrupt response.",
+  "registers": 33,
+  "hw_programs": [
+   {
+    "path": "tools/hw/timers-clock/tc.c (+ tc_asm.S), log tc.elf.hwlog",
+    "finding": "Run 1. Register state under KOS: FRQCR 0E0A, STBCR 03, IPRA F0F0, TSTR 05, TCOR2 00BE41F0, PMCR0 C023. TMU rates 16/64/256/1024/4096 Icyc per count exactly; TPSC 5/6/7 never count on the DC. The prescaler runs freely: first decrement after start at a random phase. A TCNT write while running is ignored. Count sequences through underflow give period TCOR+1. Wrong-size reads 0 and writes ignored; TCR1 implemented mask 0x013F; UNF write-1 has no effect. Peripheral access costs: rd8/16 16 Icyc, rd32 20, wr ~7.6/11.1. WDT write keys (only 16-bit with the correct key and address), IOVF settable by writing 1, CKS rates 32/256/4096. RTC reads 0 while MSTP1 is set. MSTP2 clears TSTR and holds the counts. TMU1 interrupt INTEVT 0x420; SLEEP wakes with SPC = SLEEP+2; PMCTR stops during sleep. Against the AICA RTC: 199,505,792 Icyc/s, 16.0000 Icyc per P\u03c6/4 count."
+   },
+   {
+    "path": "tools/hw/timers-clock/tc2.c (+ tc2_asm.S), log tc2.elf.hwlog",
+    "finding": "Run 2. TCNT writes ignored while running at P\u03c6/4 and P\u03c6/1024; TCOR used at the next underflow; TPSC change and UNF clear work while running. Restart phase constant, so the prescaler is never restarted by STR. The WDT counts immediately when TME is set in the divider tap's high half (rising edge of TME AND tap); the divider is not reset by TME or WTCNT writes, and WTCNT writes are accepted while counting. Interrupt latency in TMU ticks: spin 1 tick 32/32; sleep 2 ticks 26/32; poll 1-2. Isolated access costs: rd32 +18, rd16 +14, posted writes +3. RTC with MSTP1 cleared: RCR2 09, counters hold arbitrary values, no oscillator (no R64CNT/PEF/TPSC-6 counting); register masks; CF settable by writing 1, AF not; ADJ and RESET behaviour."
+   },
+   {
+    "path": "tools/hw/timers-clock/tc3.c, log tc3.elf.hwlog",
+    "finding": "Run 3. RTC calendar driven by ADJ carries, without an oscillator: BCD carries, day-of-week wraps 6->0, 30/31-day months, full Gregorian leap rule (2000, 2004 leap; 1900, 2100, 2001 not), 12-31 -> 01-01, 9999 -> 0000, invalid Feb 31 -> Mar 1. ADJ with START=0 clears the seconds without carrying. The alarm AF compares continuously (re-set at once after a clear while matching). The ADJ carry does not set CF."
+   }
+  ],
+  "rtl_modules": [
+   "v1_cpg: FRQCR/STBCR/STBCR2 registers. B\u03c6/P\u03c6 clock enables from one divider (IFC fixed \u00d71, BFC/PFC programmable). Free-running 12-bit clk divider feeding the WDT. Power-down state machine RUN/SLEEP/DSLEEP/STANDBY/SETTLE, outputs cpu_run, dmac_run, stby, mstp[4:0] and STATUS pins; the WDT settle handshake covers standby exit and PLL relock.",
+   "v1_wdt: WTCNT/WTCSR with 0x5A/0xA5 word-write keys and byte reads. Counts on the rising edge of (TME|settle) & div[CKS+4]. Interval overflow -> IOVF/ITI (level); watchdog overflow -> WOVF plus a power-on or manual reset pulse (RSTS). Settle mode for standby exit and PLL relock sets no flags. Reset only by the RESET pin.",
+   "v1_tmu: 10-bit free-running P\u03c6 prescaler making tick enables (/4../1024); 3 channels of TCOR/TCNT/TCR with reload-on-tick-after-0 and UNF. TCNT writes only while STR=0. UNF/ICPF write-0-clear with set priority. TCLK and RTCCLK edge sources. Channel-2 input capture (TCPR2, ICPF, DMAC dreq/dack). MSTP/standby clears TSTR except RTC-clocked channels. Outputs tuni[2:0] and ticpi2 levels.",
+   "v1_rtc: 32.768 kHz tick input (tied 0 on the DC) -> 16.384 kHz RTCCLK -> 128 Hz -> R64CNT -> BCD sec/min/hr/wk/day/mon/yr with the Gregorian leap rule. ADJ (carry only with START=1), RESET, RTCEN, START. Continuous alarm comparator (AF = any ENB & all enabled fields match). PEF per PES. CF on seconds carry or a colliding R64CNT read. MSTP1 gates bus access (reads 0). Outputs ati/pri/cui levels.",
+   "Shared peripheral register bus per module (proposal): pb_req/pb_we/pb_size/pb_addr[7:0]/pb_wdata/pb_rdata, single-cycle on pce, size mismatch -> read 0 / write ignored; the bridge (bus spec) supplies the measured 4-5 Pcyc read and posted-write timing."
+  ],
+  "cross_unit_dependencies": [
+   "INTC: consumes the levels tuni0-2 (IPRA 15:12/11:8/7:4), ticpi2, ati/pri/cui (IPRA 3:0) and iti (IPRB 15:12), with the default order TMU0>TMU1>TMU2(TUNI2>TICPI2)>RTC(ATI>PRI>CUI)>SCI>SCIF>WDT>REF. Must produce wake (a request above IMASK, ignoring BL while asleep) and wake_stby (NMI, IRL only with the RTC osc running, on-chip except ITI). Owns the split of the measured 11-26 Icyc interrupt response.",
+   "Core pipeline: SLEEP (privileged, CO, 4 issue cycles) drains the pipeline, then raises sleep_req with SPC = SLEEP+2. The core must stop advancing, including its cycle/event counters (PMCTR stops in sleep on hardware), while cpu_run=0, then take the pending interrupt. Interrupt acceptance ignores SR.BL while asleep.",
+   "Peripheral bus bridge / BSC spec: CPU accesses to the P4 and area-7 register windows become pb_* strobes with the measured timing (rd8/16 16 Icyc, rd32 20, isolated 14/18, posted writes draining in 2/3 Pcyc, a read waits for a pending write) and a sample point about 1 Pcyc into the access. It carries the access size. Owns register mirrors and unassigned offsets.",
+   "Reset controller / exceptions spec: takes the WDT's rst_req_por and rst_req_man (EXPEVT 0x000/0x020, PC 0xA0000000). FRQCR, WTCNT and WTCSR survive WDT resets; STBCR/STBCR2 clear on power-on resets; the TMU initialises on power-on and manual resets; the RTC counters are never reset.",
+   "DMAC: TMU2 input-capture request dreq_ic/dack_ic for CHCR RS = 1100/1101/1110; dmac_run is off in deep sleep, standby and MSTP4.",
+   "SCI/SCIF specs: the MSTP0/MSTP3 module-stop inputs; standby initialises the SCI registers.",
+   "BSC: SDRAM self-refresh in deep sleep and standby; CKIO/CKOEN.",
+   "CCN/perf-counter spec: PMCTR in elapsed CPU-cycle mode must not advance while the CPU sleeps (measured).",
+   "Testbench / board: md=3'b101 (FRQCR 0x0E0A), osc_tick=0 (no RTC crystal), tclk_in=0. A direct boot must set STBCR=0x03 (RTC and SCI stopped), as the boot ROM leaves it. For test K the AICA RTC model is needed. The hw programs tc/tc2/tc3 can replay in simulation once KOS boots.",
+   "Provides to KOS boot: TMU0/TMU2 interrupts at priority 15 that wake the idle thread's SLEEP; WDT keyed writes for wdt_disable; the timer registers KOS's timer.c uses."
+  ],
+  "open_questions": [
+   "TMU register access while MSTP2=1 was not tried (it might hang the bus); proposed as reads 0 / writes ignored, like the RTC.",
+   "How the measured 11-26 Icyc interrupt response divides between P\u03c6->I\u03c6 synchronisation, the INTC decision (1 Icyc + 2 Bcyc) and the core's exception entry: for the INTC and core specs.",
+   "Wake from SLEEP with SR.BL=1 comes from the manual only; it was not tested, because a failure would hang the console.",
+   "Deep sleep, standby with its WDT settle, FRQCR/PLL changes, watchdog-mode resets, TCLK / input capture and the RTC oscillator (CF on a colliding read, PEF timing) are unmeasured: unsafe or impossible on the DC.",
+   "Whether writing 1 to WOVF sets it was not tried (IOVF is settable).",
+   "The RTC day-overflow rule for invalid days ('carry when day >= month length') is inferred from a single case (Feb 31 -> Mar 1).",
+   "Register mirroring inside each module's 512 KB window, and the behaviour of unassigned offsets: for the address-map spec.",
+   "The exact latency from a TSTR store to the first counted tick (at least 33 Icyc observed) and the bridge's sample point: for the bus spec.",
+   "TCPR2's power-on value is undefined; the console reads 0xFF9B8012."
+  ],
+  "hardware_status": "ok: three runs through hwrun.sh (tc.elf, tc2.elf, tc3.elf), each returned 0 and restored every register it changed; the console stayed responsive"
+ },
+ "spec:dmac": {
+  "spec_file": "rtl/v1/spec/dmac.md",
+  "summary": "The spec covers the whole SH7091 DMAC, cross-checked on the console in three runs:\n- **Registers.** All 17, at P4 0xFFA000xx and area 7 0x1FA000xx. Only 32-bit access works: narrower reads return 0 and narrower writes are ignored. The measured writable-bit masks are in the spec. TE, AE and NMIF clear only when 0 is written after the flag was read as 1. The reset values and the differences from the SH7750 are listed; bit 4 (COD) does not exist on the SH7091.\n- **Behaviour.** Enable conditions; auto, on-chip (SCI, SCIF, TMU2) and external requests; single and dual address; the five sizes; the address modes; DMATCR = 0 meaning 16M transfers; cycle steal and burst; fixed and round-robin priority; suspend and resume; termination.\n- **Interrupts.** DMTE0-3 (0x640-0x6A0) are a level equal to TE AND IE, independent of DE. DMAE (0x6C0) is a level equal to AE. Both use IPRC[11:8].\n- **Two classes of address error.** A misaligned address sets AE as soon as the channel is enabled, before anything moves. A wrong-space address (area 7, or no on-chip module there) is caught only after one transfer unit has completed with junk data.\n- **DDT mode, measured on the console.**\n  - DTR format and how channel 0 is loaded from it.\n  - The 4-deep request queues and channel-2 direct requests.\n  - In DDT mode a CPU write to SAR0, DAR0 or DMATCR0 loads 0 (the manual says \"masked\"); CHCR0 writes are ignored.\n  - Holly sends one DTR per 32-byte unit (32 B, burst, COUNT = 1) for maple DMA.\n  - CH2-DMA (SB_C2DST): the end state is CHCR2 = 0x12C3, and DMATCR2 counts the requests Holly actually made. 64 KB moves in 23.6 kIcyc.\n- **Bus.** Arbitration with refresh and the CPU. There is no cache coherency in either direction. The DMAC keeps running in sleep mode, which matters because the KOS idle thread executes SLEEP.\n- **Timing.** A calibration table: SDRAM to SDRAM costs 46.3 Icyc per unit in burst and 52.2 in cycle steal, whatever the unit size. Cycle steal alternates strictly with CPU uncached reads.\n- **Dreamcast and KOS.** How the BIOS, KOS and bare-metal code use the DMAC. A direct-boot testbench must preload DMAOR = 0x8201.\n- **Also covered:** a 13-row comparison with minicast (which has no DMA engine), a module and port proposal, a verification plan (including replaying dmac1/dmac2 on the RTL and diffing their output against the console logs), and 12 open questions.",
+  "registers": 17,
+  "hw_programs": [
+   {
+    "path": "tools/hw/dmac/dmac1.c",
+    "finding": "Run OK (log dmac1.elf.hwlog). State at entry: DMAOR 0x8201, IPRC 0x0300, CHCR0 0x853C3. Channel 0 during maple DMA: one DTR per 32-byte unit, COUNT = 1, burst/edge mode; CHCR0 reads 0x852C3 on reads and 0x853C3 on writes. 8/16-bit reads return 0 and writes are ignored. Write masks: CHCR1 0xFF0FFFF5, CHCR2/3 0xFF0AFFF5, DMATCR bits 23:0, DMAOR has no COD bit. In DDT mode a CPU write to SAR0/DAR0/DMATCR0 reads back 0 and CHCR0 is unchanged. Every transfer size and SM/DM mode behaves as the manual says; bits 31:29 of SAR/DAR are ignored but kept. DMATCR = 0 means 16M. Suspend and resume are exact. TE clears only on a 0 written after a read of 1, and TE = 1 blocks DE. DMTE is a level (TE AND IE), INTEVT 0x660; DMAE is 0x6C0. A misaligned address sets AE at enable; an area-7 source sets AE after one unit. Fixed priority lets the higher channel monopolise even in cycle steal; round robin alternates 1:1. Throughput: 46.3 Icyc per unit burst and 52.2 cycle steal, independent of size. No cache coherency in either direction. CH2 texture DMA: end state CHCR2 0x12C3, DMATCR2 counts Holly's requests, 64 KB in 23613 Icyc, SB_C2DSTAT advances, C2DLEN and C2DST go to 0."
+   },
+   {
+    "path": "tools/hw/dmac/dmac2.c",
+    "finding": "Run OK (log dmac2.elf.hwlog). In DDT mode, CPU writes to SAR0/DAR0/DMATCR0 load 0 and stay 0 until Holly's next DTR; CHCR0 is unaffected and maple keeps working. DMTE fires with TE = 1, IE = 1 and DE = 0. Address errors: an on-chip source with RS = 6 is legal; an area-7 source with RS = 4, or RAM / a missing module with RS = 6, transfers one unit of junk data and then sets AE; misalignment sets AE at enable time even in single-address request mode with no request. In cycle steal, CPU uncached reads alternate strictly with DMA units (66.4 Icyc per pair, against 22.3 for the read alone). The burst probes cannot separate a real stall from an instruction-cache miss."
+   },
+   {
+    "path": "tools/hw/dmac/dmac3.c",
+    "finding": "HUNG THE CONSOLE (04:10; no output, hwrun timeout; the next upload stalled until about 04:27, then the console answered again). It made cache-resident CPU accesses during a 2048 x 32-byte burst: P4 register reads/writes, RAM, a Holly register, or a DE = 0 write. Which access hangs is unknown. The file is marked DO NOT RUN and is excluded from the default make."
+   }
+  ],
+  "rtl_modules": [
+   "v1_dmac (top): Bclk-enable domain on the core clock; peripheral-bus slave; masters toward the BSC and the peripheral bus; dmte[3:0] and dmae levels to the INTC; nmi_evt input",
+   "v1_dmac_regs: SAR/DAR/DMATCR(24-bit)/CHCR x4 plus DMAOR; 32-bit-only access; flag arming for TE/AE/NMIF; DDT write masking (SAR0/DAR0/DMATCR0 load 0, CHCR0 writes ignored); sequencer and DDT updates take priority over CPU writes",
+   "v1_dmac_req: per-channel request (auto, on-chip level with ack for SCI/SCIF TXI/RXI and TMU2 capture, DREQ level/edge, DDT queue pops); onchip_ack pulses so the modules can clear TDRE/RDRF",
+   "v1_dmac_arb: enable = DE & DME & ~TE & ~AE & ~NMIF & ~MSTP4; PR fixed orders plus round-robin rotation (idle restores 0>1>2>3); burst ownership hold",
+   "v1_dmac_xfer: unit FSM IDLE->ARB->RD->WR (dual) or SGL (single, DACK/TDACK+ID)->UPD; class-A alignment check at enable; class-B space check with AE after the unit; counters, TE, suspend at unit boundaries; routes 0x1Fxxxxxx to the peripheral bus, everything else to the BSC",
+   "v1_dmac_ddt: DTR latch and decode (CHCR0 encoding, DMATCR0 = COUNT, SAR0 or DAR0 = ADDRESS), ch0 request flag, 4-deep queues for ch1-3, DBREQ+TR direct ch2 requests, TR-only repeat, queue-clear and halt DTRs; BAVL/DBREQ handshake with the BSC; pin-level or transaction-level board interface"
+  ],
+  "cross_unit_dependencies": [
+   "BSC: provides the external bus master port (request, grant, lock, unit transactions RD/WR/single with DACK/TDACK/ID, 32-byte unit buffer, beat handshakes, area-7 error). Its SDRAM model must reproduce the measured totals: 23.1 Bcyc/unit burst, 26.1 cycle steal, 5.8 Bcyc per 32-byte single-address unit. Also DBREQ/BAVL data-bus release for DTR cycles, WCR1.DMAIW idle cycles, and arbitration priority refresh > DMAC > CPU (cycle-steal alternation with the CPU is measured)",
+   "Peripheral bus / P4 bridge: DMAC register slave (32-bit only) plus a DMAC-as-master port for on-chip legs, with a pm_dmac attribute and pm_err for missing modules; CPU P4 access latency",
+   "INTC: level inputs DMTE0-3 (INTEVT 0x640/0x660/0x680/0x6A0) and DMAE (0x6C0) at IPRC[11:8], internal order DMTE0 > ... > DMAE; nmi_evt output sets DMAOR.NMIF; must wake the CPU from SLEEP while the DMAC runs",
+   "SCI/SCIF/TMU: request levels (SCI TDRE/RDRF, SCIF TDFE and RDF/DR, TMU2 input capture) and flag clearing on DMAC accesses (ack or bus attribute)",
+   "CPG/power: STBCR.MSTP4 module stop, deep sleep and standby gate the DMAC (standby clears TE); sleep does not",
+   "Core (v1): no direct port; external fetches and data accesses stall while the DMAC owns the bus (through the BSC); SLEEP must not stop the DMAC",
+   "Caches: no snooping; OCBWB/OCBP/OCBI coherency is software's job",
+   "Board/Holly model: DDT master (ch0 DTRs of 32 B, MD 01, COUNT 1 per unit for maple/G1/G2/PVR-DMA/sort; ch2 direct requests, one per 32 bytes of SB_C2DLEN, at most 4 outstanding); SB_C2DSTAT/C2DLEN/C2DST/ISTNRM bit 19 semantics as measured; a direct boot must preload DMAOR = 0x00008201"
+  ],
+  "open_questions": [
+   "Which CPU access during a DMAC burst hangs the SH7091 (dmac3 hung the console), and whether cache-resident code keeps executing during a burst. A follow-up must test one access per run with a human ready to reset the console.",
+   "Preemption of a burst-mode channel by a higher-priority request (the manual says yes) is unmeasured.",
+   "Flag-arming details: does any write disarm, or only a write of that register? What if TE sets again between the read and the write?",
+   "Holly-side DDT timing: per-unit ch2 request spacing (5.8 Bcyc per unit measured including the BSC), the effect of SB_C2DMAXL/C2DPRYC, and the ch0 DTR contents for G1/G2/PVR-DMA/sort-DMA (only maple was measured).",
+   "CH2-DMA with DMATCR2 < C2DLEN/32 (Holly keeps requesting into a finished channel) was deliberately not run.",
+   "SCI TX DMA in burst mode (used by KOS, prohibited by the manual): behaviour unknown.",
+   "NMIF was not exercised; the Dreamcast NMI wiring belongs to the INTC/board specs.",
+   "Class-B error junk data (measured 0x04040404, or the last CHCR write value) is undefined; the error on an on-chip address in single-address mode was not triggered.",
+   "Behaviour of prohibited RS/SM/DM/TS codes when DE is set.",
+   "How the ~90 Icyc start overhead splits between the P4 register access and the DMAC start latency.",
+   "Carry into SAR/DAR bits 31:29, and the reserved area-7 range 0x1C000000-0x1EFFFFFF as a DMA address (untested).",
+   "The DDT TR-only freeze with ch0 TE = 1 (note 17) and switching DMAOR.DDT during a transfer (note 19) are not modelled beyond keeping state."
+  ],
+  "hardware_status": "Used, 3 runs through hwrun.sh. dmac1 and dmac2 completed cleanly. dmac3 hung the console at about 04:10: hwrun timed out after 300 s and the next agent's upload stalled until about 04:27, after which uploads worked again. It is not known whether someone reset the console. dmac3.c is marked DO NOT RUN and excluded from the default build. I sent the user a push notification during the outage saying the console needed a manual reset; that turned out unnecessary or already handled. The console is responding now."
+ },
+ "spec:board": {
+  "spec_file": "rtl/v1/spec/board.md",
+  "summary": "The spec describes the Dreamcast board that the testbench models as C++ behind the SH7091 pins, and how to boot KOS on it from RAM with syscalls.bin standing in for the BIOS. It sits on top of the external bus port already defined in bsc-memmap.md \u00a78.3 and does not redefine it. What it covers:\n- **Pins.** IRL, NMI, the mode straps, port A (cable type), the SCIF line, and the DDT pins for DMA.\n- **Holly registers and behaviour:**\n  - the system-bus registers;\n  - the interrupt controller, including how the three masked levels become one 4-bit IRL code;\n  - the video sync generator: vblank and hblank interrupts with measured timing;\n  - the PVR register block and texture memory (32-bit and 64-bit paths);\n  - the TA FIFO;\n  - maple DMA: the command-list format, device responses (no device, or a real controller), per-frame timing;\n  - G1: boot ROM, flash with its command set, a no-disc GD-ROM drive, the G1 protection status;\n  - G2: AICA registers, the RTC, wave RAM, the G2 FIFO status;\n  - the expansion areas and system reset;\n  - a testbench-only exit/putc port in area 6, which the real board does not decode.\n- **Direct boot.** What is in syscalls.bin: the syscall vectors and the RAM variables they use. What its syscalls do to the board, found by running them on the reference ISS. The start state for a program at 0x8C010000, and the chip and Holly register state the BIOS leaves (measured). A step-by-step walk through KOS init, listing what each step touches, what it waits on, and what it costs in cycles.\n- **Boot targets.** Six KOS programs at three init levels, with a fast-serial variant of each (tools/boot/hello), and the minimal board features each level needs.\n- Also: where minicast differs, a proposed C++ layout for the board, a verification plan, and 11 open questions.",
+  "registers": 150,
+  "hw_programs": [
+   {
+    "path": "tools/hw/board/boardregs.c",
+    "finding": "Register dumps taken before KOS (the state BIOS + dcload leave) and after KOS default init, output in boardregs.out:\n- Holly: SBREV 0x10 (minicast says 0x0B), G2ID 0x12, G1SYSM 0 (minicast 1), G1 protection status 3, RBSPLT 0x80000000. SB_FFST reads 0x0E when idle and stays there; minicast fakes a value that toggles.\n- Interrupt status bits are set even when every mask is 0. KOS masks: IML2NRM 0x1008, IML4NRM 0x7C000, IML4ERR 0x3000. INTEVT reads 0x3A0, so IML2 arrives on IRL 1101.\n- PVR ID 0x17FD11DB, REVISION 0x11. Maple: MDEN 1, MSYS 0xC3500000.\n- Chip: DMAOR 0x8201 (DDT mode on; KOS never writes it), CHCR0 0x000853C3, STBCR 3 (SCI and on-chip RTC stopped), ICR 0x8000.\n- Video timing (VGA): one frame = 3,328,311 \u00b1 30 CPU cycles, i.e. a 27.000 MHz pixel clock. vblank-in fires at line 520, vblank-out at line 21. SPG_STATUS bit 13 is 0 on lines 0-2.\n- Access costs in CPU cycles: SB register 18.5, PVR register 77, VRAM read 93 / write 24, GD register 106, boot ROM 205, flash 90 / 173, AICA 254.\n- Store-queue bursts cost 29 / 75 / 802 cycles to RAM / VRAM / AICA RAM.\n- After 8 AICA writes, SB_FFST goes 0x1F \u2192 0x0F at 552 cycles \u2192 0x0E at 894.\n- RAM mirrors 4 times. VRAM32 is not mirrored at +8 MB; the upper 32 MB of area 1 mirror the lower."
+   },
+   {
+    "path": "tools/hw/board/boardio.c",
+    "finding": "Output in boardio.out. The first build printed nothing because it had no stdout (no INIT_FS flag); that run is kept in boardio.run1.out.\n- KOS init took 396 ms. `thd_sleep(100)` saw 7 vblank IRQs.\n- The CPU cycle counter (PMCTR0) advanced only 29,066 cycles during that 100 ms sleep: the CPU clock stops in SLEEP.\n- Maple DMA per frame: empty port 205,273 cycles (1 ms time-out + 29 \u00b5s), controller DEVINFO 201,805, GETCOND 40,543. Costs add up across a list.\n- Maple responses are written in 32-byte blocks; an empty port gets a whole block of 0xFFFFFFFF. Full controller DEVINFO/GETCOND responses were captured.\n- The SH4 DMAC channel-0 addresses (SAR0/DAR0) advance by 32 per block with every maple DMA. So Holly's DMA runs through DMAC ch0 in DDT mode.\n- MDST clears in the same poll as the maple-end interrupt bit. The \"V-blank over\" bit 13 is set when a DMA spans a vblank.\n- GD-ROM, raw ATA: PACKET \u2192 DRQ in 363 cycles; INTRQ 1,885-2,645 cycles after the command; completion ~120-160 cycles after the last data read. REQ_STAT data captured.\n- ISTNRM bit 30 is set while GD INTRQ is pending.\n- hblank-in fires once per frame at line 0 (status 0x1000)."
+   },
+   {
+    "path": "tools/hw/board/gdprobe.cpp",
+    "finding": "Host tool, not a console program: runs syscalls.bin's own code on tb/sh4_iss.h against a stub board and logs every access.\n- `sysinfo_init` reads flash 0x1A056 (8 bytes) and 0x1A000 (5 bytes). The flash partition table is at 0x8C003FA0.\n- `gdrom_init` touches no hardware.\n- CMD_INIT runs inside `exec_server`: SB_GDST read, altstatus, PACKET, TEST_UNIT, then on CHECK a REQ_ERROR. INTRQ is polled through ISTEXT bit 0; the driver lock uses TAS.B.\n- With a no-disc drive, KOS gets unit attention (sense 6) on the first pass and \"no disc\" (sense 2) on the second, then ERR_NO_DISC.\n- With no drive (bus reads 0xFF), the driver soft-resets the drive and waits on BSY forever, so KOS waits out a 10 s timeout. A no-disc drive model is therefore required with INIT_CDROM."
+   },
+   {
+    "path": "tools/boot/hello/hello.c",
+    "finding": "Boot targets, built (make \u2192 hello{0,1,2}{,f}.elf/.bin):\n- level 0: INIT_FS_PTY, no interrupts;\n- level 1: interrupts, threads, vblank count;\n- level 2: INIT_DEFAULT;\n- the f variants run the SCIF at 1.5625 Mbaud.\n\nNot uploaded as such, to save runs. Their init paths ran on the console in boardregs (INIT_DEFAULT) and boardio (INIT_IRQ | INIT_FS_PTY, with the same vblank/thd_sleep check)."
+   }
+  ],
+  "rtl_modules": [
+   "tb/dc_board/DcBoard (C++): top of the board model. Keeps time in Icyc with an event queue; bclk() answers the xb_* beats and drives irl[3:0], port A and the UART; phase 1 lets Holly DMA reach RAM through a backdoor.",
+   "Sdram: 16 MB area-3 array with 4 mirrors, plus the backdoor Holly DMA uses in phase 1.",
+   "HollySb: the SB core registers (C2D, sort DMA, TFREM, LMMODE, FFST, SFRES, SBREV, RBSPLT).",
+   "HollyIntc: ISTNRM/ISTEXT/ISTERR, the nine IML masks and the DMA trigger masks \u2192 irl() = 1001/1011/1101/1111 (levels 6/4/2).",
+   "Spg: line/frame events at 27 or 13.5 MHz, vblank-in/out and hblank interrupts, SPG_STATUS computed from the counter.",
+   "PvrRegs + Vram: register storage with specials (ID, REVISION, SOFTRESET, STARTRENDER, TA_LIST_INIT/CONT), palette and fog storage, 8 MB VRAM with the 32/64-bit interleave (pvr_map32).",
+   "TaSink: the TA/YUV FIFOs and direct texture path in area 4. Logs packets and raises list-end interrupts; a renderer can be hooked on later.",
+   "Maple: walks the command list, per-frame timing (1 ms time-out for an empty port, controller latencies), 32-byte response blocks, devices: none or a controller.",
+   "G1: BootRom (dc_boot.bin or 0xFF), Flash (AMD command set, dc_flash.bin or blank), GdRom (ATA/SPI no-disc drive with measured delays, INTRQ \u2192 ISTEXT), G1Regs (GDAPRO, protection status = 3).",
+   "G2: AicaRegs (storage; 0x2C00 ARM reset/VREG; 0x2800 reads VER), AicaRtc (seconds since 1950, write enable), WaveRam 2 MB, G2Fifo (FFST 0x0E idle, drain model, RDY throttle), G2Dma x4.",
+   "PvrDma + HollyWriteFifo: PVR-DMA, and the area-1/palette write FIFO timing from bsc-memmap \u00a74.7.",
+   "PortA (cable type on bits 9:8, fixed inputs), UartRx (decodes SCIF TxD2 8N1 at 32\u00d7(SCBRR2+1) Pcyc per bit, or finds the bit time itself), SimCtrl (area 6: exit code, putc, time).",
+   "Loader: syscalls.bin, ELF/BIN, the exit stub at 0x8C00F800, the CPU start state, and the \u00a75.3 chip/Holly preload through the RTL reset backdoor.",
+   "Phase 2: DdtMaster, which drives DBREQ/TR/DTR and takes BAVL/TDACK (hm.txt Appendix H), so Holly DMA goes through DMAC ch0/ch2.",
+   "tb/soc_tb.cpp + tb/soc_tb_top.sv: the SoC top wired to DcBoard. Optional fast-forward while the core sleeps; speed options --fast-g2, --fast-vram, --spg-scale."
+  ],
+  "cross_unit_dependencies": [
+   "BSC (bsc-memmap.md): the board answers the xb_* beat port (RDY and read data); area decode per \u00a72.5; the direct-boot BSC state (BCR1/2, WCR1-3, MCR, RTCOR, PCTRA) must be preloaded; TAS.B must run as a bus-locked cycle; port A inputs carry the cable type on PDTRA bits 9:8.",
+   "INTC: IRL[3:0] is a level-encoded input from the board and changes only on Bcyc edges; the INTC does the 3-sample filter and SR.IMASK. INTEVT must come out as 0x320/0x360/0x3A0 for IRL 1001/1011/1101. An interrupt must wake the core from SLEEP (KOS's idle thread sleeps).",
+   "DMAC: phase 2 needs DDT mode (DMAOR 0x8201). Channel 0 takes DTR requests from Holly for maple/GD/G2/PVR DMA in 32-byte single-address transfers (measured: SAR0/DAR0 move); channel 2 uses direct mode for ch2-DMA. KOS never writes DMAOR, so the direct boot must preload it. Phase 1 uses a RAM backdoor instead.",
+   "SCIF: TxD2 is a pin output decoded by the board's UART; RxD2 is idle high and CTS2 is asserted; the board needs the bit time (from SCBRR2/SCSMR2, or finds it).",
+   "Core / caches / exceptions: syscalls.bin needs TAS.B on cacheable RAM, OCBWB, and an I-cache flush after KOS patches 0x8C001C20/0x8C0023FC. Any exception taken while VBR = 0x8C000000 (before KOS irq_init) should be flagged as a boot failure. SLEEP must actually sleep, with time still advancing (PMCTR stops, measured).",
+   "CPG / power-down / TMU: FRQCR 0x0E0A (I:B:P = 199.49952 : 99.75 : 49.87 MHz) and STBCR 3 in the direct-boot state. The TMU is needed for KOS timer_spin_sleep polling and its interrupts; an optional next-event hint would let the testbench fast-forward.",
+   "Core integration / testbench: a reset-time register backdoor so every unit can take the measured post-BIOS state (\u00a75.3); the CPU start state of \u00a75.2; exit through the area-6 sim-control port.",
+   "Provided to the other specs: the board model and its measured Holly-side latencies (these match bsc-memmap.md \u00a74.7), the direct-boot recipe, the boot targets in tools/boot/hello, the list of chip registers KOS touches at each init step (\u00a75.4), and the measured 'pre' values of the chip registers."
+  ],
+  "open_questions": [
+   "GD-ROM with no disc was not measured, because dcload's CD-R is in the drive and only a human can remove it. The initial sense (minicast says 6/0x29), the REQ_STAT bytes and the delays are assumed.",
+   "SPG_STATUS bits 11/12 (blank/hsync) are not fully pinned down. Interlaced and NTSC/PAL SPG timing were not measured; only VGA was.",
+   "32-bit G2 reads of 16-bit AICA registers sometimes return the value in both halves (after KOS init) and sometimes 0 in the upper half. Mechanism unknown.",
+   "What a real board returns from an empty modem/expansion slot and from area 2, and whether ISTERR bit 27 (G2 time-out) is raised. Not tested, since such reads could hang the bus.",
+   "The exact DDT DTR words Holly sends for each DMA type (phase 2), and whether DMAC channel-0 flags or interrupts appear after Holly DMA.",
+   "The exact condition for maple V-blank over (ISTNRM bit 13) is a guess: a DMA in flight at vblank-in.",
+   "The area-0 mirror at 0x02000000-0x03FFFFFF follows minicast's layout and was not measured.",
+   "SB_FFST bits 1-3 read 1 at idle on a console that has a Broadband Adapter fitted. Whether that comes from the BBA or holds on every board is not tested.",
+   "The 'pre' values are BIOS plus dcload, not pure BIOS: dcload changes QACR, PMCR, maple MDSTAR and the SCIF setup.",
+   "The meaning of G1SYSM for other regions and models is known only from KOS naming (this console reads 0).",
+   "The phase-1 RAM backdoor for Holly DMA has no bus contention and no DMAC ch0 register side effects. Programs that rely on those need phase 2."
+  ],
+  "hardware_status": "ok. Three runs through hwrun.sh. On run 2 the upload stalled for 24 attempts (about 9 minutes, while other agents' runs were queued) and the 25th went through. The console recovered by itself."
+ },
+ "spec:serial": {
+  "spec_file": "rtl/v1/spec/serial.md",
+  "summary": "Spec for the SH7091's two serial channels, both of which need RTL, backed by three hardware runs.\n- SCIF: 16-byte FIFOs, modem control and loopback. It is the Dreamcast serial port and the channel that carries KOS's console output in the boot test.\n- SCI: async, multiprocessor and clocked-synchronous modes, plus the smart card extension.\n\nThe spec covers:\n- every register (18 in all): address, size, reset values, readable and writable bits, and read/write side effects;\n- the baud-rate generator;\n- frame timing given as base-tick formulas;\n- the FIFO and flag set/clear rules, including a per-flag read-1 latch;\n- receive errors, break and DR;\n- modem control, loopback and pin multiplexing;\n- the 8 interrupt requests with their INTEVT codes and priority registers, and the 4 DMAC request lines;\n- module standby and resets;\n- Dreamcast wiring, and what the boot ROM, KOS, dcload and bare-metal code do with the channels;\n- where minicast differs, a proposed RTL decomposition with ports, a verification plan and open questions.\n\nFindings that change the model:\n- **Transmit trigger.** TDFE is set when the FIFO count is below the trigger (count < 8/4/2/1). The manual says \"at or below\", so it is off by one.\n- **Frame timing.** The baud-rate generator runs freely, never reset by writes. After a write to an idle transmitter, every event falls a fixed number of base ticks after the next tick:\n  - FIFO pop: 23 ticks;\n  - loopback receive push: 159 ticks;\n  - TEND: 166 ticks;\n  - back-to-back frames: exactly 16 ticks per bit apart;\n  - DR: 240 ticks after the last push.\n- **Loopback.** It taps the transmitter before the TxD2 pin multiplexer, so a break driven through the port register never reaches the receiver. SCSPTR2 reads the physical pins, about 2 Pcyc late.\n- **Empty receive FIFO.** A read returns a stale RAM byte and does not move the pointer.\n- **Access size.** A read at the wrong size returns 0, a write at the wrong size is ignored, and unused offsets read 0.\n- **SCI on the Dreamcast.** The boot ROM leaves STBCR = 0x03, so the SCI's clock is stopped and all its registers read 0. With the clock enabled they hold the manual's reset values. The SCI pins are the mode pins MD0 and MD7, so its serial timing could not be measured.\n- **Boot test.** syscalls.bin has no dcload magic at 0x8C004004, so KOS picks the SCIF as its console: 120192 baud (SCBRR2 = 12), about 16,640 Icyc per character.\n- **Changing the frame format mid-frame** (which the manual forbids) garbles data or wedges the receiver on silicon. The proposed RTL latches the format once per frame instead.",
+  "registers": 18,
+  "hw_programs": [
+   {
+    "path": "tools/hw/serial/scif_probe.c",
+    "finding": "Run 1, log run1.log.\n- KOS-set SCIF: SCSMR2 0000, SCBRR2 0C, SCSCR2 0030, SCFSR2 0060, SCFCR2 0040, SCSPTR2 0011 (pins), SCLSR2 0000.\n- SCI registers all read 0 because STBCR = 03.\n- Wrong-size and unused-offset reads return 0; the blocks do not repeat at higher addresses.\n- Readable-bit masks: SCSMR2 7B, SCSCR2 F8/FA, SCFCR2 FF.\n- SCSPTR2 shows pin levels from before the preceding write.\n- MSTP3 holds all SCIF state.\n- Access cost: P4 read about 17 Icyc, write about 9 Icyc.\n- Writing data does not clear TEND. TEND can only be cleared while a transmission is pending.\n- TDFE cannot be cleared below the trigger. The FIFO holds at most 16 bytes; writes are accepted with TE = 0.\n- DR is set about 15 bits after the last byte. Writing 0 without first reading 1 does not clear DR or other flags.\n- ORER blocks all reception until cleared.\n- Loopback taps the transmitter before the pin multiplexer.\n- An empty SCFRDR2 read returns a stale RAM byte.\n- With modem control in loopback, RTS goes high at 15 received bytes and flow control works.\n- Interrupts: TXI level, RXI taken before TXI, DR raises RXI, ORER raises BRI with REIE.\n- DMA channel 1: transmit keeps the FIFO at 8 bytes; receive transfers on RDF and then on DR."
+   },
+   {
+    "path": "tools/hw/serial/scif_probe2.c",
+    "finding": "Run 2, log run2.log.\n- SCI with MSTP0 cleared reads its reset values 00 FF 00 FF 84 00 00; SCSPTR1 reads 05 (MD0 and RxD pins high).\n- SCI write masks; while MSTP0 = 1 the SCI reads 0 and ignores writes, and clearing MSTP0 re-initialises it.\n- Wrong-size writes are ignored.\n- TDFE thresholds are count < TTRG for all four triggers; RDF is count >= RTRG; DR is set when 0 < count < RTRG.\n- Fine timing across 8 baud settings: pop at base tick +23, receive push at +159, TEND at +166 after the first free-running base tick.\n- Frame formats shift these times by 16 ticks per data or parity bit. Back-to-back frames are 160 ticks apart; DR comes 240 ticks after the last push.\n- Setting TE with data queued has the same latency as a write. Clearing TE aborts the frame in flight and keeps the FIFO.\n- Flipping O/E mid-frame never causes a parity error; flipping CHR mid-frame garbles data or wedges the receiver and transmitter."
+   },
+   {
+    "path": "tools/hw/serial/scif_probe3.c",
+    "finding": "Run 3, log run3.log.\n- SCI MPB reads 1 after RE = 1 with no frame received (unexplained).\n- A write while TFRST = 1 makes the transmit count read 1 briefly; the byte is then discarded and never sent.\n- SCFTDR2 reads 00; writes to SCFRDR2 are ignored.\n- The read-1 latch survives a write of 1, reads of other registers, and new set events.\n- A mid-frame PE flip produced a parity error once: SCFSR2 = 10E6 (parity-error count 1, ER, PER, RDF, byte stored). It could not be reproduced, so the framing-error, ERI and overrun-plus-error follow-ups were not observed."
+   }
+  ],
+  "rtl_modules": [
+   "v1_sci_brg: per-channel baud-rate generator. Free-running P\u03c6 prescaler (/1 /4 /16 /64), 8-bit N counter reloading from SCBRR, divide-by-2 giving base_tick (period 2*4^CKS*(N+1) Pcyc); external-clock edge detector for CKE1.",
+   "v1_scif_fifo #(W): 16xW RAM with 4-bit read/write pointers and a 5-bit count. The RAM is not cleared by reset, so an empty read returns RAM[rp]. Transmit uses W = 8; receive uses W = 10 (data, fer, per).",
+   "v1_scif_tx: transmit sequencer IDLE -> PRE (6 ticks) -> frame. Latches the format at the start bit, loads the shift register and pops at S+16/17, sends back-to-back frames, checks CTS, and aborts immediately when TE = 0.",
+   "v1_scif_rx: 2-flop input synchroniser plus loopback mux, 16x oversampling (detect at tick D, samples at D+8+16k), push at the stop sample, FER/PER, ORER and overrun-plus-FER rule, break state, 240-tick DR timer.",
+   "v1_scif_regs: SCSMR2/SCBRR2/SCSCR2/SCFCR2/SCSPTR2 latches, sticky flags with read-1 latches and per-flag clear conditions, level set conditions (TDFE: T < TTRG; RDF; TEND), PER/FER counters, masked read mux, access-size check, interrupt outputs (ERI/RXI/BRI/TXI), DMA requests (TDFE; RDF|DR) with reg_dma auto-clears, pin muxes.",
+   "v1_scif: top level. Runs on Iclk with pclk_en; POR/manual reset; MSTP3 freeze; P4 register slave port; pins TxD2/RxD2/RTS2/CTS2/SCK2; testbench taps tap_tx_valid/tap_tx_byte/counts; sim-only SIM_TICK_DIV option.",
+   "v1_sci: SCI with async, multiprocessor, clocked-synchronous and smart card (SMIF/SDIR/SINV/GM, error signal and retransmit, 372-tick etu) modes, SCTDR1/SCRDR1 double buffers, TDRE/RDRF/ORER/FER-ERS/PER/TEND/MPB/MPBT. MSTP0 holds it in reset (reads 0, writes ignored, SCSPTR1 kept). Outputs ERI/RXI/TXI/TEI and DMA requests (TDRE or TEND; RDRF).",
+   "Testbench: UART monitor on txd2_o (bit time from the start bit or SCSMR2/SCBRR2) cross-checked with tap_tx_byte; optional UART driver on rxd2_i; tb/v1_scif_tb, tb/v1_sci_tb and a tb/scif_model.h reference model."
+  ],
+  "cross_unit_dependencies": [
+   "CPG: pclk_en (P\u03c6 clock enable, 1 Icyc in 4 with FRQCR 0E0A), STBCR.MSTP0 (SCI) and MSTP3 (SCIF) module-stop inputs, and STBCR.PPU/PHZ for pin pull-ups and high impedance in standby.",
+   "P4 register bus / BSC / core integration: decodes 0xFFE00000 (SCI) and 0xFFE80000 (SCIF) and their area-7 aliases, passing a 6-bit offset and the access size. A wrong size reads 0 and a write is ignored (the module can also check this). Pclk-class latency is 16 Icyc per read and 8 per write; the bridge holds each access until pclk_en.",
+   "DMAC: SCIF provides level requests dreq_tx (TDFE, RS=1010) and dreq_rx (RDF|DR, RS=1011); SCI provides dreq_tx (TDRE, or TEND in smart card mode, RS=1000) and dreq_rx (RDRF, RS=1001). The DMAC must mark its data-register accesses (reg_dma) so the module applies auto-clears without the read-1/write-0 rule. Cycle-steal mode only. Measured on the DC: channel 1 works with P4 addresses 0xFFE8000C and 0xFFE80014.",
+   "INTC: SCIF levels ERI/RXI/BRI/TXI map to INTEVT 0x700/0x720/0x740/0x760 with priority IPRC[7:4], ordered ERI > RXI > BRI > TXI (RXI before TXI is measured). SCI levels ERI/RXI/TXI/TEI map to 0x4E0/0x500/0x520/0x540 with IPRB[7:4]. KOS/boot ROM state: IPRB = 0000, IPRC = 0300, so both channels are masked.",
+   "Reset controller: power-on and manual reset load the initial values; standby (SLEEP with STBY = 1) re-initialises the SCI and holds the SCIF.",
+   "Board/testbench: tie RxD2 = 1, CTS2 = 1, SCK2 (MRESET#) = 1; RTS2 reads 0; SCI SCK/RxD read 1. syscalls.bin has 0 at 0x8C004004 (no dcload magic), so KOS dbgio uses the SCIF at 120192 baud. The boot test must decode TxD2 or use tap_tx_byte, and should budget about 10-20 M Icyc of serial-bound time, or enable SIM_TICK_DIV.",
+   "Other specs: the direct-boot state need not set STBCR (the boot ROM's 0x03 is irrelevant to KOS)."
+  ],
+  "open_questions": [
+   "The 6-base-tick delay from idle to start bit is inferred from pop/push/TEND timing; the TxD2 edge was never observed directly. It is also unknown whether a byte written just after the end-of-stop decision waits the full delay. A TxD2-RxD2 loop plug would settle both.",
+   "After a write while TFRST = 1, SCFDR2.T reads 1 for up to about 500 Icyc; the proposal discards the write and keeps T at 0.",
+   "Mid-frame SCSMR2 changes garble data or wedge the receiver/transmitter on silicon. The RTL latches the format per frame, which differs only for software that breaks the manual's rules.",
+   "Receive errors are mostly unmeasured, because loopback cannot produce a break or a framing error: whether FER/PER in SCFSR2 describe the FIFO head or the last received byte, the ORER+FER rule, the break sequence and ERI. Only one parity-error event was observed.",
+   "The SCI MPB bit reads 1 after RE = 1 with no frame received. This is unexplained and not modelled.",
+   "SCI serial timing (async, sync, smart card) is unmeasured because its pins are mode pins MD0/MD7; the proposal reuses the SCIF sequencer constants.",
+   "DR is proposed as a level condition, but it is unmeasured whether DR sets when the count drops below RTRG after the idle timer has already expired.",
+   "Rejecting a false start bit (mid-start sample reads 1) is unmeasured.",
+   "SCIF register access while MSTP3 = 1 is unmeasured; proposed to read 0 and ignore writes, like the SCI.",
+   "On the TxD2 pin, TE = 1 is assumed to win over SPB2IO = 1, and the pin is assumed to keep driving in loopback. Neither is measured.",
+   "What the boot ROM does with the SCIF is unknown; only the post-KOS state was seen, which does not matter for a direct boot.",
+   "Whether SCK2 reaches the Dreamcast serial connector is unknown."
+  ],
+  "hardware_status": "ok: three runs through hwrun.sh (scif_probe, scif_probe2, scif_probe3), all exited 0. The console returned to dcload each time with the KOS SCIF settings restored. Run 2 initially got exit 3 (console busy) and was retried until the lock was free."
+ },
+ "spec:caches-sq": {
+  "spec_file": "rtl/v1/spec/caches-sq.md",
+  "summary": "Spec for the SH7091's caches and store queues, from the manual plus three hardware runs.\n\nCovered units: the 8 KB instruction cache (IC), the 16 KB operand cache (OC), OC RAM (ORA), the index modes (OIX / IIX), the memory-mapped cache arrays at 0xF0 / F1 / F4 / F5, the store queues (SQ0 / SQ1 with QACR0 / 1) and the cache instructions PREF / OCBI / OCBP / OCBWB / MOVCA.L.\n\nBehaviour specified:\n- Per-area and per-page cacheability, with a virtually indexed, physically tagged index / tag.\n- Copy-back and write-through reads and writes, filled critical quadword first, then wrap-around (order measured).\n- A line-fill buffer, a write-back buffer and a write-through buffer, and the rules for accesses during a fill.\n- Every cache-instruction case (hit clean, hit dirty, miss, P2, write-through) and its exception type.\n- Array reads, non-associative writes (write-back first) and associative writes.\n- Flash invalidate (OCI / ICI), OC RAM aliasing, SQ address generation and protection, IC fetch and uncached fetch.\n\nTiming is a cycle contract derived from the measurements:\n- Any access that needs the bus first freezes the pipeline for 2 cycles. v1's current \"OCBI / OCBP tag-write freeze\" is really this miss path; a cache op that hits costs 0.\n- A load miss freezes 14 or 15 cycles, set by the bus-clock phase (about 25 on a row miss).\n- During a fill, beat k can be loaded at unfreeze + 2 + 2k; a store to the filling line waits for the whole line.\n- Dirty write-backs take about 12 cycles each back to back and cost 0 when isolated. Uncached / write-through stores take about 10 cycles each, and a later read waits for them.\n- SQ bursts take about 12-13 cycles per 32 bytes. An IC miss costs +14 per line on straight code and +22 per line when branching.\n\nSurprising measured facts:\n- MOVCA.L on an absent line writes the target 8 bytes with 0 in the other longword. With a dirty victim the whole new line is zero except the target longword.\n- PREF to a P2 address is a blocking uncached read.\n- SQ1 uses QACR1 (minicast wrongly uses QACR0).\n- Reading the SQ area returns junk, and 0xFF001000 mirrors the CCN registers. There is no SQ read window.\n- OC RAM is two aliased 4 KB halves (minicast's linear 8 KB is wrong).\n- KOS's `pvr_send_to_ta` needs area 4 to be cacheable through P1: it allocates a line with MOVCA.L and pushes it to the TA with OCBP.\n\nThe spec also covers:\n- **Dreamcast usage:** the KOS CCR value 0x090D, flush / purge routines, SQ traffic at boot, the BIOS syscalls, and the direct-boot state.\n- **minicast deviations:** a full table.\n- **Measurement tables:** every test's cycles and events, for use as calibration vectors.\n- **Proposed modules:** `v1_icache`, `v1_ocache`, `v1_sq` and the shared `v1_biu` / `v1_ccn`, with ports and the changes needed in `v1_fetch` / `v1_core`.\n- **Verification plan:** a C++ cache reference model, a unit testbench, and replaying the hardware kernels on the RTL.\n- **Open questions.**",
+  "registers": 3,
+  "hw_programs": [
+   {
+    "path": "tools/hw/caches-sq/cachetest.c (+ kern.S; log run1.log)",
+    "finding": "Run 1, the full timing and functional survey.\n\nOC timing:\n- Load miss: +15.25 per miss in a dependent chain (critical word position does not matter), +24.9 on a row miss, +38.7 back to back with dirty victims.\n- Store miss: +2 when followed by independent work, 22 per line as a stream.\n- PREF miss: +2; a stream costs 14.2 per line. PREF to P2 is a blocking read (15.2).\n- OCBI / OCBP / OCBWB / MOVCA.L on an absent line: +2. On a clean or dirty hit: 0 (dirty OCBP / OCBWB back to back: 12.2).\n- Uncached / write-through store: +2, 10.1 per store back to back. Uncached load: 15.2.\n\nSQ timing: SQ0 only 22.2, alternating SQ0 / SQ1 13.2 per 32 bytes, PREF-PREF 12.1, PREF then store to the same SQ 18.2.\n\nIC timing: cold straight code +14.1 per line, one branch per line +22.1, uncached (P2) fetch 16 cycles per 32-bit word.\n\nFunctional:\n- OC RAM aliasing: two 4 KB halves selected by A13 (OIX = 0) or A25 (OIX = 1); cached lines use index bit 7 = 0.\n- OIX / IIX index functions confirmed.\n- SQ1 goes through QACR1; PREF address bits [4:2] are ignored.\n- QACR implements only bits [4:2].\n- CCR write takes 6 cycles with or without OCI / ICI.\n\nThe run 1 functional DIFF lines are artifacts: printing between steps let dcload's network code evict the test line. Run 2 redid them cleanly."
+   },
+   {
+    "path": "tools/hw/caches-sq/cachetest2.c (log run2.log)",
+    "finding": "Run 2, clean functional redo.\n- Array formats confirmed.\n- Associative writes match the P0, P1 and P2 aliases but not the bit-25 RAM mirror.\n- MOVCA.L on an absent line writes the target quadword as R0 plus 0; the other quadwords keep the victim's stale data. With a dirty victim the line is all zero except the target.\n- Stores during a fill merge correctly with the fill.\n- An IC associative write invalidates only a matching line.\n- SQ reads return 0 with no exception.\n- 0xFF001000-0xFF00103C mirrors the CCN registers, including CPU version 0x040205C1.\n- BSC refresh settings: RTCSR 0x94, RTCOR 0x5E.\n\nTiming: a miss sequence costs exactly 15n + 6 (chain) or 14n + 6 (isolated loads). The 14 vs 15 depends on the bus-clock phase. A store to a filling line waits for the whole line; loads can read beats as they arrive."
+   },
+   {
+    "path": "tools/hw/caches-sq/cachetest3.c (log run3.log)",
+    "finding": "Run 3.\n- MOVCA.L dirty-victim zeroing confirmed in 4 cases, including the zeros being written back to memory by OCBP.\n- MOVCA.L on a hit is a plain longword store.\n- A second load during a fill is served at +2 / +4 / +6 / +8 for beats 0-3. The wrap order is q2, q3, q0, q1 for a miss on word 4.\n- An isolated OCBP / OCBWB of a dirty line costs 0; the write-back buffer is about 12 cycles.\n- An OC fill waits behind an SQ burst.\n- An uncached store followed by a load costs 28.3 per pair: the read waits for the write buffer."
+   }
+  ],
+  "rtl_modules": [
+   "v1_icache: IC tag / data arrays (256 x 19-bit tag, 256 x 4 x 64-bit data), V as flip-flops (ICI and power-on flash clear), IIX indexing. Line fill critical-first with per-beat delivery to the fetch unit; a miss to another line waits for the running fill. Uncached fetch path (one 32-bit read per fetch word), IC array port for 0xF0 / F1 with the associative compare, and IC event outputs.",
+   "v1_ocache: OC tag / data arrays (512 x 19-bit tag, U and V in flip-flops, 512 x 4 x 64-bit data) serving the MA stage, with arrays read on the EX-to-MA edge.\n- Buffers: a line-fill buffer (per-quadword arrival bits, store-merge mask), a one-line write-back buffer and a 64-bit write-through buffer.\n- A 2-cycle miss sequencer; loads wait for the critical beat.\n- Handles cache instructions, the 0xF4 / F5 arrays with write-back-first, ORA RAM and OIX, and drives the OC events and the pipeline freeze.",
+   "v1_sq: two 32-byte store queues with busy flags. Handles SQ writes (32 / 64-bit), PREF bursts with the address from QACRn or the UTLB, the SQMD check, QACR0 / 1 (bits [4:2]), the freeze on a write to a busy SQ, and LINE_WR requests to the BIU.",
+   "v1_biu (shared with bsc-memmap.md): single-transaction arbiter for IC fills and uncached fetches, OC fills, write-backs, write-through stores, uncached reads and SQ bursts into v1_bsc. Keeps the Bclk phase. Ordering: the write-through buffer drains before any read, a write-back follows its fill, and a read waits for a burst in progress.",
+   "v1_ccn (shared with MMU / exceptions): CCN register block at 0xFF000000-3C with low-bit decode, so 0xFF001000 mirrors it. Holds CCR (outputs the OCI / ICI pulses) and optionally QACR.",
+   "v1_fetch change: the fetch completes only when if_ack is high; an outstanding uncached read survives a redirect.",
+   "v1_core change: the dm_* port becomes the ma_* OC port. Remove the OCBI / OCBP tag_wr freeze (the OC miss path produces it); keep the OCBWB port-collision rule and LDTLB's freeze. Give MOVCA.L / PREF / OCBx real OC opcodes and OR oc_frz / sq_frz into pfz."
+  ],
+  "cross_unit_dependencies": [
+   "MMU:\n- Needs from it: ITLB / UTLB translation in the same cycle for fetch and MA, the page C / WT bits, UTLB translation and protection for SQ PREF and SQ writes, and translation of the data field for IC / OC associative array writes (multiple-hit exceptions).\n- MMUCR.AT and MMUCR.SQMD feed this unit.\n- The OC RAM window bypasses translation. LDTLB's 2-cycle freeze stays with the MMU.",
+   "BSC / bsc-memmap.md: shares v1_biu and the breq_t request port (SZ_LINE carries the critical-beat address; beats return in wrap order). Needs from it: the bclk_en phase (gives the 14 / 15), SDRAM row / bank timing (row miss about +10), the +6 first-access constant, refresh, and the MPX timing for area 0 / 1 fills. Its \u00a74.7 lists a write-miss latency of 25 and OCBP-clean = 2, which differ from this spec's +2 / 0; to reconcile.",
+   "Exceptions / INTC: this unit reports the access type (read or write; OCBI / MOVCA.L are write type, OCBP / OCBWB read type), the PREF and SQ special cases, the address errors for user access to P4, the SQMD error and MOVCA.L alignment. EXPEVT / TEA / PTEH updates belong there. No interrupts come from the caches.",
+   "Performance counters (PMCR / PMCTR owner): this unit provides the event pulses and levels 0x01-0x0F, 0x21, 0x22, 0x24 and 0x25, with the measured semantics in \u00a73.11. 0x25 also counts P4-register-read freezes.",
+   "Core integration (v1_core / v1_fetch): the whole-pipeline freeze (pfz) is driven by the OC / SQ, the fetch gains an if_ack handshake, and the MA request port carries op, size and the MMU result. make v1 must preload the scratch lines valid and clean so the sweep's OCBI / OCBP loops reach the measured steady state.",
+   "Board / Holly: area 4 (TA FIFO) must accept 32-byte cache write-back bursts (KOS does MOVCA.L to 0x90000000 then OCBP) as well as SQ bursts. Cached reads of areas 0 and 1 go through the MPX. The RAM mirrors at 0x0C-0x0F are distinct cache tags.",
+   "DMAC: no coherency by design (dmac.md \u00a73.10). DMA bypasses the caches and software keeps them coherent.",
+   "CCN block shared with the MMU and exception specs (MMUCR, PTEH / L / A, TTB, TEA, TRA, EXPEVT, INTEVT, CPU version 0x040205C1 at 0xFF000030)."
+  ],
+  "open_questions": [
+   "The +6-cycle one-time cost at the start of each miss sequence, and the exact split of the 14 / 15-cycle load-miss latency between the CPU side and the BSC side (for the BSC spec).",
+   "Why a dirty victim makes MOVCA.L zero the whole line. The rule is measured 4 times; the mechanism is inferred.",
+   "PREF to P4 outside the SQ window, PREF with OCE = 0, PREF whose translation fails with the MMU on, and whether PREF to P2 reads 4 bytes or a whole burst.",
+   "OC RAM in user mode or with the MMU on; access to 0x7C000000-0x7FFFFFFF with ORA = 0; ORA = 1 with OCE = 0; instruction fetch from the OC RAM window. All untested because of hang risk.",
+   "The OCBWB / OCBP one-cycle port hold (sweep) versus the manual's Figure 8.2 MA patterns (OCBI 2, OCBP / OCBWB 5, MOVCA.L 7).",
+   "Whether a read to a line waiting in the write-back buffer waits for the write-back or is served from the buffer. Proposal: wait.",
+   "IC versus OC bus priority when both miss, and whether an IC miss waits behind an OC write-back or SQ burst.",
+   "SQ writes of byte / word size, and the SQ-write protection semantics with the MMU on (\"SQ contents corrupted\").",
+   "User-mode SQ access with SQMD = 0 / 1, and cache ops on user addresses. Not measured: KOS runs privileged.",
+   "Timing of array accesses from P1 versus P2, and array accesses during a fill or write-back.",
+   "The disagreement with bsc-memmap.md \u00a74.7 (write-miss latency 25, OCBP-clean 2) versus the measured +2 / 0 here.",
+   "The exact cycle at which a store miss claims and releases the line-fill buffer (\u00b11 cycle), to be pinned by RTL runs of the stst / ststream / stldgap vectors."
+  ],
+  "hardware_status": "ok. Three runs through hwrun.sh, one at a time (the lock was busy once, so the retry waited). All three returned 0 and the console never hung."
+ },
+ "spec:exceptions-intc": {
+  "spec_file": "rtl/v1/spec/exceptions-intc.md",
+  "summary": "The spec covers the SH7091's exception architecture: every reset type and general exception, with its code, vector, priority, SPC rule and extra register writes (TRA, TEA). It also covers the CCN exception registers TRA, EXPEVT and INTEVT, and the exception roles of SR, SSR, SPC, SGR, VBR and DBR. It specifies the INTC: ICR, IPRA-C, NMI and IRL conditioning, the 25 on-chip sources with their INTEVT codes, IPR fields and default order, and how requests are resolved and accepted. It also gives the core side of SLEEP, and the CPU register values after power-on, manual and BL=1 resets.\n\nThree console runs checked the open points (all in tools/hw/exceptions-intc/, results_run1-3.txt). Findings:\n- Exceptions are fully precise. A younger paired instruction leaves no trace: its GPR, T, FCMP T, FADD and FRCHG results were all cancelled. MAC.x rolls back Rn when its second access faults. MAC accesses @Rn before @Rm.\n- Any exception in a delay slot gives SPC = the branch, including data address errors and FPU exceptions.\n- BSR, JSR and BSRF write PR even when their slot faults, which contradicts manual 5.6.4.\n- 0x0000 executes as a NOP, inside and outside a slot. FFFD with FD=1 raises 0x180.\n- PREF and OCBI to P1 in user mode raise address errors (0x0E0 and 0x100). OCBx, PREF and TAS never check alignment.\n- The FPU V and Z traps depend on the operands and set cause and flag. O, U and I traps are unconditional.\n- At equal IPR level TMU1 was taken before WDT, the reverse of minicast's order. Interrupts are taken when level > IMASK. IRL levels 2, 4 and 6 give INTEVT 0x3A0, 0x360 and 0x320 on the DC.\n- Clearing BL takes a pending interrupt immediately. Lowering IMASK takes it 0 or 6-8 cycles later, depending on phase. A write enabling a source (IPRA, TCR1.UNIE) takes 10-21 instructions.\n- Exception entry costs: 5 cycles after a decode-time fault, 8 after the issue of TRAPA, a data address error or an FPU trap, and 6 for an interrupt. This fits a single commit point at the end of MA and a 4-cycle entry sequence, which also reproduces TRAPA's 7 issue cycles.\n- SLEEP gives SPC = SLEEP+2, and PMCTR stops while asleep.\n\nThe proposed RTL has five parts: a v1_exc unit, a v1_intc peripheral, and changes to v1_core, v1_fetch and v1_fpu. Fault tags ride each uop from fetch, D and EX to a commit point at the end of MA, which kills everything younger. Interrupts are accepted in D, with BL gating in the CPU and the IMASK compare in the INTC. The spec also lists minicast's deviations and a verification plan.",
+  "registers": 17,
+  "hw_programs": [
+   {
+    "path": "tools/hw/exceptions-intc/excint.c (+excint_asm.S; results_run1.txt)",
+    "finding": "Register write masks: EXPEVT/INTEVT 0xFFF, TRA 0x3FC, ICR 0xC381 (bit 0 writable, undocumented), IPRB 0xFFF0, SR 0x700083F3. IPRD 0xFFD00010 reads 0. STBCR 03, ICR 8000.\nEvery code, SPC and entry SR as the manual says, except the corrections below:\n- 0x0000 is a NOP in and out of a slot.\n- SPC for a data address error or FPU exception in a slot = the branch.\n- BSR/JSR PR is written even though the slot faulted.\n- PREF/OCBI to P1 in user mode fault. OCBx, PREF and TAS never check alignment.\n- V/Z FPU traps are operand-dependent.\nThe RTE slot sees the new RB and T. TMU1 is taken before WDT at equal level; level > IMASK is required.\nEntry costs: illegal and FD 8, TRAPA, DAE and FPE 11 (PMCTR deltas; back-to-back reads 3).\nSLEEP: SPC = SLEEP+2 and PMCTR frozen. An IMASK unmask was taken after 7-8 instructions, a BL clear after 0."
+   },
+   {
+    "path": "tools/hw/exceptions-intc/excint2.c (+excint2_asm.S; results_run2.txt)",
+    "finding": "- MAC.L/W whose second access (@Rm) faults: TEA = Rm, and Rn's increment is rolled back.\n- A faulting load's paired follower is cancelled: ADD, SETT T, FCMP T, FADD and FRCHG. An older paired ADD completes.\n- RTE alone costs 9 cycles, LDC SR 8.\n- Phase sweep: an IMASK 15->6 unmask is taken k in {0,6,7,8} instructions later; BL 1->0 is always k=0. An IPRA store takes k=10-21.\n- Interrupts were never taken at a delay slot.\n- With an interrupt and 0xFFFD at the same boundary, the interrupt is taken first when its request has arrived.\n- Holly IRL levels 2/4/6 give INTEVT 0x3A0/0x360/0x320. Level 2 is not taken at IMASK 2. KOS routes events to IML2 (0x1008) and IML4."
+   },
+   {
+    "path": "tools/hw/exceptions-intc/excint3.c (+excint3_asm.S; results_run3.txt)",
+    "finding": "- RTE or LDC SR clearing BL with an interrupt pending: taken at the target before its first instruction (SPC = target, 8/8).\n- RTE lowering IMASK: 9 cycles to the target, then taken 6 instructions later.\n- In some code layouts, the path from the target to the handler costs about 23-29 cycles more; suspected I-cache miss on the vector line (open question).\n- JMP to a target 4 instructions after the slot: 6 cycles. Run 2's 29-cycle JMP, whose target directly followed its slot, looks like a fetch artefact."
+   }
+  ],
+  "rtl_modules": [
+   "v1_exc (core, Iclk): collects fault tags (I/D/EX/MA candidates, oldest first), commit-point kill, drives the 4-cycle SQ_EXC entry sequence (writes SPC/SSR/SGR/SR/EXPEVT/INTEVT/TRA/TEA at EXC0 S, redirect to VBR+0x100/0x400/0x600, DBR, or 0xA0000000 in EXC3), BL=1 -> CPU reset request, P4 slave for TRA/EXPEVT/INTEVT",
+   "v1_intc (peripheral, Pclk/Bclk enables): ICR (NMIL pin, MAI, NMIB, NMIE, IRLM, bit0 storage), IPRA/IPRB(3:0=0)/IPRC, NMI edge latch, IRL 3-sample filter, fixed-order priority resolver over 25 on-chip sources + IRL + NMI, level>IMASK compare with a Pclk-synchronised delay; outputs irq_req/irq_code/nmi_req to the core and wake/wake_stby to v1_cpg",
+   "v1_core changes: uop fault fields; D-stage decode-fault logic (illegal, privileged in user mode, slot-illegal, FPU disable, 0xFFFD excluded, 0x0000 = NOP); EX address check (alignment, user-area, SQMD, access type incl. PREF/OCBI) that blocks same-cycle younger flag writes; commit at end of MA; interrupt acceptance at D (BL gated in the core, not between branch and slot, not mid-sequence); SLEEP -> sleep_req / cpu_run; MAC checks both addresses up front (Rn first)",
+   "v1_fetch changes: queue-entry tags ifault (odd PC, user fetch >= 0x80000000, ITLB) and slot (including a not-taken BT/S or BF/S); exception redirect with full flush",
+   "v1_fpu changes: kill of every op issued at or after the faulting cycle (F1/F2/FS, DR sequencer, divider, vector unit, MAC pipe, pending cause writes); restore the decoder FR/SZ from the architectural FPSCR; trap-at-issue decision (O/U/I from opcode+enable, V/Z from operand class)",
+   "v1_cpg (timers-clock spec): STBCR/STBCR2 storage and the sleep/deep-sleep/standby state machine, driven by sleep_req and wake"
+  ],
+  "cross_unit_dependencies": [
+   "timers-clock: provides TUNI0-2, TICPI2, ATI/PRI/CUI and ITI levels; v1_cpg owns STBCR/STBCR2 and the sleep FSM (this spec drives sleep_req and consumes cpu_run; the INTC supplies wake/wake_stby); the MSTPn module stops remove requests",
+   "serial: provides the SCI ERI/RXI/TXI/TEI and SCIF ERI/RXI/BRI/TXI levels (the SCI is module-stopped on the DC)",
+   "dmac: provides the DMTE0-3 and DMAE levels",
+   "bsc-memmap: provides REF RCMI/ROVI and GPIOI levels; the P4 register bus timing classes (INTC = Pclk class, 16 read / 8 write; CCN = Iclk class, 3) and the wrong-size access rule",
+   "board: Holly drives IRL3-0 with levels 6/4/2 as 1001/1011/1101 (confirmed here -> INTEVT 0x320/0x360/0x3A0); the NMI pin is tied high",
+   "MMU spec: supplies ITLB/UTLB miss, protection, initial-write and multi-hit faults and owns TEA/PTEH; this spec supplies the fault address and ordering. Requirement: report data TLB faults by the end of the faulting uop's EX, or the core needs a one-cycle undo of the EX-stage T/Q/M/S writes and the F1 FCMP T",
+   "UBC spec: supplies pre- and post-execution break requests; this spec uses BRCR.UBDE/DBR for the vector; the UBC is ignored while BL=1",
+   "core-integration: the uop_t fault fields, the SQ_EXC sequencer, slot tagging in fetch, and FPU kill ports; the tb halted condition becomes 'asleep and no wake source', which is unchanged for the timings2 harness",
+   "caches-sq: SQ access rules (SQMD) and the PREF/OCBI/MOVCA access types used by the address check"
+  ],
+  "open_questions": [
+   "Exact INTC/synchroniser structure giving the bimodal IMASK-unmask delay k in {0,6,7,8} (never 1-5); section 7.5 gives only an approximate Pclk-edge model",
+   "The 23-29 extra entry cycles in some code layouts (run 1 RTE chain, run 3): suspected I-cache miss on the vector line, not verified",
+   "Wake from SLEEP with SR.BL=1 is manual-only; not measured because a failure would hang the console",
+   "Which CPU registers the BL=1 exception reset initialises (FPSCR? banks?): manual wording only, and it cannot be measured without rebooting",
+   "The pairing class of 0x0000, and whether other codes near it are NOPs or illegal (proposal: only 0x0000 = NOP)",
+   "Late (MA-stage) TLB faults versus the EX-stage flag writes and FCMP's T: needs the MMU's detection timing",
+   "The meaning of ICR bit 0 (writable, undocumented); proposed as plain storage",
+   "Which multi-cycle instructions delay acceptance (the (S-1) term of Table 19.7): not measured"
+  ],
+  "hardware_status": "ok: three runs (excint, excint2, excint3), all completed with exit 0; the console was not hung"
+ },
+ "spec:mmu": {
+  "spec_file": "rtl/v1/spec/mmu.md",
+  "summary": "The spec covers the SH7091 MMU completely:\n- the six registers (PTEH, PTEL, PTEA, TTB, TEA, MMUCR) and the memory-mapped ITLB and UTLB arrays, with bit maps measured on the console;\n- how every access is classified and translated: P0, U0 and P3 against P1, P2 and P4, the store queues, area 7 reached through the TLB, and the OC-RAM window;\n- the match rule (four page sizes, ASID, SH, SV) and how the physical address is formed;\n- the order of the checks (address error, UTLB miss, protection, initial page write), with read or write type for every instruction;\n- the ITLB hardware refill, including its speculative behaviour and the LRUI tables;\n- the URC counting and wrap rules, LDTLB, TI, and associative array writes;\n- store queues with the MMU on;\n- every TLB and address-error exception: EXPEVT code, TEA and PTEH update, precision, and delay-slot rules;\n- timing: an ITLB refill costs 7 cycles; data translation costs nothing.\n\nIt also covers Dreamcast and KOS usage, a list of where minicast differs, a proposed RTL decomposition with ports and v1 pipeline integration, a verification plan, and the open questions.\n\nThree console runs found several things the manual does not say or contradicts:\n- The associative write clears the ITLB side only when AT = 1.\n- URC counts only translated data accesses that complete. It does not count PREF or ITLB refills. TAS.B counts 3.\n- An ITLB refill stores the fetch address as the VPN.\n- The fetch unit refills the ITLB for the next page speculatively, even for fetches the pipeline discards.\n- A TLB miss on TAS.B gives 0x040, not 0x060.\n- Address errors write TEA and PTEH even with AT = 0.\n- BSR and JSR still write PR when their delay slot faults.\n- A store-queue write that faults still writes the queue.\n- For loads, AT 0 \u2192 1 takes effect 3 instructions after the MMUCR write; 1 \u2192 0 takes effect immediately.",
+  "registers": 6,
+  "hw_programs": [
+   {
+    "path": "tools/hw/mmu/mmutest.c (+ probes.S, log run1.log)",
+    "finding": "Registers: PTEH=FFFFFCFF, PTEL=1FFFFDFF, PTEA=0000000F, TTB/TEA=32 bits; MMUCR fields all R/W, TI reads 0 and clears only V (all other entry fields kept). Arrays: ITLB entry = addr[9:8] only (KOS itlb.s's 0x10000 stride clears only entry 0); UTLB entry = addr[13:8]; V (and D) shared between address array and data array 1; ITLB DA1 has no D/WT/PR[0]. Associative writes update the UTLB; the ITLB V bit only when AT=1; URC unchanged. LDTLB copies PTEH/PTEL/PTEA fields to UTLB[URC] even when URC>URB; URC unchanged. URC: +1 per translated data access that completes, MAC.L/AND.B 2, TAS.B 3, 0 for PREF, faulting accesses, ITLB refills, P1/P2/P4, AT=0; next = (URC+1) mod 64, zeroed when it equals URB. LRUI tables confirmed on 13 steps and 7 forced values; a refill counts as a use; invalid entries not preferred. ITLB refill copies the fetch VA as the VPN, ASID/PPN/SZ/C/SH/SA/TC from the UTLB, PR = PR[1]; TEA/PTEH/URC untouched. Fetch refills the next page speculatively with no exception; a delay slot in an unmapped page gives 0x040 with TEA = slot address, SPC = branch. Data exceptions: codes/TEA/PTEH per manual, address error before miss, protection before initial write; TAS.B miss = 0x040; OCBI/MOVCA write type, OCBP/OCBWB read type, PREF never faults; address errors set TEA/PTEH with AT=0. Precision: the older paired instruction completes, younger ones (store, FADD) are cancelled, post-increment/pre-decrement and MAC.L increments rolled back; JSR still writes PR on a delay-slot fault. Page sizes, VPN/PPN low bits ignored, ASID/SH/SV, P3 and area-7 register alias through the TLB all as specified. SQ with MMU on: write-type check but the queue is written anyway; PREF read-type, D ignored, transfer inhibited on exception. ITLB refill 9 -> 16 cycles (same for UTLB index 63); UTLB adds 0 cycles (pointer chase 545 = 545). User mode: PR/D/SQMD/ITLB-PR/P1 checks as specified."
+   },
+   {
+    "path": "tools/hw/mmu/mmutest2.c (+ probes.S, probes2.S, log run2.log)",
+    "finding": "Speculative ITLB lookup reaches W+4 and W+8 past the word holding an RTS at a jump target, never W+12; the same with cold or warm IC; the speculative refill updates LRUI. PR is written by BSR and JSR when the delay slot takes a TLB miss, an address error or a slot-illegal (0x1A0). URC: OCBI, MOVCA.L and FMOV.S store +1 each; PREF 0 whether the line is cached or not. MMUCR AT 0->1: a load is translated only with >= 3 instructions between; a JSR to P0 with >= 1. AT 1->0: no exception even for the very next load. LDTLB and a UTLB address-array write are visible to the very next load. A store-queue store that takes a TLB miss still writes the queue: a later mapped PREF delivered its data."
+   },
+   {
+    "path": "tools/hw/mmu/mmutest3.c (+ probes.S, probes2.S, log run3.log)",
+    "finding": "Cycle and PMCR event counts separate the refill cost from a test artifact: an ITLB refill costs 7 cycles at a jump target (9->16) and for straight-line page crossing (13->20), 6 for a speculative refill (9->15), 2-4 for a speculative miss that also misses the UTLB. The 40-45-cycle outliers are one IC line fill (24 fill cycles, 40 freeze cycles) caused by each ITLB address-array write from cached P1 code. PREF of a translated P0 address fills the operand cache; an unmapped PREF does nothing. In the MMUCR AT 1->0 window (0-2 instructions) the load returns unrelated memory data without an exception; from 3 instructions it reads the physical word. A speculative fetch into a C=0 page costs a real memory read (RTS before a C=0 page: 20-32 cycles vs 9)."
+   }
+  ],
+  "rtl_modules": [
+   "v1_mmu_pkg.sv: types (utlb_e_t, itlb_e_t, mattr_t, mexc_e) and pure functions szmatch, pa_of, asid_ok, lrui_victim, lrui_use, urc_next, region_of",
+   "v1_utlb.sv: 64 entries in flops; one masked CAM compare port (one-hot hit vector, multi-hit flag, PPN/attribute mux); a read/write port for LDTLB, array writes (including the associative D/V write) and TI; power-on reset clears V",
+   "v1_itlb.sv: 4-entry CAM with LRUI victim/update logic; refill write (VPN = fetch VA); array read/write; associative V update only when AT=1",
+   "v1_mmu_regs.sv: PTEH/PTEL/PTEA/TTB/TEA/MMUCR with measured read masks; TI strobe; hardware update ports (TEA/PTEH.VPN capture, URC increment, LRUI update); reset MMUCR=0, TEA held on manual reset",
+   "v1_mmu.sv (top): EX-stage data check (region, alignment, privilege/SQMD, UTLB lookup, PR/D) producing PA[28:0] + attributes + exception code latched into MA; I-stage ITLB lookup on every fetch request (speculative ones included) plus a 7-cycle refill FSM that redirects cannot abort; F2/F3/F6/F7 array decode; URC on MA commit; exception capture; 0x140 multi-hit reset request; translate-only port for IC/OC associative writes; ic_refetch on ITLB array writes",
+   "Hooks in v1_fetch: ITLB lookup combinational on fpc in parallel with the IC index; hold during refill; exception-tagged queue entries raised only at issue and dropped silently on a redirect",
+   "Hooks in v1_core: dm_addr becomes the translated PA; a faulting micro-op cancels itself, all younger micro-ops/FPU ops and the earlier micro-ops of the same instruction; a per-micro-op 'architectural access' flag so that TAS.B counts 3 accesses, AND.B 2, TST.B 1 for URC and checks; MD taken before the RTE for instruction access, after it for data access"
+  ],
+  "cross_unit_dependencies": [
+   "core pipeline (v1_core/v1_fetch): supplies the EX effective address, size, read/write type, access kind (normal/cache-block/PREF/translate-only), MD with the RTE-slot rule, and ma_commit; receives PA/attributes/exception in the MA latch; must provide precise cancellation (older paired lane completes, younger cancelled, earlier micro-ops of the same instruction suppressed, FPU ops flushed) and look up the ITLB for every fetch request, including ones discarded by a same-cycle redirect (measured: W+8 is looked up, W+12 is not)",
+   "core (v1 TAS.B): v1 sequences TAS.B as 5 micro-ops that all write after step 0, but the hardware makes exactly 3 UTLB accesses (purge as a read type, read, write), so the core must mark which micro-ops are real accesses",
+   "exceptions-intc: consumes the MMU/address-error codes (0x040/0x060/0x080/0x0A0/0x0C0/0x0E0/0x100 to VBR+0x400 or +0x100) and the 0x140 multi-hit reset; tells the MMU when an exception is accepted so TEA/PTEH.VPN are captured; SPC = branch for delay-slot faults; measured: BSR/JSR still write PR when the delay slot faults (the manual says the write is inhibited); BL=1 means manual reset",
+   "caches (IC/OC): take PA[28:10] and C/WT (TLB C AND CCR.ICE/OCE) from the MMU; IC/OC associative address-array writes use the MMU's translate-only port (ITLB for the IC, UTLB for the OC; a miss is a no-op, a multi-hit resets); an ITLB array write forces one IC line refill (measured 24 fill / 40 freeze cycles); a speculative fetch into a C=0 page does a real bus read; a translated PREF fills the OC",
+   "caches-sq: with AT=1 an SQ store is checked by the UTLB as a write but always writes the queue even when it faults; PREF to the SQ is checked as a read and gives the burst PA (PPN with VA bits below the page size, [4:0]=0), with the transfer inhibited on an exception; QACR is used only with AT=0; user mode with SQMD=1 is an address error (0x100)",
+   "bsc-memmap: the MMU hands over a 29-bit PA and a region class; a translated PA in 0x1F000000-0x1FFFFFFF is the P4 control-register space (measured); 0x7C000000-0x7FFFFFFF is OC RAM when ORA=1; area 7 with AT=0 stays undefined",
+   "peripheral / register bus and CCN spec: the MMU registers at 0xFF000000/04/08/0C/10/34 (area-7 alias 0x1F0000xx) and the arrays at 0xF2/0xF3/0xF6/0xF7 are longword accesses with P4 bus timing; the 0xFF000000 page is shared with CCR, TRA, EXPEVT, INTEVT, QACR, PVR (0x040205C1) and PRR (0)",
+   "board / boot: a direct boot needs the power-on MMU state (MMUCR=0, all V=0); the BIOS code in syscalls.bin writes MMUCR=0 and CCR=0x929 and its vectors at 0x8C000100/400/600 dispatch on EXPEVT/INTEVT; KOS runs with the MMU off and writes MMUCR=4 at exit"
+  ],
+  "open_questions": [
+   "Multiple-hit detection (ITLB, UTLB, during a refill, in an associative write) is taken from the manual only; testing it would reset the console",
+   "Is 0x7C000000-0x7FFFFFFF translated when CCR.ORA=0 and AT=1? Not tried, because it might put a reserved area-7 cycle on the bus; the spec proposes to translate",
+   "Which exception, if any, does an instruction fetch from P4 raise ('access prohibited' in manual Figure 3.11)?",
+   "Does the ITLB refill's UTLB search compete with a data access in EX for the single CAM port (who waits)?",
+   "The ITLB array write -> IC refetch mechanism: is it a forced miss of the next fetch, and do UTLB/IC/OC array writes do the same?",
+   "The MMUCR AT 1->0 window returns unrelated data for 3 instructions; the RTL only models the exception side",
+   "PMCR events 0x07 (ITLB miss) and 0x03 (UTLB miss) counted 0 for hardware refills; their real meaning on the SH7091 is unknown",
+   "Data array 1 bit 9 (reserved) sometimes reads 1; the RTL returns 0",
+   "Do IC/OC associative address-array writes with AT=1 update LRUI or URC? The spec proposes no",
+   "The speculative fetch depth was measured only for a JSR to a routine starting with RTS; other branch shapes must follow from v1's fetch-queue rules",
+   "The ASID compare in user mode with SV=1 is taken from the manual, not measured",
+   "Does an exception taken with SR.BL=1 (which becomes a manual reset) still write TEA/PTEH?",
+   "Exact v1 cycle offsets for when an MMUCR AT write takes effect, and for the refill FSM's internal steps, must be calibrated by replaying probes2.S (p_mlat*, p_mjmp*) and the run-3 timing cases on the RTL"
+  ],
+  "hardware_status": "ok: 3 serialized runs through hwrun.sh (mmutest, mmutest2, mmutest3) all completed; each ended with exit 0, 0 unexpected exceptions and MMUCR restored to 0"
+ },
+ "spec:debug-ubc-hudi": {
+  "spec_file": "rtl/v1/spec/debug-ubc-hudi.md",
+  "summary": "Covers the UBC (BARA/BAMRA/BBRA/BASRA, BARB/BAMRB/BBRB/BASRB, BDRB/BDMRB, BRCR), the user-break exception, the H-UDI (SDIR, SDDR/SDDRH/SDDRL, TAP, INTEVT 0x600 interrupt, H-UDI reset), the undocumented performance counters (PMCR1/2 at 0xFF000084/88, PMCTR1/2 H/L at 0xFF100004-10, all 64 event codes), the CCN identification slots (PVR = 0x040205C1; CVR and PRR read 0) and the complete P4 register map, every register with its owner spec, reset values and value under KOS.\n\nMeasured decode rules of the control-register space:\n- CCN mirrors every 0x100 through 0xFF03FFFF.\n- PMCTR decodes only a[4:2] and ignores access size.\n- UBC addresses above 0xFF2000FF return stale bus data.\n- Every other hole reads 0.\n- Wrong-size reads return 0 and wrong-size writes are ignored.\n- The area-7 alias through the UTLB is the same register space.\n\nUBC behaviour, measured with 51 break cases:\n- The match function and SPC/cancellation rules for pre, post, delay-slot, address-only and data breaks.\n- The ASID is compared even with the MMU off.\n- Sequential mode sets only CMFB; SR.BL=1 masks the exception but still sets the flag; the DBR and VBR paths both work; break-to-handler latency is 10 Icyc.\n- Instruction compares appear to be fetch-side (settle 13 NOP / 11 ADD fillers); operand compares happen in EX.\n\nPerformance counters:\n- PMCR mask 0xC13F; both PMEN and PMST are needed to count; PMCLR works only when the counter was already stopped; PMCTR is read-only and holds when stopped.\n- Ratio mode adds 12 per event at I:B = 2:1.\n- Exact per-iteration counts for every event on about 36 loop snippets are recorded as verification vectors.\n\nAlso covered: Dreamcast/BIOS/KOS usage (DBR = 0x8C000010 null handler, the BIOS reset code reads PVR bit 7), the differences from minicast, a proposed RTL decomposition with ports, a verification plan and open questions.",
+  "registers": 21,
+  "hw_programs": [
+   {
+    "path": "tools/hw/debug-ubc-hudi/p4probe.c (+p4probe_s.s, output p4probe.out)",
+    "finding": "Dumped every P4 register under KOS. PVR 040205C1; CVR/PRR 0; SDIR FFFF; SDDR 5573A3AB and not writable. BDRB/BDMRB hold power-on garbage because KOS never writes them. 63 hole addresses read 0 at every size. CCN mirrors every 0x100 through +0x20000 and PMCTR repeats every 0x20; Pclk/Bclk blocks have no mirrors. Wrong-size reads return 0 and wrong-size writes are ignored (every block tested). UBC read-back masks: BAMR 0F, BBR 7F, BRCR C4C9. PMCR keeps 0xC13F; PMEN and PMST are both needed; CLR works only when stopped; PMCTR is read-only and holds when stopped; the carry into H works; ratio mode adds 12 per event."
+   },
+   {
+    "path": "tools/hw/debug-ubc-hudi/ubcbrk.c (+ubcbrk_s.s, output ubcbrk.out)",
+    "finding": "51 user-break cases through an asm DBR handler. SPC rules: pre-exec = the instruction; pre-exec on a delay slot = the branch; post-exec = next instruction or the branch target; address-only operand break = access+2 with the paired follower cancelled; data break = the access's issue group completes (access+4 or access+2). The ASID is compared with the MMU off. Instruction fetches match only as word reads. The full 32-bit virtual address is compared. SEQ sets only CMFB. A and B at the same SPC set only CMFA (the manual says both). BL=1 masks the break but sets the flag. The VBR path gives EXPEVT 0x1E0. Latency 10 Icyc. The UBC window above 0xFF2000FF returns stale bus data. Area 7 via the UTLB = the control registers. Exact counts for all event codes on 24 snippets; 0x16 = 221 interrupts in 1 s."
+   },
+   {
+    "path": "tools/hw/debug-ubc-hudi/ubcevt.c (+ubcevt_s.s, output ubcevt.out)",
+    "finding": "Settle: instruction breaks need 11 unpaired ADD fillers (13 NOPs in run 2); operand breaks need the load's EX at store-MA+1. So the instruction compare is fetch-side and the operand compare is in EX. Data-break position confirmed on 5 sequences. A taken BT/BF with disp 0 (skip one instruction) is not counted as a branch and costs no bubble. 0x13 counts issue groups (LDC GBR counts 1). 0x15 counts per issue group containing an FPU instruction (FADD+FMOV pair = 1). P4 stores count in 0x09 and 0x0D. PMCR start: reads 0,3,6,9 after enabling; stop takes effect immediately."
+   }
+  ],
+  "rtl_modules": [
+   "v1_ubc: the 11 UBC registers (BASRA/B reached through the CCN window); fetch-side instruction comparators (2 halfwords x 2 channels) with a delayed register copy; EX-side operand-address comparators (2 lanes x 2 channels); S-side channel-B data comparator; SEQ A-seen state; CMFA/CMFB; event pulses 0x19/0x1A; ubde/pcba/pcbb/dbeb outputs",
+   "v1_perfctr: PMCR1/2 (mask 0xC13F; PMCLR clears only when stopped before the write), two 48-bit read-only counters (H = cnt[47:32], L = cnt[31:0]), a 64-bit event-vector mux, ratio increment 24*Idiv/Bdiv (12 at FRQCR 0E0A), gated by cpu_clk_en (stops in sleep)",
+   "v1_hudi: SDIR read-only 0xFFFF; SDDR read-only parameter with SDDRH/SDDRL 16-bit views; hudi_irq and hudi_rst tied to 0; optional IEEE 1149.1 TAP behind a parameter",
+   "v1_ccn_id (or a case in the CCN register block): PVR = 0x040205C1 read-only; CVR 0x40, PRR 0x44 and other CCN holes read 0",
+   "v1_p4_regbus (shared with bsc-memmap's v1_amap_pkg): window select a[23:18]; CCN decode a[7:2] with a[17:8] ignored; PMCTR decode a[4:2], any size; UBC decode a[7:2] only when a[17:8]=0, otherwise the last_rdata bus keeper; full decode for Bclk/Pclk blocks; central size table (wrong size reads 0 / write dropped, except PMCTR, SDDR, WTCNT/WTCSR); access latency classes Iclk 3, Bclk 8/6, Pclk 16/8, TCNT 20"
+  ],
+  "cross_unit_dependencies": [
+   "fetch/core (v1_fetch, D stage): carry two UBC tag bits per queue entry; hold a delayed branch until its slot is queued when a pre-exec instruction break is armed; raise brk_pre (re-execution, SPC = instruction or the branch for a slot) and brk_post (completion, SPC = next or target); the fetch run-ahead depth must satisfy both the 0x06 fetch counts and the UBC settle vectors (open question)",
+   "core EX/MA/S: operand address, size, R/W and no-data flag per lane to UBC in EX; S-stage data to UBC for channel-B data breaks; kill the lane-1 partner for address-only operand breaks; cancel younger groups after S for data breaks",
+   "exceptions-intc: take brk_pre / brk_post / brk_data with the priorities of manual table 5.2 and the BL rules; report hit_a/hit_b (taken or BL-masked) back to the UBC; vector = UBDE ? DBR : VBR+0x100; EXPEVT 0x1E0; SGR <- R15; H-UDI interrupt source INTEVT 0x600, priority IPRC[3:0] (tied off); H-UDI reset source (tied off); event bits 0x16/0x17/0x18",
+   "mmu: provide PTEH.ASID to the UBC whether or not AT=1; UTLB-translated physical 0x1Fxxxxxx must route to the P4 register bus (measured); event bits 0x03/0x07",
+   "caches-sq / LSU: event bits 0x01 0x02 0x04 0x05 0x09 0x0B 0x0D 0x0E 0x0F 0x22 0x25; OC fill measured at 24 Icyc per line; operand freeze per access: OC miss ~25, uncached SDRAM read 15, CCN read 2, TMU read 17",
+   "IC/fetch: event bits 0x06 (IC accesses including discarded run-ahead fetches, +2 per miss), 0x08, 0x0A, 0x21 (24 per fill), 0x24 (~30.7 per miss)",
+   "core D: event bits 0x10/0x11 (branch set excluding BSR/BSRF/JSR/RTS and the disp-0 BT/BF skip form), 0x12, 0x13 (issue groups), 0x14, 0x15, 0x27 (PC-relative taken-branch bubbles only), 0x28, 0x29, 0x23; v1's cnt_cycles/cnt_par/cnt_frzreg/cnt_frzfpu become these bits",
+   "timers-clock (CPG): ratio_inc = 24*Idiv/Bdiv for PMCLK ratio mode; cpu_clk_en = 0 in sleep so the counters stop",
+   "bsc-memmap: shared P4 register-bus fabric, access-cost classes and the size rule; untranslated area-7 proposal (same registers as P4, not measured)",
+   "board/direct boot: DBR = 0x8C000010 (syscalls.bin null handler nop;nop;rte;nop); the BIOS reset path needs PVR bit 7 = 1; BIOS 16-bit writes to FFD00002/6/A/E must be no-ops (INTC holes)"
+  ],
+  "open_questions": [
+   "Untranslated area-7 access (P1/P2 0x9F/0xBF..., or P0/P3 with AT=0) was not probed because of hang risk; proposal is the same registers as P4.",
+   "Fetch run-ahead depth: the UBC settle vectors fit a 5-instruction run-ahead, while the 0x06 fetch counts fit v1's 4-instruction queue plus one discarded fetch per redirect. Under v1 as-is the ADD k=10 settle point is one fetch cycle off.",
+   "The manual says both CMF flags set when A and B break at the same SPC; the console set only CMFA (A post-exec on i, B pre-exec on i+1). The reverse arrangement was not tested.",
+   "Not exercised: reserved BAM (11x) and SZ encodings, quadword (FMOV.D) and byte data-lane compares, TAS.B / MAC / GBR read-modify-write double accesses, follower-lane accesses with operand/data breaks, UBC priority vs TRAPA/illegal/address-error, sequential breaks at distance 1.",
+   "Event 0x15 when an FPU instruction is the follower of a non-FPU leader; 0x13/0x15 on other multi-cycle instructions; codes 0x03 0x05 0x07 0x0B 0x17 0x18 not exercised; 0x0D for SQ/array accesses; RTE in 0x10/0x11; 0x21/0x22/0x24/0x25 on memories other than area-3 SDRAM.",
+   "PMCLK ratio increment at FRQCR settings other than 0E0A (proposed 24*Idiv/Bdiv); PMCR/PMCTR power-on values (only seen after dcload/KOS set them); exact PMCR-write-to-count alignment (calibration vector 0,3,6,9 given).",
+   "Whether SDDR is CPU-writable when TRST# is high (on the Dreamcast it is read-only).",
+   "What updates the stale-bus keeper behind the UBC window above 0xFF2000FF: load data fits the observations; store data and instruction fetch were not isolated.",
+   "The BT/BF disp-0 skip form (no branch count, no bubble): is it exactly disp=0, and does it exist for BT/S and BF/S? This belongs to the core/fetch spec."
+  ],
+  "hardware_status": "ok: 3 runs (p4probe, ubcbrk, ubcevt), serialized through hwrun.sh; no hang or crash; every changed register restored"
+ },
+ "spec:core-integration": {
+  "spec_file": "rtl/v1/spec/core-integration.md",
+  "summary": "The spec says how the caches, MMU, BSC, store queues, P4 peripherals, INTC, exceptions, SLEEP and reset attach to the v1 pipeline, and how to diff-test the whole chip against a system-level reference model.\n\n**Timing.** A cache hit stays a zero-wait, same-cycle answer. Every new mechanism sits off that path, so `make v1` keeps its 100 % on the sweep.\n\n**New ports.** The fetch port gets `if_ack` and a fault code. An I-miss simply starves D. A fetch fault travels with its queue entry and is raised only if that instruction reaches D. The MA port gets `dm_ack` and `dm_exc`.\n\n**Two holds.**\n- `mah` (new) covers P4 register reads, uncached accesses and misses. It freezes fetch, D, the sequencer, EX/MA/S and the FE pipe, but the FDIV recurrence keeps running (measured).\n- `pfz` (existing, from the sweep) covers the OCBI/OCBP/LDTLB tag write and the OCBWB collision. It stays unchanged and also stops the divider.\n\n**Exceptions.**\n- One mechanism covers them all: an exception micro-op (xop) that saves SSR/SPC/SGR/SR/EXPEVT/TEA at S.\n- Measured on silicon for every class, the handler's first instruction issues 8 cycles after the exception point `d`:\n  - `d` = the D cycle for illegal, FPU disable, FPU traps and interrupts;\n  - `d` = the MA cycle for data faults;\n  - `d` = D + 2 for TRAPA.\n- The kill uses an issue sequence number (ISN). The faulting instruction and everything younger die; older work, including an FDIV in flight, completes. The ISN also keys the commit log.\n\n**Rules the silicon confirmed or corrected.**\n- A fault in a delay slot saves SPC = the branch, but BSR/JSR's PR write is not undone, contrary to the manual.\n- MAC accesses @Rn first.\n- FPU traps are decided before execution, also when the operand arrives through the load bypass. The cause bits keep program order.\n- A killed FRCHG/FSCHG is undone.\n- Interrupts: BL takes effect at once. An IMASK change takes 7\u20139 cycles to reach acceptance. Interrupt entry is also 8 cycles.\n- SLEEP wakes with SPC = SLEEP + 2.\n- P4 access costs per block: 3, 8 (write 6), 16 (writes 8/12), TMU TCNT 20.\n\n**Other sections.** The spec also covers the performance counters (PMCR/PMCTR), the Dreamcast direct-boot state and the KOS boot path, and where minicast deviates. It proposes an RTL decomposition down to the changes inside v1, and a reference model `tb/sh4_sys.h` with check/commit precise semantics, functional caches, MMU and SQ, and injection of time-dependent values, interrupts, DMA writes and IC fills from the RTL's ISN-keyed commit log. It ends with the verification plan and the open questions.",
+  "registers": 17,
+  "hw_programs": [
+   {
+    "path": "tools/hw/core-integration/ci.elf (ci.c, ci_asm.S; log ci_run1.out)",
+    "finding": "Delay-slot faults:\n- A fault in the slot of BRA, not-taken BT/S, BSR, JSR or RTS saves SPC = the branch.\n- BSR/JSR still write PR (branch+4). The manual says this write is inhibited; the silicon does not inhibit it.\n- H'FFFD or TRAPA in a slot gives 1A0; an FPU instruction in a slot with FD=1 gives 820.\n\nException codes and registers:\n- TRAPA: TRA = imm<<2, SPC = next.\n- Address errors: R 0E0, W 100, and a quad FMOV at a 4-aligned (not 8-aligned) address gives 0E0.\n- A UTLB miss goes to VBR+0x400 with 040/060.\n- TEA = the faulting address and PTEH.VPN = TEA[31:10], for both address errors and UTLB misses.\n- SGR = R15 on every entry; the handler's SR has MD/RB/BL set and IMASK unchanged.\n\nPrecise exceptions:\n- A faulting lane-0 instruction kills its lane-1 partner; a faulting lane-1 instruction lets lane 0 complete.\n- FPU traps leave the destination unwritten. V and Z traps set both the cause and the flag bit; a trap on an exact FADD (EN.I) leaves both empty.\n- An older FDIV still completes after a younger FADD traps.\n\nTiming loops (15 + E cycles per iteration under v1's rules):\n- E = 8 for illegal, FPU disable and FPU traps (I and V).\n- E = 10 for address errors, UTLB misses and TRAPA.\n- An FDIV in flight does not delay the entry, and MMU on costs nothing for P1 accesses.\n\nP4 access costs per access:\n- CCN, UBC, PMCTR: 3. BSC, DMAC: 8. CPG, RTC, INTC, SCIF: 16. TMU TCNT: 20.\n- Cache/TLB arrays: ~5; IC data array: ~7; P2 RAM: 16.\n- Writes: PTEH 4, BARA 3, IPRA 8, TCOR1 12, SQ 1.\n- Reading area 7 through P0 (0x1F000024) behaves like cached memory (1 cycle per access).\n\nSLEEP: an interrupt that becomes acceptable wakes the core with SPC = SLEEP+2."
+   },
+   {
+    "path": "tools/hw/core-integration/ci2.elf (ci2.c, ci2_asm.S; log ci_run2.out)",
+    "finding": "Interrupt entry:\n- One TMU1 interrupt per iteration costs 29 cycles against 9 without it, so entry is also 8 cycles from the D cycle where the interrupt is accepted.\n- Clearing BL gets the interrupt at the next instruction.\n- Lowering IMASK gets the interrupt 7-9 cycles after the S-stage SR write (12 distinct warm cases; the spread fits clock phase).\n- No interrupt was ever taken between a branch and its delay slot.\n\nFPU trap on a bypassed operand: a V trap on an sNaN just loaded by the preceding FMOV costs the same (E=8) as one from the register file.\n\nA misaligned load costs E=10 as either lane 0 or lane 1 of an ADD pair.\n\nMAC.L order: MAC.L accesses @Rn first (TEA = Rn when both addresses are misaligned), and a fault in either access leaves both Rm and Rn unchanged.\n\nA faulting load paired with FRCHG or FSCHG leaves FPSCR unchanged.\n\nWith an inexact FDIV in flight and a younger FADD trapping on V, FPSCR ends with cause V only, flags V|I, and the quotient written."
+   },
+   {
+    "path": "tools/hw/core-integration/ci3.elf (ci3.c, ci3_asm.S; log ci_run3.out)",
+    "finding": "A P4 read costs +2 cycles and an uncached P2 read +15, whatever follows the load.\n- The penalty is the same whether the load is followed by independent NOPs, LDC SR (its D-only micro-ops), STC SR or a consumer of the loaded value.\n- So the data-access hold is a full issue freeze, including the D-stage sequencer.\n\nThe FDIV recurrence keeps running during the hold:\n- FDIV, P4 read, FADD using the quotient: 15 cycles, the same as with a cache-hit load.\n- The same with a P2 read: 24.1 cycles, between the divider-frozen (30) and divider-free (20) predictions.\n\nIsolated stores: an uncached store costs +3 (posted); a P4 BARA write costs +2."
+   }
+  ],
+  "rtl_modules": [
+   "sh7091_top: chip top. v1_core plus v1_imem, v1_lsu, v1_biu/v1_bsc, v1_p4bus, v1_ccn, v1_pmu, v1_intc and the peripheral blocks; Iclk with bclk_en/pclk_en; external bus, IRL/NMI, reset, debug backdoor and a commit-log port",
+   "v1_core changes, D stage: mode checks (privilege, slot-illegal, FD, fetch faults), interrupt acceptance, xop issue, ISN counter, SLEEP drain-and-sleep",
+   "v1_core changes, EX/MA/S: kill gating of T/Q/M/S, S writes and MAC capture; dm_ack/dm_exc port; mah hold joining pfz; data fault -> kill + xop at D; xop save at S with the CCN write port; MAC order swapped to @Rn first; err/halt removed",
+   "v1_exc (inside the core): exception/interrupt priority, xop sequencer (d -> S save at d+3 -> redirect at d+6 -> handler issue at d+8), kill_v/kill_isn broadcast, vector redirect, BL=1 -> manual reset, reset kinds",
+   "v1_fetch changes: if_ack/if_exc/if_md/if_cancel; per-entry fault code and delay-slot bit; odd-PC and user-mode poisoning; exception redirect input; halts on pfz, mah and sleep; fpc exported for SPC",
+   "v1_fpu changes: kill by ISN on every record, latch and unit; FRCHG/FSCHG undo; cz_ctr repair; FPU trap decision (opcode+enables at D, operand classes at F1 on bypassed operands) converted in place into the xop; trap writes cause/flags, not the destination; hold_pipe = pfz|mah, hold_div = pfz",
+   "v1_fdiv / fpu_vec_top: add a kill input; the divider recurrence ignores mah and its result pass waits for the FE pipe",
+   "v1_imem (interface only; internals in the mmu/caches specs): ITLB + IC + refill request behind the fetch port",
+   "v1_lsu (interface only; internals in the mmu/caches specs): UTLB, OC, OC RAM, SQ, write-through/write-back buffers, MA routing, dm_rmw write-permission check on the first RMW access",
+   "v1_p4bus: P4 register bridge; decode, size rule (wrong size reads 0 / ignores writes), per-block latency via bclk_en/pclk_en synchronizers calibrated to 3/8/16/20 (writes 3/6/8/12, PTEH 4)",
+   "v1_ccn exception write port: EXPEVT/INTEVT/TEA/PTEH.VPN/TRA written by the xop at S",
+   "v1_pmu: PMCR1/2 and 48-bit PMCTR1/2 (enable/start/clear, CPU-cycle and ratio modes, event mux fed by pipeline, cache and MMU event pulses)",
+   "tb/sh4_sys.h: system reference model. Sh4Iss split into check()/commit(); exception entry; MMU, functional IC/OC arrays, SQ, P4 register files, board; interrupt/volatile-read/DMA/IC-fill/LDTLB injection",
+   "commit-log checker (C++): consumes RETIRE/GPR/FR/MEMW/VOLRD/EXC/IRQ/DMAW/IFILL records keyed by ISN and compares them per instruction with sh4_sys, allowing late FPU writes"
+  ],
+  "cross_unit_dependencies": [
+   "Needs from mmu: an ITLB behind if_ack/if_exc (7-cycle refill on a UTLB hit, fault codes); a UTLB behind dm_ack/dm_exc decided in the MA cycle, with dm_rmw read+write permission checking; logs of LDTLB entry index and ITLB refills for the reference model",
+   "Needs from caches-sq: IC hit same-cycle / miss via if_ack; OC/OC-RAM hit in MA, miss via dm_ack; functional OCBI/OCBP/OCBWB/MOVCA/PREF/LDTLB when dm_kind reaches MA (timing stays v1's tfrz/oc_coll); SQ writes acked at once, SQ locked during a burst; IC line-fill events for the commit log",
+   "Needs from bsc-memmap: the BIU/write-buffer semantics behind dm_ack (posted store +3, loads wait for the buffer to drain, uncached read 16); the P4 per-block latencies (agree with this spec's measurements); the area-7-through-P0 routing rule",
+   "Needs from exceptions-intc: irq_req/irq_code/irq_nmi from an IMASK compare behind a synchronizer (calibrate to 7-9 Icyc after the S-stage SR write, BL applied in the core); the register files for EXPEVT/INTEVT/TRA with the xop write port; irq_ack",
+   "Needs from timers-clock (CPG/WDT): the manual/power-on reset request paths, including the core's reset_req when an exception is taken with BL=1; sleep/standby/deep-sleep clock control keyed by cpu_sleep and STBCR/STBCR2; bclk_en/pclk_en",
+   "Needs from debug-ubc-hudi: pre-execution break as a D-stage fault on q0, post-execution/data break as a completion-type event; DBR vectoring when BRCR.UBDE=1; PMCR events 0x19/0x1A",
+   "Needs from board: the direct-boot loader (syscalls.bin at 0x8C000000, program at 0x8C010000, reios_setup_state registers via the dbg backdoor), a device model answering the BSC port, and DMA-write reporting for the commit log",
+   "Provides to all: the core port contracts (fetch \u00a73.2, MA \u00a73.3, INTC \u00a73.7); the ISN kill and commit-log conventions; the exception-point/entry timing (d+8); the P4 bus bridge and its latency table; PMCR event sources; the rule that nothing new may add a cycle on the hit path",
+   "Provides to the reference-model owners: the check/commit and injection plan for tb/sh4_sys.h and the commit-log record format"
+  ],
+  "open_questions": [
+   "What mah freezes in the FPU besides the pipeline: the vector array, the multiplier stages and the double-precision sequencer are unmeasured. The divider hand-off after a 15-cycle hold fits the proposed model only to about \u00b11-2 cycles.",
+   "The PMCTR-bracketed time stamps of the LDC SR / RTE interrupt cases fit a model where D-only micro-ops keep counting during a P4 hold, but the loop measurements show a full freeze. Where a P4 read samples PMCTR is unknown.",
+   "An interrupt exactly at a delay-slot or RTE-slot boundary was never hit (manual rule adopted). Priority between an interrupt and a D-stage exception on the same instruction is unmeasured (proposal: interrupt first).",
+   "SLEEP wake-up latency and whether PMCTR counts while asleep (only cold-code data, about +30 cycles).",
+   "The exact INTC IMASK synchronizer (7-9 cycles, path- and phase-dependent) must be calibrated against the 12 warm cases and the exceptions-intc measurements.",
+   "PMCR events other than 0x14/0x23/0x28/0x29: exact semantics, reset value, ratio mode.",
+   "UBC pre/post-execution break stages, and the kill scope of a post-execution break in lane 0 with a lane-1 partner.",
+   "FPU trap conditions not measured: DN=0 E traps, FLOAT/FTRC/FCMP/FCNVSD/FSRRA-Z (taken from the manual).",
+   "Which exception, if any, a fetch from P4, the arrays, the SQ area or OC RAM raises.",
+   "Whether the six data-address-dependent OCBI + GBR-store sweep records come from an OC tag-write line comparator.",
+   "The exact area-7-through-P0/P3 rule (measured as cached with the OC on); owned by the memmap/caches specs."
+  ],
+  "hardware_status": "ok: 3 runs through hwrun.sh (ci.elf, ci2.elf, ci3.elf); each returned 0 and the console went back to dcload"
+ },
+ "critic": {
+  "gaps": [
+   {
+    "area": "reset controller (exceptions-intc, timers-clock, mmu, core-integration, debug-ubc-hudi, board)",
+    "issue": "No spec owns chip-level reset distribution. The reset kinds are: RESET-pin power-on; WDT power-on, which keeps FRQCR, WTCNT and WTCSR and clears STBCR/STBCR2; manual reset from pin or WDT; H-UDI power-on reset; TLB multiple-hit reset 0x140; BL=1 CPU reset; and SB_SFRES board reset. Each spec emits a request into an unspecified 'reset controller': timers-clock rst_req_por/man, exceptions-intc cpu_reset_req, mmu mhit_reset, debug hudi_rst. core-integration \u00a73.10 lists the kinds but defines no module, and no spec has a per-module reset table.",
+    "fix": "Add a v1_rstc section to core-integration.md (or exceptions-intc.md). It needs the request inputs, rst_pin / rst_por / rst_man / cpu_only outputs, and one table giving what each unit does under each reset kind. Build the table from the Appendix A columns plus the exceptions in timers-clock \u00a74.2 and \u00a73.1."
+   },
+   {
+    "area": "direct-boot preset of on-chip registers (board, bsc-memmap, timers-clock, dmac, caches-sq, debug-ubc-hudi, serial)",
+    "issue": "board.md \u00a75.3 says the post-BIOS module values are loaded 'through the RTL's reset backdoor': BSC, STBCR 0x03, DMAOR 0x8201, PMCR1, QACR, SCIF and UBC. v1's dbg_* backdoor covers only CPU registers, and no module spec defines a preset port. bsc-memmap \u00a75.4 leaves the choice open ('a reset option or backdoor writes').",
+    "fix": "Pick one mechanism and record it in board.md. Preferred: the testbench puts a small boot stub at physical 0 (the boot-ROM area) and lets the real reset vector 0xA0000000 run. The stub writes the \u00a75.3 values over the real P4 bus, sets SR/R15/VBR/GBR/DBR/PR/FPSCR, and jumps to 0x8C010000. This needs no module backdoors and exercises the real write paths. Alternative: a DIRECT_BOOT reset-value parameter in each module."
+   },
+   {
+    "area": "P4 bus: DMAC as a second master (dmac, serial, timers-clock, core-integration)",
+    "issue": "The DMAC's on-chip legs (dmac \u00a77.2 pm_* with pm_dmac, class-B pm_err) and the SCIF/SCI/TMU DMA auto-clears (serial reg_dma, timers-clock dack_ic) need DMAC-mastered accesses to 0x1Fxxxxxx registers. core-integration \u00a77.4 v1_p4bus has only the LSU as master, and neither arbitration nor the 'no module' error response is defined.",
+    "fix": "Extend v1_p4bus with a DMAC master port, CPU/DMAC arbitration, a dma attribute on the access, and a no-module (pm_err) response. Physical 0x1F decode for DMAC addresses follows debug-ubc-hudi \u00a72.2. Unify the attribute names: reg_dma / pm_dmac."
+   },
+   {
+    "area": "fetch unit behaviour (core-integration, caches-sq, mmu, debug-ubc-hudi)",
+    "issue": "Several specs change v1_fetch, and their fetch-side requirements have not been reconciled:\n- Run-ahead depth: the UBC settle vectors favour 5 instructions, while the PMCR 0x06 counts fit v1's 4 plus one discarded word. MMU R1 fetches W+8 but not W+12; core-integration allows up to PC+11.\n- A redirect must wait for an in-flight uncached fetch or ITLB refill (caches-sq \u00a77.1, mmu \u00a73.5). core-integration's if_cancel port lets fetch move on.\n- UBC wants a delayed branch held until its slot is queued while a pre-execution break is armed.\n- debug-ubc-hudi \u00a74.7.1 measured that a taken BT/BF with disp=0 (skip one instruction) costs no bubble and does not count as a branch. v1_fetch/v1_core have no such form, and core-integration does not mention it.",
+    "fix": "core-integration owns one consolidated v1_fetch change list. It calibrates the queue against the UBC settle vectors, the PMCR 0x06/0x0A counts, MMU R1/T1 and caches-sq's P2 two-reads-per-bra. It holds a new request until an outstanding uncached read or ITLB refill completes. It decides whether to model the BT/BF skip form after checking whether the timings2 sweep contains it."
+   },
+   {
+    "area": "undefined address regions (mmu, core-integration, debug-ubc-hudi, caches-sq)",
+    "issue": "Two behaviours have no owner:\n- Instruction fetch from P4, the arrays, the SQ window or the OC-RAM window: mmu Q3, core-integration Q9 and caches-sq \u00a72.5 leave it open.\n- Data accesses to reserved P4 0xE4000000-0xEFFFFFFF and 0xF8000000-0xFEFFFFFF: debug-ubc-hudi \u00a72.1 says 'not probed, left unimplemented', but no spec states what a read returns or whether a write is dropped.",
+    "fix": "core-integration states a [P] rule for both. Suggested: a privileged fetch at or above 0xE0000000 is poisoned as an instruction address error 0x0E0. A reserved-P4 data read returns 0 and a write is ignored, with Iclk-class timing. Mark both as unmeasured."
+   },
+   {
+    "area": "NMI to DMAC NMIF (exceptions-intc, dmac)",
+    "issue": "dmac \u00a73.7 needs an nmi_evt pulse from the INTC NMI edge detector to set DMAOR.NMIF. The exceptions-intc \u00a77.2 v1_intc port list has no such output.",
+    "fix": "Add nmi_evt to v1_intc. On the DC it is always 0 because the NMI pin is tied high."
+   },
+   {
+    "area": "reference-model composition (core-integration, board, caches-sq, mmu, timers-clock, serial, dmac)",
+    "issue": "Each spec proposes its own C++ reference: sh4_sys.h with a Sh4Board interface (core-integration), a DcBoard behind an Sh4Mem adapter (board \u00a79), sh4_cache.h, mmu_ref.h, sh4_timers.h, scif_model.h and dmac_ref.h. No spec defines how they compose, and the per-Icyc timer and SCIF models do not fit core-integration's instruction-step and VOLRD-injection scheme.",
+    "fix": "core-integration \u00a78 names each unit model's slot in Sh4Sys. The unit models are used only functionally at instruction granularity, with time-dependent reads injected from the RTL. board.md's DcBoard implements the Sh4Board interface."
+   },
+   {
+    "area": "sleep fast-forward (board, timers-clock)",
+    "issue": "board \u00a78 fast-forwards a sleeping core to 'the TMU's next event if the chip exposes a next-event hint'. timers-clock defines no such output.",
+    "fix": "Optional: v1_tmu exports the cycles until the next underflow of an enabled channel (tb-only port). Otherwise the board only fast-forwards to its own events."
+   },
+   {
+    "area": "AICA RTC rate (board, timers-clock)",
+    "issue": "board \u00a73.8.2 advances the AICA RTC every 199,499,520 Icyc. timers-clock measured 199,505,792 Icyc per AICA second (test K); the 31 ppm difference is the AICA crystal against the SH4 crystal.",
+    "fix": "The board uses the measured 199,505,792 Icyc per RTC second. The SPG keeps its own measured 27 MHz ratio."
+   }
+  ],
+  "conflicts": [
+   {
+    "areas": "exceptions-intc \u00a77.4 vs core-integration \u00a73.5.3 / \u00a76 (also debug-ubc-hudi \u00a74.3 latency)",
+    "issue": "The two specs disagree on exception entry timing and structure, and each says it was measured.\n- exceptions-intc: a 4-cycle SQ_EXC in D. Decode-time fault: handler issues at d+5. TRAPA, DAE and FPE: handler at issue+8, i.e. FPE = DAE = TRAPA = illegal+3 (PMCTR deltas 8 / 11 / 11 / 11). Interrupt: d+6.\n- core-integration: an xop through D/EX/MA/S. Handler at d+8 for every class, with d = D for illegal and FPE, d = D+2 for DAE and TRAPA (so FPE = illegal, DAE/TRAPA = illegal+2). Interrupt: a+8. Its loop numbers: FFFD 23.0, FPE 23.0, DAE/TRAPA 25.0.\n- debug-ubc-hudi's pre-break latency (10 Icyc including a literal load and a PMCTR read) fits d+5.\nThe gap between classes differs too (0 vs +3 for FPE), so a single constant offset cannot reconcile them.",
+    "resolution": "Reconcile before building v1_exc. Two independent PMCTR-bracket programs agree on d+5. core-integration's E values depend on an unvalidated v1 model of the handler path (STC SPC / LDC SPC / RTE). One HW program should run FFFD, FADD EN.I, a misaligned MOV.L and TRAPA under both a loop harness and a PMCTR bracket, and should pin where a P4 PMCTR read samples. Adopt one entry model that fits all of excint, ci and ubcbrk L. exceptions-intc owns the result."
+   },
+   {
+    "areas": "exceptions-intc \u00a77.3 + mmu \u00a77.3 vs core-integration \u00a73.3 (MA port dm_exc)",
+    "issue": "The specs place data-fault detection in different stages.\n- exceptions-intc detects alignment, privilege and SQMD faults combinationally in EX, which blocks the younger lane-1 end-of-EX T/Q/M/S and F1 FCMP-T writes. It measured paired SETT and FCMP T being cancelled.\n- mmu computes ex_exc in EX, with the UTLB CAM in EX.\n- core-integration returns faults with dm_ack in MA and says the LSU checks privilege/SQMD at MA. Because v1 writes T at the end of EX, MA detection cannot cancel a paired SETT.",
+    "resolution": "Every data fault (alignment, user-area, SQMD, TLB) is decided in EX from maddr and the MMU CAM, rides the uop, and is taken at the end-of-MA commit point, so entry cost is unchanged. core-integration's dm_* port keeps only functional side effects and waits; drop the late-ack dm_exc path, since mmu measured zero data-translation cost."
+   },
+   {
+    "areas": "mmu \u00a73.4 table vs exceptions-intc \u00a73.3 and core-integration \u00a73.3",
+    "issue": "MAC.L/MAC.W access order: mmu says 'read @Rm, then read @Rn'. exceptions-intc and core-integration both measured @Rn first: both misaligned gives TEA = Rn; only Rm misaligned gives TEA = Rm and Rn is not incremented.",
+    "resolution": "@Rn first, then @Rm (the pm pseudo-code, the ISS and two HW runs). Correct the mmu table; its TLB observations say 'first/second operand' and do not contradict this. v1 must swap its micro-op 0 address."
+   },
+   {
+    "areas": "exceptions-intc \u00a73.9 vs mmu \u00a73.1 row 1 / \u00a73.4 vs caches-sq \u00a73.3.6",
+    "issue": "PREF exceptions: exceptions-intc measured PREF to P1 in user mode raising 0x0E0, and PREF to the SQ with SQMD=1 raising 0x0E0. mmu says 'PREF never faults', and caches-sq's table gives PREF on normal memory no TLB exception and no address error.",
+    "resolution": "PREF never raises an alignment error and never a TLB exception outside the SQ window. It does raise the user-mode privilege address error (VA \u2265 0x80000000 outside the SQ, or the SQ with SQMD=1) as read type 0x0E0. Fix the mmu and caches-sq tables."
+   },
+   {
+    "areas": "mmu \u00a73.4 vs exceptions-intc \u00a73.5(3) vs caches-sq \u00a73.3.6",
+    "issue": "TAS.B exception typing: mmu measured an unmapped TAS.B giving 0x040 (read type), PR 00 giving 0x0C0 and D=0 giving 0x080, with URC +3. exceptions-intc and caches-sq say TAS.B 'is checked as a byte store', which would give 0x060 on a miss.",
+    "resolution": "Follow mmu's HW: a miss is read type; protection and initial-page-write are checked as a write at the first access, which is core-integration's dm_rmw rule. Only the three architectural accesses count for URC. Correct exceptions-intc and caches-sq."
+   },
+   {
+    "areas": "caches-sq \u00a77.2 vs core-integration \u00a73.1 / \u00a73.3",
+    "issue": "OCBI/OCBP freeze: caches-sq measured OCBI/OCBP/OCBWB hits costing 0 and misses 2. It proposes removing v1's unconditional 2-cycle tag_wr freeze and producing it from the OC miss path, preloading the sweep scratch lines so make v1 stays green. core-integration requires pfz/tfrz to stay 'exactly as it is', unconditional, with the LSU adding only the functional effect.",
+    "resolution": "Adopt caches-sq's line-state-dependent cost, since it is measured and core-integration's rule contradicts the hit case. LDTLB keeps its own 2-cycle freeze. Regressions: make v1 with preloaded line state, and the six OCBI+GBR-store records as a check."
+   },
+   {
+    "areas": "caches-sq \u00a73.9 / \u00a77.2 vs core-integration \u00a73.3 (mah)",
+    "issue": "Which hold a cache miss uses: caches-sq ORs oc_frz into v1's pfz, which freezes every FPU unit including the divider. core-integration's new mah hold for data waits lets the divider recurrence run; ci3 measured this with P4 and P2 loads.",
+    "resolution": "Use two holds. The 2-cycle miss-path freeze of cache ops, store misses and PREF stays pfz-type, as the sweep validated. Every wait beyond it (critical word, uncached, P4, WTB/WBB/SQ-busy) is mah. Confirm with an FDIV followed by an OC load-miss loop."
+   },
+   {
+    "areas": "caches-sq \u00a73.4 vs core-integration \u00a76.1",
+    "issue": "Array access cost: caches-sq says array reads cost 'as a CCN register (3 Icyc)'. core-integration measured about 4.75-5 Icyc for the IC/ITLB/OC/UTLB address arrays and the OC data array, and about 6.5-7 for the IC data array.",
+    "resolution": "Use core-integration's measured costs in the array-port timing."
+   },
+   {
+    "areas": "core-integration \u00a77.4 (v1_p4bus) vs debug-ubc-hudi \u00a78.1 (v1_p4_regbus) vs bsc-memmap \u00a78.4; write timing vs timers-clock \u00a73.0 and serial \u00a72.1",
+    "issue": "Three specs each claim the P4 bridge. core-integration's per-block addr[7:0] cannot express debug's decode rules: CCN a[7:2] repeating every 0x100 to +0x20000, PMCTR a[4:2], the UBC's undriven a[17:8] window returning last_rdata, and the size-rule exceptions for PMCTR, SDDR and WTC*.\nWrites: core-integration charges the full class latency as a blocking mah (Pclk write 8, TMU 12). timers-clock measured isolated Pclk writes as posted: +3 Icyc, draining in 2 Pcyc (16-bit) or 3 Pcyc (32-bit), with a later Pclk read waiting (23). exceptions-intc's 10-21-instruction IPRA write-to-effect also fits posting.\nReads: only TCNT is listed at 20, but every 32-bit Pclk read (TCOR, TCPR2) is 5 Pcyc.",
+    "resolution": "core-integration owns v1_p4bus and implements debug-ubc-hudi \u00a72.2 decode verbatim. It adds a one-entry posted write per P4 path that drains in 2 or 3 Pcyc (Bclk measured similarly), with later P4 reads waiting for the drain. The latency classes are Iclk 3; Bclk 8 read; Pclk 16 read; any 32-bit Pclk read 20."
+   },
+   {
+    "areas": "CCN register homes: exceptions-intc \u00a77.1 (v1_exc), mmu \u00a77.1 (v1_mmu_regs), caches-sq \u00a77.5 and core-integration \u00a77.1 (v1_ccn), debug-ubc-hudi \u00a78.1 (v1_ccn_id, v1_ubc)",
+    "issue": "Several modules are named as the home of the same registers:\n- TRA/EXPEVT/INTEVT: v1_exc and v1_ccn.\n- PTEH/PTEL/PTEA/TTB/TEA/MMUCR: v1_mmu_regs and v1_ccn.\n- PVR/PRR: v1_ccn_id and v1_ccn.\n- QACR0/1: v1_sq or v1_ccn.\n- BASRA/B: in the UBC, reached through the CCN window.\nThe behavioural specs agree with each other; only the placement conflicts.",
+    "resolution": "v1_ccn is just the 0xFF000000 window decoder with the CCN mirror rule. Storage lives with the behaviour owner: mmu, caches-sq (CCR, QACR), exceptions-intc (TRA/EXPEVT/INTEVT), ubc (BASRx), perfctr (PMCRx), and debug-ubc-hudi (PVR constant, CVR/PRR = 0). Exception entry writes EXPEVT/INTEVT/TRA/TEA/PTEH.VPN through a dedicated port, not the P4 bus."
+   },
+   {
+    "areas": "core-integration \u00a72.3 vs debug-ubc-hudi \u00a73.3 / \u00a74.6 / \u00a74.7",
+    "issue": "Both specs own PMCR/PMCTR, and their content conflicts:\n- PMCLK: core-integration says '+12 per Icyc'; debug says each counted event adds 12.\n- CLR: core-integration says 'write 1 clears'; debug measured that it clears only if the counter was stopped before the write.\n- Sleep: core-integration calls counting while asleep unknown; debug, timers-clock and board measured that the counters freeze.\n- Validated events: core-integration says only 0x14/0x23/0x28/0x29; debug measured about 30 events exactly.\n- Event 0x27: core-integration counts 'D starved after a redirect'; debug measured that only PC-relative branch bubbles count.",
+    "resolution": "debug-ubc-hudi owns PMCR/PMCTR (v1_perfctr, mask 0xC13F, a[4:2] decode). core-integration keeps only the event-signal wiring and deletes its \u00a72.3 semantics."
+   },
+   {
+    "areas": "exceptions-intc \u00a73.4 / \u00a73.16 vs core-integration \u00a73.10 / \u00a77.3",
+    "issue": "What a general exception with SR.BL=1 resets. exceptions-intc: CPU registers only, other modules retain their state (hm \u00a75.5.3 and \u00a75.7). core-integration: a manual reset with Initialize_Module(Manual), sent as reset_req to a CPG manual reset. The manual contradicts itself: \u00a75.6.1(2) lists this case under manual reset.",
+    "resolution": "CPU-only reset with EXPEVT 0x020, VBR 0, SR 0x700000F0, FPSCR 0x00040001 and PC 0xA0000000; modules keep their state. Two manual passages say so and exceptions-intc owns the case. It cannot be measured, so flag it [M]."
+   },
+   {
+    "areas": "board \u00a75.2 / \u00a75.3 vs exceptions-intc \u00a74.3 / core-integration \u00a74.1 / serial \u00a74 / bsc-memmap \u00a75.4 / caches-sq \u00a77.5",
+    "issue": "The direct-boot state differs between specs:\n- CPU: board uses SR 0x400000F0, R15 0x8C00F400, PR 0x8C00F800 (the exit stub); exceptions-intc and core-integration give the BIOS values SR 0x400000F1, R15 0x8D000000, PR 0xAC00043C.\n- STBCR: serial says a direct boot starts at 0; board and timers-clock say it must be 0x03.\n- PCTRA: board 0x000A03F0, bsc-memmap 0x000003F0.\n- QACR: board 4, caches-sq reset 0.",
+    "resolution": "board.md owns the direct-boot preset and the other specs reference it. STBCR = 0x03 (measured, and the SCI/RTC must read 0). PCTRA and QACR are don't-care for KOS, which rewrites them; use board's values."
+   },
+   {
+    "areas": "exceptions-intc \u00a77.2 / \u00a77.5 vs core-integration \u00a73.7 / \u00a73.8",
+    "issue": "The INTC-to-core contract differs.\n- IMASK: exceptions-intc compares on Pclk edges (k \u2208 {0,6,7,8}); core-integration uses a two-stage Bclk synchroniser (7-9 Icyc).\n- NMI: exceptions-intc applies BL/NMIB/MAI in the INTC (nmi_req); core-integration applies NMIB in the core (irq_nmi).\n- irq_ack: at entry start vs at the xop's S.\n- SLEEP: exceptions-intc drains the FPU before sleep_req; core-integration does not.",
+    "resolution": "exceptions-intc owns the INTC and its ports. Calibrate one synchroniser against both data sets (excint PH sweep and the 12 ci2 cases). NMI gating stays in the INTC. irq_ack goes with the entry's architectural write. SLEEP need not drain the FPU for the silicon, but the tb 'halted' condition still requires fpu_idle."
+   },
+   {
+    "areas": "board \u00a74.3 vs dmac \u00a74.3 / \u00a77.4",
+    "issue": "board's phase-1 ch2-DMA says software runs DMAC ch2 in auto-request mode and the board only accepts area-4 writes. KOS actually writes CHCR2 = 0x12C1: RS 0010, single address, one 32-byte unit per Holly DDT request. The data leaves as single-address TDACK reads of RAM, not as writes to area 4, so with no ch2_req nothing moves.",
+    "resolution": "The phase-1 board drives dmac's transaction-level ch2_req, one per 32 bytes of SB_C2DLEN, and captures the single-address read data for the TA/texture sink. The hello targets do not use ch2-DMA."
+   },
+   {
+    "areas": "bsc-memmap \u00a72.2 / debug-ubc-hudi \u00a72.5 vs core-integration \u00a72.4 (mmu \u00a73.1, caches-sq \u00a73.1)",
+    "issue": "Untranslated area 7 (P0-P3 with AT=0, physical 0x1Cxxxxxx-0x1Fxxxxxx): bsc-memmap and debug propose routing it to the P4 register bus with P4 timing. core-integration measured a read of 0x1F000024 through P0 (MMU off, OC on) costing 1 Icyc per access, i.e. cached like memory, and nobody recorded what the line fill returned. mmu and caches-sq call it undefined.",
+    "resolution": "Do not route untranslated area 7 to the registers. Treat it as cacheable address space with undefined data and no register side effects. Only UTLB-translated area 7 (measured) and DMAC 0x1F addresses reach the registers. A safe one-read probe could record the value later."
+   },
+   {
+    "areas": "caches-sq open question 11 vs bsc-memmap \u00a74.7",
+    "issue": "bsc-memmap gives an OC write miss (clean victim) 25 Icyc and OCBP of a clean line 2 Icyc. caches-sq measured +2 for a store miss followed by independent work, and 0 for a clean OCBx hit.",
+    "resolution": "Use caches-sq's structural rules: a store to the line being filled waits for the fill, and a memory access right after OCBWB meets the one-cycle port hold. bsc-memmap's rows become kernel-specific calibration vectors, not per-access costs."
+   },
+   {
+    "areas": "debug-ubc-hudi \u00a74.7 vs caches-sq \u00a73.11",
+    "issue": "Events 0x21/0x22: debug defines them as 'Icyc a fill is in progress' (24 per fill, from row-miss snippets); caches-sq defines them as 'cycles until the critical beat' (14.2 on a row hit, 23.9 on a row miss). The numbers agree; the definitions do not.",
+    "resolution": "Use 'fill active until the critical beat arrives', which fits both data sets."
+   },
+   {
+    "areas": "board \u00a72.1 vs serial \u00a74 / \u00a77.5",
+    "issue": "CTS2 tie-off: board says CTS2 = 0 (asserted); serial measured CTS2 = 1 (pulled up) and ties it to 1.",
+    "resolution": "Tie CTS2 to 1, as measured. With MCE=0 under KOS it has no effect."
+   }
+  ],
+  "p4_map_coverage": "Every register in Appendix A (hm.txt line 33559) has exactly one behaviour owner:\n- mmu: PTEH, PTEL, TTB, TEA, MMUCR, PTEA, and the ITLB/UTLB arrays.\n- caches-sq: CCR, QACR0/1, the IC/OC arrays and the store queues.\n- exceptions-intc: TRA, EXPEVT, INTEVT, ICR and IPRA-C.\n- debug-ubc-hudi: BASRA/B and every UBC register, SDIR/SDDR, and the undocumented registers (PVR 0x040205C1, CVR/PRR reading 0, PMCR1/2, PMCTR1/2H/L).\n- bsc-memmap: BCR1/2, WCR1-3, MCR, PCR, RTCSR/RTCNT/RTCOR/RFCR, PCTRA/PDTRA/PCTRB/PDTRB/GPIOIC and SDMR2/3.\n- dmac: SAR/DAR/DMATCR/CHCR 0-3 and DMAOR.\n- timers-clock: FRQCR, STBCR, STBCR2, WTCNT, WTCSR, all RTC registers and all TMU registers.\n- serial: SCI and SCIF, including SCSPTR1/2, which bsc-memmap hands over.\n\nNo Appendix A register is unowned. The SH7750S/R-only registers (IPRD, BCR3, RCR3/RYRAR, DMAC ch4+, CVR/PRR, the 0xFE0x blocks) are covered as absent, reading 0.\n\nDoubly owned or doubly specified:\n1. PMCR1/2 and PMCTR1/2: both debug-ubc-hudi (v1_perfctr) and core-integration \u00a72.3 (v1_pmu) claim them, with conflicting semantics.\n2. PVR/PRR: debug-ubc-hudi (v1_ccn_id) and core-integration (v1_ccn); the values agree.\n3. The P4 bridge (decode, size rule, latency): debug-ubc-hudi v1_p4_regbus, core-integration v1_p4bus, and bsc-memmap \u00a78.4.\n4. Module homes that are claimed twice with consistent behaviour: TRA/EXPEVT/INTEVT (v1_exc vs v1_ccn), PTEH..MMUCR/PTEA (v1_mmu_regs vs v1_ccn), QACR (v1_sq vs v1_ccn). core-integration \u00a72.2 also restates TRA/EXPEVT/INTEVT/TEA/PTEH, consistently.\n\nRegions or behaviours with no settled owner: untranslated area 7 (conflicting proposal and measurement); the contents of reserved P4 0xE4-0xEF and 0xF8-0xFE; instruction fetch from P4, the arrays, the SQ and OC-RAM; and DMAC-mastered P4 accesses, which the bridge spec has no port for.",
+  "boot_path_ready": "Functionally, yes. Each chip unit the KOS hello0/1/2 direct boot touches (board.md \u00a75.4) has a spec:\n- startup.S: CCR from P2 (caches-sq); the 0xAC/0xADFFFFFF RAM mirror probe (bsc-memmap, board).\n- Init: WDT disable (timers-clock); UBC init (debug-ubc-hudi); IPR/VBR/SR (exceptions-intc); SCIF banner with TDFE/TEND polling (serial, plus the board's UART receiver); TMU0/1/2 (timers-clock); PMCR1 0xC023 (debug-ubc-hudi).\n- The sysinfo syscall's OCBWB and flash reads (caches-sq, board).\n- G2/FFST/AICA RTC (board); SQ bursts to AICA RAM through QACR=0 over MPX and to the VRAM 32-bit path (caches-sq, bsc-memmap, board); PCTRA/PDTRA cable detect (bsc-memmap).\n- hello1: MOVCA.L in the IRQ entry; TMU and IRL interrupts, and SLEEP waking with BL ignored (exceptions-intc, timers-clock, board).\n- hello2: TAS.B for the GD lock and IC associative writes (caches-sq, mmu); maple and GD over the phase-1 DMA backdoor (board).\n- Exit: MMUCR \u2190 4 (mmu); return to the exit stub and sim-control port in area 6 (board).\n\nWhat is missing before a build:\n1. A mechanism to preload the post-BIOS module registers (STBCR 0x03, BSC, DMAOR, PMCR1, QACR, SCIF). v1's dbg backdoor is CPU-only. Recommendation: a testbench boot stub at the reset vector.\n2. A reset controller that no spec owns.\n3. A single P4 bridge owner and write-posting model, with a DMAC master port.\n4. The v1 decode additions for TRAPA and SLEEP-wake, which core-integration lists but which do not exist yet (today SLEEP halts).\n\nSeveral conflicts affect timing fidelity but not whether KOS reaches main: the exception/interrupt entry timing model, EX- vs MA-stage data-fault detection, pfz vs mah for cache misses, and whether OCBI/OCBP freeze on a hit. hello0 never takes an exception with the MMU off, so these matter first at hello1 (interrupt entry, IMASK latency) and in the `make v1` regression, not in the boot itself.\n\nThe direct-boot CPU state has to be taken from board.md, not from exceptions-intc or core-integration. board.md's phase-1 ch2-DMA description is wrong but is not needed by any hello target."
+ }
+}

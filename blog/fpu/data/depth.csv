@@ -1,0 +1,7 @@
+stage,design,depth_levels,nand2_eq
+st1_sh4,sh4,32,2572
+st1_fused,fused,33,3283
+st2_sh4,sh4,34,3008
+st2_fused,fused,42,6472
+st3_sh4,sh4,41,1120
+st3_fused,fused,42,1970

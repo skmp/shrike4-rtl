@@ -1,0 +1,8 @@
+v1-soc-sweep shard 12/96: 19161 points in 20 boots (0 failed), 559558770 Icyc, 10763.5 s (51987 Icyc/s); not periodic 31; timing retried at other refresh phases 0, matched there 0
+  T          19033 /    19033  (36 not compared)
+  Tb         19033 /    19033  (36 not compared)
+  par        19069 /    19069  (0 not compared)
+  brkp       19069 /    19069  (0 not compared)
+  frzreg     19069 /    19069  (0 not compared)
+  frzfpu     19069 /    19069  (0 not compared)
+v1-soc-sweep shard: PASS

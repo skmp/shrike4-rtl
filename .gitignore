@@ -1,2 +1,36 @@
 build/
-__pycache__
+__pycache__/
+*.pyc
+
+# built programs, objects and images: rebuilt by the Makefiles (KOS builds embed their build host), and binary dumps
+*.o
+*.elf
+*.cdi
+*.bin
+
+# local settings and local data
+tools/hw/hwrun.conf
+dreamcast-data/
+
+# documents and checkouts that are not this repository's (manuals, patents, other projects' sources)
+docs/*.pdf
+agents/manuals/
+model/patents/
+tools/dcload-ip/
+tools/mkdcdisc/
+tools/sh4-sim/
+
+# scratch, run logs and derived reports (regenerable)
+agents/scratch/
+agents/verify/
+agents/reports/final-runs/
+model/timings2/report/
+model/timings2/analysis/
+
+# measurement data and tables over 1 MB, kept locally (OPEN_ITEMS.md section 5)
+model/timings2/tests/cases.jsonl
+model/timings2/results/*/cases.jsonl
+model/timings2/tests/cases_skipped.jsonl
+model/fsca/tools/f1_table.txt
+model/fsca/tools/f2_cert_table.txt
+model/fsca/tools/f1_scan.txt

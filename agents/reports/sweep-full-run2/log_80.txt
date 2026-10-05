@@ -1,0 +1,54 @@
+  sweep boot 6 (2000 jobs): exit code 0; lockstep fail
+    lockstep: lockstep mismatch at cycle 14983551: 8C062000 MAC.L @R2+,@R1+ (ISN 200): MACH RTL 7FFF, model 348A6415
+--- the last records and model steps:
+  c14983544 RETIRE   isn  11 idx   0 addr 8C062028 data 7E01 be 00
+  c14983544 GPR      isn  11 idx  14 addr 00000000 data 3B be 00
+  model: 8C062028
+  id 38480 n 10 (proxy rid 14666) A DT R1 | B ADDV R3,R2:
+  id 38480 n 11 (proxy rid 14666) A DT R1 | B ADDV R3,R2:
+  id 38480 n 12 (proxy rid 14666) A DT R1 | B ADDV R3,R2:
+  id 38480 n 13 (proxy rid 14666) A DT R1 | B ADDV R3,R2:
+  id 38480 n 14 (proxy rid 14666) A DT R1 | B ADDV R3,R2:
+  id 38480 n 15 (proxy rid 14666) A DT R1 | B ADDV R3,R2:
+  id 38480 n 16 (proxy rid 14666) A DT R1 | B ADDV R3,R2:
+  id 38480 n 40 (proxy rid 14666) A DT R1 | B ADDV R3,R2:
+  id 38576 n 0 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 1 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 2 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 3 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 4 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 5 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 6 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 7 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 8 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 9 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 10 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 11 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 12 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 13 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 14 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 15 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 16 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38576 n 40 (proxy rid 15042) A DT R1 | B OR R2,R1:
+  id 38672 n 9 (proxy rid 14782) A DT R1 | B JMP @R1:
+  id 38768 n 0 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+  id 38768 n 1 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+  id 38768 n 2 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+  id 38768 n 3 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+  id 38768 n 4 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+  id 38768 n 5 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+  id 38768 n 6 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+  id 38768 n 7 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+  id 38768 n 8 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+  id 38768 n 9 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+  id 38768 n 10 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+  id 38768 n 11 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+  id 38768 n 12 (proxy rid 14819) A DT R1 | B LDS R2,PR:
+v1-soc-sweep shard 80/96: 18717 points in 19 boots (1 failed), 546642944 Icyc, 9918.7 s (55112 Icyc/s); not periodic 46; timing retried at other refresh phases 0, matched there 0
+  T          18553 /    18553  (36 not compared)
+  Tb         18553 /    18553  (36 not compared)
+  par        18589 /    18589  (0 not compared)
+  brkp       18589 /    18589  (0 not compared)
+  frzreg     18589 /    18589  (0 not compared)
+  frzfpu     18589 /    18589  (0 not compared)
+v1-soc-sweep shard: FAIL

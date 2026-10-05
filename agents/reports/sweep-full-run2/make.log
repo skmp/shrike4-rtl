@@ -1,0 +1,195 @@
+v1-soc-sweep-full: a fresh start (stamp: shards, md5 of vectors.bin, soc_tb, the sweep driver: 96 ab5c8133fd47ecde4e1abfac8d890755 0741a3bf1563acd5d150e7aafd80e490 6a0cb55c1ebc97dddb74148f0509991d)
+v1-soc-sweep-full: 96 shards, 20 at a time, into build/v1-soc-sweep-full (resumable)
+shard 7: v1-soc-sweep shard: PASS 7/96: 18870 points in 19 boots (0 failed), 551006426 Icyc, 10449.8 s (52729 Icyc
+shard 5: v1-soc-sweep shard: PASS 5/96: 18972 points in 19 boots (0 failed), 553987276 Icyc, 10501.0 s (52756 Icyc
+shard 16: v1-soc-sweep shard: PASS 16/96: 18872 points in 19 boots (0 failed), 551155214 Icyc, 10537.5 s (52304 Icy
+shard 10: v1-soc-sweep shard: PASS 10/96: 19108 points in 20 boots (0 failed), 558034464 Icyc, 10541.5 s (52937 Icy
+shard 4: v1-soc-sweep shard: PASS 4/96: 18938 points in 19 boots (0 failed), 552982188 Icyc, 10548.5 s (52423 Icyc
+shard 3: v1-soc-sweep shard: PASS 3/96: 18971 points in 19 boots (0 failed), 554034836 Icyc, 10557.7 s (52477 Icyc
+shard 2: v1-soc-sweep shard: PASS 2/96: 19040 points in 20 boots (0 failed), 556014278 Icyc, 10560.5 s (52650 Icyc
+shard 8: v1-soc-sweep shard: PASS 8/96: 19006 points in 20 boots (0 failed), 555110438 Icyc, 10575.1 s (52492 Icyc
+shard 18: v1-soc-sweep shard: PASS 18/96: 18786 points in 19 boots (0 failed), 548577284 Icyc, 10592.4 s (51790 Icy
+shard 19: v1-soc-sweep shard: PASS 19/96: 18786 points in 19 boots (0 failed), 548586974 Icyc, 10659.9 s (51463 Icy
+shard 17: v1-soc-sweep shard: PASS 17/96: 18768 points in 19 boots (0 failed), 548106890 Icyc, 10697.8 s (51236 Icy
+shard 1: v1-soc-sweep shard: PASS 1/96: 19106 points in 20 boots (0 failed), 558078226 Icyc, 10734.0 s (51992 Icyc
+shard 12: v1-soc-sweep shard: PASS 12/96: 19161 points in 20 boots (0 failed), 559558770 Icyc, 10763.5 s (51987 Icy
+shard 15: v1-soc-sweep shard: PASS 15/96: 19059 points in 20 boots (0 failed), 556635324 Icyc, 10772.1 s (51674 Icy
+shard 6: v1-soc-sweep shard: PASS 6/96: 19006 points in 20 boots (0 failed), 555041452 Icyc, 10785.7 s (51461 Icyc
+shard 14: v1-soc-sweep shard: PASS 14/96: 19093 points in 20 boots (0 failed), 557626894 Icyc, 10786.6 s (51696 Icy
+shard 11: v1-soc-sweep shard: PASS 11/96: 19178 points in 20 boots (0 failed), 560082748 Icyc, 10816.8 s (51779 Icy
+shard 9: v1-soc-sweep shard: PASS 9/96: 18991 points in 19 boots (0 failed), 554589872 Icyc, 10820.9 s (51252 Icyc
+shard 13: v1-soc-sweep shard: PASS 13/96: 19110 points in 20 boots (0 failed), 558070722 Icyc, 10917.4 s (51117 Icy
+shard 0: v1-soc-sweep shard: PASS 0/96: 19002 points in 20 boots (0 failed), 555034324 Icyc, 10932.3 s (50770 Icyc
+shard 24: v1-soc-sweep shard: PASS 24/96: 18699 points in 19 boots (0 failed), 546157710 Icyc, 9580.0 s (57010 Icyc
+shard 28: v1-soc-sweep shard: PASS 28/96: 18596 points in 19 boots (0 failed), 543091486 Icyc, 9583.4 s (56670 Icyc
+shard 25: v1-soc-sweep shard: PASS 25/96: 18733 points in 19 boots (0 failed), 547092972 Icyc, 9677.1 s (56535 Icyc
+shard 36: v1-soc-sweep shard: PASS 36/96: 18429 points in 19 boots (0 failed), 538239812 Icyc, 9439.9 s (57017 Icyc
+shard 23: v1-soc-sweep shard: PASS 23/96: 18699 points in 19 boots (0 failed), 546079016 Icyc, 9719.7 s (56183 Icyc
+shard 31: v1-soc-sweep shard: PASS 31/96: 18528 points in 19 boots (0 failed), 541215842 Icyc, 9558.3 s (56623 Icyc
+shard 35: v1-soc-sweep shard: PASS 35/96: 18361 points in 19 boots (0 failed), 536226822 Icyc, 9517.3 s (56342 Icyc
+shard 32: v1-soc-sweep shard: PASS 32/96: 18461 points in 19 boots (0 failed), 539210088 Icyc, 9561.2 s (56396 Icyc
+shard 27: v1-soc-sweep shard: PASS 27/96: 18578 points in 19 boots (0 failed), 542558766 Icyc, 9751.8 s (55637 Icyc
+shard 20: v1-soc-sweep shard: PASS 20/96: 18802 points in 19 boots (0 failed), 548999780 Icyc, 9894.3 s (55487 Icyc
+shard 34: v1-soc-sweep shard: PASS 34/96: 18443 points in 19 boots (0 failed), 538657286 Icyc, 9578.7 s (56235 Icyc
+shard 30: v1-soc-sweep shard: PASS 30/96: 18579 points in 19 boots (0 failed), 542656638 Icyc, 9729.2 s (55776 Icyc
+shard 22: v1-soc-sweep shard: PASS 22/96: 18699 points in 19 boots (0 failed), 546060020 Icyc, 9891.6 s (55204 Icyc
+shard 26: v1-soc-sweep shard: PASS 26/96: 18665 points in 19 boots (0 failed), 545086416 Icyc, 9876.6 s (55190 Icyc
+shard 21: v1-soc-sweep shard: PASS 21/96: 18768 points in 19 boots (0 failed), 548039778 Icyc, 10056.2 s (54498 Icy
+shard 37: v1-soc-sweep shard: PASS 37/96: 18548 points in 19 boots (0 failed), 541739660 Icyc, 9765.6 s (55474 Icyc
+shard 29: v1-soc-sweep shard: PASS 29/96: 18612 points in 19 boots (0 failed), 543562972 Icyc, 9932.5 s (54726 Icyc
+shard 39: v1-soc-sweep shard: PASS 39/96: 18751 points in 19 boots (0 failed), 547597334 Icyc, 9695.8 s (56478 Icyc
+shard 33: v1-soc-sweep shard: PASS 33/96: 18512 points in 19 boots (0 failed), 540787744 Icyc, 9859.9 s (54847 Icyc
+shard 38: v1-soc-sweep shard: PASS 38/96: 18735 points in 19 boots (0 failed), 547199084 Icyc, 9857.2 s (55512 Icyc
+shard 40: v1-soc-sweep shard: PASS 40/96: 18700 points in 19 boots (0 failed), 546101616 Icyc, 10534.4 s (51840 Icy
+shard 41: v1-soc-sweep shard: PASS 41/96: 18701 points in 19 boots (0 failed), 546103222 Icyc, 10676.7 s (51149 Icy
+shard 43: v1-soc-sweep shard: PASS 43/96: 18854 points in 19 boots (0 failed), 550580564 Icyc, 10641.3 s (51740 Icy
+shard 49: v1-soc-sweep shard: PASS 49/96: 18735 points in 19 boots (0 failed), 547161928 Icyc, 10569.3 s (51769 Icy
+shard 48: v1-soc-sweep shard: PASS 48/96: 18786 points in 19 boots (0 failed), 548596084 Icyc, 10637.4 s (51573 Icy
+shard 50: v1-soc-sweep shard: PASS 50/96: 18717 points in 19 boots (0 failed), 546564758 Icyc, 10623.2 s (51450 Icy
+shard 53: v1-soc-sweep shard: PASS 53/96: 18853 points in 19 boots (0 failed), 550594508 Icyc, 10582.3 s (52030 Icy
+shard 47: v1-soc-sweep shard: PASS 47/96: 18802 points in 19 boots (0 failed), 549109820 Icyc, 10697.9 s (51329 Icy
+shard 42: v1-soc-sweep shard: PASS 42/96: 18854 points in 19 boots (0 failed), 550551670 Icyc, 10791.8 s (51016 Icy
+shard 45: v1-soc-sweep shard: PASS 45/96: 18922 points in 19 boots (0 failed), 552455270 Icyc, 10762.6 s (51331 Icy
+shard 51: v1-soc-sweep shard: PASS 51/96: 18785 points in 19 boots (0 failed), 548542506 Icyc, 10655.7 s (51479 Icy
+shard 52: v1-soc-sweep shard: PASS 52/96: 18853 points in 19 boots (0 failed), 550616496 Icyc, 10679.7 s (51557 Icy
+shard 46: v1-soc-sweep shard: PASS 46/96: 18819 points in 19 boots (0 failed), 549528136 Icyc, 10897.1 s (50429 Icy
+shard 54: v1-soc-sweep shard: PASS 54/96: 18870 points in 19 boots (0 failed), 551096652 Icyc, 10708.0 s (51466 Icy
+shard 44: v1-soc-sweep shard: PASS 44/96: 18922 points in 19 boots (0 failed), 552506958 Icyc, 11066.7 s (49925 Icy
+shard 58: v1-soc-sweep shard: PASS 58/96: 19106 points in 20 boots (0 failed), 558112602 Icyc, 10808.9 s (51634 Icy
+shard 56: v1-soc-sweep shard: PASS 56/96: 19038 points in 20 boots (0 failed), 556091642 Icyc, 10910.7 s (50968 Icy
+shard 57: v1-soc-sweep shard: PASS 57/96: 19089 points in 20 boots (0 failed), 557625770 Icyc, 10935.6 s (50992 Icy
+shard 55: v1-soc-sweep shard: PASS 55/96: 18938 points in 19 boots (0 failed), 553052558 Icyc, 11187.6 s (49434 Icy
+shard 59: v1-soc-sweep shard: PASS 59/96: 19072 points in 20 boots (0 failed), 557074878 Icyc, 11331.0 s (49164 Icy
+make exit 147
+make: *** [tb/mk/v1_soc.mk:797: v1-soc-sweep-full] Terminated
+v1-soc-sweep-full: 96 shards, 20 at a time, into build/v1-soc-sweep-full (resumable)
+shard 0: kept (it passed before)
+shard 1: kept (it passed before)
+shard 2: kept (it passed before)
+shard 3: kept (it passed before)
+shard 4: kept (it passed before)
+shard 5: kept (it passed before)
+shard 6: kept (it passed before)
+shard 7: kept (it passed before)
+shard 8: kept (it passed before)
+shard 9: kept (it passed before)
+shard 10: kept (it passed before)
+shard 11: kept (it passed before)
+shard 12: kept (it passed before)
+shard 13: kept (it passed before)
+shard 14: kept (it passed before)
+shard 15: kept (it passed before)
+shard 16: kept (it passed before)
+shard 17: kept (it passed before)
+shard 18: kept (it passed before)
+shard 19: kept (it passed before)
+shard 20: kept (it passed before)
+shard 21: kept (it passed before)
+shard 22: kept (it passed before)
+shard 23: kept (it passed before)
+shard 24: kept (it passed before)
+shard 25: kept (it passed before)
+shard 26: kept (it passed before)
+shard 27: kept (it passed before)
+shard 28: kept (it passed before)
+shard 29: kept (it passed before)
+shard 30: kept (it passed before)
+shard 31: kept (it passed before)
+shard 32: kept (it passed before)
+shard 33: kept (it passed before)
+shard 34: kept (it passed before)
+shard 35: kept (it passed before)
+shard 36: kept (it passed before)
+shard 37: kept (it passed before)
+shard 38: kept (it passed before)
+shard 39: kept (it passed before)
+shard 40: kept (it passed before)
+shard 41: kept (it passed before)
+shard 42: kept (it passed before)
+shard 43: kept (it passed before)
+shard 44: kept (it passed before)
+shard 45: kept (it passed before)
+shard 46: kept (it passed before)
+shard 47: kept (it passed before)
+shard 48: kept (it passed before)
+shard 49: kept (it passed before)
+shard 50: kept (it passed before)
+shard 51: kept (it passed before)
+shard 52: kept (it passed before)
+shard 53: kept (it passed before)
+shard 54: kept (it passed before)
+shard 55: kept (it passed before)
+shard 56: kept (it passed before)
+shard 57: kept (it passed before)
+shard 58: kept (it passed before)
+shard 59: kept (it passed before)
+shard 66: v1-soc-sweep shard: PASS 66/96: 18733 points in 19 boots (0 failed), 547173460 Icyc, 11759.8 s (46529 Icy
+shard 65: v1-soc-sweep shard: PASS 65/96: 18699 points in 19 boots (0 failed), 546222250 Icyc, 11787.6 s (46339 Icy
+shard 63: v1-soc-sweep shard: PASS 63/96: 18729 points in 19 boots (0 failed), 547082568 Icyc, 11806.4 s (46338 Icy
+shard 64: v1-soc-sweep shard: PASS 64/96: 18716 points in 19 boots (0 failed), 546571440 Icyc, 11854.7 s (46106 Icy
+shard 68: v1-soc-sweep shard: PASS 68/96: 18750 points in 19 boots (0 failed), 547558116 Icyc, 11885.2 s (46070 Icy
+shard 73: v1-soc-sweep shard: PASS 73/96: 18768 points in 19 boots (0 failed), 548230130 Icyc, 11897.9 s (46078 Icy
+shard 75: v1-soc-sweep shard: PASS 75/96: 18836 points in 19 boots (0 failed), 550157798 Icyc, 11953.4 s (46025 Icy
+shard 76: v1-soc-sweep shard: PASS 76/96: 18886 points in 19 boots (0 failed), 551576442 Icyc, 12000.7 s (45962 Icy
+shard 70: v1-soc-sweep shard: PASS 70/96: 18715 points in 19 boots (0 failed), 546696788 Icyc, 12109.9 s (45144 Icy
+shard 77: v1-soc-sweep shard: PASS 77/96: 18734 points in 19 boots (0 failed), 547115760 Icyc, 12120.5 s (45140 Icy
+shard 61: v1-soc-sweep shard: PASS 61/96: 19020 points in 20 boots (0 failed), 555544804 Icyc, 12131.9 s (45792 Icy
+shard 69: v1-soc-sweep shard: PASS 69/96: 18734 points in 19 boots (0 failed), 547141538 Icyc, 12132.1 s (45099 Icy
+shard 79: v1-soc-sweep shard: PASS 79/96: 18751 points in 19 boots (0 failed), 547639924 Icyc, 12140.8 s (45107 Icy
+shard 60: v1-soc-sweep shard: PASS 60/96: 19021 points in 20 boots (0 failed), 555634928 Icyc, 12207.4 s (45516 Icy
+shard 67: v1-soc-sweep shard: PASS 67/96: 18801 points in 19 boots (0 failed), 549102384 Icyc, 12323.4 s (44558 Icy
+shard 74: v1-soc-sweep shard: PASS 74/96: 18870 points in 19 boots (0 failed), 551089858 Icyc, 12424.8 s (44354 Icy
+shard 78: v1-soc-sweep shard: PASS 78/96: 18717 points in 19 boots (0 failed), 546634462 Icyc, 12436.5 s (43954 Icy
+shard 72: v1-soc-sweep shard: PASS 72/96: 18802 points in 19 boots (0 failed), 549112188 Icyc, 12473.6 s (44022 Icy
+shard 62: v1-soc-sweep shard: PASS 62/96: 18834 points in 19 boots (0 failed), 550099722 Icyc, 12505.1 s (43990 Icy
+shard 71: v1-soc-sweep shard: PASS 71/96: 18853 points in 19 boots (0 failed), 550653676 Icyc, 12525.0 s (43964 Icy
+shard 80: v1-soc-sweep shard: FAIL 80/96: 18717 points in 19 boots (1 failed), 546642944 Icyc, 9918.7 s (55112 Icyc
+shard 82: v1-soc-sweep shard: PASS 82/96: 18803 points in 19 boots (0 failed), 549133918 Icyc, 10006.9 s (54876 Icy
+shard 84: v1-soc-sweep shard: PASS 84/96: 18854 points in 19 boots (0 failed), 550576942 Icyc, 10092.1 s (54555 Icy
+shard 85: v1-soc-sweep shard: PASS 85/96: 18871 points in 19 boots (0 failed), 551173840 Icyc, 10124.1 s (54442 Icy
+shard 83: v1-soc-sweep shard: PASS 83/96: 18871 points in 19 boots (0 failed), 551043420 Icyc, 10270.8 s (53652 Icy
+shard 88: v1-soc-sweep shard: PASS 88/96: 18785 points in 19 boots (0 failed), 548687022 Icyc, 10024.1 s (54737 Icy
+shard 86: v1-soc-sweep shard: PASS 86/96: 18734 points in 19 boots (0 failed), 547088170 Icyc, 10190.6 s (53685 Icy
+shard 91: v1-soc-sweep shard: PASS 91/96: 18903 points in 19 boots (0 failed), 551973232 Icyc, 10017.2 s (55103 Icy
+shard 81: v1-soc-sweep shard: PASS 81/96: 18700 points in 19 boots (0 failed), 546127228 Icyc, 10368.4 s (52672 Icy
+shard 90: v1-soc-sweep shard: PASS 90/96: 18903 points in 19 boots (0 failed), 552004590 Icyc, 10167.7 s (54290 Icy
+shard 87: v1-soc-sweep shard: PASS 87/96: 18717 points in 19 boots (0 failed), 546647000 Icyc, 10329.8 s (52919 Icy
+shard 93: v1-soc-sweep shard: PASS 93/96: 18952 points in 19 boots (0 failed), 553419974 Icyc, 10126.2 s (54652 Icy
+shard 94: v1-soc-sweep shard: PASS 94/96: 18986 points in 22 boots (0 failed), 554866886 Icyc, 10063.5 s (55137 Icy
+shard 89: v1-soc-sweep shard: PASS 89/96: 18851 points in 19 boots (0 failed), 550536654 Icyc, 10288.8 s (53508 Icy
+shard 95: v1-soc-sweep shard: PASS 95/96: 19071 points in 20 boots (0 failed), 556989344 Icyc, 9986.5 s (55774 Icyc
+shard 92: v1-soc-sweep shard: FAIL 92/96: 18903 points in 22 boots (0 failed), 552671866 Icyc, 10301.9 s (53648 Icy
+v1 direct run: 1807027 points with a result (0 without); 0 did not halt or accessed memory outside the image; 3445 not periodic
+functional (every register + scratch / code / pool / jit_save / state vs the ISS, 4 runs per point): 1806027 / 1807027 points match
+refresh phase (soc_tb --sweep, SOC.md 5): 5 points matched the console only in a retry at another phase of the free-running refresh timer
+timing, in scope (every form but TAS.B): records 141241 / 141242 match on every compared point and metric
+  T        1792127 /  1792127  (100.000 %)   dropped: 2570 not integral
+  Tb       1792128 /  1792129  (100.000 %)   dropped: 2568 not integral
+  par      1794697 /  1794697  (100.000 %)
+  brkp     1794697 /  1794697  (100.000 %)
+  frzreg   1794697 /  1794697  (100.000 %)
+  frzfpu   1794697 /  1794697  (100.000 %)
+  of which: the ISA without the cache-block forms: records 137621 / 137621 match on every compared point and metric
+  T        1742065 /  1742065  (100.000 %)
+  Tb       1742065 /  1742065  (100.000 %)
+  par      1742065 /  1742065  (100.000 %)
+  brkp     1742065 /  1742065  (100.000 %)
+  frzreg   1742065 /  1742065  (100.000 %)
+  frzfpu   1742065 /  1742065  (100.000 %)
+  of which: OCBI / OCBP / OCBWB / MOVCA.L: records 3620 / 3621 match on every compared point and metric
+  T          50062 /    50062  (100.000 %)   dropped: 2570 not integral
+  Tb         50063 /    50064  ( 99.998 %)   dropped: 2568 not integral
+  par        52632 /    52632  (100.000 %)
+  brkp       52632 /    52632  (100.000 %)
+  frzreg     52632 /    52632  (100.000 %)
+  frzfpu     52632 /    52632  (100.000 %)
+
+largest clusters (metric, A, B, variant kind, model - measured by n): 1 clusters
+      1  Tb     MOVA @(disp,PC),R0     | OCBI @Rn               [ov] 9:+2   e.g. M0 ov:R0>Rn id 23612 (proxy rid 60401)
+
+forms with most mismatching curves:
+       1  Tb     MOVA @(disp,PC),R0
+       1  Tb       as B: OCBI @Rn
+v1-soc-sweep-full report: FAIL
+v1-soc-sweep-full: FAIL (94 of 96 shards PASS; 1807027 of 1807027 points functionally checked)
+make: *** [tb/mk/v1_soc.mk:798: v1-soc-sweep-full] Error 1
