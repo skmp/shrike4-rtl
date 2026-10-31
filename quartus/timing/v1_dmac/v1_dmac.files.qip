@@ -1,0 +1,27 @@
+# --------------------------------------------------------------------------
+# v1_dmac - the fileset of the per-unit timing harness v1_dmac_timing. Paths are
+# relative to this project dir (quartus/timing/v1_dmac/), pointing up into ../../../rtl.
+# --------------------------------------------------------------------------
+
+# ---- packages (MUST come first, in this order) ----
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/timing-proxy/tp_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/fpu_vec/fpu_vec_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_alu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_mul.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_fp.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_soc_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_mmu_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_bsc_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_pkg.sv
+
+# ---- the unit (and the modules it instantiates) ----
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_regs.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_ddt.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_req.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_arb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_xfer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac.sv
+
+# ---- harness ----
+set_global_assignment -name SYSTEMVERILOG_FILE v1_dmac_timing.sv

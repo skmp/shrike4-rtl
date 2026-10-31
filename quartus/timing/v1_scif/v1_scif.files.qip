@@ -1,0 +1,26 @@
+# --------------------------------------------------------------------------
+# v1_scif - the fileset of the per-unit timing harness v1_scif_timing. Paths are
+# relative to this project dir (quartus/timing/v1_scif/), pointing up into ../../../rtl.
+# --------------------------------------------------------------------------
+
+# ---- packages (MUST come first, in this order) ----
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/timing-proxy/tp_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/fpu_vec/fpu_vec_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_alu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_mul.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_fp.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_soc_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_mmu_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_bsc_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_pkg.sv
+
+# ---- the unit (and the modules it instantiates) ----
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_scif_fifo.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_scif_brg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_scif_tx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_scif_rx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_scif.sv
+
+# ---- harness ----
+set_global_assignment -name SYSTEMVERILOG_FILE v1_scif_timing.sv

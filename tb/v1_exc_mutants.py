@@ -51,7 +51,7 @@ MUTANTS = [
     ("fault-incl", "else if (ma_tk[0]) begin ok_isn = ma[0].isn; ok_incl = ma[0].fx != FX_NONE; end",
      "else if (ma_tk[0]) begin ok_isn = ma[0].isn; ok_incl = 1'b0; end", "dir",
      "a data fault kills only younger instructions: the faulting micro-op completes (@Rm+ updates Rm)"),
-    ("fault-off", "if (ma[l].fx != FX_NONE) ma_tk[l] = 1'b1;", "if (1'b0) ma_tk[l] = 1'b1;", "dir",
+    ("fault-off", "if (ma[l].fx != FX_NONE) ma_tkb[l] = 1'b1;", "if (1'b0) ma_tkb[l] = 1'b1;", "dir",
      "a data fault found in EX is never taken"),
     ("vec400", "if (ma[ml].fvec400) tk_vec = VEC_TLB_MISS;", "if (1'b0) tk_vec = VEC_TLB_MISS;", "dir",
      "a TLB miss vectors to VBR + 0x100"),
@@ -162,8 +162,8 @@ MUTANTS = [
     ("sq-tlb-noreq", "(ma[l].dk == DK_ST && ma[l].maddr[31:26] == 6'b111000 && ma[l].fx != FX_ADDR &&",
      "(1'b0 && ma[l].maddr[31:26] == 6'b111000 && ma[l].fx != FX_ADDR &&", "dir",
      "an SQ store with a TLB fault no longer writes the queue (mmu 3.8 [HW]; sq_st_tlb*: the SQ image)"),
-    ("post-bl", "ma_tk[l] = ma[l].trap || ((post_b || op_b) && !sr_rd[28]) ||",
-     "ma_tk[l] = ma[l].trap || post_b || (op_b && !sr_rd[28]) ||", "dir",
+    ("post-bl", "ma_tkb[l] = ma[l].trap || (!ldsr && ((post_b && !ma[l].blb && !bla) || (op_b && !bla))) ||",
+     "ma_tkb[l] = ma[l].trap || (!ldsr && (post_b || (op_b && !bla))) ||", "dir",
      "a post-execution break is taken with SR.BL = 1 (vx_ubc_post_bl1)"),
     ("data-bl", "sbrk_c = ubc_ctl.b_live && !sr_pre[28];", "sbrk_c = ubc_ctl.b_live;", "dir",
      "a data break is taken with SR.BL = 1 (vx_ubc_data_bl1)"),
@@ -179,7 +179,7 @@ MUTANTS = [
     ("fetch-stop-off", "assign fetch_stop = ent_act || rst_wait;", "assign fetch_stop = rst_wait;", "dir",
      "fetch keeps running from the take to the vector redirect (the fetch_err monitor, SOC.md 4.1 item 8)"),
     # ---- the fixes (WI-CORE-A-fixes): each reverted must fail its repro
-    ("f1-l1req", "&& !kill_ma && !(l == 1 && ma_tk[0]);", "&& !kill_ma;", "dir",
+    ("f1-l1req", "&& !kill_ma && !(l == 1 && ma_tkb[0]);", "&& !kill_ma;", "dir",
      "F1: the paired lane-1 access of a lane-0 post-execution break is presented (vx_ubc_post_l1acc_*, sq_post_l1acc)"),
     # (f2-exf / f2-hazard, the interim core-side hiding of a faulting multiplier-record writer, are gone: WI-CORE-F's
     # ISN kill of v1_fpu's multiplier records replaced them; tb/v1_fpuhold_mutants.py plants that kill's removal and
