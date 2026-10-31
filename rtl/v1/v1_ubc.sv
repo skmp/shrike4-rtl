@@ -106,9 +106,11 @@ module v1_ubc import v1_soc_pkg::*; #(
   output logic       ctl_seq,                   // BRCR.SEQ -> v1_core.ubc_seq (SOC.md 3.8)
   output logic       ctl_pre_armed              // -> v1_core.ubc_pre_armed -> v1_fetch (SOC.md 3.8, 4.1 item 7)
 );
+`ifndef SYNTHESIS
   if (IF_DLY < 1) begin : g_bad_dly
     $error("v1_ubc: IF_DLY must be >= 1 (a register write reaches the fetch-side copy through IF_DLY stages)");
   end
+`endif
 
   // ================================================================================================ register file
   // register ids on the write-forward pipeline (and the read mux)

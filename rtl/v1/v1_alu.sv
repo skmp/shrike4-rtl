@@ -152,8 +152,9 @@ package v1_alu_pkg;
       default: res = misc;
     endcase
     // forms that set only flags leave Rn alone (r = b, see the header)
-    wr_r = !(op inside {A_TST, A_CMPEQ, A_CMPHS, A_CMPGE, A_CMPHI, A_CMPGT, A_CMPPZ, A_CMPPL, A_CMPSTR,
-                        A_DIV0S, A_DIV0U, A_CLRT, A_SETT});
+    wr_r = !((op == A_TST || op == A_CMPEQ || op == A_CMPHS || op == A_CMPGE || op == A_CMPHI || op == A_CMPGT ||
+              op == A_CMPPZ || op == A_CMPPL || op == A_CMPSTR || op == A_DIV0S || op == A_DIV0U || op == A_CLRT ||
+              op == A_SETT));
     o.r = wr_r ? res : b;
 
     // T / Q / M

@@ -261,9 +261,12 @@ module fpu_vec_top
   logic signed [PRODW-1:0] pr [4];         // product registers
   logic [2:0] s_next;
 
-  for (genvar i = 0; i < 4; i++) begin : g_mul
-    fpu_booth_mul u_mul (.rec(lb[i]), .mul(la[i]), .raw(raw_c[i]), .prod(prod_c[i]));
+  genvar gm;
+  generate
+  for (gm = 0; gm < 4; gm = gm + 1) begin : g_mul
+    fpu_booth_mul u_mul (.rec(lb[gm]), .mul(la[gm]), .raw(raw_c[gm]), .prod(prod_c[gm]));
   end
+  endgenerate
 
   always_comb begin
     s_next = start ? 3'd1 : step + 3'd1;
@@ -340,16 +343,19 @@ module fpu_vec_top
     endcase
   end
 
-  for (genvar i = 0; i < 4; i++) begin : g_aln
+  genvar ga;
+  generate
+  for (ga = 0; ga < 4; ga = ga + 1) begin : g_aln
     always_comb begin
-      unique case (actl_r[i].src)
-        ADD_PROD: p_in[i] = pr[i];
-        ADD_C0:   p_in[i] = PRODW'(c0_r);
-        default:  p_in[i] = '0;
+      unique case (actl_r[ga].src)
+        ADD_PROD: p_in[ga] = pr[ga];
+        ADD_C0:   p_in[ga] = PRODW'(c0_r);
+        default:  p_in[ga] = '0;
       endcase
     end
-    fpu_align u_aln (.p(p_in[i]), .sh(actl_r[i].sh), .inv(actl_r[i].inv), .q(q[i]), .cin(cin[i]));
+    fpu_align u_aln (.p(p_in[ga]), .sh(actl_r[ga].sh), .inv(actl_r[ga].inv), .q(q[ga]), .cin(cin[ga]));
   end
+  endgenerate
   fpu_add4 u_add (.q(q), .cin(cin), .sum(sum_c));
 
   // ================================================================== F3: normalise / round

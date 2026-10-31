@@ -456,9 +456,10 @@ module v1_ocache import v1_soc_pkg::*; (
     end
     if (f.v && f.cmp) begin                                              // completion: f <- fq
       f_n = '0;
-      if (fq_n.v) f_n = '{v: 1'b1, idx: fq_n.idx, pa: fq_n.pa, crit: fq_n.crit, acc: fq_n.acc, nb: 3'd0,
-                          crit_seen: 1'b0, crit_dlv: 1'b0, arrived: 4'd0, st: 1'b0, ld: fq_n.ld, cmp: 1'b0, kill: fq_n.kill,
-                          stbe: 32'd0};
+      if (fq_n.v) begin                                            // (field by field: a pattern key that is also an identifier here is read as an expression by Quartus 17.0)
+        f_n.v = 1'b1; f_n.idx = fq_n.idx; f_n.pa = fq_n.pa; f_n.crit = fq_n.crit; f_n.acc = fq_n.acc;
+        f_n.ld = fq_n.ld; f_n.kill = fq_n.kill;                     // (f_n = '0 above: the rest are 0)
+      end
       fq_n = '0;
     end
     // OCI: every fill already in flight belongs to an older, acked access (killed); a claim of this cycle is younger
@@ -467,11 +468,11 @@ module v1_ocache import v1_soc_pkg::*; (
       if (fq_n.v) fq_n.kill = 1'b1;
     end
     if (c_fill || c_st) begin
-      if (!f_n.v)
-        f_n = '{v: 1'b1, idx: cidx, pa: ocq.x.pa[28:5], crit: q, acc: fsel == FS_NEW && bs_fill.ready, nb: 3'd0,
-                crit_seen: 1'b0, crit_dlv: 1'b0, arrived: 4'd0, st: c_st, ld: k_ld, cmp: 1'b0, kill: 1'b0,
-                stbe: c_st ? 32'(32'(lanes(sbe, a)) << {q, 3'b000}) : 32'd0};
-      else
+      if (!f_n.v) begin                                            // (field by field: a pattern key that is also an identifier here is read as an expression by Quartus 17.0)
+        f_n = '0;
+        f_n.v = 1'b1; f_n.idx = cidx; f_n.pa = ocq.x.pa[28:5]; f_n.crit = q; f_n.acc = fsel == FS_NEW && bs_fill.ready;
+        f_n.st = c_st; f_n.ld = k_ld; f_n.stbe = c_st ? 32'(32'(lanes(sbe, a)) << {q, 3'b000}) : 32'd0;
+      end else
         fq_n = '{v: 1'b1, idx: cidx, pa: ocq.x.pa[28:5], crit: q, acc: fsel == FS_NEW && bs_fill.ready, ld: k_ld,
                  kill: 1'b0};
     end
@@ -660,7 +661,9 @@ module v1_ocache import v1_soc_pkg::*; (
   end
 
   // protocol assertions (simulation): a beat must belong to the accepted fill `f`
+`ifndef SYNTHESIS
   always_ff @(posedge clk)
     if (!rst.por && bs_fill.rd_v && !(f.v && f.acc && f.nb != 3'd4 && !f.cmp))
       $display("%%Error-OC: v1_ocache: a fill beat arrived with no accepted fill waiting for it");
+`endif
 endmodule

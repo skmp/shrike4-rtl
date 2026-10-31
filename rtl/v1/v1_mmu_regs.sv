@@ -21,7 +21,7 @@
 // TEA / PTEH.VPN (the core's excw at EXC0's S; the MMU's own associative multiple hit), then the URC step and the LRUI
 // update (different fields: both apply).  The capture beats a software TEA / PTEH write of the same cycle [P] (they
 // cannot meet: the writing store is older than the entry and has left MA before EXC0 reaches S).
-module v1_mmu_regs import v1_soc_pkg::*; import v1_mmu_pkg::*; (
+module v1_mmu_regs import v1_soc_pkg::*, v1_mmu_pkg::*; (
   input  logic        clk,
   /* verilator lint_off UNUSEDSIGNAL */          // rst.pin is implied by rst.por; a CPU-only reset holds every register
   input  rst_t        rst,

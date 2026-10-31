@@ -591,12 +591,16 @@ module v1_soc import v1_soc_pkg::*, v1_bsc_pkg::*; #(
   // the BSC (WI-BSC): registers, refresh, ports, GPIO, the SDRAM / MPX / basic sequencers; the CPU port (the BIU's,
   // idle with IDEAL_MEM = 1) and the DMAC's
   xb_out_t xb_o;
+  // the external bus inputs as v1_bsc's xb_in_t (a typed signal: Quartus 17.0 does not type a pattern in a port
+  // connection)
+  xb_in_t      xb_i_s;
+  always_comb begin xb_i_s.rdy = xb_rdy; xb_i_s.rdata = xb_rdata; end
   v1_bsc u_bsc (
     .clk, .rst, .ce,
     .pq(p4s_q[PP_BSC]), .pr(p4s_r[PP_BSC]), .pq_sdmr(p4s_q[PP_SDMR]), .pr_sdmr(p4s_r[PP_SDMR]), .bpost_bsc,
     .cpu_bq, .cpu_bs, .cpu_bwd,
     .dma_bq, .dma_bs, .dma_bwd,
-    .xb_o, .xb_i('{rdy: xb_rdy, rdata: xb_rdata}), .breq_n, .back_n,
+    .xb_o, .xb_i(xb_i_s), .breq_n, .back_n,
     .ddt_bus_req, .ddt_bavl, .dma_rel, .dma_ses,
     .port_i, .port_o, .port_oe, .md(md_s),
     .rcmi(bsc_rcmi), .rovi(bsc_rovi), .gpio(bsc_gpio), .tap(bsc_tap)
@@ -641,8 +645,11 @@ module v1_soc import v1_soc_pkg::*, v1_bsc_pkg::*; #(
         p4_blk    = p4s_q[k].blk;
       end
   end
-  assign tap = '{core: core_tap, lsu: lsu_tap, ic: ic_tap, mmu: mmu_tap, bsc: bsc_tap, pmc: pmc_ev, scif: scif_tap,
-                 p4_strobe: p4_strobe, p4_blk: p4_blk, p4_we: p4_we, biu_start: biu_start};
+  always_comb begin                              // (field by field: a pattern key that is also an identifier here is read as an expression by Quartus 17.0)
+    tap = '0;
+    tap.core = core_tap; tap.lsu = lsu_tap; tap.ic = ic_tap; tap.mmu = mmu_tap; tap.bsc = bsc_tap; tap.pmc = pmc_ev;
+    tap.scif = scif_tap; tap.p4_strobe = p4_strobe; tap.p4_blk = p4_blk; tap.p4_we = p4_we; tap.biu_start = biu_start;
+  end
 
   /* verilator lint_off UNUSEDSIGNAL */          // the tb-only TMU hint (read hierarchically by tb/soc_tb_top.sv)
   wire unused_soc = ^{tmu_next_evt, dbg_rdata};

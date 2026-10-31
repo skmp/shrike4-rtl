@@ -85,7 +85,7 @@
 //   * privilege: the D-stage priority mux (dcode): a privileged form (ictl.priv) with SR.MD = 0 is 0x180, 0x1A0 in a
 //     delay slot, from the architectural SR with the write-through (LDC SR refetches; RTE's slot and target see the
 //     restored MD).
-module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import v1_soc_pkg::*; (
+module v1_core import tp_pkg::*, v1_pkg::*, v1_alu_pkg::*, v1_soc_pkg::*; (
   input  logic        clk,
   input  rst_t        rst,
   input  logic        run,                     // cpu_run: the clock enable of the whole core (SOC.md 2.5)
@@ -177,6 +177,10 @@ module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import 
   logic        fetch_stop;                     // an entry: no fetch from the cycle after t until its redirect
   logic [31:0] exc_vector;                     // the entry's vector (below)
 
+  // (declared before their first use: Quartus 17.0 resolves names in declaration order)
+  logic        lt_frz, oc_coll, mah;
+  logic [1:0]  lt_n;                           // cycles LDTLB has spent in MA (the UTLB write's occupancy counter)
+  logic        kill_ma;
   v1_fetch u_fetch (
     .clk, .rst(rst_c), .reset_pc, .md(f_md),
     // the holds known at the start of the cycle (asleep, the entry's fetch stop, run = 0, LDTLB's freeze in MA) stop
@@ -228,9 +232,7 @@ module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import 
   //            absent line)
   // mah: the MA access is presented and neither answered nor in the miss path (every longer wait).
   // A UBC data break at S kills the group in MA (kill_ma): its LDTLB freeze does not start (`lt_frz` is masked).
-  logic        lt_frz, oc_coll, mah;
-  logic [1:0]  lt_n;                           // cycles LDTLB has spent in MA (the UTLB write's occupancy counter)
-  logic        kill_ma;
+  // (lt_frz, oc_coll, mah, lt_n, kill_ma are declared above u_fetch)
   wire         pfz = (lt_frz && !kill_ma) || oc_coll || (lreq.v && lrsp.frz);
 
   // ============================================================================================================
@@ -530,8 +532,12 @@ module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import 
   logic        sq_kill;                        // the sequencer's instruction is killed
   logic        s_yl;                           // the youngest instruction of the S group (not an EXC0 beside it)
   logic        s_ybr;                          // ... is a one-cycle delayed branch (its slot is not in the group)
+  /* verilator lint_off UNUSEDSIGNAL */
+  ictl_t       s_yc;                           // its ictl (v1_ictl's result in a variable: Quartus 17.0 cannot select a member of a function call)
+  /* verilator lint_on UNUSEDSIGNAL */
   assign s_yl = sl[1].v && sl[1].uk == UK_NORM;
-  assign s_ybr = sl[s_yl].uk == UK_NORM && v1_ictl(sl[s_yl].form).br_dly && v1_ictl(sl[s_yl].form).k == 3'd1;
+  assign s_yc  = v1_ictl(sl[s_yl].form);
+  assign s_ybr = sl[s_yl].uk == UK_NORM && s_yc.br_dly && s_yc.k == 3'd1;
   always_comb begin
     // ---- S: channel B with DBEB compares the access's data at S (debug-ubc-hudi 4.3: "the access's whole issue group
     // completes; every instruction issued in a later cycle is cancelled"), BL after the instruction.  A block of its
@@ -679,10 +685,14 @@ module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import 
   logic        exc0_l1;                        // in lane 1 (the take's own cycle, a follower-candidate take)
   /* verilator lint_off UNUSEDSIGNAL */         // the function reads v, uk and form
   function automatic logic memop_u(input uop_t u);
-    return u.v && u.uk == UK_NORM && v1_ictl(u.form).memop;
+    ictl_t uc;
+    uc = v1_ictl(u.form);
+    return u.v && u.uk == UK_NORM && uc.memop;
   endfunction
   function automatic logic br_u(input uop_t u);             // a micro-op of a branch (PC-relative or register target)
-    return u.v && u.uk == UK_NORM && (v1_ictl(u.form).br_pc || v1_ictl(u.form).br_reg);
+    ictl_t uc;
+    uc = v1_ictl(u.form);
+    return u.v && u.uk == UK_NORM && (uc.br_pc || uc.br_reg);
   endfunction
   /* verilator lint_on UNUSEDSIGNAL */
   always_comb begin
@@ -789,7 +799,7 @@ module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import 
     // never a first micro-op)
     if (stake || matake) begin
       for (int k = 0; k < 4; k++) begin                    // (nothing after a younger branch claims)
-        y = k < 2 ? ma[k] : ex[k - 2];
+        y = k < 2 ? ma[k[0]] : ex[k[0]];                    // ma[k], ex[k - 2] (index in range on every unrolled iteration: Quartus 17.0 checks the constant index of an unreachable branch too)
         if (y.v && y.uk == UK_NORM && (stake || k >= 2 || (k == 1 && !ml))) begin
           if (!brs && y.step == 3'd0 && memop_u(y)) tk_ncl = tk_ncl + 3'd1;
           if (br_u(y)) brs = 1'b1;
@@ -1368,12 +1378,17 @@ module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import 
   // ---- the EX address phase (C2, SOC.md 4.2): the access micro-op in EX drives `dex`; v1_mmu answers `dxl` in the
   // same cycle, and the UBC its operand-address compare
   always_comb begin
+    /* verilator lint_off UNUSEDSIGNAL */
+    ictl_t ec;                                     // (v1_ictl's result in a variable: Quartus 17.0 cannot select a member of a function call)
+    /* verilator lint_on UNUSEDSIGNAL */
+    ec = '0;
     dex = '0;
     ubc_opq = '0;
     for (int l = 0; l < 2; l++)
       if (ex[l].v && ex_res[l].dk != DK_NONE) begin
+        ec = v1_ictl(ex[l].form);
         dex = '{v: 1'b1, kind: ex_res[l].dk, size: ex_res[l].msz, va: ex_res[l].maddr, md: ex_smd[l],
-                rmw: ex[l].step == 3'd0 && v1_ictl(ex[l].form).rmw, arch: ex_res[l].arch};
+                rmw: ex[l].step == 3'd0 && ec.rmw, arch: ex_res[l].arch};
         // the SOC.md 3.8 per-kind table: LD / ST their size with data; PREF / OCBP / OCBWB read and OCBI write, size L,
         // no data; MOVCA.L a write of size L with data (R0); RMW / TAS read / write size B; a quadword FMOV one Q
         // access; TAS.B's purge presents nothing (v = 0).  (The EX view: msz is L for PREF / OCBx and MOVCA.L, B for the
@@ -1915,7 +1930,9 @@ module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import 
   /* verilator lint_off UNUSEDSIGNAL */         // the functions read the fields they need
   // the last micro-op of its instruction (and not the post tag's bubble, a NOP form with step != 0)
   function automatic logic last_uop(input uop_t u);
-    unique case (v1_ictl(u.form).seq)
+    ictl_t uc;
+    uc = v1_ictl(u.form);
+    unique case (uc.seq)
       SQ_MAC:  return u.step == 3'd1;
       SQ_TSTB: return u.step == 3'd2;
       SQ_BOPB: return u.step == 3'd3;
@@ -1937,7 +1954,9 @@ module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import 
   endfunction
   function automatic commit_rec_t crec(input ck_e k, input logic [7:0] isn, input logic [7:0] idx,
                                        input logic [31:0] addr, input logic [63:0] data);
-    return '{v: 1'b1, kind: k, isn: isn, idx: idx, addr: addr, data: data, be: 8'd0};
+    commit_rec_t r;                                             // (field by field: a pattern key that is also an identifier here is read as an expression by Quartus 17.0)
+    r = '0; r.v = 1'b1; r.kind = k; r.isn = isn; r.idx = idx; r.addr = addr; r.data = data;
+    return r;
   endfunction
   function automatic commit_rec_t srec(input sysreg_e r, input logic [7:0] isn, input logic [31:0] v);
     return crec(CK_SYS, isn, 8'(r), 32'd0, {32'd0, v});
@@ -1948,8 +1967,9 @@ module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import 
     logic kil, stp;
     f = 1'b0; nx_isn = '0;
     for (int k = 0; k < 6; k++) begin
-      u = k < 2 ? sl[k] : k < 4 ? ma[k - 2] : ex[k - 4];
-      kil = k < 2 ? ksl[k] : k < 4 ? kma[k - 2] : kex[k - 4];
+      // sl[k], ma[k - 2], ex[k - 4]: k[0] in each (index in range on every unrolled iteration: Quartus 17.0 checks the constant index of an unreachable branch too)
+      u = k < 2 ? sl[k[0]] : k < 4 ? ma[k[0]] : ex[k[0]];
+      kil = k < 2 ? ksl[k[0]] : k < 4 ? kma[k[0]] : kex[k[0]];
       stp = k < 2 && !frz && (u.uk == UK_EXC0 || (u.uk == UK_NORM && last_uop(u) && !bubble(u)));
       if (!f && u.v && !kil && !stp && u.uk != UK_EXC_SAVE && !bubble(u)) begin f = 1'b1; nx_isn = u.isn; end
     end
@@ -1962,8 +1982,9 @@ module v1_core import tp_pkg::*; import v1_pkg::*; import v1_alu_pkg::*; import 
     end
   end
   always_comb begin
-    tap = '{i0_v: iss0, i0_pc: q_pc[0], i1_v: iss1, i1_pc: q_pc[1], next_isn: nx_isn,
-            halted: sleep_issued && pipe_empty && fpu_idle, asleep: sleep_issued, rec: '0};
+    tap = '0;                                                    // (field by field: a pattern key that is also an identifier here is read as an expression by Quartus 17.0)
+    tap.i0_v = iss0; tap.i0_pc = q_pc[0]; tap.i1_v = iss1; tap.i1_pc = q_pc[1]; tap.next_isn = nx_isn;
+    tap.halted = sleep_issued && pipe_empty && fpu_idle; tap.asleep = sleep_issued;
     for (int l = 0; l < 2; l++) begin
       if (!rst_c && !frz && sl[l].v && !ksl[l]) begin
         if (sl[l].uk == UK_NORM) begin

@@ -97,7 +97,7 @@
 //   0x06 `ev_fetch`: the IC accesses: as 0x0A, plus 2 per request that is not acked when first presented (a miss): the
 //        lookup of the next word, which the silicon's fetch pipeline had started behind the missing one and replays,
 //        and the retry of the missing word [P for the structure; HW icm: 0x06 9 against 0x0A 5 with 2 misses].
-module v1_fetch import tp_pkg::*; import v1_pkg::*; import v1_soc_pkg::*; #(
+module v1_fetch import tp_pkg::*, v1_pkg::*, v1_soc_pkg::*; #(
   parameter int IQN = 6        // instruction-queue halfwords [HW-calibrated: see the head of this file]
 ) (
   input  logic        clk,
@@ -185,21 +185,29 @@ module v1_fetch import tp_pkg::*; import v1_pkg::*; import v1_soc_pkg::*; #(
   // pre-decode: memory instructions and branches of the queue entries (the claim and the pre-armed hold)
   dec_t  pd [4];
   ictl_t pk [4];
-  for (genvar k = 0; k < 4; k++) begin : g_pd
-    if (k < IQN) begin : g_on
-      tp_decode u_pd (.op(iq[k].op), .md(3'b000), .d(pd[k]));   // memop / branch do not depend on FR / SZ / PR
-      assign pk[k] = v1_ictl_op(pd[k].form, iq[k].op);
+  genvar gk;
+  generate
+  for (gk = 0; gk < 4; gk = gk + 1) begin : g_pd
+    if (gk < IQN) begin : g_on
+      tp_decode u_pd (.op(iq[gk].op), .md(3'b000), .d(pd[gk]));   // memop / branch do not depend on FR / SZ / PR
+      assign pk[gk] = v1_ictl_op(pd[gk].form, iq[gk].op);
     end else begin : g_off
-      assign pd[k] = '0;
-      assign pk[k] = '0;
+      assign pd[gk] = '0;
+      assign pk[gk] = '0;
     end
   end
+  endgenerate
+  // (declared before their first use: Quartus 17.0 resolves names in declaration order)
+  qe_t         hw [2];
   dec_t  wd [2];                           // the word of this cycle, pre-decoded
   ictl_t pw [2];
-  for (genvar h = 0; h < 2; h++) begin : g_wd
-    tp_decode u_wd (.op(hw[h].op), .md(3'b000), .d(wd[h]));
-    assign pw[h] = v1_ictl_op(wd[h].form, hw[h].op);
+  genvar gh;
+  generate
+  for (gh = 0; gh < 2; gh = gh + 1) begin : g_wd
+    tp_decode u_wd (.op(hw[gh].op), .md(3'b000), .d(wd[gh]));
+    assign pw[gh] = v1_ictl_op(wd[gh].form, hw[gh].op);
   end
+  endgenerate
   logic qv_raw [4];                        // entry k is in the queue
   logic qd [4];                            // entry k is a delayed branch (its opcode is real)
   logic qhid;                              // the pre-armed hold hides the window from this entry on
@@ -260,8 +268,9 @@ module v1_fetch import tp_pkg::*; import v1_pkg::*; import v1_soc_pkg::*; #(
     // every iteration -- 92 with a fill; the console fills nothing])
     // An outstanding request presented again keeps the value of its first presentation (rq_spec): a held request never
     // changes before its ack (SOC.md 3.2.1), and a fill it started is not undone by a later redirect.
-    ifq = '{v: pres, va: {fpc_r[31:2], 2'b00}, md: md_q,
-            spec: rq_v ? rq_spec : (flush || exc_redirect || refetch || (redirect && !slot_pend))};
+    ifq = '0;                                                    // (field by field: a pattern key that is also an identifier here is read as an expression by Quartus 17.0)
+    ifq.v = pres; ifq.va = {fpc_r[31:2], 2'b00}; ifq.md = md_q;
+    ifq.spec = rq_v ? rq_spec : (flush || exc_redirect || refetch || (redirect && !slot_pend));
     busy_wait = rp_v;
     ev_fetch_all = first;
   end
@@ -278,7 +287,6 @@ module v1_fetch import tp_pkg::*; import v1_pkg::*; import v1_soc_pkg::*; #(
   // ============================================================================================================
   // the word of this cycle: its halfwords and tags
   logic [1:0]  hw_n;                       // halfwords it contributes (from fpc on)
-  qe_t         hw [2];
   fx_e         wfx;
   logic        wv4;
   always_comb begin
@@ -437,7 +445,7 @@ module v1_fetch import tp_pkg::*; import v1_pkg::*; import v1_soc_pkg::*; #(
         m = pw[k - int'(cnt)].memop; b = pw[k - int'(cnt)].br_pc || pw[k - int'(cnt)].br_reg;
       end
       w_mem[k] = v && m;
-      if (k < 3) w_br[k] = v && b;
+      if (k < 3) w_br[k % 3] = v && b;               // (index in range on every unrolled iteration: Quartus 17.0 checks the constant index of an unreachable branch too)
       if (k == 2) w_op2 = o;
       if (k == 3) w_op3 = o;
     end

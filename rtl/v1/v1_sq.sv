@@ -157,7 +157,7 @@ module v1_sq import v1_soc_pkg::*; (
       if (bs.wd_req) wq <= bs.wd_beat;
       if (ce.bce && rls_v) rls_v <= 1'b0;                              // the Bcyc after the done: free
       if (act_v && bs.done) begin act_v <= 1'b0; rls_v <= 1'b1; rls_n <= act_n; end   // done is a bce pulse
-      if (claim && !bs.ready) pend <= '{v: 1'b1, n: n, pa: bpa};
+      if (claim && !bs.ready) begin pend.v <= 1'b1; pend.n <= n; pend.pa <= bpa; end   // (field by field: a pattern key that is also an identifier here is read as an expression by Quartus 17.0)
       if (bq.v && bs.ready) begin                    // the BIU starts a write only after the previous one's done
         pend.v <= 1'b0;
         act_v  <= 1'b1;
@@ -167,8 +167,10 @@ module v1_sq import v1_soc_pkg::*; (
   end
 
   // the SOC.md 4.2 testbench assertion: a B / W write into the SQ is an unmeasured size [P]
+`ifndef SYNTHESIS
   always_ff @(posedge clk)
     if (!rst.por && wr_now && sqq.kind != DK_MOVCA && sqq.size != 2'(MSZ_L) && sqq.size != 2'(MSZ_Q))
       $display("%%Warning-SQ: unmeasured size: kind %0d size %0d written into SQ%0d at %08x", sqq.kind, sqq.size,
                n, sqq.va);
+`endif
 endmodule

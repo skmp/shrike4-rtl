@@ -105,7 +105,8 @@ module v1_dmac_req import v1_soc_pkg::*, v1_dmac_pkg::*; (
       if (k_auto[n])     rq[n] = 1'b1;
       else if (k_oc[n])  rq[n] = hold_live[n] || (oc_lvl(oc_s, c_rs(chcr[n])) && !inserv[n]);
       else if (k_ddt[n]) rq[n] = hold_live[n] || ddt_has[n];
-      else if (k_ext[n]) rq[n] = hold_live[n] || (c_ds(chcr[n]) ? edg[n] : (pin_s[n] && !inserv[n]));
+      // k_ext is channels 0 / 1 only (the DREQ pins): n[0] is n there (index in range on every unrolled iteration: Quartus 17.0 checks the constant index of an unreachable branch too)
+      else if (k_ext[n]) rq[n] = hold_live[n] || (c_ds(chcr[n]) ? edg[n[0]] : (pin_s[n[0]] && !inserv[n]));
       else               rq[n] = 1'b0;
     end
   end

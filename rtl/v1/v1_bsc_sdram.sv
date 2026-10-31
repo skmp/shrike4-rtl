@@ -80,7 +80,8 @@ module v1_bsc_sdram import v1_soc_pkg::*, v1_bsc_pkg::*; (
     logic [4:0]  off_act;
     logic [4:0]  off_rw;
     logic [4:0]  last_k;                         // the command sequencer's last Bcyc (READ, or the last write beat)
-    logic [5:0]  len;
+    logic [5:0]  blen;                           // its length in Bcyc (not `len`: Quartus 17.0 reads .len as the
+                                                 // string method)
   } sdp_t;
 
   // ---- the open-row table (planned state: updated at the hand-over)
@@ -110,7 +111,7 @@ module v1_bsc_sdram import v1_soc_pkg::*, v1_bsc_pkg::*; (
       p.nbus   = 4'd4;                           // a row-hit burst's occupancy of the CAS pipe (one beat delivered)
       p.off_rw = x.we ? 5'd1 : 5'd0;
       p.last_k = p.off_rw;
-      p.len    = x.we ? 6'd0 : 6'd7;             // the return path is busy as for a row-hit read (v1_bsc_arb's rel)
+      p.blen    = x.we ? 6'd0 : 6'd7;             // the return path is busy as for a row-hit read (v1_bsc_arb's rel)
       return p;
     end
     p.cl   = sd_cl(regs, x.addr[28:26]);
@@ -122,13 +123,13 @@ module v1_bsc_sdram import v1_soc_pkg::*, v1_bsc_pkg::*; (
     p.off_rw  = p.rs == RS_HIT ? (x.we ? 5'd1 : 5'd0) : p.off_act + {1'b0, rcd};
     if (!x.we) begin
       p.last_k = p.off_rw;
-      p.len    = {1'b0, p.off_rw} + {2'b0, p.cl} + {2'b0, p.nbus} + (p.rasd ? 6'd0 : {2'b0, tpc});
+      p.blen    = {1'b0, p.off_rw} + {2'b0, p.cl} + {2'b0, p.nbus} + (p.rasd ? 6'd0 : {2'b0, tpc});
     end else begin
       p.last_k = p.off_rw + {1'b0, p.nbus} - 5'd1;
       dl = {1'b0, p.off_rw} + {2'b0, p.nbus};
       ul = {1'b0, p.off_rw} + (line ? {2'b0, p.nbus} - 6'd1 : qw ? 6'd1 : 6'd0) + {2'b0, trwl} + 6'd1;
       // RAS down: TRWL after the last unmasked beat; auto-precharge (WRITA): TRWL after the burst, then TPC (Fig. 13.33)
-      p.len = p.rasd ? (dl > ul ? dl : ul) : dl + {2'b0, trwl} + {2'b0, tpc};
+      p.blen = p.rasd ? (dl > ul ? dl : ul) : dl + {2'b0, trwl} + {2'b0, tpc};
     end
     return p;
   endfunction
@@ -137,7 +138,7 @@ module v1_bsc_sdram import v1_soc_pkg::*, v1_bsc_pkg::*; (
   // ---- the command sequencer (one access at a time) and the internal-command sequencer
   logic        cv;
   bx_t         cx;
-  /* verilator lint_off UNUSEDSIGNAL */          // cp.len: the arbiter's (at the hand-over)
+  /* verilator lint_off UNUSEDSIGNAL */          // cp.blen: the arbiter's (at the hand-over)
   sdp_t        cp;
   /* verilator lint_on UNUSEDSIGNAL */
   logic [4:0]  ck;
@@ -178,7 +179,7 @@ module v1_bsc_sdram import v1_soc_pkg::*, v1_bsc_pkg::*; (
   always_comb begin
     int first;
     ip      = plan(iss_x);
-    iss_len = ip.len;
+    iss_len = ip.blen;
     first   = 1 + int'(ip.off_rw) + (iss_x.we ? 0 : int'(ip.cl));
     iss_ok  = !(cv && ck != cp.last_k) && !(rv && rk != rlast) && nocmd <= 6'd1 && !(sr_q && !ip.a7);
     for (int i = 0; i < 16; i++) begin

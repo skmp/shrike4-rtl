@@ -93,7 +93,7 @@
 // Cacheability.  dxl.c = the page's C (or the untranslated rules of hm Figure 3.3) AND CCR.OCE (mmu 3.4 "cacheable
 // when C = 1 and CCR.OCE = 1"; SOC.md 3.2.2; the LSU's VOLRD rule, SOC.md 6.3, reads dxl.c).  if_c leaves CCR.ICE to
 // the IC (SOC.md 3.2.1).
-module v1_mmu import v1_soc_pkg::*; import v1_mmu_pkg::*; #(
+module v1_mmu import v1_soc_pkg::*, v1_mmu_pkg::*; #(
   parameter bit TRANSLATE = 1'b1
 ) (
   input  logic        clk,
@@ -178,6 +178,7 @@ module v1_mmu import v1_soc_pkg::*; import v1_mmu_pkg::*; #(
     dx_id.wt = xl_wt_untr(dex.va, ccr.cb, ccr.wt);
   end
 
+  generate
   if (TRANSLATE) begin : g_tlb
     // ================================================================================================================
     // UTLB, ITLB
@@ -411,4 +412,5 @@ module v1_mmu import v1_soc_pkg::*; import v1_mmu_pkg::*; #(
                      dex.rmw};
     /* verilator lint_on UNUSEDSIGNAL */
   end
+  endgenerate
 endmodule

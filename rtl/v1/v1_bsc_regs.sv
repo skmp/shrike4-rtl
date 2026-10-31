@@ -60,8 +60,11 @@ module v1_bsc_regs import v1_soc_pkg::*, v1_bsc_pkg::*; (
   logic [13:0] bcr2;                             // [15:14] are the straps
   logic [15:0] pcr;
 
-  assign regs = '{bcr1: {mdl[4:2], bcr1}, bcr2: {mdl[1:0], bcr2}, wcr1: wcr1, wcr2: wcr2, wcr3: wcr3,
-                  mcr: mcr, pcr: pcr};
+  always_comb begin                              // (field by field: a pattern key that is also an identifier here is read as an expression by Quartus 17.0)
+    regs = '0;
+    regs.bcr1 = {mdl[4:2], bcr1}; regs.bcr2 = {mdl[1:0], bcr2}; regs.wcr1 = wcr1; regs.wcr2 = wcr2; regs.wcr3 = wcr3;
+    regs.mcr = mcr; regs.pcr = pcr;
+  end
 
   // ---- decode: register index by off[6:2], its size, and whether this access is its own size at its own address
   typedef enum logic [4:0] {

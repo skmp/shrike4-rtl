@@ -97,7 +97,7 @@ module v1_tmu
   // ---- events ----------------------------------------------------------------------------------------------------
   logic [4:0] tick;
   always_comb
-    for (int k = 0; k < 5; k++) tick[k] = ce.pce && !pstop && &(presc | ~10'((1 << (2 * k + 2)) - 1));
+    for (int k = 0; k < 5; k++) tick[k] = ce.pce && !pstop && &(presc | ~((10'd1 << (2 * k + 2)) - 10'd1));
   function automatic logic edge_of(input logic [1:0] ck, input logic a, input logic b);   // a = t2, b = t3
     return ck[1] ? (a != b) : ck[0] ? (!a && b) : (a && !b);
   endfunction

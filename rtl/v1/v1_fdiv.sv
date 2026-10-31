@@ -126,7 +126,7 @@ module v1_fdiv
 
   st_t cur, nx1, nx2, nx3;
   always_comb begin
-    cur = '{w: w, q: q, pos: pos};
+    cur = '0; cur.w = w; cur.q = q; cur.pos = pos;                // (field by field: a pattern key that is also an identifier here is read as an expression by Quartus 17.0)
     nx1 = step(cur, o_sqrt, dv);
     nx2 = step(nx1, o_sqrt, dv);
     nx3 = step(nx2, o_sqrt, dv);

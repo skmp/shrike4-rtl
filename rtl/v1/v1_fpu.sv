@@ -132,7 +132,7 @@
 //   frec[4], [5] MACH, MACL of the multiplier write (one per cycle: MUL / MAC are CO k = 2, CLRMAC / LDS enter two
 //               stages later), as the instruction writes them: MUL.L / MULS.W / MULU.W / LDS MACL MACL, LDS MACH MACH,
 //               DMULx / MACx / CLRMAC both
-module v1_fpu import tp_pkg::*; import v1_pkg::*; import v1_fp_pkg::*; import v1_mul_pkg::*; (
+module v1_fpu import tp_pkg::*, v1_pkg::*, v1_fp_pkg::*, v1_mul_pkg::*; (
   input  logic        clk,
   input  logic        rst,
   input  logic        hold_pipe,              // pfz | mah | run = 0: the FE pipe, vector, multiplier, double sequencer

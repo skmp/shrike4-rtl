@@ -34,3 +34,10 @@ model/timings2/tests/cases_skipped.jsonl
 model/fsca/tools/f1_table.txt
 model/fsca/tools/f2_cert_table.txt
 model/fsca/tools/f1_scan.txt
+
+# ---- Quartus build artifacts (quartus/testing/*) ----
+db/
+incremental_db/
+output_files/
+*.qws
+*.rpt

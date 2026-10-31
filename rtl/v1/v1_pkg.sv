@@ -260,21 +260,26 @@ package v1_pkg;
     // ---- SoC decoder facts (SOC.md 1.3.1).  tb/v1_ictl_tb checks them for every opcode against tb/sh4_iss.h's decoder.
     // privileged (SOC.md 4.4.2, exceptions-intc 3.7 [HW]): LDC / LDC.L / STC / STC.L of SR VBR SSR SPC SGR DBR Rn_BANK,
     // RTE, LDTLB (SLEEP: v1_ictl_op).  LDC / STC GBR are not.
-    c.priv = f inside {F_LDC_RM_SR, F_LDC_RM_VBR, F_LDC_RM_SSR, F_LDC_RM_SPC, F_LDC_RM_DBR, F_LDC_RM_RN_BANK,
-                       F_LDC_L_AT_RM_INC_SR, F_LDC_L_AT_RM_INC_VBR, F_LDC_L_AT_RM_INC_SSR, F_LDC_L_AT_RM_INC_SPC,
-                       F_LDC_L_AT_RM_INC_DBR, F_LDC_L_AT_RM_INC_RN_BANK, F_STC_SR_RN, F_STC_VBR_RN, F_STC_SSR_RN,
-                       F_STC_SPC_RN, F_STC_SGR_RN, F_STC_DBR_RN, F_STC_RM_BANK_RN, F_STC_L_SR_AT_PRE_RN,
-                       F_STC_L_VBR_AT_PRE_RN, F_STC_L_SSR_AT_PRE_RN, F_STC_L_SPC_AT_PRE_RN, F_STC_L_SGR_AT_PRE_RN,
-                       F_STC_L_DBR_AT_PRE_RN, F_STC_L_RM_BANK_AT_PRE_RN, F_RTE, F_LDTLB};
+    c.priv = (f == F_LDC_RM_SR || f == F_LDC_RM_VBR || f == F_LDC_RM_SSR || f == F_LDC_RM_SPC ||
+              f == F_LDC_RM_DBR || f == F_LDC_RM_RN_BANK || f == F_LDC_L_AT_RM_INC_SR ||
+              f == F_LDC_L_AT_RM_INC_VBR || f == F_LDC_L_AT_RM_INC_SSR || f == F_LDC_L_AT_RM_INC_SPC ||
+              f == F_LDC_L_AT_RM_INC_DBR || f == F_LDC_L_AT_RM_INC_RN_BANK || f == F_STC_SR_RN ||
+              f == F_STC_VBR_RN || f == F_STC_SSR_RN || f == F_STC_SPC_RN || f == F_STC_SGR_RN ||
+              f == F_STC_DBR_RN || f == F_STC_RM_BANK_RN || f == F_STC_L_SR_AT_PRE_RN ||
+              f == F_STC_L_VBR_AT_PRE_RN || f == F_STC_L_SSR_AT_PRE_RN || f == F_STC_L_SPC_AT_PRE_RN ||
+              f == F_STC_L_SGR_AT_PRE_RN || f == F_STC_L_DBR_AT_PRE_RN || f == F_STC_L_RM_BANK_AT_PRE_RN ||
+              f == F_RTE || f == F_LDTLB);
     // slot-illegal (exceptions-intc 3.6 [HW]): every branch, RTE, LDC(.L) SR, the PC-relative loads and MOVA, and every
     // code with no decode (H'FFFD included; TRAPA: v1_ictl_op)
     c.slot_ill = c.illegal ||
-                 f inside {F_BF, F_BF_S, F_BT, F_BT_S, F_BRA_LABEL, F_BRAF_RN, F_BSR_LABEL, F_BSRF_RN, F_JMP_AT_RN,
-                           F_JSR_AT_RN, F_RTS, F_RTE, F_LDC_RM_SR, F_LDC_L_AT_RM_INC_SR, F_MOVA_AT_D_PC_R0,
-                           F_MOV_W_AT_D_PC_RN, F_MOV_L_AT_D_PC_RN};
+                 (f == F_BF || f == F_BF_S || f == F_BT || f == F_BT_S || f == F_BRA_LABEL || f == F_BRAF_RN ||
+                  f == F_BSR_LABEL || f == F_BSRF_RN || f == F_JMP_AT_RN || f == F_JSR_AT_RN || f == F_RTS ||
+                  f == F_RTE || f == F_LDC_RM_SR || f == F_LDC_L_AT_RM_INC_SR || f == F_MOVA_AT_D_PC_R0 ||
+                  f == F_MOV_W_AT_D_PC_RN || f == F_MOV_L_AT_D_PC_RN);
     // FPU instruction for SR.FD (pm 5.x (11)): fpu_dec marks every decoded H'Fxxx form and LDS / STS (.L) FPSCR; the
     // four FPUL transfers are the rest.  An undecoded H'Fxxx code is v1_ictl_op's.
-    c.fpu_insn = c.fpu_dec || f inside {F_LDS_RM_FPUL, F_LDS_L_AT_RM_INC_FPUL, F_STS_FPUL_RN, F_STS_L_FPUL_AT_PRE_RN};
+    c.fpu_insn = c.fpu_dec || (f == F_LDS_RM_FPUL || f == F_LDS_L_AT_RM_INC_FPUL || f == F_STS_FPUL_RN ||
+                               f == F_STS_L_FPUL_AT_PRE_RN);
     // access kind of micro-op 0.  STC.L / STS.L PR form the address in micro-op 0 and store in their last one (v1's
     // stcl_form): DK_NONE here, DK_ST from the sequencer.  MAC.x: both micro-ops are loads (@Rn first, SOC.md 4.2).
     // LDTLB has no data access (lt_frz, SOC.md 4.2).
@@ -305,7 +310,8 @@ package v1_pkg;
       F_TAS_B_AT_RN:      c.dkind = DK_TAS_PURGE;
       default:            c.dkind = DK_NONE;
     endcase
-    c.rmw = f inside {F_AND_B_IMM_AT_R0_GBR, F_OR_B_IMM_AT_R0_GBR, F_XOR_B_IMM_AT_R0_GBR, F_TAS_B_AT_RN};
+    c.rmw = (f == F_AND_B_IMM_AT_R0_GBR || f == F_OR_B_IMM_AT_R0_GBR || f == F_XOR_B_IMM_AT_R0_GBR ||
+             f == F_TAS_B_AT_RN);
     c.memop = c.dkind != DK_NONE || stcl_form(f);
     // FPU trap classes decided at D (exceptions-intc 3.8, pm 10 possible-exception lists).  O / U / I: FADD FSUB FMUL
     // FMAC FDIV (both precisions) [HW], FIPR FTRV [HW], FCNVDS [M]; I only: FSQRT [HW], FSRRA FSCA [HW], FLOAT with

@@ -117,9 +117,11 @@ module v1_cpg
   input  logic        wdt_ovf
 );
   typedef enum logic [2:0] { S_RUN, S_SLEEP, S_DSLEEP, S_RESYNC, S_STANDBY, S_SETTLE, S_ENTRY } st_e;
+`ifndef SYNTHESIS
   if (ENTRY_PCE < 1 || ENTRY_PCE > 15 || RESYNC_PCE < 1 || RESYNC_PCE > 15) begin : g_bad_depth
     $error("v1_cpg: ENTRY_PCE and RESYNC_PCE must be 1..15 (4-bit stage counters)");
   end
+`endif
 
   // FRQCR after a pin power-on reset, by MD2-0 (hm Table 10.3 through Table 10.4); MD 110 / 111 [P] as mode 5
   function automatic logic [11:0] frqcr_init(input logic [2:0] m);

@@ -1,0 +1,80 @@
+# --------------------------------------------------------------------------
+# shrike4-rtl - the fileset of the whole-SoC harness `shrike4_rtl_test`: tb/mk/v1_soc.mk's V1_SOC_RTL
+# (the packages first, in that order; then the core, the units and v1_soc),
+# then the harness. Paths are relative to this project dir
+# (quartus/testing/shrike4-rtl/), pointing up into ../../../rtl.
+# v1_ideal_mem.sv is analysed but not elaborated (IDEAL_MEM = 0).
+# --------------------------------------------------------------------------
+
+# ---- packages (MUST come first, in this order) ----
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/timing-proxy/tp_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/fpu_vec/fpu_vec_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_alu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_mul.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_fp.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_soc_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_mmu_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_bsc_pkg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_pkg.sv
+
+# ---- core: decode, the FIPR / FSCA / FSRRA datapath, the pipeline, FPU, divider, fetch ----
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/timing-proxy/tp_decode.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/fpu_vec/fpu_booth_mul.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/fpu_vec/fpu_align.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/fpu_vec/fpu_add4.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/fpu_vec/fpu_normround.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/fpu_vec/fpu_vec_top.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_core.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_fdiv.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_fetch.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_fpu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_ideal_mem.sv
+
+# ---- SoC units ----
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_lsu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_p4bus.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_mmu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_mmu_regs.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_utlb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_itlb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_icache.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_ocache.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_sq.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_ccr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_biu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_bsc.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_bsc_regs.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_bsc_rfsh.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_bsc_port.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_bsc_sdram.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_bsc_mpx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_bsc_basic.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_bsc_arb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_regs.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_ddt.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_req.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_arb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_dmac_xfer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_intc.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_excregs.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_cpg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_rstc.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_wdt.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_tmu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_rtc.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_scif.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_scif_brg.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_scif_tx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_scif_rx.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_scif_fifo.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_sci.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_ubc.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_perfctr.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_hudi.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_ccn_id.sv
+
+# ---- the SoC + harness ----
+set_global_assignment -name SYSTEMVERILOG_FILE ../../../rtl/v1/v1_soc.sv
+set_global_assignment -name SYSTEMVERILOG_FILE shrike4_rtl_test.sv

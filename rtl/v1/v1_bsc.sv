@@ -185,6 +185,8 @@ module v1_bsc import v1_soc_pkg::*, v1_bsc_pkg::*; #(
                                   brel(blen_t'(idle_cyc(regs, rec, f_x.addr[28:26], f_mt, f_x.we,
                                                         f_x.master == BM_DMA_SINGLE || f_x.master == BM_DDT))));
   end
+  // (declared before their first use: Quartus 17.0 resolves names in declaration order)
+  wire         hold;                           // an MPX / basic cycle holds the arbiter (assigned below)
   assign hand = ce.bce && f_v && f_iss && iss_ok && iss_bus && !hold;
   wire hand_sd = hand && (f_mt == MT_SDRAM || f_mt == MT_A7);
   wire hand_mx = hand && f_mt == MT_MPX;
@@ -229,8 +231,20 @@ module v1_bsc import v1_soc_pkg::*, v1_bsc_pkg::*; #(
   assign bo   = ce.bce ? (sd_bo | mx_bo | bb_bo) : '0;
   wire   cm     = ce.bce && (sd_cm || mx_cm || bb_cm);
   wire   cm_p   = sd_cm ? sd_cp : mx_cm ? mx_cp : bb_cp;
-  wire   hold   = ce.bce && (mx_hold || bb_hold);
+  assign hold   = ce.bce && (mx_hold || bb_hold);
 
+  // the write-data state (described with its logic below; declared before the arbiter, which reads it)
+  logic [1:0]      pl_v, pl_fin;                 // pulling; the last pull was in the previous Bcyc
+  logic [1:0][1:0] pl_k, pl_n;                   // next beat, beats - 1
+  logic [1:0][1:0] pl_q0;                        // the first beat's quadword
+  logic [1:0]      pl_wb;
+  logic            cap_v, cap_p, cap_wb;         // capture at the end of this Icyc (the one after wd_req)
+  logic [1:0]      cap_q;
+  logic [1:0]      wr_act, wr_pdone;
+  logic [1:0][1:0] wr_cm;                        // commits still to come (1, or 2 for a Q)
+  logic [1:0]      wd_req;
+  logic [1:0][1:0] wd_beat;
+  logic [1:0]      wr_done;
   // ================================================================================================================
   // the arbiter
   wire dlv_v = bo.v && !bo.we && bo.dlv;
@@ -245,17 +259,6 @@ module v1_bsc import v1_soc_pkg::*, v1_bsc_pkg::*; #(
 
   // ================================================================================================================
   // write data: pulls (wd_req), capture, retire (done)
-  logic [1:0]      pl_v, pl_fin;                 // pulling; the last pull was in the previous Bcyc
-  logic [1:0][1:0] pl_k, pl_n;                   // next beat, beats - 1
-  logic [1:0][1:0] pl_q0;                        // the first beat's quadword
-  logic [1:0]      pl_wb;
-  logic            cap_v, cap_p, cap_wb;         // capture at the end of this Icyc (the one after wd_req)
-  logic [1:0]      cap_q;
-  logic [1:0]      wr_act, wr_pdone;
-  logic [1:0][1:0] wr_cm;                        // commits still to come (1, or 2 for a Q)
-  logic [1:0]      wd_req;
-  logic [1:0][1:0] wd_beat;
-  logic [1:0]      wr_done;
   always_comb begin
     for (int p = 0; p < 2; p++) begin
       wd_req[p]  = ce.bce && pl_v[p];

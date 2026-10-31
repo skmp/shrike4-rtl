@@ -117,7 +117,7 @@ package v1_fp_pkg;
   endfunction
   function automatic fd_res_t mk(input logic [63:0] r, input logic v, input logic z);
     fd_res_t o;
-    o.r = r; o.x = '{v: v, z: z, o: 1'b0, u: 1'b0, i: 1'b0}; o.e = 1'b0;
+    o.r = r; o.x = '0; o.x.v = v; o.x.z = z; o.e = 1'b0;          // (field by field: a pattern key that is also an identifier here is read as an expression by Quartus 17.0)
     return o;
   endfunction
   function automatic fd_res_t mk_e();                        // the FPU error: no result

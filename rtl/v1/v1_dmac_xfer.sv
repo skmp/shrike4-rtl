@@ -167,6 +167,8 @@ module v1_dmac_xfer import v1_soc_pkg::*, v1_dmac_pkg::*; (
   logic [3:0]  pc_rs;
   logic [2:0]  pc_ts;
   logic        pc_single;
+  // (declared before their first use: Quartus 17.0 resolves names in declaration order)
+  logic rd_acc, wr_acc, sgl_acc, p4_leg_fin, fin;
   logic [31:0] pc_sar, pc_dar, pc_sa, pc_da;
   port_e       pc_rp, pc_wp;
   always_comb begin
@@ -186,7 +188,6 @@ module v1_dmac_xfer import v1_soc_pkg::*, v1_dmac_pkg::*; (
   end
 
   // ---- leg events of this bce
-  logic rd_acc, wr_acc, sgl_acc, p4_leg_fin, fin;
   assign rd_acc     = bce && st == ST_RD  && u_rp == PT_BSC && bq.v && bs.ready;
   assign wr_acc     = bce && (st == ST_WR || (st == ST_RDW && early_w)) && u_wp == PT_BSC && bs.ready;
   assign sgl_acc    = bce && st == ST_SGL && u_rp == PT_BSC && bq.v && bs.ready;
@@ -316,6 +317,8 @@ module v1_dmac_xfer import v1_soc_pkg::*, v1_dmac_pkg::*; (
     endcase
   end
 
+  // (declared before their first use: Quartus 17.0 resolves names in declaration order)
+  logic [8:0] sh;
   // write data of the beat the BSC asked for (valid from the Icyc after wd_req, SOC.md 3.3.2).  (M6) A single-address
   // write ends for the engine at its accept (fin: the single cycle's ready), so its data pulls come while the engine
   // may already run the next unit: its byte enables are its own, the single-cycle FIFO head's (sgl_q; a dual unit's
@@ -355,7 +358,6 @@ module v1_dmac_xfer import v1_soc_pkg::*, v1_dmac_pkg::*; (
   end
 
   // ---- DACK / TDACK beat strobes: single cycles (the FIFO head) and the DACK leg of an external dual unit
-  logic [8:0] sh;
   assign sh = sgl_q[0];
   always_comb begin
     dack_v  = 1'b0;
